@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projectHighlights } from '../posts.js';
+---
+
+<Layout title="Work & Selected Projects | Min Kim" activeNav="work">
+  <div>
+    <h1 class="page-title">Work & Selected Projects</h1>
+    <p class="page-lead">
+      A catalog of software systems, typography experiments, and tools built with an emphasis on craftsmanship and performance.
+    </p>
+
+    <div class="projects-grid">
+      {projectHighlights.map(proj => (
+        <div class="project-card">
+          <div class="project-header">
+            <h2 class="project-name">{proj.title}</h2>
+            <span class="project-tag">{proj.tag}</span>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--muted-foreground); margin-bottom: 0.4rem; font-family: var(--font-sans);">
+            {proj.year} · {proj.role}
+          </div>
+          <p class="project-desc">{proj.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

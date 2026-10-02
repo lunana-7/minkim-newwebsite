@@ -1,0 +1,177 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { renderBanner } from '../../banners.js';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const sorted = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+  return sorted.map((post, index) => ({
+    params: { slug: post.id.replace(/\.(md|mdx)$/, '') },
+    props: {
+      post,
+      prevPost: index > 0 ? sorted[index - 1] : null,
+      nextPost: index < sorted.length - 1 ? sorted[index + 1] : null,
+    },
+  }));
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+const { Content, headings } = await render(post);
+
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+  const day = date.getUTCDate();
+  let ordinal = "th";
+  if (day === 1 || day === 21 || day === 31) ordinal = "st";
+  else if (day === 2 || day === 22) ordinal = "nd";
+  else if (day === 3 || day === 23) ordinal = "rd";
+
+  const month = date.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
+  const year = date.getUTCFullYear();
+  return `${month} ${day}${ordinal}, ${year}`;
+}
+---
+
+<Layout
+  title={`${post.data.title} | Min Kim`}
+  description={post.data.excerpt}
+  activeNav="blog"
+  currentPostTitle={post.data.title}
+  headings={headings}
+>
+  <article>
+    <header class="article-header">
+      <a href="/blog" class="back-to-blog">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to entries</span>
+      </a>
+      <h1 class="article-title">{post.data.title}</h1>
+      <div class="article-meta">
+        <span class="author-chip">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Min Kim" class="author-avatar" />
+          <span>Min Kim</span>
+        </span>
+        <span class="meta-dot">·</span>
+        <time datetime={post.data.date}>{formatDate(post.data.date)}</time>
+        <span class="meta-dot">·</span>
+        <span>{post.data.readingTime}</span>
+        <span class="meta-dot">·</span>
+        <span>{post.data.tags.map((t: string) => `#${t}`).join(', ')}</span>
+      </div>
+      <p class="article-excerpt">{post.data.excerpt}</p>
+    </header>
+
+    <div class="article-banner" set:html={renderBanner(post.data.bannerType, false)} />
+
+    <div class="prose-content">
+      <Content />
+    </div>
+
+    <!-- Bottom Navigation Prev / Next -->
+    <nav class="article-nav-bottom" aria-label="Adjacent Articles">
+      {prevPost ? (
+        <a href={`/blog/${prevPost.id.replace(/\.(md|mdx)$/, '')}`} class="nav-card">
+          <span class="nav-direction">← Earlier Entry</span>
+          <span class="nav-title">{prevPost.data.title}</span>
+        </a>
+      ) : <div />}
+
+      {nextPost ? (
+        <a href={`/blog/${nextPost.id.replace(/\.(md|mdx)$/, '')}`} class="nav-card" style="text-align: right;">
+          <span class="nav-direction">Later Entry →</span>
+          <span class="nav-title">{nextPost.data.title}</span>
+        </a>
+      ) : <div />}
+    </nav>
+
+    <!-- Interactive Comments Section -->
+    <section class="comments-section" id="comments">
+      <div class="comments-header">
+        <h2 class="comments-title">Thoughts & Discussion</h2>
+        <span class="comments-count" id="comments-count">(1)</span>
+      </div>
+
+      <form class="comment-form" id="comment-form">
+        <textarea class="comment-input" id="comment-input" placeholder="Leave a reflection or note on this essay..." required></textarea>
+        <div class="comment-submit-row">
+          <button type="submit" class="comment-btn">Share Reflection</button>
+        </div>
+      </form>
+
+      <div class="comments-list" id="comments-list">
+        <div class="comment-item">
+          <div class="comment-meta">
+            <span class="comment-author">Elena Vance</span>
+            <span>2 days ago</span>
+          </div>
+          <p class="comment-text">The reflection on friction in digital craft hits so close to home. Beautiful typesetting on this site!</p>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <script is:inline>
+    // Handle Local Comments persistence
+    const slug = window.location.pathname.replace(/\/$/, '').split('/').pop();
+    const storageKey = `comments_${slug}`;
+    const commentForm = document.getElementById('comment-form');
+    const commentInput = document.getElementById('comment-input');
+    const listEl = document.getElementById('comments-list');
+    const countEl = document.getElementById('comments-count');
+
+    let saved = [];
+    try {
+      const raw = localStorage.getItem(storageKey);
+      if (raw) saved = JSON.parse(raw);
+    } catch(e) {}
+
+    if (saved.length > 0 && listEl) {
+      saved.forEach(c => {
+        const item = document.createElement('div');
+        item.className = 'comment-item';
+        item.innerHTML = `
+          <div class="comment-meta">
+            <span class="comment-author">${c.author}</span>
+            <span>${c.time}</span>
+          </div>
+          <p class="comment-text">${c.text}</p>
+        `;
+        listEl.prepend(item);
+      });
+      if (countEl) countEl.textContent = `(${1 + saved.length})`;
+    }
+
+    commentForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = commentInput?.value.trim();
+      if (!val) return;
+      const newComment = {
+        author: "Visiting Reader",
+        text: val,
+        time: "Just now"
+      };
+      saved.unshift(newComment);
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(saved));
+      } catch(e) {}
+
+      const item = document.createElement('div');
+      item.className = 'comment-item';
+      item.innerHTML = `
+        <div class="comment-meta">
+          <span class="comment-author">${newComment.author}</span>
+          <span>${newComment.time}</span>
+        </div>
+        <p class="comment-text">${newComment.text}</p>
+      `;
+      listEl?.prepend(item);
+      if (countEl) countEl.textContent = `(${1 + saved.length})`;
+      if (commentInput) commentInput.value = '';
+    });
+  </script>
+</Layout>

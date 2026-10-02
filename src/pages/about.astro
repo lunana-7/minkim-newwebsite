@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { aboutData } from '../posts.js';
+---
+
+<Layout title="About | Min Kim" activeNav="about">
+  <div>
+    <h1 class="page-title">About</h1>
+    <p class="page-lead">{aboutData.title}</p>
+    
+    <div class="prose-content" style="margin-bottom: var(--space-xl);">
+      {aboutData.bio.split('\n\n').map(p => <p>{p}</p>)}
+    </div>
+
+    <h2 style="font-family: var(--font-serif); font-size: var(--step-2); margin-bottom: var(--space-s); font-weight: 500;">
+      Design Principles
+    </h2>
+    <div class="principles-list">
+      {aboutData.principles.map(item => (
+        <div class="principle-item">
+          <h3 class="principle-title">{item.title}</h3>
+          <p class="principle-desc">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
