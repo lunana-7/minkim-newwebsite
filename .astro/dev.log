@@ -6,3 +6,9 @@
 {"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
 {"message":" astro  v7.3.5 ready in 541 ms\n┃ Local    http://localhost:4321/\n┃ Network  http://10.193.24.200:4321/\n           http://169.254.222.110:4321/","label":"SKIP_FORMAT","level":"info"}
 {"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[200] HEAD / 72ms","label":null,"level":"info"}
+{"message":"[200] / 1ms","label":null,"level":"info"}
+{"message":"[200] HEAD /blog/smart-eyes-stupid-hands 12ms","label":null,"level":"info"}
+{"message":"[200] /blog/smart-eyes-stupid-hands 3ms","label":null,"level":"info"}
+{"message":"Reloaded data from hello-world.md","label":"glob-loader","level":"info"}
+{"message":"Reloaded data from hello-world.md","label":"glob-loader","level":"info"}
