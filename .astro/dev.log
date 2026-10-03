@@ -1,0 +1,14 @@
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Generated 0ms","label":"types","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Syncing content","label":"content","level":"info"}
+{"message":"Synced content","label":"content","level":"info"}
+{"message":"Port 4321 is in use, trying another one...","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":" astro  v7.3.5 ready in 280 ms\n┃ Local    http://localhost:4322/\n┃ Network  http://10.193.24.200:4322/","label":"SKIP_FORMAT","level":"info"}
+{"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[200] HEAD / 46ms","label":null,"level":"info"}
+{"message":"[200] / 1ms","label":null,"level":"info"}
+{"message":"[200] HEAD /blog/hello-world 5ms","label":null,"level":"info"}
+{"message":"[200] /blog/hello-world 1ms","label":null,"level":"info"}
+{"message":"Reloaded data from test-simple.md","label":"glob-loader","level":"info"}
