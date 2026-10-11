@@ -295,42 +295,15 @@ function calculateBadness(slack, stretchability) {
   }
 ];
 
-export const projectHighlights = [
-  {
-    title: "TypePaper",
-    year: "2026",
-    role: "Creator",
-    description: "A minimal distraction-free writing environment built around classical Mincho typography and local-first SQLite persistence.",
-    link: "#",
-    tag: "Open Source"
-  },
-  {
-    title: "GachaEngine",
-    year: "2025",
-    role: "Lead Engineer",
-    description: "A deterministic, verifiable simulation framework for probability-based game mechanics with real-time analytics.",
-    link: "#",
-    tag: "Systems"
-  },
-  {
-    title: "Port Authority",
-    year: "2024",
-    role: "Game Design",
-    description: "Multiplayer WebSocket maritime coordination challenge featured in global CTF competitions.",
-    link: "#",
-    tag: "WebSockets"
-  }
-];
+export { projectHighlights } from './projects.js';
 
 export const aboutData = {
   name: "Min Kim",
-  title: "Design engineer based in San Francisco & Seoul",
-  bio: `I design and build software with an obsession for typographic hierarchy, tactile feedback, and human-scale ergonomics. 
-
-Before this, I worked on design systems, web performance, and developer tools. When not coding, I brew light-roast pour-overs, take photographs with a 35mm rangefinder, and study classical bookbinding.`,
+  title: "AI Governance Analyst · Agentic AI",
+  bio: `Hi, I’m Min, an AI Governance Analyst specializing in agentic AI. I help firms govern AI agents safely and efficiently so they can create 10× business value.\n\nIf you work in AI governance, agentic AI, or enterprise transformation, I’d love to connect.`,
   principles: [
-    { title: "Honor the Medium", desc: "Software is neither print nor cinema; it is an interactive living texture that should feel fluid and alive." },
-    { title: "Quiet Craft", desc: "True craftsmanship whispers. Eliminate artificial urgency, unnecessary popups, and abrasive contrast." },
-    { title: "Speed is Courtesy", desc: "An interface that responds instantaneously honors the reader's attention and precious time." }
+    { title: "Make agents accountable", desc: "Define what an agent may do, where a person must approve, and how decisions can be reviewed." },
+    { title: "Measure the work", desc: "Start with a real workflow and a baseline, then evaluate usefulness, risk, and cost together." },
+    { title: "Keep people in control", desc: "Build governance into the tools and routines people already use, with clear ownership and practical paths to action." }
   ]
 };

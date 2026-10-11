@@ -20,22 +20,27 @@ function formatDate(dateStr: string) {
 }
 ---
 
-<Layout title="Min Kim — Design Engineer & Writer" activeNav="blog">
-  <div>
+<Layout title="Min Kim — AI Governance Analyst" description="Min Kim is an AI Governance Analyst specializing in agentic AI, enterprise governance, and practical AI deployment." activeNav="blog">
+  <div class="home-world">
     <!-- Warm Editorial Bio Header -->
-    <header style="margin-bottom: var(--space-xl); padding-bottom: var(--space-l); border-bottom: 1px solid var(--border);">
-      <h1 class="page-title" style="margin-bottom: 0.4rem;">Min Kim</h1>
-      <p style="font-size: var(--step-1); color: var(--foreground-l3); line-height: 1.5; margin-bottom: 0.8rem;">
-        Design engineer exploring typographic craft, quiet digital systems, and Japanese editorial aesthetics.
+    <header class="home-hero">
+      <div class="home-hero-copy">
+      <span class="home-world-label"><i></i> MIN'S WORLD · EST. 2026</span>
+      <h1 class="page-title" style="margin-bottom: 0.4rem;">Hello, I'm Min <span class="hero-sparkle">✦</span></h1>
+      <p class="home-headline">
+        AI Governance Analyst specializing in agentic AI.
       </p>
-      <p style="font-size: var(--step--1); color: var(--muted-foreground); line-height: 1.6; max-width: 36rem;">
-        Welcome to my personal reading room. Every essay is written in plain Markdown, set in Shippori Mincho serif, and calibrated for focused contemplation on unbleached digital parchment.
+      <p class="home-intro">
+        I help firms govern AI agents safely and efficiently to create 10× business value. I write about AI strategy, governance, and the systems that make adoption work.
       </p>
+      <div class="home-actions"><a class="home-game-link" href="/game"><span aria-hidden="true">▶</span> Enter Min's World</a><a class="home-project-link" href="/work">Explore projects →</a></div>
+      </div>
+      <div class="home-mascot" aria-hidden="true"><span class="mascot-glow"></span><img src="/pixel-min.png" alt="" /><span class="mascot-star star-a">✦</span><span class="mascot-star star-b">✧</span></div>
     </header>
 
-    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-m);">
+    <div class="home-section-title">
       <h2 style="font-family: var(--font-serif); font-size: var(--step-1); font-weight: 500;">Recent Writing</h2>
-      <a href="/blog" style="font-family: var(--font-sans); font-size: var(--step--1); color: var(--accent-vermilion); text-decoration: none;">View all entries →</a>
+      <a href="/blog">View all entries →</a>
     </div>
 
     <!-- Posts Listing -->

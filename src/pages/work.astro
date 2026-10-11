@@ -1,28 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { projectHighlights } from '../posts.js';
+import { experiences, projectCatalog } from '../projects.js';
 ---
 
-<Layout title="Work & Selected Projects | Min Kim" activeNav="work">
-  <div>
-    <h1 class="page-title">Work & Selected Projects</h1>
-    <p class="page-lead">
-      A catalog of software systems, typography experiments, and tools built with an emphasis on craftsmanship and performance.
-    </p>
+<Layout title="Projects | Min Kim" activeNav="work" description="Explore Min Kim's projects by experience: KRAFTON, Pacvue, Memoria, research, and community work.">
+  <header class="portfolio-intro" id="top">
+    <span class="case-study-kicker">A portfolio of systems, research & ideas</span>
+    <h1 class="page-title">Projects</h1>
+    <p class="page-lead">From governing enterprise AI to building products and studying human–AI collaboration. Explore the overview, scroll through each experience, and open a project for the full story.</p>
+    <div class="portfolio-stats"><span><strong>{projectCatalog.length}</strong> individual projects</span><span><strong>{experiences.length}</strong> experiences</span></div>
+  </header>
 
-    <div class="projects-grid">
-      {projectHighlights.map(proj => (
-        <div class="project-card">
-          <div class="project-header">
-            <h2 class="project-name">{proj.title}</h2>
-            <span class="project-tag">{proj.tag}</span>
-          </div>
-          <div style="font-size: 0.82rem; color: var(--muted-foreground); margin-bottom: 0.4rem; font-family: var(--font-sans);">
-            {proj.year} · {proj.role}
-          </div>
-          <p class="project-desc">{proj.description}</p>
+  <nav class="experience-index" aria-label="Browse projects by experience">
+    {experiences.map(experience => <a href={`#${experience.id}`}>{experience.name}<span>{projectCatalog.filter(project => project.experience === experience.id).length}</span></a>)}
+  </nav>
+
+  <div class="experience-groups">
+    {experiences.map((experience, index) => {
+      const projects = projectCatalog.filter(project => project.experience === experience.id);
+      return <section class="experience-group" id={experience.id} aria-labelledby={`heading-${experience.id}`}>
+        <header class="experience-heading">
+          <span class="experience-number">{String(index + 1).padStart(2, '0')}</span>
+          <div><p class="experience-type">{experience.type}</p><h2 id={`heading-${experience.id}`}>{experience.name}</h2><p class="experience-period">{experience.period} · {experience.role}</p></div>
+        </header>
+        <p class="experience-summary">{experience.summary}</p>
+        {experience.access === 'password' && <p class="experience-access">🔒 Detailed case studies share one password. Unlock once to browse the KRAFTON projects.</p>}
+        <div class="experience-project-list">
+          {projects.map(project => <a class="experience-project" href={`/projects/${project.slug}`}>
+            <div class="experience-project-top"><span class="project-tag">{project.tag}</span><span class="project-date">{project.year}</span></div>
+            <h3>{project.title}</h3><p>{project.description}</p>
+            <span class="project-open">View project <span aria-hidden="true">↗</span></span>
+          </a>)}
         </div>
-      ))}
-    </div>
+        <a class="back-to-experiences" href="#top">Back to experiences ↑</a>
+      </section>;
+    })}
   </div>
 </Layout>
