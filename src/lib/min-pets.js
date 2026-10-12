@@ -8,6 +8,6 @@ export function petName(p){return p.name?.trim()||(p.kind==='cat'?'Mochi':'Biscu
 // Registered full-frame images retain the same forty-by-thirty-two follow footprint.
 export function drawPet(ctx,p,time,{x=20,feet=32,scale=1,moving=false,jumping=false,facing=1,reduced=false}={}){
  if(!p||p.kind==='none')return;const frame=moving&&!reduced?Math.floor(time/130)%4:0,bob=moving&&!reduced?frame%2:0;
- ctx.save();ctx.translate(Math.round(x),Math.round(feet-bob));ctx.scale(facing*scale,scale);drawItem(ctx,`pet-${p.kind}-${p.color}-${frame}`,0,0,31,40);
+ ctx.save();ctx.translate(Math.round(x),Math.round(feet-bob));ctx.scale(facing*scale,scale);drawItem(ctx,`pet-${p.kind}-${p.color}-${frame}`,0,0,31);
  if(p.accessory!=='none')drawItem(ctx,p.accessory==='bow'?'prop-flower':'prop-scarf',5,-10,8,12);ctx.restore();
 }

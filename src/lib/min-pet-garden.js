@@ -81,7 +81,7 @@ export function initPetGarden() {
     if (!alive) return;
     if (profile.pet.kind !== 'none' && !document.hidden) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawPet(ctx, profile.pet, now, { x: 100, feet: 214, scale: 4.5, moving: activeAction === 'play' || activeAction === 'feed', facing: activeAction === 'play' ? -1 : 1, reduced: reduced.matches });
+      drawPet(ctx, profile.pet, now, { x: 100, feet: 214, scale: 4.8, moving: activeAction === 'play' || activeAction === 'feed', facing: activeAction === 'play' ? -1 : 1, reduced: reduced.matches });
     }
     frame = requestAnimationFrame(paint);
   }

@@ -590,9 +590,9 @@ h1,h2,h3,h4 { font-family:var(--font-pixel); letter-spacing:0 !important; }
 .min-ambient-speech[hidden] { display:none!important; }
 .min-ambient-speech::after { content:''; position:absolute; width:.65rem; height:.65rem; background:var(--world-panel); border-right:2px solid var(--world-shadow); border-bottom:2px solid var(--world-shadow); transform:rotate(45deg); left:var(--mini-speech-tail,calc(50% - .35rem)); bottom:-.45rem; }
 .pixel-walker.is-chatting .min-companion-hint { opacity:0!important; }
-.min-walker-pet { position:absolute; left:calc(100% - .2rem); bottom:0; width:2.4rem; height:3rem; padding:0; border:0; background:none; cursor:pointer; pointer-events:auto; filter:drop-shadow(0 2px 0 #37251a33); }
+.min-walker-pet { position:fixed; z-index:31; left:0; top:0; width:2.4rem; height:3rem; padding:0; border:0; background:none; cursor:grab; touch-action:none; user-select:none; pointer-events:auto; filter:drop-shadow(0 2px 0 #37251a33); }
 .min-walker-pet[hidden] { display:none!important; }
-.pixel-walker.is-pet-left .min-walker-pet { left:auto; right:calc(100% - .2rem); }
+.min-walker-pet.is-pet-held { z-index:71; cursor:grabbing; filter:drop-shadow(0 5px 3px #37251a55); }
 .min-walker-pet canvas { display:block; width:100%; height:100%; image-rendering:pixelated; }
 .min-walker-pet:focus-visible { outline:2px solid var(--tone-green); outline-offset:2px; border-radius:.4rem; }
 .min-walker-pet-speech { position:absolute; left:50%; bottom:calc(100% + .2rem); transform:translateX(-50%); padding:.22rem .42rem; border:2px solid var(--world-shadow); border-radius:.55rem; background:var(--world-panel); color:var(--foreground-l0); font:.78rem var(--font-pixel); white-space:nowrap; opacity:0; pointer-events:none; }
@@ -1123,6 +1123,49 @@ body.is-learning { overflow:hidden; }
 .language-activity-panel #exam-feedback,.language-activity-panel #lesson-feedback { min-height:1.5rem; color:var(--tone-green); font:.9rem var(--font-pixel); }
 @media(max-width:700px) { .language-path .language-units { padding:1.5rem .4rem; }.language-trail-stop { width:min(82%,20rem); }.language-trail-stop:nth-child(odd) { transform:translateX(-8%); }.language-trail-stop:nth-child(even) { transform:translateX(8%); }.language-activity-panel { padding:.7rem; }.language-activity-panel .lesson-answers { grid-template-columns:1fr; } }
 @media(prefers-reduced-motion:reduce) { .language-trail-stop .language-unit,.trail-test-button { transition:none; }.language-trail-stop .language-unit:is(:hover,:focus-visible),.trail-test-button:is(:hover,:focus-visible) { transform:none; } }
+
+/* Lessons and test-outs use the same pixel quest board. */
+.language-lesson,.language-exam { background:linear-gradient(#17222bcc,#17222be8),url('/game-art/cloudwood-forest.webp') center / cover; backdrop-filter:blur(3px); }
+.language-activity-panel { --quest-ink:#493b32; --quest-edge:#866246; position:relative; width:min(100%,47rem); padding:1.25rem 1.5rem 1.45rem; border:4px solid var(--quest-edge); border-radius:0; background:#fff7e6; color:var(--quest-ink); box-shadow:0 0 0 4px #e9c693,0 0 0 8px #563f36,0 11px 0 8px #241f26aa,0 25px 55px #0b1119c9; image-rendering:pixelated; }
+.language-activity-panel::before,.language-activity-panel::after { content:'✦'; position:absolute; top:.35rem; color:#d6a657; font:1.1rem var(--font-pixel); pointer-events:none; }
+.language-activity-panel::before { left:.35rem; }.language-activity-panel::after { right:.35rem; }
+.language-activity-panel>header { margin:0 0 .85rem; padding:.65rem .85rem; border:3px solid #263b37; border-radius:0; background:linear-gradient(90deg,#355248,#4f6e53); color:#fff5df; box-shadow:inset 0 0 0 2px #a6bb8c,0 4px 0 #a47d58; }
+.language-activity-panel>header>div::before { content:''; float:left; width:3rem; height:3rem; margin-right:.65rem; background:url('/game-art/items/prop-book.png') center / contain no-repeat; image-rendering:pixelated; }
+.language-exam .language-activity-panel>header>div::before { background-image:url('/game-art/items/prop-star.png'); }
+.language-activity-eyebrow { display:block; margin-bottom:.2rem; color:#e6c882; font:.68rem var(--font-pixel); letter-spacing:.05em; }
+.language-activity-panel>header h2 { color:#fff5df; font:1.35rem/1.25 var(--font-pixel); }
+.language-activity-panel>header button { border:2px solid #e8c5a5; border-radius:0; background:#fff2d6; color:#503e35; box-shadow:3px 3px 0 #254139; }
+.language-activity-panel>header button:is(:hover,:focus-visible) { background:#ffe0c4; transform:translate(1px,1px); box-shadow:2px 2px 0 #254139; }
+.language-quest-progress { display:flex; align-items:center; gap:.7rem; margin:1rem 0 1.1rem; }
+.language-activity-panel .language-quest-progress progress { flex:1; width:auto; height:1.15rem; padding:2px; border:2px solid #6d7359; border-radius:0; background:#d9d7b7; box-shadow:2px 2px 0 #786749; appearance:none; }
+.language-activity-panel .language-quest-progress progress::-webkit-progress-bar { background:repeating-linear-gradient(90deg,#d9d7b7 0 13px,#c3c5a9 13px 16px); }
+.language-activity-panel .language-quest-progress progress::-webkit-progress-value { background:repeating-linear-gradient(90deg,#86a965 0 13px,#729753 13px 16px); }
+.language-activity-panel .language-quest-progress progress::-moz-progress-bar { background:repeating-linear-gradient(90deg,#86a965 0 13px,#729753 13px 16px); }
+.language-activity-panel .language-quest-progress p { flex:none; min-width:7.5rem; margin:0; padding:.35rem .55rem; border:2px solid #c89b6e; background:#f5e5c6; color:#604b37; text-align:center; font:.7rem/1.3 var(--font-pixel); }
+.language-activity-panel #lesson-card,.language-activity-panel #exam-card { padding:.5rem .4rem .1rem; }
+.language-activity-panel #lesson-instruction,.language-activity-panel #exam-card>p { margin:.25rem auto .9rem; color:#675647; font-size:.9rem; line-height:1.45; }
+.language-activity-panel .language-word { position:relative; display:grid; place-items:center; min-height:7.5rem; margin:.6rem 0 .65rem; padding:.85rem 2.2rem; border:4px solid #b78c62; border-radius:0; background:linear-gradient(#f9e7bf,#fff2d3); color:#443c33; box-shadow:inset 0 0 0 3px #fff9e8,0 5px 0 #9d7554; font:500 clamp(2.4rem,6vw,3.6rem)/1.25 var(--font-sans); }
+.language-activity-panel .language-word::before,.language-activity-panel .language-word::after { content:'✦'; position:absolute; top:50%; transform:translateY(-50%); color:#c39a56; font:1rem var(--font-pixel); }
+.language-activity-panel .language-word::before { left:.8rem; }.language-activity-panel .language-word::after { right:.8rem; }
+.language-activity-panel #lesson-pinyin { margin:.4rem 0; color:#6b7e50; font:.8rem var(--font-pixel); }
+.language-lesson-tools { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:.5rem; margin:.7rem 0 1rem; }
+.language-activity-panel .language-lesson-tools button { padding:.45rem .65rem; border:2px solid #968068; border-radius:0; background:#e9e5cf; color:#504635; box-shadow:0 3px 0 #9e8d6d; font:.74rem var(--font-pixel); }
+.language-activity-panel .language-lesson-tools button:is(:hover,:focus-visible) { background:#f8efd2; transform:translateY(-2px); }
+.language-activity-panel #lesson-meaning { flex-basis:100%; margin:.2rem 0; padding:.5rem; border:2px dashed #9d7958; background:#f5e8ce; color:#594734; font:.85rem var(--font-pixel); }
+.language-activity-panel .lesson-answers { gap:.8rem; margin:1.2rem 0 .8rem; counter-reset:quest-choice; }
+.language-activity-panel .lesson-answers button { display:flex; align-items:center; gap:.75rem; min-height:4rem; padding:.55rem .75rem; border:3px solid #8b745d; border-radius:0; background:#fffdf3; color:#4c4036; box-shadow:0 5px 0 #b9a281; font:.9rem/1.35 var(--font-sans); text-align:left; transition:transform .12s,box-shadow .12s,background .12s; }
+.language-activity-panel .lesson-answers button::before { counter-increment:quest-choice; content:counter(quest-choice, upper-alpha); display:grid; place-items:center; flex:none; width:1.8rem; height:1.8rem; border:2px solid #8a765f; background:#f4e7c9; color:#624d38; font:.8rem var(--font-pixel); }
+.language-activity-panel .lesson-answers button:not(:disabled):is(:hover,:focus-visible) { transform:translateY(-3px); box-shadow:0 8px 0 #b9a281; background:#fff2d9; border-color:#b36f68; }
+.language-activity-panel .lesson-answers button.answer-correct { border-color:#527543; background:#dceccf; color:#2f5534; box-shadow:0 5px 0 #779364; }
+.language-activity-panel .lesson-answers button.answer-wrong { border-color:#b26868; background:#f7ded4; color:#8a3e3d; box-shadow:0 5px 0 #bf9290; }
+.language-activity-panel #lesson-feedback,.language-activity-panel #exam-feedback { min-height:1.4rem; margin:.5rem 0; color:#546d44; font:.82rem/1.4 var(--font-pixel); }
+.language-activity-panel #lesson-next,.language-activity-panel #exam-next,.language-activity-panel #lesson-continue,.language-activity-panel #exam-result button { border:3px solid #345b47; border-radius:0; background:#6c915b; color:#fffbea; box-shadow:0 5px 0 #345b47; font:.8rem var(--font-pixel); }
+.language-activity-panel #lesson-next:is(:hover,:focus-visible),.language-activity-panel #exam-next:is(:hover,:focus-visible),.language-activity-panel #lesson-continue:is(:hover,:focus-visible),.language-activity-panel #exam-result button:is(:hover,:focus-visible) { transform:translateY(-2px); box-shadow:0 7px 0 #345b47; }
+.language-activity-panel #exam-result { border:3px solid #8eaa73; border-radius:0; background:#ebf2d7; color:#40533b; box-shadow:inset 0 0 0 3px #fff9df; text-align:center; }
+.language-activity-panel #exam-result p { color:#40533b; }
+.language-activity-panel #lesson-audio-status { margin:.65rem 0 0; color:#6e6254; }
+@media(max-width:700px) { .language-activity-panel { padding:.75rem; }.language-quest-progress { flex-wrap:wrap; gap:.45rem; }.language-activity-panel .language-quest-progress p { min-width:0; }.language-activity-panel .language-word { min-height:5.5rem; padding:.65rem 1.8rem; }.language-activity-panel .language-word::before { left:.35rem; }.language-activity-panel .language-word::after { right:.35rem; }.language-activity-panel .lesson-answers { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .language-activity-panel .lesson-answers button { transition:none; } }
 
 /* The Game page is a collection; the playable adventure lives at /game/mini-world. */
 .game-hub { display:grid; gap:2rem; }
