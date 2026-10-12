@@ -1,0 +1,18 @@
+Chinese vocabulary: CC-CEDICT, published by MDBG and maintained by community contributors.
+Source: https://www.mdbg.net/chinese/dictionary?page=cc-cedict
+License: Creative Commons Attribution-ShareAlike 4.0 International.
+https://creativecommons.org/licenses/by-sa/4.0/
+This selected and reformatted Chinese dataset is distributed under that same license.
+Changes: 10,000 unique simplified entries, removed cross-reference-only senses, added ids,
+seed beginner ordering followed by Jieba frequencies. Not a Duolingo or HSK word list.
+Frequency ordering: fxsjy/jieba (MIT); license retained in artwork/languages/JIEBA-LICENSE.
+Spanish vocabulary: original 99-word starter selection and English glosses by this project,
+followed by entries selected from WikDict's Spanish-English dictionary, based on Wiktionary
+via DBnary. Source: https://download.wikdict.com/dictionaries/tei/recommended/spa-eng.tei
+WikDict source edition: 2025.11.21. License: Creative Commons Attribution-ShareAlike 3.0 Unported.
+https://creativecommons.org/licenses/by-sa/3.0/
+The selected and reformatted Spanish dataset is distributed under that same license.
+Changes: 10,000 unique single-word entries, short English translations, stable ids,
+original beginner ordering followed by Spanish word-frequency order. Common function-word
+glosses were clarified. Not an official Duolingo course.
+Frequency ordering: wordfreq 3.1.1; only ordering scores were used, not copied dictionary text.

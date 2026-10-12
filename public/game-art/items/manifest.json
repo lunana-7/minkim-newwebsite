@@ -1,0 +1,412 @@
+{
+  "crop-carrot-sprout": {
+    "path": "/game-art/items/crop-carrot-sprout.png",
+    "width": 225,
+    "height": 127
+  },
+  "crop-carrot-growing": {
+    "path": "/game-art/items/crop-carrot-growing.png",
+    "width": 287,
+    "height": 262
+  },
+  "crop-carrot-ripe": {
+    "path": "/game-art/items/crop-carrot-ripe.png",
+    "width": 325,
+    "height": 317
+  },
+  "crop-carrot-harvest": {
+    "path": "/game-art/items/crop-carrot-harvest.png",
+    "width": 278,
+    "height": 304
+  },
+  "crop-wheat-sprout": {
+    "path": "/game-art/items/crop-wheat-sprout.png",
+    "width": 237,
+    "height": 194
+  },
+  "crop-wheat-growing": {
+    "path": "/game-art/items/crop-wheat-growing.png",
+    "width": 313,
+    "height": 327
+  },
+  "crop-wheat-ripe": {
+    "path": "/game-art/items/crop-wheat-ripe.png",
+    "width": 330,
+    "height": 342
+  },
+  "crop-wheat-harvest": {
+    "path": "/game-art/items/crop-wheat-harvest.png",
+    "width": 263,
+    "height": 332
+  },
+  "crop-strawberry-sprout": {
+    "path": "/game-art/items/crop-strawberry-sprout.png",
+    "width": 221,
+    "height": 143
+  },
+  "crop-strawberry-growing": {
+    "path": "/game-art/items/crop-strawberry-growing.png",
+    "width": 310,
+    "height": 292
+  },
+  "crop-strawberry-ripe": {
+    "path": "/game-art/items/crop-strawberry-ripe.png",
+    "width": 326,
+    "height": 290
+  },
+  "crop-strawberry-harvest": {
+    "path": "/game-art/items/crop-strawberry-harvest.png",
+    "width": 280,
+    "height": 273
+  },
+  "resource-wood": {
+    "path": "/game-art/items/resource-wood.png",
+    "width": 416,
+    "height": 389
+  },
+  "resource-acorn": {
+    "path": "/game-art/items/resource-acorn.png",
+    "width": 379,
+    "height": 303
+  },
+  "resource-shell": {
+    "path": "/game-art/items/resource-shell.png",
+    "width": 381,
+    "height": 256
+  },
+  "resource-fish": {
+    "path": "/game-art/items/resource-fish.png",
+    "width": 420,
+    "height": 399
+  },
+  "resource-mushroom": {
+    "path": "/game-art/items/resource-mushroom.png",
+    "width": 366,
+    "height": 399
+  },
+  "resource-crystal": {
+    "path": "/game-art/items/resource-crystal.png",
+    "width": 408,
+    "height": 399
+  },
+  "resource-ore": {
+    "path": "/game-art/items/resource-ore.png",
+    "width": 427,
+    "height": 332
+  },
+  "resource-cactus": {
+    "path": "/game-art/items/resource-cactus.png",
+    "width": 415,
+    "height": 365
+  },
+  "resource-herb": {
+    "path": "/game-art/items/resource-herb.png",
+    "width": 371,
+    "height": 370
+  },
+  "prop-axe": {
+    "path": "/game-art/items/prop-axe.png",
+    "width": 265,
+    "height": 263
+  },
+  "prop-pickaxe": {
+    "path": "/game-art/items/prop-pickaxe.png",
+    "width": 253,
+    "height": 268
+  },
+  "prop-rod": {
+    "path": "/game-art/items/prop-rod.png",
+    "width": 320,
+    "height": 274
+  },
+  "prop-glove": {
+    "path": "/game-art/items/prop-glove.png",
+    "width": 275,
+    "height": 249
+  },
+  "prop-basket": {
+    "path": "/game-art/items/prop-basket.png",
+    "width": 271,
+    "height": 271
+  },
+  "prop-seed": {
+    "path": "/game-art/items/prop-seed.png",
+    "width": 297,
+    "height": 282
+  },
+  "prop-soil-sprouts": {
+    "path": "/game-art/items/prop-soil-sprouts.png",
+    "width": 333,
+    "height": 276
+  },
+  "prop-wateringcan": {
+    "path": "/game-art/items/prop-wateringcan.png",
+    "width": 296,
+    "height": 233
+  },
+  "prop-chefhat": {
+    "path": "/game-art/items/prop-chefhat.png",
+    "width": 295,
+    "height": 276
+  },
+  "prop-apron": {
+    "path": "/game-art/items/prop-apron.png",
+    "width": 317,
+    "height": 282
+  },
+  "prop-book": {
+    "path": "/game-art/items/prop-book.png",
+    "width": 316,
+    "height": 263
+  },
+  "prop-satchel": {
+    "path": "/game-art/items/prop-satchel.png",
+    "width": 322,
+    "height": 253
+  },
+  "prop-scarf": {
+    "path": "/game-art/items/prop-scarf.png",
+    "width": 296,
+    "height": 270
+  },
+  "prop-flower": {
+    "path": "/game-art/items/prop-flower.png",
+    "width": 311,
+    "height": 249
+  },
+  "prop-star": {
+    "path": "/game-art/items/prop-star.png",
+    "width": 222,
+    "height": 235
+  },
+  "prop-sailorcap": {
+    "path": "/game-art/items/prop-sailorcap.png",
+    "width": 294,
+    "height": 205
+  },
+  "dessert-cone-vanilla": {
+    "path": "/game-art/items/dessert-cone-vanilla.png",
+    "width": 200,
+    "height": 330
+  },
+  "dessert-cone-strawberry": {
+    "path": "/game-art/items/dessert-cone-strawberry.png",
+    "width": 218,
+    "height": 353
+  },
+  "dessert-cone-chocolate": {
+    "path": "/game-art/items/dessert-cone-chocolate.png",
+    "width": 306,
+    "height": 354
+  },
+  "dessert-bowl": {
+    "path": "/game-art/items/dessert-bowl.png",
+    "width": 341,
+    "height": 346
+  },
+  "dessert-cake-vanilla": {
+    "path": "/game-art/items/dessert-cake-vanilla.png",
+    "width": 337,
+    "height": 362
+  },
+  "dessert-cake-strawberry": {
+    "path": "/game-art/items/dessert-cake-strawberry.png",
+    "width": 351,
+    "height": 362
+  },
+  "dessert-cake-chocolate": {
+    "path": "/game-art/items/dessert-cake-chocolate.png",
+    "width": 334,
+    "height": 362
+  },
+  "dessert-whisk": {
+    "path": "/game-art/items/dessert-whisk.png",
+    "width": 318,
+    "height": 340
+  },
+  "dessert-machine": {
+    "path": "/game-art/items/dessert-machine.png",
+    "width": 325,
+    "height": 341
+  },
+  "dessert-oven": {
+    "path": "/game-art/items/dessert-oven.png",
+    "width": 362,
+    "height": 339
+  },
+  "dessert-piping": {
+    "path": "/game-art/items/dessert-piping.png",
+    "width": 362,
+    "height": 335
+  },
+  "dessert-tray": {
+    "path": "/game-art/items/dessert-tray.png",
+    "width": 361,
+    "height": 313
+  },
+  "prop-soil": {
+    "path": "/game-art/items/prop-soil.png",
+    "width": 1072,
+    "height": 448
+  },
+  "pet-cat-cream-0": {
+    "path": "/game-art/items/pet-cat-cream-0.png",
+    "width": 186,
+    "height": 162
+  },
+  "pet-cat-cream-1": {
+    "path": "/game-art/items/pet-cat-cream-1.png",
+    "width": 186,
+    "height": 162
+  },
+  "pet-cat-cream-2": {
+    "path": "/game-art/items/pet-cat-cream-2.png",
+    "width": 186,
+    "height": 162
+  },
+  "pet-cat-cream-3": {
+    "path": "/game-art/items/pet-cat-cream-3.png",
+    "width": 186,
+    "height": 162
+  },
+  "pet-cat-ginger-0": {
+    "path": "/game-art/items/pet-cat-ginger-0.png",
+    "width": 188,
+    "height": 164
+  },
+  "pet-cat-ginger-1": {
+    "path": "/game-art/items/pet-cat-ginger-1.png",
+    "width": 188,
+    "height": 164
+  },
+  "pet-cat-ginger-2": {
+    "path": "/game-art/items/pet-cat-ginger-2.png",
+    "width": 188,
+    "height": 164
+  },
+  "pet-cat-ginger-3": {
+    "path": "/game-art/items/pet-cat-ginger-3.png",
+    "width": 188,
+    "height": 164
+  },
+  "pet-cat-cocoa-0": {
+    "path": "/game-art/items/pet-cat-cocoa-0.png",
+    "width": 189,
+    "height": 167
+  },
+  "pet-cat-cocoa-1": {
+    "path": "/game-art/items/pet-cat-cocoa-1.png",
+    "width": 189,
+    "height": 167
+  },
+  "pet-cat-cocoa-2": {
+    "path": "/game-art/items/pet-cat-cocoa-2.png",
+    "width": 189,
+    "height": 167
+  },
+  "pet-cat-cocoa-3": {
+    "path": "/game-art/items/pet-cat-cocoa-3.png",
+    "width": 189,
+    "height": 167
+  },
+  "pet-cat-midnight-0": {
+    "path": "/game-art/items/pet-cat-midnight-0.png",
+    "width": 189,
+    "height": 165
+  },
+  "pet-cat-midnight-1": {
+    "path": "/game-art/items/pet-cat-midnight-1.png",
+    "width": 189,
+    "height": 165
+  },
+  "pet-cat-midnight-2": {
+    "path": "/game-art/items/pet-cat-midnight-2.png",
+    "width": 189,
+    "height": 165
+  },
+  "pet-cat-midnight-3": {
+    "path": "/game-art/items/pet-cat-midnight-3.png",
+    "width": 189,
+    "height": 165
+  },
+  "pet-dog-cream-0": {
+    "path": "/game-art/items/pet-dog-cream-0.png",
+    "width": 222,
+    "height": 168
+  },
+  "pet-dog-cream-1": {
+    "path": "/game-art/items/pet-dog-cream-1.png",
+    "width": 222,
+    "height": 168
+  },
+  "pet-dog-cream-2": {
+    "path": "/game-art/items/pet-dog-cream-2.png",
+    "width": 222,
+    "height": 168
+  },
+  "pet-dog-cream-3": {
+    "path": "/game-art/items/pet-dog-cream-3.png",
+    "width": 222,
+    "height": 168
+  },
+  "pet-dog-ginger-0": {
+    "path": "/game-art/items/pet-dog-ginger-0.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-ginger-1": {
+    "path": "/game-art/items/pet-dog-ginger-1.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-ginger-2": {
+    "path": "/game-art/items/pet-dog-ginger-2.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-ginger-3": {
+    "path": "/game-art/items/pet-dog-ginger-3.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-cocoa-0": {
+    "path": "/game-art/items/pet-dog-cocoa-0.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-cocoa-1": {
+    "path": "/game-art/items/pet-dog-cocoa-1.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-cocoa-2": {
+    "path": "/game-art/items/pet-dog-cocoa-2.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-cocoa-3": {
+    "path": "/game-art/items/pet-dog-cocoa-3.png",
+    "width": 222,
+    "height": 165
+  },
+  "pet-dog-midnight-0": {
+    "path": "/game-art/items/pet-dog-midnight-0.png",
+    "width": 222,
+    "height": 163
+  },
+  "pet-dog-midnight-1": {
+    "path": "/game-art/items/pet-dog-midnight-1.png",
+    "width": 222,
+    "height": 163
+  },
+  "pet-dog-midnight-2": {
+    "path": "/game-art/items/pet-dog-midnight-2.png",
+    "width": 222,
+    "height": 163
+  },
+  "pet-dog-midnight-3": {
+    "path": "/game-art/items/pet-dog-midnight-3.png",
+    "width": 222,
+    "height": 163
+  }
+}

@@ -1,6 +1,6 @@
 # Mini's modular pixel-art kit
 
-Mini is assembled from independent PNG parts on one **128 × 192** registration canvas. Hair, eyes, face, clothes, headwear, arms, sleeves and props can be replaced without painting over a finished character. The same parts are used for the game, homepage and walking companion.
+**Legacy artwork history:** the original modular experiment used a **128 × 192** registration canvas. Current runtime uses the registered v2 sprites described at the end of this document. Hair, eyes, face, clothes, headwear, arms, sleeves and props can be replaced without painting over a finished character. The same parts are used for the game, homepage and walking companion.
 
 ## Files
 
@@ -37,3 +37,11 @@ Face layers now use a slimmer oval silhouette at 82×81 registration, centered a
 ## Unified original Mini (current runtime)
 
 The previous separate face/body rig is now replaced by one shared character renderer based on the exact original walking Mini. Original classic/ombre uses the preserved six frames. Outfit and hair choices use the matching 4x3 full-look atlas, with the original walking character as the face and proportion reference. All portraits, walking, activity, cafe and game views use this identity. Code-native emote and activity props animate on top. Runtime look assets: `public/mini/looks`; selection previews: `public/mini/look-thumbnails`. `scripts/package-unified-mini.py` extracts the sheet without painting or stretching it. Prompt and source details: `unified-style.json`.
+
+## Fixed homepage planning GIF
+
+The homepage now uses `public/mini/home/planning.gif`, an eight-frame loop of original Mini drawing notes, linking a flowchart, reviewing it and erasing the board. It is independent of saved wardrobe appearance. A static complete-diagram frame is used for reduced-motion preferences. The clickable illustration still opens Mini's shared activity menu. Generated scene atlas: `home-planning-atlas.png`; generation prompt: `home-planning.json`; repeatable mechanical GIF encoder: `scripts/package-mini-home-gif.py`.
+
+## Runtime registration v2
+
+Current runtime art is in `public/mini/rig-v2`, exported by `scripts/package-mini-rig-v2.py` from the retained unified look atlas. Use the 192px square registration manifest, 180px visible height and (96,190) pivot. The older 128px full-look/layer exporters are provenance and are not the current runtime pipeline. See `docs/mini-sprite-registration.md`.

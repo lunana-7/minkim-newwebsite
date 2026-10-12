@@ -1,6 +1,8 @@
+import { initMiniDrag } from './min-drag.js';
+import { initMiniChatter } from './min-chatter.js';
 import { ACTIVITIES, getProfile, startActivity, completeActivity, subscribeProfile } from './min-profile.js';
 import { initAppearances, renderAppearances } from './min-appearance.js';
-import { EMOTES, getEmote, playEmote } from './min-emotes.js';
+import { EMOTES, getEmote, playEmote, emoteAllowsMovement } from './min-emotes.js';
 import { startCloudSync, subscribeAccount } from './min-cloud.js';
 let initialized = false;
 export function initMini() {
@@ -11,8 +13,11 @@ export function initMini() {
   const speech = document.getElementById('min-speech');
   const rewardBubble = document.getElementById('min-reward-bubble');
   let lastReward = '', lastPose = null;
+  const isLifted=initMiniDrag({walker,trigger,menu,onChange:()=>update()});
+  const chatter=initMiniChatter({walker,menu,isLifted});
   initAppearances(); startCloudSync().catch(() => {});
   function openMenu() {
+    chatter?.hide();
     menu.hidden = false; trigger.setAttribute('aria-expanded', 'true');
     walker.classList.add('is-paused', 'is-greeting');
     const rect = walker.getBoundingClientRect();
@@ -36,7 +41,7 @@ export function initMini() {
   document.querySelectorAll('[data-min-activity]').forEach(button => button.addEventListener('click', () => {
     lastReward = ''; startActivity(button.dataset.minActivity);
   }));
-  document.querySelectorAll('[data-min-emote]').forEach(button => button.addEventListener('click', () => { if (!getProfile().activeActivity) playEmote(button.dataset.minEmote); }));
+  document.querySelectorAll('[data-min-emote]').forEach(button => button.addEventListener('click', () => { if (!getProfile().activeActivity) { playEmote(button.dataset.minEmote); walker.classList.remove('is-greeting'); closeMenu(); update(); } }));
   window.addEventListener('min-emote-change', update);
   function update() {
     const profile = getProfile();
@@ -46,7 +51,8 @@ export function initMini() {
     document.querySelectorAll('[data-min-level]').forEach(element => { element.textContent = `Level ${Math.floor(profile.points / 100) + 1}`; });
     document.querySelectorAll('[data-min-activity]').forEach(button => { button.disabled = Boolean(activity); button.classList.toggle('is-active', activity?.kind === button.dataset.minActivity); });
     document.querySelectorAll('[data-min-completed]').forEach(element => { element.textContent = profile.completedActivities[element.dataset.minCompleted]; });
-    walker.classList.toggle('is-paused', Boolean(activity) || Boolean(emote) || !menu.hidden);
+    walker.classList.toggle('is-paused', isLifted() || Boolean(activity) || !emoteAllowsMovement(emote) || !menu.hidden);
+    walker.classList.toggle('is-carrying-cake', !activity && emote?.kind === 'cake');
     document.getElementById('min-activity-progress').hidden = !activity;
     if (activity) {
       const info = ACTIVITIES[activity.kind];

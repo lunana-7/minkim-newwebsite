@@ -1,0 +1,9 @@
+# Complete outfit walk cycles
+
+All twelve hair/outfit combinations now have complete registered walk-frame sequences in public/mini/walk-cycles, at 192 × 192 with ground pivot (96,190) and 120ms frame timing. The shared renderer swaps complete frames for walking and jumping, removing the old split-leg crop animation. Arm positions, stride and clothing are part of each sprite. Idle portraits retain their existing registered still look. The default ombre/cream cycle retains the exact approved original six frames.
+
+Three image-generated six-column/four-row atlases used the original approved walk poses plus the four outfit reference looks. Corrected atlases, original references and full prompts are saved in artwork/mini/walk-cycles. Atlas cells isolate the main connected character, removing neighboring-row fragments before registration. Export is performed by scripts/package-mini-walk-cycles.py. Frames where cardigan coverage changed are excluded; matching accepted passing/contact poses fill those timing slots. This avoids clothes flickering within a loop. Generated images remain separate from the scoped MIT code license.
+
+Appearance loads the six frames together with the selected skin and accessories, then swaps the complete set atomically. The draw uses the loaded look while a new look loads. Hats, face options, held props and special effects continue through the same shared renderer. Reduced motion keeps a still frame.
+
+Game wardrobe has a Walking preview toggle, enabled initially. Preview animates on the spot; the site companion and adventure animate while moving as before. Changing clothing or hair chooses the corresponding full-body sequence. Homepage planning GIF remains its fixed original scene. Unity's uncompiled standalone C# renderer is outside this shared browser animation change.

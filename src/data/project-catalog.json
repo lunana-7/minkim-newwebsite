@@ -5,7 +5,7 @@
       "name": "KRAFTON",
       "type": "AI governance · Enterprise transformation",
       "period": "2024–2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "summary": "Measuring AI adoption and cost, evaluating models, and connecting governance to everyday approvals.",
       "access": "password"
     },
@@ -98,7 +98,7 @@
       "tag": "Approval experience",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Making AI requests easier to review, approve, reject, and resubmit by clarifying the next action at each step.",
       "access": "password",
       "summary": "Making AI requests easier to review, approve, reject, and resubmit by clarifying the next action at each step.",
@@ -117,11 +117,11 @@
         {
           "title": "Approval criteria & selected changes",
           "paragraphs": [
-            "Analyzed the spendgate-approvals CSV for August 21–September 4 (258 requests), classified rejected cases by tier, and turned new criteria into guidance.",
+            "Analyzed a sample of Spend Gate approval requests, classified rejected cases by tier, and turned new criteria into guidance.",
             "Reported four priorities to Gyeongyeong Lim, copying Serin Kim, and shared them through kdoc: clearer rejection reasons → approval/rejection wording → organization-leader notifications → UI improvements.",
             "Challenged Giseok's proposal to standardize input fields across spending tiers using the relevant trade-offs, while keeping the discussion collaborative by sharing it with Serin and Gyeongyeong.",
             "Supported improvements to approver notification wording.",
-            "Outcome: changes were implemented in the development environment, including an LLM Gateway option; different inputs for the up-to-$500, up-to-$2,000, and above-$2,000 tiers; rejection-reason entry and confirmation fields; usage display in Slack App Home; and guidance-message UI changes."
+            "Outcome: changes were implemented in the development environment, including an LLM Gateway option; inputs tailored to approval tiers; rejection-reason entry and confirmation fields; usage display in Slack App Home; and guidance-message UI changes."
           ]
         }
       ],
@@ -133,7 +133,7 @@
       "tag": "Measurement",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Comparing approval behavior before and after a release using equal observation windows and a separate view of request themes.",
       "access": "password",
       "summary": "Comparing approval behavior before and after a release using equal observation windows and a separate view of request themes.",
@@ -143,12 +143,12 @@
         {
           "title": "Comparison method & findings",
           "paragraphs": [
-            "Analyzed 829 requests across approximately 32 days and estimated the deployment boundary as September 11 at 18:45 KST, based on the appearance of new fields.",
-            "Min identified distortion from unequal periods (21.6 versus 10.9 days), then recalculated the comparison using matching 10.9-day windows before and after deployment.",
+            "Analyzed approval requests across the deployment period and identified the rollout boundary from the appearance of new fields.",
+            "Min identified distortion from unequal observation periods, then recalculated the comparison using matched windows before and after deployment.",
             "Assessed eight issues in the guidance as resolved, partially resolved, or worsened, keeping issue-assessment counts separate from request-count KPIs.",
             "Created a separate studio-by-reason-theme heatmap report with switches for request count, average amount, total amount, approval rate, and self-approval rate.",
-            "Diagnosed the 38.2% 'other/unclassified' share: approximately 30% stemmed from missing classifier keywords and 70% from genuinely ambiguous reasons.",
-            "Reported that 22.0% of approvals were processed within one minute.",
+            "Diagnosed a large 'other/unclassified' share, separating missing classifier keywords from genuinely ambiguous reasons.",
+            "Reported approval turnaround by time band without publishing internal processing rates.",
             "Deliverables: HTML before/after comparison and usage-pattern reports, plus a Slack message sharing the findings."
           ]
         }
@@ -161,7 +161,7 @@
       "tag": "Survey design",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Designing a multilingual survey that separates individual tasks from cross-team workflows and measures automation in stages.",
       "access": "password",
       "summary": "Designing a multilingual survey that separates individual tasks from cross-team workflows and measures automation in stages.",
@@ -174,7 +174,7 @@
             "Completed this as the first assignment of the January–May contract period.",
             "Designed the company-wide survey around individual work versus cross-department workflows. Broke each response into three main tasks and three workflows, using a six-level automation scale.",
             "Supported Korean, English, and Japanese versions, including separate links for TGW, Eleventh Hour, and other groups. Jiyun supported reminder distribution.",
-            "Survey period: February 9–13. Final participation: 994 respondents, with 993 matched records and more than 120 questions."
+            "Ran a company-wide survey and reconciled participant records across a broad questionnaire. Exact participation and question counts are omitted."
           ]
         }
       ],
@@ -186,7 +186,7 @@
       "tag": "Analytics",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Processing survey responses and translating multilingual work descriptions into comparable job-family and automation measures.",
       "access": "password",
       "summary": "Processing survey responses and translating multilingual work descriptions into comparable job-family and automation measures.",
@@ -196,11 +196,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Processed the raw data in Python, starting with 960 extracted records and matching them to the final responses.",
-            "Task-step analysis: HQ had 537 respondents and 642 records, averaging 5.51 steps; Family had 457 respondents and 536 records, averaging 5.48 steps. More than half of both groups' tasks involved four to six steps.",
+            "Processed the raw survey data in Python and reconciled extracted records with the final responses.",
+            "Compared task-step patterns across HQ and Family respondents, identifying similar workflow lengths and a concentration of moderately complex tasks.",
             "Compared step counts by job family; TA, Game Design, and UX&UI ranked near the top in both HQ and Family.",
-            "Translation preprocessing of Family's multilingual responses reduced the 'other' category from 38.0% to 28.4%, reclassifying 281 records.",
-            "Built an automation-analysis dashboard comparing task automation (35.6%) with workflow automation (25.2%), a 10.4-percentage-point gap, with job-family comparisons.",
+            "Translation preprocessing of multilingual responses reduced the 'other' category and improved classification quality.",
+            "Built an automation-analysis dashboard comparing task and workflow automation, with job-family breakdowns. Exact internal rates are omitted.",
             "Wrote a survey retrospective arguing that the difficulty of defining work and workflows was itself evidence of the organization's current position."
           ]
         }
@@ -213,7 +213,7 @@
       "tag": "Executive reporting",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Turning survey findings into an executive narrative, integrated dashboard, and prioritized adoption plan.",
       "access": "password",
       "summary": "Turning survey findings into an executive narrative, integrated dashboard, and prioritized adoption plan.",
@@ -229,14 +229,14 @@
             "Developed section-level insights covering company-wide needs, direct requests to AIT from HQ versus Family, and differences in bottlenecks by job family.",
             "Designed two tracks: management (cost, policy, time, sponsorship) and execution (technology, training, examples, collaboration).",
             "Identified duplicate survey questions, including Q42 and Q50.",
-            "Executive-summary findings: 97.2% company-wide AI usage suggested a shift from initial adoption to deeper use. Company-wide automation was 35.7% (HQ 38.6%, Family 32.2%). Environments with direct leadership sponsorship had automation rates approximately 20 percentage points above unsupported environments.",
-            "Proposed 12 short-, medium-, and long-term actions, a company-wide automation target of 50% from a 35.7% baseline, and a bottom-up/top-down two-track strategy.",
+            "Executive-summary findings showed broad AI adoption and a need to shift attention from initial uptake to deeper use. Automation varied across organizations, with stronger results where leaders directly sponsored the work.",
+            "Proposed a phased action plan and a company-wide automation ambition, using both bottom-up opportunities and leadership-directed priorities. Exact internal targets are omitted.",
             "Defined the gap between expected and actual automation as an 'execution shortfall rate' using proxy-question combinations, and mapped questions to subdimensions of horizontal and vertical adoption.",
             "Outcome: the report moved forward for the February 25 CEO briefing."
           ]
         }
       ],
-      "status": "Executive reporting materials prepared. The 50% automation rate is a proposed future target."
+      "status": "Executive reporting materials prepared. The automation ambition was a proposed future target, not a measured outcome."
     },
     {
       "slug": "q2-ai-cost-report",
@@ -244,7 +244,7 @@
       "tag": "FinOps",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Building a single HTML report that explains organizational cost changes and checks the economics of subscription migration.",
       "access": "password",
       "summary": "Building a single HTML report that explains organizational cost changes and checks the economics of subscription migration.",
@@ -256,10 +256,10 @@
           "paragraphs": [
             "Built a Python generator that turned monthly administration workbooks into a single HTML report for the chair and executive team.",
             "Created organization-level change tabs and Q2-total-based categories (negligible, newly increased, or actual percentage change) to avoid misleading increases of thousands of percent in small organizations.",
-            "Classified the 25.2% of keys with explicit purposes (928 keys) into six uses: development/build, agents, review/QA, translation, documentation/analysis, and bots.",
-            "Visualized adoption of new models, including Opus 4-8, and an approximately 22-fold increase from May to June, with annotations on Fable 5 export-control restrictions.",
-            "Validated the effect of switching to Max: Claude subscriptions increased from 160 in April to 245 in May, while Max 20x subscriptions rose from 72 to 129 (+79%). User-level cross-checks confirmed actual cost savings.",
-            "Analyzed the top 150 Claude Code users recommended for Max migration. Full adoption was projected to save KRW 607 million per month; 28 users who had not switched represented the remaining gap.",
+            "Classified keys with explicit purposes into development, agents, review, translation, documentation, and bots. The analysis identified a large share of keys without clear purpose metadata.",
+            "Visualized rapid adoption of newly available models and annotated relevant export-control restrictions.",
+            "Validated whether switching to a higher subscription tier reduced costs through user-level cross-checks, without publishing internal subscription counts or savings.",
+            "Analyzed high-spend Claude Code users as candidates for plan migration. The forecast showed a material savings opportunity and an adoption gap, with exact figures omitted.",
             "Outcome: quantified costs before and after Max migration and used the findings as supporting precedent for later API-optimization proposals."
           ]
         }
@@ -272,7 +272,7 @@
       "tag": "FinOps",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Separating lower model prices from higher usage to test whether a migration announcement produced real savings.",
       "access": "password",
       "summary": "Separating lower model prices from higher usage to test whether a migration announcement produced real savings.",
@@ -283,12 +283,12 @@
           "title": "Project work in detail",
           "paragraphs": [
             "Produced an executive HTML report comparing the effects before and after the July 27 Fable 5 → Opus 5 migration announcement, separately for API and Claude Enterprise channels.",
-            "Migration rates: API 81.1%; Claude Enterprise 78.2%.",
-            "Migration savings of $498,047 were offset by $499,540 in additional usage costs, for a net effect of −$1,493. Actual net savings were not confirmed.",
-            "Unit prices fell 22.0%, while billed spending rose 8.7% and tokens rose 39.3%; increased usage absorbed the unit-price improvement.",
-            "Usage growth was concentrated among 949 accounts outside the announcement's target group (tokens +76.4%), raising the need to choose between usage-restraint and usage-encouragement policies.",
-            "Among July's 50 highest-spending accounts, 43 migrated (86%). Migration rates increased with seniority: section leads 95.6%, department heads 92.3%, team leads 85.7%, and team members 79.2%.",
-            "OpenAI API unit prices also fell 17.1% despite being outside the announcement's scope, so the report explicitly avoided attributing every price reduction to the announcement.",
+            "Measured migration separately for API and Enterprise channels; both showed substantial adoption.",
+            "Compared reduced unit costs with additional usage and found no confirmed net saving in the period reviewed.",
+            "Unit prices decreased, but billed spending and token usage rose; increased usage absorbed the price improvement.",
+            "Usage growth outside the original target group raised a policy choice between encouraging productive use and constraining spend.",
+            "Reviewed migration among high-spend accounts and observed different adoption patterns by role.",
+            "OpenAI API unit prices also fell outside the announcement’s scope, so the report avoided attributing every price reduction to the announcement.",
             "Diagnosed missing July backfill data for Claude Enterprise: effective unit prices for non-Fable models jumped eight to twelve times. Recommended excluding cost-change findings for that channel from the report.",
             "Rewrote the report in executive reporting language, removing conversational wording and evaluative expressions.",
             "Created several single-file HTML dashboards, including an AI model-selection guide and an AI cost-trend report, while preserving the underlying data."
@@ -303,7 +303,7 @@
       "tag": "Budget planning",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Reconciling actual spending, billing periods, seat commitments, and scenarios before leadership makes a budget decision.",
       "access": "password",
       "summary": "Reconciling actual spending, billing periods, seat commitments, and scenarios before leadership makes a budget decision.",
@@ -313,19 +313,19 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Assessed budget capacity by combining actual January–August spending with September–December forecasts: the existing KRW 10 billion budget plus a KRW 10 billion increase, totaling KRW 20 billion.",
-            "January–August actual spending was KRW 16.1 billion. KRW 2.4 billion in personal subscriptions was treated as already committed and excluded from the decision; the assessment focused on additional September–December spending.",
-            "Scenarios based on the converted August 31 run rate: A −15% to reflect organization-leader approval controls; B current conditions; C +15%.",
-            "Identified the reported August Claude API cost of KRW 4.88 billion as an error mixing billing and usage months, and corrected it to an actual July–August monthly average of approximately KRW 2.8 billion.",
-            "Separately analyzed Bedrock migration scenarios S0–S3, including 100%, 50%, and 20% migration. Kept the confirmed December 28k credit separate from the budget assessment.",
+            "Assessed budget capacity by combining year-to-date actual spending with a forward forecast and a proposed budget increase. Exact internal budget amounts are omitted here.",
+            "Separated spending already committed under personal subscriptions from the additional spending that leadership needed to decide on. This prevented an existing obligation from being counted again as new capacity.",
+            "Built lower, baseline, and higher run-rate scenarios to show how approval controls and usage growth could change the forecast.",
+            "Found that a reported Claude API cost mixed billing and usage months. Reconciled it against the underlying monthly records before using it in the forecast.",
+            "Analyzed full, partial, and limited Bedrock migration scenarios. Kept a vendor credit separate from the core budget assessment so the timing of that credit did not obscure recurring cost.",
             "Produced a standalone 'September–December 2026 AI Cost Outlook' HTML report using the KRAFTON HUB dark theme.",
-            "Scenario A: KRW 4.34 billion monthly and KRW 17.37 billion over four months. B: KRW 5.44 billion and KRW 21.74 billion. C: KRW 6.25 billion and KRW 25.00 billion. Finance Planning's submission was KRW 15.25 billion, using an exchange rate of KRW 1,400 per dollar.",
-            "Unbundled the original 5.5 MB dc-runtime package into an editable 175 KB standalone HTML file as the working base.",
+            "Compared the lower, baseline, and higher forecasts with Finance Planning's submission using a consistent exchange-rate assumption. The baseline forecast was above the submitted figure, making the gap visible for review.",
+            "Unbundled a large runtime package into a compact, editable standalone HTML file as the working base.",
             "Separated seat costs under annual contracts into 'other annual seat costs' to prevent double-counting.",
-            "Validated the finance submission, finding a 100-fold input error in the 26.02 column and confirming that the submission was KRW 6.49 billion below the baseline scenario.",
-            "Incorporated Serin's request to separate usage-based costs (API, Enterprise usage, Cursor) from seat-based costs. Reported annual personal subscriptions of KRW 2.469 billion only as an annual figure.",
-            "Clarified the timing of Bedrock credits: no discounts in September–October, the first credit in November, and a normal cycle from Q1 2027.",
-            "Outcome: caught a material executive-reporting error approaching a twofold discrepancy before reporting, and clarified that the decision concerned additional September–December spending."
+            "Validated the finance submission, identified a material input error, and documented why the submitted amount differed from the baseline scenario.",
+            "Separated usage-based costs (API, Enterprise usage, Cursor) from seat-based costs. Kept annual personal subscriptions on an annual basis instead of presenting them as monthly spending.",
+            "Clarified that Bedrock credits would start later than the first forecast months and should not be treated as an immediate recurring discount.",
+            "Outcome: caught a material executive-reporting discrepancy before reporting and clarified that the decision concerned additional future spending. Financial figures and internal operating metrics are generalized for this public case study."
           ]
         }
       ],
@@ -337,7 +337,7 @@
       "tag": "Cost intelligence",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Joining individual cost records, product/model files, and HR data to identify the largest opportunities for review.",
       "access": "password",
       "summary": "Joining individual cost records, product/model files, and HR data to identify the largest opportunities for review.",
@@ -348,17 +348,17 @@
           "title": "Project work in detail",
           "paragraphs": [
             "Joined user-level monthly cost ledgers, model-name files, and HR records to create an HTML report and a joined Excel workbook.",
-            "January–August cumulative spending: KRW 18.681 billion across 3,849 users and 287 products.",
-            "General-purpose APIs accounted for KRW 13.698 billion (73.3%), general-purpose chatbot subscriptions for KRW 3.5 billion (18.7%), and purpose-identifiable categories for KRW 1.83 billion (9.8%).",
-            "Claude Opus models accounted for KRW 9.111 billion (52.9%), compared with 1.1% for Haiku, indicating concentration in expensive models.",
+            "Analyzed cumulative AI spending across users and products. Exact internal totals and population counts are omitted.",
+            "General-purpose APIs dominated spending, followed by chatbot subscriptions; purpose-identifiable uses formed a smaller share.",
+            "Expensive Claude Opus models represented a disproportionate share of model spending compared with lower-cost alternatives.",
             "Identified four cost-reduction priorities.",
-            "Tech, Data, and AI Research included 695 users and KRW 8.403 billion in API spending. Coding-surface adoption was 71–78%, or 1.7–1.9 times the company-wide 41.8% rate.",
-            "Idle Enterprise seats: in August, 611 of 3,313 seats (18%) used less than KRW 10,000 per month, and 127 seats (4%) were effectively unused.",
-            "Coding tools cost KRW 1.087 billion, a 45-fold increase over five months, indicating a need to review overlapping subscriptions.",
-            "Recommended consolidating 144 fragmented, low-spend products costing KRW 255 million into three or four standard vendors.",
-            "Estimated agent-like usage across 232 accounts, totaling KRW 5.500 billion, or 40.0% of API spending.",
-            "Min challenged and strengthened the evidence for inferred coding use, finding an omitted Codex surface in the Enterprise channel (KRW 1.771 billion; 1,268 users) and confirming the hypothesis.",
-            "Documented data limitations: model-based cumulative spending of KRW 17.23 billion was a lower bound, and agent classification was inferred from usage patterns.",
+            "Tech, Data, and AI Research showed high API spending and stronger coding-tool adoption than the company-wide pattern.",
+            "Identified a material pool of low-use and unused Enterprise seats for review.",
+            "Coding-tool spending rose sharply over the period, indicating a need to review overlapping subscriptions.",
+            "Recommended consolidating fragmented, low-spend products into a smaller set of standard vendors.",
+            "Estimated agent-like usage from API patterns and treated the classification as provisional rather than a directly observed category.",
+            "Min challenged and strengthened the evidence for inferred coding use by identifying an omitted Codex surface in the Enterprise channel.",
+            "Documented that model-based cumulative spending was a lower bound and that agent classification was inferred from usage patterns.",
             "Outcome: delivered the report to Dogyun in management for executive reporting and met the September 7 meeting deadline."
           ]
         }
@@ -371,7 +371,7 @@
       "tag": "Model lifecycle",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Designing a staged transition from expensive legacy models to a smaller set of cost tiers with an exception path.",
       "access": "password",
       "summary": "Designing a staged transition from expensive legacy models to a smaller set of cost tiers with an exception path.",
@@ -383,12 +383,12 @@
           "paragraphs": [
             "Led planning at Serin's request and requested and received monthly API and Enterprise data by model from Gwangyun.",
             "Proposed adding Opus 5 to the models to block, reasoning that Opus 5.5 offered higher performance and lower unit prices, leaving no clear reason to retain Opus 5.",
-            "In September, Fable 5 and Opus 5 represented 78% of API spending and 66% of Enterprise spending, compared with almost zero in May.",
-            "Repriced the same token volume using Opus 5.5's official rates, estimating approximately 53.2% potential savings, or about $2.35 million, as a lower-bound estimate.",
-            "Estimated impact: approximately 1,977 Enterprise users used the affected models in September.",
+            "In September, legacy premium models represented a large share of API and Enterprise spending despite having had little use earlier in the year.",
+            "Repriced the same token volume using the successor model’s official rates and identified a potentially material savings opportunity. The estimate remained a lower bound, not realized savings.",
+            "Estimated the population affected by the proposed transition without publishing the internal user count.",
             "Incorporated Serin's feedback to classify both Claude and GPT into low-, medium-, and high-cost tiers, retaining only one or two models per tier.",
             "Proposed a three-stage rollout: block new Fable 5/5.1 usage → gradually reduce Opus 5 with a Spend Gate exception channel → track realized savings after migration.",
-            "Explicitly noted that only five days of actual Opus 5.5 usage data were available, so efficiency claims relied on vendor announcements.",
+            "Explicitly noted that only a short period of actual successor-model usage data was available, so efficiency claims relied on vendor announcements.",
             "Deliverable: an HTML migration-plan report scheduled for submission by the Monday after the Chuseok holiday."
           ]
         }
@@ -401,7 +401,7 @@
       "tag": "Agent governance",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Examining agent usage concentration, missing credit attribution, duplicate identities, and efficiency variation.",
       "access": "password",
       "summary": "Examining agent usage concentration, missing credit attribution, duplicate identities, and efficiency variation.",
@@ -411,10 +411,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Analyzed CSV data for 84 agents over 89 days (April 22–July 20) and wrote a report.",
-            "The top 20 agents accounted for 93% of credits.",
-            "Found 44 agents using 25% of all tokens while showing zero credits, potentially indicating missing Agent Registry attribution.",
-            "Found an approximately 160-fold difference in credit efficiency per million tokens, along with registry-hygiene issues such as duplicate names and test/personal agents.",
+            "Analyzed agent activity over a multi-month period and wrote a report.",
+            "A small group of agents accounted for most recorded credits.",
+            "Found agents with substantial token usage but no recorded credits, potentially indicating missing Agent Registry attribution.",
+            "Found a wide difference in credit efficiency, alongside registry-hygiene issues such as duplicate names and test or personal agents.",
             "Credit unit pricing remained unconfirmed; the structural findings were valid independently of that price."
           ]
         }
@@ -427,7 +427,7 @@
       "tag": "Billing operations",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Confirming invoice cancellation and the boundary between a one-time waiver and subsequent normal settlement.",
       "access": "password",
       "summary": "Confirming invoice cancellation and the boundary between a one-time waiver and subsequent normal settlement.",
@@ -437,8 +437,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Confirmed a one-time full waiver/cancellation of $2,535,992.28 for July 15–August 14 usage, approximately KRW 3.55 billion.",
-            "Only overages from August 15–September 14 onward would be settled normally, at $0.04 per credit."
+            "Confirmed a one-time full waiver of an overage invoice and reconciled the affected billing period. Contract value is omitted.",
+            "Clarified when normal overage settlement would resume. The contractual unit rate is omitted."
           ]
         }
       ],
@@ -450,7 +450,7 @@
       "tag": "Model evaluation",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Expanding a model comparison playground and correcting performance and blended-price assumptions before using it for selection.",
       "access": "password",
       "summary": "Expanding a model comparison playground and correcting performance and blended-price assumptions before using it for selection.",
@@ -477,7 +477,7 @@
       "tag": "Model selection",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Connecting benchmark data and six concrete workload profiles to a simpler model-selection experience.",
       "access": "password",
       "summary": "Connecting benchmark data and six concrete workload profiles to a simpler model-selection experience.",
@@ -503,7 +503,7 @@
       "tag": "Evaluation methodology",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Exploring how model performance, price, and human-equivalent work could be compared, then identifying where the formula fails.",
       "access": "password",
       "summary": "Exploring how model performance, price, and human-equivalent work could be compared, then identifying where the formula fails.",
@@ -527,7 +527,7 @@
       "tag": "FinOps strategy",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Organizing optimization around prompt/context, model, and agent-design levers rather than treating it as a single model swap.",
       "access": "password",
       "summary": "Organizing optimization around prompt/context, model, and agent-design levers rather than treating it as a single model swap.",
@@ -552,7 +552,7 @@
       "tag": "Cost attribution",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Defining team, use case, environment, and usage pattern as cost dimensions, with measurement before enforcement.",
       "access": "password",
       "summary": "Defining team, use case, environment, and usage pattern as cost dimensions, with measurement before enforcement.",
@@ -580,7 +580,7 @@
       "tag": "Agent efficiency",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Comparing RTK and Headroom with native caching, routing, batching, and loop limits to choose an appropriate pilot sequence.",
       "access": "password",
       "summary": "Comparing RTK and Headroom with native caching, routing, batching, and loop limits to choose an appropriate pilot sequence.",
@@ -602,7 +602,7 @@
       "tag": "API efficiency",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Defining how caching adoption should be measured, expanded, and eventually enforced across enterprise workflows.",
       "access": "password",
       "summary": "Defining how caching adoption should be measured, expanded, and eventually enforced across enterprise workflows.",
@@ -630,7 +630,7 @@
       "tag": "Access governance",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Connecting API access provisioning to purpose, cost ownership, and lifecycle review.",
       "access": "password",
       "summary": "Connecting API access provisioning to purpose, cost ownership, and lifecycle review.",
@@ -659,7 +659,7 @@
       "tag": "Agent operations",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Extending cost review from aggregate tokens to task cost, steps, retries, and safeguards against runaway loops.",
       "access": "password",
       "summary": "Extending cost review from aggregate tokens to task cost, steps, retries, and safeguards against runaway loops.",
@@ -688,7 +688,7 @@
       "tag": "Governance workflow",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Designing an approval record that includes cost classification and explicit adoption and sunset triggers.",
       "access": "password",
       "summary": "Designing an approval record that includes cost classification and explicit adoption and sunset triggers.",
@@ -710,7 +710,7 @@
       "tag": "AI adoption",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Consolidating scattered review requirements into graded intake criteria and a Kissflow approval flow.",
       "access": "password",
       "summary": "Consolidating scattered review requirements into graded intake criteria and a Kissflow approval flow.",
@@ -734,7 +734,7 @@
       "tag": "Policy design",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Making SaaS versus API the first review branch and documenting ownership options across headquarters and studios.",
       "access": "password",
       "summary": "Making SaaS versus API the first review branch and documenting ownership options across headquarters and studios.",
@@ -760,7 +760,7 @@
       "tag": "Safety operations",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Turning committee action items into practical governance materials and reviewing operational responsibilities.",
       "access": "password",
       "summary": "Turning committee action items into practical governance materials and reviewing operational responsibilities.",
@@ -785,7 +785,7 @@
       "tag": "Operating model",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Mapping design, legal/security review, production approval, and studio accountability into a usable operating structure.",
       "access": "password",
       "summary": "Mapping design, legal/security review, production approval, and studio accountability into a usable operating structure.",
@@ -810,7 +810,7 @@
       "tag": "Automation design",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Specifying a news-to-Confluence-to-Slack pipeline with relevance scoring, severity, regulatory mapping, and structured output.",
       "access": "password",
       "summary": "Specifying a news-to-Confluence-to-Slack pipeline with relevance scoring, severity, regulatory mapping, and structured output.",
@@ -833,7 +833,7 @@
       "tag": "Legal research",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Examining Unity's agent-related terms as a signal of how vendors may regulate agents accessing their software.",
       "access": "password",
       "summary": "Examining Unity's agent-related terms as a signal of how vendors may regulate agents accessing their software.",
@@ -857,7 +857,7 @@
       "tag": "Risk framework",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Connecting financial, security, legal, compliance, and business concerns to scope, lifecycle, and decision ownership.",
       "access": "password",
       "summary": "Connecting financial, security, legal, compliance, and business concerns to scope, lifecycle, and decision ownership.",
@@ -881,7 +881,7 @@
       "tag": "Policy design",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Distinguishing ordinary internal tool use from production assets, external IP transfers, live AI features, and user data.",
       "access": "password",
       "summary": "Distinguishing ordinary internal tool use from production assets, external IP transfers, live AI features, and user data.",
@@ -908,7 +908,7 @@
       "tag": "Organization design",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Proposing responsibilities and product-owner roles for an organization that must govern both people and agents.",
       "access": "password",
       "summary": "Proposing responsibilities and product-owner roles for an organization that must govern both people and agents.",
@@ -941,7 +941,7 @@
       "tag": "Data product",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Specifying views that connect policy dates, target channels, model usage, and nudges so impact can be tracked over time.",
       "access": "password",
       "summary": "Specifying views that connect policy dates, target channels, model usage, and nudges so impact can be tracked over time.",
@@ -967,7 +967,7 @@
       "tag": "Data architecture",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Comparing collection, storage, transformation, governance, and AI-consumption layers for enterprise knowledge.",
       "access": "password",
       "summary": "Comparing collection, storage, transformation, governance, and AI-consumption layers for enterprise knowledge.",
@@ -994,7 +994,7 @@
       "tag": "Communication",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Mapping performance evidence to alternative executive narratives and explaining the AX team's role and next priorities.",
       "access": "password",
       "summary": "Mapping performance evidence to alternative executive narratives and explaining the AX team's role and next priorities.",
@@ -1017,7 +1017,7 @@
       "tag": "Adoption research",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Mapping survey questions to organizational practices so higher-automation teams can be studied and compared.",
       "access": "password",
       "summary": "Mapping survey questions to organizational practices so higher-automation teams can be studied and compared.",
@@ -1039,7 +1039,7 @@
       "tag": "Cost operations",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Organizing tool reimbursements, user counts, enterprise availability, and support status into a reviewable table.",
       "access": "password",
       "summary": "Organizing tool reimbursements, user counts, enterprise availability, and support status into a reviewable table.",
@@ -1061,7 +1061,7 @@
       "tag": "Technology strategy",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Translating conference announcements into implications for evaluation, ROI, asset policy, and model lifecycle governance.",
       "access": "password",
       "summary": "Translating conference announcements into implications for evaluation, ROI, asset policy, and model lifecycle governance.",
@@ -1087,7 +1087,7 @@
       "tag": "Industry research",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Researching context/token operating limits, optimization practices, and the gateway/governance market.",
       "access": "password",
       "summary": "Researching context/token operating limits, optimization practices, and the gateway/governance market.",
@@ -1109,7 +1109,7 @@
       "tag": "Operations design",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Defining ownership, deliverables, and reporting rhythms as the AX organization moved into four operating units.",
       "access": "password",
       "summary": "Defining ownership, deliverables, and reporting rhythms as the AX organization moved into four operating units.",
@@ -1136,7 +1136,7 @@
       "tag": "Adoption program",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Designing participation tracks and challenges to surface real examples of lower-cost model use.",
       "access": "password",
       "summary": "Designing participation tracks and challenges to surface real examples of lower-cost model use.",
@@ -1156,7 +1156,7 @@
           "title": "Workstream details",
           "paragraphs": [
             "Planned the 'Lightweight & Open-Source Model Olympics' to compare quality, cost, speed, and reproducibility when the same work uses low-cost or open-weight models. Intended to collect practical and creative examples in coding, workplace productivity, game concepts, and art/assets.",
-            "The initial proposal included a September 7 start, coding/art/productivity categories, and rewards up to $500. Late-August discussions shifted the campaign to follow the Gateway release in September's third week, with a 24-hour competition in late September and evaluation/sharing in early October. The concept evolved from competition around a single model to practical efficiency and creative production using several low-cost models.",
+            "The initial proposal included a launch window, coding/art/productivity categories, and modest participation rewards. Discussions shifted the campaign to follow the Gateway release, with a short competition and later evaluation. The concept evolved from competition around a single model to practical efficiency and creative production using several low-cost models.",
             "Removing model-specific tracks and evaluating quality, cost, tokens, usability, and repeated execution were elements of the evolving plan. Actual event delivery, prize payments, participating teams, and award results were not confirmed."
           ]
         }
@@ -1169,7 +1169,7 @@
       "tag": "Operating standards",
       "experience": "krafton",
       "year": "2026",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Exploring reliability levels so internal software can have review requirements proportionate to its operational importance.",
       "access": "password",
       "summary": "Exploring reliability levels so internal software can have review requirements proportionate to its operational importance.",
@@ -1194,7 +1194,7 @@
       "tag": "AI strategy",
       "experience": "krafton",
       "year": "2024–2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Comparing global governance cases and connecting technology/legal risks to leadership's adoption decisions.",
       "access": "password",
       "summary": "Comparing global governance cases and connecting technology/legal risks to leadership's adoption decisions.",
@@ -1219,7 +1219,7 @@
       "tag": "Market strategy",
       "experience": "krafton",
       "year": "2024–2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Analyzing three years of gaming investment across content, tools, creators, live operations, and AI.",
       "access": "password",
       "summary": "Analyzing three years of gaming investment across content, tools, creators, live operations, and AI.",
@@ -1241,7 +1241,7 @@
       "tag": "Survey design",
       "experience": "krafton",
       "year": "2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Designing a voluntary headquarters survey, bilingual communications, and participation support to understand workplace needs.",
       "access": "password",
       "summary": "Designing a voluntary headquarters survey, bilingual communications, and participation support to understand workplace needs.",
@@ -1252,9 +1252,9 @@
           "title": "Project work in detail",
           "paragraphs": [
             "From late 2024 into 2025, designed a survey of AI use in KRAFTON HQ work and prepared announcements, an English version, and revisions. The goal was to identify AI use by task, pain points, and needed tools, then prioritize adoption by job family and organization.",
-            "Records show a January 7, 2025 pretest and a main survey scheduled for January 14–24, with participation requested by 18:00 on January 24. Participation was voluntary. The survey covered HQ and was separate from the company-wide tracking program spanning 3,100 people, including overseas studios and subsidiaries.",
+            "Records show a pretest and a scheduled main survey. Participation was voluntary. The HQ survey was separate from a wider company tracking program spanning overseas studios and subsidiaries.",
             "Managed survey announcements and revisions, coordinated with the translation team, and encouraged participation. The survey took approximately 10–15 minutes and was intended to inform selection of AI solutions supporting employees' actual work.",
-            "Response counts differ across records: an earlier retrospective mentions 548 respondents, while external communication dated January 29, 2025 used approximately 600 respondents and approximately 40% participation. Without the original results table, neither figure is treated as definitive.",
+            "Response counts differ across records. Without the original results table, no single participation figure is treated as definitive in this public summary.",
             "Quantitative analysis and follow-up interviews in February–March 2025, a separate April game-studio survey, and a research-paper-level design were follow-up plans at that time. The available material does not confirm which were completed."
           ]
         }
@@ -1267,7 +1267,7 @@
       "tag": "Transformation",
       "experience": "krafton",
       "year": "2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Analyzing studio use cases to separate near-term automation opportunities from longer-term platform investments.",
       "access": "password",
       "summary": "Analyzing studio use cases to separate near-term automation opportunities from longer-term platform investments.",
@@ -1292,7 +1292,7 @@
       "tag": "Executive intelligence",
       "experience": "krafton",
       "year": "2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Connecting internal adoption signals and external vendor/policy developments in recurring leadership reporting.",
       "access": "password",
       "summary": "Connecting internal adoption signals and external vendor/policy developments in recurring leadership reporting.",
@@ -1302,13 +1302,13 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Led an AI usage tracking/reporting system covering more than 3,100 global employees and directly briefed the CEO on adoption, productivity improvements, and training needs. The 3,100+ figure describes tracking coverage, not responses to the 2025 HQ survey.",
+            "Led an AI usage tracking and reporting system across global teams and briefed leadership on adoption, productivity improvements, and training needs. Tracking coverage is distinct from responses to the HQ survey.",
             "Wrote weekly AI Insights reports for the Chairman, CEO, CFO, and ELT, connecting market developments, vendor updates, policy changes, and internal AI adoption metrics.",
-            "Curated strong AI use cases by job family and shared them with employees. Min's resume lists more than 600 attendees for biweekly company-wide showcases and more than 700 recipients for daily AI updates; these describe different activities and counts."
+            "Curated strong AI use cases by job family and shared them through company-wide showcases and daily updates. Exact internal audience counts are omitted."
           ]
         }
       ],
-      "status": "Tracking scope exceeded 3,100 employees; this is not a survey response count."
+      "status": "The tracking program covered global teams; its scope is not a survey response count."
     },
     {
       "slug": "solution-landscape",
@@ -1316,7 +1316,7 @@
       "tag": "Solution strategy",
       "experience": "krafton",
       "year": "2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Building an evaluation database and supporting vendor conversations that connect tools to employee workflows.",
       "access": "password",
       "summary": "Building an evaluation database and supporting vendor conversations that connect tools to employee workflows.",
@@ -1340,7 +1340,7 @@
       "tag": "Enablement",
       "experience": "krafton",
       "year": "2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Implementing message drafting, templates, and routing, then teaching colleagues through a live build session and playbook.",
       "access": "password",
       "summary": "Implementing message drafting, templates, and routing, then teaching colleagues through a live build session and playbook.",
@@ -1350,7 +1350,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Designed and implemented an AI automation system supporting Slack message drafting, templates, and routing, and ran a live implementation session for 50 people. Supported subsequent use through office hours and a playbook."
+            "Designed and implemented an AI automation system supporting Slack message drafting, templates, and routing, and ran a live implementation session for colleagues. Supported subsequent use through office hours and a playbook."
           ]
         }
       ],
@@ -1362,7 +1362,7 @@
       "tag": "Industry research",
       "experience": "krafton",
       "year": "2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Investigating existing KOCCA standardization work and possible follow-on research for AI game-production workflows.",
       "access": "password",
       "summary": "Investigating existing KOCCA standardization work and possible follow-on research for AI game-production workflows.",
@@ -1384,7 +1384,7 @@
       "tag": "Research partnership",
       "experience": "krafton",
       "year": "November–December 2025",
-      "role": "AI Cost & Model Value Analyst",
+      "role": "AI Governance Design Analyst",
       "description": "Scoping a possible research collaboration around agentic AI between an enterprise team and a university.",
       "access": "password",
       "summary": "Scoping a possible research collaboration around agentic AI between an enterprise team and a university.",
@@ -1958,11 +1958,11 @@
             "As co-founder, conducted more than 500 surveys and more than 30 one-to-one interviews, translating students' discovery, trust, scheduling, and follow-up participation problems into personas and MVP priorities.",
             "Planned a product direction including AI matching, quest-style gatherings, and basic verification. Managed the PRD, wireframes, and weekly design/engineering sprints; Min's profile records an MVP trial on one campus.",
             "Developed student clubs, RA networks, and campus events as initial distribution channels. Led competitive pitches and funding efforts, connecting outcomes from Venture Devil, Taco Bell Challenge, two Open Pitch competitions, New Venture Challenge, and other events.",
-            "Confirmed outcomes and reporting basis: the latest resume and profile list more than $50,000 in team funding. The profile includes bootstrapping, so the total is not treated entirely as external grants. Sources give different end dates—May or July 2024. Current material contains no long-term active-user or retention figures."
+            "Confirmed outcomes and reporting basis: the latest resume and profile describe initial team funding, including bootstrapping, so it is not characterized entirely as external grants. Sources give different end dates. Current material contains no long-term active-user or retention figures."
           ]
         }
       ],
-      "status": "Team venture: 500+ surveys, 30+ interviews, and contribution to $50,000+ initial funding; long-term retention is not available."
+      "status": "Team venture: user research, interviews, and a contribution to initial funding; long-term retention is not available."
     },
     {
       "slug": "btaa-data-analytics-community",
@@ -1983,7 +1983,7 @@
             "Problem: students had limited opportunities to apply classroom analytics tools to team projects using real data and to build portfolios.",
             "Co-founded the Business Technology Analytics Association (BTAA) in connection with ASU W. P. Carey, designing a project-based operating structure, team-lead/analyst roles, faculty collaboration, and workshops.",
             "The profile records 80 active members, seven project teams with seven leads, and more than 50 analysts. Co-designed five analytics projects with Information Systems faculty and mentored team leads from scoping through delivery.",
-            "Ran five business analytics workshops covering ML, AI, and data visualization; the profile reports 90% member participation. The contemporaneous club award application lists more than 80 members, seven teams, and 40 onboarded analysts, so its timing and definitions are distinguished from the later 50+ analyst figure.",
+            "Ran business analytics workshops covering ML, AI, and data visualization. Member participation and analyst onboarding were reported in materials from different periods, so their timing and definitions are kept distinct without publishing exact counts.",
             "Confirmed outcomes and reporting basis: club establishment and the team/project/workshop structure are supported by Min's profile and contemporaneous records. Membership and participation figures are organizational measures, not solely individual achievements. The profile gives April 2024 as the term end, while another retrospective states May."
           ]
         }
@@ -2142,7 +2142,7 @@
             "Problem: quickly understand market trends and prospective donors' backgrounds to connect ASU research/education projects with sponsors' interests.",
             "On the Moonshot Accelerator team, monitored more than 20 news/online sources daily to produce concise market updates and researched CEO and prospective-donor profiles.",
             "Identified university projects and strategic initiatives, supporting positioning and one-page proposals connecting them to donor interests. Also summarized trends in philanthropy and higher education.",
-            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that helped secure more than $20 million in donations. This is a contribution to ASU Foundation team/organization outcomes, not a claim that Min personally raised the donations."
+            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that contributed to significant donations. This is a contribution to ASU Foundation team and organization outcomes, not a claim that Min personally raised the donations."
           ]
         }
       ],
@@ -2167,11 +2167,11 @@
             "Problem: quickly understand market trends and prospective donors' backgrounds to connect ASU research/education projects with sponsors' interests.",
             "On the Moonshot Accelerator team, monitored more than 20 news/online sources daily to produce concise market updates and researched CEO and prospective-donor profiles.",
             "Identified university projects and strategic initiatives, supporting positioning and one-page proposals connecting them to donor interests. Also summarized trends in philanthropy and higher education.",
-            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that helped secure more than $20 million in donations. This is a contribution to ASU Foundation team/organization outcomes, not a claim that Min personally raised the donations."
+            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that contributed to significant donations. This is a contribution to ASU Foundation team and organization outcomes, not a claim that Min personally raised the donations."
           ]
         }
       ],
-      "status": "Contribution to organizational opportunities; the $20M+ fundraising figure is not personal fundraising."
+      "status": "Contribution to organizational opportunities and fundraising strategy; this is not a claim of personal fundraising."
     },
     {
       "slug": "international-student-advocacy",

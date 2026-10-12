@@ -1,11 +1,14 @@
 export const EMOTES = {
-  hello: { label: 'Say hello', icon: '👋', message: 'Hello! I’m Mini. Nice to see you!', duration: 3200 },
-  cake: { label: 'Give a cake', icon: '🍰', message: 'A little cake for you. Make a wish!', duration: 4200 },
-  icecream: { label: 'Give ice cream', icon: '🍦', message: 'One scoop of happiness, coming up!', duration: 4200 },
-  heart: { label: 'Send a heart', icon: '♡', message: 'A little love for your day.', duration: 3200 },
+  hello: { label: 'Say hello', icon: '👋', asset: '/mini/emotes/hello.png', message: 'Hello! I’m Mini. Nice to see you!', duration: 3200 },
+  cake: { label: 'Give a cake', icon: '🍰', asset: '/mini/emotes/cake.png', message: 'A little cake for you. Make a wish!', duration: 10000 },
+  icecream: { label: 'Give ice cream', icon: '🍦', asset: '/mini/emotes/icecream.png', message: 'One scoop of happiness, coming up!', duration: 4200 },
+  heart: { label: 'Send a heart', icon: '♡', asset: '/mini/emotes/heart.png', message: 'A little love for your day.', duration: 3200 },
 };
 let active = null, timer;
 export function getEmote() { return active && active.endsAt > Date.now() ? active : null; }
+// Every emote is drawn over the walking pose, so Mini can keep moving.
+export function emoteAllowsMovement() { return true; }
+export function stopEmote(){if(!active)return;clearTimeout(timer);active=null;window.dispatchEvent(new CustomEvent('min-emote-change',{detail:null}));}
 export function playEmote(kind) {
   if (!EMOTES[kind]) return;
   active = { kind, endsAt: Date.now() + EMOTES[kind].duration };
@@ -13,9 +16,14 @@ export function playEmote(kind) {
   window.dispatchEvent(new CustomEvent('min-emote-change', { detail: active }));
   timer = setTimeout(() => { active = null; window.dispatchEvent(new CustomEvent('min-emote-change', { detail: null })); }, EMOTES[kind].duration);
 }
-export function drawEmoteProp(context, kind, time) {
+export function drawEmoteProp(context, kind, time, moving = false) {
   const pixel = (color, x, y, w, h) => { context.fillStyle = color; context.fillRect(x, y, w, h); };
+  context.save();
+  if (kind === 'cake' && moving) context.translate(0, [0,-1,-2,-1,0,-1][Math.floor(time / 120) % 6]);
   if (kind === 'cake') {
+    // A supporting forearm and palm keep the plate attached to Mini’s hand.
+    pixel('#f8d4ae', 80, 124, 13, 5); pixel('#f8d4ae', 88, 129, 15, 4);
+    pixel('#dba879', 88, 133, 9, 2);
     pixel('#885a45', 88, 132, 35, 4); pixel('#e6b27e', 92, 114, 26, 18);
     pixel('#fff0d8', 92, 113, 26, 5); pixel('#f5a9bb', 92, 120, 26, 5);
     pixel('#fff0d8', 92, 126, 26, 5); pixel('#c94857', 102, 107, 6, 6);
@@ -35,4 +43,5 @@ export function drawEmoteProp(context, kind, time) {
     pixel('#ad7758', 99, 87 + dy, 2, 10); pixel('#e0b782', 110, 91 + dy, 3, 6);
     pixel('#d7aa64', 116, 79, 3, 3); pixel('#d7aa64', 121, 84, 3, 3);
   }
+  context.restore();
 }

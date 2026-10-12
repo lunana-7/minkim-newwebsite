@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import MiniAvatar from '../components/MiniAvatar.astro';
 import { renderBanner } from '../banners.js';
 
 const posts = await getCollection('blog');
@@ -34,9 +33,9 @@ function formatDate(dateStr: string) {
       <p class="home-intro">
         I help firms govern AI agents safely and efficiently to create 10× business value. I write about AI strategy, governance, and the systems that make adoption work.
       </p>
-      <div class="home-actions"><a class="home-game-link" href="/game"><span aria-hidden="true">▶</span> Enter Min's World</a><a class="home-project-link" href="/projects">Explore projects →</a></div>
+      <div class="home-actions"><a class="home-game-link" href="/game"><span aria-hidden="true">▶</span> Enter Min's World</a><a class="home-project-link" href="/projects">Explore projects →</a><a class="home-room-link" href="/room">Visit my room & guestbook ♡</a></div>
       </div>
-      <div class="home-mascot"><span class="mascot-glow" aria-hidden="true"></span><button class="home-avatar-trigger" type="button" data-min-open-menu aria-label="Open Min’s activities"><MiniAvatar variant="home" /></button><span class="mascot-star star-a" aria-hidden="true">✦</span><span class="mascot-star star-b" aria-hidden="true">✧</span></div>
+      <div class="home-mascot home-planning-mascot"><button class="home-avatar-trigger" type="button" data-min-open-menu aria-label="Meet Mini and open her activities"><picture><source media="(prefers-reduced-motion: reduce)" srcset="/mini/home/planning-still.png" /><img class="home-planning-gif" src="/mini/home/planning.gif" width="384" height="384" alt="Original Mini draws ideas on a board, organizes them into a flowchart, and erases the board to begin again." fetchpriority="high" /></picture></button><span class="home-planning-caption">A little sketch. A clearer structure. A fresh start.</span></div>
     </header>
 
     <div class="home-section-title">

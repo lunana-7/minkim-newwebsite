@@ -1,17 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import MiniAvatar from '../components/MiniAvatar.astro';
 import { aboutData } from '../posts.js';
 ---
 
 <Layout title="About | Min Kim" activeNav="about">
   <div>
     <h1 class="page-title">About</h1>
-    <p class="page-lead">{aboutData.title}</p>
-    
-    <div class="prose-content" style="margin-bottom: var(--space-xl);">
-      {aboutData.bio.split('\n\n').map(p => <p>{p}</p>)}
-      <p>Reach me at <a href="mailto:aqeoon@gmail.com">aqeoon@gmail.com</a>.</p>
-    </div>
+    <header class="about-mini-profile">
+      <div class="about-mini-scene">
+        <span class="about-mini-speech">Hi, I’m Min! ♡</span>
+        <button class="about-mini-trigger" type="button" data-min-open-menu aria-label="Say hello to Mini and open her activities"><MiniAvatar variant="about" /></button>
+        <span class="about-mini-ground" aria-hidden="true"></span>
+        <span class="about-mini-caption">Click Mini to say hello</span>
+      </div>
+      <div class="about-mini-intro">
+        <span class="case-study-kicker">THE PERSON BEHIND MINI’S WORLD</span>
+        <h2>Min Kim</h2>
+        <p class="about-mini-role">{aboutData.title}</p>
+        <div class="prose-content">{aboutData.bio.split('\n\n').map(p => <p>{p}</p>)}</div>
+        <a class="about-mini-email" href="mailto:aqeoon@gmail.com">Say hi · aqeoon@gmail.com ↗</a>
+        <nav class="about-mini-paths" aria-label="Explore Min’s work and world"><a href="/projects">Explore my work →</a><a href="/game">Visit Mini’s world →</a><a href="/support">Buy me a coffee ♡</a></nav>
+      </div>
+    </header>
 
     <h2 style="font-family: var(--font-serif); font-size: var(--step-2); margin-bottom: var(--space-s); font-weight: 500;">
       Design Principles

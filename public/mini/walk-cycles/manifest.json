@@ -1,0 +1,242 @@
+{
+  "version": 1,
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    190
+  ],
+  "frameMs": 120,
+  "cycles": {
+    "ombre-classic": {
+      "frames": [
+        "/mini/walk-cycles/ombre-classic-0.png",
+        "/mini/walk-cycles/ombre-classic-1.png",
+        "/mini/walk-cycles/ombre-classic-2.png",
+        "/mini/walk-cycles/ombre-classic-3.png",
+        "/mini/walk-cycles/ombre-classic-4.png",
+        "/mini/walk-cycles/ombre-classic-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7407407407407407
+    },
+    "ombre-berry": {
+      "frames": [
+        "/mini/walk-cycles/ombre-berry-0.png",
+        "/mini/walk-cycles/ombre-berry-1.png",
+        "/mini/walk-cycles/ombre-berry-2.png",
+        "/mini/walk-cycles/ombre-berry-3.png",
+        "/mini/walk-cycles/ombre-berry-4.png",
+        "/mini/walk-cycles/ombre-berry-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        4,
+        2,
+        0,
+        4,
+        5
+      ],
+      "scale": 0.7317073170731707
+    },
+    "ombre-ocean": {
+      "frames": [
+        "/mini/walk-cycles/ombre-ocean-0.png",
+        "/mini/walk-cycles/ombre-ocean-1.png",
+        "/mini/walk-cycles/ombre-ocean-2.png",
+        "/mini/walk-cycles/ombre-ocean-3.png",
+        "/mini/walk-cycles/ombre-ocean-4.png",
+        "/mini/walk-cycles/ombre-ocean-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7468879668049793
+    },
+    "ombre-meadow": {
+      "frames": [
+        "/mini/walk-cycles/ombre-meadow-0.png",
+        "/mini/walk-cycles/ombre-meadow-1.png",
+        "/mini/walk-cycles/ombre-meadow-2.png",
+        "/mini/walk-cycles/ombre-meadow-3.png",
+        "/mini/walk-cycles/ombre-meadow-4.png",
+        "/mini/walk-cycles/ombre-meadow-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7407407407407407
+    },
+    "bob-classic": {
+      "frames": [
+        "/mini/walk-cycles/bob-classic-0.png",
+        "/mini/walk-cycles/bob-classic-1.png",
+        "/mini/walk-cycles/bob-classic-2.png",
+        "/mini/walk-cycles/bob-classic-3.png",
+        "/mini/walk-cycles/bob-classic-4.png",
+        "/mini/walk-cycles/bob-classic-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.8035714285714286
+    },
+    "bob-berry": {
+      "frames": [
+        "/mini/walk-cycles/bob-berry-0.png",
+        "/mini/walk-cycles/bob-berry-1.png",
+        "/mini/walk-cycles/bob-berry-2.png",
+        "/mini/walk-cycles/bob-berry-3.png",
+        "/mini/walk-cycles/bob-berry-4.png",
+        "/mini/walk-cycles/bob-berry-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7531380753138075
+    },
+    "bob-ocean": {
+      "frames": [
+        "/mini/walk-cycles/bob-ocean-0.png",
+        "/mini/walk-cycles/bob-ocean-1.png",
+        "/mini/walk-cycles/bob-ocean-2.png",
+        "/mini/walk-cycles/bob-ocean-3.png",
+        "/mini/walk-cycles/bob-ocean-4.png",
+        "/mini/walk-cycles/bob-ocean-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7692307692307693
+    },
+    "bob-meadow": {
+      "frames": [
+        "/mini/walk-cycles/bob-meadow-0.png",
+        "/mini/walk-cycles/bob-meadow-1.png",
+        "/mini/walk-cycles/bob-meadow-2.png",
+        "/mini/walk-cycles/bob-meadow-3.png",
+        "/mini/walk-cycles/bob-meadow-4.png",
+        "/mini/walk-cycles/bob-meadow-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        4,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7692307692307693
+    },
+    "twintails-classic": {
+      "frames": [
+        "/mini/walk-cycles/twintails-classic-0.png",
+        "/mini/walk-cycles/twintails-classic-1.png",
+        "/mini/walk-cycles/twintails-classic-2.png",
+        "/mini/walk-cycles/twintails-classic-3.png",
+        "/mini/walk-cycles/twintails-classic-4.png",
+        "/mini/walk-cycles/twintails-classic-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.8
+    },
+    "twintails-berry": {
+      "frames": [
+        "/mini/walk-cycles/twintails-berry-0.png",
+        "/mini/walk-cycles/twintails-berry-1.png",
+        "/mini/walk-cycles/twintails-berry-2.png",
+        "/mini/walk-cycles/twintails-berry-3.png",
+        "/mini/walk-cycles/twintails-berry-4.png",
+        "/mini/walk-cycles/twintails-berry-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        4,
+        2,
+        0,
+        4,
+        5
+      ],
+      "scale": 0.7692307692307693
+    },
+    "twintails-ocean": {
+      "frames": [
+        "/mini/walk-cycles/twintails-ocean-0.png",
+        "/mini/walk-cycles/twintails-ocean-1.png",
+        "/mini/walk-cycles/twintails-ocean-2.png",
+        "/mini/walk-cycles/twintails-ocean-3.png",
+        "/mini/walk-cycles/twintails-ocean-4.png",
+        "/mini/walk-cycles/twintails-ocean-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7563025210084033
+    },
+    "twintails-meadow": {
+      "frames": [
+        "/mini/walk-cycles/twintails-meadow-0.png",
+        "/mini/walk-cycles/twintails-meadow-1.png",
+        "/mini/walk-cycles/twintails-meadow-2.png",
+        "/mini/walk-cycles/twintails-meadow-3.png",
+        "/mini/walk-cycles/twintails-meadow-4.png",
+        "/mini/walk-cycles/twintails-meadow-5.png"
+      ],
+      "sourceFrames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scale": 0.7468879668049793
+    }
+  }
+}

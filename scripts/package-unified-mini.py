@@ -1,4 +1,4 @@
-"""Extract the generated 4x3 look atlas; retain original walk art unchanged."""
+"""Legacy 128px exporter retained for source history. Runtime uses package-mini-rig-v2.py."""
 from pathlib import Path
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]

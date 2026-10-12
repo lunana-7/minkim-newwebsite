@@ -1,0 +1,8 @@
+---
+const {entry,entries,section='definition'}=Astro.props;
+const bySection={definition:0,scope:1,practice:2,example:3,pitfalls:4,operations:5};
+const offset=bySection[section]||0;
+const related=entry.related.length?entry.related.slice(offset%entry.related.length).concat(entry.related.slice(0,offset%entry.related.length)).slice(0,2):[];
+const sources=entry.sources.length>1?[entry.sources[offset%entry.sources.length]]:entry.sources;
+---
+<div class="wiki-section-reading"><span>Explore this section:</span>{related.map(slug=><a href={`/wiki/${slug}`}>{entries.find(e=>e.slug===slug).title}</a>)}<span class="wiki-reading-divider" aria-hidden="true">·</span>{sources.map(source=><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a>)}</div>

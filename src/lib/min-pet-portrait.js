@@ -1,0 +1,3 @@
+import { getProfile,subscribeProfile } from './min-profile.js';
+import { drawPet } from './min-pets.js';
+export function initPetPortrait(){const canvas=document.getElementById('mini-pet-portrait');if(!canvas)return;let p=getProfile(),alive=true;const ctx=canvas.getContext('2d'),unsub=subscribeProfile(next=>{p=next;canvas.hidden=p.pet.kind==='none';});function paint(t){if(!alive)return;ctx.clearRect(0,0,80,64);drawPet(ctx,p.pet,t,{x:40,feet:64,scale:2,moving:p.pet.follow,reduced:window.matchMedia('(prefers-reduced-motion: reduce)').matches});requestAnimationFrame(paint);}requestAnimationFrame(paint);window.addEventListener('pagehide',()=>{alive=false;unsub();});}

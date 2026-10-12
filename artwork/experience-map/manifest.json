@@ -1,0 +1,13 @@
+{
+  "tool": "Built-in image_gen",
+  "map": {
+    "file": "public/experience-map/world.png",
+    "web": "public/experience-map/world.webp",
+    "prompt": "Use case: stylized-concept. Asset type: illustrated pixel RPG experience world map for an interactive professional portfolio, landscape 4:3. A real top-down/isometric fantasy world map viewed from above, NOT a grid of cards or a side-scrolling landscape. Original crisp detailed pixel art, dreamy cream sage lavender berry palette, soft clouds at edges, rivers with little bridges, winding tan paths joining ten distinct destinations. Compose exactly TEN small landmark areas, with clear room for clickable icon labels over them. Landmark centers as percentages of canvas: (18,22) governance castle with banners; (48,16) busy harbor/strategy tower; (79,22) crystal memory workshop; (14,48) research observatory; (37,45) invention workshop meadow; (62,49) connected village; (86,47) analytics guildhall; (21,76) scholarly library; (52,79) flower garden pavilion; (81,77) community camp with small tents. Paths connect these as a coherent explorable island. Scenic mountains and trees between locations, tiny water reflections, no people, no characters. Keep locations visibly distinguishable without filling every inch with detail. No words, letters, numbers, labels, logos, UI panels or borders: HTML will supply the labels. Full bleed map artwork."
+  },
+  "icons": {
+    "source": "artwork/experience-map/icons-atlas.png",
+    "output": "public/experience-map/icons/",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art icon atlas for ten professional experience locations in a cozy fantasy map. Exactly 5 columns by 2 rows, equally spaced isolated icons, same size and consistent pixel density, transparent background. Original detailed 16-bit pixel art in cream sage lavender berry and gold; crisp square pixels and dark brown outlines, each item readable at 48px. Top row left to right: 1 governance shield with small gear, 2 strategy compass with tiny chart, 3 glowing memory crystal on wooden stand, 4 telescope with little research notebook, 5 invention lightbulb and tiny tools. Bottom row left to right: 6 two friendly village cottages connected by a bridge, 7 analytics bar chart with tiny star, 8 stacked research books and quill, 9 flower blooming above a small heart, 10 community camp flag with two little tents. Separate padding around each icon, no overlaps. These are symbolic custom experience icons, no corporate logos. No text, letters, numbers, backgrounds or UI borders."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "count": 10000,
+  "source": "WikDict Spanish-English TEI, based on Wiktionary via DBnary",
+  "sourceUrl": "https://download.wikdict.com/dictionaries/tei/recommended/spa-eng.tei",
+  "sourceEdition": "2025.11.21",
+  "license": "Creative Commons Attribution-ShareAlike 3.0 Unported",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "sourceSha256": "46ea5c19deba162690a9ac2a3976542e0f1ac948fb4df456630323ac56145cd8",
+  "modifications": "Retained the original 99 beginner selections and English meanings; selected 9,901 unique single-word entries, limited to three short English translations each, ranked by Spanish word frequency using wordfreq. Added stable ids. This is not an official Duolingo course."
+}

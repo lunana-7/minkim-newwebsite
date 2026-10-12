@@ -1262,11 +1262,11 @@ body[data-reader-mode] .page-main {
 .pixel-walker-sprite { width: 100%; height: 100%; background: url('/pixel-min-walk.png') 0 0 / 600% 100% no-repeat; image-rendering: pixelated; animation: min-walk-frames .72s steps(6, end) infinite; filter: drop-shadow(0 2px 0 rgba(55,37,26,.12)); }
 @keyframes min-walk-frames { to { background-position-x: calc(var(--min-width) * -6); } }
 @keyframes min-bottom-route {
-  0% { left: 1rem; transform: scaleX(1); }
-  49.99% { left: calc(100% - var(--min-width) - 1rem); transform: scaleX(1); }
-  50% { left: calc(100% - var(--min-width) - 1rem); transform: scaleX(-1); }
-  99.99% { left: 1rem; transform: scaleX(-1); }
-  100% { left: 1rem; transform: scaleX(1); }
+  0% { left: 1rem; --min-route-facing: 1; }
+  49.99% { left: calc(100% - var(--min-width) - 1rem); --min-route-facing: 1; }
+  50% { left: calc(100% - var(--min-width) - 1rem); --min-route-facing: -1; }
+  99.99% { left: 1rem; --min-route-facing: -1; }
+  100% { left: 1rem; --min-route-facing: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pixel-walker { animation: none; left: auto; right: .5rem; }

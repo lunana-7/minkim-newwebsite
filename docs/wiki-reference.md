@@ -1,6 +1,6 @@
 # Agentic AI governance wiki
 
-25 term pages, across six subjects. The public portal has subject links, three reading paths, an alphabetical term index and a searchable categorized directory. Search covers titles, aliases, acronyms and definition text. The global Blog/Wiki search also includes aliases.
+The wiki has term pages across six subjects. The public portal has subject links, three reading paths, an alphabetical term index and a searchable categorized directory. Search covers titles, aliases, acronyms and definition text. The global Blog/Wiki search also includes aliases.
 
 Each article includes breadcrumb navigation, an information box, local contents, definition with numbered source references, scope, editorial application patterns, an illustrative scenario, common pitfalls, related terms, incoming links, references and same-subject navigation. First mentions of known terms link to their definitions. No generated user claims or deployment stories are added.
 
@@ -17,4 +17,4 @@ Core entries: `src/wiki.js`. Additional entries: `src/wiki-expanded.js`. Article
 - Review dated protocol documentation when updating an article.
 - Add aliases for searchable acronyms; keep slugs stable and related links resolvable.
 
-Reviewed October 11, 2026. Sources are linked individually in every article rather than presenting one framework as universal compliance guidance.
+Reviewed October 12, 2026. Execution-controls articles and selected articles across foundations, identity, threats and operations include source-linked research notes. Sources are linked individually in every article rather than presenting one framework as universal compliance guidance.

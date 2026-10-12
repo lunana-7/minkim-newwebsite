@@ -1,0 +1,10 @@
+{
+  "count": 10000,
+  "source": "CC-CEDICT, published by MDBG and maintained by its contributors",
+  "license": "CC BY-SA 4.0",
+  "sourceUrl": "https://www.mdbg.net/chinese/dictionary?page=cc-cedict",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "modifications": "Selected 10,000 unique simplified entries; removed cross-reference-only senses; added stable ids; beginner seed list followed by Jieba frequency order. This is not a Duolingo or HSK syllabus.",
+  "ranking": "fxsjy/jieba dict.txt (MIT), https://github.com/fxsjy/jieba",
+  "sourceSha256": "39758f408b1a8c180c8e6b772bde9ae2ffab1794119e65bc0a42f3fc9163e9eb"
+}

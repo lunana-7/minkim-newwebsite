@@ -1,0 +1,100 @@
+{
+  "sunny": {
+    "ground": {
+      "path": "/game-art/terrain/sunny-ground.png",
+      "width": 524,
+      "height": 133,
+      "surface": 43
+    },
+    "platform": {
+      "path": "/game-art/terrain/sunny-platform.png",
+      "width": 429,
+      "height": 147,
+      "surface": 42
+    }
+  },
+  "forest": {
+    "ground": {
+      "path": "/game-art/terrain/forest-ground.png",
+      "width": 524,
+      "height": 154,
+      "surface": 58
+    },
+    "platform": {
+      "path": "/game-art/terrain/forest-platform.png",
+      "width": 429,
+      "height": 183,
+      "surface": 58
+    }
+  },
+  "night": {
+    "ground": {
+      "path": "/game-art/terrain/night-ground.png",
+      "width": 525,
+      "height": 131,
+      "surface": 16
+    },
+    "platform": {
+      "path": "/game-art/terrain/night-platform.png",
+      "width": 429,
+      "height": 159,
+      "surface": 17
+    }
+  },
+  "secret": {
+    "ground": {
+      "path": "/game-art/terrain/secret-ground.png",
+      "width": 525,
+      "height": 151,
+      "surface": 53
+    },
+    "platform": {
+      "path": "/game-art/terrain/secret-platform.png",
+      "width": 429,
+      "height": 181,
+      "surface": 53
+    }
+  },
+  "desert": {
+    "ground": {
+      "path": "/game-art/terrain/desert-ground.png",
+      "width": 524,
+      "height": 152,
+      "surface": 57
+    },
+    "platform": {
+      "path": "/game-art/terrain/desert-platform.png",
+      "width": 429,
+      "height": 178,
+      "surface": 57
+    }
+  },
+  "farm": {
+    "ground": {
+      "path": "/game-art/terrain/farm-ground.png",
+      "width": 524,
+      "height": 146,
+      "surface": 50
+    },
+    "platform": {
+      "path": "/game-art/terrain/farm-platform.png",
+      "width": 429,
+      "height": 174,
+      "surface": 49
+    }
+  },
+  "market": {
+    "ground": {
+      "path": "/game-art/terrain/market-ground.png",
+      "width": 524,
+      "height": 124,
+      "surface": 19
+    },
+    "platform": {
+      "path": "/game-art/terrain/market-platform.png",
+      "width": 429,
+      "height": 167,
+      "surface": 24
+    }
+  }
+}

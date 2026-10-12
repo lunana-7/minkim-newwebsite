@@ -1,0 +1,90 @@
+{
+  "buildings": {
+    "cafe": {
+      "path": "/game-art/architecture/cafe.png",
+      "width": 520,
+      "height": 480,
+      "door": 320,
+      "displayHeight": 176
+    },
+    "icecream": {
+      "path": "/game-art/architecture/icecream.png",
+      "width": 510,
+      "height": 488,
+      "door": 206,
+      "displayHeight": 176
+    },
+    "bakery": {
+      "path": "/game-art/architecture/bakery.png",
+      "width": 506,
+      "height": 482,
+      "door": 169,
+      "displayHeight": 176
+    },
+    "farm": {
+      "path": "/game-art/architecture/farm.png",
+      "width": 514,
+      "height": 477,
+      "door": 273,
+      "displayHeight": 178
+    },
+    "market": {
+      "path": "/game-art/architecture/market.png",
+      "width": 506,
+      "height": 468,
+      "door": 359,
+      "displayHeight": 162
+    },
+    "library": {
+      "path": "/game-art/architecture/library.png",
+      "width": 506,
+      "height": 510,
+      "door": 303,
+      "displayHeight": 190
+    }
+  },
+  "portals": {
+    "sunny": {
+      "path": "/game-art/architecture/portal-sunny.png",
+      "width": 362,
+      "height": 530,
+      "displayHeight": 154
+    },
+    "forest": {
+      "path": "/game-art/architecture/portal-forest.png",
+      "width": 362,
+      "height": 526,
+      "displayHeight": 154
+    },
+    "night": {
+      "path": "/game-art/architecture/portal-night.png",
+      "width": 362,
+      "height": 539,
+      "displayHeight": 154
+    },
+    "secret": {
+      "path": "/game-art/architecture/portal-secret.png",
+      "width": 362,
+      "height": 530,
+      "displayHeight": 154
+    },
+    "desert": {
+      "path": "/game-art/architecture/portal-desert.png",
+      "width": 362,
+      "height": 547,
+      "displayHeight": 154
+    },
+    "farm": {
+      "path": "/game-art/architecture/portal-farm.png",
+      "width": 362,
+      "height": 547,
+      "displayHeight": 154
+    },
+    "market": {
+      "path": "/game-art/architecture/portal-market.png",
+      "width": 362,
+      "height": 547,
+      "displayHeight": 154
+    }
+  }
+}

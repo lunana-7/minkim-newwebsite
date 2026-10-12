@@ -20,22 +20,158 @@ service cloud.firestore {
     function validStudy(s) {
       return s is map && s.keys().hasOnly(['sessions', 'seconds']) && s.sessions is int && s.sessions >= 0 && s.sessions <= 1000000000 && s.seconds is int && s.seconds >= 0 && s.seconds <= 1000000000;
     }
+    function validInventory(i) {
+      return i is map && i.keys().hasOnly(['carrot', 'wheat', 'strawberry']) &&
+        i.carrot is int && i.carrot >= 0 && i.carrot <= 1000000 &&
+        i.wheat is int && i.wheat >= 0 && i.wheat <= 1000000 &&
+        i.strawberry is int && i.strawberry >= 0 && i.strawberry <= 1000000;
+    }
+    function validPlot(p) {
+      return p == null || (p is map && p.keys().hasOnly(['crop', 'plantedAt', 'watered']) &&
+        p.crop in ['carrot', 'wheat', 'strawberry'] && p.plantedAt is int && p.plantedAt >= 0 && p.watered is bool);
+    }
+    function validFarm(f) {
+      return f is map && f.keys().hasOnly(['coins', 'seeds', 'produce', 'plots', 'harvested', 'sold']) &&
+        f.coins is int && f.coins >= 0 && f.coins <= 1000000000 &&
+        f.harvested is int && f.harvested >= 0 && f.harvested <= 1000000000 &&
+        f.sold is int && f.sold >= 0 && f.sold <= 1000000000 && validInventory(f.seeds) && validInventory(f.produce) &&
+        f.plots is list && f.plots.size() == 6 && validPlot(f.plots[0]) && validPlot(f.plots[1]) && validPlot(f.plots[2]) && validPlot(f.plots[3]) && validPlot(f.plots[4]) && validPlot(f.plots[5]);
+    }
+    function validResources(i) {
+      return i is map && i.keys().hasOnly(['herb', 'wood', 'acorn', 'shell', 'fish', 'mushroom', 'crystal', 'ore', 'cactus']) &&
+        i['herb'] is int && i['herb'] >= 0 && i['herb'] <= 1000000 &&
+        i['wood'] is int && i['wood'] >= 0 && i['wood'] <= 1000000 &&
+        i['acorn'] is int && i['acorn'] >= 0 && i['acorn'] <= 1000000 &&
+        i['shell'] is int && i['shell'] >= 0 && i['shell'] <= 1000000 &&
+        i['fish'] is int && i['fish'] >= 0 && i['fish'] <= 1000000 &&
+        i['mushroom'] is int && i['mushroom'] >= 0 && i['mushroom'] <= 1000000 &&
+        i['crystal'] is int && i['crystal'] >= 0 && i['crystal'] <= 1000000 &&
+        i['ore'] is int && i['ore'] >= 0 && i['ore'] <= 1000000 &&
+        i['cactus'] is int && i['cactus'] >= 0 && i['cactus'] <= 1000000;
+    }
+    function validCooldowns(i) {
+      return i is map && i.keys().hasOnly(['meadow-herbs-a', 'meadow-herbs-b', 'forest-timber-a', 'forest-timber-b', 'forest-acorns', 'harbor-shells-a', 'harbor-shells-b', 'harbor-fishing', 'secret-mushrooms-a', 'secret-crystals', 'secret-mushrooms-b', 'desert-ore-a', 'desert-cactus', 'desert-ore-b']) &&
+        i['meadow-herbs-a'] is int && i['meadow-herbs-a'] >= 0 && i['meadow-herbs-a'] <= 9000000000000 &&
+        i['meadow-herbs-b'] is int && i['meadow-herbs-b'] >= 0 && i['meadow-herbs-b'] <= 9000000000000 &&
+        i['forest-timber-a'] is int && i['forest-timber-a'] >= 0 && i['forest-timber-a'] <= 9000000000000 &&
+        i['forest-timber-b'] is int && i['forest-timber-b'] >= 0 && i['forest-timber-b'] <= 9000000000000 &&
+        i['forest-acorns'] is int && i['forest-acorns'] >= 0 && i['forest-acorns'] <= 9000000000000 &&
+        i['harbor-shells-a'] is int && i['harbor-shells-a'] >= 0 && i['harbor-shells-a'] <= 9000000000000 &&
+        i['harbor-shells-b'] is int && i['harbor-shells-b'] >= 0 && i['harbor-shells-b'] <= 9000000000000 &&
+        i['harbor-fishing'] is int && i['harbor-fishing'] >= 0 && i['harbor-fishing'] <= 9000000000000 &&
+        i['secret-mushrooms-a'] is int && i['secret-mushrooms-a'] >= 0 && i['secret-mushrooms-a'] <= 9000000000000 &&
+        i['secret-crystals'] is int && i['secret-crystals'] >= 0 && i['secret-crystals'] <= 9000000000000 &&
+        i['secret-mushrooms-b'] is int && i['secret-mushrooms-b'] >= 0 && i['secret-mushrooms-b'] <= 9000000000000 &&
+        i['desert-ore-a'] is int && i['desert-ore-a'] >= 0 && i['desert-ore-a'] <= 9000000000000 &&
+        i['desert-cactus'] is int && i['desert-cactus'] >= 0 && i['desert-cactus'] <= 9000000000000 &&
+        i['desert-ore-b'] is int && i['desert-ore-b'] >= 0 && i['desert-ore-b'] <= 9000000000000;
+    }
+    function validGathering(a) {
+      return a is map && a.keys().hasOnly(['inventory','cooldowns','collected']) && validResources(a.inventory) && validCooldowns(a.cooldowns) && a.collected is int && a.collected >= 0 && a.collected <= 1000000000;
+    }
+    function validCareer(c) {
+      return c is map && c.keys().hasOnly(['hired','completed','xp','best']) &&
+        c.hired is bool && c.completed is int && c.completed >= 0 && c.completed <= 1000000000 &&
+        c.xp is int && c.xp >= 0 && c.xp <= 1000000000 && c.best is int && c.best >= 0 && c.best <= 100;
+    }
+    function validRecipe(a) {
+      return a == null || (a is map && a.keys().hasOnly(['job','stage','base','flavor','topping','mix','decor','temperature','startedAt','quality']) &&
+        a.job in ['icecream','bakery'] && a.stage is int && a.stage >= 0 && a.stage <= 4 &&
+        a.base is int && a.base >= 0 && a.base <= 2 && a.flavor is int && a.flavor >= 0 && a.flavor <= 2 &&
+        a.topping is int && a.topping >= 0 && a.topping <= 2 && a.mix is int && a.mix >= 0 && a.mix <= 6 &&
+        a.decor is int && a.decor >= 0 && a.decor <= 3 && a.temperature is int &&
+        ((a.job == 'icecream' && a.temperature >= -14 && a.temperature <= 4) || (a.job == 'bakery' && a.temperature >= 150 && a.temperature <= 200)) &&
+        a.startedAt is int && a.startedAt >= 0 && a.startedAt <= 9000000000000 && a.quality is int && a.quality >= 0 && a.quality <= 100);
+    }
+    function validJobs(j) {
+      return j is map && j.keys().hasOnly(['icecream','bakery','active']) && validCareer(j.icecream) && validCareer(j.bakery) && validRecipe(j.active);
+    }
+    function validEffect(e) {
+      return e is map && e.keys().hasOnly(['kind','color','intensity']) &&
+        e.kind in ['none','sparkles','hearts','stars','fireflies','aurora'] &&
+        e.color in ['gold','berry','lavender','mint','ice'] && e.intensity is int && e.intensity in [1,2,3];
+    }
+    function validPet(p) {
+      return p is map && p.keys().hasOnly(['kind','color','accessory','name','follow']) && p.kind in ['none','cat','dog'] &&
+        p.color in ['cream','ginger','cocoa','midnight'] && p.accessory in ['none','bow','bandana'] &&
+        p.name is string && p.name.size() <= 16 && p.follow is bool;
+    }
     function validGame(g) {
-      return g is map && g.keys().hasOnly(['schemaVersion', 'outfit', 'hair', 'eyes', 'face', 'hat', 'map', 'points', 'completedActivities', 'activeActivity', 'adventure', 'study', 'updatedAt']) &&
-        g.schemaVersion in [2, 3, 4, 5] &&
+      return g is map && g.keys().hasOnly(['schemaVersion', 'outfit', 'hair', 'eyes', 'face', 'hat', 'map', 'points', 'completedActivities', 'activeActivity', 'adventure', 'study', 'farm', 'gathering', 'jobs', 'effect', 'pet', 'updatedAt']) &&
+        g.schemaVersion in [2, 3, 4, 5, 6, 7, 8, 9, 10] &&
         g.get('hair', 'ombre') in ['ombre', 'bob', 'twintails'] &&
         g.get('eyes', 'brown') in ['brown', 'hazel', 'blue'] &&
         g.get('face', 'soft') in ['soft', 'rosy', 'freckles'] &&
         g.outfit in ['classic', 'berry', 'ocean', 'meadow'] &&
-        g.hat in ['none', 'beret', 'flower', 'crown'] && g.map in ['sunny', 'night', 'forest'] &&
+        g.hat in ['none', 'beret', 'flower', 'crown'] && g.map in ['sunny', 'night', 'forest', 'farm', 'market', 'secret', 'desert'] &&
         g.points is int && g.points >= 0 && g.points <= 1000000000 &&
         g.completedActivities is map && g.completedActivities.keys().hasOnly(['coffee', 'tuna', 'study']) &&
         g.completedActivities.coffee is int && g.completedActivities.coffee >= 0 && g.completedActivities.coffee <= 1000000000 &&
         g.completedActivities.tuna is int && g.completedActivities.tuna >= 0 && g.completedActivities.tuna <= 1000000000 &&
         g.completedActivities.study is int && g.completedActivities.study >= 0 && g.completedActivities.study <= 1000000000 &&
         g.updatedAt is int && g.updatedAt >= 0 && validActivity(g.activeActivity) &&
+        validFarm(g.get('farm', {'coins': 100, 'seeds': {'carrot': 6, 'wheat': 2, 'strawberry': 2}, 'produce': {'carrot': 0, 'wheat': 0, 'strawberry': 0}, 'plots': [null, null, null, null, null, null], 'harvested': 0, 'sold': 0})) &&
+        validGathering(g.get('gathering', {'inventory': {'herb': 0, 'wood': 0, 'acorn': 0, 'shell': 0, 'fish': 0, 'mushroom': 0, 'crystal': 0, 'ore': 0, 'cactus': 0}, 'cooldowns': {'meadow-herbs-a': 0, 'meadow-herbs-b': 0, 'forest-timber-a': 0, 'forest-timber-b': 0, 'forest-acorns': 0, 'harbor-shells-a': 0, 'harbor-shells-b': 0, 'harbor-fishing': 0, 'secret-mushrooms-a': 0, 'secret-crystals': 0, 'secret-mushrooms-b': 0, 'desert-ore-a': 0, 'desert-cactus': 0, 'desert-ore-b': 0}, 'collected': 0})) &&
+        validJobs(g.get('jobs', {'icecream': {'hired': false, 'completed': 0, 'xp': 0, 'best': 0}, 'bakery': {'hired': false, 'completed': 0, 'xp': 0, 'best': 0}, 'active': null})) &&
+        validPet(g.get('pet', {'kind': 'none', 'color': 'cream', 'accessory': 'none', 'name': '', 'follow': true})) &&
+        validEffect(g.get('effect', {'kind': 'none', 'color': 'gold', 'intensity': 2})) &&
         validStudy(g.get('study', {'sessions': 0, 'seconds': 0})) &&
         validAdventure(g.get('adventure', {'x': 90, 'collected': 0, 'questComplete': false}));
+    }
+    match /alignmentProgress/{playerId} {
+      allow read: if request.auth != null && request.auth.uid == playerId;
+      allow create, update: if request.auth != null && request.auth.uid == playerId &&
+        request.resource.data.keys().hasOnly(['region','mask','xp','x','updatedAt','serverUpdatedAt']) &&
+        request.resource.data.region is int && request.resource.data.region >= 0 && request.resource.data.region <= 5 &&
+        request.resource.data.mask is int && request.resource.data.mask >= 0 && request.resource.data.mask <= 63 &&
+        request.resource.data.xp is int && request.resource.data.xp >= 0 && request.resource.data.xp <= 1000000 &&
+        request.resource.data.x is int && request.resource.data.x >= 30 && request.resource.data.x <= 2100 &&
+        request.resource.data.updatedAt is int && request.resource.data.updatedAt >= 0 &&
+        request.resource.data.serverUpdatedAt == request.time;
+      allow delete: if false;
+    }
+    match /alignmentPresence/{playerId} {
+      allow read: if request.auth != null;
+      allow create, update: if request.auth != null && request.auth.uid == playerId &&
+        request.resource.data.keys().hasOnly(['region','x','alias','updatedAt']) &&
+        request.resource.data.region is int && request.resource.data.region >= 0 && request.resource.data.region <= 5 &&
+        request.resource.data.x is int && request.resource.data.x >= 30 && request.resource.data.x <= 2100 &&
+        request.resource.data.alias is string && request.resource.data.alias.size() <= 30 &&
+        request.resource.data.updatedAt == request.time;
+      allow delete: if request.auth != null && request.auth.uid == playerId;
+    }
+    match /guestbook/{noteId} {
+      allow read: if true;
+      allow create: if request.auth != null &&
+        request.resource.data.keys().hasOnly(['uid','name','message','stamp','createdAt']) &&
+        request.resource.data.uid == request.auth.uid &&
+        request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 30 &&
+        request.resource.data.message is string && request.resource.data.message.size() > 0 && request.resource.data.message.size() <= 500 &&
+        request.resource.data.stamp in ['heart','cake','coffee','star'] &&
+        request.resource.data.createdAt == request.time;
+      allow update, delete: if false;
+    }
+    match /languageProgress/{playerId} {
+      allow read: if request.auth != null && request.auth.uid == playerId;
+      allow create, update: if request.auth != null && request.auth.uid == playerId &&
+        request.resource.data.keys().hasOnly(['version','course','xp','answers','correct','days','updatedAt','serverUpdatedAt']) &&
+        request.resource.data.version == 1 && request.resource.data.course in ['zh','es'] &&
+        request.resource.data.xp is int && request.resource.data.xp >= 0 && request.resource.data.xp <= 1000000000 &&
+        request.resource.data.answers is int && request.resource.data.answers >= 0 && request.resource.data.answers <= 1000000000 &&
+        request.resource.data.correct is int && request.resource.data.correct >= 0 && request.resource.data.correct <= 1000000000 &&
+        request.resource.data.days is list && request.resource.data.days.size() <= 366 &&
+        request.resource.data.updatedAt is int && request.resource.data.updatedAt >= 0 &&
+        request.resource.data.serverUpdatedAt == request.time;
+      allow delete: if false;
+      match /courses/{courseId} {
+        allow read: if request.auth != null && request.auth.uid == playerId && courseId in ['zh','es'];
+        allow create, update: if request.auth != null && request.auth.uid == playerId && courseId in ['zh','es'] &&
+          request.resource.data.keys().hasOnly(['words','updatedAt','serverUpdatedAt']) &&
+          request.resource.data.words is map && request.resource.data.words.size() <= 10000 &&
+          request.resource.data.updatedAt is int && request.resource.data.updatedAt >= 0 &&
+          request.resource.data.serverUpdatedAt == request.time;
+        allow delete: if false;
+      }
     }
     match /players/{playerId} {
       allow read: if request.auth != null && request.auth.uid == playerId;

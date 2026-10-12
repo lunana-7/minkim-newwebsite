@@ -1,30 +1,34 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { workRegions } from '../../public-projects.js';
+import { experienceMapLocations } from '../../experience-map.js';
 ---
 <Layout title="Projects | Min Kim" activeNav="projects" description="Explore a public summary of Min Kim’s work in AI governance, product, research and community.">
   <header class="work-map-intro">
     <span class="case-study-kicker">MIN’S WORK WORLD</span>
     <h1 class="page-title">Projects</h1>
-    <p class="page-lead">A little map of the work I’ve done. Choose a destination to explore my role, focus and contributions.</p>
+    <p class="page-lead">A little map of the work I’ve done. Follow the paths and select an experience to explore my role, focus and contributions.</p>
     <div class="work-map-progress"><span aria-hidden="true">✦</span><span id="work-map-progress">10 destinations to explore</span><button id="work-map-reset" type="button" hidden>Reset exploration</button></div>
   </header>
-  <nav class="work-world-map" aria-label="Choose an experience">
-    <div class="work-map-heading"><span>EXPERIENCE MAP</span><span aria-hidden="true">☀ · ♧ · ✦</span></div>
-    <div class="work-map-destinations">
-      {workRegions.map((region,index) => <button class="work-map-node" type="button" data-work-region={region.id} aria-controls={`region-${region.id}`} aria-pressed="false">
-        <span class="work-map-node-art" aria-hidden="true"><svg viewBox="0 0 40 32" shape-rendering="crispEdges"><path fill="#7d9b62" d="M0 28h40v4H0zM3 16h8v10H3zM1 18h12v4H1zM30 14h7v12h-7zM28 17h11v5H28z"/><path fill="#966344" d="M6 24h2v6H6zm27-1h2v7h-2z"/><path fill="#f5e4b7" d="M14 14h14v14H14z"/><path fill={index%2 ? '#7a9a9a':'#c58589'} d="M12 12h18v4H12zm3-3h12v3H15zm3-3h6v3h-6z"/><path fill="#916749" d="M19 21h5v7h-5z"/><path fill="#ffcd79" d="M16 17h3v3h-3zm8 0h3v3h-3z"/></svg><span>{region.icon}</span></span>
-        <span class="work-map-node-number">{String(index+1).padStart(2,'0')} <span class="work-map-visited" aria-label="Explored" hidden>✓</span></span><strong>{region.name}</strong><small>{region.place}</small>
-      </button>)}
+  <section class="experience-atlas-section" id="experience-map" aria-labelledby="experience-map-title">
+    <div class="work-map-heading"><h2 id="experience-map-title">My experience world</h2><span>Choose an icon to explore ↓</span></div>
+    <div class="experience-atlas" role="group" aria-label="Interactive map of Min’s ten experiences">
+      <img class="experience-atlas-image" src="/experience-map/world.webp" width="1536" height="1152" alt="A dreamy pixel world with paths connecting a castle, harbor, workshops, observatory, village, guild, library, garden and camp." fetchpriority="high" />
+      {workRegions.map(region=>{const location=experienceMapLocations[region.id];return <button class="experience-map-marker" type="button" data-work-region={region.id} data-map-x={location.x} data-map-y={location.y} aria-controls={`region-${region.id}`} aria-pressed="false" aria-label={`Explore ${region.name}: ${region.role}`} style={`--marker-x:${location.x}%;--marker-y:${location.y}%`}>
+        <span class="experience-map-icon"><img src={location.icon} width="96" height="96" alt="" /><span class="work-map-visited" aria-label="Explored" hidden>✓</span></span>
+        <strong>{location.label}</strong>
+      </button>;})}
     </div>
-  </nav>
+    <p class="experience-atlas-hint">Every stop represents an experience. Select a location for my role, focus and contributions.</p>
+    <details class="experience-map-index"><summary>Experience index</summary><nav aria-label="Experience text index">{workRegions.map(region=><a href={`#${region.id}`} data-experience-jump={region.id}>{region.name}</a>)}</nav></details>
+  </section>
   <div class="work-region-panels">
     {workRegions.map(region => <section id={`region-${region.id}`} class="work-region-panel" data-work-panel={region.id} aria-labelledby={`title-${region.id}`}>
-      <header><span class="work-region-icon" aria-hidden="true">{region.icon}</span><div><p class="case-study-kicker">{region.place}</p><h2 id={`title-${region.id}`} tabindex="-1">{region.name}</h2><p>{region.role} · {region.period}</p></div></header>
+      <header><span class="work-region-icon work-region-art" aria-hidden="true"><img src={experienceMapLocations[region.id].icon} width="64" height="64" alt="" /></span><div><p class="case-study-kicker">{region.place}</p><h2 id={`title-${region.id}`} tabindex="-1">{region.name}</h2><p>{region.role} · {region.period}</p></div></header>
       <p class="work-region-summary">{region.summary}</p>
       <h3>What I worked on</h3><ul>{region.work.map(item => <li>{item}</li>)}</ul>
       <div class="work-region-skills" aria-label="Areas of focus">{region.skills.map(skill => <span>{skill}</span>)}</div>
-      <div class="work-region-next"><span>Choose another destination above to keep exploring.</span><a href="/about">Meet Min →</a></div>
+      <div class="work-region-next"><a href="#experience-map">← Back to the experience map</a><a href="/about">Meet Min →</a></div>
     </section>)}
   </div>
   <script>
@@ -51,6 +55,8 @@ import { workRegions } from '../../public-projects.js';
       }
     }
     nodes.forEach(node => node.addEventListener('click', () => selectRegion(node.dataset.workRegion, true)));
+    document.querySelector('.experience-atlas').addEventListener('click',event=>{if(event.target.closest('[data-work-region]'))return;const rect=event.currentTarget.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width*100,y=(event.clientY-rect.top)/rect.height*100;const nearest=nodes.reduce((best,node)=>{const distance=Math.hypot(Number(node.dataset.mapX)-x,Number(node.dataset.mapY)-y);return distance<best.distance?{node,distance}:best;},{node:null,distance:Infinity});if(nearest.distance<19)selectRegion(nearest.node.dataset.workRegion,true);});
+    document.querySelectorAll('[data-experience-jump]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();selectRegion(link.dataset.experienceJump,true);}));
     const initial = location.hash.slice(1);
     selectRegion(nodes.some(node => node.dataset.workRegion === initial) ? initial : nodes[0].dataset.workRegion);
     updateProgress();

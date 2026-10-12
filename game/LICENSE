@@ -4,7 +4,9 @@ Copyright (c) 2026 Min Kim
 
 This license applies to src/lib/min-adventure.js, src/lib/min-emotes.js,
 src/components/MiniAdventure.astro, src/components/MiniCafe.astro,
-src/lib/min-cafe.js, and the adventure styles distributed
+src/lib/min-cafe.js, src/lib/min-worlds.js, src/lib/min-farming.js,
+src/lib/min-interactions.js, src/lib/min-chatter.js, src/lib/min-terrain.js, src/lib/min-pet-portrait.js, src/lib/min-pets.js, src/lib/min-effects.js, src/lib/min-portals.js, src/lib/min-drag.js, src/lib/min-kitchen-data.js, src/lib/min-kitchen.js, src/components/MiniKitchen.astro,
+src/lib/min-farm-ui.js, src/lib/min-resource-data.js, src/lib/min-gathering.js, src/components/MiniFarm.astro, and the adventure styles distributed
 in the Mini adventure source bundle. Website content, character artwork,
 and third-party dependencies are not covered by this license.
 

@@ -1,16 +1,21 @@
+import { DEFAULT_PET, normalizePet } from './min-pets.js';
+import { DEFAULT_EFFECT, normalizeEffect } from './min-effects.js';
+import { newJobs, JOB_IDS } from './min-kitchen-data.js';
+import { RESOURCE_IDS, NODE_IDS } from './min-resource-data.js';
 export const OUTFITS = ['classic', 'berry', 'ocean', 'meadow'];
 export const HAIRS = ['ombre', 'bob', 'twintails'];
 export const EYES = ['brown', 'hazel', 'blue'];
 export const FACES = ['soft', 'rosy', 'freckles'];
 export const HATS = ['none', 'beret', 'flower', 'crown'];
-export const MAPS = ['sunny', 'night', 'forest', 'farm', 'market'];
+export const MAPS = ['sunny', 'night', 'forest', 'farm', 'market', 'secret', 'desert'];
 export const ACTIVITIES = {
   coffee: { label: 'Drink coffee', shortLabel: 'Coffee break', reward: 10, duration: 8000, message: 'A warm cup and a little recharge.', done: 'Coffee break complete!' },
   tuna: { label: 'Eat a tuna bowl', shortLabel: 'Tuna bowl time', reward: 15, duration: 10000, message: 'Tuna, rice, and a happy little lunch.', done: 'That was delicious!' },
   study: { label: 'Study together', shortLabel: 'Study session', reward: 25, duration: 15000, message: 'One page at a time. Let’s focus!', done: 'A little wiser, a little brighter.' }
 };
 const newFarm = () => ({ coins:100, seeds:{carrot:6,wheat:2,strawberry:2}, produce:{carrot:0,wheat:0,strawberry:0}, plots:Array(6).fill(null), harvested:0, sold:0 });
-const DEFAULT = { schemaVersion: 6, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, study: { sessions: 0, seconds: 0 }, farm:newFarm(), updatedAt: 0 };
+const newGathering = () => ({ inventory:Object.fromEntries(RESOURCE_IDS.map(id=>[id,0])),cooldowns:Object.fromEntries(NODE_IDS.map(id=>[id,0])),collected:0 });
+const DEFAULT = { schemaVersion: 10, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, study: { sessions: 0, seconds: 0 }, farm:newFarm(), gathering:newGathering(), jobs:newJobs(), effect:DEFAULT_EFFECT, pet:DEFAULT_PET, updatedAt: 0 };
 let owner = 'guest';
 let current;
 const listeners = new Set();
@@ -21,8 +26,14 @@ export function normalizeProfile(value = {}) {
   const f=value?.farm || newFarm();
   const inventory = field => Object.fromEntries(['carrot','wheat','strawberry'].map(crop=>[crop,safeNumber(f[field]?.[crop],1000000)]));
   const farm = { coins:safeNumber(f.coins),seeds:inventory('seeds'),produce:inventory('produce'),harvested:safeNumber(f.harvested),sold:safeNumber(f.sold),plots:Array.from({length:6},(_,index)=>{const plot=f.plots?.[index];return plot&&['carrot','wheat','strawberry'].includes(plot.crop)&&Number.isFinite(plot.plantedAt)&&plot.plantedAt>=0?{crop:plot.crop,plantedAt:Math.floor(plot.plantedAt),watered:plot.watered===true}:null;}) };
+  const j=value?.jobs||newJobs(), a=j.active;
+  const active=a&&JOB_IDS.includes(a.job)?{job:a.job,stage:safeNumber(a.stage,4),base:safeNumber(a.base,2),flavor:safeNumber(a.flavor,2),topping:safeNumber(a.topping,2),mix:safeNumber(a.mix,6),decor:safeNumber(a.decor,3),temperature:Number.isFinite(a.temperature)?Math.round(Math.max(a.job==='icecream'?-14:150,Math.min(a.job==='icecream'?4:200,a.temperature))):(a.job==='icecream'?-2:160),startedAt:safeNumber(a.startedAt,9000000000000),quality:safeNumber(a.quality,100)}:null;
+  const jobs={...Object.fromEntries(JOB_IDS.map(id=>[id,{hired:j[id]?.hired===true,completed:safeNumber(j[id]?.completed),xp:safeNumber(j[id]?.xp),best:safeNumber(j[id]?.best,100)}])),active};
   return {
     ...DEFAULT,
+    jobs,
+    effect:normalizeEffect(value?.effect),
+    pet:normalizePet(value?.pet),
     outfit: OUTFITS.includes(value?.outfit) ? value.outfit : 'classic',
     hair: HAIRS.includes(value?.hair) ? value.hair : 'ombre',
     eyes: EYES.includes(value?.eyes) ? value.eyes : 'brown',
@@ -35,6 +46,7 @@ export function normalizeProfile(value = {}) {
       ? { id: activity.id.slice(0, 100), kind: activity.kind, startedAt: activity.startedAt, endsAt: activity.endsAt } : null,
     adventure: { x: Math.max(36, Math.min(3560, safeNumber(value?.adventure?.x ?? 90, 3560))), collected: safeNumber(value?.adventure?.collected, 65535), questComplete: value?.adventure?.questComplete === true },
     farm,
+    gathering:{inventory:Object.fromEntries(RESOURCE_IDS.map(id=>[id,safeNumber(value?.gathering?.inventory?.[id],1000000)])),cooldowns:Object.fromEntries(NODE_IDS.map(id=>[id,safeNumber(value?.gathering?.cooldowns?.[id],9000000000000)])),collected:safeNumber(value?.gathering?.collected)},
     study: { sessions: safeNumber(value?.study?.sessions), seconds: safeNumber(value?.study?.seconds) },
     updatedAt: Number.isFinite(value?.updatedAt) ? Math.max(0, value.updatedAt) : 0
   };

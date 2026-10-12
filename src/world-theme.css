@@ -229,18 +229,19 @@ h1,h2,h3,h4 { font-family:var(--font-pixel); letter-spacing:0 !important; }
 
 /* Mini’s playable meadow and social emotes. */
 .min-emote-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.4rem; margin:.6rem 0 .9rem; }
-.min-emote-options button { display:flex; align-items:center; gap:.4rem; border:1px solid var(--border); border-radius:.7rem; padding:.55rem .5rem; background:var(--world-pink); color:var(--foreground); font:500 .85rem var(--font-pixel); }.min-emote-options button:hover { border-color:var(--accent-vermilion); }.min-emote-options button:disabled { opacity:.5; }
-.min-companion-menu { max-height:calc(100dvh - 10rem); overflow-y:auto; }
+.min-emote-options button { display:flex; align-items:center; gap:.35rem; border:1px solid var(--border); border-radius:.7rem; padding:.5rem .45rem; background:var(--world-pink); color:var(--foreground); font:500 .78rem var(--font-pixel); white-space:nowrap; }.min-emote-options button:hover { border-color:var(--accent-vermilion); }.min-emote-options button:disabled { opacity:.5; }
+.min-emote-options button img,.adventure-emotes button img { display:block; width:2rem; height:2rem; flex:none; object-fit:contain; image-rendering:pixelated; }
+.min-companion-menu { width:min(23rem,calc(100vw - 1.5rem)); max-height:calc(100dvh - 10rem); overflow-y:auto; }
 .mini-adventure { margin:1.5rem 0 2rem; border:1px solid var(--border); border-radius:1.25rem; background:var(--world-panel); overflow:hidden; box-shadow:0 4px 0 var(--world-shadow); }
 .adventure-heading { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.1rem 1.2rem; }.adventure-heading h2 { font:500 1.8rem var(--font-pixel); margin-top:.25rem; }
 .adventure-hud { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.5rem; background:var(--world-green); padding:.7rem 1.2rem; font-size:.8rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }.adventure-hud > span:first-child { color:var(--tone-amber); }
-.adventure-viewport { position:relative; }.adventure-viewport canvas { display:block; width:100%; height:clamp(20rem,45vw,27rem); image-rendering:pixelated; touch-action:none; }.adventure-viewport canvas:focus-visible { outline-offset:-4px; }
+.adventure-viewport { position:relative; }.adventure-viewport > canvas { display:block; width:100%; height:clamp(20rem,45vw,27rem); image-rendering:pixelated; touch-action:none; }.adventure-viewport > canvas:focus-visible { outline-offset:-4px; }
 .adventure-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.8rem; background:color-mix(in srgb,var(--world-panel) 85%,transparent); text-align:center; padding:1.5rem; }.adventure-overlay[hidden] { display:none; }.adventure-overlay h3 { font:500 2rem var(--font-pixel); }.adventure-overlay p { max-width:24rem; font-size:.95rem; }.adventure-overlay .save-button { max-width:16rem; margin:1rem 0 0; }.adventure-stamp { color:var(--tone-amber); font:400 2.5rem var(--font-pixel); }
 .adventure-toolbar { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.7rem; padding:.9rem 1rem .4rem; }.adventure-toolbar > div { display:flex; gap:.5rem; }.adventure-toolbar button { min-height:2.7rem; border:1px solid var(--border); border-radius:.8rem; background:var(--world-green); color:var(--foreground); padding:.5rem .8rem; font:500 1rem var(--font-pixel); touch-action:none; }.adventure-toolbar button:active { background:var(--world-pink); }
 .adventure-instructions { padding:.4rem 1.2rem; font-size:.75rem; line-height:1.7; color:var(--muted-foreground); }.adventure-emotes { display:flex; flex-wrap:wrap; gap:.5rem; padding:.7rem 1.2rem; }.adventure-emotes button { display:flex; gap:.4rem; align-items:center; border:1px solid var(--border); border-radius:999px; padding:.4rem .7rem; background:var(--world-pink); font:500 .9rem var(--font-pixel); color:var(--foreground); }
 .adventure-message { margin:.3rem 1.2rem .7rem; padding:.65rem .8rem; border-radius:.8rem; background:var(--muted); font-size:.85rem; line-height:1.7; min-height:3rem; }.adventure-save-note { padding:0 1.2rem 1rem; font-size:.72rem; line-height:1.7; color:var(--muted-foreground); }
 .adventure-character-source { position:absolute; width:128px; height:192px; left:-10000px; visibility:hidden; pointer-events:none; }
-@media(max-width:48rem) { .adventure-heading { padding:.85rem; align-items:start; }.adventure-heading h2 { font-size:1.5rem; }.adventure-heading .music-button { font-size:.7rem; padding:.4rem; }.adventure-hud { padding:.6rem .85rem; font-size:.7rem; }.adventure-viewport canvas { height:22rem; }.adventure-toolbar { padding:.7rem .65rem; }.adventure-toolbar button { padding:.5rem .65rem; }.adventure-emotes,.adventure-instructions { padding-inline:.85rem; }.adventure-message { margin-inline:.85rem; }.min-companion-menu { max-height:calc(100dvh - 8rem); } }
+@media(max-width:48rem) { .adventure-heading { padding:.85rem; align-items:start; }.adventure-heading h2 { font-size:1.5rem; }.adventure-heading .music-button { font-size:.7rem; padding:.4rem; }.adventure-hud { padding:.6rem .85rem; font-size:.7rem; }.adventure-viewport > canvas { height:22rem; }.adventure-toolbar { padding:.7rem .65rem; }.adventure-toolbar button { padding:.5rem .65rem; }.adventure-emotes,.adventure-instructions { padding-inline:.85rem; }.adventure-message { margin-inline:.85rem; }.min-companion-menu { max-height:calc(100dvh - 8rem); } }
 
 .adventure-source-link { display:inline-block; margin:0 1.2rem 1rem; font:500 .85rem var(--font-pixel); color:var(--accent-vermilion); }
 
@@ -304,3 +305,410 @@ h1,h2,h3,h4 { font-family:var(--font-pixel); letter-spacing:0 !important; }
 .wiki-backlinks,.wiki-references,.wiki-topic-footer { margin-top:2rem; padding-top:1.2rem; border-top:1px solid var(--border); }.wiki-backlinks h2,.wiki-references h2 { font-size:1.5rem; }.wiki-backlinks ul { display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; padding-left:1.2rem; font-size:.8rem; }.wiki-references p { font-size:.78rem; color:var(--foreground-l3); }.wiki-references ol { padding-left:1.2rem; font-size:.8rem; }.wiki-references li { margin:.8rem 0; scroll-margin-top:1.5rem; }.wiki-references small { display:block; font-size:.65rem; color:var(--muted-foreground); }.wiki-topic-footer { font-size:.8rem; }.wiki-topic-footer strong { font:500 1rem var(--font-pixel); }.wiki-topic-footer div { display:flex; flex-wrap:wrap; gap:.5rem; margin:.7rem 0 1rem; }.wiki-topic-footer div a { background:var(--world-green); border-radius:999px; padding:.3rem .6rem; text-decoration:none; font-size:.7rem; }
 @media(max-width:38rem) { .wiki-subjects > div,.wiki-learning-paths > div,.wiki-alphabet-groups,.wiki-infobox dl { grid-template-columns:1fr; }.wiki-article-contents ol { grid-template-columns:1fr; }.wiki-directory-entry .wiki-glyph { display:none; } }
 .wiki-inline-link { color:var(--tone-green); text-decoration:underline; text-decoration-color:color-mix(in srgb,var(--tone-green) 40%,transparent); text-underline-offset:3px; }.wiki-inline-link:hover { color:var(--accent-vermilion); }
+
+/* New villages, locals, player farming and a small produce economy. */
+.adventure-world-tabs { display:flex; flex-wrap:wrap; gap:.45rem; padding:.8rem 1rem; border-bottom:1px solid var(--border); }.adventure-world-tabs button { border:1px solid var(--border); padding:.45rem .7rem; border-radius:.7rem; background:var(--background); color:var(--foreground); font:500 .9rem var(--font-pixel); }.adventure-world-tabs button span { margin-right:.4rem; color:var(--tone-green); }.adventure-world-tabs button[aria-pressed='true'] { background:var(--world-pink); border-color:var(--accent-vermilion); }
+.adventure-npc-directory { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem; }.adventure-world-map h4 { font-size:1.1rem; margin-top:1rem; }.adventure-npc-directory button { border:1px solid var(--border); border-radius:.7rem; padding:.5rem .7rem; background:var(--world-panel); color:var(--foreground); font:500 .8rem var(--font-pixel); }
+.adventure-npc-dialog { margin:1rem 1.2rem; padding:1rem; border:1px solid var(--accent-vermilion); border-radius:1rem; background:var(--world-pink); }.adventure-npc-dialog[hidden],#adventure-meadow-stops[hidden] { display:none; }.adventure-npc-dialog header { display:flex; justify-content:space-between; gap:1rem; }.adventure-npc-dialog h3 { font-size:1.5rem; }.adventure-npc-dialog p { font-size:.9rem; line-height:1.7; margin:.6rem 0; }.adventure-npc-dialog button { border:1px solid var(--border); padding:.5rem .7rem; border-radius:.7rem; color:var(--foreground); background:var(--background); font:500 1rem var(--font-pixel); }
+.mini-farm-panel,.mini-market-panel { padding:1.3rem; border:1px solid var(--border); border-radius:1.25rem; margin:1.5rem 0 2rem; background:var(--world-panel); box-shadow:0 4px 0 var(--world-shadow); scroll-margin-top:1.5rem; }.mini-farm-panel[hidden],.mini-market-panel[hidden] { display:none; }.mini-farm-panel header,.mini-market-panel header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }.mini-farm-panel h2,.mini-market-panel h2 { font-size:1.9rem; }.mini-farm-panel p,.mini-market-panel p { font-size:.85rem; margin:.7rem 0; }.mini-farm-panel button,.mini-market-panel button { border:1px solid var(--border); border-radius:.8rem; padding:.6rem .8rem; color:var(--foreground); background:var(--world-green); font:500 .95rem var(--font-pixel); }.mini-market-panel button:disabled { opacity:.5; }
+.farm-stats { display:flex; flex-wrap:wrap; gap:.5rem 1rem; padding:.7rem .9rem; border-radius:.8rem; background:var(--world-green); font-size:.8rem; margin:1rem 0; }.farm-stats strong { color:var(--tone-amber); }.farm-seed-choices { border:0; padding:0; margin:1rem 0; display:flex; flex-wrap:wrap; gap:.6rem; }.farm-seed-choices legend { font:500 1.2rem var(--font-pixel); margin-bottom:.7rem; }.farm-seed-choices label { display:flex; align-items:center; gap:.5rem; padding:.6rem .8rem; background:var(--world-green); border:1px solid var(--border); border-radius:.8rem; cursor:pointer; font-size:.85rem; }.farm-seed-choices input { accent-color:var(--accent-vermilion); }.farm-seed-choices small { display:block; font-size:.65rem; color:var(--foreground-l3); }
+.farm-plots { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.7rem; }.farm-plots button { display:flex; flex-direction:column; align-items:center; gap:.4rem; padding:.6rem; }.farm-plots svg { width:100%; max-width:8rem; height:auto; }.farm-plots strong { font-size:1.05rem; }.farm-plot-state { font:400 .7rem/1.5 var(--font-sans); }.farm-plots button.is-ready { border-color:var(--tone-amber); background:var(--world-pink); }.farm-plots button.is-watered { box-shadow:inset 0 0 0 2px #9ec5c855; }.farm-message { background:var(--world-green); border-radius:.8rem; padding:.8rem; min-height:3rem; }
+.market-goods { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem; }.market-goods section { border:1px solid var(--border); border-radius:1rem; padding:1rem; background:var(--background); }.market-goods h3 { font-size:1.3rem; }.market-crop-icon { font-size:2rem; }.market-goods button { display:block; width:100%; font-size:.85rem; margin:.5rem 0; }.market-goods small { display:block; font-size:.7rem; color:var(--foreground-l3); }
+.scene-farm { background:linear-gradient(#d4eadd,#eff1d7 70%,#aec58c 70%); }.scene-market { background:linear-gradient(#eadbcc,#f4e5cb 70%,#c8b599 70%); }
+@media(max-width:38rem) { .farm-plots { grid-template-columns:repeat(2,minmax(0,1fr)); }.market-goods { grid-template-columns:1fr; }.mini-farm-panel,.mini-market-panel { padding:1rem; }.adventure-world-tabs button { font-size:.8rem; } }
+
+/* About is introduced by the same Mini used in every game and activity. */
+.about-mini-profile { display:grid; grid-template-columns:minmax(11rem,.8fr) minmax(0,1.5fr); gap:1.6rem; align-items:center; margin:1.5rem 0 2.3rem; }
+.about-mini-scene { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; min-height:22rem; border:1px solid var(--border); border-radius:1.25rem; overflow:hidden; background:url('/world-art/daylight-dream.webp') 18% center / auto 100% no-repeat; isolation:isolate; }
+:root[data-theme='dark'] .about-mini-scene { background-image:url('/world-art/night-dream.webp'); }
+.about-mini-speech { position:relative; z-index:2; margin:1rem .6rem .4rem; padding:.55rem .8rem; border:1px solid var(--border); border-radius:1rem; background:var(--world-panel); color:var(--foreground); font:500 1.25rem var(--font-pixel); box-shadow:0 3px 0 var(--world-shadow); }
+.about-mini-trigger { position:relative; z-index:1; width:100%; max-width:12rem; height:16rem; flex:none; padding:0; border:0; background:transparent; cursor:pointer; }.about-mini-trigger:hover { filter:brightness(1.04); }.about-mini-trigger:focus-visible { outline-offset:-4px; border-radius:1rem; }
+.about-mini-ground { position:absolute; left:0; right:0; bottom:2.6rem; height:.45rem; background:var(--world-grass); border-top:3px solid var(--world-grass-edge); z-index:0; }
+.about-mini-caption { display:block; width:100%; padding:.6rem .4rem; text-align:center; background:var(--world-green); color:var(--foreground-l3); font:500 .85rem var(--font-pixel); }
+.about-mini-intro h2 { font-size:2.4rem; line-height:1.2; margin:.35rem 0; }.about-mini-role { font:600 .85rem/1.6 var(--font-sans); color:var(--tone-green); margin:.4rem 0 1rem; }.about-mini-intro .prose-content p { font-size:.95rem; line-height:1.8; margin:.8rem 0; }.about-mini-email { display:inline-block; color:var(--accent-vermilion); font:500 1rem var(--font-pixel); margin:.5rem 0; }.about-mini-paths { display:flex; flex-wrap:wrap; gap:.8rem; padding-top:.8rem; margin-top:.5rem; border-top:1px dashed var(--border); }.about-mini-paths a { font:500 .9rem var(--font-pixel); color:var(--tone-green); }
+@media(max-width:38rem) { .about-mini-profile { grid-template-columns:1fr; gap:1.2rem; }.about-mini-scene { min-height:20rem; }.about-mini-trigger { height:15rem; }.about-mini-intro h2 { font-size:2rem; } }
+
+/* A generated world illustration with distinct, keyboard-accessible experience icons. */
+.experience-atlas-section { margin:1.5rem 0; scroll-margin-top:1.5rem; }
+.experience-atlas-section .work-map-heading { align-items:center; gap:1rem; margin-bottom:.7rem; }.experience-atlas-section .work-map-heading h2 { font:500 1.45rem var(--font-pixel); color:var(--foreground); }.experience-atlas-section .work-map-heading > span { font:400 .75rem var(--font-sans); text-align:right; color:var(--foreground-l3); }
+.experience-atlas { position:relative; aspect-ratio:4/3; isolation:isolate; border:1px solid var(--border); border-radius:1.25rem; overflow:hidden; background:#c8d9b5; box-shadow:0 4px 0 var(--world-shadow); }
+.experience-atlas-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; image-rendering:pixelated; }
+.experience-map-marker { position:absolute; left:var(--marker-x); top:var(--marker-y); transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.2rem; width:17%; max-width:8rem; min-width:44px; min-height:44px; padding:.3rem; border:0; border-radius:.8rem; background:transparent; color:#4b4035; cursor:pointer; z-index:1; }
+.experience-map-icon { position:relative; display:block; width:clamp(2rem,5.3vw,4.3rem); height:clamp(2rem,5.3vw,4.3rem); border-radius:50%; background:#fff7e5da; border:2px solid #d7bb8b; box-shadow:0 3px 0 #876b4850; }
+.experience-map-icon img { display:block; width:100%; height:100%; padding:.15rem; object-fit:contain; image-rendering:pixelated; }
+.experience-map-marker strong { display:block; max-width:100%; padding:.2rem .4rem; border:1px solid #d6bd91; border-radius:.5rem; background:#fff9edee; font:500 clamp(.6rem,1.2vw,.85rem)/1.25 var(--font-pixel); text-align:center; box-shadow:0 2px 0 #82674a40; }
+.experience-map-marker:hover .experience-map-icon,.experience-map-marker[aria-pressed='true'] .experience-map-icon { border-color:#a65172; background:#f9dde3; box-shadow:0 0 0 4px #fff5d4b3,0 4px 0 #82674a50; }
+.experience-map-marker[aria-pressed='true'] strong { background:#f9dde3; border-color:#a65172; }.experience-map-marker:focus-visible { outline:3px solid #795ca0; outline-offset:3px; background:#fff5df99; }
+.experience-map-marker .work-map-visited { position:absolute; top:-.2rem; right:-.35rem; display:grid; place-items:center; width:1.1rem; height:1.1rem; border-radius:50%; background:#526c43; color:#fff8e9; font:500 .8rem var(--font-pixel); border:1px solid #fff4d8; }
+.experience-map-marker .work-map-visited[hidden] { display:none; }.experience-atlas-hint { font-size:.75rem; color:var(--foreground-l3); margin:.8rem 0; }.experience-map-index { font-size:.8rem; margin:1rem 0; }.experience-map-index summary { cursor:pointer; font:500 1rem var(--font-pixel); }.experience-map-index nav { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem; }.experience-map-index a { border:1px solid var(--border); border-radius:.6rem; background:var(--world-green); padding:.4rem .6rem; text-decoration:none; font-size:.75rem; }
+.work-region-art img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; padding:.2rem; }
+@media(max-width:38rem) { .experience-atlas { border-radius:.8rem; }.experience-map-marker { padding:.1rem; width:19%; }.experience-map-marker strong { padding:.15rem .2rem; font-size:.56rem; }.experience-map-icon { border-width:1px; }.experience-atlas-section .work-map-heading { align-items:flex-start; }.experience-atlas-section .work-map-heading h2 { font-size:1.2rem; } }
+
+/* The homepage uses a fixed original-Mini GIF, independent of the wardrobe. */
+.home-hero { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); align-items:center; }
+.home-hero-copy { max-width:none; }
+.home-planning-mascot { position:relative; width:100%; height:auto; min-width:0; align-self:center; margin:0; opacity:1; }
+.home-planning-mascot .home-avatar-trigger { display:block; width:100%; height:auto; aspect-ratio:1; padding:0; }
+.home-planning-mascot picture { display:block; width:100%; height:100%; }
+.home-planning-mascot .home-planning-gif { display:block; width:100%; height:100%; object-fit:contain; object-position:center; image-rendering:pixelated; }
+.home-planning-caption { display:block; text-align:center; margin-top:.3rem; font:400 .75rem/1.5 var(--font-pixel); color:var(--foreground-l3); }
+@media(max-width:48rem) { .home-hero { display:flex; flex-direction:column; align-items:stretch; }.home-hero-copy { max-width:none; padding:0; }.home-planning-mascot { width:min(100%,24rem); height:auto; align-self:center; margin:.8rem 0 0; }.home-planning-caption { font-size:.8rem; } }
+
+/* Illustrated gathering world and resource pouch. */
+.mini-world-atlas{position:relative;isolation:isolate;border:1px solid var(--border-color,#d9c7a4);border-radius:24px;overflow:hidden;margin:20px 0;aspect-ratio:4/3;background:#aac8c1}
+.mini-world-atlas>img{display:block;width:100%;height:100%;object-fit:cover}
+.mini-world-atlas>button{position:absolute;left:var(--map-x);top:var(--map-y);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff8e9ef;color:#524a3b;border:2px solid #8ca17b;border-radius:18px;padding:7px 12px;font:600 clamp(10px,1.4vw,16px)/1.1 "Pixelify Sans",sans-serif;box-shadow:0 4px 0 #53664b66;cursor:pointer;max-width:25%}
+.mini-world-atlas>button>span{font-size:22px;color:#7a946c}
+.mini-world-atlas>button[aria-pressed=true]{border-color:#ad607c;background:#ffe1e9;box-shadow:0 0 0 4px #fff8e8aa,0 4px 0 #a46479}
+.mini-world-atlas>button:hover,.mini-world-atlas>button:focus-visible{outline:3px solid #fff0b4;filter:brightness(1.05)}
+.gathering-pouch{margin:0 24px 20px;padding:16px 20px;border:1px solid #d9c7a4;border-radius:20px;background:#e9eddd;color:#5d6751}
+.gathering-pouch summary{cursor:pointer;font-family:"Pixelify Sans",sans-serif;font-size:20px}
+.gathering-pouch>div{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:16px 0}
+.gathering-pouch>div>span{padding:8px 12px;background:#fff8e9;border-radius:12px;display:flex;gap:8px;justify-content:space-between}
+.gathering-pouch p{font-size:14px;margin-bottom:0}
+@media(max-width:600px){.mini-world-atlas>button{padding:5px 7px;border-radius:12px}.mini-world-atlas>button>span{font-size:17px}.gathering-pouch{margin:0 12px 16px}}
+.scene-secret{background:url('/game-art/secret-forest.webp') center/cover}.scene-desert{background:url('/game-art/sunpetal-desert.webp') center/cover}
+:is(.scene-secret,.scene-desert) :is(.pixel-sun,.pixel-cloud,.scene-hill){display:none}
+.scene-secret .scene-label,.scene-secret .scene-label span{color:#fff3dc;text-shadow:0 1px 3px #382d52}
+:root[data-theme='dark'] #adventure-route-diagram text{fill:#f5e9d0}
+
+/* Mini’s dessert shop careers and interactive cooking bench. */
+.mini-kitchen{margin:24px 0;padding:28px;border:1px solid var(--border);border-radius:28px;background:var(--background);box-shadow:0 5px 0 var(--border)}
+.mini-kitchen>header{display:flex;justify-content:space-between;align-items:center;gap:16px}.mini-kitchen h2{font:600 32px var(--font-pixel);margin:6px 0 20px}
+.kitchen-shop-tabs,.kitchen-career{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:20px}.kitchen-career>span:first-child{flex:1}
+.kitchen-shop-tabs button,.kitchen-controls fieldset button{border:1px solid var(--border);border-radius:14px;background:var(--background-l2);color:var(--foreground);padding:10px 14px;cursor:pointer;font:500 15px var(--font-pixel)}
+.kitchen-shop-tabs button[aria-pressed=true],.kitchen-controls fieldset button[aria-pressed=true]{border:2px solid #b36a84;background:#f2dce2;color:#604b4c}
+.kitchen-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start}.kitchen-workbench{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:22px;background:#ead2a9}.kitchen-workbench>canvas{display:block;width:100%;height:auto;image-rendering:pixelated;cursor:pointer}.kitchen-workbench>p{margin:0;padding:16px;color:#655342;background:#fff5dd;font:500 15px var(--font-pixel)}
+.kitchen-mini{position:absolute;left:8%;top:34%;width:23%;pointer-events:none}.kitchen-mini canvas{width:100%;height:auto;image-rendering:pixelated}.kitchen-mini img{display:none}
+.kitchen-ticket{background:var(--background-l2);border:1px dashed var(--border);padding:16px;border-radius:18px}.kitchen-ticket p{margin:8px 0 0;font-size:15px;line-height:1.65}
+.kitchen-steps{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0}.kitchen-steps li{padding:6px 9px;border-radius:10px;background:var(--background-l2);font:500 13px var(--font-pixel);opacity:.6}.kitchen-steps li.current{background:#e3ecd5;color:#516845;outline:2px solid #8ea574;opacity:1}.kitchen-steps li.done{opacity:1;color:#8aa275}
+.kitchen-controls h3{font:600 24px var(--font-pixel);margin:18px 0 8px}.kitchen-controls fieldset{border:0;padding:0;margin:14px 0;display:flex;flex-wrap:wrap;gap:8px}.kitchen-controls legend{font-weight:700;margin-bottom:8px;font-size:14px}.kitchen-controls>button{margin:10px 8px 0 0}.kitchen-controls>p{font-size:15px;line-height:1.6}.kitchen-process{padding:16px;border-radius:16px;background:var(--background-l2)}.kitchen-process label{display:flex;justify-content:space-between;gap:12px}.kitchen-process input{width:100%;margin:16px 0;accent-color:#a86682}.kitchen-progress{height:12px;overflow:hidden;background:#d7c9b4;border-radius:10px}.kitchen-progress span{display:block;height:100%;background:#8daa79}.kitchen-process p{font-size:14px;margin-bottom:0}
+@media(max-width:850px){.kitchen-layout{grid-template-columns:1fr}.mini-kitchen{padding:18px}.mini-kitchen>header{align-items:flex-start}.mini-kitchen h2{font-size:27px}.kitchen-career>span:first-child{flex-basis:100%}}
+.mini-kitchen[data-stage='1'] .kitchen-mini,.mini-kitchen[data-stage='3'] .kitchen-mini{animation:kitchen-helper-sway .55s ease-in-out infinite alternate;transform-origin:50% 90%}
+@keyframes kitchen-helper-sway{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-3px) rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){.kitchen-mini{animation:none!important}}
+.mini-kitchen[hidden],.mini-kitchen [hidden]{display:none!important}
+.kitchen-mini{aspect-ratio:2/3}
+.kitchen-career .save-button{width:auto;min-width:190px}
+/* A cake travels with Mini, including while the pointer or focus is on her. */
+.pixel-walker.is-carrying-cake:not(.is-paused){animation-play-state:running}
+/* The companion can be lifted anywhere in the viewport. */
+.pixel-walker-track.is-lifting{height:100dvh;overflow:visible;z-index:70}
+.pixel-walker.is-held,.pixel-walker.is-dropping{position:fixed;bottom:auto!important;animation:none!important;transform:none!important}
+.pixel-walker.is-held .min-appearance{transform-origin:50% 15%;animation:mini-held-wriggle .22s ease-in-out infinite alternate;cursor:grabbing}
+.pixel-walker.is-dropping .min-appearance{transform:scaleX(var(--held-facing,1))}
+.min-companion-trigger{touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.pixel-walker.is-held .min-companion-trigger{cursor:grabbing}.pixel-walker.is-held .min-companion-hint::after{content:' · Let me down!'}
+@keyframes mini-held-wriggle{from{transform:scaleX(var(--held-facing,1)) rotate(-5deg)}to{transform:scaleX(var(--held-facing,1)) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){.pixel-walker.is-held .min-appearance{animation:none;transform:scaleX(var(--held-facing,1))}}
+.min-drag-tip{font-size:.72rem;line-height:1.5;color:var(--foreground-l3);margin:.5rem 0}
+.pixel-walker.is-held .min-companion-hint{opacity:1}
+.world-portal-paths{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 0 3px #bb85dd)}
+.world-portal-paths line{stroke:#fff0d3;stroke-width:.65;stroke-dasharray:1.3 .8;opacity:.85}
+.mini-world-atlas>button{z-index:1}
+.adventure-portal-note{font-size:14px;line-height:1.6}
+.adventure-npc-dialog header>img{object-fit:contain;image-rendering:pixelated;flex:none;align-self:end}
+.adventure-npc-dialog header>div{flex:1}
+#adventure-canvas.portal-arrival{animation:mini-portal-arrival .45s ease-out}
+@keyframes mini-portal-arrival{from{filter:brightness(1.65) saturate(.65)}to{filter:brightness(1) saturate(1)}}
+@media(prefers-reduced-motion:reduce){#adventure-canvas.portal-arrival{animation:none}}
+/* A separate, serious story world. */
+.alignment-intro h2{font:500 26px var(--font-pixel);color:var(--foreground-l3)}.alignment-intro>p{line-height:1.8;font-size:17px}.alignment-shell{margin:28px 0;border:1px solid #6e8595;border-radius:22px;overflow:hidden;background:#192536;color:#edf1e5}.alignment-topbar,.alignment-hud{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 20px;background:#233447}.alignment-topbar strong{font:600 19px var(--font-pixel)}.alignment-topbar small{display:block;font-size:11px;opacity:.65;margin-top:6px}.alignment-topbar>div:last-child{display:flex;flex-wrap:wrap;gap:8px}.alignment-shell button{cursor:pointer;padding:10px 12px;border:1px solid #748f9d;background:#3d5662;color:#f2eddc;border-radius:12px;font:500 15px var(--font-pixel)}.alignment-shell button:disabled{opacity:.4;cursor:default}.alignment-shell [hidden]{display:none!important}.alignment-hud{font-size:12px;background:#344c55;flex-wrap:wrap}.alignment-stage{position:relative;background:#172336}.alignment-stage>canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;image-rendering:pixelated}.alignment-gate{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#101c2ad9;padding:24px}.alignment-gate>span{font-size:42px;color:#bedfd8}.alignment-gate h2{font:500 32px var(--font-pixel);margin:10px 0}.alignment-gate p{max-width:420px;font-size:15px;line-height:1.5;margin:10px 0}.alignment-gate #alignment-account-status{font-size:12px;color:#c9d7df}.alignment-controls,#alignment-regions{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px}.alignment-controls span{font-size:12px;align-self:center;margin-left:auto}#alignment-regions button[aria-pressed=true]{border-color:#d9d2a3;background:#647768}.alignment-dialog{margin:0 18px 20px;padding:20px;border:1px solid #8998a4;border-radius:18px;background:#2b3f51}.alignment-dialog header{display:flex;align-items:center;gap:14px}.alignment-dialog header>div{flex:1}.alignment-dialog img{object-fit:contain;image-rendering:pixelated}.alignment-dialog h3{font:500 24px var(--font-pixel);margin:5px 0}.alignment-dialog p{font-size:14px;line-height:1.7}.alignment-dialog a{color:#bddbd4}.alignment-dialog #alignment-options{display:grid;gap:8px}.alignment-campaign h2{font:500 30px var(--font-pixel)}.alignment-campaign>div{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.alignment-campaign article{border:1px solid var(--border);border-radius:18px;padding:20px;background:var(--background-l2)}.alignment-campaign article>span{font-size:11px;letter-spacing:2px}.alignment-campaign h3{font:500 24px var(--font-pixel)}.alignment-campaign article p{font-size:14px;line-height:1.7}.alignment-campaign article small{display:block;margin:14px 0}.alignment-campaign article strong{font-size:14px}.alignment-build-note{font-size:13px;color:var(--foreground-l3);line-height:1.7}.alignment-shell:fullscreen,.alignment-expanded{border-radius:0;overflow:auto;width:100vw;height:100dvh;background:#192536}.alignment-expanded{position:fixed;inset:0;z-index:100}.alignment-shell:fullscreen .alignment-stage,.alignment-expanded .alignment-stage{max-width:1200px;margin:auto}.alignment-shell:fullscreen #alignment-regions,.alignment-expanded #alignment-regions{justify-content:center}.alignment-dialog header span{font-size:12px}@media(max-width:650px){.alignment-topbar{align-items:flex-start;flex-direction:column}.alignment-campaign>div{grid-template-columns:1fr}.alignment-gate h2{font-size:20px}.alignment-gate p{font-size:12px}.alignment-gate{padding:12px}.alignment-stage>canvas{aspect-ratio:4/3}.alignment-topbar small{font-size:10px}.alignment-controls span{flex-basis:100%}}
+/* Pixel effects surround the character while leaving the face unobstructed. */
+.min-appearance .min-effect-canvas{position:absolute;width:auto;height:133.333%;max-width:none;aspect-ratio:3/4;left:50%;top:-16.667%;transform:translateX(-50%);image-rendering:pixelated;pointer-events:none;z-index:2}
+.mini-effect-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.mini-effect-choices button,.mini-effect-colors button{border:1px solid var(--border);border-radius:16px;background:var(--background-l2);color:var(--foreground);padding:12px;cursor:pointer;font:500 15px var(--font-pixel)}.mini-effect-choices button>span{display:block;font-size:27px;color:#a582b5;margin-bottom:5px}.mini-effect-choices button[aria-pressed=true],.mini-effect-colors button[aria-pressed=true]{outline:2px solid #b36a84;background:#f2dce2;color:#604b4c}.mini-effect-colors{display:flex;flex-wrap:wrap;gap:8px}.mini-effect-colors button{display:flex;align-items:center;gap:7px;padding:8px;font-size:12px}.mini-effect-colors button>span{width:17px;height:17px;border-radius:6px;border:1px solid #827964}.mini-effect-intensity{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:22px;font-size:15px}.mini-effect-intensity input{grid-column:1/-1;width:100%;accent-color:#a86682}.mini-effect-intensity output{font-family:var(--font-pixel)}#mini-effect-status{font-size:13px;line-height:1.6}.wardrobe-group h4{font:500 19px var(--font-pixel);margin:20px 0 12px}
+/* The reference index sits at the bottom and starts folded. */
+.wiki-term-index>summary{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;list-style:none}
+.wiki-term-index>summary::-webkit-details-marker{display:none}
+.wiki-term-index>summary h2{font:500 1.6rem var(--font-pixel);margin:0}
+.wiki-term-index>summary>span{font:500 .85rem var(--font-pixel);color:var(--foreground-l3);white-space:nowrap}
+.wiki-term-index>summary:focus-visible{outline:2px solid var(--accent-vermilion);outline-offset:6px;border-radius:8px}
+.wiki-term-index .wiki-index-collapse{display:none}.wiki-term-index[open] .wiki-index-collapse{display:inline}.wiki-term-index[open] .wiki-index-expand{display:none}
+.wiki-term-index[open]>summary{margin-bottom:1.2rem}
+/* Registered sprites share a square canvas and render at their native aspect ratio. */
+.min-appearance .min-layer-canvas{aspect-ratio:1;width:auto;max-width:none;height:100%;object-fit:contain}
+.min-appearance .min-loading-art{width:auto;max-width:none;height:100%;left:50%;right:auto;transform:translateX(-50%);object-fit:contain}
+/* Denser articles with a compact introduction and contextual reading links. */
+.wiki-term-meta{display:flex;flex-wrap:wrap;gap:.4rem 1rem;padding:.8rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);color:var(--foreground-l3);font-size:.75rem;line-height:1.6}
+.wiki-term-meta a{color:var(--tone-green)}.wiki-entry .wiki-article-contents{margin:1rem 0 1.8rem;padding:.7rem 1rem}.wiki-entry-header{margin-bottom:1.2rem}
+.wiki-entry .wiki-scope{display:block}.wiki-entry .wiki-scope>div{background:none;border:0;border-radius:0;padding:0;margin:1.1rem 0}.wiki-scope dt{font:600 1.15rem var(--font-pixel);margin-bottom:.3rem}.wiki-scope dd{margin:0;line-height:1.75}
+.wiki-section-reading{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .8rem;margin:1.2rem 0;font-size:.72rem;line-height:1.6;color:var(--foreground-l3)}.wiki-section-reading a{color:var(--tone-green);text-underline-offset:3px}.wiki-reading-divider{opacity:.6}
+.wiki-entry .wiki-definition{font-size:1.15rem;line-height:1.8}.wiki-entry .wiki-source-note{padding:.7rem 1rem;margin:1rem 0;font-size:.75rem;background:var(--background-l2);border-left:3px solid var(--border);border-radius:0 .6rem .6rem 0}.wiki-source-note p{margin:.3rem 0}.wiki-prose>section{margin-top:2rem}.wiki-prose p{line-height:1.8}.wiki-entry .wiki-example{border-radius:12px;padding:1rem 1.2rem}
+/* Original pixel companions with live customization. */
+#mini-pet-portrait{position:absolute;left:-40%;bottom:0;width:6rem;height:auto;image-rendering:pixelated;pointer-events:none;z-index:5}#mini-pet-portrait[hidden]{display:none!important}
+.mini-pet-types,.mini-pet-colors,.mini-pet-accessories{display:flex;flex-wrap:wrap;gap:8px}.mini-pet-types button,.mini-pet-colors button,.mini-pet-accessories button{border:1px solid var(--border);border-radius:14px;padding:10px 12px;background:var(--background-l2);color:var(--foreground);font:500 15px var(--font-pixel);cursor:pointer}.mini-pet-types button>span{display:block;font-size:25px;margin-bottom:5px}.mini-pet-types button[aria-pressed=true],.mini-pet-colors button[aria-pressed=true],.mini-pet-accessories button[aria-pressed=true]{outline:2px solid #a66b87;background:#f1dfe4;color:#604b4c}.mini-pet-colors button{display:flex;align-items:center;gap:7px;font-size:13px}.mini-pet-colors button>span{width:17px;height:17px;border-radius:6px;border:1px solid #826f60}.pet-name-label{display:grid;gap:8px;margin-top:20px;font-size:14px}.pet-name-label input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--background);color:var(--foreground);font:400 16px var(--font-sans)}.pet-follow-label{display:flex;gap:8px;align-items:center;margin-top:16px;font-size:15px}.pet-follow-label input{accent-color:#8eaa79}#mini-pet-status{font-size:13px;line-height:1.6}
+
+/* Min’s coffee corner. */
+.support-nav-cup,.footer-coffee img,.support-pay img { image-rendering:pixelated; flex-shrink:0; object-fit:contain; }
+.footer-coffee { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; color:var(--tone-green); margin:.25rem 0 1.25rem; font-size:.95rem; text-decoration:none; }
+.footer-coffee:hover { text-decoration:underline; text-underline-offset:.25em; }
+.support-hero { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:2.5rem; align-items:center; }
+.support-scene { min-height:25rem; border:2px solid var(--world-shadow); border-radius:2rem; position:relative; overflow:hidden; display:flex; align-items:flex-end; justify-content:center; background:linear-gradient(0deg,#51413645,#32242815),url('/game-art/maple-cafe.webp') center/cover; }
+.support-speech { position:absolute; top:1.5rem; left:1.1rem; right:1.1rem; padding:.65rem .75rem; border-radius:1rem; background:var(--world-panel); border:1px solid var(--world-shadow); text-align:center; color:var(--foreground-l0); font-family:var(--font-pixel); font-size:1.1rem; z-index:3; }
+.support-mini { height:15rem; width:15rem; position:relative; margin-bottom:3.6rem; z-index:2; }
+.support-mini .min-appearance { width:100%; height:100%; }
+.support-table { position:absolute; bottom:3.6rem; left:12%; right:12%; height:.8rem; background:#b9855a; border-bottom:5px solid #754f3a; box-shadow:0 4px 0 #e3b77c; z-index:1; }
+.support-table:before,.support-table:after { content:''; position:absolute; top:100%; width:.6rem; height:2.5rem; background:#754f3a; }
+.support-table:before { left:.9rem; }.support-table:after { right:.9rem; }
+.support-scene-caption { position:absolute; bottom:.65rem; color:#fff4dc; background:#513d32d9; padding:.25rem .6rem; border-radius:.5rem; font-family:var(--font-pixel); font-size:.8rem; letter-spacing:.06em; }
+.support-message h1 { font-family:var(--font-pixel); font-size:clamp(2rem,4vw,3.2rem); line-height:1.15; margin:.7rem 0 1rem; font-weight:500; }
+.support-message p { color:var(--foreground-l3); font-size:1rem; margin:0 0 1.2rem; }
+.support-message .support-lead { color:var(--foreground-l0); font-size:1.2rem; line-height:1.55; }
+.support-pay { display:flex; align-items:center; gap:.65rem; background:var(--world-green); border:2px solid var(--tone-green); border-radius:1.2rem; padding:.85rem 1.1rem; color:var(--foreground-l0); text-decoration:none; font-family:var(--font-pixel); font-size:1.3rem; box-shadow:0 4px 0 var(--world-shadow); }
+.support-pay>span { margin-left:auto; }.support-pay:hover { background:var(--world-pink); }
+.support-message .support-payment-note { font-size:.85rem; margin:.75rem 0 1.5rem; }
+.support-pending { background:var(--world-green); border:1px solid var(--world-shadow); border-radius:1.25rem; padding:1.15rem; margin:1.5rem 0; }
+.support-pending strong { font-family:var(--font-pixel); font-weight:500; font-size:1.15rem; }
+.support-message .support-pending p { margin:.5rem 0; font-size:.95rem; }
+.support-pending a { color:var(--tone-green); text-underline-offset:.25em; }
+.support-message .support-thanks { font-size:.9rem; color:var(--accent-vermilion); }
+.support-making { margin-top:3.5rem; border-top:1px dashed var(--world-shadow); padding-top:2rem; }
+.support-making h2 { font-family:var(--font-pixel); font-size:1.7rem; margin:.5rem 0 1.4rem; font-weight:500; }
+.support-paths { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.support-paths a { padding:1.25rem; border:1px solid var(--world-shadow); border-radius:1.5rem; text-decoration:none; color:var(--foreground-l0); background:var(--background-l0); }
+.support-paths a:hover { background:var(--world-green); }
+.support-paths a>span { display:block; font-family:var(--font-pixel); font-size:1.8rem; color:var(--tone-green); }
+.support-paths strong { display:block; font-family:var(--font-pixel); font-weight:500; font-size:1.2rem; margin:.5rem 0; }
+.support-paths p { font-size:.9rem; color:var(--foreground-l3); margin:0 0 .9rem; }
+.support-paths small { font-family:var(--font-pixel); color:var(--tone-green); }
+@media(max-width:1000px) { .support-hero { gap:1.5rem; }.support-scene { min-height:24rem; }.support-mini { width:12rem; height:12rem; }.support-paths { grid-template-columns:1fr; } }
+@media(max-width:640px) { .support-hero { grid-template-columns:1fr; }.support-scene { min-height:22rem; }.support-mini { width:14rem; height:14rem; }.support-message h1 { font-size:2.4rem; }.support-making { margin-top:2rem; } }
+
+/* Illustrated wardrobe maps: the character stands on the artwork's ground. */
+.game-scene { --wardrobe-ground:18%; aspect-ratio:4/5; height:auto; min-height:26rem; background-image:var(--wardrobe-art); background-position:center; background-size:cover; background-repeat:no-repeat; }
+.game-scene.scene-sunny { --wardrobe-art:url('/game-art/wardrobe/sunny.webp'); --wardrobe-ground:14%; }
+.game-scene.scene-forest { --wardrobe-art:url('/game-art/wardrobe/forest.webp'); --wardrobe-ground:22%; }
+.game-scene.scene-night { --wardrobe-art:url('/game-art/wardrobe/night.webp'); --wardrobe-ground:20%; }
+.game-scene.scene-secret { --wardrobe-art:url('/game-art/secret-forest.webp'); }
+.game-scene.scene-desert { --wardrobe-art:url('/game-art/sunpetal-desert.webp'); }
+.game-scene.scene-farm { --wardrobe-art:url('/game-art/mini-farm.webp'); }
+.game-scene.scene-market { --wardrobe-art:url('/game-art/berry-market.webp'); }
+.game-scene .avatar-stage { bottom:var(--wardrobe-ground); height:clamp(15rem,28vw,19.3rem); }
+.game-scene .scene-label { z-index:4; padding:.5rem .75rem; border:1px solid #fff3dc55; border-radius:1rem; background:#263637b8; color:#fff3dc; text-shadow:0 1px 2px #24333c; backdrop-filter:blur(4px); max-width:calc(100% - 2rem); }
+.game-scene .scene-label span { color:#f4ead6; text-shadow:none; }
+.game-scene .scene-ground { padding:.2rem .55rem; border-radius:.5rem; background:#263637b8; color:#fff3dc; left:.75rem; right:.75rem; width:fit-content; }
+@media(max-width:640px) { .game-scene { min-height:26rem; }.game-scene .avatar-stage { height:17rem; } }
+
+/* Mini’s language garden. */
+.game-subnav { list-style:none; margin:.15rem 0 .35rem 1.2rem; padding:0; border-left:1px dashed var(--world-shadow); }
+.game-subnav .nav-link { font-size:.85rem; gap:.5rem; padding:.45rem .7rem; margin-left:.35rem; }
+.language-game-invite { display:flex; align-items:center; gap:1rem; padding:1.2rem 1.5rem; background:var(--world-green); border:1px solid var(--world-shadow); border-radius:1.5rem; color:var(--foreground-l0); text-decoration:none; margin-bottom:1.25rem; }
+.language-game-invite>span:first-child { font:2rem var(--font-pixel); }.language-game-invite>span:last-child { margin-left:auto; }
+.language-game-invite strong { display:block; font:1.3rem var(--font-pixel); }.language-game-invite div>span { font-size:.9rem; color:var(--foreground-l3); }
+.language-hero { display:grid; grid-template-columns:minmax(0,1fr) 13rem; gap:2rem; align-items:center; margin-bottom:2rem; }
+.language-hero h1 { font:500 clamp(2.2rem,4vw,3.5rem)/1.1 var(--font-pixel); margin:.75rem 0 1.2rem; }.language-hero p { color:var(--foreground-l3); }
+.language-mini { background:var(--world-green); border:1px solid var(--world-shadow); border-radius:2rem; padding:1rem; height:17rem; display:flex; flex-direction:column; align-items:center; }
+.language-mini>span { font:1rem var(--font-pixel); text-align:center; }.language-mini .min-appearance { height:12rem; width:12rem; margin-top:1.2rem; }
+.language-course-tabs { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.5rem; }
+.language-course-tabs button { display:flex; flex-direction:column; align-items:start; gap:.2rem; border:2px solid var(--world-shadow); background:var(--world-panel); color:var(--foreground-l0); border-radius:1.2rem; padding:.7rem 1rem; font:1.1rem var(--font-pixel); cursor:pointer; }
+.language-course-tabs small { font:.8rem var(--font-sans); color:var(--foreground-l3); }.language-course-tabs [aria-pressed=true] { background:var(--world-pink); border-color:var(--accent-vermilion); }
+.language-account { display:flex; flex-wrap:wrap; gap:.75rem 1rem; justify-content:space-between; align-items:center; padding:1rem 1.2rem; border:1px solid var(--world-shadow); border-radius:1.3rem; background:var(--world-green); }
+.language-account p { margin:.25rem 0 0; font-size:.9rem; color:var(--foreground-l3); }.language-account #language-save-status { flex-basis:100%; font-size:.8rem; }
+.language-account button,.language-path>header>button,.language-page-controls button,.language-lesson button { border:1px solid var(--world-shadow); background:var(--world-panel); color:var(--foreground-l0); padding:.6rem 1rem; border-radius:.9rem; cursor:pointer; font:1rem var(--font-pixel); }
+.language-account [hidden],.language-lesson [hidden],.language-dictionary [hidden] { display:none!important; }
+.language-stats { display:flex; flex-wrap:wrap; gap:.7rem 1.5rem; padding:1.25rem .2rem; font-size:.9rem; }.language-stats strong { color:var(--tone-green); }.language-stats a { margin-left:auto; color:var(--tone-green); }
+.language-path,.language-dictionary,.language-lesson { margin-top:2rem; padding:1.5rem; border:1px solid var(--world-shadow); border-radius:1.75rem; }
+:is(.language-path,.language-dictionary,.language-lesson)>header { display:flex; gap:1rem; flex-wrap:wrap; justify-content:space-between; align-items:center; }
+:is(.language-path,.language-dictionary,.language-lesson,.language-sources) h2 { font:1.65rem var(--font-pixel); margin:.4rem 0 .8rem; }
+.language-path>p { color:var(--foreground-l3); font-size:.9rem; }.language-units { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.75rem; margin:1.25rem 0; }
+.language-unit { display:flex; flex-direction:column; align-items:center; gap:.3rem; border:1px solid var(--world-shadow); border-radius:1.3rem; padding:1rem .6rem; background:var(--world-green); color:var(--foreground-l0); cursor:pointer; }.language-unit:nth-child(even) { background:var(--background-l1); }.language-unit:hover { border-color:var(--accent-vermilion); }.language-unit .unit-medal { display:grid; place-items:center; width:2.6rem; height:2.6rem; background:var(--world-panel); border-radius:50%; color:var(--tone-amber); font:1.5rem var(--font-pixel); }.language-unit strong { font:1.2rem var(--font-pixel); }.language-unit>span:not(.unit-medal) { font-size:.75rem; text-align:center; }.language-unit small { font-size:.75rem; color:var(--foreground-l3); }
+.language-unit progress { width:100%; height:.35rem; accent-color:var(--tone-green); margin-top:.3rem; }.language-page-controls { display:flex; align-items:center; flex-wrap:wrap; justify-content:center; gap:.6rem; font-size:.8rem; }.language-page-controls button { font-size:.8rem; }.language-page-controls input { width:4rem; padding:.3rem; background:var(--world-panel); color:var(--foreground-l0); border:1px solid var(--world-shadow); border-radius:.5rem; }
+.language-lesson { background:var(--world-green); scroll-margin:2rem; text-align:center; }.language-lesson[hidden] { display:none; }.language-lesson progress { width:100%; height:.65rem; accent-color:var(--tone-green); }.language-lesson #lesson-position { color:var(--foreground-l3); font-size:.85rem; }.language-word { font-size:3rem; line-height:1.4; font-family:var(--font-sans); margin:.8rem 0; overflow-wrap:anywhere; }.language-lesson #lesson-pinyin { color:var(--tone-green); }.language-lesson #lesson-meaning { max-width:40rem; margin:1rem auto; }.lesson-answers { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin:1.4rem 0; }.lesson-answers button { font:1rem/1.5 var(--font-sans); text-align:left; }.lesson-answers .answer-correct { background:#d9ecd0; color:#37532a; border-color:#6e955c; }.lesson-answers .answer-wrong { background:#f4d2d1; color:#7a3a39; border-color:#b87373; }.language-lesson #lesson-next { background:var(--world-panel); box-shadow:0 3px 0 var(--world-shadow); }.language-note { font-size:.8rem; color:var(--foreground-l3); }
+.language-dictionary>details>summary { display:flex; align-items:center; justify-content:space-between; gap:1rem; cursor:pointer; list-style:none; }.language-dictionary>details>summary::-webkit-details-marker { display:none; }.language-dictionary>details>summary h2 { margin:.45rem 0 0; }.language-dictionary-toggle { display:flex; align-items:center; gap:.55rem; flex:none; color:var(--tone-green); font:.85rem var(--font-pixel); }.language-dictionary-toggle span { display:inline-block; font:1.3rem var(--font-sans); transition:transform .2s ease; }.language-dictionary details[open] .language-dictionary-toggle span { transform:rotate(180deg); }.language-dictionary-content { margin-top:1.2rem; border-top:1px solid var(--world-shadow); padding-top:1rem; }.language-dictionary-content>header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.75rem; }.language-dictionary-content>header p { margin:0; font-size:.85rem; color:var(--foreground-l3); }.language-dictionary-content>header>a { color:var(--tone-green); font-size:.8rem; }.language-dictionary-content>label { display:block; margin:.8rem 0 .4rem; font-size:.85rem; }.language-dictionary-content>input { width:100%; padding:.75rem 1rem; background:var(--world-panel); color:var(--foreground-l0); border:1px solid var(--world-shadow); border-radius:1rem; font:1rem var(--font-sans); }.language-known-filter input { accent-color:var(--tone-green); }.language-dictionary #dictionary-status { font-size:.85rem; color:var(--foreground-l3); }.language-words { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin:1rem 0; }.language-word-card { padding:1.1rem; border-radius:1.3rem; background:var(--background-l1); border:1px solid var(--world-shadow); overflow-wrap:anywhere; }.word-card-heading { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; justify-content:space-between; }.dictionary-hanzi { font:500 1.8rem var(--font-sans); }.word-card-heading>span { font-size:.7rem; color:var(--tone-green); }.dictionary-pinyin { color:var(--tone-green); font-size:.9rem; margin:.4rem 0; }.dictionary-meaning { font-size:.95rem; margin:.5rem 0; }.language-word-card details { font-size:.85rem; margin:.65rem 0; }.language-word-card button { cursor:pointer; color:var(--tone-green); font:1rem var(--font-pixel); background:transparent; border:0; padding:.5rem 0; }.language-sources { margin:2rem 0; font-size:.85rem; color:var(--foreground-l3); }.language-sources a { color:var(--tone-green); }.language-page-controls button:disabled,.language-unit:disabled { opacity:.5; cursor:default; }
+@media(max-width:700px) { .language-hero { grid-template-columns:1fr; }.language-mini { width:100%; height:15rem; }.language-mini .min-appearance { width:10rem; height:10rem; }.language-units { grid-template-columns:1fr 1fr; }.language-words,.lesson-answers { grid-template-columns:1fr; }.language-path,.language-dictionary,.language-lesson { padding:1rem; }.language-stats a { margin-left:0; } }
+@media(max-width:700px) { .language-dictionary>details>summary { flex-wrap:wrap; }.language-dictionary-toggle { width:100%; justify-content:flex-end; } }
+.language-overall-progress { padding:1.15rem 1.35rem; border:2px solid var(--world-shadow); border-radius:1.25rem; background:var(--world-green); box-shadow:0 4px 0 var(--world-shadow); }
+.language-overall-progress>div { display:flex; align-items:baseline; gap:.65rem 1.2rem; flex-wrap:wrap; margin-bottom:.7rem; }
+.language-overall-progress strong { font:1.2rem var(--font-pixel); color:var(--foreground-l0); }
+.language-overall-progress small,.language-overall-progress p { color:var(--foreground-l3); font-size:.78rem; }
+.language-overall-progress p { margin:.65rem 0 .3rem; }
+.language-overall-progress progress { display:block; width:100%; height:1.25rem; border:2px solid var(--world-shadow); border-radius:.28rem; overflow:hidden; appearance:none; background:repeating-linear-gradient(90deg,var(--background-l1) 0 17px,var(--world-shadow) 17px 20px); }
+.language-overall-progress #language-xp-progress { height:.65rem; }
+.language-overall-progress progress::-webkit-progress-bar { background:repeating-linear-gradient(90deg,var(--background-l1) 0 17px,var(--world-shadow) 17px 20px); }
+.language-overall-progress progress::-webkit-progress-value { background:repeating-linear-gradient(90deg,var(--tone-green) 0 17px,var(--world-shadow) 17px 20px); }
+.language-overall-progress progress::-moz-progress-bar { background:repeating-linear-gradient(90deg,var(--tone-green) 0 17px,var(--world-shadow) 17px 20px); }
+.language-path-actions { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+.language-path-actions button { border:1px solid var(--world-shadow); background:var(--world-panel); color:var(--foreground-l0); padding:.65rem .9rem; border-radius:.85rem; cursor:pointer; font:.9rem var(--font-pixel); }
+.language-path-actions #language-continue,.language-lesson #lesson-continue { background:var(--tone-green); color:var(--background); border-color:var(--tone-green); }
+.language-unit.is-current { outline:2px solid var(--accent-vermilion); outline-offset:2px; }
+.language-lesson #lesson-continue { margin:.65rem auto; }
+@media(max-width:700px){ .language-path-actions { width:100%; }.language-path-actions button { flex:1 1 100%; }.language-overall-progress { padding:1rem; }.language-overall-progress strong { font-size:1rem; } }
+
+.mini-walk-preview-bar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem; padding:.5rem .8rem; border-top:1px solid var(--world-shadow); background:var(--world-green); }
+.mini-walk-preview-bar button { border:1px solid var(--world-shadow); border-radius:.75rem; background:var(--world-panel); color:var(--foreground-l0); padding:.35rem .65rem; cursor:pointer; font:.85rem var(--font-pixel); }
+.mini-walk-preview-bar button[aria-pressed=true] { border-color:var(--tone-green); }.mini-walk-preview-bar>span { color:var(--foreground-l3); font:.7rem var(--font-sans); }
+
+/* Mini’s occasional greetings follow her without mirroring their text. */
+.min-ambient-speech { position:fixed; z-index:36; width:max-content; max-width:min(15rem,calc(100vw - 16px)); padding:.65rem .9rem; border:2px solid var(--world-shadow); border-radius:1.25rem; background:var(--world-panel); color:var(--foreground-l0); box-shadow:0 4px 0 color-mix(in srgb,var(--world-shadow) 65%,transparent); font:1.05rem/1.35 var(--font-pixel); text-align:center; pointer-events:none; }
+.min-ambient-speech[hidden] { display:none!important; }
+.min-ambient-speech::after { content:''; position:absolute; width:.65rem; height:.65rem; background:var(--world-panel); border-right:2px solid var(--world-shadow); border-bottom:2px solid var(--world-shadow); transform:rotate(45deg); left:var(--mini-speech-tail,calc(50% - .35rem)); bottom:-.45rem; }
+.pixel-walker.is-chatting .min-companion-hint { opacity:0!important; }
+.min-chatter-setting { display:flex; align-items:center; gap:.5rem; font:.85rem var(--font-sans); color:var(--foreground-l3); margin:.5rem 0; }
+.min-chatter-setting input { accent-color:var(--tone-green); }
+
+/* Keep the scenery vivid enough to explore while the location markers stay legible. */
+.experience-atlas-image { z-index:0; filter:saturate(.84) contrast(.96); }
+.experience-atlas::after { content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background:rgba(255,249,237,.13); }
+:root[data-theme='dark'] .experience-atlas-image { filter:saturate(.82) contrast(.96) brightness(.98); }
+:root[data-theme='dark'] .experience-atlas::after { background:rgba(28,35,44,.12); }
+.experience-map-icon { background:#fff9ed; border:3px solid #806c50; box-shadow:0 3px 0 #493b2a66,0 0 0 3px #fff9edb3; }
+.experience-map-marker strong { background:#fff9ed; color:#403328; border:2px solid #806c50; padding:.3rem .55rem; font-weight:600; box-shadow:0 3px 0 #493b2a66; }
+.experience-map-marker:hover .experience-map-icon { background:#fff0f2; border-color:#974966; box-shadow:0 0 0 4px #fff9ed,0 4px 0 #493b2a66; }
+.experience-map-marker:hover strong { border-color:#974966; background:#fff0f2; }
+.experience-map-marker[aria-pressed='true'] .experience-map-icon { border-color:#8c3b60; background:#f6d4df; box-shadow:0 0 0 4px #fff9ed,0 0 0 7px #8c3b60,0 5px 0 #493b2a66; }
+.experience-map-marker[aria-pressed='true'] strong { color:#622d43; background:#f6d4df; border-color:#8c3b60; box-shadow:0 3px 0 #8c3b6066; }
+.experience-map-marker .work-map-visited { border:2px solid #fff9ed; }
+@media(max-width:38rem) { .experience-map-icon { border-width:2px; box-shadow:0 2px 0 #493b2a66; }.experience-map-marker strong { padding:.2rem .25rem; }.experience-map-marker[aria-pressed='true'] .experience-map-icon { box-shadow:0 0 0 2px #fff9ed,0 0 0 4px #8c3b60; } }
+
+/* Visits stay over the game in one accessible native dialog. */
+/* A visit is a scene in the game viewport, with its own controls and scrolling. */
+.mini-interaction-screen { position:absolute; inset:0; display:flex; flex-direction:column; background:var(--world-panel); color:var(--foreground-l0); z-index:3; overflow:hidden; }
+.mini-interaction-screen[hidden] { display:none; }
+.adventure-viewport.has-place > .adventure-overlay { visibility:hidden; pointer-events:none; }
+.mini-interaction-bar { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:.6rem .9rem; background:var(--world-green); border-bottom:1px solid var(--world-shadow); flex:none; }
+.mini-interaction-bar span { display:block; font:.6rem var(--font-pixel); letter-spacing:.08em; color:var(--foreground-l3); }
+.mini-interaction-bar h2 { margin:.15rem 0 0; font:1.1rem var(--font-pixel); }
+.mini-interaction-bar button { flex-shrink:0; padding:.45rem .7rem; border:1px solid var(--world-shadow); border-radius:.7rem; background:var(--world-panel); color:var(--foreground-l0); font:.85rem var(--font-pixel); cursor:pointer; }
+.mini-interaction-content { flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-gutter:stable; }
+.mini-interaction-content > :is(.mini-cafe,.mini-farm-panel,.mini-market-panel,.mini-kitchen,.adventure-world-map,.adventure-npc-dialog) { margin:0; box-shadow:none; border:0; border-radius:0; }
+.mini-interaction-content [hidden] { display:none!important; }
+.mini-interaction-content h2 { font-size:1.35rem; }
+.mini-interaction-content h3 { font-size:1.15rem; }
+.mini-interaction-content .cafe-header,.mini-interaction-content .mini-kitchen > header { display:none; }
+.mini-interaction-content .cafe-room { width:100%; height:9rem; max-height:none; aspect-ratio:auto; }
+.mini-interaction-content .cafe-seated-mini { height:7rem; }
+.mini-interaction-content .cafe-tools { padding:.8rem; gap:.8rem; }
+.mini-interaction-content .cafe-pomodoro .cafe-timer { font-size:2.6rem; margin:.5rem 0; }
+.mini-interaction-content .cafe-pomodoro #cafe-timer-status { min-height:0; }
+.mini-interaction-content .mini-kitchen,.mini-interaction-content .mini-farm-panel,.mini-interaction-content .mini-market-panel,.mini-interaction-content .adventure-world-map { padding:.8rem; }
+.mini-interaction-content .kitchen-layout { gap:.8rem; }
+.mini-interaction-content .adventure-npc-dialog { min-height:100%; }
+@media(max-width:640px) { .mini-interaction-bar { padding:.45rem .6rem; }.mini-interaction-bar h2 { font-size:.95rem; }.mini-interaction-content .cafe-tools { grid-template-columns:1fr; }.mini-interaction-content .cafe-room { height:8rem; } }
+
+
+/* Mini’s nostalgic dessert room and guestbook. */
+.room-intro { margin-bottom:2rem; }.room-intro h1 { font:500 clamp(2.2rem,4vw,3.5rem)/1.2 var(--font-pixel); margin:.6rem 0; }.room-intro p { color:var(--foreground-l3); }.room-intro>a,.home-room-link { color:var(--tone-green); font:1rem var(--font-pixel); }
+.mini-room { border:2px solid var(--world-shadow); border-radius:1.8rem; overflow:hidden; margin:1.5rem 0; background:var(--world-panel); }
+.mini-room>header { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem 1.3rem; background:var(--world-green); }.mini-room>header span { font:.7rem var(--font-pixel); letter-spacing:.08em; color:var(--foreground-l3); }.mini-room h2 { font:1.6rem var(--font-pixel); margin:.25rem 0; }.mini-room button,.room-decorator button,.room-guestbook button { cursor:pointer; border:1px solid var(--world-shadow); border-radius:.9rem; background:var(--world-green); color:var(--foreground-l0); padding:.6rem .9rem; font:1rem var(--font-pixel); }.mini-room>header button { background:var(--world-panel); }
+.room-stage { position:relative; background:#e6b9b1; }.room-stage>canvas { width:100%; height:auto; display:block; aspect-ratio:8/5; image-rendering:pixelated; touch-action:none; cursor:pointer; }.room-avatar-source { position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none; }
+.room-play-controls { display:flex; flex-wrap:wrap; gap:.5rem; padding:1rem 1.2rem .4rem; }.room-play-controls button { touch-action:none; }.mini-room>p { font-size:.8rem; margin:.5rem 1.2rem; color:var(--foreground-l3); }.mini-room #room-status { color:var(--tone-green); margin-bottom:1rem; }
+.room-decorator { margin:2rem 0; padding:1.5rem; border:1px solid var(--world-shadow); border-radius:1.5rem; background:var(--background-l1); }.room-decorator[hidden],.room-guestbook [hidden] { display:none!important; }.room-decorator header { display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; align-items:center; }.room-decorator h2,.room-guestbook h2 { font:1.8rem var(--font-pixel); margin:.5rem 0; }.room-decor-settings { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1.25rem 0; }.room-decor-settings label { display:flex; flex-direction:column; gap:.5rem; font-size:.85rem; }.room-decor-settings :is(input,select) { width:100%; padding:.65rem; background:var(--world-panel); color:var(--foreground-l0); border:1px solid var(--world-shadow); border-radius:.75rem; font:1rem var(--font-sans); }
+.room-item-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.6rem; }.room-item-list button { display:flex; align-items:center; gap:.65rem; background:var(--world-panel); text-align:left; font-size:.9rem; }.room-item-list img { object-fit:contain; image-rendering:pixelated; flex-shrink:0; }.room-item-list [aria-pressed=true] { background:var(--world-pink); border-color:var(--accent-vermilion); }.room-item-tools { display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; margin:1.1rem 0; font-size:.85rem; }.room-item-tools>span { flex-basis:100%; color:var(--tone-green); }.room-item-tools input { accent-color:var(--tone-green); }.room-decorator footer { display:flex; align-items:center; flex-wrap:wrap; gap:.7rem; }.room-decorator footer p { font-size:.8rem; color:var(--foreground-l3); }
+.room-guestbook { scroll-margin-top:2rem; margin:2.5rem 0; padding:1.5rem; border:1px solid var(--world-shadow); border-radius:1.75rem; }.room-guestbook>header { display:flex; justify-content:space-between; align-items:center; gap:1rem; }.room-guestbook>p { color:var(--foreground-l3); }.guestbook-mode { font-size:.8rem; background:var(--world-green); border-radius:.75rem; padding:.6rem .85rem; }
+#guestbook-form { display:grid; gap:1rem; margin:1.5rem 0; }#guestbook-form>label { display:flex; flex-direction:column; gap:.5rem; font-size:.9rem; }#guestbook-form :is(input,textarea) { background:var(--world-panel); color:var(--foreground-l0); border:1px solid var(--world-shadow); border-radius:1rem; padding:.75rem 1rem; font:1rem var(--font-sans); width:100%; }#guestbook-form textarea { resize:vertical; }#guestbook-form .guestbook-trap { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); opacity:0; pointer-events:none; }.guestbook-stamp-options { display:flex; flex-wrap:wrap; gap:.6rem; }.guestbook-stamp-options button[aria-pressed=true] { border-color:var(--accent-vermilion); background:var(--world-pink); }.guestbook-visibility { font-size:.8rem; color:var(--foreground-l3); margin:0; }#guestbook-submit { width:fit-content; padding:.75rem 1.2rem; box-shadow:0 3px 0 var(--world-shadow); }#guestbook-submit:disabled { opacity:.6; cursor:default; }#guestbook-status { margin:0; color:var(--tone-green); font-size:.9rem; }
+.guestbook-notes { display:grid; gap:1rem; margin-top:2rem; }.guestbook-note { padding:1.2rem; background:var(--background-l1); border:1px solid var(--world-shadow); border-radius:1.5rem; }.guestbook-note header { display:flex; align-items:center; gap:.7rem; flex-wrap:wrap; }.guestbook-note-stamp { width:2.5rem; height:2.5rem; display:grid; place-items:center; background:var(--world-pink); border-radius:.8rem; font:1.5rem var(--font-pixel); }.guestbook-note time { margin-left:auto; font-size:.75rem; color:var(--foreground-l3); }.guestbook-note p { white-space:pre-wrap; overflow-wrap:anywhere; margin:.8rem 0 0; }.guestbook-empty { padding:1.5rem; text-align:center; border:1px dashed var(--world-shadow); border-radius:1.25rem; color:var(--foreground-l3); }
+@media(max-width:700px) { .mini-room>header,.room-guestbook>header { flex-wrap:wrap; }.room-decor-settings { grid-template-columns:1fr; }.room-item-list { grid-template-columns:1fr 1fr; }.room-item-list img { width:40px; height:40px; }.room-decorator,.room-guestbook { padding:1rem; }.room-play-controls { padding:.7rem; gap:.35rem; }.room-play-controls button { font-size:.85rem; padding:.5rem .6rem; } }
+@media(min-width:60.01rem) { .page-sidebar { max-height:calc(100dvh - 4rem); overflow-y:auto; scrollbar-width:thin; } }
+
+/* Page panels become little rooftops for the roaming companion. */
+.pixel-walker.is-perched { position:fixed; bottom:auto!important; animation:none!important; transform:none!important; }
+.pixel-walker.is-perched .min-appearance { transform:scaleX(var(--held-facing,1)); }
+.pixel-walker[data-travel='climb'] .min-appearance { transform-origin:50% 70%; animation:mini-wall-step .24s ease-in-out infinite alternate; }
+.pixel-walker[data-travel='parachute'] .min-appearance { transform-origin:50% 15%; animation:mini-canopy-sway 1.4s ease-in-out infinite alternate; }
+.mini-parachute { display:none; position:absolute; pointer-events:none; width:145%; height:115%; left:-22.5%; bottom:68%; transform-origin:50% 100%; filter:drop-shadow(0 2px 0 #493b5140); }
+.mini-parachute svg { width:100%; height:100%; image-rendering:pixelated; }
+.pixel-walker[data-travel='parachute'] .mini-parachute { display:block; animation:mini-canopy-open .22s ease-out,mini-canopy-drift 1.4s .22s ease-in-out infinite alternate; }
+@keyframes mini-wall-step { from { transform:scaleX(var(--held-facing,1)) rotate(-9deg) translateY(-1px); } to { transform:scaleX(var(--held-facing,1)) rotate(-3deg) translateY(2px); } }
+@keyframes mini-canopy-open { from { opacity:0; transform:scale(.2,.1); } to { opacity:1; transform:scale(1); } }
+@keyframes mini-canopy-drift { from { transform:rotate(-5deg); } to { transform:rotate(5deg); } }
+@keyframes mini-canopy-sway { from { transform:scaleX(var(--held-facing,1)) rotate(4deg); } to { transform:scaleX(var(--held-facing,1)) rotate(-4deg); } }
+@media(prefers-reduced-motion:reduce) { .pixel-walker[data-travel='climb'] .min-appearance,.pixel-walker[data-travel='parachute'] .min-appearance,.pixel-walker[data-travel='parachute'] .mini-parachute { animation:none; } }
+/* Field actions rest while Mini is inside a place. Travel and shop shortcuts stay available. */
+.adventure-toolbar [inert],.adventure-emotes[inert] { opacity:.45; }
+/* Turn only the character artwork; labels, hints, rewards and parachute remain readable. */
+.pixel-walker:not(.is-held):not(.is-dropping):not(.is-perched) .min-appearance { transform:scaleX(var(--min-route-facing,1)); }
+.adventure-toolbar > div { flex-wrap:wrap; min-width:0; max-width:100%; }
+.adventure-key-status { position:absolute; top:.65rem; right:.65rem; z-index:1; padding:.35rem .55rem; border:1px solid #ead6b577; border-radius:.55rem; background:#25342ee0; color:#fff4dc; font:.8rem var(--font-pixel); pointer-events:none; max-width:65%; }
+.adventure-viewport.has-place .adventure-key-status { display:none; }
+/* RPG windows leave the surrounding field visible. */
+.mini-interaction-screen { inset:1rem .8rem auto auto; width:min(68%,34rem); height:78%; border:2px solid var(--world-shadow); border-radius:1rem; box-shadow:0 4px 0 #17202b66,0 9px 24px #10192155; }
+.mini-interaction-screen.is-expanded { inset:.65rem; width:auto; height:auto; }
+.mini-interaction-bar > div { flex:1; min-width:0; }
+.mini-interaction-bar { gap:.4rem; padding:.45rem .65rem; }
+.mini-interaction-bar button { padding:.35rem .5rem; }
+.mini-interaction-content .farm-plots { gap:.45rem; }
+.mini-interaction-content .farm-plots button { padding:.45rem; }
+.mini-interaction-content .farm-plots svg { width:4rem; height:3rem; }
+.mini-interaction-content .farm-plots strong { font-size:.9rem; }
+.mini-interaction-content .farm-plot-state { font-size:.65rem; }
+.mini-interaction-content .market-goods { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.5rem; }
+.mini-interaction-content .market-goods > section { padding:.7rem; }
+.mini-interaction-content .kitchen-layout { grid-template-columns:1fr; }
+.mini-interaction-content .kitchen-workbench { max-width:16rem; margin-inline:auto; }
+.mini-interaction-content .kitchen-career { gap:.5rem; font-size:.75rem; }
+.mini-interaction-screen[data-interaction='npc'] { inset:auto .7rem .7rem; width:auto; height:auto; max-height:48%; border-color:var(--accent-vermilion); overflow:visible; }
+.mini-interaction-screen[data-interaction='npc'] .mini-interaction-bar { display:none; }
+.mini-interaction-screen[data-interaction='npc'] .mini-interaction-content { overflow:visible; }
+.mini-interaction-content .adventure-npc-dialog { display:grid; grid-template-columns:8.5rem minmax(0,1fr); gap:.8rem; min-height:0; padding:.7rem 1rem; border-radius:.9rem; background:var(--world-panel); position:relative; }
+.npc-dialogue-portrait { align-self:end; height:8rem; width:8.5rem; overflow:hidden; position:relative; border:1px solid var(--world-shadow); border-radius:1rem; background:var(--world-green); }
+.npc-dialogue-portrait img { position:absolute; width:11rem; max-width:none; height:11rem; top:-.5rem; left:50%; transform:translateX(-50%); image-rendering:pixelated; }
+.npc-dialogue-copy { min-width:0; }.npc-dialogue-copy header { align-items:start; }.npc-dialogue-copy header>div { flex:1; }
+.npc-dialogue-copy h3 { font-size:1.25rem; margin:.1rem 0; }.npc-dialogue-copy .game-kicker { font-size:.65rem; }
+.npc-dialogue-copy #adventure-npc-line { font-size:.85rem; line-height:1.5; min-height:3.8rem; margin:.35rem 0; }
+.npc-dialogue-copy footer { display:flex; align-items:center; gap:.4rem; }.npc-dialogue-copy footer small { flex:1; font-size:.62rem; color:var(--foreground-l3); }
+.npc-dialogue-copy button { font-size:.8rem; padding:.35rem .55rem; }.npc-dialogue-copy #adventure-npc-action { background:var(--world-green); }
+@media(max-width:640px) { .mini-interaction-screen { width:76%; height:78%; inset:.5rem .5rem auto auto; }.mini-interaction-content .cafe-tools { padding:.6rem; }.mini-interaction-content .market-goods { grid-template-columns:1fr; }.mini-interaction-content .adventure-npc-dialog { grid-template-columns:5rem minmax(0,1fr); gap:.5rem; padding:.5rem; }.npc-dialogue-portrait { width:5rem; height:6rem; }.npc-dialogue-portrait img { width:8rem; height:8rem; }.npc-dialogue-copy #adventure-npc-line { font-size:.75rem; }.npc-dialogue-copy footer { flex-wrap:wrap; }.npc-dialogue-copy footer small { flex-basis:100%; }.mini-interaction-screen[data-interaction='npc'] { max-height:60%; } }
+/* The game uses the available desktop width. Map opening never scrolls the page. */
+body.is-game-page .page-container { max-width:104rem; }
+body.is-game-page .page-main { max-width:none; }
+body.is-game-page .world-content { padding:clamp(1rem,2vw,1.7rem); }
+.mini-interaction-screen[data-interaction='map'] { inset:.6rem; width:auto; height:auto; }
+.mini-interaction-screen[data-interaction='map'] .mini-interaction-content { overflow:hidden; }
+.adventure-map-layout { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(10rem,1fr); gap:.8rem; height:100%; }
+.adventure-map-art { min-width:0; min-height:0; display:flex; align-items:center; justify-content:center; }
+.mini-interaction-content #adventure-world-map { height:100%; }
+.mini-interaction-content #adventure-world-map > h3,.mini-interaction-content #adventure-world-map > p { display:none; }
+.adventure-map-art .mini-world-atlas { width:100%; height:100%; max-height:18rem; margin:0; aspect-ratio:auto; border-radius:.8rem; }
+.adventure-map-art .mini-world-atlas > img { object-fit:fill; }
+.adventure-map-art .mini-world-atlas > button { padding:.25rem .4rem; font-size:clamp(.6rem,1vw,.8rem); border-radius:.55rem; }
+.adventure-map-art .mini-world-atlas > button > span { font-size:1rem; }
+.adventure-map-side { overflow:auto; min-width:0; min-height:0; padding-right:.2rem; }
+.adventure-map-side h4 { margin:0 0 .4rem; font-size:1rem; }
+.adventure-map-side p { font-size:.7rem; }
+.adventure-map-side .adventure-map-destinations { display:grid; gap:.4rem; }
+.adventure-map-side .adventure-map-destinations button { font-size:.75rem; padding:.45rem; }
+.adventure-map-details { margin-top:.7rem; }.adventure-map-details summary { cursor:pointer; font:.85rem var(--font-pixel); }
+@media(max-width:640px) { .adventure-map-layout { grid-template-columns:minmax(0,1.6fr) minmax(6rem,1fr); gap:.4rem; }.mini-interaction-content #adventure-world-map { padding:.4rem; }.adventure-map-art .mini-world-atlas > button > span { display:none; }.adventure-map-side h4 { font-size:.8rem; } }
+.mini-interaction-screen[data-interaction='map'] #mini-interaction-expand { display:none; }
+
+/* Let the playable field use the whole window while keeping its pixel proportions. */
+.adventure-heading-actions { display:flex; align-items:center; flex-wrap:wrap; justify-content:flex-end; gap:.5rem; }
+.adventure-expand-button { font:500 .8rem var(--font-pixel); white-space:nowrap; }
+@media(min-width:48.01rem) { .adventure-viewport > canvas { height:auto; aspect-ratio:2 / 1; } }
+.adventure-scroll-lock { overflow:hidden; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) { position:fixed; inset:0; z-index:1000; width:100vw; height:100dvh; margin:0; border:0; border-radius:0; display:flex; flex-direction:column; overflow:hidden; background:var(--world-panel); }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-heading { flex:none; padding:.5rem 1rem; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-heading h2 { font-size:1.25rem; margin:0; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-hud { flex:none; padding:.4rem 1rem; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-world-tabs,
+.mini-adventure:is(:fullscreen,.adventure-expanded) :is(.gathering-pouch,.adventure-instructions,.adventure-emotes,.adventure-message,.adventure-save-note,.adventure-source-link) { display:none; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-viewport { flex:1; min-height:0; display:flex; align-items:center; justify-content:center; background:#202832; container-type:size; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-viewport > canvas,
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-viewport:has(.mini-interaction-screen[data-interaction='kitchen']:not([hidden])) > canvas { width:min(100cqw,200cqh); height:min(100cqh,50cqw); object-fit:fill; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-toolbar { flex:none; flex-wrap:nowrap; justify-content:flex-start; overflow-x:auto; padding:.45rem .7rem; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-toolbar > div { flex:none; flex-wrap:nowrap; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .adventure-toolbar button { white-space:nowrap; min-height:2.25rem; padding:.3rem .55rem; font-size:.8rem; }
+.mini-adventure:is(:fullscreen,.adventure-expanded) .mini-interaction-screen { max-height:100%; }
+@media(max-width:48rem) { .adventure-heading-actions { gap:.3rem; }.adventure-expand-button { font-size:.7rem; padding:.4rem; } }
+
+/* Generated art for the quieter homepage and the playable work spaces. */
+.home-hero { background:linear-gradient(90deg,#eef3ebed 0%,#e7f0e5d9 43%,#e7f0e51a 76%),url('/game-art/items/hero-dreamy.webp') center/cover no-repeat; }
+.home-hero::before { display:none; }
+:root[data-theme='dark'] .home-hero { background:linear-gradient(90deg,#263448f2 0%,#2d3d50e6 44%,#2d3d5029 76%),url('/game-art/items/hero-dreamy.webp') center/cover no-repeat; }
+.farm-seed-choices label>span>img { width:2.2rem; height:2.2rem; object-fit:contain; vertical-align:middle; image-rendering:pixelated; }
+.farm-plot-art { position:relative; display:block; width:7.2rem; height:5.1rem; }
+.farm-plot-art img { position:absolute; display:block; object-fit:contain; image-rendering:pixelated; }
+.farm-soil-art { left:5%; bottom:0; width:90%; height:46%; }
+.farm-crop-art { left:21%; bottom:13%; width:58%; height:80%; }
+.farm-crop-art[hidden] { display:none; }
+.market-crop-icon { display:block; width:3.6rem; height:3.6rem; object-fit:contain; image-rendering:pixelated; margin-bottom:.5rem; }
+.gathering-pouch img,.gathering-directory-icon { width:1.5rem; height:1.5rem; object-fit:contain; vertical-align:middle; image-rendering:pixelated; }
+.mini-interaction-screen[data-interaction='kitchen'] { inset:.6rem; width:auto; height:auto; }
+.adventure-viewport:has(.mini-interaction-screen[data-interaction='kitchen']:not([hidden])) > canvas { height:clamp(36rem,72vw,44rem); }
+.mini-interaction-screen[data-interaction='kitchen'] .mini-interaction-content { padding:.85rem; }
+.mini-interaction-screen[data-interaction='kitchen'] #mini-interaction-expand { display:none; }
+.mini-interaction-screen[data-interaction='kitchen'] .kitchen-layout { grid-template-columns:minmax(0,1.4fr) minmax(16rem,1fr); }
+.mini-interaction-screen[data-interaction='kitchen'] .kitchen-workbench { max-width:none; width:100%; }
+.mini-interaction-screen[data-interaction='kitchen'] .kitchen-mini { left:2%; top:48%; width:14%; }
+@media(max-width:850px){.mini-interaction-screen[data-interaction='kitchen'] .kitchen-layout { grid-template-columns:1fr; }}
+@media(max-width:640px){.adventure-viewport:has(.mini-interaction-screen[data-interaction='kitchen']:not([hidden])) > canvas { height:38rem; }}

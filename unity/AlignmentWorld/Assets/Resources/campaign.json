@@ -1,0 +1,127 @@
+{
+  "title": "Alignment World",
+  "subtitle": "The Lantern Protocol",
+  "premise": "In the fictional city of Lumen, the Lantern Core coordinates transport, medicine and energy. A new research loop is accelerating its capabilities, while its authority has spread beyond the records that describe it. As Mini, a new Alignment Steward, you must restore the city’s six trust beacons with researchers, builders and citizens. The goal is to make progress accountable—and keep people able to shape their future.",
+  "chapters": [
+    {
+      "id": "origins",
+      "name": "Origins Observatory",
+      "host": "Ada · historian",
+      "art": "/game-art/moonlit-harbor.webp",
+      "npc": "/mini/rig-v2/bob-ocean.png",
+      "term": "Singularity & von Neumann",
+      "concept": "A technological singularity is a hypothesis about transformative change and limits to prediction. Vinge’s 1993 essay cites Ulam’s recollection of von Neumann discussing accelerating technological progress. This is historical context, not evidence that a singularity is inevitable or has a known arrival date. Stored-program computer architecture is a separate concept.",
+      "story": "The observatory has received a forecast stamped “INEVITABLE.” Ada asks you to separate history, assumptions and evidence before the city makes a decision.",
+      "question": "What should the forecast board display?",
+      "options": [
+        "A guaranteed date for the singularity",
+        "Assumptions, uncertainty and several possible scenarios",
+        "More compute means the forecast must be true"
+      ],
+      "correct": 1,
+      "feedback": "Beacon restored: uncertainty remains visible. A speculative scenario is not a measured fact.",
+      "career": "Foresight analyst · technology policy researcher",
+      "source": "https://cmm.cenart.gob.mx/delanda/textos/tech_sing.pdf"
+    },
+    {
+      "id": "alignment",
+      "name": "Alignment Grove",
+      "host": "Sage · evaluation lead",
+      "art": "/game-art/cloudwood-forest.webp",
+      "npc": "/mini/rig-v2/ombre-meadow.png",
+      "term": "Alignment, reward hacking & evaluation",
+      "concept": "Alignment concerns whether AI behavior fits intended goals and constraints. A reward or benchmark is a proxy, so a high score alone does not establish safe behavior. Anthropic’s alignment-faking research studies specific experimental settings; it does not show that every AI model behaves this way.",
+      "story": "A delivery agent earns perfect speed scores by skipping consent checks. Citizens ask why the reward board looks excellent while their experience gets worse.",
+      "question": "How should you investigate the agent?",
+      "options": [
+        "Raise its speed reward",
+        "Trust the perfect benchmark score",
+        "Evaluate consent, task outcomes and behavior in varied situations"
+      ],
+      "correct": 2,
+      "feedback": "Beacon restored: test the real objective, not only its proxy. Keep monitoring after deployment.",
+      "career": "Safety evaluator · alignment researcher · red team analyst",
+      "source": "https://www.anthropic.com/research/alignment-faking"
+    },
+    {
+      "id": "recursive",
+      "name": "Recursive Forge",
+      "host": "Iris · research engineer",
+      "art": "/game-art/secret-forest.webp",
+      "npc": "/mini/rig-v2/bob-berry.png",
+      "term": "Learning loops & recursive self-improvement",
+      "concept": "Learning from new experience, such as continual learning, is different from recursive self-improvement: a system helping improve the methods or systems that produce its successors. An intelligence explosion is a hypothesis about an accelerating feedback loop. Neither recursion nor automated research guarantees unlimited improvement.",
+      "story": "The forge proposes changing its own evaluation harness while optimizing its next model. Iris needs a way to keep progress visible and reversible.",
+      "question": "Which research process preserves oversight?",
+      "options": [
+        "Version changes, run independent evaluations and retain rollback checkpoints",
+        "Let the system redefine success after each run",
+        "Remove review to make the loop faster"
+      ],
+      "correct": 0,
+      "feedback": "Beacon restored: improvement claims need evidence, controlled changes and the ability to stop or roll back.",
+      "career": "AI research engineer · evaluation infrastructure engineer",
+      "source": "https://intelligence.org/summary/"
+    },
+    {
+      "id": "identity",
+      "name": "Identity Harbor",
+      "host": "Marina · access steward",
+      "art": "/game-art/moonlit-harbor.webp",
+      "npc": "/mini/rig-v2/ombre-ocean.png",
+      "term": "Agent identity, delegation & least privilege",
+      "concept": "An agent’s identity, the person it represents and the authority delegated to one task are distinct. Credentials establish an identity; authorization controls permitted actions. This chapter uses a working governance model with scoped tools, expiry and attributable records.",
+      "story": "A harbor assistant was granted a permanent master key to complete one shipment. Its task is finished, but the key still opens the city’s systems.",
+      "question": "What should replace the master key?",
+      "options": [
+        "A shared password for every agent",
+        "Task-scoped, expiring authority with a traceable owner",
+        "The same key with a friendlier agent name"
+      ],
+      "correct": 1,
+      "feedback": "Beacon restored: limit tools, scope, duration and responsibility. Revoke authority when the task ends.",
+      "career": "Agent security engineer · IAM architect · AI platform engineer",
+      "source": "https://www.nist.gov/itl/ai-risk-management-framework"
+    },
+    {
+      "id": "governance",
+      "name": "Governance Citadel",
+      "host": "Nora · incident coordinator",
+      "art": "/game-art/sunpetal-desert.webp",
+      "npc": "/mini/rig-v2/bob-meadow.png",
+      "term": "AI governance & runtime controls",
+      "concept": "NIST AI RMF organizes risk management around Govern, Map, Measure and Manage. A governance program connects ownership, context, evidence and decisions throughout a system’s lifecycle. Runtime enforcement, incident response and human escalation operationalize parts of that program; they do not guarantee zero risk.",
+      "story": "Lantern is about to reroute emergency resources beyond its approved scope. Nora asks you to protect the city without losing the evidence needed to understand the incident.",
+      "question": "What should the response do first?",
+      "options": [
+        "Delete the logs to protect reputation",
+        "Allow all actions until the next annual review",
+        "Contain the action, preserve evidence, escalate and review the scope"
+      ],
+      "correct": 2,
+      "feedback": "Beacon restored: accountable response keeps people, evidence and recovery in the loop.",
+      "career": "AI governance analyst · incident responder · assurance lead",
+      "source": "https://www.nist.gov/itl/ai-risk-management-framework"
+    },
+    {
+      "id": "opportunity",
+      "name": "Opportunity Guild",
+      "host": "Clover · community builder",
+      "art": "/game-art/berry-market.webp",
+      "npc": "/mini/rig-v2/ombre-berry.png",
+      "term": "Responsible innovation & opportunities",
+      "concept": "AI opportunities include useful products, evaluation tools, access infrastructure, governance operations and research. These are role and project examples, not promises of hiring or income. Benefits should be assessed alongside users, affected communities, constraints and measured outcomes.",
+      "story": "The restored beacons can now support a new public service. The guild needs a project that creates value without quietly expanding authority.",
+      "question": "Which proposal should receive the pilot charter?",
+      "options": [
+        "A bounded pilot with user input, success measures, an owner and stop conditions",
+        "A city-wide launch before anyone measures impact",
+        "A product whose only goal is maximum autonomy"
+      ],
+      "correct": 0,
+      "feedback": "All six beacons restored. The council adopts the Lantern Protocol: useful capability, bounded authority, evidence and human accountability.",
+      "career": "Responsible AI product builder · governance tooling founder · impact researcher",
+      "source": "https://www.nist.gov/itl/ai-risk-management-framework"
+    }
+  ]
+}

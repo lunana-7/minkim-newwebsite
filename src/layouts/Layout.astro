@@ -7,7 +7,7 @@ import '../world-theme.css';
 interface Props {
   title?: string;
   description?: string;
-  activeNav?: 'home' | 'blog' | 'wiki' | 'work' | 'about' | 'game';
+  activeNav?: 'home' | 'blog' | 'wiki' | 'projects' | 'work' | 'about' | 'game' | 'alignment-world' | 'support' | 'language' | 'room';
   currentPostTitle?: string;
   headings?: { depth: number; slug: string; text: string }[];
 }
@@ -19,8 +19,9 @@ const {
   currentPostTitle,
   headings = []
 } = Astro.props;
-const worldPlaces = { home: 'Maple Meadow', blog: 'Blog', wiki: 'Wiki', work: 'Project archive', about: 'Min’s cottage', game: 'Mini’s meadow' };
+const worldPlaces = { home: 'Maple Meadow', blog: 'Blog', wiki: 'Wiki', projects:'Work world', work: 'Project archive', about: 'Min’s cottage', game: 'Mini’s meadow', 'alignment-world': 'Alignment World', support: 'Coffee corner', language:'Language World', room:'Mini’s Room' };
 const worldPlace = worldPlaces[activeNav];
+const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.origin).href;
 ---
 
 <!DOCTYPE html>
@@ -30,6 +31,19 @@ const worldPlace = worldPlaces[activeNav];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Min’s World">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={socialImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Min’s World — AI governance, projects and pixel adventures, with Mini and a bunny in a dreamy village.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={socialImage}>
+  <meta name="twitter:image:alt" content="Min’s World pixel game title screen.">
   <link rel="icon" href="/favicon.ico?v=unity-1" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-mini-32.png?v=unity-1">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-mini-16.png?v=unity-1">
@@ -50,7 +64,7 @@ const worldPlace = worldPlaces[activeNav];
     })();
   </script>
 </head>
-<body>
+<body class:list={{'is-game-page':activeNav==='game'}}>
   <div class="world-scenery" aria-hidden="true"><span class="world-landscape world-landscape-day"></span><span class="world-landscape world-landscape-night"></span><span class="world-ground"></span></div>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class:list={["page-container", { "has-toc": headings.length > 0 }]}>
@@ -69,7 +83,7 @@ const worldPlace = worldPlaces[activeNav];
         <p class="world-nav-caption">CHOOSE A PATH</p>
         <nav aria-label="Main Navigation">
           <ul class="nav-links">
-            <li><a href="/" aria-current={activeNav === 'home' ? 'page' : undefined} class={`nav-link ${activeNav === 'home' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⌂</span>Home</a></li>
+            <li><a href="/" aria-current={activeNav === 'home' ? 'page' : undefined} class={`nav-link ${['home','room'].includes(activeNav) ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⌂</span>Home</a><ul class="game-subnav"><li><a href="/room" class:list={['nav-link',{active:activeNav==='room'}]} aria-current={activeNav==='room'?'page':undefined}><span aria-hidden="true">♡</span>Mini’s Room</a></li></ul></li>
             <li>
               <a href="/blog" aria-current={activeNav === 'blog' ? 'page' : undefined} class={`nav-link ${activeNav === 'blog' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">▤</span>Blog</a>
               {currentPostTitle && (
@@ -85,7 +99,8 @@ const worldPlace = worldPlaces[activeNav];
             <li><a href="/wiki" aria-current={activeNav === 'wiki' ? 'page' : undefined} class={`nav-link ${activeNav === 'wiki' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">▥</span>Wiki</a></li>
             <li><a href="/projects" aria-current={activeNav === 'projects' ? 'page' : undefined} class={`nav-link ${activeNav === 'projects' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⚑</span>Projects</a></li>
             <li><a href="/about" aria-current={activeNav === 'about' ? 'page' : undefined} class={`nav-link ${activeNav === 'about' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">♡</span>About</a></li>
-            <li><a href="/game" aria-current={activeNav === 'game' ? 'page' : undefined} class={`nav-link ${activeNav === 'game' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">✦</span>Game</a></li>
+            <li><a href="/game" aria-current={activeNav === 'game' ? 'page' : undefined} class={`nav-link ${['game','language','alignment-world'].includes(activeNav) ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">✦</span>Game</a><ul class="game-subnav"><li><a href="/language" class:list={['nav-link',{active:activeNav==='language'}]} aria-current={activeNav==='language'?'page':undefined}><span aria-hidden="true">▧</span>Language World</a></li><li><a href="/alignment-world" aria-current={activeNav === 'alignment-world' ? 'page' : undefined} class={`nav-link ${activeNav === 'alignment-world' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">◈</span>Alignment World</a></li></ul></li>
+            <li><a href="/support" aria-current={activeNav === 'support' ? 'page' : undefined} class={`nav-link ${activeNav === 'support' ? 'active' : ''}`}><img class="support-nav-cup" src="/mini/thumbnails/prop-coffee.png" width="24" height="24" alt=""/>Support</a></li>
           </ul>
         </nav>
       </div>
@@ -129,8 +144,9 @@ const worldPlace = worldPlaces[activeNav];
       
       <footer class="page-footer pixel-footer">
         <div class="footer-note">© {new Date().getFullYear()} Min Kim · made with a little sugar</div>
+        <a class="footer-coffee" href="/support"><img src="/mini/thumbnails/prop-coffee.png" width="28" height="28" alt=""/>Found this helpful? Buy me a coffee ♡</a>
         <div class="sweet-links" aria-label="Pixel treats">
-          <a class="sweet-link" href="mailto:aqeoon@gmail.com" aria-label="Send Min an email"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#fff0cc" d="M5 1h6v1h2v2h1v3h-2v2h-1v1h-1v1H6v-1H5v-1H4V8H2V4h1V2h2z"/><path fill="#ed9daf" d="M4 8h8v2h-1v1H5v-1H4z"/><path fill="#b95762" d="M6 11h4v1h-1v2H7v-2H6z"/><path fill="#8b3e4c" d="M7 13h2v1H7z"/><path fill="#9a4d4b" d="M7 1h2v2H7z"/></svg></span><small>say hi</small></a>
+          <a class="sweet-link" href="/room#guestbook" aria-label="Sign Min’s guestbook"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#fff0cc" d="M5 1h6v1h2v2h1v3h-2v2h-1v1h-1v1H6v-1H5v-1H4V8H2V4h1V2h2z"/><path fill="#ed9daf" d="M4 8h8v2h-1v1H5v-1H4z"/><path fill="#b95762" d="M6 11h4v1h-1v2H7v-2H6z"/><path fill="#8b3e4c" d="M7 13h2v1H7z"/><path fill="#9a4d4b" d="M7 1h2v2H7z"/></svg></span><small>guestbook</small></a>
           <a class="sweet-link" href="/about" aria-label="Read about Min"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#d94c53" d="M7 3h2v1h3v1h1v2h1v3h-1v2h-2v1H6v-1H4v-2H3V7h1V5h2V4h1z"/><path fill="#62a866" d="M7 1h2v2h2v1h-2v1H7V4H5V3h2z"/><path fill="#ffcfaa" d="M6 7h1v1H6zm4 2h1v1h-1z"/></svg></span><small>about</small></a>
           <a class="sweet-link" href="/projects" aria-label="Browse projects"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#fff1d6" d="M5 1h6v1h2v2h1v2h-1v2h-1v1H4V8H3V6H2V4h1V2h2z"/><path fill="#edbb79" d="M4 9h8v2h-1v1H5v-1H4z"/><path fill="#a96b4d" d="M6 12h4v1H6zm1 1h2v1H7z"/><path fill="#fff" d="M6 3h1v1H6zm3 2h1v1H9z"/></svg></span><small>projects</small></a>
           <a class="sweet-link" href="/blog" aria-label="Read the blog"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#f4cda1" d="M3 4h10v1h1v8H2V5h1z"/><path fill="#fff0d8" d="M4 2h8v2H4z"/><path fill="#fff6e7" d="M4 6h8v1H4zm1 2h6v1H5z"/><path fill="#d78384" d="M7 1h2v2H7z"/><path fill="#986548" d="M4 12h2v1H4zm6 0h2v1h-2z"/></svg></span><small>Blog</small></a>

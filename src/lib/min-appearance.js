@@ -1,8 +1,10 @@
+import { drawMiniEffect } from './min-effects.js';
 import { getProfile, subscribeProfile } from './min-profile.js';
-import { getEmote, drawEmoteProp } from './min-emotes.js';
-import { MINI_SIZE, miniLayerPaths } from './min-assets.js';
+import { getEmote, drawEmoteProp, emoteAllowsMovement } from './min-emotes.js';
+import { MINI_SIZE, miniLayerPaths, miniWalkPaths } from './min-assets.js';
 const decoded = new Map();
 let originalWalk = null;
+let caughtCanvas;
 // Compatibility exports: there is now one shared appearance, not two character styles.
 export function getWalkingLook() { return 'styled'; }
 export function setWalkingLook() { paint(); }
@@ -23,34 +25,25 @@ function draw(context, parts, pose, time) {
   const frame = animated ? Math.floor(time / 120) % 6 : 0;
   context.clearRect(0,0,MINI_SIZE.width,MINI_SIZE.height);context.imageSmoothingEnabled=false;
   context.save();context.translate(0,activity ? -Math.round(lift*2) : 0);
-  if (profile.hair === 'ombre' && profile.outfit === 'classic') {
-    drawOriginalWalk(context,pose,time);
-  } else {
-    const bob=moving ? [0,-1,-2,-1,0,-1][frame] : 0;
-    context.save();context.translate(0,bob);
-    if (moving) {
-      context.drawImage(parts.skin,0,0,128,164,0,0,128,164);
-      const left=[0,2,4,2,0,0][frame],right=[4,2,0,0,0,2][frame];
-      context.drawImage(parts.skin,0,164,64,28,-left/2,164-left,64,28);
-      context.drawImage(parts.skin,64,164,64,28,64+right/2,164-right,64,28);
-    } else context.drawImage(parts.skin,0,0);
-    context.restore();
-  }
-  decorateFace(context, profile);
-  if(parts.hat)context.drawImage(parts.hat,0,-3);
+  const look=parts.look||profile;
+  if((moving||pose==='jump')&&parts.walk){context.drawImage(parts.walk[pose==='jump'?2:frame],0,0);}
+  else if(look.hair==='ombre'&&look.outfit==='classic'){drawOriginalWalk(context,pose,time);}
+  else context.drawImage(parts.skin,0,0);
+  decorateFace(context,look);
+  if(parts.hat)context.drawImage(parts.hat,32,-3);
   if(activity) {
     const kind=pose==='cafe-study'?'study':pose;
-    const prop=kind==='study'?parts.studyProp:parts.prop;
-    if(prop){context.save();context.translate(0,-8);drawActivity(context,prop,kind,lift,cycle,time,animated);context.restore();}
+    const prop=kind==='study'?parts.studyProp:kind==='coffee'?parts.coffeeProp:parts.prop;
+    if(prop){context.save();context.translate(32,-8);drawActivity(context,prop,kind,lift,cycle,time,animated);context.restore();}
   }
   context.restore();
 }
 function decorateFace(context, look) {
   // Color/cheek choices preserve the same outline, eye size and expression.
   if(look.eyes!=='brown') {
-    const data=context.getImageData(0,0,128,192),pixels=data.data;
-    for(const [x0,y0,x1,y1] of [[58,77,75,87],[99,75,108,85]]) for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++){
-      const i=(y*128+x)*4,r=pixels[i],g=pixels[i+1],b=pixels[i+2];
+    const data=context.getImageData(0,0,192,192),pixels=data.data;
+    for(const [x0,y0,x1,y1] of [[88,74,109,88],[132,74,145,88]]) for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++){
+      const i=(y*192+x)*4,r=pixels[i],g=pixels[i+1],b=pixels[i+2];
       if(pixels[i+3]&&r>35&&r<150&&g<110&&b<95&&r>g*1.12){
         if(look.eyes==='blue'){pixels[i]=Math.round(r*.55);pixels[i+1]=Math.min(180,Math.round(g*1.4));pixels[i+2]=Math.min(210,Math.round(b*1.8+45));}
         else {pixels[i]=Math.round(r*.8);pixels[i+1]=Math.min(170,Math.round(g*1.4+12));pixels[i+2]=Math.round(b*.8);}
@@ -58,8 +51,8 @@ function decorateFace(context, look) {
     }
     context.putImageData(data,0,0);
   }
-  if(look.face==='rosy'){context.globalAlpha=.35;context.fillStyle='#e995a0';context.fillRect(52,88,9,4);context.fillRect(100,86,6,4);context.globalAlpha=1;}
-  if(look.face==='freckles'){context.fillStyle='#b47d61';for(const [x,y] of [[54,88],[58,90],[62,88],[101,86],[104,88]])context.fillRect(x,y,1,1);}
+  if(look.face==='rosy'){context.globalAlpha=.35;context.fillStyle='#e995a0';context.fillRect(85,88,9,4);context.fillRect(134,86,6,4);context.globalAlpha=1;}
+  if(look.face==='freckles'){context.fillStyle='#b47d61';for(const [x,y] of [[87,88],[91,90],[95,88],[135,86],[138,88]])context.fillRect(x,y,1,1);}
 }
 function drawActivity(context, prop, pose, lift, cycle, time, animated) {
   const pixel = (color, x, y, w, h) => { context.fillStyle = color; context.fillRect(Math.round(x), Math.round(y), w, h); };
@@ -106,22 +99,34 @@ function frameMouth(time) { return Math.floor(time / 140) % 2 ? 5 : 3; }
 function drawOriginalWalk(context, pose, time) {
   const moving = pose === 'walk' && !reducedMotion();
   const frame = originalWalk[moving ? Math.floor(time / 120) % 6 : pose === 'jump' ? 2 : 0];
-  // One scale across all six poses keeps the face and body from pulsing.
-  const scale = Math.min(116 / Math.max(...originalWalk.map(art => art.width)), 180 / Math.max(...originalWalk.map(art => art.height)));
-  const width = Math.round(frame.width * scale), height = Math.round(frame.height * scale);
-  context.imageSmoothingEnabled = false;
-  context.drawImage(frame, Math.round((MINI_SIZE.width - width) / 2), MINI_SIZE.height - height - 2, width, height);
+  // All walk frames are baked to the same canvas and ground pivot.
+  context.imageSmoothingEnabled=false;context.drawImage(frame,0,0);
+}
+function drawStruggle(context,time){
+  if(reducedMotion())return;
+  caughtCanvas ||= Object.assign(document.createElement('canvas'),{width:192,height:192});
+  const copy=caughtCanvas.getContext('2d');copy.clearRect(0,0,192,192);copy.drawImage(context.canvas,0,0);
+  const kick=Math.sin(time/85),other=Math.sin(time/85+Math.PI);
+  context.clearRect(0,164,192,28);context.imageSmoothingEnabled=false;
+  context.drawImage(caughtCanvas,0,164,96,28,Math.round(kick*3),164-Math.round(Math.max(0,kick)*9),96,28);
+  context.drawImage(caughtCanvas,96,164,96,28,96+Math.round(other*3),164-Math.round(Math.max(0,other)*9),96,28);
+  // Tiny flailing hands stay below the face; the original head and hair stay intact.
+  context.fillStyle='#f8d4ae';context.fillRect(60,124-Math.round(kick*4),8,6);context.fillRect(139,123-Math.round(other*4),8,6);
+  context.fillStyle='#a9d6e1';context.fillRect(22,70+Math.round(Math.sin(time/180)*3),3,7);context.fillRect(20,74+Math.round(Math.sin(time/180)*3),7,3);
 }
 function paint(time = performance.now()) {
   if (!loaded || !profile) return;
   for (const element of document.querySelectorAll('[data-min-appearance]')) {
     const emote = getEmote();
     const previewKind = element.closest('[data-min-activity-preview]')?.dataset.minActivityPreview;
-    const pose = previewKind ? (profile.activeActivity?.kind === previewKind ? previewKind : 'idle') : profile.activeActivity?.kind || emote?.kind || element.dataset.controlledPose || (element.classList.contains('min-appearance-companion') && document.getElementById('min-companion-menu')?.hidden ? 'walk' : 'idle');
+    const interaction=element.dataset.interactionPose;
+    const pose = interaction==='held'||interaction==='parachute'||interaction==='fall' ? 'idle' : interaction==='climb' ? 'walk' : previewKind ? (profile.activeActivity?.kind === previewKind ? previewKind : 'idle') : profile.activeActivity?.kind || (!emoteAllowsMovement(emote) ? emote.kind : null) || element.dataset.controlledPose || (element.classList.contains('min-appearance-companion') && document.getElementById('min-companion-menu')?.hidden ? 'walk' : 'idle');
     element.dataset.pose = pose;
     const context = element.querySelector('canvas').getContext('2d');
     draw(context, loaded, pose, time);
-    if (emote && !profile.activeActivity && !previewKind) drawEmoteProp(context, emote.kind, time);
+    if(interaction==='held'||interaction==='parachute')drawStruggle(context,time);
+    if (emote && !profile.activeActivity && !previewKind && !interaction) {context.save();context.translate(32,0);drawEmoteProp(context, emote.kind, reducedMotion() ? 0 : time, pose === 'walk');context.restore();}
+    const fx=element.querySelector('.min-effect-canvas');if(fx){const fxContext=fx.getContext('2d');fxContext.clearRect(0,0,192,256);drawMiniEffect(fxContext,profile.effect,time,reducedMotion());}
     element.dataset.rigReady = 'true';
   }
 }
@@ -133,10 +138,10 @@ export async function renderAppearances(next = getProfile()) {
   }
   try {
     const paths = miniLayerPaths(next);
-    if (!originalWalk) originalWalk = await Promise.all(Array.from({ length: 6 }, (_, frame) => image(`/mini/walk/frame-${frame}.png?v=walk-2`)));
-    const entries = await Promise.all(Object.entries(paths).map(async ([name, path]) => [name, await image(path)]));
+    if (!originalWalk) originalWalk = await Promise.all(Array.from({ length: 6 }, (_, frame) => image(`/mini/rig-v2/walk-${frame}.png?v=rig-2-final`)));
+    const [entries,walk] = await Promise.all([Promise.all(Object.entries(paths).map(async ([name,path])=>[name,await image(path)])),Promise.all(miniWalkPaths(next).map(image))]);
     if (token !== revision) return;
-    loaded = { ...Object.fromEntries(entries), outfit: next.outfit }; paint();
+    loaded = { ...Object.fromEntries(entries), outfit: next.outfit,walk,look:{...next} }; paint();
   } catch {
     // Keep the complete previous character or original art if a layer is unavailable.
   }

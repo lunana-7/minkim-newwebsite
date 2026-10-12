@@ -19,3 +19,14 @@ yarn-error.log*
 # system files
 .DS_Store
 Thumbs.db
+
+# Unity generated caches and compiled game payloads
+unity/**/Library/
+unity/**/Temp/
+unity/**/Logs/
+unity/**/Obj/
+unity/**/UserSettings/
+public/alignment-world/Unity/
+
+# Local preview guestbook entries (visitor content)
+.local/

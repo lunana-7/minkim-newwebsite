@@ -1,3 +1,4 @@
+import { openInteraction,closeInteraction } from './min-interactions.js';
 import { getProfile, getPlayerId, updateProfile, subscribeProfile } from './min-profile.js';
 import { subscribeAccount } from './min-cloud.js';
 
@@ -50,8 +51,8 @@ export function initCafe() {
     render();
   }
   state=read();history();render();
-  window.addEventListener('min-cafe-open',()=>{ cafe.hidden=false;document.getElementById('cafe-title').focus({preventScroll:true});cafe.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}); });
-  document.getElementById('cafe-leave').addEventListener('click',()=>{cafe.hidden=true;window.dispatchEvent(new Event('min-cafe-close'));document.getElementById('adventure-canvas').scrollIntoView({block:'center'});document.getElementById('adventure-canvas').focus({preventScroll:true});});
+  window.addEventListener('min-cafe-open',()=>openInteraction('cafe'));
+  document.getElementById('cafe-leave').addEventListener('click',()=>closeInteraction());
   document.getElementById('cafe-timer-start').addEventListener('click',()=>{ if(state.deadline!==null){state.remaining=remaining();state.deadline=null;}else{if(!state.remaining){state.duration=state.lengths[state.mode]*60000;state.remaining=state.duration;}state.deadline=now()+state.remaining;}persist();document.getElementById('cafe-timer-status').textContent=state.deadline?`${labels[state.mode]} in progress.`:'Timer paused. Your remaining time is saved.';render(); });
   document.getElementById('cafe-timer-reset').addEventListener('click',()=>{state.deadline=null;state.duration=state.lengths[state.mode]*60000;state.remaining=state.duration;persist();render();document.getElementById('cafe-timer-status').textContent='Timer reset. Completed sessions are kept.';});
   document.querySelectorAll('[data-cafe-mode]').forEach(button=>button.addEventListener('click',()=>{if(state.deadline!==null)return;state.mode=button.dataset.cafeMode;state.duration=state.lengths[state.mode]*60000;state.remaining=state.duration;persist();render();document.getElementById('cafe-timer-status').textContent=`${labels[state.mode]} ready.`;}));

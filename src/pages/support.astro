@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MiniAvatar from '../components/MiniAvatar.astro';
+import { supportDestination } from '../lib/support.js';
+const destination = supportDestination(import.meta.env.PUBLIC_SUPPORT_URL);
+---
+
+<Layout title="Buy Min a coffee | Min’s World" activeNav="support" description="Found something useful in Min’s World? Send Min a coffee to support AI governance notes and cozy pixel adventures.">
+  <section class="support-hero" aria-labelledby="support-title">
+    <div class="support-scene">
+      <span class="support-speech">A little coffee, a little magic ♡</span>
+      <div class="support-mini"><MiniAvatar variant="support" controlledPose="coffee" /></div>
+      <span class="support-table" aria-hidden="true"></span>
+      <span class="support-scene-caption">MINI’S COFFEE CORNER</span>
+    </div>
+    <div class="support-message">
+      <span class="case-study-kicker">A LITTLE THANK-YOU</span>
+      <h1 id="support-title">Buy me a coffee</h1>
+      <p class="support-lead">If something here helped you, send a little coffee my way.</p>
+      <p>Hi, I’m Min. I write about AI governance and build this little pixel world. If a Wiki note, a Blog post, or an adventure made your day better, you can support what I’m making.</p>
+      {destination ? (
+        <div class="support-checkout">
+          <a class="support-pay" href={destination.url} target="_blank" rel="noopener noreferrer"><img src="/mini/thumbnails/prop-coffee.png" alt="" width="36" height="36"/>Send Min a coffee <span aria-hidden="true">↗</span></a>
+          <p class="support-payment-note">Opens my {destination.provider} page. Choose your contribution there.</p>
+        </div>
+      ) : (
+        <div class="support-pending">
+          <strong>The coffee jar is opening soon.</strong>
+          <p>My support link isn’t connected yet. For now, a kind hello is always welcome.</p>
+          <a href="mailto:aqeoon@gmail.com?subject=A%20little%20thank-you">Send a hello to Min ↗</a>
+        </div>
+      )}
+      <p class="support-thanks">Thank you for spending a little time in my world. ♡</p>
+    </div>
+  </section>
+
+  <section class="support-making" aria-labelledby="support-making-title">
+    <span class="case-study-kicker">WHAT I’M MAKING</span>
+    <h2 id="support-making-title">More notes. More tiny adventures.</h2>
+    <div class="support-paths">
+      <a href="/wiki"><span aria-hidden="true">▥</span><strong>A useful Wiki</strong><p>Clear explanations of agent identity, runtime controls, and AI governance.</p><small>Explore the Wiki →</small></a>
+      <a href="/blog"><span aria-hidden="true">▤</span><strong>Thoughtful writing</strong><p>Practical ideas for governing AI agents and turning policy into everyday decisions.</p><small>Read the Blog →</small></a>
+      <a href="/game"><span aria-hidden="true">✦</span><strong>Mini’s little world</strong><p>Cozy maps, pixel companions, café breaks, and small things to discover.</p><small>Visit Mini →</small></a>
+    </div>
+  </section>
+</Layout>

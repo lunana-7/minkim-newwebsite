@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MiniAvatar from '../components/MiniAvatar.astro';
-import MiniCafe from '../components/MiniCafe.astro';
-import MiniFarm from '../components/MiniFarm.astro';
 import MiniAdventure from '../components/MiniAdventure.astro';
+import { WORLDS } from '../lib/min-worlds.js';
+import { PET_TYPES, PET_COLORS, PET_ACCESSORIES } from '../lib/min-pets.js';
+import { MINI_EFFECTS, EFFECT_COLORS } from '../lib/min-effects.js';
 import { MINI_OPTIONS } from '../lib/min-assets.js';
 ---
 
@@ -13,7 +14,7 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
       <a class="back-link" href="/">← Home</a>
       <span class="game-kicker">MIN'S WORLD · OPEN GAME PROTOTYPE</span>
       <h1 class="page-title">A little world of your own</h1>
-      <p class="page-lead">Explore Mini’s meadow, jump for stars, meet Pippin, and dress up for your next adventure.</p>
+      <p class="page-lead">Explore seven cozy worlds, meet the locals, grow your own farm, trade your harvest, and take a sweet job at the ice cream shop or bakery.</p>
     </header>
 
     <section class="game-account" aria-label="Player account">
@@ -28,23 +29,18 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
     </section>
 
     <MiniAdventure />
-    <MiniCafe />
-    <MiniFarm />
+
 
     <div class="game-layout">
       <section class="game-screen" aria-label="Pixel world">
         <div class="game-hud"><span><i></i> MAPLE MEADOW</span><button type="button" id="bgm-toggle" class="music-button" aria-pressed="false">♫ Play cozy BGM</button></div>
+        <div class="mini-walk-preview-bar"><button id="mini-walk-preview" type="button" aria-pressed="true">Walking preview · On</button><span>Every outfit has a full walk cycle</span></div>
         <div class="game-scene scene-sunny" id="game-scene">
-          <div class="pixel-sun" aria-hidden="true"></div>
-          <div class="pixel-cloud cloud-one" aria-hidden="true"></div>
-          <div class="pixel-cloud cloud-two" aria-hidden="true"></div>
           <div class="scene-label">Maple Meadow <span>Channel 01</span></div>
-          <div class="scene-hill hill-back" aria-hidden="true"></div>
-          <div class="scene-hill hill-front" aria-hidden="true"></div>
-          <div class="game-platform" aria-hidden="true"><span></span></div>
           <div class="avatar-stage" id="avatar-stage">
-            <button type="button" class="game-avatar-trigger" id="game-avatar-trigger" data-min-open-menu aria-label="Open Min’s activities"><MiniAvatar variant="game" /></button>
-            <div class="character-shadow" aria-hidden="true"></div>
+            <button type="button" class="game-avatar-trigger" id="game-avatar-trigger" data-min-open-menu aria-label="Open Min’s activities"><MiniAvatar variant="game" controlledPose="walk" /></button>
+            <canvas id="mini-pet-portrait" width="80" height="64" aria-hidden="true" hidden></canvas>
+          <div class="character-shadow" aria-hidden="true"></div>
           </div>
           <div class="scene-ground" aria-hidden="true"><span>▧</span> A quiet place to make things</div>
         </div>
@@ -55,7 +51,7 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
         <div class="wardrobe-title"><div><span>YOUR WARDROBE</span><h2>Style Min</h2></div><span class="hanger" aria-hidden="true">♧</span></div>
         <div class="wardrobe-categories" role="group" aria-label="Choose an appearance category">
           {[
-            ['outfit', 'Clothes'], ['hair', 'Hair'], ['eyes', 'Eyes'], ['face', 'Face'], ['hat', 'Headwear']
+            ['outfit', 'Clothes'], ['hair', 'Hair'], ['eyes', 'Eyes'], ['face', 'Face'], ['hat', 'Headwear'], ['effects','Effects'], ['pets','Pets']
           ].map(([field, label]) => <button type="button" class={field === 'outfit' ? 'selected' : ''} data-wardrobe-tab={field} aria-pressed={field === 'outfit' ? 'true' : 'false'} aria-controls={`wardrobe-${field}`}>{label}</button>)}
         </div>
         {[
@@ -64,19 +60,19 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
           <h3>{label}</h3>
           <div class={`choice-grid layer-choices layer-choices-${field}`} role="group" aria-label={`Choose ${label.toLowerCase()}`}>
             {MINI_OPTIONS[field].map(option => <button class="style-choice asset-choice" type="button" {...{ [`data-${field}`]: option.id }} aria-pressed="false">
-              <span class={`layer-thumbnail layer-thumbnail-${field}`} aria-hidden="true">{option.image ? <img src={option.image.replace('/layers/', '/thumbnails/').replace('/looks/', '/look-thumbnails/')} alt="" loading="lazy" /> : <span>—</span>}</span>
+              <span class={`layer-thumbnail layer-thumbnail-${field}`} aria-hidden="true">{option.image ? <img src={option.image.replace('/layers/', '/thumbnails/').replace('/looks/', '/look-thumbnails/').replace('/rig-v2/', '/rig-v2-thumbnails/')} alt="" loading="lazy" /> : <span>—</span>}</span>
               <small>{option.name}</small>
             </button>)}
           </div>
         </section>)}
+        <section class="wardrobe-group" id="wardrobe-effects" data-wardrobe-panel="effects" hidden><h3>Mini’s magic</h3><div class="mini-effect-choices" role="group" aria-label="Choose special effect">{MINI_EFFECTS.map(effect=><button type="button" data-mini-effect={effect.id} aria-pressed="false"><span aria-hidden="true">{effect.icon}</span>{effect.name}</button>)}</div><h4>Color</h4><div class="mini-effect-colors" role="group" aria-label="Choose effect color">{EFFECT_COLORS.map(color=><button type="button" data-mini-effect-color={color.id} aria-pressed="false" title={color.name}><span style={`background:${color.hex}`} aria-hidden="true"></span>{color.name}</button>)}</div><label class="mini-effect-intensity" for="mini-effect-intensity">Intensity <output id="mini-effect-level">Gentle</output><input id="mini-effect-intensity" type="range" min="1" max="3" step="1" value="2"/></label><p id="mini-effect-status" role="status">Choose a little magic. Changes preview instantly and save with your look.</p></section>
+        <section class="wardrobe-group" id="wardrobe-pets" data-wardrobe-panel="pets" hidden><h3>A little companion</h3><div class="mini-pet-types" role="group" aria-label="Choose a pet">{PET_TYPES.map(pet=><button type="button" data-mini-pet={pet.id} aria-pressed="false"><span aria-hidden="true">{pet.icon}</span>{pet.name}</button>)}</div><h4>Coat color</h4><div class="mini-pet-colors" role="group" aria-label="Choose pet coat">{PET_COLORS.map(color=><button type="button" data-pet-color={color.id} aria-pressed="false"><span style={`background:${color.coat}`} aria-hidden="true"></span>{color.name}</button>)}</div><h4>Accessory</h4><div class="mini-pet-accessories" role="group" aria-label="Choose pet accessory">{PET_ACCESSORIES.map(a=><button type="button" data-pet-accessory={a.id} aria-pressed="false">{a.name}</button>)}</div><label class="pet-name-label" for="mini-pet-name">Pet name<input id="mini-pet-name" type="text" maxlength="16" placeholder="Mochi or Biscuit" autocomplete="off"/></label><label class="pet-follow-label"><input id="mini-pet-follow" type="checkbox" checked/>Follow Mini</label><p id="mini-pet-status" role="status">Pick a friend to join your adventure.</p></section>
         <section class="wardrobe-group"><h3>Map</h3><div class="map-choices" role="group" aria-label="Choose map">
-          <button class="map-choice selected" type="button" data-map="sunny"><span>☀</span>Maple Meadow</button>
-          <button class="map-choice" type="button" data-map="night"><span>☾</span>Moonlit Harbor</button>
-          <button class="map-choice" type="button" data-map="forest"><span>♧</span>Cloudwood Forest</button>
+          {Object.entries(WORLDS).map(([id,world])=><button class="map-choice" type="button" data-map={id}><span>{world.icon}</span>{world.name}</button>)}
         </div></section>
         <button id="restore-original-mini" class="game-button" type="button">Use original Mini ♡</button>
         <button id="save-outfit" class="game-button save-button" type="button">Save my look <span aria-hidden="true">↗</span></button>
-        <p class="opensource-note">Mix hair, eyes, face, clothes, and headwear. Your look stays with Min in the game, homepage portrait, and activities. The same Mini wears your look everywhere, including while walking. Each signed-in player has their own saved profile.</p>
+        <p class="opensource-note">Mix hair, eyes, face, clothes, headwear, and special effects, then choose a pet companion. Your look stays with Min in the game, homepage portrait, and activities. The same Mini wears your look everywhere, including while walking. Each signed-in player has their own saved profile.</p>
       </aside>
     </div>
     <section class="game-activities" aria-labelledby="game-activities-title">
@@ -94,13 +90,34 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
     import { getAccount, saveToCloud, signInPlayer, signOutPlayer, subscribeAccount } from '../lib/min-cloud.js';
 
     document.getElementById('restore-original-mini').addEventListener('click', () => updateProfile({ outfit:'classic', hair:'ombre', eyes:'brown', face:'soft', hat:'none' }));
+    import { petName } from '../lib/min-pets.js';
+    import { initPetPortrait } from '../lib/min-pet-portrait.js';
+    initPetPortrait();
+    document.getElementById('mini-walk-preview').addEventListener('click',event=>{const b=event.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=`Walking preview · ${on?'On':'Off'}`;document.querySelector('.min-appearance-game').dataset.controlledPose=on?'walk':'idle';});
+    function changePet(patch){updateProfile({pet:{...getProfile().pet,...patch}});}
+    for(const [selector,field,key]of [['[data-mini-pet]','kind','miniPet'],['[data-pet-color]','color','petColor'],['[data-pet-accessory]','accessory','petAccessory']])document.querySelectorAll(selector).forEach(b=>b.addEventListener('click',()=>changePet({[field]:b.dataset[key]})));
+    document.getElementById('mini-pet-name').addEventListener('input',event=>changePet({name:event.target.value}));
+    document.getElementById('mini-pet-follow').addEventListener('change',event=>changePet({follow:event.target.checked}));
+    function changeEffect(patch){updateProfile({effect:{...getProfile().effect,...patch}});}
+    document.querySelectorAll('[data-mini-effect]').forEach(b=>b.addEventListener('click',()=>changeEffect({kind:b.dataset.miniEffect})));
+    document.querySelectorAll('[data-mini-effect-color]').forEach(b=>b.addEventListener('click',()=>changeEffect({color:b.dataset.miniEffectColor})));
+    document.getElementById('mini-effect-intensity').addEventListener('input',event=>changeEffect({intensity:Number(event.target.value)}));
     const scene = document.getElementById('game-scene');
     const status = document.getElementById('save-status');
     const loginButton = document.getElementById('google-login');
     const logoutButton = document.getElementById('google-logout');
     const saveButton = document.getElementById('save-outfit');
-    const mapNames = { sunny: 'Maple Meadow', night: 'Moonlit Harbor', forest: 'Cloudwood Forest' };
+    const mapNames = { sunny: 'Maple Meadow', night: 'Moonlit Harbor', forest: 'Cloudwood Forest', farm:'Mini’s Farm', market:'Berry Market', secret:'Secret Forest', desert:'Sunpetal Desert' };
     subscribeProfile(profile => {
+      for(const [selector,field,key]of [['[data-mini-pet]','kind','miniPet'],['[data-pet-color]','color','petColor'],['[data-pet-accessory]','accessory','petAccessory']])document.querySelectorAll(selector).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[key]===profile.pet[field])));
+      const petNameInput=document.getElementById('mini-pet-name');if(document.activeElement!==petNameInput)petNameInput.value=profile.pet.name;
+      document.getElementById('mini-pet-follow').checked=profile.pet.follow;
+      document.getElementById('mini-pet-status').textContent=profile.pet.kind==='none'?'No pet selected. Your choice is saved.':`${petName(profile.pet)} ${profile.pet.follow?'will follow Mini through every cozy world.':'will wait where you stop following.'} Saved with your look.`;
+      document.querySelectorAll('[data-mini-effect]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.miniEffect===profile.effect.kind)));
+      document.querySelectorAll('[data-mini-effect-color]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.miniEffectColor===profile.effect.color)));
+      document.getElementById('mini-effect-intensity').value=profile.effect.intensity;
+      document.getElementById('mini-effect-level').textContent=['Gentle','Dreamy','Lively'][profile.effect.intensity-1];
+      document.getElementById('mini-effect-status').textContent=profile.effect.kind==='none'?'Effects are off. Your choice is saved.':'Your magic follows Mini across the site and cozy game. Saved with your look.';
       scene.className = `game-scene scene-${profile.map}`;
       document.querySelector('.scene-label').firstChild.textContent = mapNames[profile.map] + ' ';
       document.querySelector('.game-hud > span').lastChild.textContent = mapNames[profile.map].toUpperCase();
@@ -109,7 +126,7 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
         button.classList.toggle('selected', selected); button.setAttribute('aria-pressed', String(selected));
       });
     });
-    for (const field of ['outfit','hair','eyes','face','hat','map']) document.querySelectorAll(`button[data-${field}]`).forEach(button => button.addEventListener('click', () => updateProfile({ [field]: button.dataset[field] })));
+    for (const field of ['outfit','hair','eyes','face','hat','map']) document.querySelectorAll(`button[data-${field}]`).forEach(button => button.addEventListener('click', () => field === 'map' ? window.dispatchEvent(new CustomEvent('min-world-travel',{detail:button.dataset[field]})) : updateProfile({ [field]: button.dataset[field] })));
     document.querySelectorAll('[data-wardrobe-tab]').forEach(button => button.addEventListener('click', () => {
       document.querySelectorAll('[data-wardrobe-tab]').forEach(tab => {
         const selected = tab === button; tab.classList.toggle('selected', selected); tab.setAttribute('aria-pressed', String(selected));

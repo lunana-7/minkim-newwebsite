@@ -4,7 +4,7 @@ export const experiences = [
     "name": "KRAFTON",
     "type": "AI governance · Enterprise transformation",
     "period": "2024–2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "summary": "Measuring AI adoption and cost, evaluating models, and connecting governance to everyday approvals.",
     "access": "password"
   },
@@ -98,7 +98,7 @@ export const projectCatalog = [
     "tag": "Approval experience",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Making AI requests easier to review, approve, reject, and resubmit by clarifying the next action at each step.",
     "access": "password"
   },
@@ -108,7 +108,7 @@ export const projectCatalog = [
     "tag": "Measurement",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Comparing approval behavior before and after a release using equal observation windows and a separate view of request themes.",
     "access": "password"
   },
@@ -118,7 +118,7 @@ export const projectCatalog = [
     "tag": "Survey design",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Designing a multilingual survey that separates individual tasks from cross-team workflows and measures automation in stages.",
     "access": "password"
   },
@@ -128,7 +128,7 @@ export const projectCatalog = [
     "tag": "Analytics",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Processing survey responses and translating multilingual work descriptions into comparable job-family and automation measures.",
     "access": "password"
   },
@@ -138,7 +138,7 @@ export const projectCatalog = [
     "tag": "Executive reporting",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Turning survey findings into an executive narrative, integrated dashboard, and prioritized adoption plan.",
     "access": "password"
   },
@@ -148,7 +148,7 @@ export const projectCatalog = [
     "tag": "FinOps",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Building a single HTML report that explains organizational cost changes and checks the economics of subscription migration.",
     "access": "password"
   },
@@ -158,7 +158,7 @@ export const projectCatalog = [
     "tag": "FinOps",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Separating lower model prices from higher usage to test whether a migration announcement produced real savings.",
     "access": "password"
   },
@@ -168,7 +168,7 @@ export const projectCatalog = [
     "tag": "Budget planning",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Reconciling actual spending, billing periods, seat commitments, and scenarios before leadership makes a budget decision.",
     "access": "password"
   },
@@ -178,7 +178,7 @@ export const projectCatalog = [
     "tag": "Cost intelligence",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Joining individual cost records, product/model files, and HR data to identify the largest opportunities for review.",
     "access": "password"
   },
@@ -188,7 +188,7 @@ export const projectCatalog = [
     "tag": "Model lifecycle",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Designing a staged transition from expensive legacy models to a smaller set of cost tiers with an exception path.",
     "access": "password"
   },
@@ -198,7 +198,7 @@ export const projectCatalog = [
     "tag": "Agent governance",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Examining agent usage concentration, missing credit attribution, duplicate identities, and efficiency variation.",
     "access": "password"
   },
@@ -208,7 +208,7 @@ export const projectCatalog = [
     "tag": "Billing operations",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Confirming invoice cancellation and the boundary between a one-time waiver and subsequent normal settlement.",
     "access": "password"
   },
@@ -218,7 +218,7 @@ export const projectCatalog = [
     "tag": "Model evaluation",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Expanding a model comparison playground and correcting performance and blended-price assumptions before using it for selection.",
     "access": "password"
   },
@@ -228,7 +228,7 @@ export const projectCatalog = [
     "tag": "Model selection",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Connecting benchmark data and six concrete workload profiles to a simpler model-selection experience.",
     "access": "password"
   },
@@ -238,7 +238,7 @@ export const projectCatalog = [
     "tag": "Evaluation methodology",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Exploring how model performance, price, and human-equivalent work could be compared, then identifying where the formula fails.",
     "access": "password"
   },
@@ -248,7 +248,7 @@ export const projectCatalog = [
     "tag": "FinOps strategy",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Organizing optimization around prompt/context, model, and agent-design levers rather than treating it as a single model swap.",
     "access": "password"
   },
@@ -258,7 +258,7 @@ export const projectCatalog = [
     "tag": "Cost attribution",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Defining team, use case, environment, and usage pattern as cost dimensions, with measurement before enforcement.",
     "access": "password"
   },
@@ -268,7 +268,7 @@ export const projectCatalog = [
     "tag": "Agent efficiency",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Comparing RTK and Headroom with native caching, routing, batching, and loop limits to choose an appropriate pilot sequence.",
     "access": "password"
   },
@@ -278,7 +278,7 @@ export const projectCatalog = [
     "tag": "API efficiency",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Defining how caching adoption should be measured, expanded, and eventually enforced across enterprise workflows.",
     "access": "password"
   },
@@ -288,7 +288,7 @@ export const projectCatalog = [
     "tag": "Access governance",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Connecting API access provisioning to purpose, cost ownership, and lifecycle review.",
     "access": "password"
   },
@@ -298,7 +298,7 @@ export const projectCatalog = [
     "tag": "Agent operations",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Extending cost review from aggregate tokens to task cost, steps, retries, and safeguards against runaway loops.",
     "access": "password"
   },
@@ -308,7 +308,7 @@ export const projectCatalog = [
     "tag": "Governance workflow",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Designing an approval record that includes cost classification and explicit adoption and sunset triggers.",
     "access": "password"
   },
@@ -318,7 +318,7 @@ export const projectCatalog = [
     "tag": "AI adoption",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Consolidating scattered review requirements into graded intake criteria and a Kissflow approval flow.",
     "access": "password"
   },
@@ -328,7 +328,7 @@ export const projectCatalog = [
     "tag": "Policy design",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Making SaaS versus API the first review branch and documenting ownership options across headquarters and studios.",
     "access": "password"
   },
@@ -338,7 +338,7 @@ export const projectCatalog = [
     "tag": "Safety operations",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Turning committee action items into practical governance materials and reviewing operational responsibilities.",
     "access": "password"
   },
@@ -348,7 +348,7 @@ export const projectCatalog = [
     "tag": "Operating model",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Mapping design, legal/security review, production approval, and studio accountability into a usable operating structure.",
     "access": "password"
   },
@@ -358,7 +358,7 @@ export const projectCatalog = [
     "tag": "Automation design",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Specifying a news-to-Confluence-to-Slack pipeline with relevance scoring, severity, regulatory mapping, and structured output.",
     "access": "password"
   },
@@ -368,7 +368,7 @@ export const projectCatalog = [
     "tag": "Legal research",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Examining Unity's agent-related terms as a signal of how vendors may regulate agents accessing their software.",
     "access": "password"
   },
@@ -378,7 +378,7 @@ export const projectCatalog = [
     "tag": "Risk framework",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Connecting financial, security, legal, compliance, and business concerns to scope, lifecycle, and decision ownership.",
     "access": "password"
   },
@@ -388,7 +388,7 @@ export const projectCatalog = [
     "tag": "Policy design",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Distinguishing ordinary internal tool use from production assets, external IP transfers, live AI features, and user data.",
     "access": "password"
   },
@@ -398,7 +398,7 @@ export const projectCatalog = [
     "tag": "Organization design",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Proposing responsibilities and product-owner roles for an organization that must govern both people and agents.",
     "access": "password"
   },
@@ -408,7 +408,7 @@ export const projectCatalog = [
     "tag": "Data product",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Specifying views that connect policy dates, target channels, model usage, and nudges so impact can be tracked over time.",
     "access": "password"
   },
@@ -418,7 +418,7 @@ export const projectCatalog = [
     "tag": "Data architecture",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Comparing collection, storage, transformation, governance, and AI-consumption layers for enterprise knowledge.",
     "access": "password"
   },
@@ -428,7 +428,7 @@ export const projectCatalog = [
     "tag": "Communication",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Mapping performance evidence to alternative executive narratives and explaining the AX team's role and next priorities.",
     "access": "password"
   },
@@ -438,7 +438,7 @@ export const projectCatalog = [
     "tag": "Adoption research",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Mapping survey questions to organizational practices so higher-automation teams can be studied and compared.",
     "access": "password"
   },
@@ -448,7 +448,7 @@ export const projectCatalog = [
     "tag": "Cost operations",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Organizing tool reimbursements, user counts, enterprise availability, and support status into a reviewable table.",
     "access": "password"
   },
@@ -458,7 +458,7 @@ export const projectCatalog = [
     "tag": "Technology strategy",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Translating conference announcements into implications for evaluation, ROI, asset policy, and model lifecycle governance.",
     "access": "password"
   },
@@ -468,7 +468,7 @@ export const projectCatalog = [
     "tag": "Industry research",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Researching context/token operating limits, optimization practices, and the gateway/governance market.",
     "access": "password"
   },
@@ -478,7 +478,7 @@ export const projectCatalog = [
     "tag": "Operations design",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Defining ownership, deliverables, and reporting rhythms as the AX organization moved into four operating units.",
     "access": "password"
   },
@@ -488,7 +488,7 @@ export const projectCatalog = [
     "tag": "Adoption program",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Designing participation tracks and challenges to surface real examples of lower-cost model use.",
     "access": "password"
   },
@@ -498,7 +498,7 @@ export const projectCatalog = [
     "tag": "Operating standards",
     "experience": "krafton",
     "year": "2026",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Exploring reliability levels so internal software can have review requirements proportionate to its operational importance.",
     "access": "password"
   },
@@ -508,7 +508,7 @@ export const projectCatalog = [
     "tag": "AI strategy",
     "experience": "krafton",
     "year": "2024–2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Comparing global governance cases and connecting technology/legal risks to leadership's adoption decisions.",
     "access": "password"
   },
@@ -518,7 +518,7 @@ export const projectCatalog = [
     "tag": "Market strategy",
     "experience": "krafton",
     "year": "2024–2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Analyzing three years of gaming investment across content, tools, creators, live operations, and AI.",
     "access": "password"
   },
@@ -528,7 +528,7 @@ export const projectCatalog = [
     "tag": "Survey design",
     "experience": "krafton",
     "year": "2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Designing a voluntary headquarters survey, bilingual communications, and participation support to understand workplace needs.",
     "access": "password"
   },
@@ -538,7 +538,7 @@ export const projectCatalog = [
     "tag": "Transformation",
     "experience": "krafton",
     "year": "2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Analyzing studio use cases to separate near-term automation opportunities from longer-term platform investments.",
     "access": "password"
   },
@@ -548,7 +548,7 @@ export const projectCatalog = [
     "tag": "Executive intelligence",
     "experience": "krafton",
     "year": "2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Connecting internal adoption signals and external vendor/policy developments in recurring leadership reporting.",
     "access": "password"
   },
@@ -558,7 +558,7 @@ export const projectCatalog = [
     "tag": "Solution strategy",
     "experience": "krafton",
     "year": "2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Building an evaluation database and supporting vendor conversations that connect tools to employee workflows.",
     "access": "password"
   },
@@ -568,7 +568,7 @@ export const projectCatalog = [
     "tag": "Enablement",
     "experience": "krafton",
     "year": "2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Implementing message drafting, templates, and routing, then teaching colleagues through a live build session and playbook.",
     "access": "password"
   },
@@ -578,7 +578,7 @@ export const projectCatalog = [
     "tag": "Industry research",
     "experience": "krafton",
     "year": "2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Investigating existing KOCCA standardization work and possible follow-on research for AI game-production workflows.",
     "access": "password"
   },
@@ -588,7 +588,7 @@ export const projectCatalog = [
     "tag": "Research partnership",
     "experience": "krafton",
     "year": "November–December 2025",
-    "role": "AI Cost & Model Value Analyst",
+    "role": "AI Governance Design Analyst",
     "description": "Scoping a possible research collaboration around agentic AI between an enterprise team and a university.",
     "access": "password"
   },

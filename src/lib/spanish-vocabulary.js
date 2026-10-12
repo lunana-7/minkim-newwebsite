@@ -1,0 +1,10 @@
+// Original beginner selection and English glosses, grouped in 20-word units.
+const groups=[
+ ['Hello & introductions','hola|hello','adiós|goodbye','gracias|thank you','por favor|please','sí|yes','no|no','perdón|sorry; excuse me','buenos días|good morning','buenas noches|good evening; good night','hasta luego|see you later','yo|I','tú|you (informal singular)','él|he','ella|she','nosotros|we (masculine or mixed group)','usted|you (formal singular)','nombre|name','amigo|male friend','amiga|female friend','bien|well'],
+ ['A little café','agua|water','café|coffee','té|tea','leche|milk','pan|bread','arroz|rice','manzana|apple','fruta|fruit','queso|cheese','huevo|egg','pescado|fish','pollo|chicken','carne|meat','verdura|vegetable','azúcar|sugar','sal|salt','taza|cup','plato|plate','mesa|table','helado|ice cream'],
+ ['My everyday world','casa|house; home','escuela|school','libro|book','ciudad|city','calle|street','tienda|shop','trabajo|work; job','familia|family','madre|mother','padre|father','hermano|brother','hermana|sister','niño|boy; child','niña|girl','perro|dog','gato|cat','árbol|tree','flor|flower','sol|sun','luna|moon'],
+ ['Time & numbers','uno|one','dos|two','tres|three','cuatro|four','cinco|five','seis|six','siete|seven','ocho|eight','nueve|nine','diez|ten','hoy|today','mañana|tomorrow; morning','ayer|yesterday','ahora|now','día|day','noche|night','semana|week','mes|month','año|year','hora|hour'],
+ ['Do & describe','ser|to be (identity or characteristic)','estar|to be (state or location)','tener|to have','ir|to go','venir|to come','hablar|to speak','escuchar|to listen','leer|to read','escribir|to write','aprender|to learn','comer|to eat','beber|to drink','comprar|to buy','grande|big','pequeño|small (masculine)','bueno|good (masculine)','feliz|happy','rojo|red (masculine)','azul|blue'],
+];
+export const SPANISH_UNITS=groups.map(g=>g[0]);
+export const SPANISH_WORDS=groups.flatMap((g,u)=>g.slice(1).map((line,i)=>{const [word,meaning]=line.split('|');return{id:`es-${String(u*20+i).padStart(5,'0')}`,word,pinyin:'',meanings:[meaning],unit:g[0]};}));

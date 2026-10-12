@@ -1,0 +1,333 @@
+{
+  "version": 2,
+  "canvas": [
+    192,
+    192
+  ],
+  "groundPivot": [
+    96,
+    190
+  ],
+  "visibleHeight": 180,
+  "legSplit": 96,
+  "legTop": 164,
+  "legacyOverlayOffset": [
+    32,
+    0
+  ],
+  "filter": "nearest",
+  "sprites": {
+    "ombre-classic": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        30,
+        10,
+        163,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "ombre-berry": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        29,
+        10,
+        162,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "ombre-ocean": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        29,
+        10,
+        163,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "ombre-meadow": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        29,
+        10,
+        163,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "bob-classic": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        31,
+        10,
+        161,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "bob-berry": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        31,
+        10,
+        160,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "bob-ocean": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        31,
+        10,
+        161,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "bob-meadow": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        31,
+        10,
+        160,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "twintails-classic": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        18,
+        10,
+        173,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "twintails-berry": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        12,
+        10,
+        180,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "twintails-ocean": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        11,
+        10,
+        180,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    },
+    "twintails-meadow": {
+      "rect": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "alphaBounds": [
+        17,
+        10,
+        174,
+        190
+      ],
+      "pivot": [
+        96,
+        190
+      ],
+      "headAnchor": [
+        106,
+        86
+      ],
+      "handAnchor": [
+        140,
+        132
+      ]
+    }
+  }
+}
