@@ -44,7 +44,7 @@ export function initMini() {
     const emote = getEmote();
     document.querySelectorAll('[data-min-points]').forEach(element => { element.textContent = profile.points.toLocaleString(); });
     document.querySelectorAll('[data-min-level]').forEach(element => { element.textContent = `Level ${Math.floor(profile.points / 100) + 1}`; });
-    document.querySelectorAll('[data-min-activity]').forEach(button => { button.disabled = Boolean(activity); });
+    document.querySelectorAll('[data-min-activity]').forEach(button => { button.disabled = Boolean(activity); button.classList.toggle('is-active', activity?.kind === button.dataset.minActivity); });
     document.querySelectorAll('[data-min-completed]').forEach(element => { element.textContent = profile.completedActivities[element.dataset.minCompleted]; });
     walker.classList.toggle('is-paused', Boolean(activity) || Boolean(emote) || !menu.hidden);
     document.getElementById('min-activity-progress').hidden = !activity;

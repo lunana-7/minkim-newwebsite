@@ -21,7 +21,7 @@ const detail = projectDetails[slug];
 const related = projectCatalog.filter(item => item.experience === project.experience && item.slug !== slug).slice(0, 4);
 ---
 
-<Layout title={`${project.title} | Min Kim`} activeNav="work" description={project.description}>
+<Layout title={`${project.title} | Min Kim`} activeNav="about" description={project.description}>
   <article class="case-study" data-project-slug={slug}>
     <nav class="project-breadcrumb" aria-label="Breadcrumb"><a href="/work">Projects</a><span aria-hidden="true">/</span><a href={`/work#${experience.id}`}>{experience.name}</a></nav>
     <header class="case-study-head"><span class="case-study-kicker">{project.tag} · {project.year}</span><h1 class="page-title">{project.title}</h1><p class="page-lead">{project.description}</p></header>

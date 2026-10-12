@@ -1,0 +1,21 @@
+---
+import MiniAvatar from './MiniAvatar.astro';
+---
+<section class="mini-cafe" id="mini-cafe" hidden aria-labelledby="cafe-title">
+  <header class="cafe-header"><div><span class="game-kicker">A LITTLE PLACE TO FOCUS</span><h2 id="cafe-title" tabindex="-1">Maple Cup Café</h2></div><button type="button" id="cafe-leave">Back to the meadow →</button></header>
+  <div class="cafe-room"><img src="/game-art/maple-cafe.webp" width="1536" height="1024" alt="A warm pixel café with woodland windows, books, plants and a quiet study desk." /><div class="cafe-seated-mini"><MiniAvatar variant="cafe" /></div><div class="cafe-desk-front" aria-hidden="true"></div><span class="cafe-room-caption" id="cafe-room-caption">Your window seat is ready. ♡</span></div>
+  <div class="cafe-tools">
+    <section class="cafe-pomodoro" aria-labelledby="pomodoro-title"><span class="game-kicker">ONE LITTLE SESSION AT A TIME</span><h3 id="pomodoro-title">Study with Mini</h3>
+      <div class="cafe-timer-modes" role="group" aria-label="Timer mode"><button type="button" data-cafe-mode="focus" aria-pressed="true">Focus</button><button type="button" data-cafe-mode="short" aria-pressed="false">Short break</button><button type="button" data-cafe-mode="long" aria-pressed="false">Long break</button></div>
+      <p class="cafe-timer" id="cafe-timer" role="timer" aria-label="Time remaining">25:00</p><p id="cafe-timer-status" role="status" aria-live="polite">Take a seat, then start your focus session.</p>
+      <div class="cafe-timer-controls"><button type="button" id="cafe-timer-start">Start focus</button><button type="button" id="cafe-timer-reset">Reset timer</button></div>
+      <details class="cafe-settings"><summary>Session lengths</summary><label>Focus minutes<input id="cafe-focus-minutes" type="number" min="1" max="120" value="25" /></label><label>Short break minutes<input id="cafe-short-minutes" type="number" min="1" max="30" value="5" /></label><label>Long break minutes<input id="cafe-long-minutes" type="number" min="1" max="60" value="15" /></label><button type="button" id="cafe-settings-save">Apply lengths</button></details>
+      <div class="cafe-study-stats"><span><strong id="cafe-focus-count">0</strong> completed sessions</span><span><strong id="cafe-focus-total">0</strong> focus minutes</span></div><p class="cafe-tracking-note">Completed focus sessions count toward your totals. The timer keeps time if you switch tabs; breaks start when you choose them.</p><h4>Recent focus sessions</h4><ul id="cafe-study-history"><li>No sessions yet. Your first little win starts here.</li></ul>
+    </section>
+    <section class="cafe-music" aria-labelledby="cafe-music-title"><span class="game-kicker">THE CAFÉ SOUNDTRACK</span><h3 id="cafe-music-title">Chill lofi, warm coffee</h3><p>Put on Spotify’s lofi beats and settle into your window seat.</p><button type="button" id="cafe-load-spotify">Load Spotify player ♫</button><div id="cafe-spotify-player"></div><a href="https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn" target="_blank" rel="noopener noreferrer">Open lofi beats in Spotify ↗</a><p class="cafe-tracking-note">Press Play in Spotify to start the music. Playback depends on Spotify and your account. Mini’s cozy BGM is available in the meadow.</p></section>
+  </div>
+</section>
+<script>
+  import { initCafe } from '../lib/min-cafe.js';
+  initCafe();
+</script>

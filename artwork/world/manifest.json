@@ -1,0 +1,14 @@
+{
+  "tool": "Built-in image_gen",
+  "daylight": {
+    "file": "public/world-art/daylight.png",
+    "web": "public/world-art/daylight.webp",
+    "prompt": "Use case: stylized-concept. Asset type: full-screen website background, landscape 16:9. Create an original richly detailed cozy pixel-art fantasy meadow village in daylight, reminiscent of classic 2D side-scrolling RPG scenery without copying any game assets. Crisp visible square pixels, restrained 16-bit palette, no smooth digital painting. Blue sky and small pixel clouds above distant layered blue mountains, lush maple trees and wildflowers framing both outer edges, tiny timber cottages, stone path, stream and wooden bridge in the lower third. The website has large opaque reading panels across its center: place the most charming detailed trees, flowers and cottages toward the far left and right margins and lower corners, keep the middle sky spacious. Bright warm sunlight, cream, sage green and soft berry accents, inviting calm mood. Full bleed scene, no text, UI, characters, borders or watermark."
+  },
+  "night": {
+    "file": "public/world-art/night.png",
+    "web": "public/world-art/night.webp",
+    "prompt": "Use case: lighting-weather. Edit target: the supplied daylight pixel-art village background. Create its matching NIGHT version. Preserve the exact scene geometry, trees, cottages, mountain silhouettes, bridge, stream, composition and detailed crisp pixel-art style. Change only time of day and lighting: deep indigo starry sky with a small luminous crescent moon in the open upper-left sky, cool blue moonlight across mountains, water and foliage, warm amber light glowing from cottage windows and path lanterns, a few subtle fireflies at the edges. Cozy readable night colors, visible scene detail rather than nearly black shadows. Do not add characters, UI, text, borders or watermark. Landscape 16:9 identical framing.",
+    "reference": "daylight.png"
+  }
+}

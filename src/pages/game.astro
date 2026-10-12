@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MiniAvatar from '../components/MiniAvatar.astro';
+import MiniCafe from '../components/MiniCafe.astro';
 import MiniAdventure from '../components/MiniAdventure.astro';
 import { MINI_OPTIONS } from '../lib/min-assets.js';
 ---
@@ -26,6 +27,7 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
     </section>
 
     <MiniAdventure />
+    <MiniCafe />
 
     <div class="game-layout">
       <section class="game-screen" aria-label="Pixel world">
@@ -60,7 +62,7 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
           <h3>{label}</h3>
           <div class={`choice-grid layer-choices layer-choices-${field}`} role="group" aria-label={`Choose ${label.toLowerCase()}`}>
             {MINI_OPTIONS[field].map(option => <button class="style-choice asset-choice" type="button" {...{ [`data-${field}`]: option.id }} aria-pressed="false">
-              <span class={`layer-thumbnail layer-thumbnail-${field}`} aria-hidden="true">{option.image ? <img src={option.image.replace('/layers/', '/thumbnails/')} alt="" loading="lazy" /> : <span>—</span>}</span>
+              <span class={`layer-thumbnail layer-thumbnail-${field}`} aria-hidden="true">{option.image ? <img src={option.image.replace('/layers/', '/thumbnails/').replace('/looks/', '/look-thumbnails/')} alt="" loading="lazy" /> : <span>—</span>}</span>
               <small>{option.name}</small>
             </button>)}
           </div>
@@ -70,34 +72,26 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
           <button class="map-choice" type="button" data-map="night"><span>☾</span>Moonlit Harbor</button>
           <button class="map-choice" type="button" data-map="forest"><span>♧</span>Cloudwood Forest</button>
         </div></section>
-        <section class="wardrobe-group"><h3>Walking Mini</h3><div class="walking-choices" role="group" aria-label="Walking Mini appearance"><button type="button" data-walking-look="original" aria-pressed="true">Original Mini</button><button type="button" data-walking-look="styled" aria-pressed="false">My saved look</button></div></section>
+        <button id="restore-original-mini" class="game-button" type="button">Use original Mini ♡</button>
         <button id="save-outfit" class="game-button save-button" type="button">Save my look <span aria-hidden="true">↗</span></button>
-        <p class="opensource-note">Mix hair, eyes, face, clothes, and headwear. Your look stays with Min in the game, homepage portrait, and activities. Choose which Mini walks along the bottom. Each signed-in player has their own saved profile.</p>
+        <p class="opensource-note">Mix hair, eyes, face, clothes, and headwear. Your look stays with Min in the game, homepage portrait, and activities. The same Mini wears your look everywhere, including while walking. Each signed-in player has their own saved profile.</p>
       </aside>
     </div>
     <section class="game-activities" aria-labelledby="game-activities-title">
       <div class="game-activities-heading"><div><span class="game-kicker">LITTLE DAILY ADVENTURES</span><h2 id="game-activities-title">A good day for Min</h2></div><p data-min-game-progress aria-live="polite">Pick a little activity to earn points.</p></div>
       <div class="game-activity-cards">
-        <button type="button" data-min-activity="coffee"><span class="activity-art" aria-hidden="true">☕</span><strong>Coffee break</strong><span>A warm cup to recharge.</span><small>8 seconds · +10 points</small><span class="activity-completed">Completed <b data-min-completed="coffee">0</b> times</span></button>
-        <button type="button" data-min-activity="tuna"><span class="activity-art" aria-hidden="true">🍚</span><strong>Tuna bowl time</strong><span>A tiny, tasty lunch.</span><small>10 seconds · +15 points</small><span class="activity-completed">Completed <b data-min-completed="tuna">0</b> times</span></button>
-        <button type="button" data-min-activity="study"><span class="activity-art" aria-hidden="true">📖</span><strong>Study together</strong><span>One page, one little win.</span><small>15 seconds · +25 points</small><span class="activity-completed">Completed <b data-min-completed="study">0</b> times</span></button>
+        <button type="button" data-min-activity="coffee"><span class="activity-art activity-mini-preview" data-min-activity-preview="coffee" aria-hidden="true"><MiniAvatar variant="activity" /><span class="activity-mini-icon">☕</span></span><strong>Coffee break</strong><span>A warm cup to recharge.</span><small>8 seconds · +10 points</small><span class="activity-completed">Completed <b data-min-completed="coffee">0</b> times</span></button>
+        <button type="button" data-min-activity="tuna"><span class="activity-art activity-mini-preview" data-min-activity-preview="tuna" aria-hidden="true"><MiniAvatar variant="activity" /><span class="activity-mini-icon">🍚</span></span><strong>Tuna bowl time</strong><span>A tiny, tasty lunch.</span><small>10 seconds · +15 points</small><span class="activity-completed">Completed <b data-min-completed="tuna">0</b> times</span></button>
+        <button type="button" data-min-activity="study"><span class="activity-art activity-mini-preview" data-min-activity-preview="study" aria-hidden="true"><MiniAvatar variant="activity" /><span class="activity-mini-icon">📖</span></span><strong>Study together</strong><span>One page, one little win.</span><small>15 seconds · +25 points</small><span class="activity-completed">Completed <b data-min-completed="study">0</b> times</span></button>
       </div>
     </section>
   </div>
 
   <script>
     import { getProfile, updateProfile, subscribeProfile } from '../lib/min-profile.js';
-    import { getWalkingLook, setWalkingLook } from '../lib/min-appearance.js';
     import { getAccount, saveToCloud, signInPlayer, signOutPlayer, subscribeAccount } from '../lib/min-cloud.js';
 
-    function syncWalkingLook() {
-      document.querySelectorAll('[data-walking-look]').forEach(button => {
-        const selected = button.dataset.walkingLook === getWalkingLook();
-        button.classList.toggle('selected', selected); button.setAttribute('aria-pressed', String(selected));
-      });
-    }
-    document.querySelectorAll('[data-walking-look]').forEach(button => button.addEventListener('click', () => { setWalkingLook(button.dataset.walkingLook); syncWalkingLook(); }));
-    syncWalkingLook();
+    document.getElementById('restore-original-mini').addEventListener('click', () => updateProfile({ outfit:'classic', hair:'ombre', eyes:'brown', face:'soft', hat:'none' }));
     const scene = document.getElementById('game-scene');
     const status = document.getElementById('save-status');
     const loginButton = document.getElementById('google-login');
@@ -140,6 +134,7 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
     let audioContext = null, musicTimer = null, noteIndex = 0;
     const melody = [659.25, 783.99, 987.77, 783.99, 698.46, 880, 1046.5, 880, 587.33, 698.46, 880, 698.46, 523.25, 659.25, 783.99, 659.25];
     const bgmButton = document.getElementById('bgm-toggle');
+    window.addEventListener('min-cafe-music', () => { if (bgmButton.getAttribute('aria-pressed') === 'true') bgmButton.click(); });
     document.querySelectorAll('[data-adventure-music]').forEach(button => button.addEventListener('click', () => bgmButton.click()));
     new MutationObserver(() => { document.querySelectorAll('[data-adventure-music]').forEach(button => { button.textContent = bgmButton.textContent; button.setAttribute('aria-pressed', bgmButton.getAttribute('aria-pressed')); }); }).observe(bgmButton, { childList: true, attributes: true, attributeFilter: ['aria-pressed'] });
     function playNote(frequency, duration, type, volume, when) {

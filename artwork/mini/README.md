@@ -32,4 +32,8 @@ Profile schema 3 saves `hair`, `eyes`, `face`, `outfit`, and `hat` separately. E
 
 ## Proportion correction
 
-Face layers retain their approximately 1.25:1 source ratio (94×75 registration), and eyes use 52×22. Chestnut bob hair uses 124×113 to retain its natural width. The browser canvas is constrained to its native 2:3 aspect ratio. The bottom walker uses the original six-frame artwork while game/home/activity characters retain the modular wardrobe.
+Face layers now use a slimmer oval silhouette at 82×81 registration, centered at (23,33); eyes remain at 52×22. The original round atlas is retained as `faces-round-atlas.png`; the refinement prompt is in `face-refinement.json`. Chestnut bob hair uses 124×113 to retain its natural width. The browser canvas is constrained to its native 2:3 aspect ratio. The bottom walker uses the original six-frame artwork while game/home/activity characters retain the modular wardrobe.
+
+## Unified original Mini (current runtime)
+
+The previous separate face/body rig is now replaced by one shared character renderer based on the exact original walking Mini. Original classic/ombre uses the preserved six frames. Outfit and hair choices use the matching 4x3 full-look atlas, with the original walking character as the face and proportion reference. All portraits, walking, activity, cafe and game views use this identity. Code-native emote and activity props animate on top. Runtime look assets: `public/mini/looks`; selection previews: `public/mini/look-thumbnails`. `scripts/package-unified-mini.py` extracts the sheet without painting or stretching it. Prompt and source details: `unified-style.json`.

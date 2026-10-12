@@ -17,7 +17,12 @@ const logos = [`<path d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205
           <path fill="#866043" d="M4 3h1v1H4zm4 1h1v1H8zM3 7h1v1H3zm4 2h1v1H7zm3-3h1v1h-1z" />
         </g>}
         <g fill="currentColor" transform={social.kind === 'cherry' ? 'translate(4 8) scale(.9)' : social.kind === 'sprinkles' ? 'translate(5 5) scale(.92)' : 'translate(8 8) scale(.67)'} set:html={logos[index]} />
-        {social.kind === 'cherry' && <g transform="translate(18 1)" shape-rendering="crispEdges">
+        {social.kind === 'cherry' && <g shape-rendering="crispEdges">
+          <path fill="#c9ad8d" d="M12 12h16v3H12z" />
+          <path fill="#fff3d9" d="M11 11h18v3H11V9h3V7h3V5h4V4h3v3h-2v2h4v2z" />
+          <path fill="#ffffff" d="M14 10h10v2H14zm3-3h4v2h-4z" />
+        </g>}
+        {social.kind === 'cherry' && <g transform="translate(15 0) scale(.75)" shape-rendering="crispEdges">
           <path fill="#54834e" d="M6 1h1v3H6zm1 1h3v1H7z" />
           <path fill="#c74047" d="M2 6h1V4h3v1h1v3H6v2H3V9H2z" />
           <path fill="#d94f50" d="M8 5h1V4h2v1h1v3h-1v2H9V9H8z" />

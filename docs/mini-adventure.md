@@ -21,3 +21,9 @@ Collect up to 16 stars (5 points each). Bring six stars to Pippin near x=1240 to
 This is a playable first chapter with one quest, not a multiplayer MMO, combat system, or full commercial RPG. Personal client-saved points are not a secure competitive economy.
 
 The original forest backdrop was generated with the built-in image_gen tool. The final files are `public/game-art/maple-meadow.png` and its web delivery copy `public/game-art/maple-meadow.webp`. The full generation prompt and source path are in `artwork/mini/adventure-background.json`. Pixel emote props are native canvas artwork.
+
+## Shared character identity (October 11, 2026)
+
+All appearances now use the original six-frame walk character as their identity reference. Classic dress + original ombre hair retain those exact frames. Home portraits, activity previews, cafe seating, emotes and the adventure use the same renderer; no state switches into the earlier front-facing modular doll. The wardrobe offers 12 complete looks from a generated 4x3 sheet, generated with the original face and proportions as the reference. Custom looks animate a six-phase leg stride and body bob; the original look keeps its original full walk sequence. Eye color and cheek accents change without replacing the face shape. A single shared look follows the player; the old original/styled walker selector is removed.
+
+Original look can be restored with Use original Mini, preserving points, quest and study progress. Artwork prompt: `artwork/mini/unified-style.json`; source atlas: `artwork/mini/unified-looks-atlas.png`; packaging: `scripts/package-unified-mini.py`. Older modular art is retained as source history, but is no longer the character renderer.

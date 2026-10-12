@@ -30,10 +30,10 @@ const worldPlace = worldPlaces[activeNav];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <link rel="icon" href="/favicon.ico?v=mini-2" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-mini-32.png?v=mini-2">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-mini-16.png?v=mini-2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=mini-2">
+  <link rel="icon" href="/favicon.ico?v=unity-1" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-mini-32.png?v=unity-1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-mini-16.png?v=unity-1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=unity-1">
   
   <link rel="preload" href="/fonts/pixelify-400.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/fonts/nunito-400.ttf" as="font" type="font/ttf" crossorigin>
@@ -51,7 +51,7 @@ const worldPlace = worldPlaces[activeNav];
   </script>
 </head>
 <body>
-  <div class="world-scenery" aria-hidden="true"><span class="world-cloud cloud-west"></span><span class="world-cloud cloud-east"></span><span class="world-hills"></span><span class="world-ground"></span></div>
+  <div class="world-scenery" aria-hidden="true"><span class="world-landscape world-landscape-day"></span><span class="world-landscape world-landscape-night"></span><span class="world-ground"></span></div>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class:list={["page-container", { "has-toc": headings.length > 0 }]}>
     <!-- Left Navigation Dock -->
@@ -60,7 +60,7 @@ const worldPlace = worldPlaces[activeNav];
         <div class="nav-header-mobile">
           <a href="/" class="brand" id="brand-link" aria-label="Min Kim Home">
             <span class="brand-glyph" id="brand-glyph-container">
-              <img src="/favicon-mini.png?v=mini-2" width="40" height="40" alt="" />
+              <img src="/favicon-mini.png?v=unity-1" width="40" height="40" alt="" />
             </span>
             <span>Min’s World<small>by Min Kim</small></span>
           </a>
@@ -83,7 +83,7 @@ const worldPlace = worldPlaces[activeNav];
               )}
             </li>
             <li><a href="/wiki" aria-current={activeNav === 'wiki' ? 'page' : undefined} class={`nav-link ${activeNav === 'wiki' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">▥</span>Wiki</a></li>
-            <li><a href="/work" aria-current={activeNav === 'work' ? 'page' : undefined} class={`nav-link ${activeNav === 'work' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⚑</span>Projects</a></li>
+            <li><a href="/projects" aria-current={activeNav === 'projects' ? 'page' : undefined} class={`nav-link ${activeNav === 'projects' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⚑</span>Projects</a></li>
             <li><a href="/about" aria-current={activeNav === 'about' ? 'page' : undefined} class={`nav-link ${activeNav === 'about' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">♡</span>About</a></li>
             <li><a href="/game" aria-current={activeNav === 'game' ? 'page' : undefined} class={`nav-link ${activeNav === 'game' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">✦</span>Game</a></li>
           </ul>
@@ -132,7 +132,7 @@ const worldPlace = worldPlaces[activeNav];
         <div class="sweet-links" aria-label="Pixel treats">
           <a class="sweet-link" href="mailto:aqeoon@gmail.com" aria-label="Send Min an email"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#fff0cc" d="M5 1h6v1h2v2h1v3h-2v2h-1v1h-1v1H6v-1H5v-1H4V8H2V4h1V2h2z"/><path fill="#ed9daf" d="M4 8h8v2h-1v1H5v-1H4z"/><path fill="#b95762" d="M6 11h4v1h-1v2H7v-2H6z"/><path fill="#8b3e4c" d="M7 13h2v1H7z"/><path fill="#9a4d4b" d="M7 1h2v2H7z"/></svg></span><small>say hi</small></a>
           <a class="sweet-link" href="/about" aria-label="Read about Min"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#d94c53" d="M7 3h2v1h3v1h1v2h1v3h-1v2h-2v1H6v-1H4v-2H3V7h1V5h2V4h1z"/><path fill="#62a866" d="M7 1h2v2h2v1h-2v1H7V4H5V3h2z"/><path fill="#ffcfaa" d="M6 7h1v1H6zm4 2h1v1h-1z"/></svg></span><small>about</small></a>
-          <a class="sweet-link" href="/work" aria-label="Browse projects"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#fff1d6" d="M5 1h6v1h2v2h1v2h-1v2h-1v1H4V8H3V6H2V4h1V2h2z"/><path fill="#edbb79" d="M4 9h8v2h-1v1H5v-1H4z"/><path fill="#a96b4d" d="M6 12h4v1H6zm1 1h2v1H7z"/><path fill="#fff" d="M6 3h1v1H6zm3 2h1v1H9z"/></svg></span><small>projects</small></a>
+          <a class="sweet-link" href="/projects" aria-label="Browse projects"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#fff1d6" d="M5 1h6v1h2v2h1v2h-1v2h-1v1H4V8H3V6H2V4h1V2h2z"/><path fill="#edbb79" d="M4 9h8v2h-1v1H5v-1H4z"/><path fill="#a96b4d" d="M6 12h4v1H6zm1 1h2v1H7z"/><path fill="#fff" d="M6 3h1v1H6zm3 2h1v1H9z"/></svg></span><small>projects</small></a>
           <a class="sweet-link" href="/blog" aria-label="Read the blog"><span aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="#f4cda1" d="M3 4h10v1h1v8H2V5h1z"/><path fill="#fff0d8" d="M4 2h8v2H4z"/><path fill="#fff6e7" d="M4 6h8v1H4zm1 2h6v1H5z"/><path fill="#d78384" d="M7 1h2v2H7z"/><path fill="#986548" d="M4 12h2v1H4zm6 0h2v1h-2z"/></svg></span><small>Blog</small></a>
         </div>
         <SocialBadges />
@@ -181,6 +181,8 @@ const worldPlace = worldPlaces[activeNav];
     const moonIcon = themeToggle?.querySelector('.moon-icon');
 
     function syncThemeIcons(theme) {
+      themeToggle?.setAttribute('aria-label', theme === 'dark' ? 'Switch to daylight' : 'Switch to night');
+      themeToggle?.setAttribute('title', theme === 'dark' ? 'Switch to daylight' : 'Switch to night');
       if (!sunIcon || !moonIcon) return;
       if (theme === 'dark') {
         sunIcon.style.display = 'none';

@@ -38,8 +38,15 @@ export function initAdventure() {
   }
   function pause() { paused = true; keys.clear(); save(); overlay.hidden = false; document.getElementById('adventure-play').textContent = 'Continue adventure →'; }
   function jump() { jumpUntil = performance.now() + 140; }
+  function enterCafe() { pause(); say('Welcome to Maple Cup Café. Your window seat is ready.'); window.dispatchEvent(new Event('min-cafe-open')); }
+  document.getElementById('adventure-cafe').addEventListener('click', enterCafe);
+  window.addEventListener('min-cafe-close', () => { player.x=650; player.y=FLOOR-player.h; player.vy=0; save(); paused=false; previous=performance.now(); overlay.hidden=true; say('Back in the meadow. Press E by the café door whenever you need a quiet moment.'); });
+  const mapPanel=document.getElementById('adventure-world-map'), mapToggle=document.getElementById('adventure-map-toggle');
+  mapToggle.addEventListener('click',()=>{mapPanel.hidden=!mapPanel.hidden;mapToggle.setAttribute('aria-expanded',String(!mapPanel.hidden));});
+  document.querySelectorAll('[data-adventure-travel]').forEach(button=>button.addEventListener('click',()=>{player.x=Number(button.dataset.adventureTravel);player.y=FLOOR-player.h;player.vy=0;keys.clear();save();say(`Arrived at ${button.textContent}.`);if(player.x===650)enterCafe();else{paused=false;previous=performance.now();overlay.hidden=true;canvas.focus({preventScroll:true});}}));
   function talk() {
-    if (Math.abs(player.x - 1240) > 125) { say('Pippin is waiting by the big tree, near the middle of the meadow. Follow the platforms to the right.'); return; }
+    if (Math.abs(player.x - 650) < 110) { enterCafe(); return; }
+    if (Math.abs(player.x - 1240) > 125) { say('Find Pippin at the big tree, or visit the café at the first cottage. Open Map to see the route.'); return; }
     if (profile.adventure.questComplete) { playEmote('heart'); say('Pippin: Thank you, Mini! The meadow is brighter with you here. The cloud gate is open.'); return; }
     if (completeAdventureQuest(Math.round(player.x))) { playEmote('cake'); say('Pippin: Six stars! Here is a cake for you. +50 points! The cloud gate is now open.'); }
     else say(`Pippin: Could you bring me six stars? You have ${popcount(profile.adventure.collected)} so far. Each star gives you 5 points!`);
@@ -135,6 +142,12 @@ export function initAdventure() {
     for(const p of platforms){rect('#987452',p.x-camera,p.y,p.w,15);rect('#bad69b',p.x-camera,p.y,p.w,6);rect('#718e61',p.x-camera,p.y+6,p.w,3);}
     for(let i=0;i<stars.length;i++)if(!(profile.adventure.collected&(1<<i)))star(stars[i].x-camera,stars[i].y+Math.sin(now/250+i)*3);
     for(let i=0;i<14;i++){const x=i*265+100-camera;rect('#72995f',x,FLOOR-8,2,8);rect(i%2?'#e6a4b2':'#ffdf91',x-3,FLOOR-12,8,5);}
+    // A little café door is an actual destination on the meadow route.
+    const cafeX=650-camera;
+    rect('#f1dfb7',cafeX-60,FLOOR-104,120,104);rect('#b7797f',cafeX-72,FLOOR-115,144,17);rect('#b7797f',cafeX-58,FLOOR-132,116,18);rect('#b7797f',cafeX-39,FLOOR-149,78,18);
+    rect('#885e43',cafeX-12,FLOOR-60,29,60);rect('#ebbf76',cafeX-44,FLOOR-82,23,27);rect('#ebbf76',cafeX+27,FLOOR-82,23,27);rect('#f8e7ca',cafeX-65,FLOOR-102,130,20);
+    ctx.textAlign='center';ctx.font='15px "Pixelify Sans",sans-serif';ctx.fillStyle='#634b37';ctx.fillText('Maple Cup Café',cafeX,FLOOR-87);
+    if(Math.abs(player.x-650)<110){rect('#fff7e7',cafeX-67,FLOOR-188,134,26);ctx.fillStyle='#634b37';ctx.fillText('E · take a seat ☕',cafeX,FLOOR-170);}
     pippin(now);
     const gate=3485-camera;rect('#c9bc93',gate-24,FLOOR-108,12,108);rect('#c9bc93',gate+24,FLOOR-108,12,108);rect('#c9bc93',gate-24,FLOOR-108,60,12);
     rect(profile.adventure.questComplete?'#b7dce0':'#8ba48e',gate-11,FLOOR-88,34,88);
@@ -152,6 +165,12 @@ export function initAdventure() {
     const dt=Math.min(.033,Math.max(0,(now-previous)/1000));previous=now;
     if(!paused)physics(dt,now); else source.dataset.controlledPose='idle';
     const target=Math.max(0,Math.min(WORLD-canvas.width,player.x-canvas.width*.4));camera+=(target-camera)*Math.min(1,dt*9);draw(now);
+    if (!mapPanel.hidden) {
+      document.getElementById('adventure-map-marker').setAttribute('transform',`translate(${Math.round(player.x)} 55)`);
+      const stops=[{x:90,name:'Starting meadow'},{x:650,name:'Maple Cup Café'},{x:1240,name:'Pippin’s tree'},{x:3485,name:'Cloud gate'}];
+      const closest=stops.reduce((a,b)=>Math.abs(b.x-player.x)<Math.abs(a.x-player.x)?b:a);
+      document.getElementById('adventure-map-location').textContent=`Mini: ${Math.round(player.x)} / ${WORLD} · nearest: ${closest.name}${closest.x===3485&&!profile.adventure.questComplete?' · gate requires Pippin’s quest':''}`;
+    }
     requestAnimationFrame(tick);
   }
   window.addEventListener('pagehide',()=>{save();alive=false;resize.disconnect();unsubscribe();unsubscribeAccount();window.removeEventListener('keyup',release);});

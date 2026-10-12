@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'artwork/mini'; OUT=ROOT/'public/mini/layers'; THUMBS=ROOT/'public/mini/thumbnails'
 OUT.mkdir(parents=True,exist_ok=True);THUMBS.mkdir(parents=True,exist_ok=True)
 SIZE=(128,192)
-B={'body':(36,112,56,80),'arm-left':(36,123,12,35),'arm-right':(80,123,12,35),'face':(17,39,94,75),'eyes':(38,74,52,22),'clothes':(28,115,72,60),
+B={'body':(36,112,56,80),'arm-left':(36,123,12,35),'arm-right':(80,123,12,35),'face':(23,33,82,81),'eyes':(38,74,52,22),'clothes':(28,115,72,60),
    'hair-ombre':(8,6,112,166),'hair-bob':(2,8,124,113),'hair-twintails':(5,7,118,165),
    'hat-beret':(32,10,64,29),'hat-flower':(92,57,17,17),'hat-crown':(37,15,55,26),
    'prop-coffee':(53,91,25,29),'prop-tuna':(46,119,37,32),'prop-study':(42,128,44,33)}

@@ -1,0 +1,24 @@
+---
+// Link the first mention of another known concept; prose stays escaped text.
+const { text = '', entries = [], currentSlug = '' } = Astro.props;
+const lookup = new Map();
+for (const entry of entries) {
+  if (entry.slug === currentSlug) continue;
+  for (const label of [entry.title, ...(entry.aliases || [])]) {
+    if (label.length >= 3 && !lookup.has(label.toLowerCase())) lookup.set(label.toLowerCase(), entry);
+  }
+}
+const labels = [...lookup.keys()].sort((a,b) => b.length-a.length);
+const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const regex = labels.length ? new RegExp(`\\b(${labels.map(escape).join('|')})\\b`, 'gi') : null;
+const parts = [], seen = new Set();
+let cursor = 0, match;
+while (regex && (match = regex.exec(text))) {
+  if (match.index > cursor) parts.push({ text:text.slice(cursor,match.index) });
+  const entry = lookup.get(match[0].toLowerCase());
+  parts.push({ text:match[0], entry:seen.has(entry.slug) ? null : entry });
+  seen.add(entry.slug); cursor = regex.lastIndex;
+}
+if (cursor < text.length) parts.push({ text:text.slice(cursor) });
+---
+{parts.map(part => part.entry ? <a class="wiki-inline-link" href={`/wiki/${part.entry.slug}`} title={part.entry.summary}>{part.text}</a> : part.text)}

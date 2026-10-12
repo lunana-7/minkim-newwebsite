@@ -2,52 +2,33 @@
 import Layout from '../../layouts/Layout.astro';
 import { wikiEntries } from '../../wiki.js';
 export const prerender = true;
-const categories = ['All concepts', ...new Set(wikiEntries.map(entry => entry.category))];
+const topics = [...new Set(wikiEntries.map(entry => entry.category))];
+const categories = ['All concepts', ...topics];
+const alphabet = [...new Set(wikiEntries.map(entry => entry.title[0]))].sort();
+const sorted = [...wikiEntries].sort((a,b) => a.title.localeCompare(b.title));
+const topicId = name => name.toLowerCase().replace(/[^a-z]+/g,'-').replace(/-$/,'');
+const paths = [
+  {title:'Start with governance',description:'Purpose, ownership and delegated action.',slugs:['ai-governance','agentic-ai-governance','agent-inventory','delegated-authority']},
+  {title:'Understand an access decision',description:'Identity, current facts, policy and enforcement.',slugs:['authentication','authorization','policy-information-point','policy-decision-point','policy-enforcement-point']},
+  {title:'Operate and improve',description:'Find failures, retain evidence and respond.',slugs:['prompt-injection','evaluations-and-red-teaming','observability','audit-trail','incident-response']},
+];
 ---
-<Layout title="Wiki | Min Kim" activeNav="wiki" description="A practical reference for AI governance, agent identity, runtime governance, and policy information points.">
-  <header class="wiki-intro">
-    <span class="case-study-kicker">Min’s field notes</span>
-    <h1 class="page-title">Wiki</h1>
-    <p class="page-lead">A growing reference for the ideas behind safe, useful AI agents. Start with a definition, follow the connections, and see how it works in practice.</p>
-    <p class="wiki-editor-note">Definitions include source notes. Practical patterns and examples are Min’s synthesis. Last reviewed <time datetime="2026-10-11">October 11, 2026</time>.</p>
-  </header>
-  <section class="wiki-reading-path" aria-labelledby="wiki-path-title">
-    <h2 id="wiki-path-title">A useful place to start</h2>
-    <p>Follow the path from organization-wide oversight to a single action.</p>
-    <ol>{['ai-governance', 'agentic-ai-governance', 'agent-identity', 'runtime-governance', 'policy-information-point'].map(slug => <li><a href={`/wiki/${slug}`}>{wikiEntries.find(entry => entry.slug === slug).title}</a></li>)}</ol>
+<Layout title="Wiki | Min Kim" activeNav="wiki" description="A structured reference to agentic AI governance: identity, authorization, runtime controls, security, oversight and operations.">
+  <header class="wiki-intro"><span class="case-study-kicker">MIN’S GOVERNANCE REFERENCE</span><h1 class="page-title">Wiki</h1><p class="page-lead">A practical encyclopedia of agentic AI governance. Browse a subject, look up a term, or follow a learning path.</p><p class="wiki-editor-note">{wikiEntries.length} articles · {topics.length} subjects · Reviewed <time datetime="2026-10-11">October 11, 2026</time>. Source-based definitions and editorial working definitions are identified on each article. Examples are illustrative.</p></header>
+  <nav class="wiki-portal-nav" aria-label="Wiki sections"><a href="#subjects">Subjects</a><a href="#learning-paths">Learning paths</a><a href="#term-index">A–Z index</a><a href="#wiki-library">Article directory</a></nav>
+  <section id="subjects" class="wiki-subjects" aria-labelledby="subjects-title"><h2 id="subjects-title">Browse by subject</h2><div>{topics.map(category=><a href={`#category-${topicId(category)}`}><strong>{category}</strong><span>{wikiEntries.filter(entry=>entry.category===category).length} {wikiEntries.filter(entry=>entry.category===category).length===1?'article':'articles'} →</span></a>)}</div></section>
+  <section id="learning-paths" class="wiki-learning-paths" aria-labelledby="paths-title"><h2 id="paths-title">Learning paths</h2><div>{paths.map(path=><section><h3>{path.title}</h3><p>{path.description}</p><ol>{path.slugs.map(slug=><li><a href={`/wiki/${slug}`}>{wikiEntries.find(entry=>entry.slug===slug).title}</a></li>)}</ol></section>)}</div></section>
+  <section id="term-index" class="wiki-term-index" aria-labelledby="index-title"><h2 id="index-title">A–Z term index</h2><nav aria-label="Index letters">{alphabet.map(letter=><a href={`#wiki-letter-${letter}`}>{letter}</a>)}</nav><div class="wiki-alphabet-groups">{alphabet.map(letter=><section id={`wiki-letter-${letter}`}><h3>{letter}</h3><ul>{sorted.filter(entry=>entry.title.startsWith(letter)).map(entry=><li><a href={`/wiki/${entry.slug}`}>{entry.title}</a>{entry.aliases?.length>0&&<small>{entry.aliases.slice(0,2).join(' · ')}</small>}</li>)}</ul></section>)}</div></section>
+  <section class="wiki-library" id="wiki-library" aria-labelledby="wiki-library-title"><div class="wiki-library-heading"><h2 id="wiki-library-title">Article directory</h2><span id="wiki-result-count" role="status">{wikiEntries.length} concepts</span></div><label class="wiki-search-label" for="wiki-search">Search terms and abbreviations</label><input class="wiki-search-input" id="wiki-search" type="search" placeholder="Search PDP, delegation, prompt injection, MCP…" autocomplete="off" /><div class="filter-bar wiki-filters" role="group" aria-label="Filter concepts by category">{categories.map((category,i)=><button type="button" class={`filter-btn ${i===0?'active':''}`} data-wiki-category={category} aria-pressed={i===0?'true':'false'}>{category}</button>)}</div>
+    {topics.map(category=><section class="wiki-category-section" id={`category-${topicId(category)}`} data-wiki-group><h3>{category}</h3><div class="wiki-directory-list">{sorted.filter(entry=>entry.category===category).map(entry=><a class="wiki-directory-entry" href={`/wiki/${entry.slug}`} data-wiki-entry data-category={entry.category} data-search={`${entry.title} ${entry.category} ${entry.summary} ${entry.definition} ${(entry.aliases||[]).join(' ')} ${entry.slug==='policy-information-point'?'PIP attributes':''}`.toLowerCase()}><span class="wiki-glyph" aria-hidden="true">{entry.glyph}</span><div><h4>{entry.title}</h4><p>{entry.summary}</p></div><span aria-hidden="true">→</span></a>)}</div></section>)}
+    <p id="wiki-empty" class="wiki-empty" hidden>No concepts match. Try a full term or abbreviation.</p>
   </section>
-  <section class="wiki-library" aria-labelledby="wiki-library-title">
-    <div class="wiki-library-heading"><h2 id="wiki-library-title">Explore the concepts</h2><span id="wiki-result-count" role="status">5 concepts</span></div>
-    <label class="wiki-search-label" for="wiki-search">Find a definition</label>
-    <input class="wiki-search-input" id="wiki-search" type="search" placeholder="Search identity, permissions, PIP…" autocomplete="off" />
-    <div class="filter-bar wiki-filters" role="group" aria-label="Filter concepts by category">{categories.map((category, i) => <button type="button" class={`filter-btn ${i === 0 ? 'active' : ''}`} data-wiki-category={category} aria-pressed={i === 0 ? 'true' : 'false'}>{category}</button>)}</div>
-    <div class="wiki-grid">{wikiEntries.map(entry => <a class="wiki-card" href={`/wiki/${entry.slug}`} data-wiki-entry data-category={entry.category} data-search={`${entry.title} ${entry.category} ${entry.summary} ${entry.definition} ${entry.slug === 'policy-information-point' ? 'PIP PDP PEP PAP attributes authorization' : ''}`.toLowerCase()}>
-      <div class="wiki-card-top"><span class="wiki-glyph" aria-hidden="true">{entry.glyph}</span><span>{entry.category}</span></div>
-      <h3>{entry.title}</h3><p>{entry.summary}</p><span class="wiki-card-link">Read the definition <span aria-hidden="true">→</span></span>
-    </a>)}</div>
-    <p id="wiki-empty" class="wiki-empty" hidden>No concepts match that search. Try “governance” or “identity”.</p>
-  </section>
-  <section class="wiki-connections" aria-labelledby="wiki-connections-title">
-    <h2 id="wiki-connections-title">How the concepts connect</h2>
-    <dl>{wikiEntries.map(entry => <div><dt><a href={`/wiki/${entry.slug}`}>{entry.title}</a></dt><dd>{entry.question}</dd></div>)}</dl>
-  </section>
-  <a class="wiki-blog-link" href="/blog">Read the Blog for longer discussions →</a>
+  <aside class="wiki-method-note"><h2>About this reference</h2><p>Definitions are paraphrased from linked primary sources or labeled as working definitions. Practical controls and scenarios are editorial synthesis. Standards, voluntary frameworks, security guidance and vendor perspectives have different scopes; an article is a learning reference, not a claim of compliance.</p><a href="/blog">Read longer discussions in the Blog →</a></aside>
   <script>
-    let selectedCategory = 'All concepts';
-    const search = document.getElementById('wiki-search');
-    const cards = [...document.querySelectorAll('[data-wiki-entry]')];
-    const filters = [...document.querySelectorAll('[data-wiki-category]')];
-    function filterWiki() {
-      const query = search.value.trim().toLowerCase(); let count = 0;
-      cards.forEach(card => {
-        const visible = (selectedCategory === 'All concepts' || card.dataset.category === selectedCategory) && card.dataset.search.includes(query);
-        card.hidden = !visible; if (visible) count++;
-      });
-      document.getElementById('wiki-result-count').textContent = `${count} ${count === 1 ? 'concept' : 'concepts'}`;
-      document.getElementById('wiki-empty').hidden = count > 0;
-      filters.forEach(button => { const active = button.dataset.wikiCategory === selectedCategory; button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active)); });
-    }
-    search.addEventListener('input', filterWiki);
-    filters.forEach(button => button.addEventListener('click', () => { selectedCategory = button.dataset.wikiCategory; filterWiki(); }));
+    let selectedCategory='All concepts';
+    const search=document.getElementById('wiki-search'),cards=[...document.querySelectorAll('[data-wiki-entry]')],filters=[...document.querySelectorAll('[data-wiki-category]')];
+    function filterWiki(){const query=search.value.trim().toLowerCase();let count=0;cards.forEach(card=>{const visible=(selectedCategory==='All concepts'||card.dataset.category===selectedCategory)&&card.dataset.search.includes(query);card.hidden=!visible;if(visible)count++;});document.querySelectorAll('[data-wiki-group]').forEach(group=>{group.hidden=![...group.querySelectorAll('[data-wiki-entry]')].some(card=>!card.hidden);});document.getElementById('wiki-result-count').textContent=`${count} ${count===1?'concept':'concepts'}`;document.getElementById('wiki-empty').hidden=count>0;filters.forEach(button=>{const active=button.dataset.wikiCategory===selectedCategory;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});}
+    search.addEventListener('input',filterWiki);filters.forEach(button=>button.addEventListener('click',()=>{selectedCategory=button.dataset.wikiCategory;filterWiki();}));
+    document.querySelectorAll('.wiki-subjects a').forEach(link=>link.addEventListener('click',()=>{selectedCategory='All concepts';search.value='';filterWiki();}));
   </script>
 </Layout>

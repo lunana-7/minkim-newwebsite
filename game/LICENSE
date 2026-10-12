@@ -3,7 +3,8 @@ MIT License
 Copyright (c) 2026 Min Kim
 
 This license applies to src/lib/min-adventure.js, src/lib/min-emotes.js,
-src/components/MiniAdventure.astro, and the adventure styles distributed
+src/components/MiniAdventure.astro, src/components/MiniCafe.astro,
+src/lib/min-cafe.js, and the adventure styles distributed
 in the Mini adventure source bundle. Website content, character artwork,
 and third-party dependencies are not covered by this license.
 

@@ -1,9 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import WikiText from '../../components/WikiText.astro';
 import { wikiEntries, policyRoles } from '../../wiki.js';
 export const prerender = true;
 export function getStaticPaths() { return wikiEntries.map(entry => ({ params: { slug: entry.slug }, props: { entry } })); }
 const { entry } = Astro.props;
+const backlinks = wikiEntries.filter(item => item.slug !== entry.slug && item.related.includes(entry.slug));
+const sameTopic = wikiEntries.filter(item => item.slug !== entry.slug && item.category === entry.category);
+const definitionKind = entry.kind || (['runtime-governance','agentic-ai-governance'].includes(entry.slug) ? 'Working governance definition' : 'Source-based definition');
 const sections = [
   { depth: 2, slug: 'definition', text: 'Definition' },
   { depth: 2, slug: 'scope', text: 'What it covers' },
@@ -12,22 +16,28 @@ const sections = [
   ...(entry.slug === 'policy-information-point' ? [{ depth: 2, slug: 'policy-roles', text: 'Policy roles' }] : []),
   { depth: 2, slug: 'pitfalls', text: 'Common pitfalls' },
   { depth: 2, slug: 'related', text: 'Related concepts' },
+  { depth: 2, slug: 'references', text: 'References' },
 ];
 ---
 <Layout title={`${entry.title} | Wiki | Min Kim`} activeNav="wiki" description={entry.summary} headings={sections}>
   <article class="wiki-entry">
-    <a class="back-link" href="/wiki">← Wiki</a>
+    <nav class="wiki-breadcrumb" aria-label="Breadcrumb"><a href="/wiki">Wiki</a><span aria-hidden="true">/</span><span>{entry.category}</span><span aria-hidden="true">/</span><span aria-current="page">{entry.title}</span></nav>
     <header class="wiki-entry-header"><span class="case-study-kicker">{entry.category}</span><h1 class="page-title">{entry.title}</h1><p class="page-lead">{entry.question}</p><p class="wiki-editor-note">Reference notes by Min · Reviewed October 11, 2026</p></header>
+    <aside class="wiki-infobox" aria-label="Term information"><dl><div><dt>Subject</dt><dd>{entry.category}</dd></div><div><dt>Definition type</dt><dd>{definitionKind}</dd></div><div><dt>Also called</dt><dd>{entry.aliases?.length ? entry.aliases.join(' · ') : entry.slug==='policy-information-point' ? 'PIP' : '—'}</dd></div><div><dt>Reviewed</dt><dd>October 11, 2026</dd></div><div><dt>Primary references</dt><dd>{entry.sources.length}</dd></div></dl></aside>
+    <nav class="wiki-article-contents" aria-label="Article contents"><details open><summary>Contents</summary><ol>{sections.map(section=><li><a href={`#${section.slug}`}>{section.text}</a></li>)}</ol></details></nav>
     <div class="prose-content wiki-prose">
-      <section id="definition"><h2>Definition</h2><p class="wiki-definition">{entry.definition}</p><aside class="wiki-source-note"><p>{entry.sourceNote}</p><ul aria-label="Definition sources">{entry.sources.map(source => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a></li>)}</ul></aside></section>
-      <section id="scope"><h2>What it covers</h2><dl class="wiki-scope">{entry.scope.map(([label, text]) => <div><dt>{label}</dt><dd>{text}</dd></div>)}</dl></section>
-      <section id="practice"><h2>In practice</h2><p class="wiki-section-note">Practical design patterns by Min.</p><ul>{entry.practical.map(item => <li>{item}</li>)}</ul></section>
-      <section id="example"><h2>Working example</h2><div class="wiki-example"><h3>{entry.example.title}</h3><p>{entry.example.context}</p><ol>{entry.example.steps.map(step => <li>{step}</li>)}</ol><small>Illustrative scenario, not a reported deployment.</small></div></section>
+      <section id="definition"><h2>Definition</h2><p class="wiki-definition"><WikiText text={entry.definition} entries={wikiEntries} currentSlug={entry.slug} /></p><aside class="wiki-source-note"><p>{entry.sourceNote}</p><p class="wiki-reference-markers">References: {entry.sources.map((source,index)=><a href={`#reference-${index+1}`} title={source.name}>[{index+1}] </a>)}</p></aside></section>
+      <section id="scope"><h2>What it covers</h2><dl class="wiki-scope">{entry.scope.map(([label, text]) => <div><dt>{label}</dt><dd><WikiText text={text} entries={wikiEntries} currentSlug={entry.slug} /></dd></div>)}</dl></section>
+      <section id="practice"><h2>In practice</h2><p class="wiki-section-note">Practical design patterns by Min.</p><ul>{entry.practical.map(item => <li><WikiText text={item} entries={wikiEntries} currentSlug={entry.slug} /></li>)}</ul></section>
+      <section id="example"><h2>Working example</h2><div class="wiki-example"><h3>{entry.example.title}</h3><p><WikiText text={entry.example.context} entries={wikiEntries} currentSlug={entry.slug} /></p><ol>{entry.example.steps.map(step => <li><WikiText text={step} entries={wikiEntries} currentSlug={entry.slug} /></li>)}</ol><small>Illustrative scenario, not a reported deployment.</small></div></section>
       {(entry.slug === 'policy-information-point') && <section id="policy-roles"><h2>Policy roles at a glance</h2><div class="wiki-table-scroll"><table><caption>Roles in the OASIS XACML model, with illustrative AI workflow examples.</caption><thead><tr><th scope="col">Role</th><th scope="col">Responsibility</th><th scope="col">Example</th></tr></thead><tbody>{policyRoles.map(role => <tr><th scope="row"><abbr title={role.name}>{role.acronym}</abbr><small>{role.name}</small></th><td>{role.role}</td><td>{role.example}</td></tr>)}</tbody></table></div>
         <figure class="wiki-policy-flow"><ol><li><strong>PEP</strong><span>Intercept the action</span></li><li><strong>PIP</strong><span>Supply current facts</span></li><li><strong>PDP</strong><span>Evaluate policy</span></li><li><strong>PEP</strong><span>Enforce the result</span></li></ol><figcaption>A simplified reading of one request. Attribute retrieval may involve a context handler; the PAP supplies the policies. <a href="https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html" target="_blank" rel="noopener noreferrer">OASIS XACML 3.0</a>.</figcaption></figure>
       </section>}
-      <section id="pitfalls"><h2>Common pitfalls</h2><ul>{entry.pitfalls.map(item => <li>{item}</li>)}</ul></section>
+      <section id="pitfalls"><h2>Common pitfalls</h2><ul>{entry.pitfalls.map(item => <li><WikiText text={item} entries={wikiEntries} currentSlug={entry.slug} /></li>)}</ul></section>
     </div>
     <section id="related" class="wiki-related"><h2>Related concepts</h2><div>{entry.related.map(slug => { const related = wikiEntries.find(item => item.slug === slug); return <a href={`/wiki/${slug}`}><strong>{related.title}</strong><span>{related.summary}</span><span aria-hidden="true">→</span></a>; })}</div>{entry.blog && <a class="wiki-blog-link" href={`/blog/${entry.blog}`}>Continue reading in the Blog →</a>}</section>
+    {backlinks.length>0&&<section class="wiki-backlinks"><h2>Articles linking here</h2><ul>{backlinks.map(item=><li><a href={`/wiki/${item.slug}`}>{item.title}</a></li>)}</ul></section>}
+    <section id="references" class="wiki-references"><h2>References</h2><p>Primary documents reviewed for this entry. Examples and implementation patterns are editorial synthesis.</p><ol>{entry.sources.map((source,index)=><li id={`reference-${index+1}`}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a><small>Accessed October 11, 2026</small></li>)}</ol></section>
+    <nav class="wiki-topic-footer" aria-label="More in this subject"><strong>More in {entry.category}</strong><div>{sameTopic.map(item=><a href={`/wiki/${item.slug}`}>{item.title}</a>)}</div><a href="/wiki#term-index">Back to the A–Z index ↑</a></nav>
   </article>
 </Layout>

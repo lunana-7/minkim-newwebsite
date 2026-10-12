@@ -9,12 +9,12 @@ const next = projectReturnPath(Astro.url.searchParams.get('next'));
 for (const [name, value] of Object.entries(PRIVATE_PROJECT_HEADERS)) Astro.response.headers.set(name, value);
 ---
 
-<Layout title="Projects | Min Kim" activeNav="work" description="Explore Min Kim's projects by experience: KRAFTON, Pacvue, Memoria, research, and community work.">
+<Layout title="Project archive | Min Kim" activeNav="about" description="Explore Min Kim's projects by experience: KRAFTON, Pacvue, Memoria, research, and community work.">
   {unlocked ? <Fragment>
   <div class="archive-access-bar"><span>✓ Project archive unlocked</span><button id="lock-project-archive" type="button">Lock archive</button></div>
   <header class="portfolio-intro" id="top">
     <span class="case-study-kicker">A portfolio of systems, research & ideas</span>
-    <h1 class="page-title">Projects</h1>
+    <h1 class="page-title">Project archive</h1>
     <p class="page-lead">From governing enterprise AI to building products and studying human–AI collaboration. Explore the overview, scroll through each experience, and open a project for the full story.</p>
     <div class="portfolio-stats"><span><strong>{projectCatalog.length}</strong> individual projects</span><span><strong>{experiences.length}</strong> experiences</span></div>
   </header>

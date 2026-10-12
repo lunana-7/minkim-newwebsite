@@ -9,7 +9,7 @@ export const ACTIVITIES = {
   tuna: { label: 'Eat a tuna bowl', shortLabel: 'Tuna bowl time', reward: 15, duration: 10000, message: 'Tuna, rice, and a happy little lunch.', done: 'That was delicious!' },
   study: { label: 'Study together', shortLabel: 'Study session', reward: 25, duration: 15000, message: 'One page at a time. Let’s focus!', done: 'A little wiser, a little brighter.' }
 };
-const DEFAULT = { schemaVersion: 4, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, updatedAt: 0 };
+const DEFAULT = { schemaVersion: 5, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, study: { sessions: 0, seconds: 0 }, updatedAt: 0 };
 let owner = 'guest';
 let current;
 const listeners = new Set();
@@ -30,6 +30,7 @@ export function normalizeProfile(value = {}) {
     activeActivity: activity && ACTIVITIES[activity.kind] && typeof activity.id === 'string' && Number.isFinite(activity.startedAt) && Number.isFinite(activity.endsAt) && activity.endsAt - activity.startedAt === ACTIVITIES[activity.kind].duration
       ? { id: activity.id.slice(0, 100), kind: activity.kind, startedAt: activity.startedAt, endsAt: activity.endsAt } : null,
     adventure: { x: Math.max(36, Math.min(3560, safeNumber(value?.adventure?.x ?? 90, 3560))), collected: safeNumber(value?.adventure?.collected, 65535), questComplete: value?.adventure?.questComplete === true },
+    study: { sessions: safeNumber(value?.study?.sessions), seconds: safeNumber(value?.study?.seconds) },
     updatedAt: Number.isFinite(value?.updatedAt) ? Math.max(0, value.updatedAt) : 0
   };
 }
@@ -49,6 +50,7 @@ function persist() {
   try { localStorage.setItem(key(), JSON.stringify(current)); } catch {}
   emit();
 }
+export function getPlayerId() { return owner; }
 export function getProfile() {
   current ||= read();
   return structuredClone(current);

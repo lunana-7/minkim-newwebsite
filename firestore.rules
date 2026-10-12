@@ -17,9 +17,12 @@ service cloud.firestore {
         a.collected is int && a.collected >= 0 && a.collected <= 65535 &&
         a.questComplete is bool;
     }
+    function validStudy(s) {
+      return s is map && s.keys().hasOnly(['sessions', 'seconds']) && s.sessions is int && s.sessions >= 0 && s.sessions <= 1000000000 && s.seconds is int && s.seconds >= 0 && s.seconds <= 1000000000;
+    }
     function validGame(g) {
-      return g is map && g.keys().hasOnly(['schemaVersion', 'outfit', 'hair', 'eyes', 'face', 'hat', 'map', 'points', 'completedActivities', 'activeActivity', 'adventure', 'updatedAt']) &&
-        g.schemaVersion in [2, 3, 4] &&
+      return g is map && g.keys().hasOnly(['schemaVersion', 'outfit', 'hair', 'eyes', 'face', 'hat', 'map', 'points', 'completedActivities', 'activeActivity', 'adventure', 'study', 'updatedAt']) &&
+        g.schemaVersion in [2, 3, 4, 5] &&
         g.get('hair', 'ombre') in ['ombre', 'bob', 'twintails'] &&
         g.get('eyes', 'brown') in ['brown', 'hazel', 'blue'] &&
         g.get('face', 'soft') in ['soft', 'rosy', 'freckles'] &&
@@ -31,6 +34,7 @@ service cloud.firestore {
         g.completedActivities.tuna is int && g.completedActivities.tuna >= 0 && g.completedActivities.tuna <= 1000000000 &&
         g.completedActivities.study is int && g.completedActivities.study >= 0 && g.completedActivities.study <= 1000000000 &&
         g.updatedAt is int && g.updatedAt >= 0 && validActivity(g.activeActivity) &&
+        validStudy(g.get('study', {'sessions': 0, 'seconds': 0})) &&
         validAdventure(g.get('adventure', {'x': 90, 'collected': 0, 'questComplete': false}));
     }
     match /players/{playerId} {

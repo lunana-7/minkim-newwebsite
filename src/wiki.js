@@ -1,3 +1,4 @@
+import { expandedWikiEntries } from './wiki-expanded.js';
 const sources = {
   nist: { name: 'NIST AI RMF Core', url: 'https://airc.nist.gov/airmf-resources/airmf/5-sec-core/' },
   spiffe: { name: 'SPIFFE concepts', url: 'https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/' },
@@ -7,7 +8,7 @@ const sources = {
   xacml: { name: 'OASIS XACML 3.0 standard', url: 'https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html' },
 };
 
-export const wikiEntries = [
+const coreWikiEntries = [
   {
     slug: 'ai-governance', title: 'AI Governance', category: 'Foundations', glyph: '♧',
     question: 'Who owns the system, and how are its risks and benefits managed?',
@@ -93,6 +94,8 @@ export const wikiEntries = [
     related: ['runtime-governance', 'agent-identity'],
   },
 ];
+
+export const wikiEntries = [...coreWikiEntries, ...expandedWikiEntries];
 
 export const policyRoles = [
   { acronym: 'PAP', name: 'Policy Administration Point', role: 'Creates policies.', example: 'The approved external-email rule.' },

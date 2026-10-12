@@ -1,3 +1,60 @@
 ---
-return Astro.redirect('/work', 301);
+import Layout from '../../layouts/Layout.astro';
+import { workRegions } from '../../public-projects.js';
 ---
+<Layout title="Projects | Min Kim" activeNav="projects" description="Explore a public summary of Min Kim’s work in AI governance, product, research and community.">
+  <header class="work-map-intro">
+    <span class="case-study-kicker">MIN’S WORK WORLD</span>
+    <h1 class="page-title">Projects</h1>
+    <p class="page-lead">A little map of the work I’ve done. Choose a destination to explore my role, focus and contributions.</p>
+    <div class="work-map-progress"><span aria-hidden="true">✦</span><span id="work-map-progress">10 destinations to explore</span><button id="work-map-reset" type="button" hidden>Reset exploration</button></div>
+  </header>
+  <nav class="work-world-map" aria-label="Choose an experience">
+    <div class="work-map-heading"><span>EXPERIENCE MAP</span><span aria-hidden="true">☀ · ♧ · ✦</span></div>
+    <div class="work-map-destinations">
+      {workRegions.map((region,index) => <button class="work-map-node" type="button" data-work-region={region.id} aria-controls={`region-${region.id}`} aria-pressed="false">
+        <span class="work-map-node-art" aria-hidden="true"><svg viewBox="0 0 40 32" shape-rendering="crispEdges"><path fill="#7d9b62" d="M0 28h40v4H0zM3 16h8v10H3zM1 18h12v4H1zM30 14h7v12h-7zM28 17h11v5H28z"/><path fill="#966344" d="M6 24h2v6H6zm27-1h2v7h-2z"/><path fill="#f5e4b7" d="M14 14h14v14H14z"/><path fill={index%2 ? '#7a9a9a':'#c58589'} d="M12 12h18v4H12zm3-3h12v3H15zm3-3h6v3h-6z"/><path fill="#916749" d="M19 21h5v7h-5z"/><path fill="#ffcd79" d="M16 17h3v3h-3zm8 0h3v3h-3z"/></svg><span>{region.icon}</span></span>
+        <span class="work-map-node-number">{String(index+1).padStart(2,'0')} <span class="work-map-visited" aria-label="Explored" hidden>✓</span></span><strong>{region.name}</strong><small>{region.place}</small>
+      </button>)}
+    </div>
+  </nav>
+  <div class="work-region-panels">
+    {workRegions.map(region => <section id={`region-${region.id}`} class="work-region-panel" data-work-panel={region.id} aria-labelledby={`title-${region.id}`}>
+      <header><span class="work-region-icon" aria-hidden="true">{region.icon}</span><div><p class="case-study-kicker">{region.place}</p><h2 id={`title-${region.id}`} tabindex="-1">{region.name}</h2><p>{region.role} · {region.period}</p></div></header>
+      <p class="work-region-summary">{region.summary}</p>
+      <h3>What I worked on</h3><ul>{region.work.map(item => <li>{item}</li>)}</ul>
+      <div class="work-region-skills" aria-label="Areas of focus">{region.skills.map(skill => <span>{skill}</span>)}</div>
+      <div class="work-region-next"><span>Choose another destination above to keep exploring.</span><a href="/about">Meet Min →</a></div>
+    </section>)}
+  </div>
+  <script>
+    const nodes = Array.from(document.querySelectorAll('[data-work-region]'));
+    const panels = Array.from(document.querySelectorAll('[data-work-panel]'));
+    const key = 'min-work-map-explored';
+    let visited = new Set();
+    try { const saved = JSON.parse(localStorage.getItem(key) || '[]'); if (Array.isArray(saved)) visited = new Set(saved.filter(id => nodes.some(node => node.dataset.workRegion === id))); } catch {}
+    function updateProgress() {
+      document.getElementById('work-map-progress').textContent = `${visited.size} / ${nodes.length} destinations explored${visited.size === nodes.length ? ' · Map complete! ✦' : ''}`;
+      document.getElementById('work-map-reset').hidden = !visited.size;
+      nodes.forEach(node => { node.querySelector('.work-map-visited').hidden = !visited.has(node.dataset.workRegion); });
+      try { localStorage.setItem(key, JSON.stringify([...visited])); } catch {}
+    }
+    function selectRegion(id, focus = false) {
+      nodes.forEach(node => node.setAttribute('aria-pressed', String(node.dataset.workRegion === id)));
+      panels.forEach(panel => { panel.hidden = panel.dataset.workPanel !== id; });
+      if (focus) {
+        visited.add(id); updateProgress();
+        history.replaceState(null, '', `#${id}`);
+        const heading = document.querySelector(`[data-work-panel="${id}"] h2`);
+        heading.focus({ preventScroll:true });
+        heading.closest('section').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block:'start' });
+      }
+    }
+    nodes.forEach(node => node.addEventListener('click', () => selectRegion(node.dataset.workRegion, true)));
+    const initial = location.hash.slice(1);
+    selectRegion(nodes.some(node => node.dataset.workRegion === initial) ? initial : nodes[0].dataset.workRegion);
+    updateProgress();
+    document.getElementById('work-map-reset').addEventListener('click', () => { visited.clear(); updateProgress(); });
+    window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (nodes.some(node => node.dataset.workRegion === id)) selectRegion(id); });
+  </script>
+</Layout>
