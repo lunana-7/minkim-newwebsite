@@ -75,10 +75,10 @@ service cloud.firestore {
         c.xp is int && c.xp >= 0 && c.xp <= 1000000000 && c.best is int && c.best >= 0 && c.best <= 100;
     }
     function validRecipe(a) {
-      return a == null || (a is map && a.keys().hasOnly(['job','stage','base','flavor','topping','mix','decor','temperature','startedAt','quality']) &&
+      return a == null || (a is map && a.keys().hasOnly(['job','stage','base','flavor','topping','prep','mix','decor','temperature','startedAt','quality']) &&
         a.job in ['icecream','bakery'] && a.stage is int && a.stage >= 0 && a.stage <= 4 &&
         a.base is int && a.base >= 0 && a.base <= 2 && a.flavor is int && a.flavor >= 0 && a.flavor <= 2 &&
-        a.topping is int && a.topping >= 0 && a.topping <= 2 && a.mix is int && a.mix >= 0 && a.mix <= 6 &&
+        a.topping is int && a.topping >= 0 && a.topping <= 2 && a.get('prep', 0) is int && a.get('prep', 0) >= 0 && a.get('prep', 0) <= 3 && a.mix is int && a.mix >= 0 && a.mix <= 6 &&
         a.decor is int && a.decor >= 0 && a.decor <= 3 && a.temperature is int &&
         ((a.job == 'icecream' && a.temperature >= -14 && a.temperature <= 4) || (a.job == 'bakery' && a.temperature >= 150 && a.temperature <= 200)) &&
         a.startedAt is int && a.startedAt >= 0 && a.startedAt <= 9000000000000 && a.quality is int && a.quality >= 0 && a.quality <= 100);
@@ -88,7 +88,7 @@ service cloud.firestore {
     }
     function validEffect(e) {
       return e is map && e.keys().hasOnly(['kind','color','intensity']) &&
-        e.kind in ['none','sparkles','hearts','stars','fireflies','aurora'] &&
+        e.kind in ['none','sparkles','hearts','stars','fireflies','aurora','petals','magic','crystals','butterflies'] &&
         e.color in ['gold','berry','lavender','mint','ice'] && e.intensity is int && e.intensity in [1,2,3];
     }
     function validPet(p) {
@@ -96,14 +96,43 @@ service cloud.firestore {
         p.color in ['cream','ginger','cocoa','midnight'] && p.accessory in ['none','bow','bandana'] &&
         p.name is string && p.name.size() <= 16 && p.follow is bool;
     }
+    function validLibraryBook(b) {
+      return b is map && b.keys().hasOnly(['status','favorite','annotations']) &&
+        b.status in ['to-read','reading','read'] && b.favorite is bool &&
+        b.get('annotations', []) is list && b.get('annotations', []).size() <= 50;
+    }
+    function validLibrary(l) {
+      return l is map && l.keys().hasOnly(['books']) && l.books is map &&
+        l.books.keys().hasOnly(['ai-rmf','genai-profile','agent-identity','agentic-top10']) &&
+        validLibraryBook(l.books.get('ai-rmf', {'status':'to-read','favorite':false})) &&
+        validLibraryBook(l.books.get('genai-profile', {'status':'to-read','favorite':false})) &&
+        validLibraryBook(l.books.get('agent-identity', {'status':'to-read','favorite':false})) &&
+        validLibraryBook(l.books.get('agentic-top10', {'status':'to-read','favorite':false}));
+    }
+    function validPetCare(c) {
+      return c is map && c.keys().hasOnly(['hunger','energy','mood','health','bond','meals','playTimes','careTimes','updatedAt']) &&
+        c.hunger is int && c.hunger >= 0 && c.hunger <= 100 &&
+        c.energy is int && c.energy >= 0 && c.energy <= 100 &&
+        c.mood is int && c.mood >= 0 && c.mood <= 100 &&
+        c.health is int && c.health >= 0 && c.health <= 100 &&
+        c.bond is int && c.bond >= 0 && c.bond <= 100 &&
+        c.meals is int && c.meals >= 0 && c.playTimes is int && c.playTimes >= 0 &&
+        c.careTimes is int && c.careTimes >= 0 && c.updatedAt is int && c.updatedAt >= 0;
+    }
+    function validFriendship(f) {
+      return f is map && f.keys().hasOnly(['affection','companion']) &&
+        f.affection is map && f.affection.size() <= 30 &&
+        (f.companion == null || f.companion is string);
+    }
     function validGame(g) {
-      return g is map && g.keys().hasOnly(['schemaVersion', 'outfit', 'hair', 'eyes', 'face', 'hat', 'map', 'points', 'completedActivities', 'activeActivity', 'adventure', 'study', 'farm', 'gathering', 'jobs', 'effect', 'pet', 'updatedAt']) &&
-        g.schemaVersion in [2, 3, 4, 5, 6, 7, 8, 9, 10] &&
+      return g is map && g.keys().hasOnly(['schemaVersion', 'outfit', 'hair', 'eyes', 'face', 'hat', 'map', 'points', 'completedActivities', 'activeActivity', 'adventure', 'trackedQuest', 'study', 'farm', 'gathering', 'jobs', 'library', 'friendship', 'effect', 'pet', 'petCare', 'updatedAt']) &&
+        g.schemaVersion in [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] &&
         g.get('hair', 'ombre') in ['ombre', 'bob', 'twintails'] &&
         g.get('eyes', 'brown') in ['brown', 'hazel', 'blue'] &&
         g.get('face', 'soft') in ['soft', 'rosy', 'freckles'] &&
         g.outfit in ['classic', 'berry', 'ocean', 'meadow'] &&
-        g.hat in ['none', 'beret', 'flower', 'crown'] && g.map in ['sunny', 'night', 'forest', 'farm', 'market', 'secret', 'desert'] &&
+        g.hat in ['none', 'beret', 'flower', 'crown', 'ribbon', 'strawberry', 'moon', 'wreath', 'cloud', 'pearl', 'cat'] && g.map in ['sunny', 'night', 'forest', 'farm', 'market', 'secret', 'desert'] &&
+        g.get('trackedQuest', 'pippin') in ['pippin','star-trail','gatherer','harvester','dessert-maker'] &&
         g.points is int && g.points >= 0 && g.points <= 1000000000 &&
         g.completedActivities is map && g.completedActivities.keys().hasOnly(['coffee', 'tuna', 'study']) &&
         g.completedActivities.coffee is int && g.completedActivities.coffee >= 0 && g.completedActivities.coffee <= 1000000000 &&
@@ -113,6 +142,9 @@ service cloud.firestore {
         validFarm(g.get('farm', {'coins': 100, 'seeds': {'carrot': 6, 'wheat': 2, 'strawberry': 2}, 'produce': {'carrot': 0, 'wheat': 0, 'strawberry': 0}, 'plots': [null, null, null, null, null, null], 'harvested': 0, 'sold': 0})) &&
         validGathering(g.get('gathering', {'inventory': {'herb': 0, 'wood': 0, 'acorn': 0, 'shell': 0, 'fish': 0, 'mushroom': 0, 'crystal': 0, 'ore': 0, 'cactus': 0}, 'cooldowns': {'meadow-herbs-a': 0, 'meadow-herbs-b': 0, 'forest-timber-a': 0, 'forest-timber-b': 0, 'forest-acorns': 0, 'harbor-shells-a': 0, 'harbor-shells-b': 0, 'harbor-fishing': 0, 'secret-mushrooms-a': 0, 'secret-crystals': 0, 'secret-mushrooms-b': 0, 'desert-ore-a': 0, 'desert-cactus': 0, 'desert-ore-b': 0}, 'collected': 0})) &&
         validJobs(g.get('jobs', {'icecream': {'hired': false, 'completed': 0, 'xp': 0, 'best': 0}, 'bakery': {'hired': false, 'completed': 0, 'xp': 0, 'best': 0}, 'active': null})) &&
+        validLibrary(g.get('library', {'books':{}})) &&
+        validFriendship(g.get('friendship', {'affection':{}, 'companion':null})) &&
+        validPetCare(g.get('petCare', {'hunger':82,'energy':78,'mood':82,'health':92,'bond':40,'meals':0,'playTimes':0,'careTimes':0,'updatedAt':0})) &&
         validPet(g.get('pet', {'kind': 'none', 'color': 'cream', 'accessory': 'none', 'name': '', 'follow': true})) &&
         validEffect(g.get('effect', {'kind': 'none', 'color': 'gold', 'intensity': 2})) &&
         validStudy(g.get('study', {'sessions': 0, 'seconds': 0})) &&

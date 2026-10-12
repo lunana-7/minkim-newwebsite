@@ -922,6 +922,68 @@ body.is-game-page .world-content { padding:clamp(1rem,2vw,1.7rem); }
 @media(max-width:800px){.library-books { grid-template-columns:1fr; }.library-npc-dialog { left:5%; right:5%; }.mini-interaction-screen[data-interaction='library'] .library-stage { height:15rem; }}
 @media(max-width:540px){.library-book-cover { flex-basis:3rem; height:4.5rem; }.library-npc span { font-size:.58rem; }.library-npc img { height:3.6rem; }.library-npc-dialog { top:2%; padding-right:3rem; }.library-npc-dialog #library-npc-next { right:.4rem; bottom:.2rem; }.library-reader iframe { min-height:16rem; }}
 @media(prefers-reduced-motion:reduce){.library-npc { animation:none; }}
+body.is-library-reading { overflow:hidden; }
+.library-reader { position:fixed; inset:0; z-index:1000; width:100vw; height:100dvh; max-height:100dvh; padding:.7rem; border:0; border-radius:0; background:#242b33; color:#fff4df; box-shadow:none; }
+.library-reader [hidden] { display:none!important; }
+.library-reader header { flex:none; padding:.15rem .35rem .45rem; border-bottom:1px solid #778479; }
+.library-reader header .game-kicker { color:#bed89e; }
+.library-reader header h3 { margin:.1rem 0; color:#fff4df; }
+.library-reader header p { margin:.2rem 0 0; color:#dfdccd; font-size:.75rem; }
+.library-reader header button { flex:none; width:2.25rem; height:2.25rem; }
+.library-reader-actions { flex:none; margin:.4rem .35rem; }
+.library-reader-actions button { padding:.35rem .55rem; }
+.library-reader-workspace { display:grid; grid-template-columns:minmax(0,1fr) minmax(16rem,21rem); gap:.55rem; flex:1; min-height:0; }
+.library-pdf-pane { display:flex; flex-direction:column; min-width:0; min-height:0; border:1px solid #6b786d; border-radius:.5rem; overflow:hidden; background:#343c43; }
+.library-pdf-toolbar { display:flex; flex:none; align-items:center; gap:.45rem; padding:.35rem .55rem; background:#39443f; color:#fff2dc; font:.78rem var(--font-pixel); }
+.library-pdf-toolbar button { min-width:2rem; min-height:1.8rem; padding:.15rem .35rem; border:1px solid #8c9d88; border-radius:.3rem; background:#526452; color:#fff2dc; font:1rem var(--font-pixel); cursor:pointer; }
+.library-pdf-toolbar button:disabled { opacity:.4; cursor:not-allowed; }
+.library-pdf-toolbar label { display:flex; align-items:center; gap:.3rem; }
+.library-pdf-toolbar input { width:3.1rem; padding:.15rem; border:1px solid #a9b29e; border-radius:.2rem; background:#fff9e8; color:#2a3533; text-align:center; font:.8rem var(--font-pixel); }
+.library-toolbar-spacer { flex:1; }
+.library-pdf-scroll { position:relative; flex:1; min-height:0; overflow:auto; padding:1rem; text-align:center; }
+.library-pdf-surface { position:relative; margin:0 auto; background:white; box-shadow:0 5px 16px #111a20a6; }
+.library-pdf-surface canvas { position:absolute; left:0; top:0; display:block; max-width:none; }
+#library-ink-canvas { z-index:2; }
+#library-pdf-loading { position:absolute; z-index:3; top:45%; left:50%; transform:translate(-50%,-50%); width:max-content; max-width:90%; padding:.6rem .9rem; border:1px solid #d7c199; border-radius:.4rem; background:#f9f0dc; color:#4d4539; font:.8rem var(--font-pixel); }
+.library-annotation-panel { display:flex; flex-direction:column; gap:.5rem; min-width:0; min-height:0; overflow:auto; padding:.7rem; border:1px solid #798a79; border-radius:.5rem; background:#34443d; }
+.library-annotation-heading h4 { margin:.1rem 0; font:1.2rem var(--font-pixel); }
+.library-annotation-heading p { margin:.25rem 0; font-size:.72rem; line-height:1.4; color:#e4e1d2; }
+.library-annotation-panel button { border:1px solid #aec3a4; border-radius:.35rem; background:#526a52; color:#fff7e4; padding:.32rem .5rem; font:.72rem var(--font-pixel); cursor:pointer; }
+.library-annotation-panel button:disabled { opacity:.45; cursor:not-allowed; }
+.library-annotation-tools { display:flex; flex-wrap:wrap; gap:.3rem; }
+.library-annotation-tools button[aria-pressed='true'] { border-color:#f0bfcd; background:#78556a; }
+.library-annotation-colors { display:flex; gap:.35rem; }
+.library-annotation-colors button { width:1.8rem; height:1.8rem; padding:0; border:2px solid #fff7e4; border-radius:50%; }
+.library-annotation-colors [data-library-color='rose'] { background:#c66b83; }
+.library-annotation-colors [data-library-color='gold'] { background:#e5b64e; }
+.library-annotation-colors [data-library-color='blue'] { background:#5d9bb7; }
+.library-annotation-colors button[aria-pressed='true'] { outline:2px solid #fff6d3; outline-offset:2px; }
+.library-note-label { font:.8rem var(--font-pixel); }
+#library-note-text { width:100%; min-height:4.5rem; resize:vertical; padding:.45rem; border:1px solid #c0c9ae; border-radius:.35rem; background:#fff9ed; color:#2a332d; font:.8rem/1.4 var(--font-sans); }
+#library-note-add { align-self:flex-start; }
+#library-annotation-status { min-height:1.5rem; margin:0; color:#efd1d8; font-size:.72rem; }
+.library-annotation-list { display:grid; align-content:start; gap:.4rem; min-height:0; overflow:auto; }
+.library-annotation-list>p { margin:0; color:#d7dccb; font-size:.72rem; }
+.library-annotation-card { padding:.4rem; border:1px solid #728e7d; border-radius:.35rem; background:#2b3a34; }
+.library-annotation-card.is-current { border-color:#e4c79a; }
+.library-annotation-card>div { display:flex; align-items:center; justify-content:space-between; gap:.3rem; }
+.library-annotation-card>div button:first-child { flex:1; text-align:left; border:0; background:none; padding:.1rem; }
+.library-annotation-card>div button:last-child { padding:.05rem .25rem; }
+.library-annotation-card p { margin:.2rem 0 0; color:#fff3e2; font-size:.75rem; line-height:1.4; overflow-wrap:anywhere; }
+.wiki-reading-library { margin:2rem 0; padding:1.2rem; border:1px solid var(--border); border-radius:1rem; background:var(--world-panel); }
+.wiki-reading-library h2 { margin:.2rem 0; font:1.6rem var(--font-pixel); }
+.wiki-reading-library p { max-width:52rem; margin:.25rem 0 1rem; color:var(--foreground-l3); font-size:.9rem; line-height:1.5; }
+.wiki-reading-books { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.65rem; }
+.wiki-reading-books a { display:grid; align-content:start; gap:.35rem; min-width:0; min-height:9rem; padding:.8rem; border:1px solid var(--border); border-radius:.65rem; background:var(--background-l1); color:var(--foreground-l0); text-decoration:none; }
+.wiki-reading-books a:hover,.wiki-reading-books a:focus-visible { border-color:var(--accent-vermilion); transform:translateY(-2px); }
+.wiki-reading-books a>span { color:var(--tone-amber); font:1.6rem var(--font-pixel); }
+.wiki-reading-books strong { font:1rem/1.3 var(--font-pixel); }
+.wiki-reading-books small { color:var(--foreground-l3); font-size:.72rem; }
+.wiki-reading-books em { align-self:end; color:var(--accent-vermilion); font:.72rem var(--font-pixel); font-style:normal; }
+.wiki-reading-all { display:inline-block; margin-top:.8rem; color:var(--accent-vermilion); font:.85rem var(--font-pixel); }
+@media(max-width:800px) { .library-reader-workspace { grid-template-columns:1fr; grid-template-rows:minmax(0,1fr) minmax(10rem,28dvh); }.library-reader { padding:.3rem; }.library-reader header p { display:none; }.library-annotation-panel { display:grid; grid-template-columns:1fr 1fr; align-content:start; }.library-annotation-heading,.library-annotation-list { grid-row:span 3; }.library-annotation-list { overflow:auto; } }
+@media(max-width:800px) { .wiki-reading-books { grid-template-columns:1fr; }.wiki-reading-books a { min-height:0; } }
+@media(max-width:550px) { .library-reader header h3 { font-size:.85rem; }.library-reader-actions { gap:.35rem; font-size:.63rem; }.library-reader-actions button { font-size:.63rem; }.library-pdf-toolbar { gap:.25rem; padding:.25rem; font-size:.65rem; }.library-pdf-scroll { padding:.4rem; }.library-annotation-panel { display:flex; }.library-annotation-list { max-height:10rem; } }
 
 /* Alignment World keeps its teaching moments inside the playable scene. */
 .alignment-stage{isolation:isolate}

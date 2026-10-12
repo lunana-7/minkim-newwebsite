@@ -82,7 +82,7 @@ export async function signInPlayer() {
     const { auth, provider, authSDK } = await getFirebaseServices();
     await authSDK.signInWithPopup(auth, provider); return true;
   } catch (error) {
-    const messages = { 'auth/popup-closed-by-user': 'Sign-in was closed. Your local progress is still saved.', 'auth/unauthorized-domain': 'Sign-in is not available on this site address yet.', 'auth/popup-blocked': 'Please allow the Google sign-in window and try again.' };
+    const messages = { 'auth/popup-closed-by-user': 'Sign-in was closed. Your local progress is still saved.', 'auth/unauthorized-domain': 'Sign-in is not available on this site address yet.', 'auth/popup-blocked': 'Please allow the Google sign-in window and try again.', 'auth/operation-not-allowed': 'Google sign-in has not been enabled for this site yet.' };
     notify({ state: 'error', message: messages[error.code] || 'Google sign-in did not finish. Please try again.' }); return false;
   }
 }

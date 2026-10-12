@@ -19,12 +19,20 @@ export const ACTIVITIES = {
 const newFarm = () => ({ coins:100, seeds:{carrot:6,wheat:2,strawberry:2}, produce:{carrot:0,wheat:0,strawberry:0}, plots:Array(6).fill(null), harvested:0, sold:0 });
 const newGathering = () => ({ inventory:Object.fromEntries(RESOURCE_IDS.map(id=>[id,0])),cooldowns:Object.fromEntries(NODE_IDS.map(id=>[id,0])),collected:0 });
 const FRIEND_IDS=Object.values(WORLDS).flatMap(world=>world.npcs.map(npc=>npc.id));
-const DEFAULT = { schemaVersion: 14, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, trackedQuest:'pippin', study: { sessions: 0, seconds: 0 }, farm:newFarm(), gathering:newGathering(), jobs:newJobs(), library:{books:{}}, friendship:{affection:{},companion:null}, effect:DEFAULT_EFFECT, pet:DEFAULT_PET, petCare:normalizePetCare(), updatedAt: 0 };
+const DEFAULT = { schemaVersion: 15, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, trackedQuest:'pippin', study: { sessions: 0, seconds: 0 }, farm:newFarm(), gathering:newGathering(), jobs:newJobs(), library:{books:{}}, friendship:{affection:{},companion:null}, effect:DEFAULT_EFFECT, pet:DEFAULT_PET, petCare:normalizePetCare(), updatedAt: 0 };
 let owner = 'guest';
 let current;
 const listeners = new Set();
 const key = () => `min-world-profile:${owner}`;
 const safeNumber = (value, max = 1000000000) => Number.isFinite(value) ? Math.min(max, Math.max(0, Math.floor(value))) : 0;
+function normalizeAnnotation(entry){
+  if(!entry||typeof entry.id!=='string'||!['note','pen','highlight'].includes(entry.type))return null;
+  const points=entry.type==='note'?[]:(Array.isArray(entry.points)?entry.points.slice(0,160).filter(point=>Array.isArray(point)&&point.length===2&&point.every(value=>Number.isFinite(value))).map(([x,y])=>[Math.max(0,Math.min(1,x)),Math.max(0,Math.min(1,y))]):[]);
+  if(entry.type!=='note'&&points.length<2)return null;
+  const text=typeof entry.text==='string'?entry.text.trim().slice(0,600):'';
+  if(entry.type==='note'&&!text)return null;
+  return{id:entry.id.slice(0,80),type:entry.type,page:Math.max(1,safeNumber(entry.page,10000)),text,color:['rose','gold','blue'].includes(entry.color)?entry.color:'rose',points,createdAt:safeNumber(entry.createdAt,9000000000000)};
+}
 export function normalizeProfile(value = {}) {
   const activity = value?.activeActivity;
   const f=value?.farm || newFarm();
@@ -36,7 +44,7 @@ export function normalizeProfile(value = {}) {
   return {
     ...DEFAULT,
     jobs,
-    library:{books:Object.fromEntries(LIBRARY_IDS.map(id=>{const item=value?.library?.books?.[id]||{};return[id,{status:['to-read','reading','read'].includes(item.status)?item.status:'to-read',favorite:item.favorite===true}];}))},
+    library:{books:Object.fromEntries(LIBRARY_IDS.map(id=>{const item=value?.library?.books?.[id]||{};return[id,{status:['to-read','reading','read'].includes(item.status)?item.status:'to-read',favorite:item.favorite===true,annotations:Array.isArray(item.annotations)?item.annotations.slice(-50).map(normalizeAnnotation).filter(Boolean):[]}];}))},
     friendship:{affection:Object.fromEntries(FRIEND_IDS.map(id=>[id,safeNumber(value?.friendship?.affection?.[id],100)])),companion:FRIEND_IDS.includes(value?.friendship?.companion)&&safeNumber(value?.friendship?.affection?.[value.friendship.companion],100)>0?value.friendship.companion:null},
     effect:normalizeEffect(value?.effect),
     pet:normalizePet(value?.pet),
