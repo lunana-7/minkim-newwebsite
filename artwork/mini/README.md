@@ -1,0 +1,35 @@
+# Mini's modular pixel-art kit
+
+Mini is assembled from independent PNG parts on one **128 × 192** registration canvas. Hair, eyes, face, clothes, headwear, arms, sleeves and props can be replaced without painting over a finished character. The same parts are used for the game, homepage and walking companion.
+
+## Files
+
+- Runtime layers: `public/mini/layers/` — 33 transparent PNGs.
+- Wardrobe previews: `public/mini/thumbnails/` — 19 transparent thumbnails.
+- Source artwork: the nine `*-atlas.png` files in this directory.
+- Original generation prompts: [manifest.json](manifest.json) and [sleeve-manifest.json](sleeve-manifest.json).
+- Asset names and wardrobe choices: `src/lib/min-assets.js`.
+- Character composition and poses: `src/lib/min-appearance.js`.
+- Repeatable exporter: `scripts/package-mini-assets.py`.
+
+All source atlases were generated with the built-in image generation tool using Min's original pixel character as the style and identity reference. The sleeve correction uses the generated clothes as its reference. The exporter trims each atlas cell's transparent padding, scales pixels with nearest-neighbor sampling, and places each part on the registration canvas. No full-character color filter or flat shirt overlay is used.
+
+## Registration and order
+
+The head is centered at x=64; eyes occupy the same rectangle on all faces. Hair is split into a foreground cap/fringe and background length. All clothes share the neck and waist anchors. Cardigan torsos and sleeves are separate assets; each sleeve rotates around its shoulder and exposes only the hand beneath the cuff.
+
+Draw order: back hair → body/legs → clothes → face → eyes → arms/sleeves → front hair → headwear → activity prop. Walking alternates feet and arm swing, with a one-pixel torso/hair movement. Coffee, tuna bowl and study poses use the same selected parts and change arm angles plus the held prop.
+
+## Adding or replacing a part
+
+1. Keep an exported replacement as a transparent 128 × 192 PNG with the existing registration and pixel scale.
+2. Replace the matching file, or add an ID to `MINI_OPTIONS` and the profile/rules allowlists.
+3. For an atlas edit, retain its cell count/order and run `python3 scripts/package-mini-assets.py`.
+4. Update the asset URL version in `min-assets.js` so browsers fetch the replacement.
+5. Check the piece at idle, walking, and all three activities.
+
+Profile schema 3 saves `hair`, `eyes`, `face`, `outfit`, and `hat` separately. Earlier wardrobe/points saves migrate to the default ombre hair, brown eyes and soft face while retaining clothes, points, activities and map. Firestore rules validate the new choices; cloud provisioning remains separate from the art kit.
+
+## Proportion correction
+
+Face layers retain their approximately 1.25:1 source ratio (94×75 registration), and eyes use 52×22. Chestnut bob hair uses 124×113 to retain its natural width. The browser canvas is constrained to its native 2:3 aspect ratio. The bottom walker uses the original six-frame artwork while game/home/activity characters retain the modular wardrobe.

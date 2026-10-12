@@ -1,9 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { experiences, projectCatalog } from '../projects.js';
+import ProjectGate from '../components/ProjectGate.astro';
+import { hasProjectAccess, projectReturnPath, PRIVATE_PROJECT_HEADERS } from '../lib/project-access.js';
+export const prerender = false;
+const unlocked = hasProjectAccess(Astro.request);
+const next = projectReturnPath(Astro.url.searchParams.get('next'));
+for (const [name, value] of Object.entries(PRIVATE_PROJECT_HEADERS)) Astro.response.headers.set(name, value);
 ---
 
 <Layout title="Projects | Min Kim" activeNav="work" description="Explore Min Kim's projects by experience: KRAFTON, Pacvue, Memoria, research, and community work.">
+  {unlocked ? <Fragment>
+  <div class="archive-access-bar"><span>✓ Project archive unlocked</span><button id="lock-project-archive" type="button">Lock archive</button></div>
   <header class="portfolio-intro" id="top">
     <span class="case-study-kicker">A portfolio of systems, research & ideas</span>
     <h1 class="page-title">Projects</h1>
@@ -24,7 +32,6 @@ import { experiences, projectCatalog } from '../projects.js';
           <div><p class="experience-type">{experience.type}</p><h2 id={`heading-${experience.id}`}>{experience.name}</h2><p class="experience-period">{experience.period} · {experience.role}</p></div>
         </header>
         <p class="experience-summary">{experience.summary}</p>
-        {experience.access === 'password' && <p class="experience-access">🔒 Detailed case studies share one password. Unlock once to browse the KRAFTON projects.</p>}
         <div class="experience-project-list">
           {projects.map(project => <a class="experience-project" href={`/projects/${project.slug}`}>
             <div class="experience-project-top"><span class="project-tag">{project.tag}</span><span class="project-date">{project.year}</span></div>
@@ -36,4 +43,16 @@ import { experiences, projectCatalog } from '../projects.js';
       </section>;
     })}
   </div>
+  </Fragment> : <ProjectGate next={next} />}
+  <script>
+    document.getElementById('lock-project-archive')?.addEventListener('click', async event => {
+      const button = event.currentTarget; button.disabled = true;
+      try {
+        const response = await fetch('/api/projects/access', { method: 'DELETE' });
+        if (response.ok) window.location.assign('/work');
+        else button.textContent = 'Try locking again';
+      } catch { button.textContent = 'Try locking again'; }
+      finally { button.disabled = false; }
+    });
+  </script>
 </Layout>

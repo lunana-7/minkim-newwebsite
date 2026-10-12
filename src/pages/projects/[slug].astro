@@ -2,69 +2,36 @@
 import Layout from '../../layouts/Layout.astro';
 import { experiences, projectCatalog, projectAliases } from '../../projects.js';
 import { projectDetails } from '../../project-details.js';
+import { hasProjectAccess, projectReturnPath, PRIVATE_PROJECT_HEADERS } from '../../lib/project-access.js';
 
 export const prerender = false;
+if (!hasProjectAccess(Astro.request)) {
+  const next = projectReturnPath(Astro.url.pathname);
+  const response = Astro.redirect(`/work?next=${encodeURIComponent(next)}`);
+  for (const [name, value] of Object.entries(PRIVATE_PROJECT_HEADERS)) response.headers.set(name, value);
+  return response;
+}
+for (const [name, value] of Object.entries(PRIVATE_PROJECT_HEADERS)) Astro.response.headers.set(name, value);
 const { slug } = Astro.params;
 if (projectAliases[slug]) return Astro.redirect(projectAliases[slug], 301);
 const project = projectCatalog.find(item => item.slug === slug);
 if (!project) return new Response('Project not found', { status: 404 });
 const experience = experiences.find(item => item.id === project.experience);
-const isProtected = project.access === 'password';
-const detail = isProtected ? null : projectDetails[slug];
+const detail = projectDetails[slug];
 const related = projectCatalog.filter(item => item.experience === project.experience && item.slug !== slug).slice(0, 4);
 ---
 
 <Layout title={`${project.title} | Min Kim`} activeNav="work" description={project.description}>
-  <article class="case-study" data-project-slug={slug} data-protected={isProtected ? 'true' : 'false'}>
+  <article class="case-study" data-project-slug={slug}>
     <nav class="project-breadcrumb" aria-label="Breadcrumb"><a href="/work">Projects</a><span aria-hidden="true">/</span><a href={`/work#${experience.id}`}>{experience.name}</a></nav>
     <header class="case-study-head"><span class="case-study-kicker">{project.tag} · {project.year}</span><h1 class="page-title">{project.title}</h1><p class="page-lead">{project.description}</p></header>
-    {isProtected && <section class="password-panel" id="password-panel" aria-labelledby="password-title">
-      <div class="password-icon" aria-hidden="true">🔒</div><h2 id="password-title">Private project details</h2><p>Enter the shared KRAFTON password to read this project and the other case studies in this experience.</p>
-      <form id="project-password-form"><label for="project-password">Password</label><div class="password-input-row"><input id="project-password" name="password" type="password" autocomplete="current-password" required /><button type="submit" class="button-primary">Unlock projects</button></div><p class="password-message" id="password-message" aria-live="polite"></p></form>
-    </section>}
-    <div class="case-study-content" id="case-study-content" hidden={isProtected}>
+    <div class="case-study-content" id="case-study-content">
       <div class="case-study-meta"><div><span>My role</span><strong id="project-role">{detail?.role}</strong></div><div><span>Period</span><strong id="project-period">{detail?.period}</strong></div></div>
       <section class="project-overview"><h2>Project overview</h2><p id="project-summary">{detail?.summary}</p></section>
-      <div class="project-detail-notes"><p class="project-notes-label">Detailed work · 한국어</p><div id="project-sections">{detail?.sections.map(section => <section class="project-detail-section"><h2>{section.title}</h2><ul lang="ko">{section.paragraphs.map(paragraph => <li>{paragraph}</li>)}</ul></section>)}</div></div>
+      <div class="project-detail-notes"><p class="project-notes-label">Detailed work</p><div id="project-sections">{detail?.sections.map(section => <section class="project-detail-section"><h2>{section.title}</h2><ul lang="en">{section.paragraphs.map(paragraph => <li>{paragraph}</li>)}</ul></section>)}</div></div>
       <aside class="project-status"><strong>Outcomes & current status</strong><p id="project-status">{detail?.status}</p></aside>
     </div>
     <section class="related-projects"><h2>More from {experience.name}</h2><div class="related-project-list">{related.map(item => <a href={`/projects/${item.slug}`}><span>{item.tag}</span><strong>{item.title}</strong><span aria-hidden="true">↗</span></a>)}</div><a class="back-link" href={`/work#${experience.id}`}>← All {experience.name} projects</a></section>
   </article>
-  <script>
-    const article = document.querySelector('.case-study');
-    const slug = article?.getAttribute('data-project-slug');
-    const isProtected = article?.getAttribute('data-protected') === 'true';
-    const panel = document.getElementById('password-panel');
-    const content = document.getElementById('case-study-content');
-    const form = document.getElementById('project-password-form');
-    const message = document.getElementById('password-message');
-    function fillProject(project) {
-      for (const [id, key] of [['project-role','role'],['project-period','period'],['project-summary','summary'],['project-status','status']]) document.getElementById(id).textContent = project[key];
-      const sections = project.sections.map(section => {
-        const element = document.createElement('section'); element.className = 'project-detail-section';
-        const heading = document.createElement('h2'); heading.textContent = section.title;
-        const list = document.createElement('ul'); list.lang = 'ko';
-        list.append(...section.paragraphs.map(paragraph => { const item = document.createElement('li'); item.textContent = paragraph; return item; }));
-        element.append(heading, list); return element;
-      });
-      document.getElementById('project-sections').replaceChildren(...sections);
-      content.hidden = false; panel.hidden = true;
-    }
-    async function loadProject() {
-      const response = await fetch(`/api/projects/${encodeURIComponent(slug)}`, { cache: 'no-store' });
-      if (response.ok) fillProject(await response.json());
-      else if (response.status !== 401) message.textContent = 'Unable to load this project. Please try again.';
-    }
-    if (isProtected) loadProject().catch(() => { message.textContent = 'Unable to connect. Please try again.'; });
-    form?.addEventListener('submit', async event => {
-      event.preventDefault(); const button = form.querySelector('button'); button.disabled = true;
-      message.textContent = 'Checking…';
-      try {
-        const response = await fetch(`/api/projects/${encodeURIComponent(slug)}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: new FormData(form).get('password') }) });
-        if (!response.ok) { const result = await response.json().catch(() => ({})); message.textContent = result.error || 'Unable to unlock this project.'; return; }
-        await loadProject(); form.reset(); message.textContent = '';
-      } catch { message.textContent = 'Unable to connect. Please try again.'; }
-      finally { button.disabled = false; }
-    });
-  </script>
+
 </Layout>

@@ -108,20 +108,20 @@
         {
           "title": "Cost management & approval experience",
           "paragraphs": [
-            "개인 구독, 조직 예산, AI Enterprise, 모델 API와 인프라 비용을 구분하고, 실제 사용자·조직·모델·프로젝트별 사용량과 비용이 보이도록 하는 방안을 다뤘다. 비용·효과·보안·사용 범위를 함께 기록하여 반복 도입과 불필요한 비용을 줄이려는 목적이었다.",
-            "AX Spend Gate의 신청·승인·반려 화면과 프로세스를 분석해 2026년 9월 개선 보고용으로 정리했다. 당시 제안한 핵심은 ① 반려 사유 및 수정·재신청 경로의 명확화, ② 승인·반려·추가자료 요청 문구와 다음 행동의 표시, ③ 승인·결제 완료 및 상태를 조직장에게 알리는 흐름, ④ 혼동을 만드는 UI 요소의 영향도별 개선이었다.",
-            "보고서는 분석 결과 → 우선순위 액션 → 후속 제안, 그리고 문제 → 영향 → 조치 형태로 구성하려 했다. 담당자 공유와 단계적 적용을 논의했지만, 모든 UI 수정이 이미 출시되었다고 기록하지 않는다.",
-            "장기안으로 AI 요청 한 건에 도구 소유자·사용 목적·데이터/리스크·승인·월 비용·효과·다음 재검토일을 연결하고, 비용 초과 알림, 승인 권한, 예산 귀속 및 지속 모니터링으로 이어지는 운영 기록을 제안했다."
+            "Separated personal subscriptions, organizational budgets, AI Enterprise, model APIs, and infrastructure costs, and explored ways to show usage and spending by user, organization, model, and project. The aim was to record cost, benefit, security, and scope together to reduce duplicate adoption and unnecessary spending.",
+            "Analyzed AX Spend Gate's application, approval, and rejection screens and processes for a September 2026 improvement report. The main proposals were to clarify rejection reasons and revision/resubmission paths; show approval, rejection, and additional-information messages with next steps; notify organization leaders of approval, payment completion, and status; and prioritize confusing UI elements by their impact.",
+            "Planned the report around analysis findings → priority actions → follow-up proposals, and problem → impact → action. Discussed sharing it with owners and applying changes in stages; this does not mean every proposed UI change had already shipped.",
+            "Proposed a longer-term operating record linking each AI request to its tool owner, purpose, data/risk, approval, monthly cost, benefit, and next review date, with overspend alerts, approval authority, budget attribution, and ongoing monitoring."
           ]
         },
         {
           "title": "Approval criteria & selected changes",
           "paragraphs": [
-            "spendgate-approvals CSV(8/21–9/4, 258건) 분석, 반려 사례 티어별 분류 + 신규 기준 가이드화",
-            "우선순위 4단계(반려 사유 명확화 > 승인·반려 문구 > 조직장 알림 > UI)로 임경영님께 보고 (cc 김세린), kdoc 공유",
-            "기석님의 \"금액 구간별 입력 항목 통일\" 제안에 트레이드오프 근거로 반대 의견 제시, 세린님·경영님 공유로 협의 형태 유지",
-            "승인자 알림 문구 개선 지원",
-            "성과: dev 반영 완료 (LLM Gateway 항목 추가, 금액 구간별 입력 차등 –$500/–$2,000/>$2,000, 반려 사유 입력·확인 필드, Slack app home 사용량 표기, 안내 메시지 UI 수정)"
+            "Analyzed the spendgate-approvals CSV for August 21–September 4 (258 requests), classified rejected cases by tier, and turned new criteria into guidance.",
+            "Reported four priorities to Gyeongyeong Lim, copying Serin Kim, and shared them through kdoc: clearer rejection reasons → approval/rejection wording → organization-leader notifications → UI improvements.",
+            "Challenged Giseok's proposal to standardize input fields across spending tiers using the relevant trade-offs, while keeping the discussion collaborative by sharing it with Serin and Gyeongyeong.",
+            "Supported improvements to approver notification wording.",
+            "Outcome: changes were implemented in the development environment, including an LLM Gateway option; different inputs for the up-to-$500, up-to-$2,000, and above-$2,000 tiers; rejection-reason entry and confirmation fields; usage display in Slack App Home; and guidance-message UI changes."
           ]
         }
       ],
@@ -143,13 +143,13 @@
         {
           "title": "Comparison method & findings",
           "paragraphs": [
-            "요청 829건(약 32일) 분석, 배포 경계 9/11 18:45 KST 추정 (신규 필드 출현 기준)",
-            "기간 불균형(21.6일 vs 10.9일) 왜곡을 Min이 지적 → 전후 동일 10.9일 윈도우로 재산출",
-            "가이드상 8개 문제 항목을 해결 / 부분 해결 / 악화로 판정, 판정 개수와 요청 건수 KPI 분리",
-            "스튜디오 × 사유 테마 히트맵 리포트 별도 제작 (건수·평균액·총액·승인율·자가승인율 토글)",
-            "\"기타/미분류\" 38.2% 원인 진단: 분류기 키워드 공백 약 30%, 실제로 모호한 사유 약 70%",
-            "1분 내 처리 승인 비중 22.0% 표기",
-            "산출물: 전후 비교 리포트 + 사용 패턴 리포트 HTML, Slack 공유 메시지"
+            "Analyzed 829 requests across approximately 32 days and estimated the deployment boundary as September 11 at 18:45 KST, based on the appearance of new fields.",
+            "Min identified distortion from unequal periods (21.6 versus 10.9 days), then recalculated the comparison using matching 10.9-day windows before and after deployment.",
+            "Assessed eight issues in the guidance as resolved, partially resolved, or worsened, keeping issue-assessment counts separate from request-count KPIs.",
+            "Created a separate studio-by-reason-theme heatmap report with switches for request count, average amount, total amount, approval rate, and self-approval rate.",
+            "Diagnosed the 38.2% 'other/unclassified' share: approximately 30% stemmed from missing classifier keywords and 70% from genuinely ambiguous reasons.",
+            "Reported that 22.0% of approvals were processed within one minute.",
+            "Deliverables: HTML before/after comparison and usage-pattern reports, plus a Slack message sharing the findings."
           ]
         }
       ],
@@ -171,10 +171,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "1–5월 1기 계약 첫 과제로 진행",
-            "전사 설문 설계 담당: 개인 업무(Work) vs 부서 간 워크플로우(Workflow) 이원화 구조, 주요 업무 3개·워크플로우 3개 단위 분해, 자동화 수준 6단계 척도",
-            "한국어·영어·일본어 다국어 대응 (TGW, Eleventh Hour 등 별도 링크), 리마인더 발송은 지윤님 지원",
-            "조사 기간 2/9–2/13, 최종 994명 응답(993명 매칭), 120+문항"
+            "Completed this as the first assignment of the January–May contract period.",
+            "Designed the company-wide survey around individual work versus cross-department workflows. Broke each response into three main tasks and three workflows, using a six-level automation scale.",
+            "Supported Korean, English, and Japanese versions, including separate links for TGW, Eleventh Hour, and other groups. Jiyun supported reminder distribution.",
+            "Survey period: February 9–13. Final participation: 994 respondents, with 993 matched records and more than 120 questions."
           ]
         }
       ],
@@ -196,12 +196,12 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Python으로 원자료 처리 (초기 추출 960건 → 최종 응답 매칭)",
-            "Task 단계 분석: HQ 537명·642건 평균 5.51단계 / Family 457명·536건 평균 5.48단계, 양쪽 모두 4–6단계에 절반 이상 집중",
-            "직무군별 단계 수 분석: TA·Game Design·UX&UI가 HQ·Family 공통 상위권",
-            "Family 다국어 응답 번역 전처리로 \"기타\" 38.0% → 28.4% 감소 (281건 재분류)",
-            "자동화 분석 대시보드: Task 자동화 35.6% vs Workflow 자동화 25.2% (갭 10.4%p), 직군별 비교",
-            "설문 과정 회고 메시지 작성 (워크·워크플로우 정의의 어려움 자체가 현 위치 진단이라는 논지)"
+            "Processed the raw data in Python, starting with 960 extracted records and matching them to the final responses.",
+            "Task-step analysis: HQ had 537 respondents and 642 records, averaging 5.51 steps; Family had 457 respondents and 536 records, averaging 5.48 steps. More than half of both groups' tasks involved four to six steps.",
+            "Compared step counts by job family; TA, Game Design, and UX&UI ranked near the top in both HQ and Family.",
+            "Translation preprocessing of Family's multilingual responses reduced the 'other' category from 38.0% to 28.4%, reclassifying 281 records.",
+            "Built an automation-analysis dashboard comparing task automation (35.6%) with workflow automation (25.2%), a 10.4-percentage-point gap, with job-family comparisons.",
+            "Wrote a survey retrospective arguing that the difficulty of defining work and workflows was itself evidence of the organization's current position."
           ]
         }
       ],
@@ -223,16 +223,16 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "세린님 스코프 질문에 직접 범위 제안: 2/21 1차(정량 인사이트 + 간단 대시보드) → 다음 주 보정 → 통합 반응형 대시보드",
-            "세린님 피드백 반영: 서두 인사이트 요약, 법인 부서별 / 스튜디오 별도 시사점, 대시보드 1개 통합",
-            "Executive Summary, 수평·수직 확산 진단 포함 20–30장 + 통합 대시보드 구조",
-            "섹션별 인사이트: 전사 니즈, AIT 직접 요청(HQ vs Family), 직군별 병목 차이",
-            "경영 트랙(비용·정책·시간·스폰서십) / 실행 트랙(기술·교육·사례·협업) 이중 구조 설계",
-            "설문 중복 문항(Q42/Q50 등) 식별",
-            "Executive Summary 핵심 메시지: 전사 97.2% AI 사용(도입기 완료 → 활용 심화기), 전사 자동화율 35.7%(HQ 38.6% vs Family 32.2%), 리더십 직접 스폰서 환경이 미지원 대비 자동화율 약 20%p 높음",
-            "12개 실행 과제 제안 (단기·중기·장기), 전사 자동화율 KPI 35.7% → 50% 목표 제시, Bottom-Up·Top-Down Two-Track 전략",
-            "자동화 기대 vs 실제 갭을 \"실행 저하율\"로 정의 (프록시 문항 조합), 수평·수직 확산 하위 차원별 문항 매핑",
-            "성과: 2/25 대표님 보고용 리포트로 진행"
+            "Responded to Serin's scope question with a concrete plan: an initial February 21 delivery of quantitative insights and a simple dashboard, adjustments the following week, then an integrated responsive dashboard.",
+            "Incorporated Serin's feedback: put the insight summary first, distinguish implications for corporate departments and studios, and consolidate the dashboards into one.",
+            "Designed a 20–30-slide report with an executive summary, horizontal and vertical adoption analysis, and an integrated dashboard.",
+            "Developed section-level insights covering company-wide needs, direct requests to AIT from HQ versus Family, and differences in bottlenecks by job family.",
+            "Designed two tracks: management (cost, policy, time, sponsorship) and execution (technology, training, examples, collaboration).",
+            "Identified duplicate survey questions, including Q42 and Q50.",
+            "Executive-summary findings: 97.2% company-wide AI usage suggested a shift from initial adoption to deeper use. Company-wide automation was 35.7% (HQ 38.6%, Family 32.2%). Environments with direct leadership sponsorship had automation rates approximately 20 percentage points above unsupported environments.",
+            "Proposed 12 short-, medium-, and long-term actions, a company-wide automation target of 50% from a 35.7% baseline, and a bottom-up/top-down two-track strategy.",
+            "Defined the gap between expected and actual automation as an 'execution shortfall rate' using proxy-question combinations, and mapped questions to subdimensions of horizontal and vertical adoption.",
+            "Outcome: the report moved forward for the February 25 CEO briefing."
           ]
         }
       ],
@@ -254,13 +254,13 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "월별 어드민 워크북 기반 Python 생성기로 단일 HTML 리포트 제작, 의장·경영진 대상",
-            "조직별 증감 탭 구조, Q2 총액 기준 분류(미미/신규↑/실제 %)로 소규모 조직 수천 % 왜곡 해소",
-            "용도 명시 키 25.2%(928개) 대상 6개 용도 분류(개발/빌드, 에이전트, 리뷰·QA, 번역, 문서·분석, 봇)",
-            "신규 모델(Opus 4-8) 도입 및 5월→6월 약 22배 증가 시각화, Fable 5 수출통제 제한 주석 반영",
-            "Max 전환 효과 검증: Claude 구독 4월 160건 → 5월 245건, Max 20x 72 → 129건(+79%), 유저 단위 교차검증으로 실제 비용 절감 확인",
-            "Claude Code 상위 150명 Max 전환 권고 대상 활용 현황 분석: 전체 적용 시 월 6.07억 예상 절감, 미전환 28명이 남은 갭",
-            "성과: Max 전환 전후 비용을 수치로 입증, 이후 API 최적화 제안의 선례 논거로 활용"
+            "Built a Python generator that turned monthly administration workbooks into a single HTML report for the chair and executive team.",
+            "Created organization-level change tabs and Q2-total-based categories (negligible, newly increased, or actual percentage change) to avoid misleading increases of thousands of percent in small organizations.",
+            "Classified the 25.2% of keys with explicit purposes (928 keys) into six uses: development/build, agents, review/QA, translation, documentation/analysis, and bots.",
+            "Visualized adoption of new models, including Opus 4-8, and an approximately 22-fold increase from May to June, with annotations on Fable 5 export-control restrictions.",
+            "Validated the effect of switching to Max: Claude subscriptions increased from 160 in April to 245 in May, while Max 20x subscriptions rose from 72 to 129 (+79%). User-level cross-checks confirmed actual cost savings.",
+            "Analyzed the top 150 Claude Code users recommended for Max migration. Full adoption was projected to save KRW 607 million per month; 28 users who had not switched represented the remaining gap.",
+            "Outcome: quantified costs before and after Max migration and used the findings as supporting precedent for later API-optimization proposals."
           ]
         }
       ],
@@ -282,16 +282,16 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "7/27 Fable 5 → Opus 5 전환 공지(넛지) 전후 효과를 API·Claude Enterprise 채널별로 분석한 경영진용 HTML 리포트",
-            "전환율 API 81.1% / Claude Enterprise 78.2%",
-            "전환 절감 $498,047 vs 사용량 증가 부담 $499,540 → 순효과 −$1,493, 실질 절감 미확인",
-            "단가 −22.0%, 청구액 +8.7%, 토큰 +39.3%로 단가 개선분을 사용량 증가가 흡수",
-            "공지 비대상 949계정에서 사용량 증가 집중 (토큰 +76.4%) → 억제 vs 장려 정책 방향 결정 필요 제기",
-            "7월 비용 상위 50계정 중 43명 전환(86%), 직급 높을수록 전환율 상승 (파트장 95.6%, 실장 92.3%, 팀장 85.7%, 팀원 79.2%)",
-            "OpenAI API도 비대상인데 단가 −17.1% → 단가 인하 전부를 공지 효과로 볼 수 없음을 명시",
-            "Claude Enterprise 7월 백필 누락 진단: Fable 외 모델 실효단가가 8–12배 튀는 것을 찾아 해당 채널 비용 변화는 보고 제외 권고",
-            "경영진 보고 문체로 전면 정리 (구어체·평가 표현 제거)",
-            "AI 모델 선택 가이드, AI 비용 트렌드 리포트 등 단일 HTML 대시보드 다수 제작 (데이터 조작 금지 원칙)"
+            "Produced an executive HTML report comparing the effects before and after the July 27 Fable 5 → Opus 5 migration announcement, separately for API and Claude Enterprise channels.",
+            "Migration rates: API 81.1%; Claude Enterprise 78.2%.",
+            "Migration savings of $498,047 were offset by $499,540 in additional usage costs, for a net effect of −$1,493. Actual net savings were not confirmed.",
+            "Unit prices fell 22.0%, while billed spending rose 8.7% and tokens rose 39.3%; increased usage absorbed the unit-price improvement.",
+            "Usage growth was concentrated among 949 accounts outside the announcement's target group (tokens +76.4%), raising the need to choose between usage-restraint and usage-encouragement policies.",
+            "Among July's 50 highest-spending accounts, 43 migrated (86%). Migration rates increased with seniority: section leads 95.6%, department heads 92.3%, team leads 85.7%, and team members 79.2%.",
+            "OpenAI API unit prices also fell 17.1% despite being outside the announcement's scope, so the report explicitly avoided attributing every price reduction to the announcement.",
+            "Diagnosed missing July backfill data for Claude Enterprise: effective unit prices for non-Fable models jumped eight to twelve times. Recommended excluding cost-change findings for that channel from the report.",
+            "Rewrote the report in executive reporting language, removing conversational wording and evaluative expressions.",
+            "Created several single-file HTML dashboards, including an AI model-selection guide and an AI cost-trend report, while preserving the underlying data."
           ]
         }
       ],
@@ -313,19 +313,19 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "1–8월 실집행 + 9–12월 예상 합산해 예산 수용 여부 판정 (기존 100억 + 증액 100억 = 200억)",
-            "1–8월 실집행 161억, 개인구독형 24억은 확정분으로 판정 제외, 판정 대상은 9–12월 추가 집행액",
-            "시나리오: 8/31 환산 런레이트 기준 A −15%(조직장 승인 체계 효과) / B 현행 / C +15%",
-            "8월 Claude API 48.8억은 청구월·사용월 혼용 오류로 판정, 실제 7–8월 월평균 약 28억으로 정정",
-            "Bedrock 전환 시나리오(S0–S3, 100%/50%/20% 이전) 별도 분석, 12월 확정 크레딧 28k는 판정과 분리",
-            "\"26년 9–12월 AI 비용 전망\" 단독 HTML 리포트 (KRAFTON HUB 다크 테마)",
-            "A 월 43.4억·4개월 173.7억 / B 월 54.4억·217.4억 / C 월 62.5억·250.0억 / 재무기획 제출 152.5억 (환율 1,400원)",
-            "dc-runtime 번들(5.5MB) 원본을 편집 가능한 단일 HTML(175KB)로 언번들해 작업 베이스화",
-            "시트 비용은 연간 계약 기준 \"기타 연간 시트 비용\"으로 분리, 이중 계상 방지",
-            "재무 제출본 검증: 26.02 열에서 100배 입력 오류 발견, 제출본이 기준 시나리오 대비 64.9억 낮음을 확인",
-            "세린님 요청 반영: 사용량 기반(API·Enterprise 사용량·Cursor) vs 시트 기반 비용 구조 분리, 개인구독형 연간 24.69억은 연간 수치로만 표기",
-            "Bedrock 크레딧 체감 시점 정리: 9–10월 할인 없음, 11월 첫 크레딧, 2027년 1분기부터 정상 사이클",
-            "성과: 거의 2배 수준의 경영진 보고 수치 오류를 사전에 잡아냄, 판정 질문을 \"9–12월 추가분\"으로 명확화"
+            "Assessed budget capacity by combining actual January–August spending with September–December forecasts: the existing KRW 10 billion budget plus a KRW 10 billion increase, totaling KRW 20 billion.",
+            "January–August actual spending was KRW 16.1 billion. KRW 2.4 billion in personal subscriptions was treated as already committed and excluded from the decision; the assessment focused on additional September–December spending.",
+            "Scenarios based on the converted August 31 run rate: A −15% to reflect organization-leader approval controls; B current conditions; C +15%.",
+            "Identified the reported August Claude API cost of KRW 4.88 billion as an error mixing billing and usage months, and corrected it to an actual July–August monthly average of approximately KRW 2.8 billion.",
+            "Separately analyzed Bedrock migration scenarios S0–S3, including 100%, 50%, and 20% migration. Kept the confirmed December 28k credit separate from the budget assessment.",
+            "Produced a standalone 'September–December 2026 AI Cost Outlook' HTML report using the KRAFTON HUB dark theme.",
+            "Scenario A: KRW 4.34 billion monthly and KRW 17.37 billion over four months. B: KRW 5.44 billion and KRW 21.74 billion. C: KRW 6.25 billion and KRW 25.00 billion. Finance Planning's submission was KRW 15.25 billion, using an exchange rate of KRW 1,400 per dollar.",
+            "Unbundled the original 5.5 MB dc-runtime package into an editable 175 KB standalone HTML file as the working base.",
+            "Separated seat costs under annual contracts into 'other annual seat costs' to prevent double-counting.",
+            "Validated the finance submission, finding a 100-fold input error in the 26.02 column and confirming that the submission was KRW 6.49 billion below the baseline scenario.",
+            "Incorporated Serin's request to separate usage-based costs (API, Enterprise usage, Cursor) from seat-based costs. Reported annual personal subscriptions of KRW 2.469 billion only as an annual figure.",
+            "Clarified the timing of Bedrock credits: no discounts in September–October, the first credit in November, and a normal cycle from Q1 2027.",
+            "Outcome: caught a material executive-reporting error approaching a twofold discrepancy before reporting, and clarified that the decision concerned additional September–December spending."
           ]
         }
       ],
@@ -347,19 +347,19 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "개인 단위 월별 비용 원장 + 모델명 파일 + HR 인사 데이터 조인해 HTML 리포트 + 조인 엑셀 제작",
-            "1–8월 누계 186.81억 (3,849명, 제품 287종)",
-            "범용 API 136.98억(73.3%) + 범용 챗봇 구독 35억(18.7%), 용도 식별 카테고리는 18.3억(9.8%)",
-            "Claude Opus 계열 91.11억(52.9%), Haiku 1.1%로 고가 모델 편중",
-            "절감 우선순위 4건",
-            "Tech·Data·AI Research 695명, API 84.03억: 코딩 표면 채택률 71–78%(전사 41.8%의 1.7–1.9배)",
-            "Enterprise 유휴 시트: 8월 3,313개 중 611개(18%) 월 1만원 미만, 127개(4%) 사실상 미사용",
-            "코딩 도구 10.87억: 5개월간 45배 증가, 중복 구독 점검 필요",
-            "소액 분산 제품 144개, 2.55억: 표준 벤더 3–4개로 통합 권고",
-            "에이전트성 사용 추정 232개 계정, 55.00억(API의 40.0%)",
-            "코딩 용도 추론 근거를 Min이 직접 반박·보강: Enterprise 채널의 codex 표면(17.71억, 1,268명) 누락을 찾아 가설 확정",
-            "데이터 한계 명시: 모델 기준 누계 172.3억은 하한선, 에이전트 판별은 패턴 추정",
-            "성과: 경영 소속 도균님께 경영 보고용으로 전달, 9/7 미팅 마감 준수"
+            "Joined user-level monthly cost ledgers, model-name files, and HR records to create an HTML report and a joined Excel workbook.",
+            "January–August cumulative spending: KRW 18.681 billion across 3,849 users and 287 products.",
+            "General-purpose APIs accounted for KRW 13.698 billion (73.3%), general-purpose chatbot subscriptions for KRW 3.5 billion (18.7%), and purpose-identifiable categories for KRW 1.83 billion (9.8%).",
+            "Claude Opus models accounted for KRW 9.111 billion (52.9%), compared with 1.1% for Haiku, indicating concentration in expensive models.",
+            "Identified four cost-reduction priorities.",
+            "Tech, Data, and AI Research included 695 users and KRW 8.403 billion in API spending. Coding-surface adoption was 71–78%, or 1.7–1.9 times the company-wide 41.8% rate.",
+            "Idle Enterprise seats: in August, 611 of 3,313 seats (18%) used less than KRW 10,000 per month, and 127 seats (4%) were effectively unused.",
+            "Coding tools cost KRW 1.087 billion, a 45-fold increase over five months, indicating a need to review overlapping subscriptions.",
+            "Recommended consolidating 144 fragmented, low-spend products costing KRW 255 million into three or four standard vendors.",
+            "Estimated agent-like usage across 232 accounts, totaling KRW 5.500 billion, or 40.0% of API spending.",
+            "Min challenged and strengthened the evidence for inferred coding use, finding an omitted Codex surface in the Enterprise channel (KRW 1.771 billion; 1,268 users) and confirming the hypothesis.",
+            "Documented data limitations: model-based cumulative spending of KRW 17.23 billion was a lower bound, and agent classification was inferred from usage patterns.",
+            "Outcome: delivered the report to Dogyun in management for executive reporting and met the September 7 meeting deadline."
           ]
         }
       ],
@@ -381,15 +381,15 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "세린님 요청으로 Min 주도 기획, 광윤 님에게 API·Enterprise 모델별 월별 데이터 요청·수령",
-            "Opus 5도 차단 대상에 추가 제안 (Opus 5.5가 성능↑·단가↓라 유지 이유 없음)",
-            "9월 기준 Fable 5+Opus 5가 API 비용의 78%, Enterprise 비용의 66% 차지 (5월엔 거의 0%)",
-            "동일 토큰량을 Opus 5.5 공식 단가로 재산정: 약 53.2% 절감 잠재(약 $2.35M), 하한 추정",
-            "영향 범위: 9월 해당 모델 사용 Enterprise 사용자 약 1,977명",
-            "세린님 피드백 반영: Claude·GPT 모두 저/중/고비용 티어 분류, 티어별 1–2개 모델만 유지",
-            "3단계 롤아웃안: Fable 5/5.1 신규 차단 → Opus 5 단계 축소(Spendgate 예외 채널) → 전환 후 실절감 추적",
-            "Opus 5.5 실사용 데이터가 5일뿐이라 효율 주장은 벤더 발표 기준임을 명시",
-            "산출물: 전환 계획 HTML 리포트 (추석 연휴 후 월요일까지 제출 예정)"
+            "Led planning at Serin's request and requested and received monthly API and Enterprise data by model from Gwangyun.",
+            "Proposed adding Opus 5 to the models to block, reasoning that Opus 5.5 offered higher performance and lower unit prices, leaving no clear reason to retain Opus 5.",
+            "In September, Fable 5 and Opus 5 represented 78% of API spending and 66% of Enterprise spending, compared with almost zero in May.",
+            "Repriced the same token volume using Opus 5.5's official rates, estimating approximately 53.2% potential savings, or about $2.35 million, as a lower-bound estimate.",
+            "Estimated impact: approximately 1,977 Enterprise users used the affected models in September.",
+            "Incorporated Serin's feedback to classify both Claude and GPT into low-, medium-, and high-cost tiers, retaining only one or two models per tier.",
+            "Proposed a three-stage rollout: block new Fable 5/5.1 usage → gradually reduce Opus 5 with a Spend Gate exception channel → track realized savings after migration.",
+            "Explicitly noted that only five days of actual Opus 5.5 usage data were available, so efficiency claims relied on vendor announcements.",
+            "Deliverable: an HTML migration-plan report scheduled for submission by the Monday after the Chuseok holiday."
           ]
         }
       ],
@@ -411,11 +411,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "84개 에이전트, 89일(4/22–7/20) CSV 분석해 서면 리포트 작성",
-            "상위 20개 에이전트가 크레딧의 93% 차지",
-            "크레딧 0인데 전체 토큰의 25%를 쓰는 에이전트 44개 발견 (Agent Registry 귀속 누락 가능성)",
-            "백만 토큰당 크레딧 효율 편차 약 160배, 중복 이름·테스트/개인 에이전트 등 레지스트리 위생 이슈 도출",
-            "크레딧 단가는 미확정 상태 (구조적 발견은 단가와 무관하게 유효)"
+            "Analyzed CSV data for 84 agents over 89 days (April 22–July 20) and wrote a report.",
+            "The top 20 agents accounted for 93% of credits.",
+            "Found 44 agents using 25% of all tokens while showing zero credits, potentially indicating missing Agent Registry attribution.",
+            "Found an approximately 160-fold difference in credit efficiency per million tokens, along with registry-hygiene issues such as duplicate names and test/personal agents.",
+            "Credit unit pricing remained unconfirmed; the structural findings were valid independently of that price."
           ]
         }
       ],
@@ -437,8 +437,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "$2,535,992.28 (7/15–8/14 사용분, 약 35.5억원) 일회성 전액 면제·취소 확정 확인",
-            "8/15–9/14부터의 오버리지만 정상 정산, 초과 단가 $0.04/credit"
+            "Confirmed a one-time full waiver/cancellation of $2,535,992.28 for July 15–August 14 usage, approximately KRW 3.55 billion.",
+            "Only overages from August 15–September 14 onward would be settled normally, at $0.04 per credit."
           ]
         }
       ],
@@ -460,12 +460,12 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "v1(41+ 모델) → 68개 모델 비용-성능 스캐터로 확장",
-            "이해관계자 피드백 반영: 8개 태스크 유형 분해안 → 가중 벤치마크 기반 단일 비용·성능 뷰 + 임계 밴드로 전환",
-            "출력 토큰 비중 오류 수정, 난도 3단계 합성 휴리스틱 제거 → 성능 = (지능 정규화 + 코딩 정규화) / 2 단일 점수로 단순화",
-            "3종 리포트: 성능 방법론 / 단가 로직 / 스윗스팟·밸류라인",
-            "Bedrock 기준 매트릭스 방법론 검증: AA 7:2:1 블렌디드 비율의 중간 항 정의 불일치(캐시 쓰기 vs 일반 입력) 확인, Intelligence Index v4.1 반영 필요 확인",
-            "성과: Playground 배포 (ai-model-matrix.krafton.run), 모델 라우팅 기준표의 원천 데이터로 활용"
+            "Expanded v1, covering more than 41 models, into a cost-performance scatterplot of 68 models.",
+            "Incorporated stakeholder feedback by replacing an eight-task-type breakdown with a unified cost-performance view based on weighted benchmarks and threshold bands.",
+            "Corrected the output-token-share error and removed a synthetic three-level difficulty heuristic. Simplified performance to a single score: (normalized intelligence + normalized coding) / 2.",
+            "Produced three reports covering performance methodology, unit-price logic, and sweet spots/value lines.",
+            "Validated the Bedrock-based matrix methodology, finding that the middle term of AA's 7:2:1 blended ratio had inconsistent definitions (cache writes versus regular input). Also identified the need to incorporate Intelligence Index v4.1.",
+            "Outcome: deployed the Playground at ai-model-matrix.krafton.run and used its data as the source for model-routing reference tables."
           ]
         }
       ],
@@ -487,11 +487,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "AA API 구매용 위키 작성 (경영님 승인 대상): 데이터 구조, Free/Pro/Commercial 3티어 구분, 사내 사용 로그 연동 아키텍처",
-            "스윗스팟을 추상 난도 3단계 → 6개 워크로드 프로파일(실시간 챗, 대량 배치, 장문 분석, 에이전틱 코딩, 심층 분석, 툴 사용 에이전트)로 재설계",
-            "3문항 분기형 자가진단 → 문장 매칭 표로 단순화",
-            "AA 기반 Task-모델 매칭 시스템 진행 (7월 기준 Doing)",
-            "Blocker: AA API 결제 승인 대기"
+            "Wrote a wiki for purchasing the AA API, subject to Gyeongyeong's approval, covering the data structure, Free/Pro/Commercial tiers, and an architecture linking internal usage logs.",
+            "Redesigned sweet spots from three abstract difficulty levels into six workload profiles: real-time chat, bulk batch processing, long-document analysis, agentic coding, in-depth analysis, and tool-using agents.",
+            "Simplified a branching three-question self-assessment into a statement-matching table.",
+            "Worked on an AA-based task-to-model matching system, marked 'Doing' as of July.",
+            "Blocker: waiting for approval to pay for the AA API."
           ]
         }
       ],
@@ -513,9 +513,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "HEH(Human-Equivalent Hours) AI 작업 시간 측정 자동화·보정 방안 설계",
-            "MVI(Model Value Index) 정의: 태스크 유형별 성능 점수 ÷ 블렌디드 단가, 목업 대시보드 + 프로젝트 리포트 작성",
-            "Min이 직접 논리 결함 2건 지적·수정: 태스크 간 성능 비교 불가, 추정 블렌디드 단가는 거버넌스 목적과 충돌 → 라우팅 통합 후 또는 정가 기준으로 결합 보류"
+            "Designed automation and calibration methods for measuring AI task time in Human-Equivalent Hours (HEH).",
+            "Defined the Model Value Index (MVI) as task-type performance divided by blended unit price, and produced a dashboard mockup and project report.",
+            "Min identified and corrected two logic flaws: performance could not be compared across different tasks, and estimated blended prices conflicted with the governance objective. Deferred combining the measures until routing integration or use of list prices."
           ]
         }
       ],
@@ -537,10 +537,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Why API → 리스크 → Phase 1 진단 / Phase 2 레버별 개선 / Phase 3 거버넌스 체계화 구조",
-            "Phase 2를 시간축이 아닌 레버 종류로 재구성 (Min 제안): Prompt & Context(캐싱·컨텍스트) / Model(라우팅·버전·Batch) / Agent(Loop·설계)",
-            "Bedrock cachePoint 네이티브 지원 확인 → 별도 인프라 없이 FDE 프로젝트별 적용 여부만 점검하는 전수조사 파일럿 제안",
-            "성과: 자발적 전략 문서로 세린님께 공유, Max 전환 선례를 근거로 \"초기에 구조를 잡아야 한다\"는 타이밍 논리 제시"
+            "Structured the strategy as Why API → risks → Phase 1 diagnosis → Phase 2 improvements by lever → Phase 3 formalized governance.",
+            "At Min's suggestion, reorganized Phase 2 by lever rather than timeline: Prompt & Context (caching, context), Model (routing, versions, Batch), and Agent (loops, design).",
+            "Confirmed native Bedrock cachePoint support and proposed a comprehensive pilot checking adoption across FDE projects without adding separate infrastructure.",
+            "Outcome: proactively shared the strategy document with Serin and used the Max migration precedent to argue for establishing the structure early."
           ]
         }
       ],
@@ -562,13 +562,13 @@
         {
           "title": "Attribution & rollout plan",
           "paragraphs": [
-            "Glean \"Token Economy\" 백서 논지(토큰 비용 = 아키텍처 문제)를 KRAFTON 상황에 매핑",
-            "Cost Taxonomy 4축(team / use_case / env / pattern) 설계안",
-            "AI API 비용 최적화 실행계획(Phase 0–3), Enterprise Prompt Caching 방향(측정·강제·확산 3층) 확정",
-            "LLM Gateway 지연 대응: Gateway 없이 로그 기반 측정·권고 먼저, 강제는 Gateway 완성 후",
-            "Bedrock 최소권한 요청안 설계 (로깅 설정·로그 조회·inference profile 태깅·CUR 읽기)",
-            "Done/Doing/Todo/Blocker 상태보드 정리",
-            "Blocker: Bedrock admin 액세스·로그 조회 권한 (측정 인프라 전체가 의존)"
+            "Mapped Glean's 'Token Economy' whitepaper argument—that token costs are an architecture problem—to KRAFTON's context.",
+            "Proposed a four-axis cost taxonomy: team / use_case / env / pattern.",
+            "Finalized the Phase 0–3 AI API cost-optimization plan and the direction for Enterprise Prompt Caching across three layers: measurement, enforcement, and adoption.",
+            "Addressed LLM Gateway delays by starting log-based measurement and recommendations without the Gateway, with enforcement to follow its completion.",
+            "Designed a least-privilege Bedrock access request covering logging configuration, log viewing, inference-profile tagging, and CUR reading.",
+            "Organized a status board using Done, Doing, Todo, and Blocker categories.",
+            "Blocker: Bedrock administration access and log-viewing permissions, on which the measurement infrastructure depended."
           ]
         }
       ],
@@ -590,7 +590,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "RTK / Headroom 검토: 네이티브 레버(캐싱·라우팅·컨텍스트·Batch·loop 하드리밋) 우선 → 코딩 에이전트 라인이 크면 RTK 소규모 파일럿 순서 제안"
+            "Reviewed RTK and Headroom. Proposed prioritizing native levers—caching, routing, context, Batch, and hard loop limits—then running a small RTK pilot if the coding-agent cost category proved large."
           ]
         }
       ],
@@ -612,13 +612,13 @@
         {
           "title": "Attribution & rollout plan",
           "paragraphs": [
-            "AI API 비용 최적화 실행계획(Phase 0–3), Enterprise Prompt Caching 방향(측정·강제·확산 3층) 확정"
+            "Finalized the Phase 0–3 AI API cost-optimization plan and the direction for Enterprise Prompt Caching across three layers: measurement, enforcement, and adoption."
           ]
         },
         {
           "title": "Supporting control documents",
           "paragraphs": [
-            "프롬프트 캐싱 전략 문서, API 키 관리 프레임워크, 에이전트 비용 거버넌스 리포트"
+            "Produced a prompt-caching strategy document, API-key management framework, and agent-cost governance report."
           ]
         }
       ],
@@ -640,14 +640,14 @@
         {
           "title": "Supporting control documents",
           "paragraphs": [
-            "프롬프트 캐싱 전략 문서, API 키 관리 프레임워크, 에이전트 비용 거버넌스 리포트"
+            "Produced a prompt-caching strategy document, API-key management framework, and agent-cost governance report."
           ]
         },
         {
           "title": "Workstream details",
           "paragraphs": [
-            "2026년 2월 Enterprise AI 환경에서 AI Gateway와 API Gateway의 차이, SQL과 Knowledge Graph/온톨로지 데이터의 스키마 단위 접근권한, jailbreak, MCP·커넥터, Azure 등과의 호환성을 검토했다.",
-            "Skills·Agents Marketplace를 모두 한꺼번에 만드는 구상은 범위가 커져 MVP로 줄였고, 당시 API Provisioner를 만들고 있다고 설명했다. API/툴 등록, 권한·정책·쿼터, 라우팅, 로그, 자격증명, OpenAPI/MCP 명세 생성 등이 논의된 기능이지만 전체 기능의 구현 완료는 확인되지 않는다."
+            "In February 2026, reviewed the difference between AI Gateways and API Gateways in an Enterprise AI environment; schema-level access for SQL and knowledge-graph/ontology data; jailbreaks; MCP/connectors; and compatibility with Azure and other systems.",
+            "Reduced an expansive Skills and Agents Marketplace concept to an MVP and described the API Provisioner as being under development. Discussed API/tool registration, permissions, policies, quotas, routing, logs, credentials, and OpenAPI/MCP specification generation; completion of the entire feature set was not confirmed."
           ]
         }
       ],
@@ -669,14 +669,14 @@
         {
           "title": "Supporting control documents",
           "paragraphs": [
-            "프롬프트 캐싱 전략 문서, API 키 관리 프레임워크, 에이전트 비용 거버넌스 리포트"
+            "Produced a prompt-caching strategy document, API-key management framework, and agent-cost governance report."
           ]
         },
         {
           "title": "Monitoring roadmap",
           "paragraphs": [
-            "비용 threshold 알림 구축, Agent 지표(태스크당 비용·step·재시도율) 추가",
-            "AI Agent Token Efficiency 워크샵 참여 예정 (loop 하드리밋, tool 결과 압축, planning/execution 모델 분리)"
+            "Built cost-threshold alerts and added agent metrics for cost per task, steps, and retry rate.",
+            "Planned to attend an AI Agent Token Efficiency workshop covering hard loop limits, compressed tool results, and separate planning/execution models."
           ]
         }
       ],
@@ -698,7 +698,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "비용 분류 체계 및 Kissflow 승인 파이프라인 직접 설계, 도입/폐기(sunset) 트리거 정의 포함"
+            "Directly designed the cost-classification system and Kissflow approval pipeline, including adoption and sunset triggers."
           ]
         }
       ],
@@ -720,9 +720,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "전사 AI 도입 기준 등급 분류 문서화, 평가 기준 + Kissflow 기반 인테이크 파이프라인 구축",
-            "흩어진 기존 요건을 모아 1차 버전을 먼저 만들고 법무·보안에 좁은 질문으로 협의하는 방식으로 진행",
-            "성과: 가이드 완료 후 분류·승인 파이프라인 운영 단계 진입"
+            "Documented company-wide AI adoption grades and built evaluation criteria and a Kissflow-based intake pipeline.",
+            "Consolidated scattered requirements into an initial version, then consulted Legal and Security using narrowly framed questions.",
+            "Outcome: after completing the guidance, moved the classification and approval pipeline into operation."
           ]
         }
       ],
@@ -744,11 +744,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "회의 피드백 반영 논의용 초안 작성",
-            "\"툴 vs API\"를 1차 게이트로 승격 (API는 서비스 중단 리스크 직결 → 볼륨과 무관하게 중앙 검토)",
-            "AI 유형을 LLM 외로 확장, 3축 분류(제작 여부 / SaaS vs API / 범용 vs 용도 제한)",
-            "도입 주체 옵션 A 기능 조직 / B 구매팀 / C AIT 장단점, HQ ↔ 스튜디오 커버리지 미결 이슈 명시",
-            "클로바노트·DeepL·코딩 에이전트·LLM API 사례 적용, 기존 SaaS/API 기준 선확인 문의 초안 포함"
+            "Prepared a discussion draft incorporating meeting feedback.",
+            "Elevated 'tool versus API' to the first gate: because APIs directly affect service-continuity risk, they require central review regardless of volume.",
+            "Expanded AI categories beyond LLMs and introduced three classification axes: whether it is built internally, SaaS versus API, and general-purpose versus purpose-limited use.",
+            "Compared adoption-owner options—A functional organizations, B Procurement, C AIT—and explicitly documented unresolved HQ-versus-studio coverage issues.",
+            "Applied the framework to CLOVA Note, DeepL, coding agents, and LLM APIs, including a draft request to confirm existing SaaS/API criteria first."
           ]
         }
       ],
@@ -770,10 +770,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "격주 커미티 참여, 커미티 액션아이템 도출 → 실행 기반 구축 담당",
-            "Unity ToS AI 조항 분석, EU AI Act 컴플라이언스 프레이밍, 외부 거버넌스 사례 수집",
-            "이해관계자 미팅 거쳐 거버넌스 슬라이드 반복 수정",
-            "AI CT/세이프티 협의체 실무 운영 RM팀 이관: 거버넌스 DRI는 기존 팀 유지, Min은 인풋 제공 + RM팀 프로세스 리뷰"
+            "Participated in the biweekly committee and translated committee action items into an execution foundation.",
+            "Analyzed Unity Terms of Service AI clauses, framed EU AI Act compliance, and collected external governance examples.",
+            "Iteratively revised governance slides through stakeholder meetings.",
+            "Transferred day-to-day operation of the AI CT/safety council to the RM team. Governance DRI ownership remained with the existing team; Min provided input and reviewed the RM team's process."
           ]
         }
       ],
@@ -795,10 +795,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "6/1 팀 회의 논의(화이트리스트 폐기, 체크리스트 → 거버넌스, 전결 + Kissflow 기록화) 기반 정리",
-            "4개 레이어 R&R: AIT 총괄·설계 / 법무 1차·보안 2차 검토 / PSM·SSD 제작·상업화 승인(S1 트랙) / 스튜디오·CDU 조직장 실행·책임",
-            "신규 툴 검토, 제작·퍼블리싱 분기, 예외 처리 프로세스 정의",
-            "산출물: 음슴체 문서 + HTML 인포그래픽 + PPTX"
+            "Organized the framework around the June 1 team discussion: retire the whitelist, move from checklists to governance, and document delegated approvals through Kissflow.",
+            "Defined responsibilities across four layers: AIT oversight/design; first-stage Legal and second-stage Security review; PSM/SSD production and commercialization approval on the S1 track; and execution/accountability by studio and CDU organization leaders.",
+            "Defined processes for reviewing new tools, branching between production and publishing, and handling exceptions.",
+            "Deliverables: a concise Korean working document, an HTML infographic, and a PPTX presentation."
           ]
         }
       ],
@@ -820,8 +820,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Confluence 페이지 작성, AI Safety 뉴스 자동 리포팅 봇 설계 명세",
-            "시스템 프롬프트, 카테고리·심각도 분류, KRAFTON 관련성 5차원 가중 스코어링, 규제 매핑(PIPA, AI 기본법, EU AI Act, GDPR 등), JSON 출력 스키마, Slack 포맷, 6시간 주기, 수집→분석→Confluence→Slack 아키텍처"
+            "Created a Confluence page and the design specification for an automated AI Safety news-reporting bot.",
+            "Specified the system prompt, category/severity classification, five-dimensional weighted KRAFTON relevance scoring, regulatory mapping (PIPA, Korea's AI Basic Act, EU AI Act, GDPR, and others), JSON output schema, Slack format, six-hour cadence, and collection → analysis → Confluence → Slack architecture."
           ]
         }
       ],
@@ -843,9 +843,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "AI 관련 조항 분석, \"기본 금지 + 좁은 예외\" 구조로 정확히 프레이밍",
-            "KRAFTON은 Unreal 기반이라 직접 적용 대상이 아님을 짚어, SaaS 벤더가 계약 단위로 에이전트 접근을 규제하기 시작한 선행 지표 사례로 재프레이밍",
-            "벤더 정책 변경·에이전트-SaaS 연결 추적을 법무 월간 리뷰에 편입하는 방향으로 제안"
+            "Analyzed the AI-related clauses and precisely framed them as a default prohibition with narrow exceptions.",
+            "Noted that KRAFTON's Unreal-based development was outside the direct scope, reframing the case as an early indicator of SaaS vendors beginning to regulate agent access through contracts.",
+            "Proposed adding vendor-policy changes and agent-to-SaaS connection tracking to Legal's monthly review."
           ]
         }
       ],
@@ -867,9 +867,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "원칙: 사내 사용은 가급적 허용, 파급력·보안 위험 큰 AI만 제한, 비용도 AI Safety의 일부로 관리",
-            "Layer 1 관점(Financial / Security / Legal / Compliance / Business) · Layer 2 적용 대상(Internal×External, Game×Non-game) · Layer 3 라이프사이클(PoC → 개발 → 제작 → 퍼블리싱) · Layer 4 의사결정 구조(DRI)",
-            "Grade 체계로 보안·비용 관리 수준 차등화"
+            "Principles: generally permit internal use; restrict AI with substantial business impact or security risk; and manage cost as part of AI Safety.",
+            "Defined four layers: perspectives (Financial, Security, Legal, Compliance, Business); scope (Internal × External, Game × Non-game); lifecycle (PoC → development → production → publishing); and decision-making structure (DRI).",
+            "Used grades to differentiate security and cost-management requirements."
           ]
         }
       ],
@@ -891,12 +891,12 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "역할 정리 반영: AI ESG 위원회는 윤리 원칙·선언, 운영 폴리시는 AIT 주도",
-            "세이프티 커뮤니티 논의용 1차 가이드 작성",
-            "일반 업무·개발: 사내망 한정 시 보안 검토 간소화, 도구 활용 적극 권장",
-            "게임 개발: 빌드 포함 산출물, 외부 API로 IP 송신, 라이브 AI 기능, 사용자 데이터 활용 시점에 보안 검토 필수",
-            "최근 6개월 해외 사례 보강·국문 번역 (Vercel × Context AI, LiteLLM 공급망 공격, Crimson Desert AI 에셋 유출, Steam AI 공시 정책, Identity V 보이콧 등)",
-            "삼성 ChatGPT 사례 설명의 과잉 해석을 Min이 직접 정정"
+            "Clarified roles: the AI ESG committee sets ethical principles and declarations, while AIT leads operating policies.",
+            "Prepared the first guidance document for discussion with the safety community.",
+            "General work and development: streamline security reviews for internal-network-only use and actively encourage tool adoption.",
+            "Game development: require security review for deliverables included in builds, IP sent through external APIs, live AI features, and use of user data.",
+            "Added and translated international cases from the preceding six months, including Vercel × Context AI, the LiteLLM supply-chain attack, Crimson Desert AI asset exposure, Steam's AI disclosure policy, and the Identity V boycott.",
+            "Min directly corrected an overinterpretation in the explanation of the Samsung ChatGPT case."
           ]
         }
       ],
@@ -918,18 +918,18 @@
         {
           "title": "Workstream details",
           "paragraphs": [
-            "업무 범위 4가지, \"사람 → 에이전트 중심 전환으로 새 조직 필요\" 메시지, A안 실 단위 확대",
-            "명칭 확정, 사내외 AI 활용 및 비용 분배 기준 가이드라인 추가, SPO 표기",
-            "PO 구도: 엔터프라이즈 오퍼레이션 PO(단기) / AI 솔루션 검증 아키텍처 PO(중장기) + 에이전트 전담팀 포함 4명",
-            "2027년 초 착수 항목으로 에이전트 중심 거버넌스 포함"
+            "Defined four work areas, a rationale for a new organization as work shifts from people toward agents, and Option A expansion to department scale.",
+            "Finalized the name, added guidelines for internal/external AI use and cost allocation, and included SPO notation.",
+            "Outlined PO responsibilities: Enterprise Operations PO in the short term and AI Solution Validation Architecture PO in the medium/long term, with four people including a dedicated agent team.",
+            "Included agent-focused governance among the initiatives scheduled to begin in early 2027."
           ]
         },
         {
           "title": "Workstream details",
           "paragraphs": [
-            "2026년 9월 4일 세린·광윤·우진과 전사 AI 거버넌스 조직의 기능과 인력 수요를 논의했다. 비용·예산, 대시보드/Slack 알림, 모델·조직별 리포트, Databricks 사용량 데이터, Enterprise Admin, Gateway 정책 적용을 한 흐름으로 보고, Ops / 거버넌스 기획·연구 / 솔루션 검증·PoC·아키텍처의 3개 기능축을 정리했다.",
-            "에이전트 거버넌스, 제품 PO/PMO, 정책 가이드·전파, 조직별 비용 귀속(가상 예산·HR 스냅샷), 자체 구축 대 구매의 판단 과제를 논의했다. 이 조직 수와 채용 일정은 제안 당시의 추산이다.",
-            "Min은 **단기 팀 확장(B안)**과 **에이전트까지 고려한 실 단위 중장기 확장(A안)**을 비교하는 표를 만들기로 맡았다. 이 자료의 최종 제출·승인 여부는 별도 확인이 필요하다."
+            "On September 4, 2026, discussed company-wide AI governance functions and staffing needs with Serin, Gwangyun, and Woojin. Connected costs/budgets, dashboards/Slack alerts, model- and organization-level reporting, Databricks usage data, Enterprise Admin, and Gateway policy enforcement into one flow. Defined three functional areas: Ops; governance planning/research; and solution validation, PoC, and architecture.",
+            "Discussed agent governance, product PO/PMO, policy guidance and communication, organization-level cost attribution using virtual budgets and HR snapshots, and build-versus-buy decisions. Organization size and hiring timelines were estimates made at the proposal stage.",
+            "Min took responsibility for a comparison table between short-term team expansion (Option B) and medium/long-term department-level expansion accounting for agents (Option A). Final submission and approval of that material require separate confirmation."
           ]
         }
       ],
@@ -951,11 +951,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "뷰 구성안 설계 (구현은 광윤 님), HTML 수작업이던 폴리시 영향도 체크 자동화 목표",
-            "폴리시 적용일·타겟 입력 → 모델 사용량·타겟 채널 백트래킹, Slack 넛지 데이터 연계로 일/주/월 절감률 표출",
-            "데이터 명세 1차본 수령 (소스 5종: Claude API, OpenAI API, Cursor Enterprise, ChatGPT Enterprise, Claude Enterprise)",
-            "신규 뷰: API 실사용 상위 직무(Tech/Data/AI Research) 나열 → 저비용 모델 테스트 제안 (\"추정\" 표현 유지)",
-            "에이전트 사용 주체 검증 요청 (key name, 툴 호출량 기준)"
+            "Designed the views, with implementation assigned to Gwangyun, aiming to automate policy-impact checks previously produced manually in HTML.",
+            "Proposed entering policy effective dates and target groups, backtracking model usage and target channels, and linking Slack nudge data to display daily, weekly, and monthly savings rates.",
+            "Received the initial data specification covering five sources: Claude API, OpenAI API, Cursor Enterprise, ChatGPT Enterprise, and Claude Enterprise.",
+            "Proposed a new view listing the highest actual API-use job families—Tech, Data, and AI Research—and recommending low-cost model trials, while retaining 'estimated' qualifiers.",
+            "Requested validation of agent users using key names and tool-call volumes."
           ]
         }
       ],
@@ -977,12 +977,12 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "5레이어 프레임워크(수집 / 저장 / 변환 / 거버넌스 / AI 소비) 정의 문서",
-            "Knowledge 비구조화 데이터 수집 레이어: 소스별 API 현황(Confluence, Jira, Slack, M365, Google, Kissflow, HUB, 회의록) + 솔루션 비교(Databricks, Snowflake, Fivetran, Airbyte, 자체 개발) 보강",
-            "CDC 역할 정정 (Min이 \"저장 위치와 무관하게 변경분 추적 도구\"임을 짚음)",
-            "솔루션사·벤치마킹 기업 리스트 정리",
-            "해외 DF 구축 사례 리서치: IBM Client Zero, Uber Michelangelo, Morgan Stanley, Spotify & JPMorgan Chase, Goldman Sachs, 항공사 Data Mesh + 크래프톤 적용 5원칙",
-            "성과: Confluence에 [DF Research] 허브 + 하위 4개 페이지로 게시"
+            "Wrote the five-layer framework definition: collection, storage, transformation, governance, and AI consumption.",
+            "Expanded the unstructured knowledge-data collection layer with API availability by source—Confluence, Jira, Slack, M365, Google, Kissflow, HUB, and meeting notes—and comparisons of Databricks, Snowflake, Fivetran, Airbyte, and custom development.",
+            "Corrected the role of CDC, with Min clarifying that it tracks changes independently of where data is stored.",
+            "Compiled lists of solution vendors and benchmarking companies.",
+            "Researched international Data Foundation implementations: IBM Client Zero, Uber Michelangelo, Morgan Stanley, Spotify and JPMorgan Chase, Goldman Sachs, and airline Data Mesh examples, then developed five principles for application at KRAFTON.",
+            "Outcome: published a [DF Research] hub and four child pages in Confluence."
           ]
         }
       ],
@@ -1004,8 +1004,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "AX 성과 스토리라인 작성 (3월): 시나리오 A–E(현황 / 투자 대비 성과 / 측정 체계 전환 / 파이프라인 / 글로벌 포지셔닝) + 성과 하이라이트 표에 Confluence 근거 링크 매핑",
-            "AX 부서 소개 Q&A 2.5안 작성 (3월): 향후 추진 방향(AX FDE, AX Hub, 비개발직군 지원), 차별점(접근성 우선, 데이터 기반 의사결정, Multi-Vendor + 거버넌스)"
+            "Developed the AX performance storyline in March, covering scenarios A–E: current state, return on investment, changes to measurement, pipeline, and global positioning. Mapped performance highlights to supporting Confluence links.",
+            "Wrote version 2.5 of the AX department introduction Q&A in March, covering future directions (AX FDE, AX Hub, support for non-developers) and differentiators (accessibility first, data-driven decisions, multiple vendors, and governance)."
           ]
         }
       ],
@@ -1027,7 +1027,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Top Performer Playbook 리포트: 자동화 성과 우수 조직 벤치마킹용 설문 문항 ↔ 지표 매핑 (예산·인력 지원, OKR 반영, 리더십·구성원 인식 정렬, 자동화 업무 비중, 성과 지표) (3월)"
+            "Prepared the March Top Performer Playbook report, mapping survey questions to benchmarking metrics for high-performing automation organizations: budget/staffing support, OKR inclusion, leadership/member alignment, share of automated work, and performance measures."
           ]
         }
       ],
@@ -1049,7 +1049,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "개인구독 AI 도구별 정산액·이용자·엔터프라이즈 도입 여부·지원 여부 표 정리 (4월)"
+            "Compiled an April table of personal-subscription AI tools, settlement amounts, users, Enterprise adoption, and support status."
           ]
         }
       ],
@@ -1071,11 +1071,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "SF 외부 활동 계획 (이벤트, AI 기업 오피스 방문 우선순위, 네트워킹)",
-            "TPU 8t/8i, Gemini Omni, SynthID, Antigravity 2.0 등 발표 내용 분석",
-            "Jiyoon Lee와 공동 보고서, Min 담당: 모델 평가 축 전환(p.13), ROI 재정의(p.17), SynthID 3단계 자산 정책(p.20), TokenOps/EOL 거버넌스(p.27–28), 종합 시사점(p.30)",
-            "핵심 논지 도출: Google이 모델 레이어를 범용화하고 해자를 오케스트레이션·유통으로 올리는 전략 (Exec Summary와 결론의 모순 해소)",
-            "성과: 샌프란시스코 현지 참관 + 사내 발표"
+            "Planned external activities in San Francisco, including events, prioritized AI company office visits, and networking.",
+            "Analyzed announcements including TPU 8t/8i, Gemini Omni, SynthID, and Antigravity 2.0.",
+            "Co-authored a report with Jiyoon Lee. Min covered changes to model-evaluation dimensions (p.13), redefining ROI (p.17), a three-stage SynthID asset policy (p.20), TokenOps/EOL governance (pp.27–28), and overall implications (p.30).",
+            "Developed the central argument that Google was commoditizing the model layer while moving its competitive moat toward orchestration and distribution, resolving inconsistencies between the executive summary and conclusion.",
+            "Outcome: attended in San Francisco and presented internally."
           ]
         }
       ],
@@ -1097,7 +1097,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "기업별 토큰·컨텍스트 한도 운영 사례, Uber AI 비용 최적화의 업계 의미, LLM Gateway·AI Governance 시장 동향 정리 (국문·영문 메시지)"
+            "Summarized companies' token/context-limit practices, the industry implications of Uber's AI cost optimization, and LLM Gateway/AI Governance market trends in Korean and English messages."
           ]
         }
       ],
@@ -1119,12 +1119,12 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "1기 계약(1–5월) 산출물 회고: 전사 설문 리포트, Q2 Cost Report, AI Model Matrix v1, MVI/HEH 프레임워크, Cost Taxonomy·Kissflow 파이프라인 착수",
-            "7월 AX 4유닛 개편(PMO / Governance / Engineering / Data Foundation) 맞춰 역할 정의 문서 작성",
-            "\"AI Cost & Model Value 담당\" 포지셔닝, 가치·의사결정 축을 위로 재배열",
-            "Owner 영역: FinOps 운영화 / MVI·HEH / Cost Taxonomy·승인 파이프라인 / API 비용 최적화, AI Safety는 support 영역 + 인프라 브릿지 논리",
-            "6개월 deliverable·리포팅 리듬 계획",
-            "성과: 6–12월 계약 갱신, 업무 범위 확대 + 의미 있는 단가 인상"
+            "Reviewed deliverables from the January–May contract: the company-wide survey report, Q2 Cost Report, AI Model Matrix v1, MVI/HEH framework, and initiation of the Cost Taxonomy/Kissflow pipeline.",
+            "Wrote a role-definition document aligned with the July reorganization of AX into four units: PMO, Governance, Engineering, and Data Foundation.",
+            "Positioned the role as 'AI Cost & Model Value' and elevated the value and decision-making dimensions in the structure.",
+            "Defined ownership of operational FinOps, MVI/HEH, Cost Taxonomy/approval pipeline, and API cost optimization. AI Safety was a supporting area, with a rationale for bridging infrastructure.",
+            "Planned six months of deliverables and reporting cadence.",
+            "Outcome: renewed the contract for June–December, expanded the scope, and secured a meaningful rate increase."
           ]
         }
       ],
@@ -1146,18 +1146,18 @@
         {
           "title": "Workstream details",
           "paragraphs": [
-            "목표: Gateway 사용 저변 확대 + DeepSeek 등 저비용 모델 실사용 사례 발굴",
-            "9/7 오픈 약 2주, 참여 유형 4종(기존 사례 공유 / 공식 챌린지 / 챌린지 제안 / 결과물 제출), 챌린지 4개 카테고리",
-            "운영 분담: AX 기획·챌린지 설계·1차 검토·성과 정리 / P&O 폼·공지·지급 / Gateway 운영 키·사용량 데이터",
-            "승인 전 리스크 7건 도출: 예산 상한 미정, 참여 크레딧 공란, 키 이관과 오픈일 충돌, 비용 자기신고 중복, 목표와 측정 지표 불일치, 제안 보상 어뷰징, 투표 기준 정성적"
+            "Objectives: broaden Gateway adoption and find practical examples of low-cost models such as DeepSeek.",
+            "Initial plan: open on September 7 for approximately two weeks, with four participation formats—existing case sharing, official challenges, challenge proposals, and deliverable submission—and four challenge categories.",
+            "Divided operations among AX (planning, challenge design, first review, results), P&O (forms, announcements, payments), and Gateway operations (keys and usage data).",
+            "Identified seven risks before approval: no budget cap, missing participation credits, conflict between key migration and launch timing, duplicate self-reported costs, misalignment between objectives and metrics, proposal-reward abuse, and qualitative voting criteria."
           ]
         },
         {
           "title": "Workstream details",
           "paragraphs": [
-            "**‘경량화 & Open 소스 모델 올림픽’**을 기획했다. 같은 업무를 저비용·오픈 웨이트 모델로 수행하면서 결과물 품질과 비용·속도·재현성을 비교하고, 코딩, 업무 생산성, 게임 콘셉트, 아트·에셋 등 실무와 창작 사례를 수집하려는 목적이었다.",
-            "초기안에는 9월 7일 시작, 코딩·아트·업무 생산성, 최대 $500 보상 같은 내용이 있었다. 이후 8월 말 논의에서는 Gateway 9월 셋째 주 공개 후 캠페인, 9월 말 24시간 대회, 10월 초 평가·공유로 타임라인을 옮기고, 단일 모델 경쟁에서 여러 저비용 모델을 활용한 실무 효율 / 창작 제작 중심 구성으로 바꾸었다.",
-            "모델별 트랙 폐지, 품질·비용·토큰·사용성·반복 실행 평가 등은 진화한 기획안이다. 행사 실제 개최, 지급된 상금, 참가 팀 및 수상 결과는 확인되지 않는다."
+            "Planned the 'Lightweight & Open-Source Model Olympics' to compare quality, cost, speed, and reproducibility when the same work uses low-cost or open-weight models. Intended to collect practical and creative examples in coding, workplace productivity, game concepts, and art/assets.",
+            "The initial proposal included a September 7 start, coding/art/productivity categories, and rewards up to $500. Late-August discussions shifted the campaign to follow the Gateway release in September's third week, with a 24-hour competition in late September and evaluation/sharing in early October. The concept evolved from competition around a single model to practical efficiency and creative production using several low-cost models.",
+            "Removing model-specific tracks and evaluating quality, cost, tokens, usability, and repeated execution were elements of the evolving plan. Actual event delivery, prize payments, participating teams, and award results were not confirmed."
           ]
         }
       ],
@@ -1179,10 +1179,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "2026년 9월 보안검증과 별개인 사내 SW 운영신뢰도 제도를 아이디어에서 장표·체크리스트로 발전시켰다. 도메인(krafton.com, krafton.run, krafton.io), 서비스 소유자, 이용 조직, 데이터 등급, 보안 상태, 운영 상태 등을 서비스 카탈로그 레코드로 관리하려 했다.",
-            "제안 레벨은 L0 미검증 → L1 실험 → L2 내부 검증 → L3 운영 승인 → L4 회사 표준이다. 등록·파일럿 범위·Owner·테스트 피드백·모니터링·장애 대응·변경관리·복수 조직 검증·중복 서비스 비교를 단계별 필수 근거로 제시했다.",
-            "운영 흐름은 등록 → 분류 → 증거 평가 → 배지/카탈로그 표시 → 비용·사용·장애 모니터링 → 정기 재평가다. 핵심 지표는 등록 커버리지, Owner 지정률, L3 이상 비율, 재평가 이행률, 중복 기능 수, 표준 서비스 사용 및 통합·이관·종료를 통한 수렴률이다.",
-            "Slack Bot이 폼·링크·체크리스트의 근거를 수집·리마인드하고 최고 충족 레벨을 판정하며, 가동률·장애·배포 사실은 모니터링/DevOps 연동으로 검증하는 1페이지 안을 만들었다. 4주 파일럿(목록화→기준선→표시→표준 후보 결정)은 제안이지 완료된 사내 인증이 아니다."
+            "In September 2026, developed an internal software operational-reliability proposal, separate from security verification, from an idea into slides and checklists. Proposed service-catalog records covering domain (krafton.com, krafton.run, krafton.io), service owner, using organizations, data grade, security status, and operational status.",
+            "Proposed levels were L0 unverified → L1 experimental → L2 internally validated → L3 approved for operation → L4 company standard. Required evidence by stage included registration, pilot scope, ownership, test feedback, monitoring, incident response, change management, validation across multiple organizations, and comparisons with overlapping services.",
+            "Defined the operating flow as registration → classification → evidence assessment → badge/catalog display → cost, usage, and incident monitoring → periodic reassessment. Key measures were registration coverage, assigned-owner rate, the share at L3 or above, reassessment completion, overlapping functions, standard-service usage, and convergence through consolidation, migration, or retirement.",
+            "Created a one-page proposal for a Slack bot to collect evidence through forms, links, and checklists; send reminders; determine the highest supported level; and verify uptime, incidents, and deployments through monitoring/DevOps integrations. The four-week pilot—inventory → baseline → display → standard-candidate selection—was proposed, not a completed internal certification."
           ]
         }
       ],
@@ -1204,10 +1204,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "글로벌 IT 기업의 AI 거버넌스·AI 리스크 사례 10건 이상을 벤치마킹했다.",
-            "KRAFTON의 초기 AI 거버넌스 계획 장표를 작성해 의장과 ESG 조직의 검토 자료로 준비했다. 당시 단계는 계획 수립·검토이며, 제도 시행과 동일하지 않다.",
-            "글로벌 AI 기술과 도입 동향을 살펴보고, 주간 C-level AI 전략회의 및 글로벌 AI 벤더와의 접점에서 기술·법률 리스크와 도입 선결조건을 제시했다.",
-            "회사 내부에서 현업 중심, 상향식 AI 활용을 확산하는 일을 지원했다. 이 항목은 본인의 과거 회고를 반영한다."
+            "Benchmarked more than ten AI governance and AI risk cases from global technology companies.",
+            "Prepared KRAFTON's initial AI governance planning slides for review by the chair and ESG organization. This was planning and review, not implementation of the governance system.",
+            "Reviewed global AI technology and adoption trends, and presented technical/legal risks and adoption prerequisites in weekly C-level AI strategy meetings and discussions with global AI vendors.",
+            "Supported business-led, bottom-up AI adoption within the company. This item reflects Min's retrospective account of earlier work."
           ]
         }
       ],
@@ -1229,7 +1229,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "게임 산업의 3개년 투자 동향을 콘텐츠, 인프라 도구, 크리에이터 이코노미, 라이브옵스, AI로 나누어 분석하고 전략 조직 20명 이상에게 발표했다. 시장 신호를 스튜디오 로드맵과 연결하는 관점이었다."
+            "Analyzed three years of game-industry investment trends across content, infrastructure tools, the creator economy, live operations, and AI, then presented to more than 20 strategy colleagues. The analysis connected market signals with studio roadmaps."
           ]
         }
       ],
@@ -1251,11 +1251,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "2024년 말부터 2025년 KRAFTON HQ 업무 내 AI 활용 현황 조사를 설계하고 안내문·영문판·수정본을 준비했다. 본사 구성원의 업무별 AI 사용, 불편, 필요 도구를 파악하여 직무·조직별 도입 우선순위를 세우려는 목적이었다.",
-            "2025년 1월 7일 사전 테스트, 1월 14–24일 본 조사로 안내한 기록이 있다. 1월 24일 18:00까지 참여를 요청했고, 응답은 강제가 아니라 자발적 참여였다. 설문 대상은 HQ였으며 해외 스튜디오·자회사를 포함한 전사 3,100명 추적 사업과 구분된다.",
-            "설문 공지·수정, 번역팀과의 조율, 참여 독려를 진행했다. 약 10–15분 분량의 설문이었으며, 결과를 실제 업무 지원용 AI 솔루션 선정에 쓰려 했다.",
-            "응답 규모는 기록이 다르다. 이전 업무 회고에는 548명이 등장하고, 2025년 1월 29일 당시 대외 커뮤니케이션에는 **약 600명·참여율 약 40%**가 쓰였다. 원본 결과표가 없는 상태이므로 둘 중 하나를 확정 수치로 쓰지 않는다.",
-            "2025년 2–3월의 정량 분석·후속 인터뷰, 4월 게임 스튜디오 대상 별도 조사 및 논문 수준 설계는 당시의 후속 계획이다. 어느 항목이 실제로 마무리됐는지는 현재 자료만으로 확인되지 않는다."
+            "From late 2024 into 2025, designed a survey of AI use in KRAFTON HQ work and prepared announcements, an English version, and revisions. The goal was to identify AI use by task, pain points, and needed tools, then prioritize adoption by job family and organization.",
+            "Records show a January 7, 2025 pretest and a main survey scheduled for January 14–24, with participation requested by 18:00 on January 24. Participation was voluntary. The survey covered HQ and was separate from the company-wide tracking program spanning 3,100 people, including overseas studios and subsidiaries.",
+            "Managed survey announcements and revisions, coordinated with the translation team, and encouraged participation. The survey took approximately 10–15 minutes and was intended to inform selection of AI solutions supporting employees' actual work.",
+            "Response counts differ across records: an earlier retrospective mentions 548 respondents, while external communication dated January 29, 2025 used approximately 600 respondents and approximately 40% participation. Without the original results table, neither figure is treated as definitive.",
+            "Quantitative analysis and follow-up interviews in February–March 2025, a separate April game-studio survey, and a research-paper-level design were follow-up plans at that time. The available material does not confirm which were completed."
           ]
         }
       ],
@@ -1277,10 +1277,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "5개 스튜디오의 AI 활용 사례 30–50건을 수집·전시·분석했다. 이미 구현된 현업 활용을 단기간 업무 자동화 기회와 장기 플랫폼 투자로 구분했다.",
-            "HQ 및 Tango Gameworks(일본), PUBG(한국), Striking Distance Studios(미국) 관련 사내 컨설팅 프로젝트를 발표했다. 이 목록은 발표 대상의 예시이며, 5개 분석 스튜디오 전체 명단이라는 의미는 아니다.",
-            "에이전틱 AI 시스템 리뷰에 참여해 업무 적합성, 신뢰성, 거버넌스 관점의 개선안을 제안했다.",
-            "2025년 6월에는 AI 기반 게임 제작 워크플로우 표준화와 관련해 KOCCA의 기존 표준화 연구, 한계, 후속 연구 및 협력 가능성을 조사·문의했다. 공식 협력 체결 여부는 확인되지 않는다."
+            "Collected, showcased, and analyzed 30–50 AI use cases from five studios, distinguishing implemented business uses as opportunities for near-term automation or longer-term platform investment.",
+            "Presented internal consulting projects involving HQ, Tango Gameworks in Japan, PUBG in Korea, and Striking Distance Studios in the United States. These are examples of presentation subjects, not a complete list of the five analyzed studios.",
+            "Participated in agentic AI system reviews and proposed improvements in workflow fit, reliability, and governance.",
+            "In June 2025, researched and contacted KOCCA about existing standardization research, limitations, follow-up research, and possible collaboration on AI-supported game-production workflows. A formal collaboration agreement was not confirmed."
           ]
         }
       ],
@@ -1302,9 +1302,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "글로벌 임직원 3,100명 이상을 범위로 하는 AI 사용량 추적·보고 체계를 이끌고, 채택 현황, 생산성 향상, 교육 수요 등을 CEO에게 직접 브리핑했다. 이 3,100+는 추적 대상 인원이지 2025 HQ 설문의 응답자 수가 아니다.",
-            "Chairman, CEO, CFO, ELT용 주간 AI Insights 보고서를 작성했다. 시장 변화, 벤더 업데이트, 정책 변화와 내부 AI 도입 지표를 연결했다.",
-            "직무별 우수 AI 사용 사례를 큐레이션하고 구성원에게 알렸다. 본인 이력서에는 격주 전사 쇼케이스 600명 이상과 일일 AI 업데이트 수신 규모 700명 이상이 기재되어 있다. 이는 서로 다른 활동과 수치이다."
+            "Led an AI usage tracking/reporting system covering more than 3,100 global employees and directly briefed the CEO on adoption, productivity improvements, and training needs. The 3,100+ figure describes tracking coverage, not responses to the 2025 HQ survey.",
+            "Wrote weekly AI Insights reports for the Chairman, CEO, CFO, and ELT, connecting market developments, vendor updates, policy changes, and internal AI adoption metrics.",
+            "Curated strong AI use cases by job family and shared them with employees. Min's resume lists more than 600 attendees for biweekly company-wide showcases and more than 700 recipients for daily AI updates; these describe different activities and counts."
           ]
         }
       ],
@@ -1326,9 +1326,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "AI 솔루션 30건 이상을 깊이 평가한 데이터베이스를 만들고, 주요 외부 파트너와의 논의를 지원했다.",
-            "파트너십 지원 건수는 자료별로 4건(이력서: OpenAI, NVIDIA, Microsoft, ElevenLabs)과 5건(프로필: 앞의 네 곳과 Google)으로 다르게 적혀 있다. 지원한 건수이며 계약을 개인이 체결했다는 뜻은 아니다.",
-            "사내 사용 사례 전파와 외부 솔루션 검토를 함께 수행하며, 단순 도구 소개를 실제 직원 업무에 적용하는 방향으로 정리했다."
+            "Built a database of in-depth assessments of more than 30 AI solutions and supported discussions with major external partners.",
+            "The records differ on partnership support: the resume lists four partners—OpenAI, NVIDIA, Microsoft, and ElevenLabs—while the profile lists five, adding Google. These are supported engagements, not contracts personally signed by Min.",
+            "Combined internal use-case sharing with external solution reviews, focusing on applying tools to real employee workflows rather than simply introducing them."
           ]
         }
       ],
@@ -1350,7 +1350,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Slack 메시지 작성·템플릿화·라우팅을 돕는 AI 자동화 시스템을 설계·구현했고, 50명 대상 라이브 구현 세션을 진행했다. 이후 오피스아워와 플레이북으로 활용을 지원했다."
+            "Designed and implemented an AI automation system supporting Slack message drafting, templates, and routing, and ran a live implementation session for 50 people. Supported subsequent use through office hours and a playbook."
           ]
         }
       ],
@@ -1372,7 +1372,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "2025년 6월에는 AI 기반 게임 제작 워크플로우 표준화와 관련해 KOCCA의 기존 표준화 연구, 한계, 후속 연구 및 협력 가능성을 조사·문의했다. 공식 협력 체결 여부는 확인되지 않는다."
+            "In June 2025, researched and contacted KOCCA about existing standardization research, limitations, follow-up research, and possible collaboration on AI-supported game-production workflows. A formal collaboration agreement was not confirmed."
           ]
         }
       ],
@@ -1394,7 +1394,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "2025년 11–12월 KRAFTON–UIUC Agentic AI 협력 초안 및 계약·공동연구 범위를 논의했다. 연구 실행 확정과는 구분되는 사전 협의 단계다."
+            "In November–December 2025, discussed a draft KRAFTON–UIUC Agentic AI collaboration and the scope of contracts and joint research. This was preliminary discussion, distinct from confirmed research execution."
           ]
         }
       ],
@@ -1416,9 +1416,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "리더십용 주간 Performance Review를 만들고 pipeline, 신규·확장 bookings, ACV-to-revenue, 갱신·유지 지표를 연결했다. 지역과 월·분기, 목표와 실적을 분리해 한 주의 성과를 읽을 수 있도록 구성했다.",
-            "Salesforce, Tableau 및 재무·운영 자료의 3개 이상 상충하는 지표 정의를 비교했다. 회의에서 bookings 수치가 원천마다 달라지는 문제를 짚고, 기준 원천·집계 시점·지역 구분을 검증 항목으로 남겼다.",
-            "확인이 끝나지 않은 수치를 확정값처럼 합치지 않고, 데이터 소유자·정의·기간·업데이트 방식과 누락 항목을 명시했다. 직접 구축한 주간 리포트와 정의 대조는 확인되지만, 모든 원천의 불일치가 최종적으로 해소됐다고 단정하지 않는다."
+            "Created a weekly Performance Review for leadership, connecting pipeline, new/expansion bookings, ACV-to-revenue, and renewal/retention metrics. Separated regions, monthly/quarterly periods, targets, and actuals to make weekly performance readable.",
+            "Compared at least three conflicting metric definitions across Salesforce, Tableau, and finance/operations material. Highlighted in meetings that bookings varied by source, and documented checks for the authoritative source, reporting cut-off, and regional breakdown.",
+            "Avoided combining unverified figures as settled facts, documenting data owners, definitions, periods, update methods, and missing items. The weekly report and definition comparisons were completed, but the material does not establish that all source inconsistencies were ultimately resolved."
           ]
         }
       ],
@@ -1440,10 +1440,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "6대 회사 우선순위를 Enterprise SLT가 검토할 수 있도록 ‘6 for ’26’ 경영진 대시보드를 개발했다. Core business, 제품, Growth initiatives, Horizon 1·2·3을 하나의 탐색 구조에 묶었다.",
-            "목표 대비 실적, 상반기 누계와 7월 별도 실적, 지역·제품별 세부 지표를 구분했다. 매출과 spend, managed service와 SaaS를 뒤섞지 않는 표시 방식, 데이터 출처가 불확실한 KPI의 주석·검증 절차를 반영했다.",
-            "제품 사용 지표에 대해서는 이벤트·활성 고객·온보딩 고객·실사용 고객의 정의가 일치하지 않는다는 점을 점검했다. Segment/Snowflake/별도 제품 DB와 데이터 소유자 매핑을 검토했고, 정의·접근권이 없는 지표는 후속 과제로 남겼다.",
-            "V1 및 후속 HTML 대시보드 산출물이 확인된다. 인턴십 말미에는 기능하는 버전을 인계했으나 pipeline/forecast 정의 및 일부 수동 업데이트는 남아 있었다. 이를 완전 자동화·영구 운영으로 서술하지 않는다."
+            "Developed the '6 for ’26' executive dashboard so the Enterprise SLT could review six company priorities. Organized core business, products, growth initiatives, and Horizons 1, 2, and 3 within one navigation structure.",
+            "Distinguished targets from actuals, first-half totals from July results, and regional/product metrics. Kept revenue separate from spend and managed services separate from SaaS, adding notes and verification steps for KPIs with uncertain sources.",
+            "Checked inconsistencies in definitions of events, active customers, onboarded customers, and actual product users. Reviewed Segment, Snowflake, separate product databases, and data-owner mapping. Metrics without clear definitions or access remained follow-up items.",
+            "V1 and subsequent HTML dashboard deliverables are documented. Handed over a functioning version at the end of the internship, with pipeline/forecast definitions and some manual updates still unresolved. This was not a fully automated, permanently operated system."
           ]
         }
       ],
@@ -1465,9 +1465,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "ProdComm Forum 자료와 제품 커뮤니케이션 대시보드에서 출시 현황, 주요 결정, 다음 조치, 성장·지출 신호를 볼 수 있도록 구성했다. 별도의 ProdComm_Forum_2026-06-26 (1).html 및 7월 ProdComm HTML 산출물이 남아 있다.",
-            "ChatGPT Ads, TikTok Ads, Walmart DSP/Onsite Display, Reddit, Prism 등 성장·출시 과제에 필요한 온보딩·사용·지출·고객 피드백 지표의 원천과 정의를 검토했다. ChatGPT Ads 제품 enablement를 이력서상 담당 성과로 기재했다.",
-            "Growth/Horizon 자료는 추출 파일을 기반으로 새로고침할 수 있는 대시보드 형태로 인계했지만, 출시별 데이터는 서로 다른 수동 추출에 의존했다. 제품 채택이나 매출의 증가를 본인 단독 기여로 쓰지 않는다."
+            "Organized ProdComm Forum material and a product-communication dashboard to show release status, key decisions, next actions, and growth/spend signals. Separate ProdComm_Forum_2026-06-26 (1).html and July ProdComm HTML deliverables remain in the records.",
+            "Reviewed sources and definitions for onboarding, usage, spend, and customer-feedback metrics supporting ChatGPT Ads, TikTok Ads, Walmart DSP/Onsite Display, Reddit, Prism, and other growth/release initiatives. Listed ChatGPT Ads product enablement as a responsibility and contribution in the resume.",
+            "Handed over Growth/Horizon material as dashboards refreshable from extracted files, although release-specific data relied on different manual extracts. Product adoption or revenue growth is not attributed solely to Min."
           ]
         }
       ],
@@ -1489,7 +1489,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "ChatGPT Ads, TikTok Ads, Walmart DSP/Onsite Display, Reddit, Prism 등 성장·출시 과제에 필요한 온보딩·사용·지출·고객 피드백 지표의 원천과 정의를 검토했다. ChatGPT Ads 제품 enablement를 이력서상 담당 성과로 기재했다."
+            "Reviewed sources and definitions for onboarding, usage, spend, and customer-feedback metrics supporting ChatGPT Ads, TikTok Ads, Walmart DSP/Onsite Display, Reddit, Prism, and other growth/release initiatives. Listed ChatGPT Ads product enablement as a responsibility and contribution in the resume."
           ]
         }
       ],
@@ -1511,9 +1511,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "고객 통화 신호를 제품별·고객별로 모아 경영진과 제품팀이 호평, 장애물, 요청 기능, 필요한 후속 조치를 볼 수 있는 구조를 설계했다. Gong MCP의 추출 범위와 누락 가능성을 확인하고 다른 원천과 대조할 필요를 제기했다.",
-            "TikTok 출시 고객 신호용 HTML 시제품과 Growth Initiative VoC / Product Health 대시보드 시안을 만들었다. 고객별 근거, 교차 고객 주제, 우선 문제, 권장 조치, 지표 정의, 검토 절차를 화면에 담았다.",
-            "결과는 수작업 기반 개념 검증으로 구분한다. 전체 통화의 완전한 수집, 자동 주간 운영, 정량적 고객 건강 점수, 이탈 감소·매출 증대는 확인되지 않는다."
+            "Designed a structure grouping customer-call signals by product and customer so executives and product teams could review praise, blockers, requested features, and follow-up actions. Examined Gong MCP extraction coverage and possible omissions, and identified the need to compare it with other sources.",
+            "Created an HTML prototype for TikTok launch customer signals and Growth Initiative VoC / Product Health dashboard drafts. Included customer-level evidence, cross-customer themes, priority issues, recommended actions, metric definitions, and review steps.",
+            "The result was a manually supported proof of concept. Complete call coverage, automated weekly operation, quantitative customer-health scoring, reduced churn, and increased revenue were not confirmed."
           ]
         }
       ],
@@ -1535,9 +1535,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "ENT Management와 팀의 주간 업데이트를 수집해 경영진·부서·개인별 요약, 미제출 업데이트, 약속된 후속 조치, 질의응답으로 연결하는 운영 에이전트의 범위와 MVP 순서를 정리했다.",
-            "Slack 업데이트 → 구조화된 저장 → 주간 Digest → 후속 질문의 좁은 흐름을 우선시하고, CRM·Gong·ERP·Vitally·Confluence 통합은 접근권과 범위가 확보될 때의 후속 단계로 뒀다.",
-            "ENT Operating Agent 시제품을 제작·시연하고 GitHub 인수인계 자료를 남겼다. API·인증·자동화와 업데이트 표준화의 의존성이 있어 전사 운영 시스템으로 완성됐다고 쓰지 않는다."
+            "Defined the scope and MVP sequence for an operating agent collecting weekly ENT Management/team updates and connecting them to executive, department, and individual summaries; missing updates; promised follow-ups; and Q&A.",
+            "Prioritized a narrow Slack updates → structured storage → weekly digest → follow-up questions flow. Left CRM, Gong, ERP, Vitally, and Confluence integrations for later stages once access and scope were secured.",
+            "Built and demonstrated an ENT Operating Agent prototype and left GitHub handover material. Dependencies on APIs, authentication, automation, and standardized updates mean it is not described as a completed company-wide operating system."
           ]
         }
       ],
@@ -1559,10 +1559,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "여러 세션과 도구를 오갈 때 AI가 사용자의 선호, 조직 맥락, 과거 판단을 잃는 문제를 정의했다. Personal / Company / Shared Memory와 사용자가 수정·공유 범위를 통제하는 메모리 계층, 재사용 가능한 Skills와 Workflows를 제품 방향으로 정리했다.",
-            "대화·에이전트 실행에서 검색, 추출, 생성, 사람의 결정을 기록해 Step → Task → Job/Workflow로 묶는 흐름과 추적·저장·재실행 UI를 제품 피치와 데모 화면으로 구체화했다. 프롬프트 재작성, Chrome extension, 구조화·그래프 메모리, 팀 간 권한도 탐색했다.",
-            "모델 선택, 컨텍스트 학습·캐싱, 검증·평가 방법을 팀과 논의하고, INFO 490 발표·피드백 자료와 Memoria by MIRA 덱을 만들었다. 덱의 시장 규모와 성능 주장은 피치 가설로 취급하며 검증된 사용자 지표나 실제 고객 절감으로 보고하지 않는다.",
-            "Demo Day에서 팀의 제품을 소개했고 약 12명의 심사위원이 부스를 방문해 피드백을 준 기록이 있다. 이 발표는 고객 계약이나 투자 확정과 구분한다."
+            "Defined the problem of AI losing user preferences, organizational context, and previous decisions across sessions and tools. Outlined Personal / Company / Shared Memory, user-controlled editing and sharing boundaries, and reusable Skills and Workflows as the product direction.",
+            "Developed the product pitch and demo UI around recording retrieval, extraction, generation, and human decisions from conversations/agent runs, grouping them into Step → Task → Job/Workflow, with tracing, saving, and rerun interfaces. Also explored prompt rewriting, a Chrome extension, structured/graph memory, and cross-team permissions.",
+            "Discussed model selection, context learning/caching, validation, and evaluation with the team, and produced INFO 490 presentation/feedback materials and the Memoria by MIRA deck. Market-size and performance claims in the deck are pitch hypotheses, not verified user metrics or realized customer savings.",
+            "Presented the team's product at Demo Day; records indicate that approximately 12 judges visited the booth and provided feedback. This presentation is distinct from customer contracts or confirmed investment."
           ]
         }
       ],
@@ -1584,9 +1584,9 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "여러 세션과 도구를 오갈 때 AI가 사용자의 선호, 조직 맥락, 과거 판단을 잃는 문제를 정의했다. Personal / Company / Shared Memory와 사용자가 수정·공유 범위를 통제하는 메모리 계층, 재사용 가능한 Skills와 Workflows를 제품 방향으로 정리했다.",
-            "대화·에이전트 실행에서 검색, 추출, 생성, 사람의 결정을 기록해 Step → Task → Job/Workflow로 묶는 흐름과 추적·저장·재실행 UI를 제품 피치와 데모 화면으로 구체화했다. 프롬프트 재작성, Chrome extension, 구조화·그래프 메모리, 팀 간 권한도 탐색했다.",
-            "모델 선택, 컨텍스트 학습·캐싱, 검증·평가 방법을 팀과 논의하고, INFO 490 발표·피드백 자료와 Memoria by MIRA 덱을 만들었다. 덱의 시장 규모와 성능 주장은 피치 가설로 취급하며 검증된 사용자 지표나 실제 고객 절감으로 보고하지 않는다."
+            "Defined the problem of AI losing user preferences, organizational context, and previous decisions across sessions and tools. Outlined Personal / Company / Shared Memory, user-controlled editing and sharing boundaries, and reusable Skills and Workflows as the product direction.",
+            "Developed the product pitch and demo UI around recording retrieval, extraction, generation, and human decisions from conversations/agent runs, grouping them into Step → Task → Job/Workflow, with tracing, saving, and rerun interfaces. Also explored prompt rewriting, a Chrome extension, structured/graph memory, and cross-team permissions.",
+            "Discussed model selection, context learning/caching, validation, and evaluation with the team, and produced INFO 490 presentation/feedback materials and the Memoria by MIRA deck. Market-size and performance claims in the deck are pitch hypotheses, not verified user metrics or realized customer savings."
           ]
         }
       ],
@@ -1608,10 +1608,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Deployment Strategist / Strategy & Operations 관점에서 SMB 및 대기업 내 단일 부서가 겪는 반복 업무를 고객 단위로 정의했다. 문제 발견 → 현행 프로세스·데이터·승인자 분석 → 좁은 파일럿 → 전후 효과 측정 → 반복 업무의 제품화라는 운영 모델을 작성했다.",
-            "4주 파일럿을 0주차 적합성 판정, 1주차 업무 지도·기준선, 2주차 AI·연동 구축, 3주차 소수 실사용자 테스트, 4주차 결과 검토·배포/수정/중단 결정으로 구체화했다. 팀 구성안은 전략·고객 담당 1명과 배포 엔지니어 2명이다.",
-            "프로젝트 구축비, 월 유지·개선 계약, 반복 컴포넌트의 SaaS 전환을 잇는 수익 구조와 발견 세션·유상 파일럿·상용 배포·관리형 워크플로우의 단계별 계약·가격·인수 조건을 제안했다. 사업계획의 금액은 검증 전 가정이다.",
-            "Memoria Business Plan, 6개 산업을 비교한 Vertical AI FDE Strategy, 시장 조사 요약, 내부 플레이북, 고객·VC 피치 덱, Proof of Concept 계약 양식과 Sales Pipeline 시트를 준비했다. 계약 양식의 빈 고객명·서명란은 실제 계약 체결 증거가 아니다."
+            "From a Deployment Strategist / Strategy & Operations perspective, defined customer-specific recurring work for SMBs and individual departments within large companies. Wrote an operating model: problem discovery → current process/data/approver analysis → narrow pilot → before/after measurement → productization of recurring workflows.",
+            "Specified a four-week pilot: Week 0 fit assessment; Week 1 workflow mapping and baseline; Week 2 AI/integration setup; Week 3 testing with a small group of real users; Week 4 results review and deploy/revise/stop decision. Proposed a team of one strategy/customer lead and two deployment engineers.",
+            "Proposed a revenue model connecting project implementation fees, monthly maintenance/improvement contracts, and reusable components becoming SaaS. Defined staged contract, pricing, and acceptance terms for discovery sessions, paid pilots, commercial deployment, and managed workflows. Business-plan amounts remained unvalidated assumptions.",
+            "Prepared the Memoria Business Plan, Vertical AI FDE Strategy comparing six industries, market-research summaries, internal playbooks, customer/VC pitch decks, a Proof of Concept contract template, and a Sales Pipeline sheet. Blank customer-name and signature fields in the contract template do not establish a signed contract."
           ]
         }
       ],
@@ -1633,10 +1633,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "UIUC Research Park/EnterpriseWorks와 미국·한국 기업을 대상으로 산업·직무·업무별 타깃 목록과 계정 가설을 구성했다. 엔지니어링·제조·전력·보험·게임·뷰티 기업의 반복 업무를 조사하고, 사전 산업 이해 → 문제 가설 → 데모 → discovery call → 제안서 → 파일럿 측정의 접근법을 정리했다.",
-            "특정 고객에 맞춰 업무 흐름, 현행 도구, AI 에이전트의 역할, 사람의 승인 지점, 산출물과 예외 처리를 나란히 적는 Workflow Atlas 및 피치 방향을 탐색했다. 게임 퍼블리셔·스튜디오와 K-beauty의 마케팅, 재무, 법무, 고객 의견 수집을 우선 후보로 검토했다.",
-            "실제 제품화 후보로 회사 AI 도입·비용·승인 관리, agent policy/accountability, 회계의 문서 대조·승인 기록·SoD 위반 방지 등을 비교했다. 9월 29일의 회계 에이전트 통제 레이어는 탐색 중인 가설이며 판매·배포된 제품으로 기재하지 않는다.",
-            "고객 인터뷰 수, 제안 전환율, 서명 계약, 유료 매출, 파일럿 ROI는 제공된 자료만으로 확인할 수 없다. 작성한 영업 목록과 실제 접촉·계약을 별개로 기록한다."
+            "Developed target lists and account hypotheses by industry, role, and workflow for UIUC Research Park/EnterpriseWorks and US/Korean companies. Researched recurring work in engineering, manufacturing, power, insurance, games, and beauty, and outlined an approach: industry understanding → problem hypothesis → demo → discovery call → proposal → pilot measurement.",
+            "Explored a customer-specific Workflow Atlas and pitch structure placing workflows, current tools, agent roles, human approval points, deliverables, and exception handling side by side. Prioritized marketing, finance, legal, and customer-feedback work for game publishers/studios and K-beauty companies.",
+            "Compared product candidates covering company AI adoption/cost/approval management, agent policy/accountability, and accounting document reconciliation, approval records, and prevention of segregation-of-duties (SoD) violations. The September 29 accounting-agent control layer remained an exploratory hypothesis, not a sold or deployed product.",
+            "The supplied material does not establish customer-interview counts, proposal conversion rates, signed contracts, paid revenue, or pilot ROI. Prepared sales lists are recorded separately from actual outreach and contracts."
           ]
         }
       ],
@@ -1658,8 +1658,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "특정 고객에 맞춰 업무 흐름, 현행 도구, AI 에이전트의 역할, 사람의 승인 지점, 산출물과 예외 처리를 나란히 적는 Workflow Atlas 및 피치 방향을 탐색했다. 게임 퍼블리셔·스튜디오와 K-beauty의 마케팅, 재무, 법무, 고객 의견 수집을 우선 후보로 검토했다.",
-            "실제 제품화 후보로 회사 AI 도입·비용·승인 관리, agent policy/accountability, 회계의 문서 대조·승인 기록·SoD 위반 방지 등을 비교했다. 9월 29일의 회계 에이전트 통제 레이어는 탐색 중인 가설이며 판매·배포된 제품으로 기재하지 않는다."
+            "Explored a customer-specific Workflow Atlas and pitch structure placing workflows, current tools, agent roles, human approval points, deliverables, and exception handling side by side. Prioritized marketing, finance, legal, and customer-feedback work for game publishers/studios and K-beauty companies.",
+            "Compared product candidates covering company AI adoption/cost/approval management, agent policy/accountability, and accounting document reconciliation, approval records, and prevention of segregation-of-duties (SoD) violations. The September 29 accounting-agent control layer remained an exploratory hypothesis, not a sold or deployed product."
           ]
         }
       ],
@@ -1681,7 +1681,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "뷰티 고객 의견 수집을 여러 에이전트와 사람 검토로 연결하는 A2A 시나리오 영상·내레이션 파일을 제작했다. 시연 자료이며 실제 뷰티 고객의 운영 시스템은 아니다."
+            "Produced an A2A scenario video and narration files connecting beauty customer-feedback collection to multiple agents and human review. This was demonstration material, not an operational system for an actual beauty customer."
           ]
         }
       ],
@@ -1703,7 +1703,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "이메일·지식 시스템·결재를 잇는 Personal Executive Agent, 동의·일시정지·종료 상태가 보이는 상시 음성 전사형 웨어러블/메모리 장치의 요구사항과 기술 방향을 탐색했다. 이들은 9월 말 기준 구상·설계 단계다."
+            "Explored requirements and technical directions for a Personal Executive Agent connecting email, knowledge systems, and approvals, and an always-on voice-transcription wearable/memory device with visible consent, pause, and stop states. These remained concept/design work as of late September."
           ]
         }
       ],
@@ -1725,10 +1725,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Jessie Chin 교수의 ACTION Lab에서 IRB 승인 연구의 정보 교환·합의 게임을 다뤘다. 한 명의 사람을 LLM 플레이어로 대체했을 때 협력, 정보 신뢰, 의사결정과 그룹 역학이 어떻게 변하는지 실험할 조건을 설계했다.",
-            "카드 분류·가치 체계, 정보가 다른 플레이어의 행동 전략, 시나리오별 정답 검증과 AI 플레이어의 관찰 가능한 상태·행동 제약을 구체화했다. 연구 기록의 범위는 9개 시나리오·37개 조건이다.",
-            "10개 이상의 AI 모델을 비교해 플레이어 후보를 검토하고 ReAct, 사고 단계, 구조화된 작업 분해를 활용한 프롬프트 프레임워크를 설계했다. 실행 간 불일치가 모델의 정보 상태, 프롬프트, 게임 규칙 중 어디에서 생기는지 진단했다.",
-            "IS 389 독립연구와 연계된 진행 중 연구다. 참여자 실험의 최종 결과나 예정 논문의 게재를 완료 성과로 적지 않는다."
+            "Worked on an information-exchange and consensus game in Professor Jessie Chin's ACTION Lab for an IRB-approved study. Designed experimental conditions to examine cooperation, trust in information, decisions, and group dynamics when one human player is replaced by an LLM player.",
+            "Specified card classification/value systems, strategies for players with different information, scenario-specific answer validation, and observable state/action constraints for the AI player. Research records cover nine scenarios and 37 conditions.",
+            "Compared more than ten AI models as player candidates and designed a prompting framework using ReAct, reasoning steps, and structured task decomposition. Diagnosed whether inconsistent runs arose from the model's information state, prompts, or game rules.",
+            "This is ongoing research connected to IS 389 independent study. Final participant-experiment results and publication of the planned paper are not presented as completed outcomes."
           ]
         }
       ],
@@ -1750,8 +1750,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "RewindAI 관련 HCI 연구의 공동저자로 참여했다. 제출번호 4792가 2026년 8월 UIST 2026 Posters에 채택됐다는 통보가 기록돼 있다.",
-            "리뷰어가 요구한 비교 연구와 기능 범위, 편집·출처 추적 방식, 참가자 자료 해석을 카메라레디에서 명확히 해야 하는 단계였다. 8월 21일 AoE 마감은 안내된 일정이며, 제출 완료와 학회 현장 발표 여부는 별도 확인이 필요하다."
+            "Participated as a co-author in RewindAI-related HCI research. Records include notification that submission 4792 was accepted to UIST 2026 Posters in August 2026.",
+            "The camera-ready stage required clarification of the comparative study, feature scope, editing/source-tracking methods, and interpretation of participant material requested by reviewers. August 21 AoE was the communicated deadline; final submission and on-site conference presentation require separate confirmation."
           ]
         }
       ],
@@ -1773,7 +1773,7 @@
         {
           "title": "Cost management & approval experience",
           "paragraphs": [
-            "AI Alignment @ Illinois의 Editor로 뉴스레터의 내용·편집 작업에 참여했다. 지원자 5명의 응답을 검토하고 합격 안내와 15분 인터뷰 준비를 맡은 기록이 있다. 실제 발행·최종 선발 수는 확인되지 않는다."
+            "Contributed to newsletter content and editing as an Editor at AI Alignment @ Illinois. Records show review of five applicants' responses and preparation of acceptance notices and 15-minute interviews. Actual publication and final selection counts were not confirmed."
           ]
         }
       ],
@@ -1795,7 +1795,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "이메일·지식 시스템·결재를 잇는 Personal Executive Agent, 동의·일시정지·종료 상태가 보이는 상시 음성 전사형 웨어러블/메모리 장치의 요구사항과 기술 방향을 탐색했다. 이들은 9월 말 기준 구상·설계 단계다."
+            "Explored requirements and technical directions for a Personal Executive Agent connecting email, knowledge systems, and approvals, and an always-on voice-transcription wearable/memory device with visible consent, pause, and stop states. These remained concept/design work as of late September."
           ]
         }
       ],
@@ -1817,7 +1817,7 @@
         {
           "title": "Cost management & approval experience",
           "paragraphs": [
-            "Agentic AI @ UIUC와 AI Alignment @ Illinois의 활동에 참여했으며, SigRobotics의 EEG/EMG-to-text·HCI 방향과 프로그램 가능한 글래스·AR 상호작용을 학습·탐색했다. 명확한 개인 산출물이 확인되지 않은 활동은 경력 실적으로 수치화하지 않는다."
+            "Participated in Agentic AI @ UIUC and AI Alignment @ Illinois activities, and studied/explored SigRobotics' EEG/EMG-to-text and HCI directions, programmable glasses, and AR interaction. Activities without identifiable individual deliverables are not quantified as career outcomes."
           ]
         }
       ],
@@ -1839,8 +1839,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "2026년 9월 미국 SMB의 AI 도입·업무 자동화 시장을 조사했다. 산업별 구매자, 반복 업무, 경쟁 구조와 고객 피치 자료를 정리했다.",
-            "시장 규모 추정은 고객 매출이나 실제 배포 성과가 아닌 사업 기획을 위한 가설이다."
+            "Researched the US SMB AI adoption and workflow-automation market in September 2026. Organized industry-specific buyers, recurring workflows, competitive structures, and customer pitch materials.",
+            "Market-size estimates were business-planning hypotheses, not customer revenue or actual deployment results."
           ]
         }
       ],
@@ -1862,8 +1862,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "AI가 가속하는 사이버 위협과 AI 방어의 주요 이슈를 조사했다. 보호할 자산과 사업 영향을 연결하는 Issue Tree 및 우선순위 장표를 작성했다.",
-            "2026년 9월 말 팀·수업 산출물이며 기업 배포 실적과 구분한다."
+            "Researched AI-accelerated cyber threats and key issues in AI defense. Created an issue tree and prioritization slides linking assets to protect with business impact.",
+            "These were team/class deliverables from late September 2026, distinct from enterprise deployment results."
           ]
         }
       ],
@@ -1885,8 +1885,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "TikTok AI 전략 문서와 고객 신호 시제품을 작성했다. 제안된 제품 방향과 출시된 기능을 구분했다.",
-            "Pacvue 업무와 직접 연결된 고객 신호 시제품은 별도의 Gong Voice of Customer 프로젝트에서 설명한다."
+            "Prepared a TikTok AI strategy document and a customer-signal prototype, distinguishing proposed product directions from released features.",
+            "The customer-signal prototype directly connected to Pacvue work is described in the separate Gong Voice of Customer project."
           ]
         }
       ],
@@ -1908,8 +1908,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "AI 등록·승인·비용·효과·재검토를 연결하는 운영 기록을 후보 제품으로 검토했다.",
-            "실행 전 정책 확인과 사후 추적, 재무 승인 및 SoD 통제를 비교하고 기술 범위와 사람의 승인 지점을 탐색했다."
+            "Considered an operating record connecting AI registration, approval, cost, benefit, and review as a potential product.",
+            "Compared pre-execution policy checks and post-execution traceability, financial approval, and SoD controls, exploring the technical scope and human approval points."
           ]
         }
       ],
@@ -1931,8 +1931,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "웰니스 루틴 제품군과 브랜드 방향을 탐색했다. 패키지, 판매 채널과 킥스타터 방향을 검토했다.",
-            "제조·판매 실적이 확인되지 않은 초기 사업 아이디어다."
+            "Explored a wellness-routine product range and brand direction, including packaging, sales channels, and a Kickstarter approach.",
+            "This was an early business idea without confirmed manufacturing or sales results."
           ]
         }
       ],
@@ -1954,11 +1954,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "과제: 대학생이 새 사람을 발견해도 신뢰, 일정 조율, 만남의 실행 때문에 오프라인 관계로 이어지지 않는 문제를 해결하려 했다.",
-            "공동창업자로서 500건 이상 설문과 30건 이상 일대일 인터뷰를 수행하고 학생의 발견·신뢰·일정·후속 참여 문제를 페르소나와 MVP 우선순위로 정리했다.",
-            "AI 기반 매칭, 퀘스트형 모임, 기본 검증을 포함한 제품 방향을 기획했다. PRD·와이어프레임과 주간 디자인·엔지니어링 스프린트를 운영했고, 본인 프로필에는 한 캠퍼스에서 MVP를 시험한 것으로 기록돼 있다.",
-            "학생 동아리, RA 네트워크, 캠퍼스 행사를 초기 배포 경로로 개척했다. 경쟁 피치·지원금 확보를 맡아 Venture Devil, Taco Bell Challenge, Open Pitch 2회, New Venture Challenge 등 대회 성과를 연결했다.",
-            "확인된 성과와 보고 기준: 최신 이력서와 프로필에는 팀의 $50,000 이상 자금 확보가 기재돼 있다. 프로필에는 부트스트래핑이 합쳐져 있어 전액을 외부 보조금으로 단정하지 않는다. 출처별 종료 시점은 2024년 5월/7월로 다르다. 제품의 장기 활성 사용자나 유지율은 현재 자료에 없다."
+            "Problem: students could discover new people but struggled to turn discovery into offline relationships because of trust, scheduling, and actually meeting.",
+            "As co-founder, conducted more than 500 surveys and more than 30 one-to-one interviews, translating students' discovery, trust, scheduling, and follow-up participation problems into personas and MVP priorities.",
+            "Planned a product direction including AI matching, quest-style gatherings, and basic verification. Managed the PRD, wireframes, and weekly design/engineering sprints; Min's profile records an MVP trial on one campus.",
+            "Developed student clubs, RA networks, and campus events as initial distribution channels. Led competitive pitches and funding efforts, connecting outcomes from Venture Devil, Taco Bell Challenge, two Open Pitch competitions, New Venture Challenge, and other events.",
+            "Confirmed outcomes and reporting basis: the latest resume and profile list more than $50,000 in team funding. The profile includes bootstrapping, so the total is not treated entirely as external grants. Sources give different end dates—May or July 2024. Current material contains no long-term active-user or retention figures."
           ]
         }
       ],
@@ -1980,11 +1980,11 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "과제: 학생들이 수업에서 배운 분석 도구를 실제 데이터를 다루는 팀 프로젝트와 포트폴리오로 연결할 기회가 부족했다.",
-            "ASU W. P. Carey와 연계한 Business Technology Analytics Association (BTAA)을 공동 설립하고 프로젝트 기반 운영 구조, 팀 리드·분석가 역할, 교수진 협업, 워크숍을 기획했다.",
-            "프로필 기준 80명 활동 회원, 7개 프로젝트 팀과 7명 리드, 50명 이상 분석가를 운영했다. 정보시스템 교수진과 5개 분석 과제를 함께 설계하고, 과제 범위 설정부터 결과물까지 팀 리드를 멘토링했다.",
-            "ML·AI·데이터 시각화를 다룬 5회 비즈니스 분석 워크숍을 운영했고 프로필에는 회원 참여율 90%가 기재돼 있다. 당시 본인의 동아리 수상 신청서에는 80명 이상 회원·7개 팀·40명 온보딩 분석가로 적혀 있어 50명 이상이라는 후기 프로필 수치와 집계 시점·정의를 구분한다.",
-            "확인된 성과와 보고 기준: 클럽 설립, 팀·프로젝트·워크숍 구성은 본인 프로필과 당시 운영 기록으로 확인된다. 회원 수와 참여율은 조직의 운영 수치이며 본인만의 단독 성과로 쓰지 않는다. 임기 말은 프로필의 2024년 4월과 다른 회고의 5월 표기가 있다."
+            "Problem: students had limited opportunities to apply classroom analytics tools to team projects using real data and to build portfolios.",
+            "Co-founded the Business Technology Analytics Association (BTAA) in connection with ASU W. P. Carey, designing a project-based operating structure, team-lead/analyst roles, faculty collaboration, and workshops.",
+            "The profile records 80 active members, seven project teams with seven leads, and more than 50 analysts. Co-designed five analytics projects with Information Systems faculty and mentored team leads from scoping through delivery.",
+            "Ran five business analytics workshops covering ML, AI, and data visualization; the profile reports 90% member participation. The contemporaneous club award application lists more than 80 members, seven teams, and 40 onboarded analysts, so its timing and definitions are distinguished from the later 50+ analyst figure.",
+            "Confirmed outcomes and reporting basis: club establishment and the team/project/workshop structure are supported by Min's profile and contemporaneous records. Membership and participation figures are organizational measures, not solely individual achievements. The profile gives April 2024 as the term end, while another retrospective states May."
           ]
         }
       ],
@@ -2006,8 +2006,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "Maryann Feldman 교수의 연구보조원으로서 관련 문헌을 검토하고 원고의 참고문헌·DOI·표·용어를 교정했다. 장소 기반 투자·지역혁신 정책의 출판 준비를 지원했다.",
-            "확인된 성과와 보고 기준: 대규모 데이터 처리, 데이터베이스 구축, 출판·학술 운영 지원이 산출물이다. 100만 건 검토는 연구팀 작업 범위이고 출판물의 최종 게재나 특정 연구 결론을 개인 성과로 단정하지 않는다."
+            "As Professor Maryann Feldman's research assistant, reviewed relevant literature and corrected references, DOIs, tables, and terminology in manuscripts. Supported publication preparation on place-based investment and regional innovation policy.",
+            "Confirmed outcomes and reporting basis: deliverables include large-scale data processing, database development, and publication/academic operations support. Review of one million records describes the research team's scope; final publication or specific research conclusions are not claimed as individual achievements."
           ]
         }
       ],
@@ -2029,7 +2029,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "60만 건 이상 보조금 기록을 Python/R로 통합·분석하고 재현 가능한 노트북과 Tableau 시각화로 지역·기업 활동 추세를 살펴봤다."
+            "Integrated and analyzed more than 600,000 grant records in Python/R, using reproducible notebooks and Tableau visualizations to examine regional and business activity trends."
           ]
         }
       ],
@@ -2051,7 +2051,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "NSF 지원 바이오메디컬 엔터프라이즈 연구에서 Duke의 100만 건 이상 기록을 USC·ASU·CU 연구진과 함께 검토하고 데이터 검증·코딩 규칙에 협업했다."
+            "In an NSF-supported biomedical enterprise study, reviewed more than one million Duke records with researchers at USC, ASU, and CU, collaborating on data validation and coding rules."
           ]
         }
       ],
@@ -2073,7 +2073,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "외부 협력자가 7개 데이터셋에 접근하고 조인할 수 있는 MySQL 데이터베이스를 설계·구축했다. 별도로 GCTT의 ASU DC 세미나 운영, Matt Marx 강연 준비, AOM TIM 선거의 정보 사이트·후보 소개·안내문 제작도 지원했다."
+            "Designed and built a MySQL database enabling external collaborators to access and join seven datasets. Separately supported GCTT's ASU DC seminar operations, preparation for Matt Marx's talk, and the AOM TIM election's information site, candidate introductions, and notices."
           ]
         }
       ],
@@ -2095,7 +2095,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "외부 협력자가 7개 데이터셋에 접근하고 조인할 수 있는 MySQL 데이터베이스를 설계·구축했다. 별도로 GCTT의 ASU DC 세미나 운영, Matt Marx 강연 준비, AOM TIM 선거의 정보 사이트·후보 소개·안내문 제작도 지원했다."
+            "Designed and built a MySQL database enabling external collaborators to access and join seven datasets. Separately supported GCTT's ASU DC seminar operations, preparation for Matt Marx's talk, and the AOM TIM election's information site, candidate introductions, and notices."
           ]
         }
       ],
@@ -2117,7 +2117,7 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "외부 협력자가 7개 데이터셋에 접근하고 조인할 수 있는 MySQL 데이터베이스를 설계·구축했다. 별도로 GCTT의 ASU DC 세미나 운영, Matt Marx 강연 준비, AOM TIM 선거의 정보 사이트·후보 소개·안내문 제작도 지원했다."
+            "Designed and built a MySQL database enabling external collaborators to access and join seven datasets. Separately supported GCTT's ASU DC seminar operations, preparation for Matt Marx's talk, and the AOM TIM election's information site, candidate introductions, and notices."
           ]
         }
       ],
@@ -2139,10 +2139,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "과제: ASU의 연구·교육 프로젝트를 후원자의 관심 분야와 연결할 수 있도록 시장 동향과 잠재 기부자의 배경을 빠르게 파악해야 했다.",
-            "Moonshot Accelerator 팀에서 매일 20개 이상의 뉴스·온라인 자료를 모니터링해 간결한 시장 업데이트를 만들고, 최고경영자·잠재 기부자 프로필을 조사했다.",
-            "대학의 프로젝트·전략 과제를 발굴하고 기부자 관심사와 연결하는 포지셔닝·한 장짜리 제안 자료를 지원했다. 자선사업과 고등교육 시장의 흐름도 정리했다.",
-            "확인된 성과와 보고 기준: 이력서에는 $2,000만 이상 기부 확보에 도움이 된 과제 발굴·전략 아이디어가 적혀 있다. 이는 ASU Foundation의 팀·조직 수준 결과에 대한 기여이며, 기부금을 개인이 직접 유치했다는 뜻은 아니다."
+            "Problem: quickly understand market trends and prospective donors' backgrounds to connect ASU research/education projects with sponsors' interests.",
+            "On the Moonshot Accelerator team, monitored more than 20 news/online sources daily to produce concise market updates and researched CEO and prospective-donor profiles.",
+            "Identified university projects and strategic initiatives, supporting positioning and one-page proposals connecting them to donor interests. Also summarized trends in philanthropy and higher education.",
+            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that helped secure more than $20 million in donations. This is a contribution to ASU Foundation team/organization outcomes, not a claim that Min personally raised the donations."
           ]
         }
       ],
@@ -2164,10 +2164,10 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "과제: ASU의 연구·교육 프로젝트를 후원자의 관심 분야와 연결할 수 있도록 시장 동향과 잠재 기부자의 배경을 빠르게 파악해야 했다.",
-            "Moonshot Accelerator 팀에서 매일 20개 이상의 뉴스·온라인 자료를 모니터링해 간결한 시장 업데이트를 만들고, 최고경영자·잠재 기부자 프로필을 조사했다.",
-            "대학의 프로젝트·전략 과제를 발굴하고 기부자 관심사와 연결하는 포지셔닝·한 장짜리 제안 자료를 지원했다. 자선사업과 고등교육 시장의 흐름도 정리했다.",
-            "확인된 성과와 보고 기준: 이력서에는 $2,000만 이상 기부 확보에 도움이 된 과제 발굴·전략 아이디어가 적혀 있다. 이는 ASU Foundation의 팀·조직 수준 결과에 대한 기여이며, 기부금을 개인이 직접 유치했다는 뜻은 아니다."
+            "Problem: quickly understand market trends and prospective donors' backgrounds to connect ASU research/education projects with sponsors' interests.",
+            "On the Moonshot Accelerator team, monitored more than 20 news/online sources daily to produce concise market updates and researched CEO and prospective-donor profiles.",
+            "Identified university projects and strategic initiatives, supporting positioning and one-page proposals connecting them to donor interests. Also summarized trends in philanthropy and higher education.",
+            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that helped secure more than $20 million in donations. This is a contribution to ASU Foundation team/organization outcomes, not a claim that Min personally raised the donations."
           ]
         }
       ],
@@ -2189,8 +2189,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "ASU Coalition of International Students에서 Downtown Campus Ambassador(2022.09–2023.05) 및 Director of Advocacy(2023.04–12) 역할을 맡았다.",
-            "역할과 기간이 확인되며, 구체적 개인 산출물과 성과 수치는 제공된 자료에 기록되지 않았다."
+            "Served as Downtown Campus Ambassador (September 2022–May 2023) and Director of Advocacy (April–December 2023) in the ASU Coalition of International Students.",
+            "The roles and dates are confirmed; the supplied material does not document specific individual deliverables or quantitative outcomes."
           ]
         }
       ],
@@ -2212,8 +2212,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "2024년 Google AI Hackathon 프로젝트 목록과 회의 참여 기록이 있다.",
-            "완성품·수상·사용자 성과는 확인되지 않아 탐색 활동으로 구분한다."
+            "Records include a 2024 Google AI Hackathon project listing and participation in meetings.",
+            "No completed product, award, or user outcome was confirmed, so this is classified as exploratory activity."
           ]
         }
       ],
@@ -2235,8 +2235,8 @@
         {
           "title": "Project work in detail",
           "paragraphs": [
-            "2024년 HackMath 프로젝트 목록과 회의 참여 기록이 있다.",
-            "완성품·수상·사용자 성과는 확인되지 않아 탐색 활동으로 구분한다."
+            "Records include a 2024 HackMath project listing and participation in meetings.",
+            "No completed product, award, or user outcome was confirmed, so this is classified as exploratory activity."
           ]
         }
       ],

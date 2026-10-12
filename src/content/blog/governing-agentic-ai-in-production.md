@@ -4,6 +4,9 @@ date: "2026-10-11"
 readingTime: "8 min read"
 tags: ["agentic-ai", "ai-governance", "security"]
 excerpt: "Agentic AI governance has to connect business intent, delegated authority, runtime controls, and evidence. A framework for making that connection."
+coverImage: "/blog-art/governing-agentic-ai-in-production.webp"
+coverThumbnail: "/blog-art/governing-agentic-ai-in-production-thumb.webp"
+coverAlt: "Pixel art of a robot passing a garden permission checkpoint, with human review and tool stations."
 bannerType: "geometric-grid"
 ---
 

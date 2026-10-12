@@ -1,0 +1,31 @@
+---
+const { next = '/work' } = Astro.props;
+---
+<section class="password-panel archive-gate" aria-labelledby="password-title">
+  <span class="archive-gate-art" aria-hidden="true">⚿</span>
+  <span class="case-study-kicker">Min’s project archive</span>
+  <h1 class="page-title" id="password-title">A closer look at my work</h1>
+  <p>Enter the shared password once to explore the full archive, browse each experience, and read every project’s story.</p>
+  <form id="archive-password-form" data-next={next}>
+    <label for="archive-password">Project archive password</label>
+    <div class="password-input-row"><input id="archive-password" name="password" type="password" autocomplete="current-password" required /><button type="submit" class="button-primary">Unlock archive</button></div>
+    <p class="password-message" id="archive-password-message" role="status" aria-live="polite"></p>
+  </form>
+  <small class="archive-gate-note">Your browser remembers access for 14 days. You can lock the archive again whenever you like.</small>
+</section>
+<script>
+  const form = document.getElementById('archive-password-form');
+  const message = document.getElementById('archive-password-message');
+  form?.addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = form.querySelector('button'); button.disabled = true;
+    message.textContent = 'Unlocking the archive…';
+    try {
+      const response = await fetch('/api/projects/access', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: new FormData(form).get('password') }) });
+      const result = await response.json();
+      if (!response.ok) { message.textContent = result.error || 'Unable to unlock the archive.'; return; }
+      form.reset(); window.location.assign(form.dataset.next || '/work');
+    } catch { message.textContent = 'Unable to connect. Please try again.'; }
+    finally { button.disabled = false; }
+  });
+</script>

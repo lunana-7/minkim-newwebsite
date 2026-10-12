@@ -1,14 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import MiniAvatar from '../components/MiniAvatar.astro';
+import MiniAdventure from '../components/MiniAdventure.astro';
+import { MINI_OPTIONS } from '../lib/min-assets.js';
 ---
 
-<Layout title="Min's World — Pixel Dress-Up Game" activeNav="game" description="A cozy pixel dress-up game starring Min. Style your character, explore the world, and save outfits with Google sign-in.">
+<Layout title="Mini’s World — Pixel Adventure" activeNav="game" description="A cozy pixel platform adventure starring Mini. Jump, collect stars, meet Pippin, share sweet emotes, and save your character.">
   <div class="game-page">
     <header class="game-heading">
       <a class="back-link" href="/">← Home</a>
       <span class="game-kicker">MIN'S WORLD · OPEN GAME PROTOTYPE</span>
       <h1 class="page-title">A little world of your own</h1>
-      <p class="page-lead">Dress up Min, find a favorite corner of the map, and save your look for next time.</p>
+      <p class="page-lead">Explore Mini’s meadow, jump for stars, meet Pippin, and dress up for your next adventure.</p>
     </header>
 
     <section class="game-account" aria-label="Player account">
@@ -22,6 +25,8 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
+    <MiniAdventure />
+
     <div class="game-layout">
       <section class="game-screen" aria-label="Pixel world">
         <div class="game-hud"><span><i></i> MAPLE MEADOW</span><button type="button" id="bgm-toggle" class="music-button" aria-pressed="false">♫ Play cozy BGM</button></div>
@@ -33,128 +38,110 @@ import Layout from '../layouts/Layout.astro';
           <div class="scene-hill hill-back" aria-hidden="true"></div>
           <div class="scene-hill hill-front" aria-hidden="true"></div>
           <div class="game-platform" aria-hidden="true"><span></span></div>
-          <div class="avatar-stage" id="avatar-stage" data-outfit="classic" data-hat="none">
-            <img src="/pixel-min.png" alt="Min's pixel character" class="dressup-character" />
-            <svg class="dressup-layer" viewBox="0 0 741 1111" aria-hidden="true" shape-rendering="crispEdges">
-              <g class="clothes" id="clothes">
-                <path class="clothes-outline" d="M249 570h39v-17h54v17h40l38 37 18 82-32 40-19 145-111 24-112-24-19-145-32-40 18-82z"/>
-                <path class="clothes-color" d="M253 582h35v-17h54v17h36l34 34 14 68-28 34-17 139-101 20-103-20-17-139-28-34 14-68z"/>
-                <path class="clothes-trim" d="M288 582h9v146h-9zm54 0h9v146h-9zM177 712h210v10H177zm-19 150h287v12H158z"/>
-                <path class="clothes-pixel" d="M217 630h18v18h-18zm126 28h18v18h-18zM184 790h17v17h-17zm221 40h17v17h-17z"/>
-              </g>
-              <g class="headwear headwear-beret"><path d="M210 178h28v-21h53v-16h84v15h51v17h27v31h-24v17H225v-17h-15z"/><path class="hat-highlight" d="M243 163h50v-14h73v14h-50v15h-73z"/></g>
-              <g class="headwear headwear-flower"><path d="M501 340h18v-16h18v16h17v18h-17v17h-18v-17h-18z"/><path class="flower-center" d="M518 346h18v17h-18z"/></g>
-              <g class="headwear headwear-crown"><path d="M254 209h35v-35h18v17h34v-34h18v34h35v-17h18v35h34v27H254z"/><path class="crown-gem" d="M300 218h18v18h-18zm53 0h18v18h-18zm52 0h18v18h-18z"/></g>
-            </svg>
+          <div class="avatar-stage" id="avatar-stage">
+            <button type="button" class="game-avatar-trigger" id="game-avatar-trigger" data-min-open-menu aria-label="Open Min’s activities"><MiniAvatar variant="game" /></button>
             <div class="character-shadow" aria-hidden="true"></div>
           </div>
           <div class="scene-ground" aria-hidden="true"><span>▧</span> A quiet place to make things</div>
         </div>
-        <div class="game-screen-footer"><span>✦ Find your look</span><span>Progress saves to your player profile</span></div>
+        <div class="game-screen-footer"><span>✦ <strong data-min-points>0</strong> points · <span data-min-level>Level 1</span></span><span>Your look is saved for portraits & activities</span></div>
       </section>
 
       <aside class="wardrobe" aria-label="Character wardrobe">
         <div class="wardrobe-title"><div><span>YOUR WARDROBE</span><h2>Style Min</h2></div><span class="hanger" aria-hidden="true">♧</span></div>
-        <section class="wardrobe-group"><h3>Outfit</h3><div class="choice-grid outfit-choices" role="group" aria-label="Choose outfit">
-          <button class="style-choice selected" type="button" data-outfit="classic"><span class="swatch swatch-classic">✧</span><small>Cloud</small></button>
-          <button class="style-choice" type="button" data-outfit="berry"><span class="swatch swatch-berry">✿</span><small>Berry</small></button>
-          <button class="style-choice" type="button" data-outfit="ocean"><span class="swatch swatch-ocean">≈</span><small>Ocean</small></button>
-          <button class="style-choice" type="button" data-outfit="meadow"><span class="swatch swatch-meadow">❋</span><small>Meadow</small></button>
-        </div></section>
-        <section class="wardrobe-group"><h3>Headwear</h3><div class="choice-grid hat-choices" role="group" aria-label="Choose headwear">
-          <button class="style-choice selected" type="button" data-hat="none"><span class="swatch hat-swatch">—</span><small>None</small></button>
-          <button class="style-choice" type="button" data-hat="beret"><span class="swatch hat-beret">⌒</span><small>Beret</small></button>
-          <button class="style-choice" type="button" data-hat="flower"><span class="swatch hat-flower">✿</span><small>Flower</small></button>
-          <button class="style-choice" type="button" data-hat="crown"><span class="swatch hat-crown">♛</span><small>Star crown</small></button>
-        </div></section>
+        <div class="wardrobe-categories" role="group" aria-label="Choose an appearance category">
+          {[
+            ['outfit', 'Clothes'], ['hair', 'Hair'], ['eyes', 'Eyes'], ['face', 'Face'], ['hat', 'Headwear']
+          ].map(([field, label]) => <button type="button" class={field === 'outfit' ? 'selected' : ''} data-wardrobe-tab={field} aria-pressed={field === 'outfit' ? 'true' : 'false'} aria-controls={`wardrobe-${field}`}>{label}</button>)}
+        </div>
+        {[
+          ['outfit', 'Clothes'], ['hair', 'Hair'], ['eyes', 'Eyes'], ['face', 'Face'], ['hat', 'Headwear']
+        ].map(([field, label]) => <section class="wardrobe-group" id={`wardrobe-${field}`} data-wardrobe-panel={field} hidden={field !== 'outfit'}>
+          <h3>{label}</h3>
+          <div class={`choice-grid layer-choices layer-choices-${field}`} role="group" aria-label={`Choose ${label.toLowerCase()}`}>
+            {MINI_OPTIONS[field].map(option => <button class="style-choice asset-choice" type="button" {...{ [`data-${field}`]: option.id }} aria-pressed="false">
+              <span class={`layer-thumbnail layer-thumbnail-${field}`} aria-hidden="true">{option.image ? <img src={option.image.replace('/layers/', '/thumbnails/')} alt="" loading="lazy" /> : <span>—</span>}</span>
+              <small>{option.name}</small>
+            </button>)}
+          </div>
+        </section>)}
         <section class="wardrobe-group"><h3>Map</h3><div class="map-choices" role="group" aria-label="Choose map">
           <button class="map-choice selected" type="button" data-map="sunny"><span>☀</span>Maple Meadow</button>
           <button class="map-choice" type="button" data-map="night"><span>☾</span>Moonlit Harbor</button>
           <button class="map-choice" type="button" data-map="forest"><span>♧</span>Cloudwood Forest</button>
         </div></section>
+        <section class="wardrobe-group"><h3>Walking Mini</h3><div class="walking-choices" role="group" aria-label="Walking Mini appearance"><button type="button" data-walking-look="original" aria-pressed="true">Original Mini</button><button type="button" data-walking-look="styled" aria-pressed="false">My saved look</button></div></section>
         <button id="save-outfit" class="game-button save-button" type="button">Save my look <span aria-hidden="true">↗</span></button>
-        <p class="opensource-note">A tiny open-world prototype. More maps, outfits, and quests are on the way.</p>
+        <p class="opensource-note">Mix hair, eyes, face, clothes, and headwear. Your look stays with Min in the game, homepage portrait, and activities. Choose which Mini walks along the bottom. Each signed-in player has their own saved profile.</p>
       </aside>
     </div>
-    <p class="game-setup-note" id="firebase-setup-note" hidden>Cloud saving is waiting for Firebase setup. You can still play; your look is saved in this browser for now.</p>
+    <section class="game-activities" aria-labelledby="game-activities-title">
+      <div class="game-activities-heading"><div><span class="game-kicker">LITTLE DAILY ADVENTURES</span><h2 id="game-activities-title">A good day for Min</h2></div><p data-min-game-progress aria-live="polite">Pick a little activity to earn points.</p></div>
+      <div class="game-activity-cards">
+        <button type="button" data-min-activity="coffee"><span class="activity-art" aria-hidden="true">☕</span><strong>Coffee break</strong><span>A warm cup to recharge.</span><small>8 seconds · +10 points</small><span class="activity-completed">Completed <b data-min-completed="coffee">0</b> times</span></button>
+        <button type="button" data-min-activity="tuna"><span class="activity-art" aria-hidden="true">🍚</span><strong>Tuna bowl time</strong><span>A tiny, tasty lunch.</span><small>10 seconds · +15 points</small><span class="activity-completed">Completed <b data-min-completed="tuna">0</b> times</span></button>
+        <button type="button" data-min-activity="study"><span class="activity-art" aria-hidden="true">📖</span><strong>Study together</strong><span>One page, one little win.</span><small>15 seconds · +25 points</small><span class="activity-completed">Completed <b data-min-completed="study">0</b> times</span></button>
+      </div>
+    </section>
   </div>
 
   <script>
-    import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
-    import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
-    import { auth, db, firebaseConfigured, googleProvider } from '../lib/firebase.js';
+    import { getProfile, updateProfile, subscribeProfile } from '../lib/min-profile.js';
+    import { getWalkingLook, setWalkingLook } from '../lib/min-appearance.js';
+    import { getAccount, saveToCloud, signInPlayer, signOutPlayer, subscribeAccount } from '../lib/min-cloud.js';
 
-    const stage = document.getElementById('avatar-stage');
+    function syncWalkingLook() {
+      document.querySelectorAll('[data-walking-look]').forEach(button => {
+        const selected = button.dataset.walkingLook === getWalkingLook();
+        button.classList.toggle('selected', selected); button.setAttribute('aria-pressed', String(selected));
+      });
+    }
+    document.querySelectorAll('[data-walking-look]').forEach(button => button.addEventListener('click', () => { setWalkingLook(button.dataset.walkingLook); syncWalkingLook(); }));
+    syncWalkingLook();
     const scene = document.getElementById('game-scene');
     const status = document.getElementById('save-status');
-    const playerName = document.getElementById('player-name');
     const loginButton = document.getElementById('google-login');
     const logoutButton = document.getElementById('google-logout');
     const saveButton = document.getElementById('save-outfit');
-    const setupNote = document.getElementById('firebase-setup-note');
-    let currentUser = null;
-    let game = { outfit: 'classic', hat: 'none', map: 'sunny' };
-
-    function applyGame(next, saveLocal = true) {
-      game = { ...game, ...next };
-      stage.dataset.outfit = game.outfit;
-      stage.dataset.hat = game.hat;
-      scene.className = `game-scene scene-${game.map}`;
-      document.querySelectorAll('[data-outfit]').forEach(button => button.classList.toggle('selected', button.dataset.outfit === game.outfit));
-      document.querySelectorAll('[data-hat]').forEach(button => button.classList.toggle('selected', button.dataset.hat === game.hat));
-      document.querySelectorAll('[data-map]').forEach(button => button.classList.toggle('selected', button.dataset.map === game.map));
-      if (saveLocal) localStorage.setItem('min-world-save', JSON.stringify(game));
-      if (!currentUser) status.textContent = 'Your outfit is saved on this device.';
-    }
-
-    try { applyGame(JSON.parse(localStorage.getItem('min-world-save') || '{}'), false); } catch {}
-    document.querySelectorAll('[data-outfit]').forEach(button => button.addEventListener('click', () => applyGame({ outfit: button.dataset.outfit })));
-    document.querySelectorAll('[data-hat]').forEach(button => button.addEventListener('click', () => applyGame({ hat: button.dataset.hat })));
-    document.querySelectorAll('[data-map]').forEach(button => button.addEventListener('click', () => applyGame({ map: button.dataset.map })));
-
-    async function loadPlayer(user) {
-      const saved = await getDoc(doc(db, 'players', user.uid));
-      if (saved.exists()) applyGame(saved.data().game || {}, true);
-      else await setDoc(doc(db, 'players', user.uid), { game, createdAt: serverTimestamp(), updatedAt: serverTimestamp() }, { merge: true });
-      status.textContent = saved.exists() ? 'Your cloud save is ready.' : 'New player save created.';
-    }
-
-    if (!firebaseConfigured) {
-      setupNote.hidden = false;
-      loginButton.addEventListener('click', () => { status.textContent = 'Google sign-in needs the Firebase settings for this game.'; });
-    } else {
-      onAuthStateChanged(auth, async user => {
-        currentUser = user;
-        loginButton.hidden = Boolean(user);
-        logoutButton.hidden = !user;
-        playerName.textContent = user?.displayName || 'Guest adventurer';
-        if (!user) { status.textContent = 'Your outfit is saved on this device.'; return; }
-        status.textContent = 'Loading your cloud save…';
-        try { await loadPlayer(user); }
-        catch (error) { status.textContent = 'Could not load your save. Check your connection and try again.'; console.error(error); }
+    const mapNames = { sunny: 'Maple Meadow', night: 'Moonlit Harbor', forest: 'Cloudwood Forest' };
+    subscribeProfile(profile => {
+      scene.className = `game-scene scene-${profile.map}`;
+      document.querySelector('.scene-label').firstChild.textContent = mapNames[profile.map] + ' ';
+      document.querySelector('.game-hud > span').lastChild.textContent = mapNames[profile.map].toUpperCase();
+      for (const field of ['outfit', 'hair', 'eyes', 'face', 'hat', 'map']) document.querySelectorAll(`button[data-${field}]`).forEach(button => {
+        const selected = button.dataset[field] === profile[field];
+        button.classList.toggle('selected', selected); button.setAttribute('aria-pressed', String(selected));
       });
-      loginButton.addEventListener('click', async () => {
-        try { await signInWithPopup(auth, googleProvider); }
-        catch (error) { status.textContent = error.code === 'auth/popup-closed-by-user' ? 'Sign-in was closed.' : 'Google sign-in did not finish. Please try again.'; }
+    });
+    for (const field of ['outfit','hair','eyes','face','hat','map']) document.querySelectorAll(`button[data-${field}]`).forEach(button => button.addEventListener('click', () => updateProfile({ [field]: button.dataset[field] })));
+    document.querySelectorAll('[data-wardrobe-tab]').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('[data-wardrobe-tab]').forEach(tab => {
+        const selected = tab === button; tab.classList.toggle('selected', selected); tab.setAttribute('aria-pressed', String(selected));
       });
-      logoutButton.addEventListener('click', () => signOut(auth));
-    }
-
+      document.querySelectorAll('[data-wardrobe-panel]').forEach(panel => { panel.hidden = panel.dataset.wardrobePanel !== button.dataset.wardrobeTab; });
+    }));
+    subscribeAccount(account => {
+      document.getElementById('player-name').textContent = account.user?.displayName || 'Guest adventurer';
+      loginButton.hidden = Boolean(account.user); logoutButton.hidden = !account.user;
+      status.textContent = account.message;
+    });
+    loginButton.addEventListener('click', signInPlayer);
+    logoutButton.addEventListener('click', signOutPlayer);
     saveButton.addEventListener('click', async () => {
-      if (!firebaseConfigured) { status.textContent = 'Cloud saving needs Firebase setup; this look is saved on this device.'; return; }
-      if (!currentUser) { status.textContent = 'Sign in with Google to save across devices.'; loginButton.focus(); return; }
+      const { outfit, hair, eyes, face, hat } = getProfile();
+      updateProfile({ outfit, hair, eyes, face, hat });
+      const account = getAccount();
+      if (!account.user) { status.textContent = 'Your look is saved for the game, homepage, and activities.'; return; }
       saveButton.disabled = true;
-      try {
-        await setDoc(doc(db, 'players', currentUser.uid), { game, updatedAt: serverTimestamp() }, { merge: true });
-        status.textContent = 'Saved! Your look will be here next time.';
-      } catch (error) { status.textContent = 'Save did not finish. Please try again.'; console.error(error); }
-      finally { saveButton.disabled = false; }
+      try { await saveToCloud(); } finally { saveButton.disabled = false; }
     });
 
     // Original, looped chiptune written for this page; it does not use MapleStory audio.
     let audioContext = null, musicTimer = null, noteIndex = 0;
     const melody = [659.25, 783.99, 987.77, 783.99, 698.46, 880, 1046.5, 880, 587.33, 698.46, 880, 698.46, 523.25, 659.25, 783.99, 659.25];
     const bgmButton = document.getElementById('bgm-toggle');
+    document.querySelectorAll('[data-adventure-music]').forEach(button => button.addEventListener('click', () => bgmButton.click()));
+    new MutationObserver(() => { document.querySelectorAll('[data-adventure-music]').forEach(button => { button.textContent = bgmButton.textContent; button.setAttribute('aria-pressed', bgmButton.getAttribute('aria-pressed')); }); }).observe(bgmButton, { childList: true, attributes: true, attributeFilter: ['aria-pressed'] });
     function playNote(frequency, duration, type, volume, when) {
       const oscillator = audioContext.createOscillator();
       const gain = audioContext.createGain();

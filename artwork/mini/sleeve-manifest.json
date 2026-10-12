@@ -1,0 +1,12 @@
+[
+  {
+    "name": "clothes-core",
+    "file": "clothes-core-atlas.png",
+    "prompt": "Edit this EXACT four-cell transparent pixel clothing atlas. Keep the same four garments, colors, texture, dark pixel outlines, collars, bows, buttons, waists and entire skirt silhouettes. Keep cells same size and item order. Change ONLY the berry-pink cardigan in cell 2 and sage-green cardigan in cell 4: remove their BOTH ARMS/SLEEVES AND CUFFS completely. These must be standalone sleeveless TORSO + SKIRT layers for a modular pixel doll. Finish clean open shoulder/armhole edges close to the torso, with no sleeve, cuff or hand pixels projecting at the sides. Do not alter the pink and cream pleated skirts. The sleeves will be rendered as independent moving assets. Cells1 cream gingham dress and3 sailor dress remain exactly as reference. Transparent background, four isolated garment cores, no body or skin, no labels, no additional objects."
+  },
+  {
+    "name": "sleeves",
+    "file": "sleeves-atlas.png",
+    "prompt": "Create an independent pixel sleeve atlas matching the clothing in image1 and the detached-arm scale/style in image2. Exactly FOUR equal-width cells in one horizontal strip, transparent background, no text. Each cell contains ONLY one detached sleeve with shoulder opening at top, gently curved narrow sleeve, knitted fabric shading and tiny cream cuff opening at bottom, no hand or skin or torso. Cell1 LEFT berry-pink cardigan sleeve; Cell2 matching RIGHT berry-pink cardigan sleeve; Cell3 LEFT sage-green cardigan sleeve; Cell4 matching RIGHT sage-green cardigan sleeve. Left/right pairs should be mirrored. Same outline width and pixel detail as referenced clothes. These are meant to be layered on the reference's tiny chibi arms: a narrow short sleeve, about 2.1 times taller than wide, covering the arm until just above the hand. Natural soft cardigan shape, avoid a box. Fully separated items with padding, no person or body behind them."
+  }
+]

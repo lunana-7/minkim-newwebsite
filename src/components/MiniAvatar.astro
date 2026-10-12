@@ -1,0 +1,7 @@
+---
+const { variant = 'companion' } = Astro.props;
+---
+<div class={`min-appearance min-appearance-${variant}`} data-min-appearance data-pose="idle" data-hat="none" data-outfit="classic" data-hair="ombre" data-eyes="brown" data-face="soft" aria-hidden="true">
+  <img class="min-loading-art" src="/pixel-min.png" alt="" />
+  <canvas class="min-layer-canvas" width="128" height="192"></canvas>
+</div>

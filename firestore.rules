@@ -1,8 +1,44 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function validActivity(a) {
+      return a == null || (
+        a is map && a.keys().hasOnly(['id', 'kind', 'startedAt', 'endsAt']) &&
+        a.id is string && a.id.size() > 0 && a.id.size() <= 100 &&
+        a.kind in ['coffee', 'tuna', 'study'] && a.startedAt is int && a.endsAt is int &&
+        ((a.kind == 'coffee' && a.endsAt - a.startedAt == 8000) ||
+         (a.kind == 'tuna' && a.endsAt - a.startedAt == 10000) ||
+         (a.kind == 'study' && a.endsAt - a.startedAt == 15000))
+      );
+    }
+    function validAdventure(a) {
+      return a is map && a.keys().hasOnly(['x', 'collected', 'questComplete']) &&
+        a.x is int && a.x >= 36 && a.x <= 3560 &&
+        a.collected is int && a.collected >= 0 && a.collected <= 65535 &&
+        a.questComplete is bool;
+    }
+    function validGame(g) {
+      return g is map && g.keys().hasOnly(['schemaVersion', 'outfit', 'hair', 'eyes', 'face', 'hat', 'map', 'points', 'completedActivities', 'activeActivity', 'adventure', 'updatedAt']) &&
+        g.schemaVersion in [2, 3, 4] &&
+        g.get('hair', 'ombre') in ['ombre', 'bob', 'twintails'] &&
+        g.get('eyes', 'brown') in ['brown', 'hazel', 'blue'] &&
+        g.get('face', 'soft') in ['soft', 'rosy', 'freckles'] &&
+        g.outfit in ['classic', 'berry', 'ocean', 'meadow'] &&
+        g.hat in ['none', 'beret', 'flower', 'crown'] && g.map in ['sunny', 'night', 'forest'] &&
+        g.points is int && g.points >= 0 && g.points <= 1000000000 &&
+        g.completedActivities is map && g.completedActivities.keys().hasOnly(['coffee', 'tuna', 'study']) &&
+        g.completedActivities.coffee is int && g.completedActivities.coffee >= 0 && g.completedActivities.coffee <= 1000000000 &&
+        g.completedActivities.tuna is int && g.completedActivities.tuna >= 0 && g.completedActivities.tuna <= 1000000000 &&
+        g.completedActivities.study is int && g.completedActivities.study >= 0 && g.completedActivities.study <= 1000000000 &&
+        g.updatedAt is int && g.updatedAt >= 0 && validActivity(g.activeActivity) &&
+        validAdventure(g.get('adventure', {'x': 90, 'collected': 0, 'questComplete': false}));
+    }
     match /players/{playerId} {
-      allow read, write: if request.auth != null && request.auth.uid == playerId;
+      allow read: if request.auth != null && request.auth.uid == playerId;
+      allow create, update: if request.auth != null && request.auth.uid == playerId &&
+        request.resource.data.keys().hasOnly(['game', 'updatedAt', 'createdAt']) &&
+        validGame(request.resource.data.game) && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
     }
   }
 }

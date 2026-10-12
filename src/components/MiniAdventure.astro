@@ -1,0 +1,20 @@
+---
+import MiniAvatar from './MiniAvatar.astro';
+import { EMOTES } from '../lib/min-emotes.js';
+---
+<section class="mini-adventure" aria-labelledby="adventure-title">
+  <header class="adventure-heading"><div><span class="game-kicker">MINI’S MAPLE MEADOW</span><h2 id="adventure-title">A little adventure</h2></div><button class="game-button music-button" type="button" data-adventure-music>♫ Play cozy BGM</button></header>
+  <div class="adventure-hud"><span>✦ <strong data-min-points>0</strong> points</span><span><strong id="adventure-stars">0</strong> / 16 stars</span><span id="adventure-quest">Pippin’s wish · 0 / 6</span></div>
+  <div class="adventure-viewport"><canvas id="adventure-canvas" width="960" height="480" tabindex="0" aria-label="Mini’s side-scrolling meadow adventure" aria-describedby="adventure-instructions"></canvas><div class="adventure-overlay" id="adventure-overlay"><span class="adventure-stamp" aria-hidden="true">✦</span><h3>Ready, Mini?</h3><p>Jump between platforms, gather stars, and bring six to Pippin for a sweet surprise.</p><button id="adventure-play" class="game-button save-button" type="button">Enter the meadow →</button></div></div>
+  <div class="adventure-toolbar"><div class="adventure-touch-controls" role="group" aria-label="Movement controls"><button type="button" data-adventure-hold="left" aria-label="Move left">←</button><button type="button" data-adventure-hold="right" aria-label="Move right">→</button><button type="button" id="adventure-jump" aria-label="Jump">↑ Jump</button></div><div><button class="game-button" id="adventure-talk" type="button">Talk / E</button><button class="game-button" id="adventure-pause" type="button">Pause</button></div></div>
+  <p id="adventure-instructions" class="adventure-instructions">Move: ← → or A / D · Jump: Space / ↑ · Talk: E · Click Mini for an emote. On touchscreens, use the buttons.</p>
+  <div class="adventure-emotes" role="group" aria-label="Adventure emotes">{Object.entries(EMOTES).map(([kind, emote]) => <button type="button" data-adventure-emote={kind}><span aria-hidden="true">{emote.icon}</span>{emote.label}</button>)}</div>
+  <p id="adventure-message" class="adventure-message" role="status" aria-live="polite">A peaceful meadow, a pocketful of stars, and a friend to meet.</p>
+  <p class="adventure-save-note">Outfit, stars, quest completion, and your position are saved with your player profile. Guest progress is saved in this browser.</p>
+  <a class="adventure-source-link" href="/game-source/mini-adventure-source.zip" download>Download game source · MIT →</a>
+  <div class="adventure-character-source" aria-hidden="true"><MiniAvatar variant="adventure" /></div>
+</section>
+<script>
+  import { initAdventure } from '../lib/min-adventure.js';
+  initAdventure();
+</script>

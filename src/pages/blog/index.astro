@@ -24,6 +24,8 @@ function formatDate(dateStr: string) {
 
 <Layout title="Blog | Min Kim" activeNav="blog">
   <div>
+    <header class="blog-intro"><span class="case-study-kicker">Notes from Min’s World</span><h1 class="page-title">Blog</h1><p class="page-lead">Thoughts on AI governance, agent identity, and making things with care.</p></header>
+    <a class="wiki-blog-link blog-wiki-link" href="/wiki">Looking for definitions? Explore the Wiki →</a>
     <!-- Tag Filters Bar -->
     <div class="filter-bar">
       {allTags.map(tag => (
@@ -47,13 +49,13 @@ function formatDate(dateStr: string) {
         return (
           <li class="post-card" data-tags={post.data.tags.join(',')}>
             <a href={`/blog/${slug}`} class="post-thumb-link" aria-label={`Read ${displayTitle}`}>
-              <div class="post-thumb-svg" set:html={renderBanner(post.data.bannerType, false)} />
+              {post.data.coverImage ? <img class="post-pixel-cover" src={post.data.coverThumbnail || post.data.coverImage} alt={post.data.coverAlt || ''} width="480" height="270" loading="lazy" /> : <div class="post-thumb-svg" set:html={renderBanner(post.data.bannerType, false)} />}
             </a>
             <div class="post-card-info">
               <a href={`/blog/${slug}`} class="post-card-title">{displayTitle}</a>
               <div class="post-card-meta">
                 <span class="author-chip">
-                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Min Kim" class="author-avatar" />
+                  <img src="/favicon-mini.png?v=mini-2" alt="Min Kim" class="author-avatar" />
                   <span>Min Kim</span>
                 </span>
                 <span class="meta-dot">·</span>

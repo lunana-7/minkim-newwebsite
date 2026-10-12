@@ -60,12 +60,12 @@ const displayTitle = (post.data.title && post.data.title !== 'Untitled Reflectio
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
-        <span>Back to entries</span>
+        <span>Back to Blog</span>
       </a>
       <h1 class="article-title">{displayTitle}</h1>
       <div class="article-meta">
         <span class="author-chip">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Min Kim" class="author-avatar" />
+          <img src="/favicon-mini.png?v=mini-2" alt="Min Kim" class="author-avatar" />
           <span>Min Kim</span>
         </span>
         <span class="meta-dot">·</span>
@@ -78,7 +78,7 @@ const displayTitle = (post.data.title && post.data.title !== 'Untitled Reflectio
       <p class="article-excerpt">{post.data.excerpt}</p>
     </header>
 
-    <div class="article-banner" set:html={renderBanner(post.data.bannerType, false)} />
+    {post.data.coverImage ? <figure class="article-banner pixel-article-cover"><img src={post.data.coverImage} alt={post.data.coverAlt || ''} width="1672" height="941" fetchpriority="high" /></figure> : <div class="article-banner" set:html={renderBanner(post.data.bannerType, false)} />}
 
     <div class="prose-content">
       <Content />
@@ -88,14 +88,14 @@ const displayTitle = (post.data.title && post.data.title !== 'Untitled Reflectio
     <nav class="article-nav-bottom" aria-label="Adjacent Articles">
       {prevPost ? (
         <a href={`/blog/${prevPost.id.replace(/\.(md|mdx)$/, '')}`} class="nav-card">
-          <span class="nav-direction">← Earlier Entry</span>
+          <span class="nav-direction">← Earlier post</span>
           <span class="nav-title">{prevPost.data.title}</span>
         </a>
       ) : <div />}
 
       {nextPost ? (
         <a href={`/blog/${nextPost.id.replace(/\.(md|mdx)$/, '')}`} class="nav-card" style="text-align: right;">
-          <span class="nav-direction">Later Entry →</span>
+          <span class="nav-direction">Later post →</span>
           <span class="nav-title">{nextPost.data.title}</span>
         </a>
       ) : <div />}
@@ -105,7 +105,7 @@ const displayTitle = (post.data.title && post.data.title !== 'Untitled Reflectio
     <section class="comments-section" id="comments">
       <div class="comments-header">
         <h2 class="comments-title">Thoughts & Discussion</h2>
-        <span class="comments-count" id="comments-count">(1)</span>
+        <span class="comments-count" id="comments-count">(0)</span>
       </div>
 
       <form class="comment-form" id="comment-form">
@@ -116,13 +116,6 @@ const displayTitle = (post.data.title && post.data.title !== 'Untitled Reflectio
       </form>
 
       <div class="comments-list" id="comments-list">
-        <div class="comment-item">
-          <div class="comment-meta">
-            <span class="comment-author">Elena Vance</span>
-            <span>2 days ago</span>
-          </div>
-          <p class="comment-text">The reflection on friction in digital craft hits so close to home. Beautiful typesetting on this site!</p>
-        </div>
       </div>
     </section>
   </article>
@@ -155,7 +148,7 @@ const displayTitle = (post.data.title && post.data.title !== 'Untitled Reflectio
         `;
         listEl.prepend(item);
       });
-      if (countEl) countEl.textContent = `(${1 + saved.length})`;
+      if (countEl) countEl.textContent = `(${saved.length})`;
     }
 
     commentForm?.addEventListener('submit', (e) => {
@@ -182,7 +175,7 @@ const displayTitle = (post.data.title && post.data.title !== 'Untitled Reflectio
         <p class="comment-text">${newComment.text}</p>
       `;
       listEl?.prepend(item);
-      if (countEl) countEl.textContent = `(${1 + saved.length})`;
+      if (countEl) countEl.textContent = `(${saved.length})`;
       if (commentInput) commentInput.value = '';
     });
   </script>

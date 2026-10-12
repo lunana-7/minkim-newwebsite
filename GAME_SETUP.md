@@ -14,4 +14,11 @@ The background music is an original Web Audio chiptune loop composed in the page
 
 ## Current prototype
 
-The page includes Min's pixel avatar, four outfits, three headwear choices plus no headwear, three map palettes, local progress, Google account sign-in, and Firestore cloud saves. The game is structured as an expandable, original project; it does not include MapleStory art, maps, music, or other Nexon assets.
+The page includes Min's pixel avatar, four outfits, three hairstyles, three eye colors, three face options, three headwear choices plus no headwear, three map palettes, coffee/tuna/study activities, points, levels, and completed-session counts. The companion, homepage, and game share the same saved look. Local changes save automatically; signed-in players use automatic Firestore saves once Firebase is configured. The game is structured as an expandable, original project; it does not include MapleStory art, maps, music, or other Nexon assets.
+
+
+## Save format and behavior
+
+Profiles use schema version 3, adding independent hair, eyes and face choices without resetting earlier progress. The browser migrates the earlier wardrobe-only save automatically. Each player has an isolated local profile; new Google accounts can carry their guest progress into their first cloud save. The latest modified profile wins when loading across devices. An activity resumes after navigation or reload and pays its reward once, after the timer finishes. Cloud data lives at `players/{uid}` and includes only game progress, with the owner-only validation rules in `firestore.rules`.
+
+The Firebase configuration remains unset until the project has been created, Google Authentication enabled, and Firestore rules published. An authenticated console session alone does not enable game sign-in.

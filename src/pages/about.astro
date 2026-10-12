@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { aboutData } from '../posts.js';
-import { projectHighlights } from '../projects.js';
 ---
 
 <Layout title="About | Min Kim" activeNav="about">
@@ -34,15 +33,7 @@ import { projectHighlights } from '../projects.js';
         </div>
         <a href="/work">All projects →</a>
       </div>
-      <div class="about-project-links">
-        {projectHighlights.slice(0, 4).map(project => (
-          <a href={`/projects/${project.slug}`}>
-            <span>{project.tag}</span>
-            <strong>{project.title}</strong>
-            <small>{project.year} · {project.role}</small>
-          </a>
-        ))}
-      </div>
+      <a class="about-archive-invite" href="/work"><span aria-hidden="true">⚿</span><div><strong>Explore my project archive</strong><p>Enter the shared password once to browse every experience and open the full story behind each project.</p></div><span aria-hidden="true">→</span></a>
     </section>
   </div>
 </Layout>

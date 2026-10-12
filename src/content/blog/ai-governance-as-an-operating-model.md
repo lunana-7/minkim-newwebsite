@@ -4,6 +4,9 @@ date: "2026-10-11"
 readingTime: "7 min read"
 tags: ["ai-governance", "risk-management", "enterprise-ai"]
 excerpt: "A practical AI governance program connects policy to ownership, system context, measurement, and decisions throughout the lifecycle."
+coverImage: "/blog-art/ai-governance-as-an-operating-model.webp"
+coverThumbnail: "/blog-art/ai-governance-as-an-operating-model-thumb.webp"
+coverAlt: "Pixel art of a meadow village connecting intake, design, measurement, and operations stations."
 bannerType: "abstract-curves"
 ---
 

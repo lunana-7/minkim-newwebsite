@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import MiniAvatar from '../components/MiniAvatar.astro';
 import { renderBanner } from '../banners.js';
 
 const posts = await getCollection('blog');
@@ -20,7 +21,7 @@ function formatDate(dateStr: string) {
 }
 ---
 
-<Layout title="Min Kim — AI Governance Analyst" description="Min Kim is an AI Governance Analyst specializing in agentic AI, enterprise governance, and practical AI deployment." activeNav="blog">
+<Layout title="Min Kim — AI Governance Analyst" description="Min Kim is an AI Governance Analyst specializing in agentic AI, enterprise governance, and practical AI deployment." activeNav="home">
   <div class="home-world">
     <!-- Warm Editorial Bio Header -->
     <header class="home-hero">
@@ -35,12 +36,12 @@ function formatDate(dateStr: string) {
       </p>
       <div class="home-actions"><a class="home-game-link" href="/game"><span aria-hidden="true">▶</span> Enter Min's World</a><a class="home-project-link" href="/work">Explore projects →</a></div>
       </div>
-      <div class="home-mascot" aria-hidden="true"><span class="mascot-glow"></span><img src="/pixel-min.png" alt="" /><span class="mascot-star star-a">✦</span><span class="mascot-star star-b">✧</span></div>
+      <div class="home-mascot"><span class="mascot-glow" aria-hidden="true"></span><button class="home-avatar-trigger" type="button" data-min-open-menu aria-label="Open Min’s activities"><MiniAvatar variant="home" /></button><span class="mascot-star star-a" aria-hidden="true">✦</span><span class="mascot-star star-b" aria-hidden="true">✧</span></div>
     </header>
 
     <div class="home-section-title">
-      <h2 style="font-family: var(--font-serif); font-size: var(--step-1); font-weight: 500;">Recent Writing</h2>
-      <a href="/blog">View all entries →</a>
+      <h2 style="font-family: var(--font-pixel); font-size: var(--step-2); font-weight: 500;">Recent Blog posts</h2>
+      <a href="/blog">View Blog →</a>
     </div>
 
     <!-- Posts Listing -->
@@ -57,13 +58,13 @@ function formatDate(dateStr: string) {
         return (
           <li class="post-card">
             <a href={`/blog/${slug}`} class="post-thumb-link" aria-label={`Read ${displayTitle}`}>
-              <div class="post-thumb-svg" set:html={renderBanner(post.data.bannerType, false)} />
+              {post.data.coverImage ? <img class="post-pixel-cover" src={post.data.coverThumbnail || post.data.coverImage} alt={post.data.coverAlt || ''} width="480" height="270" loading="lazy" /> : <div class="post-thumb-svg" set:html={renderBanner(post.data.bannerType, false)} />}
             </a>
             <div class="post-card-info">
               <a href={`/blog/${slug}`} class="post-card-title">{displayTitle}</a>
               <div class="post-card-meta">
                 <span class="author-chip">
-                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Min Kim" class="author-avatar" />
+                  <img src="/favicon-mini.png?v=mini-2" alt="Min Kim" class="author-avatar" />
                   <span>Min Kim</span>
                 </span>
                 <span class="meta-dot">·</span>

@@ -10,6 +10,9 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     excerpt: z.string().optional().default('A reflection by Min Kim.'),
     bannerType: z.string().default('geometric-grid'),
+    coverImage: z.string().optional(),
+    coverAlt: z.string().optional(),
+    coverThumbnail: z.string().optional(),
     draft: z.boolean().default(false),
   }).default({}),
 });

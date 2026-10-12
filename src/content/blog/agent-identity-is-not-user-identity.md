@@ -4,6 +4,9 @@ date: "2026-10-11"
 readingTime: "8 min read"
 tags: ["agent-identity", "agentic-ai", "security"]
 excerpt: "When an AI agent acts through tools, systems need to distinguish the agent, the person it serves, and the authority delegated to a specific task."
+coverImage: "/blog-art/agent-identity-is-not-user-identity.webp"
+coverThumbnail: "/blog-art/agent-identity-is-not-user-identity-thumb.webp"
+coverAlt: "Pixel art of distinct human, agent, and task identity badges connected to a locked tool chest."
 bannerType: "math-grid"
 ---
 
