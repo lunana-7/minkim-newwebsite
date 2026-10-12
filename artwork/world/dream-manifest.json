@@ -1,0 +1,15 @@
+{
+  "tool": "Built-in image_gen",
+  "daylight": {
+    "reference": "public/world-art/daylight.png",
+    "file": "public/world-art/daylight-dream.png",
+    "web": "public/world-art/daylight-dream.webp",
+    "prompt": "Use case: lighting-weather. Edit the supplied pixel village website background to feel more dreamy and ethereal, while preserving the exact village, trees, mountains, bridge, stream and landscape composition. Retain crisp square pixel art and fine detail, not blurry painted art. Keep center spacious for website panels, emphasize atmosphere in the outer edges and sky. No characters, text, UI, watermark or borders. DAYLIGHT version: gentle pastel lavender, blush pink, mint and pale gold color harmonies, pearlescent pink-blue sky, softly luminous wisps of pixel clouds, thin violet mist between distant mountains, delicate warm sun rays, tiny sparse glowing pollen motes around trees and stream, magical shimmering water. A serene fairytale dream, balanced exposure and clearly defined foreground pixels. Subtle atmospheric glow without washed-out white haze."
+  },
+  "night": {
+    "reference": "public/world-art/night.png",
+    "file": "public/world-art/night-dream.png",
+    "web": "public/world-art/night-dream.webp",
+    "prompt": "Use case: lighting-weather. Edit the supplied pixel village website background to feel more dreamy and ethereal, while preserving the exact village, trees, mountains, bridge, stream and landscape composition. Retain crisp square pixel art and fine detail, not blurry painted art. Keep center spacious for website panels, emphasize atmosphere in the outer edges and sky. No characters, text, UI, watermark or borders. NIGHT version: rich violet and periwinkle moonlit sky, delicate faint mint-lavender aurora ribbons, glowing crescent moon and tiny scattered star sparkles, silver-lilac mountain mist, enchanted blue-purple stream reflections, warm amber cottage windows, a few softly luminous pink and mint fireflies among flowers. A serene magical dream, restrained luminous colors, detailed visible foreground pixels. Do not make everything neon or overly dark."
+  }
+}

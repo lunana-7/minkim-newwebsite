@@ -253,7 +253,7 @@ h1,h2,h3,h4 { font-family:var(--font-pixel); letter-spacing:0 !important; }
 /* Original detailed pixel landscapes share the site's day/night preference. */
 .world-landscape { position:absolute; inset:0; background-position:center bottom; background-size:cover; background-repeat:no-repeat; image-rendering:pixelated; transition:opacity .4s ease; }
 .world-landscape-day { background-image:url('/world-art/daylight-dream.webp'); opacity:1; }
-.world-landscape-night { background-image:url('/world-art/night.webp'); opacity:0; }
+.world-landscape-night { background-image:url('/world-art/night-dream.webp'); opacity:0; }
 :root[data-theme='dark'] .world-landscape-day { opacity:0; }
 :root[data-theme='dark'] .world-landscape-night { opacity:1; }
 @media(prefers-reduced-motion:reduce) { .world-landscape { transition:none; } }
