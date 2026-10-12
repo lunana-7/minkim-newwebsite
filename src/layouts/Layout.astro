@@ -22,6 +22,7 @@ const {
 const worldPlaces = { home: 'Maple Meadow', pet: 'Pet Garden', blog: 'Blog', wiki: 'Wiki', library:'Cloudwood Library', projects:'Work world', work: 'Project archive', about: 'Min’s cottage', game: 'Game collection', 'mini-world': 'Mini World', 'alignment-world': 'Alignment World', support: 'Coffee corner', language:'Language World', room:'Mini’s Room' };
 const worldPlace = worldPlaces[activeNav];
 const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.origin).href;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
 ---
 
 <!DOCTYPE html>
@@ -31,11 +32,15 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalUrl}>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Min’s World">
+  <meta property="og:url" content={canonicalUrl}>
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:image" content={socialImage}>
+  <meta property="og:image:secure_url" content={socialImage}>
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Min’s World — AI governance, projects and pixel adventures, with Mini and a bunny in a dreamy village.">
