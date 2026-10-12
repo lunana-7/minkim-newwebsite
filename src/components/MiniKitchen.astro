@@ -7,11 +7,11 @@ import { KITCHENS } from '../lib/min-kitchen-data.js';
  <nav class="kitchen-shop-tabs" aria-label="Choose a workplace">{Object.entries(KITCHENS).map(([id,k])=><button type="button" data-kitchen-open={id}>{k.icon} {k.name}</button>)}</nav>
  <div class="kitchen-career"><span id="kitchen-career"></span><span>◉ <strong data-farm-coins>100</strong> farm coins</span><button type="button" id="kitchen-hire" class="game-button save-button">Apply for the job →</button></div>
  <div class="kitchen-layout"><div class="kitchen-workbench"><canvas id="kitchen-canvas" width="640" height="360" aria-label="Inside the dessert shop, with Mini at the workbench and the dessert you are making"></canvas><div class="kitchen-mini" aria-hidden="true"><MiniAvatar variant="kitchen" /></div><p id="kitchen-visual-caption">Your first shift awaits.</p></div><div class="kitchen-controls">
-  <aside class="kitchen-ticket"><span class="game-kicker">CUSTOMER ORDER</span><p id="kitchen-ticket">Apply to receive your first order.</p></aside>
+  <aside class="kitchen-ticket"><div class="kitchen-customer"><img id="kitchen-customer-portrait" src="/mini/rig-v2/bob-berry.png?v=rig-2-final" alt="" width="56" height="56"/><div><span class="game-kicker">CUSTOMER AT THE COUNTER</span><strong id="kitchen-customer-name">Next guest</strong><small id="kitchen-customer-line">A new order is coming.</small></div></div><p id="kitchen-ticket">Apply to receive your first order.</p><span id="kitchen-queue">Serve guests to grow your dessert shop.</span></aside>
   <ol class="kitchen-steps" id="kitchen-steps"></ol>
   <h3 id="kitchen-step-title">Welcome to your workplace</h3><p id="kitchen-step-help"></p>
   <div id="kitchen-choice-area"></div>
-  <div class="kitchen-process" id="kitchen-process" hidden><label for="kitchen-temperature">Machine setting <strong id="kitchen-temperature-label"></strong></label><input id="kitchen-temperature" type="range"/><div class="kitchen-progress"><span id="kitchen-process-fill"></span></div><p id="kitchen-process-status"></p></div>
+  <div class="kitchen-process" id="kitchen-process" hidden><label for="kitchen-temperature">Machine valve <strong id="kitchen-temperature-label"></strong></label><input id="kitchen-temperature" type="range"/><div class="kitchen-progress"><span id="kitchen-process-fill"></span></div><p id="kitchen-process-status"></p></div>
   <button id="kitchen-action" class="game-button save-button" type="button" hidden>Start an order →</button>
   <button id="kitchen-abandon" class="game-button" type="button" hidden>Discard this order</button>
   <p id="kitchen-message" role="status" aria-live="polite">Coco and Honey are looking for a helping hand.</p>

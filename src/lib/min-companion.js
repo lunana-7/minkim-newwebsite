@@ -4,6 +4,7 @@ import { ACTIVITIES, getProfile, startActivity, completeActivity, subscribeProfi
 import { initAppearances, renderAppearances } from './min-appearance.js';
 import { EMOTES, getEmote, playEmote, emoteAllowsMovement } from './min-emotes.js';
 import { startCloudSync, subscribeAccount } from './min-cloud.js';
+import { initWalkerPet } from './min-walker-pet.js';
 let initialized = false;
 export function initMini() {
   if (initialized) return; initialized = true;
@@ -14,6 +15,7 @@ export function initMini() {
   const rewardBubble = document.getElementById('min-reward-bubble');
   let lastReward = '', lastPose = null;
   const isLifted=initMiniDrag({walker,trigger,menu,onChange:()=>update()});
+  initWalkerPet({walker,menu});
   const chatter=initMiniChatter({walker,menu,isLifted});
   initAppearances(); startCloudSync().catch(() => {});
   function openMenu() {

@@ -4,7 +4,7 @@ import { initGameInteractions,openInteraction,closeInteraction,currentInteractio
 import { drawTerrain, worldPlatforms, meadowStars, JUMP_SPEED, GRAVITY } from './min-terrain.js';
 import { drawPet, petName } from './min-pets.js';
 import { drawWorldEffect } from './min-effects.js';
-import { portalsFor, portalArrival, NPC_LOOKS, npcImage } from './min-portals.js';
+import { portalsFor, portalArrival, npcImage } from './min-portals.js';
 import { RESOURCES, worldNodes, nodeReadyAt } from './min-resource-data.js';
 import { gatherNode } from './min-gathering.js';
 import { WORLDS } from './min-worlds.js';
@@ -12,6 +12,7 @@ import { cropReadyAt, CROPS } from './min-farming.js';
 import { getProfile, updateProfile, subscribeProfile, collectAdventureStar, completeAdventureQuest } from './min-profile.js';
 import { getEmote, playEmote, stopEmote, EMOTES, emoteAllowsMovement } from './min-emotes.js';
 import { subscribeAccount } from './min-cloud.js';
+import { giftOptions, giveGift, affectionFor, friendById, playWithFriend } from './min-friendship.js';
 const WORLD = 3600, FLOOR = 408;
 const stars = meadowStars;
 const popcount = mask => mask.toString(2).replace(/0/g,'').length;
@@ -23,6 +24,7 @@ export function initAdventure() {
   let profile = getProfile(), paused = true, camera = 0, previous = 0, saveAt = 0, lastX = profile.adventure.x, accountId = null;
   const player = { x: profile.adventure.x, y: FLOOR - 74, w:50, h:74, vy:0, facing:1, grounded:true };
   const pet={x:Math.max(36,player.x-65),feet:FLOOR,vy:0,facing:1,moving:false,grounded:true};
+  const friend={x:Math.max(36,player.x+85),feet:FLOOR,facing:1,moving:false,playUntil:0};
   const backdrops=new Map();preloadArchitecture();preloadItems();
   function worldArt(id){if(!backdrops.has(id)){const image=new Image();image.src=WORLDS[id].image;backdrops.set(id,image);}return backdrops.get(id);}
   let backdrop=worldArt(profile.map), talkingTo=null, gathering=null, portalUntil=0;
@@ -31,10 +33,13 @@ export function initAdventure() {
   const keys = new Set(); let coyoteUntil = 0, jumpUntil = 0, alive = true;
   function say(text) { message.textContent = text; }
   function sync(next) {
-    const changed=profile.map!==next.map,petChanged=profile.pet.kind!==next.pet.kind;profile=next;backdrop=worldArt(next.map);
+    const changed=profile.map!==next.map,petChanged=profile.pet.kind!==next.pet.kind,friendChanged=profile.friendship.companion!==next.friendship.companion;profile=next;backdrop=worldArt(next.map);
     if(changed){gathering=null;player.x=90;player.y=FLOOR-player.h;player.vy=0;camera=0;lastX=-1;keys.clear();document.getElementById('adventure-npc-dialog').hidden=true;if(currentInteraction()&&!['farm','market'].includes(currentInteraction()))closeInteraction('travel',false);}
     if(changed||petChanged){pet.x=Math.max(36,player.x-65);pet.feet=FLOOR;pet.vy=0;pet.grounded=true;pet.moving=false;}
+    if(changed||friendChanged){friend.x=Math.max(36,player.x+85);friend.feet=player.y+player.h;friend.moving=false;}
+    const playButton=document.getElementById('adventure-friend-play');playButton.hidden=!next.friendship.companion;if(next.friendship.companion)playButton.textContent=`Play with ${friendById(next.friendship.companion)?.name||'friend'} ♡`;
     document.querySelectorAll('[data-world-go]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.worldGo===next.map)));
+    document.getElementById('adventure-world-current').textContent=WORLDS[next.map].name;
     document.getElementById('adventure-map-title').textContent=WORLDS[next.map].name+' map';
     document.getElementById('adventure-meadow-stops').hidden=next.map!=='sunny';
     const directory=document.getElementById('adventure-npc-directory');
@@ -49,7 +54,6 @@ export function initAdventure() {
     document.querySelectorAll('[data-adventure-emote]').forEach(button => { button.disabled = Boolean(profile.activeActivity); });
     const count = popcount(profile.adventure.collected);
     document.getElementById('adventure-stars').textContent = count;
-    document.getElementById('adventure-quest').textContent = profile.adventure.questComplete ? 'Pippin’s wish · complete ✓' : `Pippin’s wish · ${Math.min(count,6)} / 6`;
   }
   const unsubscribe = subscribeProfile(sync);
   const unsubscribeAccount = subscribeAccount(account => {
@@ -103,11 +107,15 @@ export function initAdventure() {
   }
   document.getElementById('adventure-npc-back').addEventListener('click',()=>{if(dialoguePage>0){dialoguePage--;showDialogue();}});
   window.addEventListener('min-interaction-close',()=>clearInterval(dialogueTimer));
-  function openNpc(npc){gathering=null;talkingTo=npc;keys.clear();save();overlay.hidden=true;const dialog=document.getElementById('adventure-npc-dialog');dialog.hidden=false;document.getElementById('adventure-npc-name').textContent=npc.name;document.getElementById('adventure-npc-portrait').src=npcImage(npc);document.getElementById('adventure-npc-role').textContent=npc.role;const line=npc.action==='quest'?questTalk():npc.line;dialoguePages=line.match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map(s=>s.trim()).filter(Boolean)||[line];dialoguePage=0;const labels={quest:'Thanks, Pippin! ♡',cafe:'Take a café seat ☕',farm:'Open my farm ♧',market:'Visit the market →',wiki:'Explore the Wiki ↗',map:'Open world map ♧',icecream:'Work at Cloud Scoop 🍦',bakery:'Work at Honeycrumb 🍰'};dialogueLabel=labels[npc.action]||'See you soon!';if(dialoguePages.length===1)dialoguePages.push(npc.action==='quest'?'A little kindness makes this world brighter.':`Ready? ${dialogueLabel}`);showDialogue();openInteraction('npc');document.getElementById('adventure-npc-action').focus({preventScroll:true});}
+  function refreshNpcGifts(){if(!talkingTo)return;const options=giftOptions(),select=document.getElementById('adventure-npc-gift'),give=document.getElementById('adventure-npc-give'),old=select.value;select.replaceChildren();if(!options.length){const option=document.createElement('option');option.textContent='No gifts in your bag';option.value='';select.append(option);}else for(const item of options){const option=document.createElement('option');option.value=item.key;option.textContent=`${item.name} ×${item.count}`;select.append(option);}if(options.some(item=>item.key===old))select.value=old;select.disabled=!options.length;give.disabled=!options.length;document.getElementById('adventure-npc-affection').textContent=`♡ ${affectionFor(getProfile(),talkingTo.id)} / 100`;}
+  function openNpc(npc){gathering=null;talkingTo=npc;keys.clear();save();overlay.hidden=true;const dialog=document.getElementById('adventure-npc-dialog');dialog.hidden=false;document.getElementById('adventure-npc-name').textContent=npc.name;document.getElementById('adventure-npc-portrait').src=npcImage(npc);document.getElementById('adventure-npc-role').textContent=npc.role;document.getElementById('adventure-npc-gift-message').textContent='';refreshNpcGifts();const line=npc.action==='quest'?questTalk():npc.line;dialoguePages=line.match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map(s=>s.trim()).filter(Boolean)||[line];dialoguePage=0;const labels={quest:'Thanks, Pippin! ♡',cafe:'Take a café seat ☕',farm:'Open my farm ♧',market:'Visit the market →',library:'Enter the library 📖',map:'Open world map ♧',icecream:'Work at Cloud Scoop 🍦',bakery:'Work at Honeycrumb 🍰'};dialogueLabel=labels[npc.action]||'See you soon!';if(dialoguePages.length===1)dialoguePages.push(npc.action==='quest'?'A little kindness makes this world brighter.':`Ready? ${dialogueLabel}`);showDialogue();openInteraction('npc');document.getElementById('adventure-npc-action').focus({preventScroll:true});}
+  document.getElementById('adventure-npc-give').addEventListener('click',()=>{if(!talkingTo)return;const result=giveGift(talkingTo.id,document.getElementById('adventure-npc-gift').value);if(!result){refreshNpcGifts();return;}const name=talkingTo.name;document.getElementById('adventure-npc-gift-message').textContent=`${name} loves the ${result.item.name.toLowerCase()}! ♡ +${result.amount} friendship${result.affection>=10?' · You can call them from Bag → Friends.':''}`;refreshNpcGifts();playEmote('heart');say(`A gift for ${name}! Friendship: ${result.affection} / 100.`);});
   function closeNpc(){closeInteraction();}
   document.getElementById('adventure-npc-close').addEventListener('click',closeNpc);
-  document.getElementById('adventure-npc-action').addEventListener('click',()=>{if(!talkingTo)return;if(dialogueCursor<Array.from(dialogueText).length){clearInterval(dialogueTimer);dialogueCursor=Array.from(dialogueText).length;document.getElementById('adventure-npc-line').textContent=dialogueText;return;}if(dialoguePage<dialoguePages.length-1){dialoguePage++;showDialogue();return;}const action=talkingTo.action;closeNpc();if(action==='cafe')enterCafe();if(action==='farm'||action==='market'){if(profile.map!==action)travel(action);window.dispatchEvent(new Event('min-farm-open'));}if(action==='map')openInteraction('map');if(action==='icecream'||action==='bakery')window.dispatchEvent(new CustomEvent('min-kitchen-open',{detail:action}));if(action==='wiki')window.location.assign('/wiki');});
-  function talk(){const door=nearbyShopDoor();if(door){enterShop(door);return;}const npc=WORLDS[profile.map].npcs.filter(npc=>Math.abs(player.x+25-npc.x)<130&&Math.abs(player.y+player.h-FLOOR)<100).sort((a,b)=>Math.abs(player.x+25-a.x)-Math.abs(player.x+25-b.x))[0];if(npc)openNpc(npc);else if(nearNode())startGather();else say(nearbyPortal()?'Press ↑ to enter this portal. Enter talks to a nearby resident.':'Walk closer to a resident or shop door, then press Enter.');}
+  document.getElementById('adventure-npc-action').addEventListener('click',()=>{if(!talkingTo)return;if(dialogueCursor<Array.from(dialogueText).length){clearInterval(dialogueTimer);dialogueCursor=Array.from(dialogueText).length;document.getElementById('adventure-npc-line').textContent=dialogueText;return;}if(dialoguePage<dialoguePages.length-1){dialoguePage++;showDialogue();return;}const action=talkingTo.action;closeNpc();if(action==='cafe')enterCafe();if(action==='farm'||action==='market'){if(profile.map!==action)travel(action);window.dispatchEvent(new Event('min-farm-open'));}if(action==='map')openInteraction('map');if(action==='library')openInteraction('library');if(action==='icecream'||action==='bakery')window.dispatchEvent(new CustomEvent('min-kitchen-open',{detail:action}));});
+  function talk(){const door=nearbyShopDoor();if(door){enterShop(door);return;}const npc=WORLDS[profile.map].npcs.filter(npc=>npc.id!==profile.friendship.companion&&Math.abs(player.x+25-npc.x)<130&&Math.abs(player.y+player.h-FLOOR)<100).sort((a,b)=>Math.abs(player.x+25-a.x)-Math.abs(player.x+25-b.x))[0];if(npc)openNpc(npc);else if(profile.friendship.companion&&Math.abs(player.x-friend.x)<100)openNpc(friendById(profile.friendship.companion));else if(nearNode())startGather();else say(nearbyPortal()?'Press ↑ to enter this portal. Enter talks to a nearby resident.':'Walk closer to a resident or shop door, then press Enter.');}
+  window.addEventListener('min-friend-called',event=>{const npc=friendById(event.detail.id);say(npc?`${npc.name} is here! Walk together, or press Play with ${npc.name}.`:'Your friend headed home. Call them again from Bag → Friends.');});
+  document.getElementById('adventure-friend-play').addEventListener('click',()=>{if(currentInteraction()||performance.now()<friend.playUntil)return;const result=playWithFriend();if(!result)return;friend.playUntil=performance.now()+2400;playEmote('heart');say(`Mini and ${result.friend.name} are playing together! ♡ ${result.affection} / 100 friendship.`);});
   function nearNode(){return worldNodes(profile.map).find(node=>Math.abs(player.x+25-node.x)<110&&Math.abs(player.y+player.h-FLOOR)<18);}
   function startGather(node=nearNode()){
     if(gathering){say('Gathering in progress…');return;}if(profile.activeActivity){say('Mini is finishing her coffee, meal or study session. Try again when she finishes.');return;}if(!emoteAllowsMovement())stopEmote();
@@ -118,7 +126,7 @@ export function initAdventure() {
   document.getElementById('adventure-gather').addEventListener('click',()=>startGather());
   // Gathering should work even after a click moves focus to a button or another part of the page.
   window.addEventListener('keydown',event=>{
-    if(event.key.toLowerCase()!=='g'||event.repeat||event.defaultPrevented||event.ctrlKey||event.metaKey||event.altKey||currentInteraction())return;
+    if(event.key.toLowerCase()!=='g'||event.repeat||event.defaultPrevented||event.ctrlKey||event.metaKey||event.altKey||currentInteraction()||['inventoryOpen','questsOpen'].some(key=>document.querySelector('.mini-adventure')?.dataset[key]==='true'))return;
     if(event.target instanceof Element && event.target.closest('input,textarea,select,[contenteditable="true"]'))return;
     if(document.getElementById('min-companion-menu')?.hidden===false)return;
     event.preventDefault();
@@ -137,6 +145,7 @@ export function initAdventure() {
   });
   document.querySelectorAll('[data-adventure-emote]').forEach(button => button.addEventListener('click', () => { playEmote(button.dataset.adventureEmote); say(EMOTES[button.dataset.adventureEmote].message); }));
   const shell=canvas.closest('.mini-adventure');
+  for(const name of ['min-inventory-toggle','min-quests-toggle'])window.addEventListener(name,event=>{if(event.detail.open)keys.clear();});
   const expandButton=document.getElementById('adventure-expand');
   function expanded(){return document.fullscreenElement===shell||shell.classList.contains('adventure-expanded');}
   function syncExpandButton(){const isExpanded=expanded();expandButton.setAttribute('aria-pressed',String(isExpanded));expandButton.setAttribute('aria-label',isExpanded?'Exit full screen':'Expand game screen');expandButton.textContent=isExpanded?'↙ Exit full screen':'⛶ Full screen';}
@@ -151,7 +160,7 @@ export function initAdventure() {
   function resume(){if(currentInteraction())return;paused=false;previous=performance.now();overlay.hidden=true;canvas.focus({preventScroll:true});}
   // Toolbar focus stays within the game, so its buttons cannot swallow field shortcuts.
   shell.addEventListener('keydown',event=>{
-    if(event.defaultPrevented||event.ctrlKey||event.metaKey||event.altKey||event.target.closest('#adventure-expand')||currentInteraction()||event.target.closest('input,textarea,select,a,[contenteditable="true"]'))return;
+    if(event.defaultPrevented||event.ctrlKey||event.metaKey||event.altKey||shell.dataset.inventoryOpen==='true'||shell.dataset.questsOpen==='true'||event.target.closest('#adventure-expand')||currentInteraction()||event.target.closest('input,textarea,select,a,[contenteditable="true"]'))return;
     const key=event.key.toLowerCase();
     if(!['arrowleft','arrowright','a','d',' ','arrowup','w','arrowdown','s','enter','escape'].includes(key))return;
     event.preventDefault();
@@ -166,7 +175,7 @@ export function initAdventure() {
     if(!event.repeat&&['arrowdown','s'].includes(key))dropDown();
     if(!event.repeat&&key==='enter')talk();
   });
-  shell.addEventListener('click',event=>{if(!currentInteraction()&&overlay.hidden&&event.target.closest('.adventure-toolbar,.adventure-emotes,.adventure-world-tabs'))canvas.focus({preventScroll:true});});
+  shell.addEventListener('click',event=>{if(!currentInteraction()&&shell.dataset.inventoryOpen!=='true'&&shell.dataset.questsOpen!=='true'&&overlay.hidden&&event.target.closest('.adventure-toolbar,.adventure-emotes,.adventure-world-tabs'))canvas.focus({preventScroll:true});});
   function release(event) { const key = event.key.toLowerCase(); if (key === 'arrowleft' || key === 'a') keys.delete('left'); if (key === 'arrowright' || key === 'd') keys.delete('right'); }
   window.addEventListener('keyup', release);
   window.addEventListener('blur', pause);
@@ -182,7 +191,7 @@ export function initAdventure() {
     if (x >= player.x - 12 && x <= player.x + player.w + 12 && y >= player.y - 12 && y <= player.y + player.h) {
       if (profile.activeActivity) { say('Mini is finishing a little activity. Try an emote in a moment!'); return; }
       const choices = ['hello','cake','icecream','heart']; const kind = choices[Math.floor(Math.random() * choices.length)]; playEmote(kind); say(EMOTES[kind].message);
-    } else {const npc=WORLDS[profile.map].npcs.find(npc=>Math.abs(x-npc.x)<45&&y>FLOOR-100);if(npc)openNpc(npc);else if(profile.map==='farm'&&y>FLOOR-50){const index=Math.floor((x-900)/95);if(index>=0&&index<6)window.dispatchEvent(new CustomEvent('min-farm-plot',{detail:index}));}}
+    } else {const npc=WORLDS[profile.map].npcs.find(npc=>npc.id!==profile.friendship.companion&&Math.abs(x-npc.x)<45&&y>FLOOR-100);if(npc)openNpc(npc);else if(profile.friendship.companion&&Math.abs(x-friend.x)<42&&Math.abs(y-friend.feet)<90)openNpc(friendById(profile.friendship.companion));else if(profile.map==='farm'&&y>FLOOR-50){const index=Math.floor((x-900)/95);if(index>=0&&index<6)window.dispatchEvent(new CustomEvent('min-farm-plot',{detail:index}));}}
   });
   const resize = new ResizeObserver(() => { const rect = canvas.getBoundingClientRect(); canvas.width = Math.max(1, Math.round(rect.width * 480 / Math.max(1,rect.height))); canvas.height = 480; }); resize.observe(canvas);
   function physics(dt, now) {
@@ -211,9 +220,7 @@ export function initAdventure() {
   }
   function rect(color,x,y,w,h) { ctx.fillStyle=color; ctx.fillRect(Math.round(x),Math.round(y),w,h); }
   function star(x,y){drawItem(ctx,'prop-star',x,y+11,22);}
-  function drawNpc(npc,now){const x=npc.x-camera,y=FLOOR,bob=Math.round(Math.sin(now/450));const image=npcArt(npc),look=NPC_LOOKS[npc.id]||NPC_LOOKS.pippin;ctx.save();ctx.translate(0,bob);ctx.imageSmoothingEnabled=false;if(image.complete&&image.naturalWidth)ctx.drawImage(image,x-37,y-74,74,74);
-    const props={chef:['prop-chefhat',x,y-72,17],apron:['prop-apron',x+2,y-8,24],book:['prop-book',x+15,y-16,17],satchel:['prop-satchel',x+16,y-11,19],crystal:['resource-crystal',x+17,y-15,19],scarf:['prop-scarf',x+3,y-22,13],flower:['prop-flower',x+15,y-60,12],star:['prop-star',x+15,y-63,15],sailor:['prop-sailorcap',x,y-72,12]};
-    const prop=props[look.accessory];if(prop)drawItem(ctx,...prop);if(look.accessory==='chef')drawItem(ctx,'prop-apron',x+2,y-8,24);
+  function drawNpc(npc,now){const x=npc.x-camera,y=FLOOR,bob=Math.round(Math.sin(now/450));const image=npcArt(npc);ctx.save();ctx.translate(0,bob);ctx.imageSmoothingEnabled=false;if(image.complete&&image.naturalWidth)ctx.drawImage(image,x-37,y-74,74,74);
     ctx.textAlign='center';ctx.font='15px "Pixelify Sans",sans-serif';rect('#fff6e5',x-43,y-108,86,21);ctx.fillStyle='#64503d';ctx.fillText(npc.name,x,y-93);if(Math.abs(player.x-npc.x)<130){ctx.fillStyle='#fff5d8';ctx.font='13px "Pixelify Sans",sans-serif';ctx.strokeStyle='#534638';ctx.lineWidth=3;ctx.strokeText('Enter · talk',x,y-119);ctx.fillText('Enter · talk',x,y-119);}ctx.restore();}
   function drawPortal(portal,now){const x=portal.x-camera,y=FLOOR;ctx.save();drawPortalArt(ctx,portal.to,x,y,now,matchMedia('(prefers-reduced-motion: reduce)').matches);for(let i=0;i<5;i++){const a=x-15+(i%3)*13,b=y-15-((now/35+i*19)%70);rect('#fff4df',a,b,3,5);}ctx.font='13px "Pixelify Sans",sans-serif';ctx.textAlign='center';const label=WORLDS[portal.to].name;rect('#fff6e5',x-ctx.measureText(label).width/2-7,y-183,ctx.measureText(label).width+14,21);ctx.fillStyle='#665271';ctx.fillText(label,x,y-169);if(Math.abs(player.x+25-portal.x)<58){ctx.fillStyle='#fff4dc';ctx.strokeStyle='#655371';ctx.lineWidth=3;ctx.strokeText('↑ · enter portal',x,y-194);ctx.fillText('↑ · enter portal',x,y-194);}ctx.restore();}
   function drawFarm(){for(let i=0;i<6;i++){const x=939+i*95-camera,plot=profile.farm.plots[i];drawItem(ctx,'prop-soil',x,FLOOR,23,78);if(plot){const stage=cropStage(plot,cropReadyAt(plot));drawItem(ctx,`crop-${plot.crop}-${stage}`,x,FLOOR-4,stage==='sprout'?24:46);if(stage==='ripe'){ctx.fillStyle='#fff1bd';ctx.font='13px "Pixelify Sans",sans-serif';ctx.textAlign='center';ctx.fillText('Harvest!',x,FLOOR-55);}}}}
@@ -228,6 +235,25 @@ export function initAdventure() {
     const before=pet.feet;pet.vy+=GRAVITY*dt;pet.feet+=pet.vy*dt;pet.grounded=false;
     if(pet.feet>=FLOOR){pet.feet=FLOOR;pet.vy=0;pet.grounded=true;}
     if(pet.vy>=0)for(const platform of worldPlatforms(profile.map)){if(pet.x+15>platform.x&&pet.x-15<platform.x+platform.w&&before<=platform.y+3&&pet.feet>=platform.y){pet.feet=platform.y;pet.vy=0;pet.grounded=true;break;}}
+  }
+  function followFriend(dt){
+    friend.moving=false;
+    if(!profile.friendship.companion||paused)return;
+    const target=Math.max(36,Math.min(WORLD-40,player.x+25-player.facing*105));
+    if(Math.abs(friend.x-target)>500){friend.x=target;friend.feet=player.y+player.h;}
+    const delta=target-friend.x;
+    if(Math.abs(delta)>5){friend.x+=Math.sign(delta)*Math.min(Math.abs(delta),250*dt);friend.facing=Math.sign(delta);friend.moving=true;}
+    friend.feet+=(player.y+player.h-friend.feet)*Math.min(1,dt*8);
+  }
+  function drawFriend(now){
+    const npc=friendById(profile.friendship.companion);if(!npc)return;
+    const x=friend.x-camera,playing=now<friend.playUntil;
+    const y=friend.feet+(playing?-Math.abs(Math.sin(now/160))*13:friend.moving?Math.sin(now/105)*2:0);
+    const image=npcArt(npc);ctx.save();ctx.imageSmoothingEnabled=false;
+    if(image.complete&&image.naturalWidth)ctx.drawImage(image,Math.round(x-37),Math.round(y-74),74,74);
+    ctx.textAlign='center';ctx.font='14px "Pixelify Sans",sans-serif';rect('#fff6e5',x-48,y-106,96,22);ctx.fillStyle='#71506a';ctx.fillText(`${npc.name} ♡`,x,y-91);
+    if(playing){ctx.font='22px "Pixelify Sans",sans-serif';for(let i=0;i<3;i++){ctx.fillStyle=i===1?'#fff1b7':'#efacc7';ctx.fillText('♥',x-29+i*29,y-98-((now/13+i*17)%35));}}
+    ctx.restore();
   }
   function draw(now) {
     const night = profile.map==='night', forest=profile.map==='forest';
@@ -248,8 +274,9 @@ export function initAdventure() {
     if(profile.map==='market')for(const door of shopDoors){const x=door.x-camera;if(Math.abs(player.x+25-door.x)<95){ctx.save();ctx.textAlign='center';ctx.font='14px "Pixelify Sans",sans-serif';const label='Enter · '+door.name;const width=ctx.measureText(label).width+20;rect('#fff5dc',x-width/2,FLOOR-197,width,25);ctx.fillStyle='#5e5146';ctx.fillText(label,x,FLOOR-180);ctx.restore();}}
     for(const portal of portalsFor(profile.map))drawPortal(portal,now);
     for(const node of worldNodes(profile.map))drawResource(node,now);
-    for(const npc of WORLDS[profile.map].npcs)drawNpc(npc,now);
+    for(const npc of WORLDS[profile.map].npcs)if(npc.id!==profile.friendship.companion)drawNpc(npc,now);
     if(profile.map==='farm')drawFarm();
+    drawFriend(now);
     if(profile.pet.kind!=='none'){drawPet(ctx,profile.pet,now,{x:pet.x-camera,feet:pet.feet,scale:1,moving:pet.moving,jumping:!pet.grounded,facing:pet.facing,reduced:window.matchMedia('(prefers-reduced-motion: reduce)').matches});ctx.textAlign='center';ctx.font='12px "Pixelify Sans",sans-serif';ctx.fillStyle='#fff3dc';ctx.strokeStyle='#51463c';ctx.lineWidth=3;ctx.strokeText(petName(profile.pet),pet.x-camera,pet.feet-39);ctx.fillText(petName(profile.pet),pet.x-camera,pet.feet-39);}
     drawWorldEffect(ctx,profile.effect,now,player.x-camera+player.w/2,player.y+player.h,player.h,window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     const art=source.querySelector('canvas');ctx.imageSmoothingEnabled=false;
@@ -267,8 +294,9 @@ export function initAdventure() {
     if(gathering&&!paused&&now-gathering.started>=1400){const node=gathering.node;gathering=null;const result=gatherNode(node.id);if(result){playEmote('heart');say(`Gathered ${result.amount} ${result.name.toLowerCase()}! +1 point · Sell your finds at Berry Market.`);}}
     if(!paused)physics(dt,now); else source.dataset.controlledPose='idle';
     followPet(dt);
+    followFriend(dt);
     const closePortal=nearbyPortal(),portalButton=document.getElementById('adventure-portal');portalButton.disabled=paused||!closePortal||Boolean(profile.activeActivity)||Boolean(gathering);portalButton.textContent=closePortal?`↑ Enter ${WORLDS[closePortal.to].name}`:'↑ Enter portal';
-    const keyStatus=document.getElementById('adventure-key-status'),resource=nearNode(),door=nearbyShopDoor(),local=WORLDS[profile.map].npcs.find(n=>Math.abs(player.x+25-n.x)<130&&Math.abs(player.y+player.h-FLOOR)<100);const help=paused?'Enter · continue':profile.activeActivity?'Mini is taking a little break':gathering?'Gathering…':closePortal?'↑ · enter portal':door?`Enter · ${door.name}`:local?`Enter · talk to ${local.name}`:resource?`G · ${RESOURCES[resource.resource].action}`:'← → · move | Space · jump';if(keyStatus.textContent!==help)keyStatus.textContent=help;
+    const keyStatus=document.getElementById('adventure-key-status'),resource=nearNode(),door=nearbyShopDoor(),local=WORLDS[profile.map].npcs.find(n=>n.id!==profile.friendship.companion&&Math.abs(player.x+25-n.x)<130&&Math.abs(player.y+player.h-FLOOR)<100),nearFriend=profile.friendship.companion&&Math.abs(player.x-friend.x)<100?friendById(profile.friendship.companion):null;const help=paused?'Enter · continue':profile.activeActivity?'Mini is taking a little break':gathering?'Gathering…':closePortal?'↑ · enter portal':door?`Enter · ${door.name}`:local?`Enter · talk to ${local.name}`:nearFriend?`Enter · talk to ${nearFriend.name}`:resource?`G · ${RESOURCES[resource.resource].action}`:'← → · move | Space · jump';if(keyStatus.textContent!==help)keyStatus.textContent=help;
     const target=Math.max(0,Math.min(WORLD-canvas.width,player.x-canvas.width*.4));camera+=(target-camera)*Math.min(1,dt*9);draw(now);
     if (!mapPanel.hidden) {
       document.getElementById('adventure-map-marker').setAttribute('transform',`translate(${Math.round(player.x)} 55)`);

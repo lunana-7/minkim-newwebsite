@@ -1,12 +1,15 @@
 import { DEFAULT_PET, normalizePet } from './min-pets.js';
+import { normalizePetCare } from './min-pet-care.js';
 import { DEFAULT_EFFECT, normalizeEffect } from './min-effects.js';
 import { newJobs, JOB_IDS } from './min-kitchen-data.js';
 import { RESOURCE_IDS, NODE_IDS } from './min-resource-data.js';
+import { LIBRARY_IDS } from './min-library-data.js';
+import { WORLDS } from './min-worlds.js';
 export const OUTFITS = ['classic', 'berry', 'ocean', 'meadow'];
 export const HAIRS = ['ombre', 'bob', 'twintails'];
 export const EYES = ['brown', 'hazel', 'blue'];
 export const FACES = ['soft', 'rosy', 'freckles'];
-export const HATS = ['none', 'beret', 'flower', 'crown'];
+export const HATS = ['none', 'beret', 'flower', 'crown', 'ribbon', 'strawberry', 'moon', 'wreath', 'cloud', 'pearl', 'cat'];
 export const MAPS = ['sunny', 'night', 'forest', 'farm', 'market', 'secret', 'desert'];
 export const ACTIVITIES = {
   coffee: { label: 'Drink coffee', shortLabel: 'Coffee break', reward: 10, duration: 8000, message: 'A warm cup and a little recharge.', done: 'Coffee break complete!' },
@@ -15,7 +18,8 @@ export const ACTIVITIES = {
 };
 const newFarm = () => ({ coins:100, seeds:{carrot:6,wheat:2,strawberry:2}, produce:{carrot:0,wheat:0,strawberry:0}, plots:Array(6).fill(null), harvested:0, sold:0 });
 const newGathering = () => ({ inventory:Object.fromEntries(RESOURCE_IDS.map(id=>[id,0])),cooldowns:Object.fromEntries(NODE_IDS.map(id=>[id,0])),collected:0 });
-const DEFAULT = { schemaVersion: 10, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, study: { sessions: 0, seconds: 0 }, farm:newFarm(), gathering:newGathering(), jobs:newJobs(), effect:DEFAULT_EFFECT, pet:DEFAULT_PET, updatedAt: 0 };
+const FRIEND_IDS=Object.values(WORLDS).flatMap(world=>world.npcs.map(npc=>npc.id));
+const DEFAULT = { schemaVersion: 14, outfit: 'classic', hair: 'ombre', eyes: 'brown', face: 'soft', hat: 'none', map: 'sunny', points: 0, completedActivities: { coffee: 0, tuna: 0, study: 0 }, activeActivity: null, adventure: { x: 90, collected: 0, questComplete: false }, trackedQuest:'pippin', study: { sessions: 0, seconds: 0 }, farm:newFarm(), gathering:newGathering(), jobs:newJobs(), library:{books:{}}, friendship:{affection:{},companion:null}, effect:DEFAULT_EFFECT, pet:DEFAULT_PET, petCare:normalizePetCare(), updatedAt: 0 };
 let owner = 'guest';
 let current;
 const listeners = new Set();
@@ -27,13 +31,16 @@ export function normalizeProfile(value = {}) {
   const inventory = field => Object.fromEntries(['carrot','wheat','strawberry'].map(crop=>[crop,safeNumber(f[field]?.[crop],1000000)]));
   const farm = { coins:safeNumber(f.coins),seeds:inventory('seeds'),produce:inventory('produce'),harvested:safeNumber(f.harvested),sold:safeNumber(f.sold),plots:Array.from({length:6},(_,index)=>{const plot=f.plots?.[index];return plot&&['carrot','wheat','strawberry'].includes(plot.crop)&&Number.isFinite(plot.plantedAt)&&plot.plantedAt>=0?{crop:plot.crop,plantedAt:Math.floor(plot.plantedAt),watered:plot.watered===true}:null;}) };
   const j=value?.jobs||newJobs(), a=j.active;
-  const active=a&&JOB_IDS.includes(a.job)?{job:a.job,stage:safeNumber(a.stage,4),base:safeNumber(a.base,2),flavor:safeNumber(a.flavor,2),topping:safeNumber(a.topping,2),mix:safeNumber(a.mix,6),decor:safeNumber(a.decor,3),temperature:Number.isFinite(a.temperature)?Math.round(Math.max(a.job==='icecream'?-14:150,Math.min(a.job==='icecream'?4:200,a.temperature))):(a.job==='icecream'?-2:160),startedAt:safeNumber(a.startedAt,9000000000000),quality:safeNumber(a.quality,100)}:null;
+  const active=a&&JOB_IDS.includes(a.job)?{job:a.job,stage:safeNumber(a.stage,4),base:safeNumber(a.base,2),flavor:safeNumber(a.flavor,2),topping:safeNumber(a.topping,2),prep:safeNumber(a.prep,3),mix:safeNumber(a.mix,6),decor:safeNumber(a.decor,3),temperature:Number.isFinite(a.temperature)?Math.round(Math.max(a.job==='icecream'?-14:150,Math.min(a.job==='icecream'?4:200,a.temperature))):(a.job==='icecream'?-2:160),startedAt:safeNumber(a.startedAt,9000000000000),quality:safeNumber(a.quality,100)}:null;
   const jobs={...Object.fromEntries(JOB_IDS.map(id=>[id,{hired:j[id]?.hired===true,completed:safeNumber(j[id]?.completed),xp:safeNumber(j[id]?.xp),best:safeNumber(j[id]?.best,100)}])),active};
   return {
     ...DEFAULT,
     jobs,
+    library:{books:Object.fromEntries(LIBRARY_IDS.map(id=>{const item=value?.library?.books?.[id]||{};return[id,{status:['to-read','reading','read'].includes(item.status)?item.status:'to-read',favorite:item.favorite===true}];}))},
+    friendship:{affection:Object.fromEntries(FRIEND_IDS.map(id=>[id,safeNumber(value?.friendship?.affection?.[id],100)])),companion:FRIEND_IDS.includes(value?.friendship?.companion)&&safeNumber(value?.friendship?.affection?.[value.friendship.companion],100)>0?value.friendship.companion:null},
     effect:normalizeEffect(value?.effect),
     pet:normalizePet(value?.pet),
+    petCare:normalizePetCare(value?.petCare),
     outfit: OUTFITS.includes(value?.outfit) ? value.outfit : 'classic',
     hair: HAIRS.includes(value?.hair) ? value.hair : 'ombre',
     eyes: EYES.includes(value?.eyes) ? value.eyes : 'brown',
@@ -45,6 +52,7 @@ export function normalizeProfile(value = {}) {
     activeActivity: activity && ACTIVITIES[activity.kind] && typeof activity.id === 'string' && Number.isFinite(activity.startedAt) && Number.isFinite(activity.endsAt) && activity.endsAt - activity.startedAt === ACTIVITIES[activity.kind].duration
       ? { id: activity.id.slice(0, 100), kind: activity.kind, startedAt: activity.startedAt, endsAt: activity.endsAt } : null,
     adventure: { x: Math.max(36, Math.min(3560, safeNumber(value?.adventure?.x ?? 90, 3560))), collected: safeNumber(value?.adventure?.collected, 65535), questComplete: value?.adventure?.questComplete === true },
+    trackedQuest: ['pippin','star-trail','gatherer','harvester','dessert-maker'].includes(value?.trackedQuest) ? value.trackedQuest : 'pippin',
     farm,
     gathering:{inventory:Object.fromEntries(RESOURCE_IDS.map(id=>[id,safeNumber(value?.gathering?.inventory?.[id],1000000)])),cooldowns:Object.fromEntries(NODE_IDS.map(id=>[id,safeNumber(value?.gathering?.cooldowns?.[id],9000000000000)])),collected:safeNumber(value?.gathering?.collected)},
     study: { sessions: safeNumber(value?.study?.sessions), seconds: safeNumber(value?.study?.seconds) },

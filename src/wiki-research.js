@@ -11,9 +11,26 @@ const telemetry = { name: 'OpenTelemetry observability primer', url: 'https://op
 const telemetrySignals = { name: 'OpenTelemetry signals', url: 'https://opentelemetry.io/docs/concepts/signals/' };
 const telemetryLogs = { name: 'OpenTelemetry logs', url: 'https://opentelemetry.io/docs/concepts/signals/logs/' };
 const genAiAttributes = { name: 'OpenTelemetry GenAI attributes', url: 'https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/' };
+const otelOverview = { name: 'OpenTelemetry: What is OpenTelemetry?', url: 'https://opentelemetry.io/docs/what-is-opentelemetry/' };
+const otelCollector = { name: 'OpenTelemetry: Collector', url: 'https://opentelemetry.io/docs/collector/' };
+const otelPropagation = { name: 'OpenTelemetry: Context propagation', url: 'https://opentelemetry.io/docs/concepts/context-propagation/' };
+const snowflakeSemantics = { name: 'Snowflake: Common AI Pitfalls in Financial Services and How to Fix Them', url: 'https://www.snowflake.com/en/blog/semantic-layer-ai-risk-finance/' };
+const ossie = { name: 'Apache Ossie (incubating)', url: 'https://ossie.apache.org/' };
+const fibo = { name: 'EDM Association: FIBO', url: 'https://edmcouncil.org/frameworks/industry-models/fibo/' };
 const note = (title, text, source) => ({ title, text, source });
 
 export const wikiResearch = {
+  'open-telemetry': [
+    note('Know what OTel provides', 'OpenTelemetry is a toolkit and specification for generating, collecting and exporting telemetry. It does not itself provide the backend that stores traces or the dashboard used to analyze them. Select a compatible backend separately.', otelOverview),
+    note('Place the Collector deliberately', 'The Collector can receive, process and export telemetry. A pipeline can centralize routing and filtering, but its configuration determines which signals reach the backend. Review that pipeline when investigating a missing span or log.', otelCollector),
+    note('Carry context across boundaries', 'Trace and span identifiers are propagated so services can create related spans for one request. For agent workflows, also carrying an application-level run identifier is a design choice that helps connect technical traces to a task record. Treat incoming trace context and outgoing baggage as data crossing a trust boundary.', otelPropagation),
+    note('Minimize generative-AI content', 'OpenTelemetry generative-AI conventions include attributes for model operations and may describe sensitive prompt or response content. Decide which attributes are enabled, redacted, sampled and retained before collecting them; operational timing and outcomes may be useful without storing raw content.', genAiAttributes),
+  ],
+  'semantic-interoperability': [
+    note('Separate exchange from agreement', 'The supplied Snowflake article distinguishes moving semantic models between platforms from agreeing on the business meaning of each term. Its “position” example illustrates why the same label can produce different results when settlement and timing rules differ. Treat this as an industry perspective and verify each local definition.', snowflakeSemantics),
+    note('Recognize the current project name', 'Apache Ossie is the current name of the project formerly known as Open Semantic Interchange (OSI). It develops a vendor-neutral specification for exchanging semantic models across analytics, AI and BI tools. Exchange does not by itself resolve competing business definitions.', ossie),
+    note('Use a domain vocabulary deliberately', 'The EDM Association describes FIBO as a formal, machine-readable model of financial concepts and relationships. It can provide a reference for mapping, but a team still has to document how its local fields and calculations correspond to those concepts.', fibo),
+  ],
   'ai-governance': [
     note('Make ownership operational', 'NIST AI RMF Govern 1.5 addresses ongoing monitoring and periodic review with defined roles, while Govern 1.6 addresses inventory mechanisms. Link a system record to a reachable owner, the last review decision and the event that will trigger reassessment; a list of names alone does not show that oversight works.', aiRmf),
     note('Review the whole use case', 'The AI RMF Map function asks teams to document intended scope, benefits, costs and human oversight. A model update, new population or new downstream action can change risk even if the interface looks the same. Record those changes against the approved use rather than assuming an old decision covers them.', aiRmf),

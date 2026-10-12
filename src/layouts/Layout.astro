@@ -7,7 +7,7 @@ import '../world-theme.css';
 interface Props {
   title?: string;
   description?: string;
-  activeNav?: 'home' | 'blog' | 'wiki' | 'projects' | 'work' | 'about' | 'game' | 'alignment-world' | 'support' | 'language' | 'room';
+  activeNav?: 'home' | 'pet' | 'blog' | 'wiki' | 'library' | 'projects' | 'work' | 'about' | 'game' | 'mini-world' | 'alignment-world' | 'support' | 'language' | 'room';
   currentPostTitle?: string;
   headings?: { depth: number; slug: string; text: string }[];
 }
@@ -19,7 +19,7 @@ const {
   currentPostTitle,
   headings = []
 } = Astro.props;
-const worldPlaces = { home: 'Maple Meadow', blog: 'Blog', wiki: 'Wiki', projects:'Work world', work: 'Project archive', about: 'Min’s cottage', game: 'Mini’s meadow', 'alignment-world': 'Alignment World', support: 'Coffee corner', language:'Language World', room:'Mini’s Room' };
+const worldPlaces = { home: 'Maple Meadow', pet: 'Pet Garden', blog: 'Blog', wiki: 'Wiki', library:'Cloudwood Library', projects:'Work world', work: 'Project archive', about: 'Min’s cottage', game: 'Game collection', 'mini-world': 'Mini World', 'alignment-world': 'Alignment World', support: 'Coffee corner', language:'Language World', room:'Mini’s Room' };
 const worldPlace = worldPlaces[activeNav];
 const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.origin).href;
 ---
@@ -64,7 +64,7 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
     })();
   </script>
 </head>
-<body class:list={{'is-game-page':activeNav==='game'}}>
+<body class:list={{'is-game-page':['game','mini-world'].includes(activeNav)}}>
   <div class="world-scenery" aria-hidden="true"><span class="world-landscape world-landscape-day"></span><span class="world-landscape world-landscape-night"></span><span class="world-ground"></span></div>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class:list={["page-container", { "has-toc": headings.length > 0 }]}>
@@ -83,7 +83,7 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
         <p class="world-nav-caption">CHOOSE A PATH</p>
         <nav aria-label="Main Navigation">
           <ul class="nav-links">
-            <li><a href="/" aria-current={activeNav === 'home' ? 'page' : undefined} class={`nav-link ${['home','room'].includes(activeNav) ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⌂</span>Home</a><ul class="game-subnav"><li><a href="/room" class:list={['nav-link',{active:activeNav==='room'}]} aria-current={activeNav==='room'?'page':undefined}><span aria-hidden="true">♡</span>Mini’s Room</a></li></ul></li>
+            <li><a href="/" aria-current={activeNav === 'home' ? 'page' : undefined} class={`nav-link ${['home','room','pet'].includes(activeNav) ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⌂</span>Home</a><ul class="game-subnav"><li><a href="/room" class:list={['nav-link',{active:activeNav==='room'}]} aria-current={activeNav==='room'?'page':undefined}><span aria-hidden="true">♡</span>Mini’s Room</a></li><li><a href="/pet" class:list={['nav-link',{active:activeNav==='pet'}]} aria-current={activeNav==='pet'?'page':undefined}><span aria-hidden="true">✿</span>Pet Garden</a></li></ul></li>
             <li>
               <a href="/blog" aria-current={activeNav === 'blog' ? 'page' : undefined} class={`nav-link ${activeNav === 'blog' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">▤</span>Blog</a>
               {currentPostTitle && (
@@ -97,9 +97,10 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
               )}
             </li>
             <li><a href="/wiki" aria-current={activeNav === 'wiki' ? 'page' : undefined} class={`nav-link ${activeNav === 'wiki' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">▥</span>Wiki</a></li>
+            <li><a href="/library" aria-current={activeNav === 'library' ? 'page' : undefined} class={`nav-link ${activeNav === 'library' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">▤</span>Library</a></li>
             <li><a href="/projects" aria-current={activeNav === 'projects' ? 'page' : undefined} class={`nav-link ${activeNav === 'projects' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">⚑</span>Projects</a></li>
             <li><a href="/about" aria-current={activeNav === 'about' ? 'page' : undefined} class={`nav-link ${activeNav === 'about' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">♡</span>About</a></li>
-            <li><a href="/game" aria-current={activeNav === 'game' ? 'page' : undefined} class={`nav-link ${['game','language','alignment-world'].includes(activeNav) ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">✦</span>Game</a><ul class="game-subnav"><li><a href="/language" class:list={['nav-link',{active:activeNav==='language'}]} aria-current={activeNav==='language'?'page':undefined}><span aria-hidden="true">▧</span>Language World</a></li><li><a href="/alignment-world" aria-current={activeNav === 'alignment-world' ? 'page' : undefined} class={`nav-link ${activeNav === 'alignment-world' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">◈</span>Alignment World</a></li></ul></li>
+            <li><a href="/game" aria-current={activeNav === 'game' ? 'page' : undefined} class={`nav-link ${['game','mini-world','language','alignment-world'].includes(activeNav) ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">✦</span>Game</a><ul class="game-subnav"><li><a href="/game/mini-world" class:list={['nav-link',{active:activeNav==='mini-world'}]} aria-current={activeNav==='mini-world'?'page':undefined}><span aria-hidden="true">☀</span>Mini World</a></li><li><a href="/language" class:list={['nav-link',{active:activeNav==='language'}]} aria-current={activeNav==='language'?'page':undefined}><span aria-hidden="true">▧</span>Language World</a></li><li><a href="/alignment-world" aria-current={activeNav === 'alignment-world' ? 'page' : undefined} class={`nav-link ${activeNav === 'alignment-world' ? 'active' : ''}`}><span class="nav-pixel" aria-hidden="true">◈</span>Alignment World</a></li></ul></li>
             <li><a href="/support" aria-current={activeNav === 'support' ? 'page' : undefined} class={`nav-link ${activeNav === 'support' ? 'active' : ''}`}><img class="support-nav-cup" src="/mini/thumbnails/prop-coffee.png" width="24" height="24" alt=""/>Support</a></li>
           </ul>
         </nav>
@@ -107,7 +108,7 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
 
       <!-- Action dock at bottom of sidebar -->
       <div class="sidebar-actions">
-        <a class="world-invite" href="/game"><img src="/mini/thumbnails/prop-coffee.png" alt="" width="40" height="40" /><span>A little break?<small>Visit Mini →</small></span></a>
+        <a class="world-invite" href="/game/mini-world"><img src="/mini/thumbnails/prop-coffee.png" alt="" width="40" height="40" /><span>A little break?<small>Visit Mini →</small></span></a>
         <div class="actions-row">
           <!-- Search Trigger (⌘K) -->
           <button id="search-trigger" class="icon-btn" type="button" aria-label="Search" title="Search Blog and Wiki (⌘K)">
@@ -190,6 +191,8 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
   </div>
 
   <script>
+    import { searchContent, searchSnippet } from '../lib/content-search.js';
+    import '../lib/site-interactions.js';
     // Theme toggle
     const root = document.documentElement;
     const themeToggle = document.getElementById('theme-toggle');
@@ -251,7 +254,7 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
     let searchData = [];
     fetch('/api/search.json')
       .then(res => res.json())
-      .then(data => { searchData = data; })
+      .then(data => { searchData = data; if (searchInput?.value) searchInput.dispatchEvent(new Event('input')); })
       .catch(() => {});
 
     searchInput?.addEventListener('input', (e) => {
@@ -260,11 +263,7 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
         searchResults.innerHTML = '<li class="search-empty">Search Blog posts and Wiki definitions...</li>';
         return;
       }
-      const matches = searchData.filter(item =>
-        item.title.toLowerCase().includes(q) ||
-        item.excerpt.toLowerCase().includes(q) ||
-        item.tags.some(t => t.toLowerCase().includes(q))
-      );
+      const matches = searchContent(searchData, q).slice(0, 20);
       searchResults.replaceChildren();
       if (matches.length === 0) {
         const empty = document.createElement('li'); empty.className = 'search-empty';
@@ -274,7 +273,7 @@ const socialImage = new URL('/social/mins-world.png', Astro.site || Astro.url.or
         const row = document.createElement('li');
         const link = document.createElement('a'); link.className = 'search-item-link'; link.href = item.url;
         const title = document.createElement('span'); title.className = 'search-item-title'; title.textContent = item.title;
-        const excerpt = document.createElement('span'); excerpt.className = 'search-item-excerpt'; excerpt.textContent = `${item.type} · ${item.excerpt}`;
+        const excerpt = document.createElement('span'); excerpt.className = 'search-item-excerpt'; excerpt.textContent = `${item.type} · ${searchSnippet(item, q)}`;
         link.append(title, excerpt); row.append(link); searchResults.append(row);
       });
     });

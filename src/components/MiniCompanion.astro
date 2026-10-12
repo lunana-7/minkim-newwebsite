@@ -5,6 +5,7 @@ import { EMOTES } from '../lib/min-emotes.js';
 <div class="pixel-walker-track">
   <div class="pixel-walker" id="mini-walker">
     <button class="min-companion-trigger" id="min-companion-trigger" type="button" aria-label="Open Min’s activities" aria-expanded="false" aria-controls="min-companion-menu"><MiniAvatar /><span class="min-companion-hint">Click or pick me up</span></button>
+    <button class="min-walker-pet" id="min-walker-pet" type="button" aria-label="Mini’s pet" hidden><canvas width="64" height="80" aria-hidden="true"></canvas><span class="min-walker-pet-speech" role="status" aria-live="polite"></span></button>
     <span class="min-reward-bubble" id="min-reward-bubble" aria-live="polite"></span>
   </div>
 </div>
@@ -22,7 +23,7 @@ import { EMOTES } from '../lib/min-emotes.js';
     <button type="button" data-min-activity="study"><span aria-hidden="true">📖</span><span>Study together<small>15 seconds · +25 points</small></span><span aria-hidden="true">↗</span></button>
   </div>
   <div class="min-activity-progress" id="min-activity-progress" hidden><progress id="min-activity-meter" max="100" value="0" aria-label="Activity progress"></progress><span id="min-activity-countdown"></span></div>
-  <a class="min-wardrobe-link" href="/game">Style Min & explore the game →</a>
+  <a class="min-wardrobe-link" href="/game/mini-world">Style Min & explore the game →</a>
   <small class="min-save-caption" id="min-save-caption">Look & progress saved on this device</small>
 </section>
 <script>

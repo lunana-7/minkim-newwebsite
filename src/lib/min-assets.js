@@ -6,10 +6,19 @@ export const MINI_OPTIONS = {
   hair:[{id:'ombre',name:'Original long ombre',image:`${looks}/ombre-classic.png?v=rig-2-final`},{id:'bob',name:'Chestnut bob',image:`${looks}/bob-classic.png?v=rig-2-final`},{id:'twintails',name:'Twin ribbons',image:`${looks}/twintails-classic.png?v=rig-2-final`}],
   eyes:[{id:'brown',name:'Original brown',image:'/favicon-mini.png?v=rig-2-final'},{id:'hazel',name:'Hazel',image:'/favicon-mini.png?v=rig-2-final'},{id:'blue',name:'Blue',image:'/favicon-mini.png?v=rig-2-final'}],
   face:[{id:'soft',name:'Original smile',image:'/favicon-mini.png?v=rig-2-final'},{id:'rosy',name:'Rosy cheeks',image:'/favicon-mini.png?v=rig-2-final'},{id:'freckles',name:'Freckles',image:'/favicon-mini.png?v=rig-2-final'}],
-  hat:[{id:'none',name:'None',image:null},{id:'beret',name:'Berry beret',image:`${root}/hat-beret.png?v=parts-3`},{id:'flower',name:'Flower clip',image:`${root}/hat-flower.png?v=parts-3`},{id:'crown',name:'Star crown',image:`${root}/hat-crown.png?v=parts-3`}],
+  hat:[
+    {id:'none',name:'None',image:null},
+    {id:'beret',name:'Berry beret',image:`${root}/hat-beret.png?v=parts-3`},
+    {id:'flower',name:'Flower clip',image:`${root}/hat-flower.png?v=parts-3`},
+    {id:'crown',name:'Star crown',image:`${root}/hat-crown.png?v=parts-3`},
+    ...[
+      ['ribbon','Berry ribbon'],['strawberry','Strawberry pin'],['moon','Moon tiara'],
+      ['wreath','Flower wreath'],['cloud','Cloud cap'],['pearl','Pearl clip'],['cat','Kitty ears'],
+    ].map(([id,name])=>({id,name,image:`${root}/hat-${id}.svg?v=headwear-1`})),
+  ],
 };
 export function miniLayerPaths(profile) {
-  return {skin:`${looks}/${profile.hair}-${profile.outfit}.png?v=rig-2-final`,hat:profile.hat==='none'?null:`${root}/hat-${profile.hat}.png?v=parts-3`,studyProp:`${root}/prop-study.png?v=parts-3`,coffeeProp:`${root}/prop-coffee.png?v=parts-3`,prop:profile.activeActivity?`${root}/prop-${profile.activeActivity.kind}.png?v=parts-3`:null};
+  return {skin:`${looks}/${profile.hair}-${profile.outfit}.png?v=rig-2-final`,hat:MINI_OPTIONS.hat.find(option=>option.id===profile.hat)?.image||null,studyProp:`${root}/prop-study.png?v=parts-3`,coffeeProp:`${root}/prop-coffee.png?v=parts-3`,prop:profile.activeActivity?`${root}/prop-${profile.activeActivity.kind}.png?v=parts-3`:null};
 }
 
 export function miniWalkPaths(profile){return Array.from({length:6},(_,frame)=>`/mini/walk-cycles/${profile.hair}-${profile.outfit}-${frame}.png?v=full-walk-3`);}

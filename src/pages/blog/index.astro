@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import ContentSearch from '../../components/ContentSearch.astro';
 import { renderBanner } from '../../banners.js';
 
 const posts = await getCollection('blog');
@@ -25,6 +26,7 @@ function formatDate(dateStr: string) {
 <Layout title="Blog | Min Kim" activeNav="blog">
   <div>
     <header class="blog-intro"><span class="case-study-kicker">Notes from Min’s World</span><h1 class="page-title">Blog</h1><p class="page-lead">Thoughts on AI governance, agent identity, and making things with care.</p></header>
+    <ContentSearch initialType="Blog" />
     <!-- Tag Filters Bar -->
     <div class="filter-bar">
       {allTags.map(tag => (

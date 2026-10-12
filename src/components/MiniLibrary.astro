@@ -1,0 +1,21 @@
+---
+import { LIBRARY_BOOKS } from '../lib/min-library-data.js';
+import MiniAvatar from './MiniAvatar.astro';
+const { inGame = false } = Astro.props;
+---
+<section id="mini-library" class="mini-library" hidden={inGame} aria-labelledby="library-title">
+  <header class="library-heading"><div><span class="game-kicker">CLOUDWOOD FOREST · READING ROOM</span><h2 id="library-title" tabindex="-1">Cloudwood Library</h2><p>Meet a reader, pick a book, and keep your own reading shelf.</p></div><span class="library-heading-mark" aria-hidden="true">▤</span></header>
+  <div class="library-stage" role="group" aria-label="Pixel-art forest library with moving readers">
+    <div class="library-mini" aria-label="Mini exploring the library"><MiniAvatar variant="library"/><span>Mini</span></div>
+    <button type="button" class="library-npc library-npc-sage" data-library-npc="sage" aria-label="Talk to Sage the librarian"><img src="/mini/npcs/sage.webp" alt=""/><span>Sage · librarian</span></button>
+    <button type="button" class="library-npc library-npc-moss" data-library-npc="moss" aria-label="Talk to Moss the reader"><img src="/mini/npcs/moss.webp" alt=""/><span>Moss · reading</span></button>
+    <button type="button" class="library-npc library-npc-fern" data-library-npc="fern" aria-label="Talk to Fern the wandering reader"><img src="/mini/npcs/fern.webp" alt=""/><span>Fern · browsing</span></button>
+    <div id="library-npc-dialog" class="library-npc-dialog" hidden><strong id="library-npc-name">Sage</strong><p id="library-npc-line"></p><button type="button" id="library-npc-next">Next →</button><button type="button" id="library-npc-dismiss" aria-label="Close conversation">×</button></div>
+  </div>
+  <div class="library-shelf-head"><div><span class="game-kicker">YOUR READING SHELF</span><h3>Books for curious minds</h3></div><p id="library-counts" aria-live="polite"></p></div>
+  <div class="library-filters" role="group" aria-label="Filter your reading shelf"><button type="button" data-library-filter="all" aria-pressed="true">All books</button><button type="button" data-library-filter="to-read" aria-pressed="false">To read</button><button type="button" data-library-filter="reading" aria-pressed="false">Reading</button><button type="button" data-library-filter="read" aria-pressed="false">Read</button><button type="button" data-library-filter="favorite" aria-pressed="false">Favorites ♡</button></div>
+  <div class="library-books">{LIBRARY_BOOKS.map(book=><article class="library-book" data-library-book={book.id}><span class="library-book-cover" aria-hidden="true">{book.cover}<small>{book.pdf ? 'PDF' : 'GUIDE'}</small></span><div class="library-book-copy"><span class="game-kicker">{book.topic} · {book.author}</span><h4>{book.title}</h4><p>{book.description}</p><div class="library-book-actions"><button type="button" data-library-open={book.id}>{book.pdf ? 'Read PDF →' : 'View official guide ↗'}</button><button type="button" data-library-favorite={book.id} aria-pressed="false" aria-label={`Add ${book.title} to favorites`}>♡</button><select data-library-status={book.id} aria-label={`Reading status for ${book.title}`}><option value="to-read">To read</option><option value="reading">Reading</option><option value="read">Read ✓</option></select></div></div></article>)}</div>
+  <div class="library-reader" id="library-reader" hidden><header><div><span class="game-kicker">OPEN BOOK · OFFICIAL PUBLICATION</span><h3 id="library-reader-title"></h3></div><button type="button" id="library-reader-close" aria-label="Close book">×</button></header><p id="library-reader-prompt"></p><div class="library-reader-actions"><a id="library-reader-source" target="_blank" rel="noopener noreferrer">Publisher / original ↗</a><a id="library-reader-download" target="_blank" rel="noopener noreferrer" hidden>Open PDF separately ↗</a><button type="button" id="library-reader-finish">Mark as read ✓</button></div><iframe id="library-pdf-frame" title="PDF book reader" loading="lazy"></iframe></div>
+  <p class="library-credit">Official documents: NIST AI RMF 1.0, NIST Generative AI Profile, and the NIST NCCoE agent identity concept paper. The OWASP agentic guide opens on its publisher’s page. Reading status and favorites save with your Mini profile.</p>
+</section>
+<script>import { initLibrary } from '../lib/min-library.js';initLibrary();</script>

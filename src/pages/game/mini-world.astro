@@ -1,18 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import MiniAvatar from '../components/MiniAvatar.astro';
-import MiniAdventure from '../components/MiniAdventure.astro';
-import { WORLDS } from '../lib/min-worlds.js';
-import { PET_TYPES, PET_COLORS, PET_ACCESSORIES } from '../lib/min-pets.js';
-import { MINI_EFFECTS, EFFECT_COLORS } from '../lib/min-effects.js';
-import { MINI_OPTIONS } from '../lib/min-assets.js';
+import Layout from '../../layouts/Layout.astro';
+import MiniAvatar from '../../components/MiniAvatar.astro';
+import MiniAdventure from '../../components/MiniAdventure.astro';
+import { WORLDS } from '../../lib/min-worlds.js';
+import { PET_TYPES, PET_COLORS, PET_ACCESSORIES } from '../../lib/min-pets.js';
+import { MINI_EFFECTS, EFFECT_COLORS } from '../../lib/min-effects.js';
+import { MINI_OPTIONS } from '../../lib/min-assets.js';
 ---
 
-<Layout title="Mini’s World — Pixel Adventure" activeNav="game" description="A cozy pixel platform adventure starring Mini. Jump, collect stars, meet Pippin, share sweet emotes, and save your character.">
+<Layout title="Mini World — Pixel Adventure" activeNav="mini-world" description="A cozy pixel platform adventure starring Mini. Jump, collect stars, meet Pippin, share sweet emotes, and save your character.">
   <div class="game-page">
     <header class="game-heading">
-      <a class="back-link" href="/">← Home</a>
-      <span class="game-kicker">MIN'S WORLD · OPEN GAME PROTOTYPE</span>
+      <a class="back-link" href="/game">← All games</a>
+      <span class="game-kicker">MINI WORLD · PIXEL ADVENTURE</span>
       <h1 class="page-title">A little world of your own</h1>
       <p class="page-lead">Explore seven cozy worlds, meet the locals, grow your own farm, trade your harvest, and take a sweet job at the ice cream shop or bakery.</p>
     </header>
@@ -86,12 +86,12 @@ import { MINI_OPTIONS } from '../lib/min-assets.js';
   </div>
 
   <script>
-    import { getProfile, updateProfile, subscribeProfile } from '../lib/min-profile.js';
-    import { getAccount, saveToCloud, signInPlayer, signOutPlayer, subscribeAccount } from '../lib/min-cloud.js';
+    import { getProfile, updateProfile, subscribeProfile } from '../../lib/min-profile.js';
+    import { getAccount, saveToCloud, signInPlayer, signOutPlayer, subscribeAccount } from '../../lib/min-cloud.js';
 
     document.getElementById('restore-original-mini').addEventListener('click', () => updateProfile({ outfit:'classic', hair:'ombre', eyes:'brown', face:'soft', hat:'none' }));
-    import { petName } from '../lib/min-pets.js';
-    import { initPetPortrait } from '../lib/min-pet-portrait.js';
+    import { petName } from '../../lib/min-pets.js';
+    import { initPetPortrait } from '../../lib/min-pet-portrait.js';
     initPetPortrait();
     document.getElementById('mini-walk-preview').addEventListener('click',event=>{const b=event.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=`Walking preview · ${on?'On':'Off'}`;document.querySelector('.min-appearance-game').dataset.controlledPose=on?'walk':'idle';});
     function changePet(patch){updateProfile({pet:{...getProfile().pet,...patch}});}

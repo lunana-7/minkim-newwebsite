@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ContentSearch from '../../components/ContentSearch.astro';
 import { wikiDepth } from '../../wiki-depth.js';
 import { wikiResearch } from '../../wiki-research.js';
 import { wikiEntries } from '../../wiki.js';
@@ -10,18 +11,19 @@ const alphabet = [...new Set(wikiEntries.map(entry => entry.title[0]))].sort();
 const sorted = [...wikiEntries].sort((a,b) => a.title.localeCompare(b.title));
 const topicId = name => name.toLowerCase().replace(/[^a-z]+/g,'-').replace(/-$/,'');
 const paths = [
-  {title:'Start with governance',description:'Purpose, ownership and delegated action.',slugs:['ai-governance','agentic-ai-governance','agent-inventory','delegated-authority']},
+  {title:'Start with governance',description:'Purpose, data meaning, ownership and delegated action.',slugs:['ai-governance','semantic-interoperability','agentic-ai-governance','agent-inventory','delegated-authority']},
   {title:'Understand an access decision',description:'Identity, current facts, policy and enforcement.',slugs:['authentication','authorization','policy-information-point','policy-decision-point','policy-enforcement-point']},
-  {title:'Operate and improve',description:'Find failures, retain evidence and respond.',slugs:['prompt-injection','evaluations-and-red-teaming','telemetry','observability','audit-trail','incident-response']},
+  {title:'Operate and improve',description:'Find failures, retain evidence and respond.',slugs:['prompt-injection','evaluations-and-red-teaming','open-telemetry','telemetry','observability','audit-trail','incident-response']},
 ];
 ---
 <Layout title="Wiki | Min Kim" activeNav="wiki" description="A structured reference to agentic AI governance: identity, authorization, runtime controls, security, oversight and operations.">
   <header class="wiki-intro"><span class="case-study-kicker">MIN’S GOVERNANCE REFERENCE</span><h1 class="page-title">Wiki</h1><p class="page-lead">A practical encyclopedia of agentic AI governance. Browse a subject, look up a term, or follow a learning path.</p><p class="wiki-editor-note">{wikiEntries.length} articles · {topics.length} subjects · Updated <time datetime="2026-10-12">October 12, 2026</time>. Source-based definitions and editorial working definitions are identified on each article. Examples are illustrative.</p></header>
+  <ContentSearch initialType="Wiki" />
   <nav class="wiki-portal-nav" aria-label="Wiki sections"><a href="#subjects">Subjects</a><a href="#learning-paths">Learning paths</a><a href="#wiki-library">Article directory</a><a href="#term-index">A–Z index</a></nav>
   <section id="subjects" class="wiki-subjects" aria-labelledby="subjects-title"><h2 id="subjects-title">Browse by subject</h2><div>{topics.map(category=><a href={`#category-${topicId(category)}`}><strong>{category}</strong><span>{wikiEntries.filter(entry=>entry.category===category).length} {wikiEntries.filter(entry=>entry.category===category).length===1?'article':'articles'} →</span></a>)}</div></section>
   <section id="learning-paths" class="wiki-learning-paths" aria-labelledby="paths-title"><h2 id="paths-title">Learning paths</h2><div>{paths.map(path=><section><h3>{path.title}</h3><p>{path.description}</p><ol>{path.slugs.map(slug=><li><a href={`/wiki/${slug}`}>{wikiEntries.find(entry=>entry.slug===slug).title}</a></li>)}</ol></section>)}</div></section>
 
-  <section class="wiki-library" id="wiki-library" aria-labelledby="wiki-library-title"><div class="wiki-library-heading"><h2 id="wiki-library-title">Article directory</h2><span id="wiki-result-count" role="status">{wikiEntries.length} concepts</span></div><label class="wiki-search-label" for="wiki-search">Search terms and abbreviations</label><input class="wiki-search-input" id="wiki-search" type="search" placeholder="Search PDP, delegation, prompt injection, MCP…" autocomplete="off" /><div class="filter-bar wiki-filters" role="group" aria-label="Filter concepts by category">{categories.map((category,i)=><button type="button" class={`filter-btn ${i===0?'active':''}`} data-wiki-category={category} aria-pressed={i===0?'true':'false'}>{category}</button>)}</div>
+  <section class="wiki-library" id="wiki-library" aria-labelledby="wiki-library-title"><div class="wiki-library-heading"><h2 id="wiki-library-title">Article directory</h2><span id="wiki-result-count" role="status">{wikiEntries.length} concepts</span></div><label class="wiki-search-label" for="wiki-search">Filter this directory</label><input class="wiki-search-input" id="wiki-search" type="search" placeholder="Narrow the concepts shown below…" autocomplete="off" /><div class="filter-bar wiki-filters" role="group" aria-label="Filter concepts by category">{categories.map((category,i)=><button type="button" class={`filter-btn ${i===0?'active':''}`} data-wiki-category={category} aria-pressed={i===0?'true':'false'}>{category}</button>)}</div>
     {topics.map(category=><section class="wiki-category-section" id={`category-${topicId(category)}`} data-wiki-group><h3>{category}</h3><div class="wiki-directory-list">{sorted.filter(entry=>entry.category===category).map(entry=><a class="wiki-directory-entry" href={`/wiki/${entry.slug}`} data-wiki-entry data-category={entry.category} data-search={`${entry.title} ${entry.category} ${entry.summary} ${entry.definition} ${Object.values(wikiDepth[entry.slug]).flat().join(' ')} ${(wikiResearch[entry.slug]||[]).map(note=>`${note.title} ${note.text}`).join(' ')} ${(entry.aliases||[]).join(' ')} ${entry.slug==='policy-information-point'?'PIP attributes':''}`.toLowerCase()}><span class="wiki-glyph" aria-hidden="true">{entry.glyph}</span><div><h4>{entry.title}</h4><p>{entry.summary}</p></div><span aria-hidden="true">→</span></a>)}</div></section>)}
     <p id="wiki-empty" class="wiki-empty" hidden>No concepts match. Try a full term or abbreviation.</p>
   </section>

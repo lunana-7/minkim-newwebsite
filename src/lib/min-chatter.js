@@ -3,7 +3,8 @@ import { getEmote } from './min-emotes.js';
 
 const greetings=["I’m glad you’re here! ♡","A little adventure is better with you.","You make this little world brighter.","Take your time. I’ll walk with you.","A tiny break? You’ve earned one.","There’s always something lovely to discover."];
 const routeLines={
-  '/game':["Let’s take the scenic route!","A pocketful of stars, and a friend to meet."],
+  '/game':["Which little world shall we visit today?","Pick a path and let’s play!"],
+  '/game/mini-world':["Let’s take the scenic route!","A pocketful of stars, and a friend to meet."],
   '/language':["One new word is a little win!","Let’s learn a little together."],
   '/wiki':["One little idea at a time.","Curiosity looks good on you!"],
   '/blog':["I’m happy you’re reading with me.","A cozy corner for a new idea."],

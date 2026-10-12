@@ -1,5 +1,5 @@
 // Compact activity windows and dialogue float inside the visible field.
-const panels={cafe:['mini-cafe','Maple Cup Café','cafe-title'],farm:['mini-farm-panel','Mini’s Farm','farm-title'],market:['mini-market-panel','Berry Market','market-title'],kitchen:['mini-kitchen','Sweet shop','kitchen-title'],map:['adventure-world-map','World map','adventure-map-title'],npc:['adventure-npc-dialog','Meet the locals','adventure-npc-name']};
+const panels={cafe:['mini-cafe','Maple Cup Café','cafe-title'],farm:['mini-farm-panel','Mini’s Farm','farm-title'],market:['mini-market-panel','Berry Market','market-title'],kitchen:['mini-kitchen','Sweet shop','kitchen-title'],library:['mini-library','Cloudwood Library','library-title'],map:['adventure-world-map','World map','adventure-map-title'],npc:['adventure-npc-dialog','Meet the locals','adventure-npc-name']};
 let initialized=false,active=null,opener=null;
 const screen=()=>document.getElementById('mini-interaction-screen');
 export const currentInteraction=()=>active;

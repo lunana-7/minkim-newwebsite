@@ -1,0 +1,89 @@
+---
+const { initialType = 'All' } = Astro.props;
+---
+<section class="content-search" data-content-search data-initial-type={initialType} aria-label="Search Blog and Wiki">
+  <div class="content-search-heading"><div><span class="case-study-kicker">FIND A NOTE OR CONCEPT</span><h2>Search Blog & Wiki</h2></div><span class="content-search-hint">⌘ / Ctrl + K</span></div>
+  <label class="content-search-label">Search titles, topics, and article text
+    <input class="content-search-input" type="search" placeholder="Try agent identity, telemetry, prompt injection…" autocomplete="off" data-content-query />
+  </label>
+  <div class="content-search-types" role="group" aria-label="Search within">
+    {['All','Blog','Wiki'].map(type=><button type="button" data-content-type={type} aria-pressed={type===initialType}>{type==='All'?'All results':type}</button>)}
+  </div>
+  <p class="content-search-status" role="status" aria-live="polite" data-content-status>Type a word or phrase to search this site.</p>
+  <ul class="content-search-results" data-content-results hidden></ul>
+</section>
+
+<style>
+  .content-search{margin:1.5rem 0 2rem;padding:clamp(1rem,3vw,1.5rem);background:var(--world-panel);border:1px solid var(--border);border-radius:1.25rem;box-shadow:0 3px 0 var(--world-shadow)}
+  .content-search-heading{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1rem}
+  .content-search-heading h2{font:500 clamp(1.4rem,3vw,1.8rem)/1.2 var(--font-pixel);margin:.4rem 0 0;color:var(--foreground)}
+  .content-search-hint{font:.75rem var(--font-pixel);color:var(--muted-foreground);white-space:nowrap}
+  .content-search-label{display:block;font:.85rem var(--font-sans);color:var(--foreground-l3)}
+  .content-search-input{display:block;width:100%;margin:.5rem 0 .75rem;padding:.8rem 1rem;border:1px solid var(--border);border-radius:.7rem;background:var(--background);color:var(--foreground);font:1rem var(--font-sans)}
+  .content-search-input:focus-visible,.content-search-types button:focus-visible,.content-search-results :global(a:focus-visible){outline:2px solid var(--accent-vermilion);outline-offset:2px}
+  .content-search-types{display:flex;flex-wrap:wrap;gap:.5rem}
+  .content-search-types button{padding:.4rem .75rem;border:1px solid var(--border);border-radius:999px;background:var(--background);color:var(--foreground-l3);font:.8rem var(--font-pixel);cursor:pointer}
+  .content-search-types button[aria-pressed="true"]{background:var(--world-green);color:var(--foreground);border-color:var(--tone-green)}
+  .content-search-status{margin:.8rem 0 0;color:var(--muted-foreground);font:.8rem var(--font-sans)}
+  .content-search-results{list-style:none;margin:.8rem 0 0;padding:0;display:grid;gap:.45rem;max-height:28rem;overflow-y:auto}
+  .content-search-results[hidden]{display:none}
+  .content-search-results :global(a){display:grid;gap:.2rem;padding:.75rem .9rem;border:1px solid var(--border);border-radius:.7rem;background:var(--background);text-decoration:none;color:var(--foreground)}
+  .content-search-results :global(a:hover){background:var(--world-green)}
+  .content-search-results :global(.content-search-result-type){color:var(--tone-green);font:.7rem var(--font-pixel)}
+  .content-search-results :global(strong){font:500 1rem var(--font-pixel)}
+  .content-search-results :global(a>span:last-child){color:var(--muted-foreground);font:.85rem/1.5 var(--font-sans)}
+  @media(max-width:38rem){.content-search-hint{display:none}}
+</style>
+
+<script>
+  import { searchContent, searchSnippet } from '../lib/content-search.js';
+
+  let indexPromise;
+  function index() {
+    indexPromise ||= fetch('/api/search.json').then(response=>{
+      if(!response.ok)throw new Error('Search unavailable');
+      return response.json();
+    }).catch(error=>{indexPromise=undefined;throw error;});
+    return indexPromise;
+  }
+  document.querySelectorAll('[data-content-search]').forEach(section=>{
+    const input=section.querySelector('[data-content-query]');
+    const status=section.querySelector('[data-content-status]');
+    const results=section.querySelector('[data-content-results]');
+    const buttons=[...section.querySelectorAll('[data-content-type]')];
+    let type=section.dataset.initialType||'All';
+    let revision=0;
+    async function render(){
+      const current=++revision,query=input.value.trim();
+      results.replaceChildren();
+      if(!query){results.hidden=true;status.textContent='Type a word or phrase to search this site.';return;}
+      status.textContent='Searching Blog and Wiki…';
+      let items;
+      try{items=await index();}catch{if(current===revision)status.textContent='Search could not load. Please try again.';return;}
+      if(current!==revision)return;
+      const matches=searchContent(items,query,type).slice(0,20);
+      status.textContent=`${matches.length}${matches.length===20?'+':''} ${matches.length===1?'result':'results'} in ${type==='All'?'Blog and Wiki':type}`;
+      results.hidden=matches.length===0;
+      if(!matches.length){status.textContent=`No ${type==='All'?'Blog or Wiki':type} results for “${query}”. Try a broader term.`;return;}
+      for(const item of matches){
+        const row=document.createElement('li');
+        const link=document.createElement('a');link.href=item.url;
+        const kind=document.createElement('span');kind.className='content-search-result-type';kind.textContent=item.type;
+        const title=document.createElement('strong');title.textContent=item.title;
+        const excerpt=document.createElement('span');excerpt.textContent=searchSnippet(item,query);
+        link.append(kind,title,excerpt);row.append(link);results.append(row);
+      }
+    }
+    input.addEventListener('focus',()=>{index().catch(()=>{});});
+    input.addEventListener('input',render);
+    input.addEventListener('keydown',event=>{
+      if(event.key==='Enter'&&results.firstElementChild){event.preventDefault();results.querySelector('a')?.click();}
+      if(event.key==='Escape'){input.value='';render();}
+    });
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      type=button.dataset.contentType;
+      buttons.forEach(choice=>choice.setAttribute('aria-pressed',String(choice===button)));
+      render();
+    }));
+  });
+</script>

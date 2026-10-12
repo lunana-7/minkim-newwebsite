@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { renderBanner } from '../banners.js';
+import '../pet-care.css';
 
 const posts = await getCollection('blog');
 const sortedPosts = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
@@ -24,6 +25,7 @@ function formatDate(dateStr: string) {
   <div class="home-world">
     <!-- Warm Editorial Bio Header -->
     <header class="home-hero">
+      <div class="home-hero-lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="home-hero-copy">
       <span class="home-world-label"><i></i> MIN'S WORLD · EST. 2026</span>
       <h1 class="page-title" style="margin-bottom: 0.4rem;">Hello, I'm Min <span class="hero-sparkle">✦</span></h1>
@@ -33,10 +35,12 @@ function formatDate(dateStr: string) {
       <p class="home-intro">
         I help firms govern AI agents safely and efficiently to create 10× business value. I write about AI strategy, governance, and the systems that make adoption work.
       </p>
-      <div class="home-actions"><a class="home-game-link" href="/game"><span aria-hidden="true">▶</span> Enter Min's World</a><a class="home-project-link" href="/projects">Explore projects →</a><a class="home-room-link" href="/room">Visit my room & guestbook ♡</a></div>
+      <div class="home-actions"><a class="home-game-link" href="/game/mini-world"><span aria-hidden="true">▶</span> Enter Mini World</a><a class="home-project-link" href="/projects">Explore projects →</a><a class="home-room-link" href="/room">Visit my room & guestbook ♡</a></div>
       </div>
       <div class="home-mascot home-planning-mascot"><button class="home-avatar-trigger" type="button" data-min-open-menu aria-label="Meet Mini and open her activities"><picture><source media="(prefers-reduced-motion: reduce)" srcset="/mini/home/planning-still.png" /><img class="home-planning-gif" src="/mini/home/planning.gif" width="384" height="384" alt="Original Mini draws ideas on a board, organizes them into a flowchart, and erases the board to begin again." fetchpriority="high" /></picture></button><span class="home-planning-caption">A little sketch. A clearer structure. A fresh start.</span></div>
     </header>
+
+    <a class="home-pet-invite" href="/pet"><img src="/game-art/items/pet-dog-cream-0.png" width="68" height="68" alt="" loading="lazy" /><span><small>A LITTLE FRIEND TO CARE FOR</small><strong>Visit the Pet Garden</strong><span>Feed, play, rest, and grow together. ♡</span></span><span class="home-pet-arrow" aria-hidden="true">→</span></a>
 
     <div class="home-section-title">
       <h2 style="font-family: var(--font-pixel); font-size: var(--step-2); font-weight: 500;">Recent Blog posts</h2>

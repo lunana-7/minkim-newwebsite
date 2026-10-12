@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const games = [
+  {
+    title: 'Mini World',
+    href: '/game/mini-world',
+    image: '/game-art/maple-meadow.webp',
+    category: 'Explore & create',
+    label: 'Pixel adventure',
+    description: 'Travel through seven cozy worlds with Mini. Meet neighbors, grow crops, gather treasures, and work in the bakery or ice cream shop.',
+    details: ['7 worlds', 'Farming & shops', 'Character styling'],
+    cta: 'Enter Mini World →',
+  },
+  {
+    title: 'Language World',
+    href: '/language',
+    image: '/language-art/word-trail.png',
+    category: 'Learn & solve',
+    label: 'Word game',
+    description: 'Follow a pixel path through Chinese and Spanish words. Practice in quick lessons, match words, review, and test out of a unit.',
+    details: ['Chinese & Spanish', 'Word matching', 'Unit challenges'],
+    cta: 'Start learning →',
+  },
+  {
+    title: 'Alignment World',
+    href: '/alignment-world',
+    image: '/game-art/alignment/technical-school.webp',
+    category: 'Learn & solve',
+    label: 'Story RPG',
+    description: 'Explore a story about AI alignment. Visit the schools and company, talk with guides, and restore six trust beacons.',
+    details: ['Story quests', 'Technical & policy', 'AI governance'],
+    cta: 'Enter the story →',
+  },
+];
+
+const groups = [
+  { title: 'Explore & create', description: 'Wander, collect, decorate, and make your own little story.' },
+  { title: 'Learn & solve', description: 'Play your way through words, ideas, and choices.' },
+];
+---
+
+<Layout title="Games | Min’s World" activeNav="game" description="Choose a pixel game in Min’s World: explore Mini World, learn languages, or play an AI alignment story.">
+  <div class="game-hub">
+    <header class="game-hub-hero">
+      <div class="game-hub-hero-copy">
+        <span class="game-kicker">MIN’S WORLD · GAME COLLECTION</span>
+        <h1>Choose your next adventure.</h1>
+        <p>Three little worlds to explore at your own pace. Pick a cozy adventure, follow a word trail, or learn through a story.</p>
+        <a href="/game/mini-world">Continue in Mini World <span aria-hidden="true">→</span></a>
+      </div>
+      <img src="/mini/rig-v2/ombre-classic.png" alt="Mini, ready for an adventure" width="192" height="192" />
+    </header>
+
+    <nav class="game-hub-categories" aria-label="Game categories">
+      {groups.map(group => <a href={`#${group.title === 'Explore & create' ? 'explore' : 'learn'}`}>{group.title} <span aria-hidden="true">↓</span></a>)}
+    </nav>
+
+    {groups.map(group => <section class="game-hub-category" id={group.title === 'Explore & create' ? 'explore' : 'learn'} aria-label={group.title}>
+      <div class="game-hub-category-heading"><div><span class="game-kicker">{group.title === 'Explore & create' ? '01 · COZY ADVENTURES' : '02 · PLAYFUL LEARNING'}</span><h2>{group.title}</h2><p>{group.description}</p></div><span aria-hidden="true">✦</span></div>
+      <div class="game-hub-grid">
+        {games.filter(game => game.category === group.title).map(game => <article class="game-hub-card">
+          <a class="game-hub-card-image" href={game.href} aria-label={`Open ${game.title}`}><img src={game.image} alt="" loading="lazy" /></a>
+          <div class="game-hub-card-copy"><span class="game-hub-card-label">{game.label}</span><h3>{game.title}</h3><p>{game.description}</p><ul aria-label="What you can do">{game.details.map(detail => <li>{detail}</li>)}</ul><a class="game-hub-card-cta" href={game.href}>{game.cta}</a></div>
+        </article>)}
+      </div>
+    </section>)}
+  </div>
+</Layout>
