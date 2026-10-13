@@ -1,4 +1,10 @@
 const clamp = value => Math.max(0, Math.min(100, Math.round(Number(value) || 0)));
+export const PET_SKILLS = {
+  sit: { name: 'Sit', cue: 'Settle down', symbol: '▣' },
+  spin: { name: 'Spin', cue: 'Turn around', symbol: '✦' },
+  paw: { name: 'High five', cue: 'A little paw', symbol: '✿' }
+};
+export const PET_LOCATIONS = ['room', 'garden', 'meadow'];
 
 export function normalizePetCare(value, now = Date.now()) {
   return {
@@ -10,6 +16,8 @@ export function normalizePetCare(value, now = Date.now()) {
     meals: Math.max(0, Math.floor(Number(value?.meals) || 0)),
     playTimes: Math.max(0, Math.floor(Number(value?.playTimes) || 0)),
     careTimes: Math.max(0, Math.floor(Number(value?.careTimes) || 0)),
+    skills: Object.fromEntries(Object.keys(PET_SKILLS).map(id => [id, Math.max(0, Math.min(3, Math.floor(Number(value?.skills?.[id]) || 0)))])),
+    location: PET_LOCATIONS.includes(value?.location) ? value.location : 'room',
     updatedAt: Number.isFinite(value?.updatedAt) && value.updatedAt > 0 ? Math.min(value.updatedAt, now) : now
   };
 }
@@ -47,7 +55,8 @@ const changes = {
   play: { hunger: -8, energy: -13, mood: 23, health: 2, bond: 10, playTimes: 1 },
   rest: { energy: 29, health: 7, mood: 5, careTimes: 1 },
   groom: { mood: 12, health: 4, bond: 11, careTimes: 1 },
-  pet: { mood: 7, bond: 5, careTimes: 1 }
+  pet: { mood: 7, bond: 5, careTimes: 1 },
+  walk: { hunger: -3, energy: -6, mood: 9, bond: 5, playTimes: 1 }
 };
 
 export function careForPet(saved, action, now = Date.now()) {
@@ -60,4 +69,22 @@ export function careForPet(saved, action, now = Date.now()) {
   for (const field of ['hunger', 'energy', 'mood', 'health', 'bond']) next[field] = clamp(care[field] + (change[field] || 0));
   for (const field of ['meals', 'playTimes', 'careTimes']) next[field] = care[field] + (change[field] || 0);
   return { care: next, message: '' };
+}
+
+export function trainPetSkill(saved, skill, now = Date.now()) {
+  const care = currentPetCare(saved, now);
+  if (!PET_SKILLS[skill]) return { care, message: '' };
+  if (care.skills[skill] >= 3) return { care, mastered: true, message: '' };
+  if (care.energy < 18) return { care, message: 'A little nap first, then we can practice again.' };
+  if (care.hunger < 18) return { care, message: 'A snack first, then we can practice again.' };
+  const next = {
+    ...care,
+    energy: clamp(care.energy - 8),
+    mood: clamp(care.mood + 5),
+    bond: clamp(care.bond + 6),
+    careTimes: care.careTimes + 1,
+    skills: { ...care.skills, [skill]: care.skills[skill] + 1 },
+    updatedAt: now
+  };
+  return { care: next, mastered: next.skills[skill] === 3, message: '' };
 }

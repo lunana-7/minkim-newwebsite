@@ -3,22 +3,28 @@ import Layout from '../layouts/Layout.astro';
 import '../pet-care.css';
 ---
 
-<Layout title="Pet Garden | Min’s World" activeNav="pet" description="Care for Mini’s pixel pet. Feed your friend, play together, watch their mood and health, and save your little story.">
+<Layout title="Pet Garden | Min’s World" activeNav="pet" description="Care for Mini’s pixel pet, explore cozy places together, and teach your friend little tricks.">
   <div class="pet-page">
-    <header class="pet-page-heading"><span class="game-kicker">MIN’S WORLD · A LITTLE COMPANION</span><h1>Pet Garden ♡</h1><p>Your friend from Mini’s World lives here too. Share a meal, toss a ball, take a nap, and watch your bond grow.</p></header>
+    <header class="pet-page-heading"><span class="game-kicker">MIN’S WORLD · A LITTLE COMPANION</span><h1>Pet Garden ♡</h1><p>Your friend from Mini’s World lives here too. Wander through cozy places, share a meal, and learn little tricks together.</p></header>
 
     <section class="pet-pick" id="pet-pick" aria-labelledby="pet-pick-title" hidden><h2 id="pet-pick-title">Who will join you?</h2><p>Choose a friend here, or style one in Mini’s World later.</p><div class="pet-pick-options"><button type="button" data-pet-choose="dog"><img src="/game-art/items/pet-dog-cream-0.png" alt="" width="96" height="96"/>Adopt a puppy</button><button type="button" data-pet-choose="cat"><img src="/game-art/items/pet-cat-cream-0.png" alt="" width="96" height="96"/>Adopt a kitten</button></div></section>
 
     <section class="pet-home" id="pet-home" aria-labelledby="pet-home-title" hidden>
       <div class="pet-home-heading"><div><span class="game-kicker">A LITTLE HOME OF THEIR OWN</span><h2 id="pet-home-title"><span id="pet-name-heading">Your friend</span><span id="pet-room-label">’s cozy corner</span></h2></div><span class="pet-day-note" id="pet-feeling">Content ♡</span></div>
+      <nav class="pet-location-nav" aria-label="Places to visit"><span>TAKE A LITTLE TRIP</span><button type="button" data-pet-location="room" aria-pressed="true">⌂ <span id="pet-room-nav-label">Cozy room</span></button><button type="button" data-pet-location="garden" aria-pressed="false">✿ Garden</button><button type="button" data-pet-location="meadow" aria-pressed="false">☀ Meadow</button></nav>
       <div class="pet-stage" id="pet-stage" data-action="idle">
         <span class="pet-stage-sun" aria-hidden="true">✦</span>
+        <img class="pet-stage-rug" src="/room-art/rug-mint.webp" alt="" width="420" height="175"/>
+        <img class="pet-stage-plant" src="/room-art/plant.png" alt="" width="110" height="122"/>
+        <img class="pet-stage-cushion" src="/room-art/cushion.png" alt="" width="125" height="114"/>
         <img class="pet-stage-bed" src="/room-art/petbed.png" alt="" width="160" height="120"/>
         <img class="pet-stage-bowl" src="/pet-art/kibble-bowl.svg" alt="" width="72" height="72"/>
         <img class="pet-stage-ball" src="/pet-art/play-ball.svg" alt="" width="70" height="70"/>
+        <span class="pet-stage-food" aria-hidden="true">✧ · ✧</span>
         <button class="pet-stage-friend" id="pet-friend" type="button" aria-label="Pet your friend"><canvas id="pet-canvas" width="200" height="220" aria-hidden="true"></canvas></button>
         <span class="pet-stage-sparkles" aria-hidden="true">✦ ✧ ♡ ✦</span>
         <span class="pet-stage-bubble" id="pet-stage-bubble" aria-hidden="true">♡</span>
+        <span class="pet-stage-tip">Tap the floor to choose where to wander</span>
       </div>
       <div class="pet-message-row"><p id="pet-message" role="status" aria-live="polite">A cozy day together.</p><a href="/game/mini-world">Style your friend in Mini World →</a></div>
 
@@ -38,8 +44,14 @@ import '../pet-care.css';
           <button type="button" data-pet-action="rest"><img src="/room-art/petbed.png" alt="" width="48" height="48"/><span><strong>Take a nap</strong><small>Rest and recover</small></span></button>
           <button type="button" data-pet-action="groom"><img src="/game-art/items/prop-flower.png" alt="" width="48" height="48"/><span><strong>Brush & care</strong><small>A gentle tidy up</small></span></button>
           <button type="button" data-pet-action="pet"><span class="pet-action-heart" aria-hidden="true">♡</span><span><strong>Give a cuddle</strong><small>Click your pet too!</small></span></button>
+          <button type="button" data-pet-action="walk"><span class="pet-action-heart" aria-hidden="true">➜</span><span><strong>Go for a walk</strong><small>Explore this little place</small></span></button>
         </div></section>
       </div>
+      <section class="pet-skills" aria-labelledby="pet-skills-title"><div class="pet-skills-heading"><div><span class="game-kicker">LITTLE TRICKS · BIG PROGRESS</span><h3 id="pet-skills-title">Teach your friend</h3></div><p>Practice three times to learn each trick. A rested, well-fed friend learns best.</p></div><div class="pet-skill-grid">
+        <button type="button" data-pet-skill="sit"><span class="pet-skill-icon" aria-hidden="true">▣</span><span><strong>Sit</strong><small>Settle down together</small><span class="pet-skill-progress" data-pet-skill-progress="sit">○ ○ ○</span></span><span class="pet-skill-cta" data-pet-skill-cta="sit">Practice →</span></button>
+        <button type="button" data-pet-skill="spin"><span class="pet-skill-icon" aria-hidden="true">✦</span><span><strong>Spin</strong><small>A happy little turn</small><span class="pet-skill-progress" data-pet-skill-progress="spin">○ ○ ○</span></span><span class="pet-skill-cta" data-pet-skill-cta="spin">Practice →</span></button>
+        <button type="button" data-pet-skill="paw"><span class="pet-skill-icon" aria-hidden="true">✿</span><span><strong>High five</strong><small>Reach out a paw</small><span class="pet-skill-progress" data-pet-skill-progress="paw">○ ○ ○</span></span><span class="pet-skill-cta" data-pet-skill-cta="paw">Practice →</span></button>
+      </div></section>
       <footer class="pet-home-footer"><span>✦ <strong id="pet-meals">0</strong> meals</span><span>● <strong id="pet-play-times">0</strong> playtimes</span><span>♡ <strong id="pet-care-times">0</strong> caring moments</span><small>Your pet’s care is saved with your player profile.</small></footer>
     </section>
   </div>
