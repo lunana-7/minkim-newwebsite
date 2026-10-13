@@ -1170,14 +1170,26 @@ body.is-learning { overflow:hidden; }
 /* The Game page is a collection; the playable adventure lives at /game/mini-world. */
 .game-hub { display:grid; gap:2rem; }
 .game-collection-back { display:inline-block; margin-bottom:.8rem; }
-.game-hub-hero { position:relative; display:flex; align-items:center; min-height:20rem; overflow:hidden; padding:clamp(1.3rem,3vw,2.5rem); border:3px solid #a5b996; border-radius:1.25rem; background:linear-gradient(110deg,#334f48e8,#536f63b3 55%,#657e7280),url('/game-art/maple-meadow.webp') center 55%/cover; box-shadow:0 6px 0 var(--world-shadow); color:#fff8e9; }
-.game-hub-hero-copy { position:relative; z-index:1; max-width:42rem; }
+.game-hub-hero { position:relative; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(19rem,.9fr); align-items:center; gap:clamp(1rem,3vw,3rem); min-height:27rem; overflow:hidden; padding:clamp(1.5rem,3vw,2.7rem); border:3px solid #a5b996; border-radius:1.25rem; background:linear-gradient(90deg,#263f3fe8 0%,#345346d2 49%,#49695154 100%),url('/game-art/maple-meadow.webp') center 55%/cover; box-shadow:0 6px 0 var(--world-shadow); color:#fff8e9; }
+.game-hub-hero-copy { position:relative; z-index:2; max-width:42rem; }
 .game-hub-hero .game-kicker { color:#d8edbf; }
-.game-hub-hero h1 { max-width:13ch; margin:.45rem 0 .7rem; font:500 clamp(2.4rem,5vw,4.2rem)/1.06 var(--font-pixel); }
+.game-hub-hero h1 { max-width:16ch; margin:.45rem 0 .7rem; font:500 clamp(2.4rem,4.7vw,4rem)/1.06 var(--font-pixel); }
 .game-hub-hero p { max-width:39rem; margin:0 0 1.2rem; font-size:clamp(.9rem,1.5vw,1.08rem); line-height:1.55; color:#fff9eb; }
 .game-hub-hero-copy>a,.game-hub-card-cta { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.65rem 1rem; border:2px solid #efd19a; border-radius:.55rem; background:#fff8e8; color:#554334; box-shadow:0 4px 0 #a57955; text-decoration:none; font:500 1rem var(--font-pixel); }
 .game-hub-hero-copy>a:hover,.game-hub-card-cta:hover { transform:translateY(-2px); box-shadow:0 6px 0 #a57955; }
-.game-hub-hero>img { position:absolute; right:3%; bottom:-1.5rem; width:clamp(10rem,22%,17rem); height:auto; image-rendering:pixelated; filter:drop-shadow(0 7px 0 #1b312d7a); }
+.game-hub-journey { position:relative; align-self:stretch; min-height:21rem; isolation:isolate; }
+.game-hub-journey::before { content:""; position:absolute; inset:10% 2% 14%; border-radius:50%; background:radial-gradient(ellipse,#e4df9f42 0%,#d5df9b1c 35%,transparent 70%); }
+.game-hub-journey-trail { position:absolute; right:-8%; bottom:7%; left:-7%; height:18%; border-top:4px dashed #f7e7b69c; border-radius:50%; transform:rotate(-5deg); filter:drop-shadow(0 2px 2px #2c382c); }
+.game-hub-journey-destination { position:absolute; z-index:2; top:12%; right:1%; padding:.45rem .6rem; border:2px solid #f5dfad; background:#314d41e0; box-shadow:3px 3px 0 #1f3529; color:#fff8dc; font:.75rem var(--font-pixel); transform:rotate(3deg); }
+.game-hub-journey-destination span { color:#ffda8e; }
+.game-hub-journey-spark { position:absolute; z-index:2; color:#fff1ba; text-shadow:0 0 9px #fff4b9; animation:game-hub-sparkle 3s steps(3,end) infinite; }
+.game-hub-journey-spark-one { top:15%; left:23%; font-size:1.3rem; }
+.game-hub-journey-spark-two { top:45%; right:11%; font-size:1rem; animation-delay:-1.2s; }
+.game-hub-journey-spark-three { bottom:20%; left:8%; font-size:1.5rem; animation-delay:-2s; }
+.game-hub-traveler { position:absolute; z-index:1; left:-22%; bottom:4%; width:clamp(17rem,27vw,23rem); height:clamp(17rem,27vw,23rem); filter:drop-shadow(0 8px 0 #1b312d80); animation:game-hub-travel 9s linear infinite; }
+.game-hub-traveler .min-appearance { width:100%; height:100%; }
+@keyframes game-hub-travel { 0% { transform:translateX(-8%) scaleX(1); } 49% { transform:translateX(31%) scaleX(1); } 50% { transform:translateX(31%) scaleX(-1); } 99% { transform:translateX(-8%) scaleX(-1); } 100% { transform:translateX(-8%) scaleX(1); } }
+@keyframes game-hub-sparkle { 0%,100% { opacity:.25; transform:scale(.7); } 50% { opacity:1; transform:scale(1.15); } }
 .game-hub-categories { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:-.4rem; }
 .game-hub-categories a { padding:.45rem .75rem; border:1px solid var(--world-shadow); border-radius:.55rem; background:var(--world-green); color:var(--foreground-l0); text-decoration:none; font:.9rem var(--font-pixel); }
 .game-hub-categories a:hover { background:var(--world-pink); }
@@ -1199,6 +1211,6 @@ body.is-learning { overflow:hidden; }
 .game-hub-card li { padding:.2rem .5rem; border:1px solid var(--world-shadow); border-radius:.35rem; background:var(--world-panel); color:var(--foreground-l3); font-size:.7rem; }
 .game-hub-card-cta { margin-top:auto; padding:.45rem .7rem; font-size:.85rem; }
 .game-hub-category:first-of-type .game-hub-card { max-width:55rem; }
-@media(max-width:700px) { .game-hub { gap:1.5rem; }.game-hub-hero { min-height:18rem; padding:1.2rem; }.game-hub-hero-copy { max-width:78%; }.game-hub-hero h1 { font-size:clamp(2rem,7vw,3rem); }.game-hub-hero p { font-size:.84rem; }.game-hub-hero>img { right:-2rem; width:10rem; opacity:.8; }.game-hub-grid { grid-template-columns:1fr; }.game-hub-card-image { height:13rem; }.game-hub-card-copy { min-height:0; } }
-@media(max-width:430px) { .game-hub-hero-copy { max-width:100%; }.game-hub-hero>img { opacity:.25; }.game-hub-hero h1 { max-width:12ch; } }
-@media(prefers-reduced-motion:reduce) { .game-hub-card { transition:none; }.game-hub-card:hover,.game-hub-card:focus-within,.game-hub-hero-copy>a:hover,.game-hub-card-cta:hover { transform:none; } }
+@media(max-width:700px) { .game-hub { gap:1.5rem; }.game-hub-hero { grid-template-columns:1fr; gap:0; padding:1.2rem; }.game-hub-hero-copy { max-width:none; }.game-hub-hero h1 { font-size:clamp(2rem,7vw,3rem); }.game-hub-hero p { font-size:.84rem; }.game-hub-journey { min-height:19rem; }.game-hub-traveler { left:12%; width:18rem; height:18rem; }.game-hub-grid { grid-template-columns:1fr; }.game-hub-card-image { height:13rem; }.game-hub-card-copy { min-height:0; } }
+@media(max-width:430px) { .game-hub-hero h1 { max-width:12ch; }.game-hub-journey { min-height:16rem; }.game-hub-traveler { left:5%; width:15rem; height:15rem; } }
+@media(prefers-reduced-motion:reduce) { .game-hub-card { transition:none; }.game-hub-card:hover,.game-hub-card:focus-within,.game-hub-hero-copy>a:hover,.game-hub-card-cta:hover { transform:none; }.game-hub-traveler,.game-hub-journey-spark { animation:none; opacity:1; }.game-hub-traveler { transform:translateX(20%); } }

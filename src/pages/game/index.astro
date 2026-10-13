@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import MiniAvatar from '../../components/MiniAvatar.astro';
 
 const games = [
   {
@@ -49,7 +50,14 @@ const groups = [
         <p>Three little worlds to explore at your own pace. Pick a cozy adventure, follow a word trail, or learn through a story.</p>
         <a href="/game/mini-world">Continue in Mini World <span aria-hidden="true">→</span></a>
       </div>
-      <img src="/mini/rig-v2/ombre-classic.png" alt="Mini, ready for an adventure" width="192" height="192" />
+      <div class="game-hub-journey" aria-hidden="true">
+        <span class="game-hub-journey-spark game-hub-journey-spark-one">✦</span>
+        <span class="game-hub-journey-spark game-hub-journey-spark-two">✦</span>
+        <span class="game-hub-journey-spark game-hub-journey-spark-three">✧</span>
+        <span class="game-hub-journey-destination">NEXT STOP <span>→</span></span>
+        <span class="game-hub-journey-trail"></span>
+        <div class="game-hub-traveler"><MiniAvatar variant="game-hub" controlledPose="walk" /></div>
+      </div>
     </header>
 
     <nav class="game-hub-categories" aria-label="Game categories">
