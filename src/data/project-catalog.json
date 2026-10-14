@@ -94,66 +94,49 @@
   "projects": [
     {
       "slug": "ax-spend-gate",
-      "title": "AX Spend Gate: Cost, Approval & Reapplication",
+      "title": "Enterprise AI Spend Approval Workflow",
       "tag": "Approval experience",
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Making AI requests easier to review, approve, reject, and resubmit by clarifying the next action at each step.",
+      "description": "Produced a prioritized review of an internal AI spending approval workflow and clearer guidance for applicants and approvers.",
       "access": "password",
-      "summary": "Making AI requests easier to review, approve, reject, and resubmit by clarifying the next action at each step.",
+      "summary": "Produced a prioritized review of an internal AI spending approval workflow and clearer guidance for applicants and approvers.",
       "period": "2026",
       "eyebrow": "KRAFTON · Approval experience",
       "sections": [
         {
-          "title": "Cost management & approval experience",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Separated personal subscriptions, organizational budgets, AI Enterprise, model APIs, and infrastructure costs, and explored ways to show usage and spending by user, organization, model, and project. The aim was to record cost, benefit, security, and scope together to reduce duplicate adoption and unnecessary spending.",
-            "Analyzed AX Spend Gate's application, approval, and rejection screens and processes for a September 2026 improvement report. The main proposals were to clarify rejection reasons and revision/resubmission paths; show approval, rejection, and additional-information messages with next steps; notify organization leaders of approval, payment completion, and status; and prioritize confusing UI elements by their impact.",
-            "Planned the report around analysis findings → priority actions → follow-up proposals, and problem → impact → action. Discussed sharing it with owners and applying changes in stages; this does not mean every proposed UI change had already shipped.",
-            "Proposed a longer-term operating record linking each AI request to its tool owner, purpose, data/risk, approval, monthly cost, benefit, and next review date, with overspend alerts, approval authority, budget attribution, and ongoing monitoring."
-          ]
-        },
-        {
-          "title": "Approval criteria & selected changes",
-          "paragraphs": [
-            "Analyzed a sample of Spend Gate approval requests, classified rejected cases by tier, and turned new criteria into guidance.",
-            "Reported four priorities to Gyeongyeong Lim, copying Serin Kim, and shared them through kdoc: clearer rejection reasons → approval/rejection wording → organization-leader notifications → UI improvements.",
-            "Challenged Giseok's proposal to standardize input fields across spending tiers using the relevant trade-offs, while keeping the discussion collaborative by sharing it with Serin and Gyeongyeong.",
-            "Supported improvements to approver notification wording.",
-            "Outcome: changes were implemented in the development environment, including an LLM Gateway option; inputs tailored to approval tiers; rejection-reason entry and confirmation fields; usage display in Slack App Home; and guidance-message UI changes."
+            "Reviewed approval requests and rejection patterns by spending tier, then documented the highest-impact changes to rejection reasons, resubmission guidance, notifications, and form design.",
+            "Delivered an improvement report and approval wording. Selected changes reached the development environment, including tier-specific inputs, rejection-reason fields, usage visibility, and clearer guidance messages."
           ]
         }
       ],
-      "status": "Analysis and selected development changes. The broader lifecycle record remains a proposal."
+      "status": "Selected changes implemented in development; the broader lifecycle record remains a proposal."
     },
     {
       "slug": "spendgate-impact-review",
-      "title": "Spend Gate: Deployment Impact Review",
+      "title": "AI Approval Workflow Impact Review",
       "tag": "Measurement",
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Comparing approval behavior before and after a release using equal observation windows and a separate view of request themes.",
+      "description": "Built a matched-window review of an approval workflow release and a dashboard of request themes.",
       "access": "password",
-      "summary": "Comparing approval behavior before and after a release using equal observation windows and a separate view of request themes.",
+      "summary": "Built a matched-window review of an approval workflow release and a dashboard of request themes.",
       "period": "2026",
       "eyebrow": "KRAFTON · Measurement",
       "sections": [
         {
-          "title": "Comparison method & findings",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Analyzed approval requests across the deployment period and identified the rollout boundary from the appearance of new fields.",
-            "Min identified distortion from unequal observation periods, then recalculated the comparison using matched windows before and after deployment.",
-            "Assessed eight issues in the guidance as resolved, partially resolved, or worsened, keeping issue-assessment counts separate from request-count KPIs.",
-            "Created a separate studio-by-reason-theme heatmap report with switches for request count, average amount, total amount, approval rate, and self-approval rate.",
-            "Diagnosed a large 'other/unclassified' share, separating missing classifier keywords from genuinely ambiguous reasons.",
-            "Reported approval turnaround by time band without publishing internal processing rates.",
-            "Deliverables: HTML before/after comparison and usage-pattern reports, plus a Slack message sharing the findings."
+            "Compared equivalent periods before and after release, separating changes in request behavior from assessments of whether guidance issues were resolved.",
+            "Delivered an HTML comparison and a reason-theme dashboard with approval, amount, and turnaround views; flagged ambiguous classifications for further refinement."
           ]
         }
       ],
-      "status": "829 requests analyzed; observed changes do not establish the release as their sole cause."
+      "status": "Analysis complete; observed changes do not establish the release as their sole cause."
     },
     {
       "slug": "enterprise-ai-survey",
@@ -162,23 +145,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Designing a multilingual survey that separates individual tasks from cross-team workflows and measures automation in stages.",
+      "description": "Designed and ran a multilingual enterprise survey measuring AI use across tasks and cross-team workflows.",
       "access": "password",
-      "summary": "Designing a multilingual survey that separates individual tasks from cross-team workflows and measures automation in stages.",
+      "summary": "Designed and ran a multilingual enterprise survey measuring AI use across tasks and cross-team workflows.",
       "period": "2026",
       "eyebrow": "KRAFTON · Survey design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Completed this as the first assignment of the January–May contract period.",
-            "Designed the company-wide survey around individual work versus cross-department workflows. Broke each response into three main tasks and three workflows, using a six-level automation scale.",
-            "Supported Korean, English, and Japanese versions, including separate links for TGW, Eleventh Hour, and other groups. Jiyun supported reminder distribution.",
-            "Ran a company-wide survey and reconciled participant records across a broad questionnaire. Exact participation and question counts are omitted."
+            "Structured responses around work tasks, shared workflows, and stages of automation, with versions in Korean, English, and Japanese.",
+            "Coordinated distribution across business units and reconciled the response records for downstream analysis."
           ]
         }
       ],
-      "status": "994 responses and 993 matched records; these counts describe different processing stages."
+      "status": "Survey delivered and response records prepared for analysis."
     },
     {
       "slug": "ai-survey-analysis",
@@ -187,25 +168,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Processing survey responses and translating multilingual work descriptions into comparable job-family and automation measures.",
+      "description": "Turned multilingual survey responses into comparable automation measures and an analysis dashboard.",
       "access": "password",
-      "summary": "Processing survey responses and translating multilingual work descriptions into comparable job-family and automation measures.",
+      "summary": "Turned multilingual survey responses into comparable automation measures and an analysis dashboard.",
       "period": "2026",
       "eyebrow": "KRAFTON · Analytics",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Processed the raw survey data in Python and reconciled extracted records with the final responses.",
-            "Compared task-step patterns across HQ and Family respondents, identifying similar workflow lengths and a concentration of moderately complex tasks.",
-            "Compared step counts by job family; TA, Game Design, and UX&UI ranked near the top in both HQ and Family.",
-            "Translation preprocessing of multilingual responses reduced the 'other' category and improved classification quality.",
-            "Built an automation-analysis dashboard comparing task and workflow automation, with job-family breakdowns. Exact internal rates are omitted.",
-            "Wrote a survey retrospective arguing that the difficulty of defining work and workflows was itself evidence of the organization's current position."
+            "Cleaned and reconciled raw responses in Python, translated free-text work descriptions, and improved job-family classification.",
+            "Delivered a dashboard comparing task and workflow automation by organizational group, with the two measures kept on their proper units of analysis."
           ]
         }
       ],
-      "status": "Analysis completed. Task and workflow automation rates use different units of analysis."
+      "status": "Analysis and dashboard completed; task and workflow measures remain distinct."
     },
     {
       "slug": "ai-transformation-executive-report",
@@ -214,29 +191,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Turning survey findings into an executive narrative, integrated dashboard, and prioritized adoption plan.",
+      "description": "Prepared an executive report connecting AI adoption findings to priorities for governance and implementation.",
       "access": "password",
-      "summary": "Turning survey findings into an executive narrative, integrated dashboard, and prioritized adoption plan.",
+      "summary": "Prepared an executive report connecting AI adoption findings to priorities for governance and implementation.",
       "period": "2026",
       "eyebrow": "KRAFTON · Executive reporting",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Responded to Serin's scope question with a concrete plan: an initial February 21 delivery of quantitative insights and a simple dashboard, adjustments the following week, then an integrated responsive dashboard.",
-            "Incorporated Serin's feedback: put the insight summary first, distinguish implications for corporate departments and studios, and consolidate the dashboards into one.",
-            "Designed a 20–30-slide report with an executive summary, horizontal and vertical adoption analysis, and an integrated dashboard.",
-            "Developed section-level insights covering company-wide needs, direct requests to AIT from HQ versus Family, and differences in bottlenecks by job family.",
-            "Designed two tracks: management (cost, policy, time, sponsorship) and execution (technology, training, examples, collaboration).",
-            "Identified duplicate survey questions, including Q42 and Q50.",
-            "Executive-summary findings showed broad AI adoption and a need to shift attention from initial uptake to deeper use. Automation varied across organizations, with stronger results where leaders directly sponsored the work.",
-            "Proposed a phased action plan and a company-wide automation ambition, using both bottom-up opportunities and leadership-directed priorities. Exact internal targets are omitted.",
-            "Defined the gap between expected and actual automation as an 'execution shortfall rate' using proxy-question combinations, and mapped questions to subdimensions of horizontal and vertical adoption.",
-            "Outcome: the report moved forward for the February 25 CEO briefing."
+            "Combined survey analysis, organizational differences, and workflow bottlenecks into an executive narrative and integrated dashboard.",
+            "Produced a phased action plan covering management support, policy, technology, training, and collaboration; materials were prepared for a senior leadership briefing."
           ]
         }
       ],
-      "status": "Executive reporting materials prepared. The automation ambition was a proposed future target, not a measured outcome."
+      "status": "Executive materials prepared; proposed targets are not measured outcomes."
     },
     {
       "slug": "q2-ai-cost-report",
@@ -245,26 +214,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Building a single HTML report that explains organizational cost changes and checks the economics of subscription migration.",
+      "description": "Automated quarterly AI cost reporting and identified subscription and API optimization opportunities.",
       "access": "password",
-      "summary": "Building a single HTML report that explains organizational cost changes and checks the economics of subscription migration.",
+      "summary": "Automated quarterly AI cost reporting and identified subscription and API optimization opportunities.",
       "period": "2026",
       "eyebrow": "KRAFTON · FinOps",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Built a Python generator that turned monthly administration workbooks into a single HTML report for the chair and executive team.",
-            "Created organization-level change tabs and Q2-total-based categories (negligible, newly increased, or actual percentage change) to avoid misleading increases of thousands of percent in small organizations.",
-            "Classified keys with explicit purposes into development, agents, review, translation, documentation, and bots. The analysis identified a large share of keys without clear purpose metadata.",
-            "Visualized rapid adoption of newly available models and annotated relevant export-control restrictions.",
-            "Validated whether switching to a higher subscription tier reduced costs through user-level cross-checks, without publishing internal subscription counts or savings.",
-            "Analyzed high-spend Claude Code users as candidates for plan migration. The forecast showed a material savings opportunity and an adoption gap, with exact figures omitted.",
-            "Outcome: quantified costs before and after Max migration and used the findings as supporting precedent for later API-optimization proposals."
+            "Built a Python-to-HTML reporting workflow from administration workbooks and grouped costs by organization, purpose, and product.",
+            "Cross-checked subscription migration scenarios at the user level and documented estimated opportunities separately from observed costs."
           ]
         }
       ],
-      "status": "Report and user-level comparisons completed; remaining migration opportunities are estimates."
+      "status": "Report completed; migration opportunities remain estimates."
     },
     {
       "slug": "model-migration-analysis",
@@ -273,29 +237,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Separating lower model prices from higher usage to test whether a migration announcement produced real savings.",
+      "description": "Evaluated a model migration across API and enterprise channels without assuming lower unit prices meant lower total spend.",
       "access": "password",
-      "summary": "Separating lower model prices from higher usage to test whether a migration announcement produced real savings.",
+      "summary": "Evaluated a model migration across API and enterprise channels without assuming lower unit prices meant lower total spend.",
       "period": "2026",
       "eyebrow": "KRAFTON · FinOps",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Produced an executive HTML report comparing the effects before and after the July 27 Fable 5 → Opus 5 migration announcement, separately for API and Claude Enterprise channels.",
-            "Measured migration separately for API and Enterprise channels; both showed substantial adoption.",
-            "Compared reduced unit costs with additional usage and found no confirmed net saving in the period reviewed.",
-            "Unit prices decreased, but billed spending and token usage rose; increased usage absorbed the price improvement.",
-            "Usage growth outside the original target group raised a policy choice between encouraging productive use and constraining spend.",
-            "Reviewed migration among high-spend accounts and observed different adoption patterns by role.",
-            "OpenAI API unit prices also fell outside the announcement’s scope, so the report avoided attributing every price reduction to the announcement.",
-            "Diagnosed missing July backfill data for Claude Enterprise: effective unit prices for non-Fable models jumped eight to twelve times. Recommended excluding cost-change findings for that channel from the report.",
-            "Rewrote the report in executive reporting language, removing conversational wording and evaluative expressions.",
-            "Created several single-file HTML dashboards, including an AI model-selection guide and an AI cost-trend report, while preserving the underlying data."
+            "Produced executive dashboards comparing adoption, usage, unit costs, and billed spend before and after the change.",
+            "Identified incomplete channel backfill, excluded unreliable cost comparisons, and documented that increased usage absorbed the unit-price reduction in the reviewed period."
           ]
         }
       ],
-      "status": "Analysis found no confirmed net saving in the compared period; incomplete channel data was flagged."
+      "status": "Analysis complete; no net saving was confirmed for the compared period."
     },
     {
       "slug": "ai-budget-forecast",
@@ -304,32 +260,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Reconciling actual spending, billing periods, seat commitments, and scenarios before leadership makes a budget decision.",
+      "description": "Built a reconciled AI cost outlook with scenarios that separated existing commitments from new funding decisions.",
       "access": "password",
-      "summary": "Reconciling actual spending, billing periods, seat commitments, and scenarios before leadership makes a budget decision.",
+      "summary": "Built a reconciled AI cost outlook with scenarios that separated existing commitments from new funding decisions.",
       "period": "2026",
       "eyebrow": "KRAFTON · Budget planning",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Assessed budget capacity by combining year-to-date actual spending with a forward forecast and a proposed budget increase. Exact internal budget amounts are omitted here.",
-            "Separated spending already committed under personal subscriptions from the additional spending that leadership needed to decide on. This prevented an existing obligation from being counted again as new capacity.",
-            "Built lower, baseline, and higher run-rate scenarios to show how approval controls and usage growth could change the forecast.",
-            "Found that a reported Claude API cost mixed billing and usage months. Reconciled it against the underlying monthly records before using it in the forecast.",
-            "Analyzed full, partial, and limited Bedrock migration scenarios. Kept a vendor credit separate from the core budget assessment so the timing of that credit did not obscure recurring cost.",
-            "Produced a standalone 'September–December 2026 AI Cost Outlook' HTML report using the KRAFTON HUB dark theme.",
-            "Compared the lower, baseline, and higher forecasts with Finance Planning's submission using a consistent exchange-rate assumption. The baseline forecast was above the submitted figure, making the gap visible for review.",
-            "Unbundled a large runtime package into a compact, editable standalone HTML file as the working base.",
-            "Separated seat costs under annual contracts into 'other annual seat costs' to prevent double-counting.",
-            "Validated the finance submission, identified a material input error, and documented why the submitted amount differed from the baseline scenario.",
-            "Separated usage-based costs (API, Enterprise usage, Cursor) from seat-based costs. Kept annual personal subscriptions on an annual basis instead of presenting them as monthly spending.",
-            "Clarified that Bedrock credits would start later than the first forecast months and should not be treated as an immediate recurring discount.",
-            "Outcome: caught a material executive-reporting discrepancy before reporting and clarified that the decision concerned additional future spending. Financial figures and internal operating metrics are generalized for this public case study."
+            "Combined actual spending with low, baseline, and high run-rate forecasts while correcting billing-period and seat-cost classification errors.",
+            "Delivered an editable cost outlook and reconciliation to the finance submission, highlighting a material input discrepancy and the timing of vendor credits."
           ]
         }
       ],
-      "status": "Forecast and reconciliation produced; scenarios are projections, not actual future expenditure."
+      "status": "Forecast and reconciliation delivered; scenarios are projections, not actual future spend."
     },
     {
       "slug": "ai-spend-prioritization",
@@ -338,32 +283,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Joining individual cost records, product/model files, and HR data to identify the largest opportunities for review.",
+      "description": "Produced a cross-product AI spending analysis and ranked practical optimization opportunities.",
       "access": "password",
-      "summary": "Joining individual cost records, product/model files, and HR data to identify the largest opportunities for review.",
+      "summary": "Produced a cross-product AI spending analysis and ranked practical optimization opportunities.",
       "period": "2026",
       "eyebrow": "KRAFTON · Cost intelligence",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Joined user-level monthly cost ledgers, model-name files, and HR records to create an HTML report and a joined Excel workbook.",
-            "Analyzed cumulative AI spending across users and products. Exact internal totals and population counts are omitted.",
-            "General-purpose APIs dominated spending, followed by chatbot subscriptions; purpose-identifiable uses formed a smaller share.",
-            "Expensive Claude Opus models represented a disproportionate share of model spending compared with lower-cost alternatives.",
-            "Identified four cost-reduction priorities.",
-            "Tech, Data, and AI Research showed high API spending and stronger coding-tool adoption than the company-wide pattern.",
-            "Identified a material pool of low-use and unused Enterprise seats for review.",
-            "Coding-tool spending rose sharply over the period, indicating a need to review overlapping subscriptions.",
-            "Recommended consolidating fragmented, low-spend products into a smaller set of standard vendors.",
-            "Estimated agent-like usage from API patterns and treated the classification as provisional rather than a directly observed category.",
-            "Min challenged and strengthened the evidence for inferred coding use by identifying an omitted Codex surface in the Enterprise channel.",
-            "Documented that model-based cumulative spending was a lower bound and that agent classification was inferred from usage patterns.",
-            "Outcome: delivered the report to Dogyun in management for executive reporting and met the September 7 meeting deadline."
+            "Joined monthly cost, model, and workforce data into an analysis workbook and executive report; separated observed categories from inferred agent use.",
+            "Identified priorities around premium models, underused seats, overlapping tools, and standard vendor choices, with limitations documented for incomplete attribution."
           ]
         }
       ],
-      "status": "Analysis delivered. Category totals overlap or use different populations and must not be added together."
+      "status": "Analysis delivered; overlapping categories are not additive."
     },
     {
       "slug": "model-transition-plan",
@@ -372,28 +306,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Designing a staged transition from expensive legacy models to a smaller set of cost tiers with an exception path.",
+      "description": "Developed a staged transition plan from legacy premium models to a smaller cost-tiered model catalog.",
       "access": "password",
-      "summary": "Designing a staged transition from expensive legacy models to a smaller set of cost tiers with an exception path.",
+      "summary": "Developed a staged transition plan from legacy premium models to a smaller cost-tiered model catalog.",
       "period": "2026",
       "eyebrow": "KRAFTON · Model lifecycle",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Led planning at Serin's request and requested and received monthly API and Enterprise data by model from Gwangyun.",
-            "Proposed adding Opus 5 to the models to block, reasoning that Opus 5.5 offered higher performance and lower unit prices, leaving no clear reason to retain Opus 5.",
-            "In September, legacy premium models represented a large share of API and Enterprise spending despite having had little use earlier in the year.",
-            "Repriced the same token volume using the successor model’s official rates and identified a potentially material savings opportunity. The estimate remained a lower bound, not realized savings.",
-            "Estimated the population affected by the proposed transition without publishing the internal user count.",
-            "Incorporated Serin's feedback to classify both Claude and GPT into low-, medium-, and high-cost tiers, retaining only one or two models per tier.",
-            "Proposed a three-stage rollout: block new Fable 5/5.1 usage → gradually reduce Opus 5 with a Spend Gate exception channel → track realized savings after migration.",
-            "Explicitly noted that only a short period of actual successor-model usage data was available, so efficiency claims relied on vendor announcements.",
-            "Deliverable: an HTML migration-plan report scheduled for submission by the Monday after the Chuseok holiday."
+            "Compared model usage and repriced constant token volumes to estimate potential savings without presenting them as realized.",
+            "Delivered a migration plan covering new-use restrictions, exception review, gradual transition, and post-change measurement."
           ]
         }
       ],
-      "status": "Planning stage. Potential savings assume constant token volumes and are not realized savings."
+      "status": "Planning stage; savings depend on adoption and actual usage."
     },
     {
       "slug": "agent-leaderboard-analysis",
@@ -402,24 +329,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Examining agent usage concentration, missing credit attribution, duplicate identities, and efficiency variation.",
+      "description": "Analyzed agent activity to identify attribution gaps and registry quality issues.",
       "access": "password",
-      "summary": "Examining agent usage concentration, missing credit attribution, duplicate identities, and efficiency variation.",
+      "summary": "Analyzed agent activity to identify attribution gaps and registry quality issues.",
       "period": "2026",
       "eyebrow": "KRAFTON · Agent governance",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Analyzed agent activity over a multi-month period and wrote a report.",
-            "A small group of agents accounted for most recorded credits.",
-            "Found agents with substantial token usage but no recorded credits, potentially indicating missing Agent Registry attribution.",
-            "Found a wide difference in credit efficiency, alongside registry-hygiene issues such as duplicate names and test or personal agents.",
-            "Credit unit pricing remained unconfirmed; the structural findings were valid independently of that price."
+            "Compared recorded credits, token use, and activity patterns across agents, identifying uncredited usage and large differences in efficiency.",
+            "Delivered a registry-hygiene report covering duplicate and test identities; monetary credit valuation remained outside the confirmed findings."
           ]
         }
       ],
-      "status": "84 agents and 89 days analyzed; the monetary value of credits was not finalized."
+      "status": "Agent activity analysis completed; credit pricing was not finalized."
     },
     {
       "slug": "overage-invoice-validation",
@@ -428,21 +352,20 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Confirming invoice cancellation and the boundary between a one-time waiver and subsequent normal settlement.",
+      "description": "Reconciled an AI service overage invoice and documented the billing treatment.",
       "access": "password",
-      "summary": "Confirming invoice cancellation and the boundary between a one-time waiver and subsequent normal settlement.",
+      "summary": "Reconciled an AI service overage invoice and documented the billing treatment.",
       "period": "2026",
       "eyebrow": "KRAFTON · Billing operations",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Confirmed a one-time full waiver of an overage invoice and reconciled the affected billing period. Contract value is omitted.",
-            "Clarified when normal overage settlement would resume. The contractual unit rate is omitted."
+            "Checked the affected billing period, confirmed a one-time waiver, and clarified when ordinary overage settlement would resume."
           ]
         }
       ],
-      "status": "Invoice status confirmed; the waiver is not attributed to my negotiation."
+      "status": "Invoice treatment confirmed; the waiver is not attributed to personal negotiation."
     },
     {
       "slug": "ai-model-matrix",
@@ -451,25 +374,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Expanding a model comparison playground and correcting performance and blended-price assumptions before using it for selection.",
+      "description": "Expanded and deployed an AI model comparison interface for cost, performance, and routing decisions.",
       "access": "password",
-      "summary": "Expanding a model comparison playground and correcting performance and blended-price assumptions before using it for selection.",
+      "summary": "Expanded and deployed an AI model comparison interface for cost, performance, and routing decisions.",
       "period": "2026",
       "eyebrow": "KRAFTON · Model evaluation",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Expanded v1, covering more than 41 models, into a cost-performance scatterplot of 68 models.",
-            "Incorporated stakeholder feedback by replacing an eight-task-type breakdown with a unified cost-performance view based on weighted benchmarks and threshold bands.",
-            "Corrected the output-token-share error and removed a synthetic three-level difficulty heuristic. Simplified performance to a single score: (normalized intelligence + normalized coding) / 2.",
-            "Produced three reports covering performance methodology, unit-price logic, and sweet spots/value lines.",
-            "Validated the Bedrock-based matrix methodology, finding that the middle term of AA's 7:2:1 blended ratio had inconsistent definitions (cache writes versus regular input). Also identified the need to incorporate Intelligence Index v4.1.",
-            "Outcome: deployed the Playground at ai-model-matrix.krafton.run and used its data as the source for model-routing reference tables."
+            "Rebuilt the comparison view around consistent performance and blended-price assumptions, correcting scoring and token-share errors.",
+            "Published a model matrix and supporting methodology notes that supplied reference data for model-selection work."
           ]
         }
       ],
-      "status": "68-model Playground deployed; deployment does not validate every exploratory value formula."
+      "status": "Comparison interface deployed; exploratory value formulas remain separate from validated outputs."
     },
     {
       "slug": "task-model-matching",
@@ -478,24 +397,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Connecting benchmark data and six concrete workload profiles to a simpler model-selection experience.",
+      "description": "Designed a workload-based model selection guide and integration approach for external benchmark data.",
       "access": "password",
-      "summary": "Connecting benchmark data and six concrete workload profiles to a simpler model-selection experience.",
+      "summary": "Designed a workload-based model selection guide and integration approach for external benchmark data.",
       "period": "2026",
       "eyebrow": "KRAFTON · Model selection",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Wrote a wiki for purchasing the AA API, subject to Gyeongyeong's approval, covering the data structure, Free/Pro/Commercial tiers, and an architecture linking internal usage logs.",
-            "Redesigned sweet spots from three abstract difficulty levels into six workload profiles: real-time chat, bulk batch processing, long-document analysis, agentic coding, in-depth analysis, and tool-using agents.",
-            "Simplified a branching three-question self-assessment into a statement-matching table.",
-            "Worked on an AA-based task-to-model matching system, marked 'Doing' as of July.",
-            "Blocker: waiting for approval to pay for the AA API."
+            "Replaced abstract difficulty levels with practical workload profiles and simplified a branching assessment into a statement-matching guide.",
+            "Documented data requirements and an integration architecture linking benchmark information with internal usage logs."
           ]
         }
       ],
-      "status": "Design and integration work in progress; paid AA API access was an approval dependency."
+      "status": "Design in progress; external data access remained an approval dependency."
     },
     {
       "slug": "model-value-framework",
@@ -504,22 +420,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Exploring how model performance, price, and human-equivalent work could be compared, then identifying where the formula fails.",
+      "description": "Produced model-value and human-work-equivalent measurement concepts with explicit comparability limits.",
       "access": "password",
-      "summary": "Exploring how model performance, price, and human-equivalent work could be compared, then identifying where the formula fails.",
+      "summary": "Produced model-value and human-work-equivalent measurement concepts with explicit comparability limits.",
       "period": "2026",
       "eyebrow": "KRAFTON · Evaluation methodology",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Designed automation and calibration methods for measuring AI task time in Human-Equivalent Hours (HEH).",
-            "Defined the Model Value Index (MVI) as task-type performance divided by blended unit price, and produced a dashboard mockup and project report.",
-            "Min identified and corrected two logic flaws: performance could not be compared across different tasks, and estimated blended prices conflicted with the governance objective. Deferred combining the measures until routing integration or use of list prices."
+            "Created a performance-to-price framework, dashboard mockup, and task-time calibration approach.",
+            "Identified cross-task comparison and blended-price flaws, then held back a combined score until the methodology could be defended."
           ]
         }
       ],
-      "status": "Framework and mockups produced; the combined formula was held back pending a defensible methodology."
+      "status": "Framework and mockups produced; combined scoring was not released."
     },
     {
       "slug": "api-cost-strategy",
@@ -528,23 +443,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Organizing optimization around prompt/context, model, and agent-design levers rather than treating it as a single model swap.",
+      "description": "Wrote an API and agent cost strategy organized around diagnosis, technical levers, and ongoing governance.",
       "access": "password",
-      "summary": "Organizing optimization around prompt/context, model, and agent-design levers rather than treating it as a single model swap.",
+      "summary": "Wrote an API and agent cost strategy organized around diagnosis, technical levers, and ongoing governance.",
       "period": "2026",
       "eyebrow": "KRAFTON · FinOps strategy",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Structured the strategy as Why API → risks → Phase 1 diagnosis → Phase 2 improvements by lever → Phase 3 formalized governance.",
-            "At Min's suggestion, reorganized Phase 2 by lever rather than timeline: Prompt & Context (caching, context), Model (routing, versions, Batch), and Agent (loops, design).",
-            "Confirmed native Bedrock cachePoint support and proposed a comprehensive pilot checking adoption across FDE projects without adding separate infrastructure.",
-            "Outcome: proactively shared the strategy document with Serin and used the Max migration precedent to argue for establishing the structure early."
+            "Grouped recommendations by prompt/context, model choice, and agent design, including caching, routing, batching, and loop controls.",
+            "Shared a staged strategy and scoped a native caching pilot, distinguishing proposed work from implemented savings."
           ]
         }
       ],
-      "status": "Strategy document shared; a proposed pilot is distinct from an implemented optimization program."
+      "status": "Strategy delivered; pilot and savings remained prospective."
     },
     {
       "slug": "cost-taxonomy",
@@ -553,26 +466,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Defining team, use case, environment, and usage pattern as cost dimensions, with measurement before enforcement.",
+      "description": "Designed a cost attribution taxonomy and rollout plan for AI API usage.",
       "access": "password",
-      "summary": "Defining team, use case, environment, and usage pattern as cost dimensions, with measurement before enforcement.",
+      "summary": "Designed a cost attribution taxonomy and rollout plan for AI API usage.",
       "period": "2026",
       "eyebrow": "KRAFTON · Cost attribution",
       "sections": [
         {
-          "title": "Attribution & rollout plan",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Mapped Glean's 'Token Economy' whitepaper argument—that token costs are an architecture problem—to KRAFTON's context.",
-            "Proposed a four-axis cost taxonomy: team / use_case / env / pattern.",
-            "Finalized the Phase 0–3 AI API cost-optimization plan and the direction for Enterprise Prompt Caching across three layers: measurement, enforcement, and adoption.",
-            "Addressed LLM Gateway delays by starting log-based measurement and recommendations without the Gateway, with enforcement to follow its completion.",
-            "Designed a least-privilege Bedrock access request covering logging configuration, log viewing, inference-profile tagging, and CUR reading.",
-            "Organized a status board using Done, Doing, Todo, and Blocker categories.",
-            "Blocker: Bedrock administration access and log-viewing permissions, on which the measurement infrastructure depended."
+            "Defined team, use case, environment, and usage-pattern dimensions and organized measurement, enforcement, and adoption into phases.",
+            "Produced a status board and least-privilege data-access request so analysis could start from logs before gateway enforcement was available."
           ]
         }
       ],
-      "status": "Execution plan and status board prepared; Bedrock administration and log access remained dependencies."
+      "status": "Execution plan prepared; infrastructure access remained a dependency."
     },
     {
       "slug": "context-compression-evaluation",
@@ -581,20 +489,20 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Comparing RTK and Headroom with native caching, routing, batching, and loop limits to choose an appropriate pilot sequence.",
+      "description": "Evaluated context compression options against native API and agent efficiency controls.",
       "access": "password",
-      "summary": "Comparing RTK and Headroom with native caching, routing, batching, and loop limits to choose an appropriate pilot sequence.",
+      "summary": "Evaluated context compression options against native API and agent efficiency controls.",
       "period": "2026",
       "eyebrow": "KRAFTON · Agent efficiency",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Reviewed RTK and Headroom. Proposed prioritizing native levers—caching, routing, context, Batch, and hard loop limits—then running a small RTK pilot if the coding-agent cost category proved large."
+            "Compared specialist tools with caching, routing, batching, context design, and hard loop limits; recommended a small pilot only after measuring the relevant cost category."
           ]
         }
       ],
-      "status": "Evaluation and pilot recommendation; production savings are not established."
+      "status": "Evaluation completed; production savings were not established."
     },
     {
       "slug": "prompt-caching",
@@ -603,26 +511,20 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Defining how caching adoption should be measured, expanded, and eventually enforced across enterprise workflows.",
+      "description": "Documented an enterprise prompt-caching strategy within a phased AI cost optimization plan.",
       "access": "password",
-      "summary": "Defining how caching adoption should be measured, expanded, and eventually enforced across enterprise workflows.",
+      "summary": "Documented an enterprise prompt-caching strategy within a phased AI cost optimization plan.",
       "period": "2026",
       "eyebrow": "KRAFTON · API efficiency",
       "sections": [
         {
-          "title": "Attribution & rollout plan",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Finalized the Phase 0–3 AI API cost-optimization plan and the direction for Enterprise Prompt Caching across three layers: measurement, enforcement, and adoption."
-          ]
-        },
-        {
-          "title": "Supporting control documents",
-          "paragraphs": [
-            "Produced a prompt-caching strategy document, API-key management framework, and agent-cost governance report."
+            "Specified measurement, enforcement, and adoption stages and produced a caching strategy alongside access and agent-cost governance work products."
           ]
         }
       ],
-      "status": "Strategy documentation; measurement infrastructure and enforcement were separate stages."
+      "status": "Strategy documented; measurement and enforcement were separate future stages."
     },
     {
       "slug": "api-key-governance",
@@ -631,27 +533,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Connecting API access provisioning to purpose, cost ownership, and lifecycle review.",
+      "description": "Created an API key management framework connecting provisioning to purpose, permissions, quotas, and review.",
       "access": "password",
-      "summary": "Connecting API access provisioning to purpose, cost ownership, and lifecycle review.",
+      "summary": "Created an API key management framework connecting provisioning to purpose, permissions, quotas, and review.",
       "period": "2026",
       "eyebrow": "KRAFTON · Access governance",
       "sections": [
         {
-          "title": "Supporting control documents",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Produced a prompt-caching strategy document, API-key management framework, and agent-cost governance report."
-          ]
-        },
-        {
-          "title": "Workstream details",
-          "paragraphs": [
-            "In February 2026, reviewed the difference between AI Gateways and API Gateways in an Enterprise AI environment; schema-level access for SQL and knowledge-graph/ontology data; jailbreaks; MCP/connectors; and compatibility with Azure and other systems.",
-            "Reduced an expansive Skills and Agents Marketplace concept to an MVP and described the API Provisioner as being under development. Discussed API/tool registration, permissions, policies, quotas, routing, logs, credentials, and OpenAPI/MCP specification generation; completion of the entire feature set was not confirmed."
+            "Documented registration, access policy, credential lifecycle, logging, and compatibility considerations for an initial provisioner scope.",
+            "Produced a control framework and minimum viable requirements; full platform enforcement was not claimed."
           ]
         }
       ],
-      "status": "Framework documentation and infrastructure direction; full enforcement is not confirmed."
+      "status": "Framework delivered; full enforcement was not confirmed."
     },
     {
       "slug": "agent-cost-controls",
@@ -660,49 +556,43 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Extending cost review from aggregate tokens to task cost, steps, retries, and safeguards against runaway loops.",
+      "description": "Prepared an agent cost governance report focused on task-level measurement and runaway-execution safeguards.",
       "access": "password",
-      "summary": "Extending cost review from aggregate tokens to task cost, steps, retries, and safeguards against runaway loops.",
+      "summary": "Prepared an agent cost governance report focused on task-level measurement and runaway-execution safeguards.",
       "period": "2026",
       "eyebrow": "KRAFTON · Agent operations",
       "sections": [
         {
-          "title": "Supporting control documents",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Produced a prompt-caching strategy document, API-key management framework, and agent-cost governance report."
-          ]
-        },
-        {
-          "title": "Monitoring roadmap",
-          "paragraphs": [
-            "Built cost-threshold alerts and added agent metrics for cost per task, steps, and retry rate.",
-            "Planned to attend an AI Agent Token Efficiency workshop covering hard loop limits, compressed tool results, and separate planning/execution models."
+            "Specified cost per task, step count, retry rate, and threshold-alert requirements in a monitoring roadmap.",
+            "Separated documented control requirements from alerting and operational practices whose rollout was still pending."
           ]
         }
       ],
-      "status": "Governance report and planned metrics; threshold alerts and workshop participation were still future work in July."
+      "status": "Governance report completed; operational alert rollout was not confirmed."
     },
     {
       "slug": "kissflow-approval-pipeline",
-      "title": "Cost Taxonomy & Kissflow Approval Pipeline",
+      "title": "Cost Classification and Approval Workflow",
       "tag": "Governance workflow",
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Designing an approval record that includes cost classification and explicit adoption and sunset triggers.",
+      "description": "Designed a cost classification and approval workflow with adoption and sunset checkpoints.",
       "access": "password",
-      "summary": "Designing an approval record that includes cost classification and explicit adoption and sunset triggers.",
+      "summary": "Designed a cost classification and approval workflow with adoption and sunset checkpoints.",
       "period": "2026",
       "eyebrow": "KRAFTON · Governance workflow",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Directly designed the cost-classification system and Kissflow approval pipeline, including adoption and sunset triggers."
+            "Mapped cost categories, decision owners, and review triggers into an approval record that could support later reassessment."
           ]
         }
       ],
-      "status": "Pipeline design completed; implementation status is described separately from the broader operating model."
+      "status": "Workflow design completed; broader implementation status remains separate."
     },
     {
       "slug": "ai-tool-intake",
@@ -711,22 +601,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Consolidating scattered review requirements into graded intake criteria and a Kissflow approval flow.",
+      "description": "Turned fragmented AI tool requirements into an intake guide and risk-based approval workflow.",
       "access": "password",
-      "summary": "Consolidating scattered review requirements into graded intake criteria and a Kissflow approval flow.",
+      "summary": "Turned fragmented AI tool requirements into an intake guide and risk-based approval workflow.",
       "period": "2026",
       "eyebrow": "KRAFTON · AI adoption",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Documented company-wide AI adoption grades and built evaluation criteria and a Kissflow-based intake pipeline.",
-            "Consolidated scattered requirements into an initial version, then consulted Legal and Security using narrowly framed questions.",
-            "Outcome: after completing the guidance, moved the classification and approval pipeline into operation."
+            "Documented adoption grades, evaluation criteria, and focused legal and security review questions.",
+            "Delivered guidance that supported an operating classification and approval flow."
           ]
         }
       ],
-      "status": "Guide completed and classification/approval flow entered operation."
+      "status": "Guide completed and intake workflow entered operation."
     },
     {
       "slug": "enterprise-adoption-criteria",
@@ -735,24 +624,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Making SaaS versus API the first review branch and documenting ownership options across headquarters and studios.",
+      "description": "Drafted criteria for classifying enterprise AI tools and routing higher-risk integrations for review.",
       "access": "password",
-      "summary": "Making SaaS versus API the first review branch and documenting ownership options across headquarters and studios.",
+      "summary": "Drafted criteria for classifying enterprise AI tools and routing higher-risk integrations for review.",
       "period": "2026",
       "eyebrow": "KRAFTON · Policy design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Prepared a discussion draft incorporating meeting feedback.",
-            "Elevated 'tool versus API' to the first gate: because APIs directly affect service-continuity risk, they require central review regardless of volume.",
-            "Expanded AI categories beyond LLMs and introduced three classification axes: whether it is built internally, SaaS versus API, and general-purpose versus purpose-limited use.",
-            "Compared adoption-owner options—A functional organizations, B Procurement, C AIT—and explicitly documented unresolved HQ-versus-studio coverage issues.",
-            "Applied the framework to CLOVA Note, DeepL, coding agents, and LLM APIs, including a draft request to confirm existing SaaS/API criteria first."
+            "Defined decision branches for internal versus external builds, SaaS versus API, and general versus limited-purpose use.",
+            "Applied the draft criteria to representative tools and documented unresolved ownership questions for headquarters and business units."
           ]
         }
       ],
-      "status": "Discussion draft; adoption ownership and organizational coverage were unresolved."
+      "status": "Discussion draft prepared; adoption ownership remained open."
     },
     {
       "slug": "ai-safety-committee",
@@ -761,23 +647,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Turning committee action items into practical governance materials and reviewing operational responsibilities.",
+      "description": "Converted AI safety committee topics into governance materials and a practical process review.",
       "access": "password",
-      "summary": "Turning committee action items into practical governance materials and reviewing operational responsibilities.",
+      "summary": "Converted AI safety committee topics into governance materials and a practical process review.",
       "period": "2026",
       "eyebrow": "KRAFTON · Safety operations",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Participated in the biweekly committee and translated committee action items into an execution foundation.",
-            "Analyzed Unity Terms of Service AI clauses, framed EU AI Act compliance, and collected external governance examples.",
-            "Iteratively revised governance slides through stakeholder meetings.",
-            "Transferred day-to-day operation of the AI CT/safety council to the RM team. Governance DRI ownership remained with the existing team; Min provided input and reviewed the RM team's process."
+            "Researched vendor terms and regulatory developments, revised decision materials, and documented operational responsibilities for the committee.",
+            "Supported handoff of day-to-day committee operations while keeping governance ownership distinct."
           ]
         }
       ],
-      "status": "Committee support and process review. Governance ownership and committee operations remained distinct roles."
+      "status": "Committee support and process review completed."
     },
     {
       "slug": "governance-operating-layers",
@@ -786,23 +670,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Mapping design, legal/security review, production approval, and studio accountability into a usable operating structure.",
+      "description": "Produced a four-layer AI governance operating model and visual materials for stakeholder review.",
       "access": "password",
-      "summary": "Mapping design, legal/security review, production approval, and studio accountability into a usable operating structure.",
+      "summary": "Produced a four-layer AI governance operating model and visual materials for stakeholder review.",
       "period": "2026",
       "eyebrow": "KRAFTON · Operating model",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Organized the framework around the June 1 team discussion: retire the whitelist, move from checklists to governance, and document delegated approvals through Kissflow.",
-            "Defined responsibilities across four layers: AIT oversight/design; first-stage Legal and second-stage Security review; PSM/SSD production and commercialization approval on the S1 track; and execution/accountability by studio and CDU organization leaders.",
-            "Defined processes for reviewing new tools, branching between production and publishing, and handling exceptions.",
-            "Deliverables: a concise Korean working document, an HTML infographic, and a PPTX presentation."
+            "Mapped central oversight, legal and security review, production approval, and business-unit accountability into a decision flow.",
+            "Delivered a working document, infographic, and slide deck covering new-tool review, deployment branches, and exceptions."
           ]
         }
       ],
-      "status": "Document, HTML infographic, and slide deck produced; organization-wide implementation is not inferred."
+      "status": "Design materials delivered; organization-wide rollout was not established."
     },
     {
       "slug": "ai-safety-reporting-bot",
@@ -811,21 +693,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Specifying a news-to-Confluence-to-Slack pipeline with relevance scoring, severity, regulatory mapping, and structured output.",
+      "description": "Specified an automated AI safety intelligence workflow from source collection to internal reporting.",
       "access": "password",
-      "summary": "Specifying a news-to-Confluence-to-Slack pipeline with relevance scoring, severity, regulatory mapping, and structured output.",
+      "summary": "Specified an automated AI safety intelligence workflow from source collection to internal reporting.",
       "period": "2026",
       "eyebrow": "KRAFTON · Automation design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Created a Confluence page and the design specification for an automated AI Safety news-reporting bot.",
-            "Specified the system prompt, category/severity classification, five-dimensional weighted KRAFTON relevance scoring, regulatory mapping (PIPA, Korea's AI Basic Act, EU AI Act, GDPR, and others), JSON output schema, Slack format, six-hour cadence, and collection → analysis → Confluence → Slack architecture."
+            "Defined category and severity classification, relevance scoring, regulatory mapping, structured output, and notification format.",
+            "Published a design specification and knowledge-base page for the collection, analysis, documentation, and notification steps."
           ]
         }
       ],
-      "status": "System design specification; continuous production operation is not confirmed."
+      "status": "System specification delivered; continuous production operation was not confirmed."
     },
     {
       "slug": "agent-vendor-policy-review",
@@ -834,22 +716,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Examining Unity's agent-related terms as a signal of how vendors may regulate agents accessing their software.",
+      "description": "Produced a vendor-policy review of agent access and a recurring monitoring proposal.",
       "access": "password",
-      "summary": "Examining Unity's agent-related terms as a signal of how vendors may regulate agents accessing their software.",
+      "summary": "Produced a vendor-policy review of agent access and a recurring monitoring proposal.",
       "period": "2026",
       "eyebrow": "KRAFTON · Legal research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Analyzed the AI-related clauses and precisely framed them as a default prohibition with narrow exceptions.",
-            "Noted that KRAFTON's Unreal-based development was outside the direct scope, reframing the case as an early indicator of SaaS vendors beginning to regulate agent access through contracts.",
-            "Proposed adding vendor-policy changes and agent-to-SaaS connection tracking to Legal's monthly review."
+            "Analyzed contractual restrictions and exceptions, then translated the findings into a review checklist for agent connections to external software.",
+            "Recommended periodic tracking of vendor policy changes without treating the reviewed contract as a direct company compliance obligation."
           ]
         }
       ],
-      "status": "Research and monthly review proposal; it was not framed as a direct compliance obligation for an Unreal-based company."
+      "status": "Research and monitoring proposal completed."
     },
     {
       "slug": "ai-four-layer-framework",
@@ -858,22 +739,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Connecting financial, security, legal, compliance, and business concerns to scope, lifecycle, and decision ownership.",
+      "description": "Drafted a risk-based AI governance framework across concerns, scope, lifecycle, and decision ownership.",
       "access": "password",
-      "summary": "Connecting financial, security, legal, compliance, and business concerns to scope, lifecycle, and decision ownership.",
+      "summary": "Drafted a risk-based AI governance framework across concerns, scope, lifecycle, and decision ownership.",
       "period": "2026",
       "eyebrow": "KRAFTON · Risk framework",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Principles: generally permit internal use; restrict AI with substantial business impact or security risk; and manage cost as part of AI Safety.",
-            "Defined four layers: perspectives (Financial, Security, Legal, Compliance, Business); scope (Internal × External, Game × Non-game); lifecycle (PoC → development → production → publishing); and decision-making structure (DRI).",
-            "Used grades to differentiate security and cost-management requirements."
+            "Mapped financial, security, legal, compliance, and business considerations to internal and external uses and deployment stages.",
+            "Defined graded review requirements so higher-impact uses received more scrutiny while ordinary internal use could move faster."
           ]
         }
       ],
-      "status": "Framework and differentiated review design; a proposal is distinct from a fully implemented policy."
+      "status": "Framework proposal prepared; full policy implementation was not claimed."
     },
     {
       "slug": "ai-use-guidelines",
@@ -882,25 +762,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Distinguishing ordinary internal tool use from production assets, external IP transfers, live AI features, and user data.",
+      "description": "Prepared AI use guidance that differentiates routine internal work from higher-risk production and data uses.",
       "access": "password",
-      "summary": "Distinguishing ordinary internal tool use from production assets, external IP transfers, live AI features, and user data.",
+      "summary": "Prepared AI use guidance that differentiates routine internal work from higher-risk production and data uses.",
       "period": "2026",
       "eyebrow": "KRAFTON · Policy design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Clarified roles: the AI ESG committee sets ethical principles and declarations, while AIT leads operating policies.",
-            "Prepared the first guidance document for discussion with the safety community.",
-            "General work and development: streamline security reviews for internal-network-only use and actively encourage tool adoption.",
-            "Game development: require security review for deliverables included in builds, IP sent through external APIs, live AI features, and use of user data.",
-            "Added and translated international cases from the preceding six months, including Vercel × Context AI, the LiteLLM supply-chain attack, Crimson Desert AI asset exposure, Steam's AI disclosure policy, and the Identity V boycott.",
-            "Min directly corrected an overinterpretation in the explanation of the Samsung ChatGPT case."
+            "Defined review triggers for production assets, external transfer of intellectual property, live AI features, and user data.",
+            "Added relevant public cases and clarified the division between ethical principles and operational policy ownership."
           ]
         }
       ],
-      "status": "First discussion guide with benchmark cases; final organization-wide policy rollout is not confirmed."
+      "status": "Discussion guide delivered; final organization-wide rollout was not confirmed."
     },
     {
       "slug": "agent-governance-organization",
@@ -909,57 +785,44 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Proposing responsibilities and product-owner roles for an organization that must govern both people and agents.",
+      "description": "Developed an organization design proposal for enterprise AI operations and future agent governance.",
       "access": "password",
-      "summary": "Proposing responsibilities and product-owner roles for an organization that must govern both people and agents.",
+      "summary": "Developed an organization design proposal for enterprise AI operations and future agent governance.",
       "period": "2026",
       "eyebrow": "KRAFTON · Organization design",
       "sections": [
         {
-          "title": "Workstream details",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Defined four work areas, a rationale for a new organization as work shifts from people toward agents, and Option A expansion to department scale.",
-            "Finalized the name, added guidelines for internal/external AI use and cost allocation, and included SPO notation.",
-            "Outlined PO responsibilities: Enterprise Operations PO in the short term and AI Solution Validation Architecture PO in the medium/long term, with four people including a dedicated agent team.",
-            "Included agent-focused governance among the initiatives scheduled to begin in early 2027."
-          ]
-        },
-        {
-          "title": "Workstream details",
-          "paragraphs": [
-            "On September 4, 2026, discussed company-wide AI governance functions and staffing needs with Serin, Gwangyun, and Woojin. Connected costs/budgets, dashboards/Slack alerts, model- and organization-level reporting, Databricks usage data, Enterprise Admin, and Gateway policy enforcement into one flow. Defined three functional areas: Ops; governance planning/research; and solution validation, PoC, and architecture.",
-            "Discussed agent governance, product PO/PMO, policy guidance and communication, organization-level cost attribution using virtual budgets and HR snapshots, and build-versus-buy decisions. Organization size and hiring timelines were estimates made at the proposal stage.",
-            "Min took responsibility for a comparison table between short-term team expansion (Option B) and medium/long-term department-level expansion accounting for agents (Option A). Final submission and approval of that material require separate confirmation."
+            "Grouped responsibilities into operations, governance planning, and solution validation, with short- and longer-term ownership options.",
+            "Prepared role definitions and an expansion comparison connecting budgets, usage reporting, alerts, and policy enforcement."
           ]
         }
       ],
-      "status": "Organization proposal; the 2027 agent-governance workstream was a future start item."
+      "status": "Organization proposal prepared; staffing and approval remained future decisions."
     },
     {
       "slug": "policy-impact-dashboard",
-      "title": "Databricks Policy Impact Dashboard",
+      "title": "AI Policy Impact Dashboard",
       "tag": "Data product",
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Specifying views that connect policy dates, target channels, model usage, and nudges so impact can be tracked over time.",
+      "description": "Designed a dashboard for measuring how AI policy changes affect usage and cost over time.",
       "access": "password",
-      "summary": "Specifying views that connect policy dates, target channels, model usage, and nudges so impact can be tracked over time.",
+      "summary": "Designed a dashboard for measuring how AI policy changes affect usage and cost over time.",
       "period": "2026",
       "eyebrow": "KRAFTON · Data product",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Designed the views, with implementation assigned to Gwangyun, aiming to automate policy-impact checks previously produced manually in HTML.",
-            "Proposed entering policy effective dates and target groups, backtracking model usage and target channels, and linking Slack nudge data to display daily, weekly, and monthly savings rates.",
-            "Received the initial data specification covering five sources: Claude API, OpenAI API, Cursor Enterprise, ChatGPT Enterprise, and Claude Enterprise.",
-            "Proposed a new view listing the highest actual API-use job families—Tech, Data, and AI Research—and recommending low-cost model trials, while retaining 'estimated' qualifiers.",
-            "Requested validation of agent users using key names and tool-call volumes."
+            "Specified views linking policy dates, target groups, model usage, and communication prompts to observed behavior.",
+            "Delivered data requirements and dashboard layouts for an engineering collaborator; retained estimate labels where causality or attribution was uncertain."
           ]
         }
       ],
-      "status": "View design and data specifications; engineering implementation belonged to a collaborator."
+      "status": "View design delivered; engineering implementation belonged to another team."
     },
     {
       "slug": "data-foundation",
@@ -968,25 +831,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Comparing collection, storage, transformation, governance, and AI-consumption layers for enterprise knowledge.",
+      "description": "Published a research hub defining the data foundation needed for enterprise AI.",
       "access": "password",
-      "summary": "Comparing collection, storage, transformation, governance, and AI-consumption layers for enterprise knowledge.",
+      "summary": "Published a research hub defining the data foundation needed for enterprise AI.",
       "period": "2026",
       "eyebrow": "KRAFTON · Data architecture",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Wrote the five-layer framework definition: collection, storage, transformation, governance, and AI consumption.",
-            "Expanded the unstructured knowledge-data collection layer with API availability by source—Confluence, Jira, Slack, M365, Google, Kissflow, HUB, and meeting notes—and comparisons of Databricks, Snowflake, Fivetran, Airbyte, and custom development.",
-            "Corrected the role of CDC, with Min clarifying that it tracks changes independently of where data is stored.",
-            "Compiled lists of solution vendors and benchmarking companies.",
-            "Researched international Data Foundation implementations: IBM Client Zero, Uber Michelangelo, Morgan Stanley, Spotify and JPMorgan Chase, Goldman Sachs, and airline Data Mesh examples, then developed five principles for application at KRAFTON.",
-            "Outcome: published a [DF Research] hub and four child pages in Confluence."
+            "Organized collection, storage, transformation, governance, and AI consumption into a five-layer reference model.",
+            "Compared integration approaches and external benchmarks, then published a hub with supporting knowledge-base pages."
           ]
         }
       ],
-      "status": "Research hub and four supporting Confluence pages published; infrastructure deployment is a separate outcome."
+      "status": "Research pages published; infrastructure deployment was not implied."
     },
     {
       "slug": "ax-performance-storyline",
@@ -995,21 +854,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Mapping performance evidence to alternative executive narratives and explaining the AX team's role and next priorities.",
+      "description": "Prepared an AI transformation performance narrative and stakeholder question-and-answer materials.",
       "access": "password",
-      "summary": "Mapping performance evidence to alternative executive narratives and explaining the AX team's role and next priorities.",
+      "summary": "Prepared an AI transformation performance narrative and stakeholder question-and-answer materials.",
       "period": "2026",
       "eyebrow": "KRAFTON · Communication",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Developed the AX performance storyline in March, covering scenarios A–E: current state, return on investment, changes to measurement, pipeline, and global positioning. Mapped performance highlights to supporting Confluence links.",
-            "Wrote version 2.5 of the AX department introduction Q&A in March, covering future directions (AX FDE, AX Hub, support for non-developers) and differentiators (accessibility first, data-driven decisions, multiple vendors, and governance)."
+            "Mapped current state, value, measurement, delivery pipeline, and global positioning to supporting evidence.",
+            "Produced an updated department introduction and reporting storyline for leadership discussions."
           ]
         }
       ],
-      "status": "Reporting storyline and team Q&A prepared; future initiatives remain proposals."
+      "status": "Reporting and Q&A materials delivered; future initiatives remained proposals."
     },
     {
       "slug": "top-performer-playbook",
@@ -1018,20 +877,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Mapping survey questions to organizational practices so higher-automation teams can be studied and compared.",
+      "description": "Created a benchmark playbook for comparing organizational automation practices.",
       "access": "password",
-      "summary": "Mapping survey questions to organizational practices so higher-automation teams can be studied and compared.",
+      "summary": "Created a benchmark playbook for comparing organizational automation practices.",
       "period": "2026",
       "eyebrow": "KRAFTON · Adoption research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Prepared the March Top Performer Playbook report, mapping survey questions to benchmarking metrics for high-performing automation organizations: budget/staffing support, OKR inclusion, leadership/member alignment, share of automated work, and performance measures."
+            "Mapped survey questions to support, leadership alignment, automated-work share, and performance measures.",
+            "Delivered a report separating survey correlations from causal claims."
           ]
         }
       ],
-      "status": "Benchmarking report and survey-to-metric mapping; causality is not established by the survey."
+      "status": "Benchmark report delivered; causality was not established."
     },
     {
       "slug": "personal-ai-subscriptions",
@@ -1040,20 +900,20 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Organizing tool reimbursements, user counts, enterprise availability, and support status into a reviewable table.",
+      "description": "Reconciled personally purchased AI tools with enterprise availability and support status.",
       "access": "password",
-      "summary": "Organizing tool reimbursements, user counts, enterprise availability, and support status into a reviewable table.",
+      "summary": "Reconciled personally purchased AI tools with enterprise availability and support status.",
       "period": "2026",
       "eyebrow": "KRAFTON · Cost operations",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Compiled an April table of personal-subscription AI tools, settlement amounts, users, Enterprise adoption, and support status."
+            "Produced a review table covering settlement, users, enterprise adoption, and support, keeping availability distinct from actual use."
           ]
         }
       ],
-      "status": "Reconciliation table produced; enterprise availability and actual adoption are separate fields."
+      "status": "Reconciliation table completed."
     },
     {
       "slug": "google-io-research",
@@ -1062,24 +922,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Translating conference announcements into implications for evaluation, ROI, asset policy, and model lifecycle governance.",
+      "description": "Contributed enterprise AI implications to a joint event research report and internal presentation.",
       "access": "password",
-      "summary": "Translating conference announcements into implications for evaluation, ROI, asset policy, and model lifecycle governance.",
+      "summary": "Contributed enterprise AI implications to a joint event research report and internal presentation.",
       "period": "2026",
       "eyebrow": "KRAFTON · Technology strategy",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Planned external activities in San Francisco, including events, prioritized AI company office visits, and networking.",
-            "Analyzed announcements including TPU 8t/8i, Gemini Omni, SynthID, and Antigravity 2.0.",
-            "Co-authored a report with Jiyoon Lee. Min covered changes to model-evaluation dimensions (p.13), redefining ROI (p.17), a three-stage SynthID asset policy (p.20), TokenOps/EOL governance (pp.27–28), and overall implications (p.30).",
-            "Developed the central argument that Google was commoditizing the model layer while moving its competitive moat toward orchestration and distribution, resolving inconsistencies between the executive summary and conclusion.",
-            "Outcome: attended in San Francisco and presented internally."
+            "Analyzed model evaluation, return on investment, asset provenance, and model lifecycle implications from public announcements.",
+            "Co-authored presentation sections and aligned the executive summary with the final strategic conclusions."
           ]
         }
       ],
-      "status": "Attended in San Francisco and contributed to a joint internal presentation; individual contributions are scoped to the listed analysis."
+      "status": "Research contribution and internal presentation completed."
     },
     {
       "slug": "token-governance-benchmarking",
@@ -1088,20 +945,20 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Researching context/token operating limits, optimization practices, and the gateway/governance market.",
+      "description": "Summarized external practices for token limits, AI cost optimization, and governance platforms.",
       "access": "password",
-      "summary": "Researching context/token operating limits, optimization practices, and the gateway/governance market.",
+      "summary": "Summarized external practices for token limits, AI cost optimization, and governance platforms.",
       "period": "2026",
       "eyebrow": "KRAFTON · Industry research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Summarized companies' token/context-limit practices, the industry implications of Uber's AI cost optimization, and LLM Gateway/AI Governance market trends in Korean and English messages."
+            "Produced Korean and English research briefings comparing market approaches and their potential enterprise implications."
           ]
         }
       ],
-      "status": "Korean and English research communications produced; benchmark findings do not establish internal adoption."
+      "status": "Research communications delivered; internal adoption was not implied."
     },
     {
       "slug": "finops-operating-charter",
@@ -1110,25 +967,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Defining ownership, deliverables, and reporting rhythms as the AX organization moved into four operating units.",
+      "description": "Defined an AI cost and model-value workstream with ownership and reporting cadence.",
       "access": "password",
-      "summary": "Defining ownership, deliverables, and reporting rhythms as the AX organization moved into four operating units.",
+      "summary": "Defined an AI cost and model-value workstream with ownership and reporting cadence.",
       "period": "2026",
       "eyebrow": "KRAFTON · Operations design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Reviewed deliverables from the January–May contract: the company-wide survey report, Q2 Cost Report, AI Model Matrix v1, MVI/HEH framework, and initiation of the Cost Taxonomy/Kissflow pipeline.",
-            "Wrote a role-definition document aligned with the July reorganization of AX into four units: PMO, Governance, Engineering, and Data Foundation.",
-            "Positioned the role as 'AI Cost & Model Value' and elevated the value and decision-making dimensions in the structure.",
-            "Defined ownership of operational FinOps, MVI/HEH, Cost Taxonomy/approval pipeline, and API cost optimization. AI Safety was a supporting area, with a rationale for bridging infrastructure.",
-            "Planned six months of deliverables and reporting cadence.",
-            "Outcome: renewed the contract for June–December, expanded the scope, and secured a meaningful rate increase."
+            "Consolidated earlier survey, cost, model-evaluation, and approval work into a role charter and forward delivery plan.",
+            "Mapped operational FinOps, value measurement, approval taxonomy, and API optimization to the department structure."
           ]
         }
       ],
-      "status": "Role and reporting plan documented; contract renewal is career context rather than a product metric."
+      "status": "Role charter and reporting plan documented."
     },
     {
       "slug": "low-cost-model-campaign",
@@ -1137,31 +990,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Designing participation tracks and challenges to surface real examples of lower-cost model use.",
+      "description": "Designed a campaign to test lower-cost models on practical enterprise tasks.",
       "access": "password",
-      "summary": "Designing participation tracks and challenges to surface real examples of lower-cost model use.",
+      "summary": "Designed a campaign to test lower-cost models on practical enterprise tasks.",
       "period": "2026",
       "eyebrow": "KRAFTON · Adoption program",
       "sections": [
         {
-          "title": "Workstream details",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Objectives: broaden Gateway adoption and find practical examples of low-cost models such as DeepSeek.",
-            "Initial plan: open on September 7 for approximately two weeks, with four participation formats—existing case sharing, official challenges, challenge proposals, and deliverable submission—and four challenge categories.",
-            "Divided operations among AX (planning, challenge design, first review, results), P&O (forms, announcements, payments), and Gateway operations (keys and usage data).",
-            "Identified seven risks before approval: no budget cap, missing participation credits, conflict between key migration and launch timing, duplicate self-reported costs, misalignment between objectives and metrics, proposal-reward abuse, and qualitative voting criteria."
-          ]
-        },
-        {
-          "title": "Workstream details",
-          "paragraphs": [
-            "Planned the 'Lightweight & Open-Source Model Olympics' to compare quality, cost, speed, and reproducibility when the same work uses low-cost or open-weight models. Intended to collect practical and creative examples in coding, workplace productivity, game concepts, and art/assets.",
-            "The initial proposal included a launch window, coding/art/productivity categories, and modest participation rewards. Discussions shifted the campaign to follow the Gateway release, with a short competition and later evaluation. The concept evolved from competition around a single model to practical efficiency and creative production using several low-cost models.",
-            "Removing model-specific tracks and evaluating quality, cost, tokens, usability, and repeated execution were elements of the evolving plan. Actual event delivery, prize payments, participating teams, and award results were not confirmed."
+            "Specified participation formats, evaluation criteria, operating roles, and pre-launch risks around budgets, measurement, and fairness.",
+            "Produced a revised concept focused on quality, cost, speed, and reproducibility rather than a single model."
           ]
         }
       ],
-      "status": "Campaign plan and pre-approval risk review; final schedule, launch, and awards are not confirmed."
+      "status": "Campaign plan delivered; launch and results were not confirmed."
     },
     {
       "slug": "software-reliability-levels",
@@ -1170,23 +1013,21 @@
       "experience": "krafton",
       "year": "2026",
       "role": "AI Governance Design Analyst",
-      "description": "Exploring reliability levels so internal software can have review requirements proportionate to its operational importance.",
+      "description": "Proposed an internal software reliability standard and service catalog.",
       "access": "password",
-      "summary": "Exploring reliability levels so internal software can have review requirements proportionate to its operational importance.",
+      "summary": "Proposed an internal software reliability standard and service catalog.",
       "period": "2026",
       "eyebrow": "KRAFTON · Operating standards",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "In September 2026, developed an internal software operational-reliability proposal, separate from security verification, from an idea into slides and checklists. Proposed service-catalog records covering domain (krafton.com, krafton.run, krafton.io), service owner, using organizations, data grade, security status, and operational status.",
-            "Proposed levels were L0 unverified → L1 experimental → L2 internally validated → L3 approved for operation → L4 company standard. Required evidence by stage included registration, pilot scope, ownership, test feedback, monitoring, incident response, change management, validation across multiple organizations, and comparisons with overlapping services.",
-            "Defined the operating flow as registration → classification → evidence assessment → badge/catalog display → cost, usage, and incident monitoring → periodic reassessment. Key measures were registration coverage, assigned-owner rate, the share at L3 or above, reassessment completion, overlapping functions, standard-service usage, and convergence through consolidation, migration, or retirement.",
-            "Created a one-page proposal for a Slack bot to collect evidence through forms, links, and checklists; send reminders; determine the highest supported level; and verify uptime, incidents, and deployments through monitoring/DevOps integrations. The four-week pilot—inventory → baseline → display → standard-candidate selection—was proposed, not a completed internal certification."
+            "Defined evidence-based maturity levels covering registration, ownership, pilot testing, monitoring, incident response, and periodic reassessment.",
+            "Delivered slides, checklists, and a lightweight evidence-collection concept; the pilot remained a proposal."
           ]
         }
       ],
-      "status": "Operating-standard proposal; company-wide adoption is not confirmed."
+      "status": "Operating-standard proposal completed; company-wide adoption was not confirmed."
     },
     {
       "slug": "global-ai-strategy",
@@ -1195,23 +1036,21 @@
       "experience": "krafton",
       "year": "2024–2025",
       "role": "AI Governance Design Analyst",
-      "description": "Comparing global governance cases and connecting technology/legal risks to leadership's adoption decisions.",
+      "description": "Benchmarked external AI governance approaches and prepared early enterprise planning materials.",
       "access": "password",
-      "summary": "Comparing global governance cases and connecting technology/legal risks to leadership's adoption decisions.",
+      "summary": "Benchmarked external AI governance approaches and prepared early enterprise planning materials.",
       "period": "2024–2025",
       "eyebrow": "KRAFTON · AI strategy",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Benchmarked more than ten AI governance and AI risk cases from global technology companies.",
-            "Prepared KRAFTON's initial AI governance planning slides for review by the chair and ESG organization. This was planning and review, not implementation of the governance system.",
-            "Reviewed global AI technology and adoption trends, and presented technical/legal risks and adoption prerequisites in weekly C-level AI strategy meetings and discussions with global AI vendors.",
-            "Supported business-led, bottom-up AI adoption within the company. This item reflects Min's retrospective account of earlier work."
+            "Reviewed governance and technology-risk cases and translated them into initial planning slides for executive and sustainability stakeholders.",
+            "Connected public AI market developments to adoption prerequisites in recurring leadership briefings."
           ]
         }
       ],
-      "status": "2024–2025 strategy research and review materials, separate from the 2026 work."
+      "status": "Strategy research and review materials delivered; implementation was separate."
     },
     {
       "slug": "gaming-investment-landscape",
@@ -1220,20 +1059,20 @@
       "experience": "krafton",
       "year": "2024–2025",
       "role": "AI Governance Design Analyst",
-      "description": "Analyzing three years of gaming investment across content, tools, creators, live operations, and AI.",
+      "description": "Analyzed game industry investment trends for a strategy audience.",
       "access": "password",
-      "summary": "Analyzing three years of gaming investment across content, tools, creators, live operations, and AI.",
+      "summary": "Analyzed game industry investment trends for a strategy audience.",
       "period": "2024–2025",
       "eyebrow": "KRAFTON · Market strategy",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Analyzed three years of game-industry investment trends across content, infrastructure tools, the creator economy, live operations, and AI, then presented to more than 20 strategy colleagues. The analysis connected market signals with studio roadmaps."
+            "Produced a multi-year landscape across content, infrastructure, creators, live operations, and AI, connecting market signals to studio roadmaps."
           ]
         }
       ],
-      "status": "Analysis presented to more than 20 strategy colleagues; subsequent investment decisions are not attributed to the presentation."
+      "status": "Analysis presented; later investment decisions were not attributed to it."
     },
     {
       "slug": "hq-ai-survey-2025",
@@ -1242,24 +1081,21 @@
       "experience": "krafton",
       "year": "2025",
       "role": "AI Governance Design Analyst",
-      "description": "Designing a voluntary headquarters survey, bilingual communications, and participation support to understand workplace needs.",
+      "description": "Designed a headquarters AI adoption survey to identify task-level needs and adoption barriers.",
       "access": "password",
-      "summary": "Designing a voluntary headquarters survey, bilingual communications, and participation support to understand workplace needs.",
+      "summary": "Designed a headquarters AI adoption survey to identify task-level needs and adoption barriers.",
       "period": "2025",
       "eyebrow": "KRAFTON · Survey design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "From late 2024 into 2025, designed a survey of AI use in KRAFTON HQ work and prepared announcements, an English version, and revisions. The goal was to identify AI use by task, pain points, and needed tools, then prioritize adoption by job family and organization.",
-            "Records show a pretest and a scheduled main survey. Participation was voluntary. The HQ survey was separate from a wider company tracking program spanning overseas studios and subsidiaries.",
-            "Managed survey announcements and revisions, coordinated with the translation team, and encouraged participation. The survey took approximately 10–15 minutes and was intended to inform selection of AI solutions supporting employees' actual work.",
-            "Response counts differ across records. Without the original results table, no single participation figure is treated as definitive in this public summary.",
-            "Quantitative analysis and follow-up interviews in February–March 2025, a separate April game-studio survey, and a research-paper-level design were follow-up plans at that time. The available material does not confirm which were completed."
+            "Prepared survey questions, bilingual communications, revisions, and participation support for a voluntary rollout.",
+            "Documented how the findings could guide tool selection by job family without claiming unverified follow-up studies."
           ]
         }
       ],
-      "status": "Survey work completed; the records differ between 548 and approximately 600 responses, so no single reconciled count is claimed."
+      "status": "Survey work completed; inconsistent response records were not published as a single count."
     },
     {
       "slug": "studio-ai-workflows",
@@ -1268,23 +1104,21 @@
       "experience": "krafton",
       "year": "2025",
       "role": "AI Governance Design Analyst",
-      "description": "Analyzing studio use cases to separate near-term automation opportunities from longer-term platform investments.",
+      "description": "Reviewed studio AI use cases and workflow opportunities for near-term automation and longer-term platforms.",
       "access": "password",
-      "summary": "Analyzing studio use cases to separate near-term automation opportunities from longer-term platform investments.",
+      "summary": "Reviewed studio AI use cases and workflow opportunities for near-term automation and longer-term platforms.",
       "period": "2025",
       "eyebrow": "KRAFTON · Transformation",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Collected, showcased, and analyzed 30–50 AI use cases from five studios, distinguishing implemented business uses as opportunities for near-term automation or longer-term platform investment.",
-            "Presented internal consulting projects involving HQ, Tango Gameworks in Japan, PUBG in Korea, and Striking Distance Studios in the United States. These are examples of presentation subjects, not a complete list of the five analyzed studios.",
-            "Participated in agentic AI system reviews and proposed improvements in workflow fit, reliability, and governance.",
-            "In June 2025, researched and contacted KOCCA about existing standardization research, limitations, follow-up research, and possible collaboration on AI-supported game-production workflows. A formal collaboration agreement was not confirmed."
+            "Collected and assessed implemented use cases, distinguishing local workflow improvements from broader product opportunities.",
+            "Contributed reliability and governance observations to agentic workflow reviews and researched external standardization options."
           ]
         }
       ],
-      "status": "Five studios and 30–50 use cases reviewed; formal external research collaboration is not confirmed."
+      "status": "Use-case review completed; formal external collaboration was not confirmed."
     },
     {
       "slug": "global-ai-insights",
@@ -1293,22 +1127,21 @@
       "experience": "krafton",
       "year": "2025",
       "role": "AI Governance Design Analyst",
-      "description": "Connecting internal adoption signals and external vendor/policy developments in recurring leadership reporting.",
+      "description": "Built global AI adoption reporting and recurring executive insights.",
       "access": "password",
-      "summary": "Connecting internal adoption signals and external vendor/policy developments in recurring leadership reporting.",
+      "summary": "Built global AI adoption reporting and recurring executive insights.",
       "period": "2025",
       "eyebrow": "KRAFTON · Executive intelligence",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Led an AI usage tracking and reporting system across global teams and briefed leadership on adoption, productivity improvements, and training needs. Tracking coverage is distinct from responses to the HQ survey.",
-            "Wrote weekly AI Insights reports for the Chairman, CEO, CFO, and ELT, connecting market developments, vendor updates, policy changes, and internal AI adoption metrics.",
-            "Curated strong AI use cases by job family and shared them through company-wide showcases and daily updates. Exact internal audience counts are omitted."
+            "Tracked usage patterns and training needs across distributed teams and wrote weekly briefings combining internal evidence with external AI developments.",
+            "Curated useful applications by job family for company-wide sharing."
           ]
         }
       ],
-      "status": "The tracking program covered global teams; its scope is not a survey response count."
+      "status": "Tracking and reporting delivered; coverage is not a survey response count."
     },
     {
       "slug": "solution-landscape",
@@ -1317,22 +1150,21 @@
       "experience": "krafton",
       "year": "2025",
       "role": "AI Governance Design Analyst",
-      "description": "Building an evaluation database and supporting vendor conversations that connect tools to employee workflows.",
+      "description": "Built an AI solution assessment database to support vendor and workflow decisions.",
       "access": "password",
-      "summary": "Building an evaluation database and supporting vendor conversations that connect tools to employee workflows.",
+      "summary": "Built an AI solution assessment database to support vendor and workflow decisions.",
       "period": "2025",
       "eyebrow": "KRAFTON · Solution strategy",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Built a database of in-depth assessments of more than 30 AI solutions and supported discussions with major external partners.",
-            "The records differ on partnership support: the resume lists four partners—OpenAI, NVIDIA, Microsoft, and ElevenLabs—while the profile lists five, adding Google. These are supported engagements, not contracts personally signed by Min.",
-            "Combined internal use-case sharing with external solution reviews, focusing on applying tools to real employee workflows rather than simply introducing them."
+            "Reviewed a broad set of tools against employee use cases and prepared research for partnership discussions.",
+            "Supported vendor evaluation without claiming personal ownership of contract negotiation or signing."
           ]
         }
       ],
-      "status": "More than 30 solutions reviewed; partnership support is not a claim of personally closing vendor contracts."
+      "status": "Solution database and partnership research delivered."
     },
     {
       "slug": "slack-automation-workshop",
@@ -1341,20 +1173,20 @@
       "experience": "krafton",
       "year": "2025",
       "role": "AI Governance Design Analyst",
-      "description": "Implementing message drafting, templates, and routing, then teaching colleagues through a live build session and playbook.",
+      "description": "Built a messaging automation workflow and taught colleagues how to use it.",
       "access": "password",
-      "summary": "Implementing message drafting, templates, and routing, then teaching colleagues through a live build session and playbook.",
+      "summary": "Built a messaging automation workflow and taught colleagues how to use it.",
       "period": "2025",
       "eyebrow": "KRAFTON · Enablement",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Designed and implemented an AI automation system supporting Slack message drafting, templates, and routing, and ran a live implementation session for colleagues. Supported subsequent use through office hours and a playbook."
+            "Implemented drafting, template, and routing support, then delivered a hands-on session and follow-up playbook."
           ]
         }
       ],
-      "status": "Automation built and a 50-person session delivered; long-term productivity effects were not separately measured."
+      "status": "Automation and training delivered; long-term productivity effects were not separately measured."
     },
     {
       "slug": "game-workflow-standardization",
@@ -1363,20 +1195,20 @@
       "experience": "krafton",
       "year": "2025",
       "role": "AI Governance Design Analyst",
-      "description": "Investigating existing KOCCA standardization work and possible follow-on research for AI game-production workflows.",
+      "description": "Researched standardization opportunities for AI-assisted game production workflows.",
       "access": "password",
-      "summary": "Investigating existing KOCCA standardization work and possible follow-on research for AI game-production workflows.",
+      "summary": "Researched standardization opportunities for AI-assisted game production workflows.",
       "period": "2025",
       "eyebrow": "KRAFTON · Industry research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "In June 2025, researched and contacted KOCCA about existing standardization research, limitations, follow-up research, and possible collaboration on AI-supported game-production workflows. A formal collaboration agreement was not confirmed."
+            "Reviewed external research and sent a collaboration inquiry covering existing standards, gaps, and possible follow-up work."
           ]
         }
       ],
-      "status": "Research and inquiries; a formal partnership is not confirmed."
+      "status": "Research and inquiry completed; a formal partnership was not confirmed."
     },
     {
       "slug": "uiuc-agentic-collaboration",
@@ -1385,20 +1217,20 @@
       "experience": "krafton",
       "year": "November–December 2025",
       "role": "AI Governance Design Analyst",
-      "description": "Scoping a possible research collaboration around agentic AI between an enterprise team and a university.",
+      "description": "Scoped a possible university and enterprise research collaboration on agentic AI.",
       "access": "password",
-      "summary": "Scoping a possible research collaboration around agentic AI between an enterprise team and a university.",
+      "summary": "Scoped a possible university and enterprise research collaboration on agentic AI.",
       "period": "November–December 2025",
       "eyebrow": "KRAFTON · Research partnership",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "In November–December 2025, discussed a draft KRAFTON–UIUC Agentic AI collaboration and the scope of contracts and joint research. This was preliminary discussion, distinct from confirmed research execution."
+            "Prepared discussion material on research objectives, contract scope, and potential joint work."
           ]
         }
       ],
-      "status": "2025 collaboration and contract discussions; execution was not confirmed."
+      "status": "Collaboration draft prepared; research execution was not confirmed."
     },
     {
       "slug": "weekly-performance-review",
@@ -1407,71 +1239,67 @@
       "experience": "pacvue",
       "year": "June–August 2026",
       "role": "AI & Customer Intelligence Intern",
-      "description": "Connecting pipeline, bookings, ACV-to-revenue, and renewals in a weekly leadership report while documenting conflicting definitions.",
+      "description": "Delivered weekly leadership reporting that connected sales pipeline, bookings, revenue conversion, and retention.",
       "access": null,
-      "summary": "Connecting pipeline, bookings, ACV-to-revenue, and renewals in a weekly leadership report while documenting conflicting definitions.",
+      "summary": "Delivered weekly leadership reporting that connected sales pipeline, bookings, revenue conversion, and retention.",
       "period": "June–August 2026",
       "eyebrow": "Pacvue · Revenue operations",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Created a weekly Performance Review for leadership, connecting pipeline, new/expansion bookings, ACV-to-revenue, and renewal/retention metrics. Separated regions, monthly/quarterly periods, targets, and actuals to make weekly performance readable.",
-            "Compared at least three conflicting metric definitions across Salesforce, Tableau, and finance/operations material. Highlighted in meetings that bookings varied by source, and documented checks for the authoritative source, reporting cut-off, and regional breakdown.",
-            "Avoided combining unverified figures as settled facts, documenting data owners, definitions, periods, update methods, and missing items. The weekly report and definition comparisons were completed, but the material does not establish that all source inconsistencies were ultimately resolved."
+            "Organized targets and actuals by period and region, then reconciled conflicting definitions across commercial and analytics systems.",
+            "Documented authoritative-source questions and missing items rather than presenting unresolved metrics as final."
           ]
         }
       ],
-      "status": "Weekly reports delivered; not all source-system definition conflicts were conclusively resolved."
+      "status": "Weekly reports delivered; some source-definition questions remained open."
     },
     {
       "slug": "six-for-26-dashboard",
-      "title": "6 for ’26 Executive OKR Dashboard",
+      "title": "Executive Priorities Dashboard",
       "tag": "Executive dashboard",
       "experience": "pacvue",
       "year": "June–August 2026",
       "role": "AI & Customer Intelligence Intern",
-      "description": "Building a navigable dashboard for six company priorities, with targets, actuals, product detail, and source caveats.",
+      "description": "Built an executive priorities dashboard with transparent KPI definitions and follow-up needs.",
       "access": null,
-      "summary": "Building a navigable dashboard for six company priorities, with targets, actuals, product detail, and source caveats.",
+      "summary": "Built an executive priorities dashboard with transparent KPI definitions and follow-up needs.",
       "period": "June–August 2026",
       "eyebrow": "Pacvue · Executive dashboard",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Developed the '6 for ’26' executive dashboard so the Enterprise SLT could review six company priorities. Organized core business, products, growth initiatives, and Horizons 1, 2, and 3 within one navigation structure.",
-            "Distinguished targets from actuals, first-half totals from July results, and regional/product metrics. Kept revenue separate from spend and managed services separate from SaaS, adding notes and verification steps for KPIs with uncertain sources.",
-            "Checked inconsistencies in definitions of events, active customers, onboarded customers, and actual product users. Reviewed Segment, Snowflake, separate product databases, and data-owner mapping. Metrics without clear definitions or access remained follow-up items.",
-            "V1 and subsequent HTML dashboard deliverables are documented. Handed over a functioning version at the end of the internship, with pipeline/forecast definitions and some manual updates still unresolved. This was not a fully automated, permanently operated system."
+            "Organized business, product, and growth priorities in a navigable HTML view with targets, actuals, and regional breakdowns.",
+            "Handed off a working dashboard while flagging KPIs that still required source validation or manual refresh."
           ]
         }
       ],
-      "status": "Working dashboard handed off; pipeline/forecast definitions and some manual updates remained open."
+      "status": "Working dashboard delivered; some definitions and refreshes remained open."
     },
     {
       "slug": "prodcomm-growth-dashboard",
-      "title": "ProdComm & Growth Initiative Dashboard",
+      "title": "Product Communication and Growth Dashboard",
       "tag": "Product operations",
       "experience": "pacvue",
       "year": "June–August 2026",
       "role": "AI & Customer Intelligence Intern",
-      "description": "Organizing launches, decisions, next actions, onboarding, usage, spending, and feedback for product communications.",
+      "description": "Delivered product communication and growth dashboards for release and customer-signal reviews.",
       "access": null,
-      "summary": "Organizing launches, decisions, next actions, onboarding, usage, spending, and feedback for product communications.",
+      "summary": "Delivered product communication and growth dashboards for release and customer-signal reviews.",
       "period": "June–August 2026",
       "eyebrow": "Pacvue · Product operations",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Organized ProdComm Forum material and a product-communication dashboard to show release status, key decisions, next actions, and growth/spend signals. Separate ProdComm_Forum_2026-06-26 (1).html and July ProdComm HTML deliverables remain in the records.",
-            "Reviewed sources and definitions for onboarding, usage, spend, and customer-feedback metrics supporting ChatGPT Ads, TikTok Ads, Walmart DSP/Onsite Display, Reddit, Prism, and other growth/release initiatives. Listed ChatGPT Ads product enablement as a responsibility and contribution in the resume.",
-            "Handed over Growth/Horizon material as dashboards refreshable from extracted files, although release-specific data relied on different manual extracts. Product adoption or revenue growth is not attributed solely to Min."
+            "Organized launch status, decisions, next actions, adoption measures, and spend signals into refreshable HTML views.",
+            "Documented source definitions and manual extract dependencies so the dashboards would not imply full automation."
           ]
         }
       ],
-      "status": "HTML dashboards and refresh structure delivered; launch data still relied on separate manual extracts."
+      "status": "Dashboard views delivered; release data still depended on manual extracts."
     },
     {
       "slug": "chatgpt-ads-enablement",
@@ -1480,68 +1308,67 @@
       "experience": "pacvue",
       "year": "June–August 2026",
       "role": "AI & Customer Intelligence Intern",
-      "description": "Helping define the onboarding, use, spend, and customer signals needed to support a new advertising product.",
+      "description": "Supported product enablement with clearer onboarding, usage, spend, and customer-feedback measures.",
       "access": null,
-      "summary": "Helping define the onboarding, use, spend, and customer signals needed to support a new advertising product.",
+      "summary": "Supported product enablement with clearer onboarding, usage, spend, and customer-feedback measures.",
       "period": "June–August 2026",
       "eyebrow": "Pacvue · Launch support",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Reviewed sources and definitions for onboarding, usage, spend, and customer-feedback metrics supporting ChatGPT Ads, TikTok Ads, Walmart DSP/Onsite Display, Reddit, Prism, and other growth/release initiatives. Listed ChatGPT Ads product enablement as a responsibility and contribution in the resume."
+            "Reviewed data sources and metric definitions for a new advertising product and related growth initiatives.",
+            "Contributed reporting inputs without attributing company-level adoption or revenue to this work alone."
           ]
         }
       ],
-      "status": "Enablement contribution recorded; revenue and product adoption are company outcomes."
+      "status": "Enablement and reporting contribution documented."
     },
     {
       "slug": "gong-voice-of-customer",
-      "title": "Gong Voice of Customer & Product Health",
+      "title": "Voice of Customer and Product Health Prototype",
       "tag": "Customer intelligence",
       "experience": "pacvue",
       "year": "June–August 2026",
       "role": "AI & Customer Intelligence Intern",
-      "description": "Turning customer-call evidence into product/account themes, obstacles, feature requests, and recommended follow-up.",
+      "description": "Designed a voice-of-customer dashboard prototype for product and leadership review.",
       "access": null,
-      "summary": "Turning customer-call evidence into product/account themes, obstacles, feature requests, and recommended follow-up.",
+      "summary": "Designed a voice-of-customer dashboard prototype for product and leadership review.",
       "period": "June–August 2026",
       "eyebrow": "Pacvue · Customer intelligence",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Designed a structure grouping customer-call signals by product and customer so executives and product teams could review praise, blockers, requested features, and follow-up actions. Examined Gong MCP extraction coverage and possible omissions, and identified the need to compare it with other sources.",
-            "Created an HTML prototype for TikTok launch customer signals and Growth Initiative VoC / Product Health dashboard drafts. Included customer-level evidence, cross-customer themes, priority issues, recommended actions, metric definitions, and review steps.",
-            "The result was a manually supported proof of concept. Complete call coverage, automated weekly operation, quantitative customer-health scoring, reduced churn, and increased revenue were not confirmed."
+            "Grouped customer-call evidence by product and account to show praise, blockers, feature requests, and follow-up actions.",
+            "Created an HTML proof of concept and documented extraction coverage, missing-source checks, and metric definitions."
           ]
         }
       ],
-      "status": "Manual proof of concept; complete call collection, weekly automation, and churn effects are not established."
+      "status": "Manual prototype delivered; automated operation and customer outcomes were not established."
     },
     {
       "slug": "ent-operating-agent",
-      "title": "ENT Management Digest & Operating Agent",
+      "title": "Enterprise Management Digest Agent",
       "tag": "Agent prototype",
       "experience": "pacvue",
       "year": "June–August 2026",
       "role": "AI & Customer Intelligence Intern",
-      "description": "Designing a narrow flow from Slack updates to structured storage, a weekly digest, missing updates, and follow-up questions.",
+      "description": "Built a prototype agent for structured team updates and executive digests.",
       "access": null,
-      "summary": "Designing a narrow flow from Slack updates to structured storage, a weekly digest, missing updates, and follow-up questions.",
+      "summary": "Built a prototype agent for structured team updates and executive digests.",
       "period": "June–August 2026",
       "eyebrow": "Pacvue · Agent prototype",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Defined the scope and MVP sequence for an operating agent collecting weekly ENT Management/team updates and connecting them to executive, department, and individual summaries; missing updates; promised follow-ups; and Q&A.",
-            "Prioritized a narrow Slack updates → structured storage → weekly digest → follow-up questions flow. Left CRM, Gong, ERP, Vitally, and Confluence integrations for later stages once access and scope were secured.",
-            "Built and demonstrated an ENT Operating Agent prototype and left GitHub handover material. Dependencies on APIs, authentication, automation, and standardized updates mean it is not described as a completed company-wide operating system."
+            "Scoped a narrow flow from team messages to structured storage, weekly summaries, missing-update flags, and follow-up questions.",
+            "Demonstrated the prototype and handed over source material, with production integrations and access controls left as dependencies."
           ]
         }
       ],
-      "status": "Prototype demonstrated and handoff materials created; API access, authentication, and update standards remained dependencies."
+      "status": "Prototype demonstrated; organization-wide operation was not established."
     },
     {
       "slug": "mira-editable-memory",
@@ -1550,23 +1377,21 @@
       "experience": "memoria",
       "year": "2026",
       "role": "Team MIRA · Product Strategy",
-      "description": "Designing personal, company, and shared memory that users can edit and share deliberately across sessions and tools.",
+      "description": "Designed an editable AI memory concept with user-controlled sharing boundaries.",
       "access": null,
-      "summary": "Designing personal, company, and shared memory that users can edit and share deliberately across sessions and tools.",
+      "summary": "Designed an editable AI memory concept with user-controlled sharing boundaries.",
       "period": "2026",
       "eyebrow": "Memoria & MIRA · AI product",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Defined the problem of AI losing user preferences, organizational context, and previous decisions across sessions and tools. Outlined Personal / Company / Shared Memory, user-controlled editing and sharing boundaries, and reusable Skills and Workflows as the product direction.",
-            "Developed the product pitch and demo UI around recording retrieval, extraction, generation, and human decisions from conversations/agent runs, grouping them into Step → Task → Job/Workflow, with tracing, saving, and rerun interfaces. Also explored prompt rewriting, a Chrome extension, structured/graph memory, and cross-team permissions.",
-            "Discussed model selection, context learning/caching, validation, and evaluation with the team, and produced INFO 490 presentation/feedback materials and the Memoria by MIRA deck. Market-size and performance claims in the deck are pitch hypotheses, not verified user metrics or realized customer savings.",
-            "Presented the team's product at Demo Day; records indicate that approximately 12 judges visited the booth and provided feedback. This presentation is distinct from customer contracts or confirmed investment."
+            "Developed a demo interface for tracing, saving, editing, and reusing context from conversations and agent workflows.",
+            "Prepared a product pitch and presented it for feedback; market and performance claims remained hypotheses."
           ]
         }
       ],
-      "status": "Product exploration and Demo Day presentation; feedback is distinct from customers or investment."
+      "status": "Product concept and demo presented; customers and investment were not confirmed."
     },
     {
       "slug": "reusable-team-workflows",
@@ -1575,22 +1400,21 @@
       "experience": "memoria",
       "year": "2026",
       "role": "Team MIRA · Product Strategy",
-      "description": "Structuring conversation and agent work into steps, tasks, and workflows that people can inspect, save, and rerun.",
+      "description": "Designed a reusable AI workflow concept tied to editable personal and team memory.",
       "access": null,
-      "summary": "Structuring conversation and agent work into steps, tasks, and workflows that people can inspect, save, and rerun.",
+      "summary": "Designed a reusable AI workflow concept tied to editable personal and team memory.",
       "period": "2026",
       "eyebrow": "Memoria & MIRA · Workflow product",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Defined the problem of AI losing user preferences, organizational context, and previous decisions across sessions and tools. Outlined Personal / Company / Shared Memory, user-controlled editing and sharing boundaries, and reusable Skills and Workflows as the product direction.",
-            "Developed the product pitch and demo UI around recording retrieval, extraction, generation, and human decisions from conversations/agent runs, grouping them into Step → Task → Job/Workflow, with tracing, saving, and rerun interfaces. Also explored prompt rewriting, a Chrome extension, structured/graph memory, and cross-team permissions.",
-            "Discussed model selection, context learning/caching, validation, and evaluation with the team, and produced INFO 490 presentation/feedback materials and the Memoria by MIRA deck. Market-size and performance claims in the deck are pitch hypotheses, not verified user metrics or realized customer savings."
+            "Outlined how repeated steps could become tasks and workflows with traceable source context and human review.",
+            "Produced demo and presentation materials; actual user adoption was not established."
           ]
         }
       ],
-      "status": "Product pitch and demo design; operational reuse and user adoption were not verified."
+      "status": "Product pitch and demo design completed; operational reuse was not verified."
     },
     {
       "slug": "deployment-studio",
@@ -1599,23 +1423,21 @@
       "experience": "memoria",
       "year": "2026",
       "role": "Founder · Strategy & Operations",
-      "description": "Defining a four-week pilot from fit assessment through baseline, build, user testing, and a continue/change/stop decision.",
+      "description": "Created an AI deployment service plan built around narrowly scoped, measurable customer pilots.",
       "access": null,
-      "summary": "Defining a four-week pilot from fit assessment through baseline, build, user testing, and a continue/change/stop decision.",
+      "summary": "Created an AI deployment service plan built around narrowly scoped, measurable customer pilots.",
       "period": "2026",
       "eyebrow": "Memoria & MIRA · Business design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "From a Deployment Strategist / Strategy & Operations perspective, defined customer-specific recurring work for SMBs and individual departments within large companies. Wrote an operating model: problem discovery → current process/data/approver analysis → narrow pilot → before/after measurement → productization of recurring workflows.",
-            "Specified a four-week pilot: Week 0 fit assessment; Week 1 workflow mapping and baseline; Week 2 AI/integration setup; Week 3 testing with a small group of real users; Week 4 results review and deploy/revise/stop decision. Proposed a team of one strategy/customer lead and two deployment engineers.",
-            "Proposed a revenue model connecting project implementation fees, monthly maintenance/improvement contracts, and reusable components becoming SaaS. Defined staged contract, pricing, and acceptance terms for discovery sessions, paid pilots, commercial deployment, and managed workflows. Business-plan amounts remained unvalidated assumptions.",
-            "Prepared the Memoria Business Plan, Vertical AI FDE Strategy comparing six industries, market-research summaries, internal playbooks, customer/VC pitch decks, a Proof of Concept contract template, and a Sales Pipeline sheet. Blank customer-name and signature fields in the contract template do not establish a signed contract."
+            "Specified discovery, workflow mapping, baseline measurement, integration, user testing, and deploy-or-revise decisions.",
+            "Prepared playbooks, pitch materials, a sales pipeline, and a contract template; assumptions were kept separate from signed work."
           ]
         }
       ],
-      "status": "Business plan, playbook, pitch decks, pipeline sheet, and contract template; no signed customer or realized ROI is established."
+      "status": "Business and pilot materials prepared; signed customers and realized ROI were not established."
     },
     {
       "slug": "workflow-atlas",
@@ -1624,23 +1446,21 @@
       "experience": "memoria",
       "year": "2026",
       "role": "Founder · Strategy & Operations",
-      "description": "Comparing repetitive work in manufacturing, insurance, energy, games, and beauty to choose focused discovery hypotheses.",
+      "description": "Built industry workflow hypotheses and a customer discovery framework for AI deployment.",
       "access": null,
-      "summary": "Comparing repetitive work in manufacturing, insurance, energy, games, and beauty to choose focused discovery hypotheses.",
+      "summary": "Built industry workflow hypotheses and a customer discovery framework for AI deployment.",
       "period": "2026",
       "eyebrow": "Memoria & MIRA · Customer discovery",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Developed target lists and account hypotheses by industry, role, and workflow for UIUC Research Park/EnterpriseWorks and US/Korean companies. Researched recurring work in engineering, manufacturing, power, insurance, games, and beauty, and outlined an approach: industry understanding → problem hypothesis → demo → discovery call → proposal → pilot measurement.",
-            "Explored a customer-specific Workflow Atlas and pitch structure placing workflows, current tools, agent roles, human approval points, deliverables, and exception handling side by side. Prioritized marketing, finance, legal, and customer-feedback work for game publishers/studios and K-beauty companies.",
-            "Compared product candidates covering company AI adoption/cost/approval management, agent policy/accountability, and accounting document reconciliation, approval records, and prevention of segregation-of-duties (SoD) violations. The September 29 accounting-agent control layer remained an exploratory hypothesis, not a sold or deployed product.",
-            "The supplied material does not establish customer-interview counts, proposal conversion rates, signed contracts, paid revenue, or pilot ROI. Prepared sales lists are recorded separately from actual outreach and contracts."
+            "Mapped recurring tasks, tools, agent roles, human approvals, deliverables, and exception handling across potential customer segments.",
+            "Prepared target lists and pitch structure while keeping market hypotheses separate from interviews or paid pilots."
           ]
         }
       ],
-      "status": "Target lists and workflow hypotheses prepared; interviews, conversion rates, and signed pilots remain unverified."
+      "status": "Research and sales materials prepared; customer conversion was not verified."
     },
     {
       "slug": "accounting-agent-controls",
@@ -1649,21 +1469,20 @@
       "experience": "memoria",
       "year": "2026",
       "role": "Founder · Strategy & Operations",
-      "description": "Exploring evidence, financial approval, and segregation-of-duties checks as a control layer around accounting agents.",
+      "description": "Scoped a control layer for accounting agents as an exploratory product concept.",
       "access": null,
-      "summary": "Exploring evidence, financial approval, and segregation-of-duties checks as a control layer around accounting agents.",
+      "summary": "Scoped a control layer for accounting agents as an exploratory product concept.",
       "period": "2026",
       "eyebrow": "Memoria & MIRA · Product hypothesis",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Explored a customer-specific Workflow Atlas and pitch structure placing workflows, current tools, agent roles, human approval points, deliverables, and exception handling side by side. Prioritized marketing, finance, legal, and customer-feedback work for game publishers/studios and K-beauty companies.",
-            "Compared product candidates covering company AI adoption/cost/approval management, agent policy/accountability, and accounting document reconciliation, approval records, and prevention of segregation-of-duties (SoD) violations. The September 29 accounting-agent control layer remained an exploratory hypothesis, not a sold or deployed product."
+            "Mapped document reconciliation, financial approval evidence, segregation-of-duties checks, and human decision points into a workflow concept."
           ]
         }
       ],
-      "status": "September 2026 exploratory hypothesis; not a sold or deployed product."
+      "status": "Product hypothesis documented; it was not sold or deployed."
     },
     {
       "slug": "beauty-voc-a2a",
@@ -1672,20 +1491,20 @@
       "experience": "memoria",
       "year": "2026",
       "role": "Founder · Strategy & Operations",
-      "description": "Showing how multiple agents and human review could coordinate beauty customer-feedback collection.",
+      "description": "Produced a multi-agent customer-feedback demonstration for a consumer brand scenario.",
       "access": null,
-      "summary": "Showing how multiple agents and human review could coordinate beauty customer-feedback collection.",
+      "summary": "Produced a multi-agent customer-feedback demonstration for a consumer brand scenario.",
       "period": "2026",
       "eyebrow": "Memoria & MIRA · Agent demonstration",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Produced an A2A scenario video and narration files connecting beauty customer-feedback collection to multiple agents and human review. This was demonstration material, not an operational system for an actual beauty customer."
+            "Created a scenario video and narration showing how agents could collect and organize feedback before human review."
           ]
         }
       ],
-      "status": "Scenario video and narration produced; demonstration rather than a customer production system."
+      "status": "Demonstration produced; no customer production system was established."
     },
     {
       "slug": "personal-executive-agent",
@@ -1694,20 +1513,20 @@
       "experience": "memoria",
       "year": "2026",
       "role": "Founder · Strategy & Operations",
-      "description": "Exploring an assistant that connects email, organizational knowledge, and approval workflows.",
+      "description": "Outlined requirements for a personal executive agent connecting communication, knowledge, and approvals.",
       "access": null,
-      "summary": "Exploring an assistant that connects email, organizational knowledge, and approval workflows.",
+      "summary": "Outlined requirements for a personal executive agent connecting communication, knowledge, and approvals.",
       "period": "2026",
       "eyebrow": "Memoria & MIRA · Agent design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Explored requirements and technical directions for a Personal Executive Agent connecting email, knowledge systems, and approvals, and an always-on voice-transcription wearable/memory device with visible consent, pause, and stop states. These remained concept/design work as of late September."
+            "Documented data connections, approval points, and a technical direction for a consent-aware assistant."
           ]
         }
       ],
-      "status": "Requirements and technical direction; implementation and production use are not established."
+      "status": "Concept and requirements prepared; implementation was not established."
     },
     {
       "slug": "action-lab-human-ai-decisions",
@@ -1716,23 +1535,21 @@
       "experience": "uiuc",
       "year": "2026–present",
       "role": "Research Assistant · ACTION Lab",
-      "description": "Designing information-exchange and consensus experiments where an LLM takes the place of one human teammate.",
+      "description": "Designed controlled research conditions for studying AI influence on group decisions.",
       "access": null,
-      "summary": "Designing information-exchange and consensus experiments where an LLM takes the place of one human teammate.",
+      "summary": "Designed controlled research conditions for studying AI influence on group decisions.",
       "period": "2026–present",
       "eyebrow": "UIUC & HCI Research · Human–AI research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Worked on an information-exchange and consensus game in Professor Jessie Chin's ACTION Lab for an IRB-approved study. Designed experimental conditions to examine cooperation, trust in information, decisions, and group dynamics when one human player is replaced by an LLM player.",
-            "Specified card classification/value systems, strategies for players with different information, scenario-specific answer validation, and observable state/action constraints for the AI player. Research records cover nine scenarios and 37 conditions.",
-            "Compared more than ten AI models as player candidates and designed a prompting framework using ReAct, reasoning steps, and structured task decomposition. Diagnosed whether inconsistent runs arose from the model's information state, prompts, or game rules.",
-            "This is ongoing research connected to IS 389 independent study. Final participant-experiment results and publication of the planned paper are not presented as completed outcomes."
+            "Specified game rules, information states, answer validation, and observable actions for an LLM-based participant.",
+            "Compared candidate models and developed prompting approaches to distinguish model behavior from task-design errors."
           ]
         }
       ],
-      "status": "IRB-approved research in progress: nine scenarios, 37 conditions, and more than ten model candidates reviewed."
+      "status": "IRB-approved research in progress; participant results are not presented as complete."
     },
     {
       "slug": "rewindai-uist-poster",
@@ -1741,21 +1558,20 @@
       "experience": "uiuc",
       "year": "August–September 2026",
       "role": "Research Co-author",
-      "description": "Contributing as a co-author to an HCI poster and clarifying comparison, editing, provenance, and participant-evidence scope.",
+      "description": "Contributed to an accepted human-computer interaction research poster.",
       "access": null,
-      "summary": "Contributing as a co-author to an HCI poster and clarifying comparison, editing, provenance, and participant-evidence scope.",
+      "summary": "Contributed to an accepted human-computer interaction research poster.",
       "period": "August–September 2026",
       "eyebrow": "UIUC & HCI Research · HCI publication",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Participated as a co-author in RewindAI-related HCI research. Records include notification that submission 4792 was accepted to UIST 2026 Posters in August 2026.",
-            "The camera-ready stage required clarification of the comparative study, feature scope, editing/source-tracking methods, and interpretation of participant material requested by reviewers. August 21 AoE was the communicated deadline; final submission and on-site conference presentation require separate confirmation."
+            "Supported the comparative-study framing and reviewer-requested clarification of feature scope, editing, and source tracking."
           ]
         }
       ],
-      "status": "Poster acceptance confirmed; camera-ready completion and in-person presentation are separate milestones."
+      "status": "Poster acceptance confirmed; final presentation milestones remain separate."
     },
     {
       "slug": "ai-alignment-editorial",
@@ -1764,20 +1580,20 @@
       "experience": "uiuc",
       "year": "August–September 2026",
       "role": "Editor",
-      "description": "Contributing to newsletter editing and preparing applicant responses and short interviews.",
+      "description": "Edited AI alignment newsletter material and supported editorial recruiting.",
       "access": null,
-      "summary": "Contributing to newsletter editing and preparing applicant responses and short interviews.",
+      "summary": "Edited AI alignment newsletter material and supported editorial recruiting.",
       "period": "August–September 2026",
       "eyebrow": "UIUC & HCI Research · Community research",
       "sections": [
         {
-          "title": "Cost management & approval experience",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Contributed to newsletter content and editing as an Editor at AI Alignment @ Illinois. Records show review of five applicants' responses and preparation of acceptance notices and 15-minute interviews. Actual publication and final selection counts were not confirmed."
+            "Reviewed applicant writing samples and prepared interview and response materials for the student organization."
           ]
         }
       ],
-      "status": "Editing and five applicant responses documented; completed publication and final hiring outcomes are not confirmed."
+      "status": "Editorial and recruiting work documented; publication and final selection counts were not verified."
     },
     {
       "slug": "memory-wearable",
@@ -1786,20 +1602,20 @@
       "experience": "independent",
       "year": "2026",
       "role": "Product Exploration",
-      "description": "Exploring a transcription and text-memory device with explicit recording, pause, stop, and charging behavior.",
+      "description": "Explored a consent-aware wearable memory assistant.",
       "access": null,
-      "summary": "Exploring a transcription and text-memory device with explicit recording, pause, stop, and charging behavior.",
+      "summary": "Explored a consent-aware wearable memory assistant.",
       "period": "2026",
       "eyebrow": "Independent Projects · HCI concept",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Explored requirements and technical directions for a Personal Executive Agent connecting email, knowledge systems, and approvals, and an always-on voice-transcription wearable/memory device with visible consent, pause, and stop states. These remained concept/design work as of late September."
+            "Outlined visible recording consent, pause and stop states, transcription, and user-controlled memory boundaries."
           ]
         }
       ],
-      "status": "Requirements and architecture exploration; manufactured hardware is not established."
+      "status": "Requirements and architecture exploration only; hardware was not built."
     },
     {
       "slug": "neural-ar-interaction",
@@ -1808,20 +1624,20 @@
       "experience": "uiuc",
       "year": "2025–2026",
       "role": "Research Assistant · Research Co-author",
-      "description": "Learning about biosignal-to-text interaction, programmable glasses, and AR through technical communities.",
+      "description": "Explored neural input and augmented-reality interaction concepts through student research activities.",
       "access": null,
-      "summary": "Learning about biosignal-to-text interaction, programmable glasses, and AR through technical communities.",
+      "summary": "Explored neural input and augmented-reality interaction concepts through student research activities.",
       "period": "2025–2026",
       "eyebrow": "UIUC & HCI Research · HCI exploration",
       "sections": [
         {
-          "title": "Cost management & approval experience",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Participated in Agentic AI @ UIUC and AI Alignment @ Illinois activities, and studied/explored SigRobotics' EEG/EMG-to-text and HCI directions, programmable glasses, and AR interaction. Activities without identifiable individual deliverables are not quantified as career outcomes."
+            "Reviewed technical directions for biosignal-to-text interaction and programmable glasses."
           ]
         }
       ],
-      "status": "Participation and exploration; a completed individual device or research result is not established."
+      "status": "Participation and research exploration documented; no individual device result was established."
     },
     {
       "slug": "ai-deployment-market",
@@ -1830,21 +1646,20 @@
       "experience": "independent",
       "year": "2026",
       "role": "Project Contributor · Product Strategist",
-      "description": "Examining buyers, repetitive workflows, competition, and deployment demand for an AI services business.",
+      "description": "Researched the small-business AI deployment market and recurring workflow opportunities.",
       "access": null,
-      "summary": "Examining buyers, repetitive workflows, competition, and deployment demand for an AI services business.",
+      "summary": "Researched the small-business AI deployment market and recurring workflow opportunities.",
       "period": "2026",
       "eyebrow": "Independent Projects · Market research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Researched the US SMB AI adoption and workflow-automation market in September 2026. Organized industry-specific buyers, recurring workflows, competitive structures, and customer pitch materials.",
-            "Market-size estimates were business-planning hypotheses, not customer revenue or actual deployment results."
+            "Organized buyer roles, industry pain points, competitors, and customer pitch themes into market-research materials."
           ]
         }
       ],
-      "status": "September 2026 market-research and pitch documents; market estimates are not company revenue."
+      "status": "Market and pitch documents prepared; estimates were not revenue."
     },
     {
       "slug": "dow-ai-security",
@@ -1853,21 +1668,20 @@
       "experience": "independent",
       "year": "2026",
       "role": "Project Contributor · Product Strategist",
-      "description": "Researching AI-accelerated cyber threats, defensive AI, business assets, and issue-tree priorities.",
+      "description": "Produced team research on AI-enabled cybersecurity risks and defensive priorities.",
       "access": null,
-      "summary": "Researching AI-accelerated cyber threats, defensive AI, business assets, and issue-tree priorities.",
+      "summary": "Produced team research on AI-enabled cybersecurity risks and defensive priorities.",
       "period": "2026",
       "eyebrow": "Independent Projects · Security strategy",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Researched AI-accelerated cyber threats and key issues in AI defense. Created an issue tree and prioritization slides linking assets to protect with business impact.",
-            "These were team/class deliverables from late September 2026, distinct from enterprise deployment results."
+            "Built an issue tree and prioritization slides connecting assets, threats, and business impact."
           ]
         }
       ],
-      "status": "Team/course research deliverable in September 2026; not an enterprise security deployment."
+      "status": "Course research delivered; no enterprise security deployment was claimed."
     },
     {
       "slug": "tiktok-ai-strategy",
@@ -1876,21 +1690,20 @@
       "experience": "independent",
       "year": "2026",
       "role": "Project Contributor · Product Strategist",
-      "description": "Developing strategy notes and product hypotheses around AI and customer signals.",
+      "description": "Prepared a social-platform AI strategy concept and customer-signal prototype.",
       "access": null,
-      "summary": "Developing strategy notes and product hypotheses around AI and customer signals.",
+      "summary": "Prepared a social-platform AI strategy concept and customer-signal prototype.",
       "period": "2026",
       "eyebrow": "Independent Projects · Product strategy",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Prepared a TikTok AI strategy document and a customer-signal prototype, distinguishing proposed product directions from released features.",
-            "The customer-signal prototype directly connected to Pacvue work is described in the separate Gong Voice of Customer project."
+            "Documented proposed product directions and a dashboard concept while distinguishing them from released features."
           ]
         }
       ],
-      "status": "Strategy document and prototype exploration; suggestions are distinct from launched products."
+      "status": "Strategy and prototype exploration completed; product launch was not established."
     },
     {
       "slug": "enterprise-agent-controls",
@@ -1899,21 +1712,20 @@
       "experience": "independent",
       "year": "2026",
       "role": "Project Contributor · Product Strategist",
-      "description": "Comparing tool registration, approval, cost/effect review, pre-run policy checks, and post-run accountability as product opportunities.",
+      "description": "Compared product concepts for enterprise AI registration, agent controls, and accountability.",
       "access": null,
-      "summary": "Comparing tool registration, approval, cost/effect review, pre-run policy checks, and post-run accountability as product opportunities.",
+      "summary": "Compared product concepts for enterprise AI registration, agent controls, and accountability.",
       "period": "2026",
       "eyebrow": "Independent Projects · Product hypothesis",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Considered an operating record connecting AI registration, approval, cost, benefit, and review as a potential product.",
-            "Compared pre-execution policy checks and post-execution traceability, financial approval, and SoD controls, exploring the technical scope and human approval points."
+            "Mapped approval, cost, benefit, pre-execution policy checks, post-execution traceability, and human review to potential product requirements."
           ]
         }
       ],
-      "status": "Problem comparison and technical scoping; operational products are not established."
+      "status": "Technical scope explored; no operational product was established."
     },
     {
       "slug": "million-routines",
@@ -1922,21 +1734,20 @@
       "experience": "independent",
       "year": "2026",
       "role": "Project Contributor · Product Strategist",
-      "description": "Exploring wellness routines, brand direction, packaging, channels, and a possible Kickstarter launch.",
+      "description": "Developed an early wellness product and brand concept.",
       "access": null,
-      "summary": "Exploring wellness routines, brand direction, packaging, channels, and a possible Kickstarter launch.",
+      "summary": "Developed an early wellness product and brand concept.",
       "period": "2026",
       "eyebrow": "Independent Projects · Consumer venture",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Explored a wellness-routine product range and brand direction, including packaging, sales channels, and a Kickstarter approach.",
-            "This was an early business idea without confirmed manufacturing or sales results."
+            "Outlined a product range, packaging direction, sales channels, and a potential crowdfunding approach."
           ]
         }
       ],
-      "status": "Business idea and planning; manufacturing and sales are not established."
+      "status": "Business concept documented; manufacturing and sales were not established."
     },
     {
       "slug": "tradies-social-product",
@@ -1945,24 +1756,21 @@
       "experience": "tradies",
       "year": "2022–2024",
       "role": "Co-founder · Product",
-      "description": "Turning student research into personas, an MVP, AI matching, quest-like meetups, and campus distribution experiments.",
+      "description": "Used student research to define and pilot a campus social product.",
       "access": null,
-      "summary": "Turning student research into personas, an MVP, AI matching, quest-like meetups, and campus distribution experiments.",
+      "summary": "Used student research to define and pilot a campus social product.",
       "period": "2022–2024",
       "eyebrow": "Tradies · Consumer product",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Problem: students could discover new people but struggled to turn discovery into offline relationships because of trust, scheduling, and actually meeting.",
-            "As co-founder, conducted more than 500 surveys and more than 30 one-to-one interviews, translating students' discovery, trust, scheduling, and follow-up participation problems into personas and MVP priorities.",
-            "Planned a product direction including AI matching, quest-style gatherings, and basic verification. Managed the PRD, wireframes, and weekly design/engineering sprints; Min's profile records an MVP trial on one campus.",
-            "Developed student clubs, RA networks, and campus events as initial distribution channels. Led competitive pitches and funding efforts, connecting outcomes from Venture Devil, Taco Bell Challenge, two Open Pitch competitions, New Venture Challenge, and other events.",
-            "Confirmed outcomes and reporting basis: the latest resume and profile describe initial team funding, including bootstrapping, so it is not characterized entirely as external grants. Sources give different end dates. Current material contains no long-term active-user or retention figures."
+            "Led surveys and interviews on trust, scheduling, and offline meetups, then translated findings into personas, wireframes, and MVP priorities.",
+            "Coordinated product sprints, campus distribution ideas, and competitive pitches that contributed to initial team funding."
           ]
         }
       ],
-      "status": "Team venture: user research, interviews, and a contribution to initial funding; long-term retention is not available."
+      "status": "Team MVP and funding work documented; long-term retention was not measured."
     },
     {
       "slug": "btaa-data-analytics-community",
@@ -1971,24 +1779,21 @@
       "experience": "btaa",
       "year": "2023–2024",
       "role": "Co-founder · Community Lead",
-      "description": "Building an analytics community with project teams, faculty collaboration, lead mentoring, and applied workshops.",
+      "description": "Co-founded a project-based student analytics community.",
       "access": null,
-      "summary": "Building an analytics community with project teams, faculty collaboration, lead mentoring, and applied workshops.",
+      "summary": "Co-founded a project-based student analytics community.",
       "period": "2023–2024",
       "eyebrow": "BTAA · Community building",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Problem: students had limited opportunities to apply classroom analytics tools to team projects using real data and to build portfolios.",
-            "Co-founded the Business Technology Analytics Association (BTAA) in connection with ASU W. P. Carey, designing a project-based operating structure, team-lead/analyst roles, faculty collaboration, and workshops.",
-            "The profile records 80 active members, seven project teams with seven leads, and more than 50 analysts. Co-designed five analytics projects with Information Systems faculty and mentored team leads from scoping through delivery.",
-            "Ran business analytics workshops covering ML, AI, and data visualization. Member participation and analyst onboarding were reported in materials from different periods, so their timing and definitions are kept distinct without publishing exact counts.",
-            "Confirmed outcomes and reporting basis: club establishment and the team/project/workshop structure are supported by Min's profile and contemporaneous records. Membership and participation figures are organizational measures, not solely individual achievements. The profile gives April 2024 as the term end, while another retrospective states May."
+            "Designed team roles, faculty collaboration, analytics projects, and practical workshops.",
+            "Mentored project leads from scoping through delivery; organizational participation counts were not presented as individual achievements."
           ]
         }
       ],
-      "status": "Community/team work: seven teams, five analytics projects, and five workshops; member counts vary by record and date."
+      "status": "Community structure, projects, and workshops delivered."
     },
     {
       "slug": "regional-innovation-research",
@@ -1997,21 +1802,20 @@
       "experience": "asu-research",
       "year": "2023–2024",
       "role": "Research Assistant",
-      "description": "Supporting research through literature review, manuscript corrections, and reproducible grant-data analysis.",
+      "description": "Supported research on place-based investment and regional innovation.",
       "access": null,
-      "summary": "Supporting research through literature review, manuscript corrections, and reproducible grant-data analysis.",
+      "summary": "Supported research on place-based investment and regional innovation.",
       "period": "2023–2024",
       "eyebrow": "ASU Watts College · Research support",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "As Professor Maryann Feldman's research assistant, reviewed relevant literature and corrected references, DOIs, tables, and terminology in manuscripts. Supported publication preparation on place-based investment and regional innovation policy.",
-            "Confirmed outcomes and reporting basis: deliverables include large-scale data processing, database development, and publication/academic operations support. Review of one million records describes the research team's scope; final publication or specific research conclusions are not claimed as individual achievements."
+            "Reviewed literature and corrected references, tables, and terminology in manuscripts for publication preparation."
           ]
         }
       ],
-      "status": "Research-team collaboration; publication completion and research conclusions are not claimed as individual outcomes."
+      "status": "Research-team contribution documented; publication conclusions were not claimed individually."
     },
     {
       "slug": "grant-data-analysis",
@@ -2020,20 +1824,20 @@
       "experience": "asu-research",
       "year": "2023–2024",
       "role": "Research Assistant",
-      "description": "Combining grant records with Python/R and reproducible notebooks to examine geographic and enterprise trends.",
+      "description": "Integrated a large grant dataset for regional trend analysis.",
       "access": null,
-      "summary": "Combining grant records with Python/R and reproducible notebooks to examine geographic and enterprise trends.",
+      "summary": "Integrated a large grant dataset for regional trend analysis.",
       "period": "2023–2024",
       "eyebrow": "ASU Watts College · Data analysis",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Integrated and analyzed more than 600,000 grant records in Python/R, using reproducible notebooks and Tableau visualizations to examine regional and business activity trends."
+            "Used reproducible Python and R notebooks and Tableau views to explore grant and business activity patterns."
           ]
         }
       ],
-      "status": "600,000+ grant records processed as part of a research collaboration."
+      "status": "Data integration and visual analysis completed as part of a research team."
     },
     {
       "slug": "biomedical-data-validation",
@@ -2042,20 +1846,20 @@
       "experience": "asu-research",
       "year": "2023–2024",
       "role": "Research Assistant",
-      "description": "Working with a multi-university team on validation and coding rules for a large biomedical research dataset.",
+      "description": "Supported data validation for a biomedical enterprise research study.",
       "access": null,
-      "summary": "Working with a multi-university team on validation and coding rules for a large biomedical research dataset.",
+      "summary": "Supported data validation for a biomedical enterprise research study.",
       "period": "2023–2024",
       "eyebrow": "ASU Watts College · Collaborative research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "In an NSF-supported biomedical enterprise study, reviewed more than one million Duke records with researchers at USC, ASU, and CU, collaborating on data validation and coding rules."
+            "Collaborated on coding rules and quality review for a large cross-institutional dataset."
           ]
         }
       ],
-      "status": "The million-record scale describes the team's dataset, not individual manual review of every record."
+      "status": "Research-team validation contribution documented; the entire dataset was not individually reviewed."
     },
     {
       "slug": "shared-mysql-database",
@@ -2064,20 +1868,20 @@
       "experience": "asu-research",
       "year": "2023–2024",
       "role": "Research Assistant",
-      "description": "Designing a database that enables external research collaborators to access and join seven datasets.",
+      "description": "Built a shared MySQL database for external research collaborators.",
       "access": null,
-      "summary": "Designing a database that enables external research collaborators to access and join seven datasets.",
+      "summary": "Built a shared MySQL database for external research collaborators.",
       "period": "2023–2024",
       "eyebrow": "ASU Watts College · Data infrastructure",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Designed and built a MySQL database enabling external collaborators to access and join seven datasets. Separately supported GCTT's ASU DC seminar operations, preparation for Matt Marx's talk, and the AOM TIM election's information site, candidate introductions, and notices."
+            "Structured linked datasets so collaborators could retrieve and join research records across institutions."
           ]
         }
       ],
-      "status": "MySQL database built; broader publication outcomes remain separate."
+      "status": "Database delivered; publication outcomes were separate."
     },
     {
       "slug": "academic-seminar-operations",
@@ -2086,20 +1890,20 @@
       "experience": "asu-research",
       "year": "2023–2024",
       "role": "Research Assistant",
-      "description": "Supporting GCTT's ASU DC seminar operations and preparations for a guest lecture.",
+      "description": "Supported academic seminar and speaker operations.",
       "access": null,
-      "summary": "Supporting GCTT's ASU DC seminar operations and preparations for a guest lecture.",
+      "summary": "Supported academic seminar and speaker operations.",
       "period": "2023–2024",
       "eyebrow": "ASU Watts College · Research operations",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Designed and built a MySQL database enabling external collaborators to access and join seven datasets. Separately supported GCTT's ASU DC seminar operations, preparation for Matt Marx's talk, and the AOM TIM election's information site, candidate introductions, and notices."
+            "Prepared event coordination materials and communications for research-community sessions."
           ]
         }
       ],
-      "status": "Academic operations support; participant and impact metrics are not recorded."
+      "status": "Operations support documented; attendance and impact were not measured."
     },
     {
       "slug": "aom-tim-election-site",
@@ -2108,20 +1912,20 @@
       "experience": "asu-research",
       "year": "2023–2024",
       "role": "Research Assistant",
-      "description": "Preparing an election information site, candidate introductions, and communications for an academic division.",
+      "description": "Supported an academic division election information site.",
       "access": null,
-      "summary": "Preparing an election information site, candidate introductions, and communications for an academic division.",
+      "summary": "Supported an academic division election information site.",
       "period": "2023–2024",
       "eyebrow": "ASU Watts College · Information design",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Designed and built a MySQL database enabling external collaborators to access and join seven datasets. Separately supported GCTT's ASU DC seminar operations, preparation for Matt Marx's talk, and the AOM TIM election's information site, candidate introductions, and notices."
+            "Prepared candidate introductions, notices, and web content that made election information easier to access."
           ]
         }
       ],
-      "status": "Website and communication support; election outcomes are not attributed to this work."
+      "status": "Website and communication support delivered; election outcomes were separate."
     },
     {
       "slug": "donor-market-intelligence",
@@ -2130,23 +1934,21 @@
       "experience": "asu-foundation",
       "year": "June–July 2023",
       "role": "Strategic Research Analyst",
-      "description": "Monitoring daily sources and profiling potential donors to connect their interests with university initiatives.",
+      "description": "Produced donor and market intelligence for university advancement work.",
       "access": null,
-      "summary": "Monitoring daily sources and profiling potential donors to connect their interests with university initiatives.",
+      "summary": "Produced donor and market intelligence for university advancement work.",
       "period": "June–July 2023",
       "eyebrow": "ASU Foundation · Strategic research",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Problem: quickly understand market trends and prospective donors' backgrounds to connect ASU research/education projects with sponsors' interests.",
-            "On the Moonshot Accelerator team, monitored more than 20 news/online sources daily to produce concise market updates and researched CEO and prospective-donor profiles.",
-            "Identified university projects and strategic initiatives, supporting positioning and one-page proposals connecting them to donor interests. Also summarized trends in philanthropy and higher education.",
-            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that contributed to significant donations. This is a contribution to ASU Foundation team and organization outcomes, not a claim that Min personally raised the donations."
+            "Monitored relevant market sources and researched prospective supporters, then distilled findings into concise updates.",
+            "Matched university initiatives to donor interests for one-page positioning materials."
           ]
         }
       ],
-      "status": "20+ daily sources and research contributions; Foundation fundraising is a team/organization outcome."
+      "status": "Research contribution delivered; organizational fundraising was not attributed to one person."
     },
     {
       "slug": "university-opportunity-positioning",
@@ -2155,23 +1957,20 @@
       "experience": "asu-foundation",
       "year": "June–July 2023",
       "role": "Strategic Research Analyst",
-      "description": "Helping identify strategic initiatives and shape concise proposals around donor interests.",
+      "description": "Developed positioning material connecting university initiatives with prospective supporters.",
       "access": null,
-      "summary": "Helping identify strategic initiatives and shape concise proposals around donor interests.",
+      "summary": "Developed positioning material connecting university initiatives with prospective supporters.",
       "period": "June–July 2023",
       "eyebrow": "ASU Foundation · Strategy support",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Problem: quickly understand market trends and prospective donors' backgrounds to connect ASU research/education projects with sponsors' interests.",
-            "On the Moonshot Accelerator team, monitored more than 20 news/online sources daily to produce concise market updates and researched CEO and prospective-donor profiles.",
-            "Identified university projects and strategic initiatives, supporting positioning and one-page proposals connecting them to donor interests. Also summarized trends in philanthropy and higher education.",
-            "Confirmed outcomes and reporting basis: the resume describes identifying initiatives and strategic ideas that contributed to significant donations. This is a contribution to ASU Foundation team and organization outcomes, not a claim that Min personally raised the donations."
+            "Researched donor interests and relevant academic projects, then drafted strategic opportunity briefs and proposal inputs."
           ]
         }
       ],
-      "status": "Contribution to organizational opportunities and fundraising strategy; this is not a claim of personal fundraising."
+      "status": "Proposal support documented; personal fundraising was not claimed."
     },
     {
       "slug": "international-student-advocacy",
@@ -2180,21 +1979,20 @@
       "experience": "community",
       "year": "2022–2024",
       "role": "Community Contributor",
-      "description": "Serving as a Downtown Campus Ambassador and Director of Advocacy in ASU's international-student coalition.",
+      "description": "Held student advocacy and campus ambassador roles.",
       "access": null,
-      "summary": "Serving as a Downtown Campus Ambassador and Director of Advocacy in ASU's international-student coalition.",
+      "summary": "Held student advocacy and campus ambassador roles.",
       "period": "2022–2024",
       "eyebrow": "Community & Hackathons · Community leadership",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Served as Downtown Campus Ambassador (September 2022–May 2023) and Director of Advocacy (April–December 2023) in the ASU Coalition of International Students.",
-            "The roles and dates are confirmed; the supplied material does not document specific individual deliverables or quantitative outcomes."
+            "Supported an international-student organization through campus representation and advocacy activities."
           ]
         }
       ],
-      "status": "Roles and periods documented; individual deliverables and quantified impact are not available."
+      "status": "Roles documented; individual deliverables and quantitative impact were not available."
     },
     {
       "slug": "google-ai-hackathon",
@@ -2203,21 +2001,20 @@
       "experience": "community",
       "year": "2024",
       "role": "Community Contributor",
-      "description": "Participating in early AI hackathon project exploration.",
+      "description": "Explored a student AI hackathon concept.",
       "access": null,
-      "summary": "Participating in early AI hackathon project exploration.",
+      "summary": "Explored a student AI hackathon concept.",
       "period": "2024",
       "eyebrow": "Community & Hackathons · Hackathon",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Records include a 2024 Google AI Hackathon project listing and participation in meetings.",
-            "No completed product, award, or user outcome was confirmed, so this is classified as exploratory activity."
+            "Participated in project discussions; the available record does not document a completed product or award."
           ]
         }
       ],
-      "status": "Project listing and meeting participation only; completed product, award, and user outcomes are not confirmed."
+      "status": "Exploratory participation only."
     },
     {
       "slug": "hackmath",
@@ -2226,21 +2023,20 @@
       "experience": "community",
       "year": "2024",
       "role": "Community Contributor",
-      "description": "Participating in mathematical and technical project discussions.",
+      "description": "Explored a student hackathon project concept.",
       "access": null,
-      "summary": "Participating in mathematical and technical project discussions.",
+      "summary": "Explored a student hackathon project concept.",
       "period": "2024",
       "eyebrow": "Community & Hackathons · Hackathon",
       "sections": [
         {
-          "title": "Project work in detail",
+          "title": "Work and outputs",
           "paragraphs": [
-            "Records include a 2024 HackMath project listing and participation in meetings.",
-            "No completed product, award, or user outcome was confirmed, so this is classified as exploratory activity."
+            "Participated in project discussions; the available record does not document a completed product or award."
           ]
         }
       ],
-      "status": "Project listing and meeting participation only; completed product and award outcomes are not confirmed."
+      "status": "Exploratory participation only."
     }
   ]
 }
