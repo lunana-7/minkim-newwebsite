@@ -22,7 +22,7 @@ export function hasProjectAccess(request) {
 }
 
 export function validateProjectPassword(submitted) {
-  const password = import.meta.env.PROJECTS_PASSWORD;
+  const password = process.env.password || import.meta.env.password || import.meta.env.PROJECTS_PASSWORD;
   const secret = import.meta.env.PROJECT_ACCESS_SECRET;
   if (!password || !secret) return 'unconfigured';
   if (typeof submitted !== 'string' || submitted.length > 1024) return false;
