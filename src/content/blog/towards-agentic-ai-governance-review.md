@@ -1,84 +1,84 @@
 ---
-title: "논문 리뷰: 에이전트 AI 거버넌스는 무엇을 관리해야 할까?"
+title: "Paper Review: What Should Agentic AI Governance Actually Govern?"
 date: "2026-10-12"
 readingTime: "7 min read"
 tags: ["agentic-ai", "ai-governance", "paper-review"]
-excerpt: "Raji와 Bashir의 문헌 검토를 읽고, 에이전트의 정의·위임 권한·인간 책임·기억·실행 통제를 운영 관점에서 정리했다."
+excerpt: "A review of Raji and Bashir's literature survey through the practical questions of agent identity, delegated authority, human accountability, memory, and execution controls."
 bannerType: "geometric-grid"
 ---
 
-에이전트에게 “출장을 준비해 줘”라고 요청했다고 해 보자. 일정 제안만 하는 시스템과 항공편을 예약하고 캘린더를 변경하는 시스템은 같은 요청을 받았지만 다른 위험을 만든다. 후자는 외부 시스템에 접근하고, 돈을 쓰고, 다른 사람의 일정과 개인정보에 영향을 줄 수 있다.
+Imagine asking an AI agent to “plan my business trip.” A system that suggests an itinerary and one that books flights and changes your calendar receive the same request, but create different risks. The second system can access external services, spend money, and affect other people's schedules and personal information.
 
-Mubarak Raji와 Masooda Bashir의 [*Towards Agentic AI Governance: A Preliminary Assessment*](https://arxiv.org/pdf/2607.07612)는 이런 차이를 출발점으로 삼는다. 자율적으로 계획하고 행동하는 AI를 관리하려면 **에이전트가 무엇인지 정의하고, 누구의 권한으로 행동하는지 밝히며, 개인정보와 실행 과정을 함께 통제해야 한다**는 것이다. 이 글은 논문의 주요 논점을 요약하고, 이를 실제 에이전트 운영 구조에 어떻게 연결할지 생각해 본 리뷰 노트다.
+Mubarak Raji and Masooda Bashir's [*Towards Agentic AI Governance: A Preliminary Assessment*](https://arxiv.org/pdf/2607.07612) starts from this distinction. Governing AI that can plan and act autonomously requires us to **define what counts as an agent, identify whose authority it acts under, and control both personal data and execution**. This review summarizes the paper's main arguments and considers how to translate them into an operational approach to AI agents.
 
-## 어떤 연구인가
+## What kind of study is this?
 
-저자들은 2020~2025년의 관련 문헌을 Google Scholar, ACM Digital Library, SSRN, JSTOR, AAAI 등에서 찾았다. 처음 나온 3,000편 이상의 자료를 주제와 연구 범위에 따라 좁혔고, 물리적 자율 시스템과 다른 종류의 AI를 다룬 연구를 제외했다. 마지막에는 동료 평가를 거친 **21편**을 분석했다. 연구의 초점은 자율주행차나 드론보다 소프트웨어 기반 AI 에이전트의 윤리, 책임, 거버넌스에 있다.
+The authors searched literature published from 2020 to 2025 through Google Scholar, the ACM Digital Library, SSRN, JSTOR, AAAI, and other repositories. They narrowed an initial pool of more than 3,000 records by topic and scope, excluding work on physical autonomous systems and other forms of AI. Their final analysis covered **21 peer-reviewed articles**. The focus is the ethics, accountability, and governance of software-based AI agents rather than self-driving vehicles or drones.
 
-이 논문은 특정 통제 기술의 효과를 실험한 연구가 아니다. 흩어져 있던 논의를 묶어 앞으로의 연구와 제도 설계가 다뤄야 할 질문을 정리한 초기 문헌 검토다.
+The paper does not experimentally test whether a particular control works. It is an early literature review that brings scattered debates together and identifies questions for future research and governance design.
 
-## 먼저, 무엇을 에이전트라고 부를 것인가
+## First, what should count as an agent?
 
-논문은 에이전트를 보는 두 관점을 구분한다. 하나는 **목표를 향해 여러 단계를 스스로 계획하고 수행하는 시스템**이다. 이 관점에서는 자율성, 환경 변화에 대한 적응, 외부 시스템과의 상호작용, 여러 에이전트의 협업, 시간에 걸친 상태와 기억의 유지가 중요하다. 저자들이 검토 문헌에서 모은 특성이지, 모든 에이전트가 반드시 갖춰야 하는 단일 체크리스트는 아니다.
+The paper distinguishes two ways of understanding agentic AI. The first sees it as **a system that can independently plan and carry out multiple steps toward a goal**. From this perspective, autonomy, adaptation to a changing environment, interaction with external systems, coordination among agents, and continuity of state and memory over time all matter. These are characteristics drawn from the literature, not a single checklist that every agent must satisfy.
 
-다른 하나는 **누군가에게서 일을 위임받아 행동하는 행위자**라는 관점이다. 여기서는 기능의 복잡성보다 관계가 중요해진다. 누가 목표를 정했는가? 에이전트가 어떤 재량을 받았는가? 결과가 잘못되면 누가 설명하고 책임지는가?
+The second view treats an agent as **an actor carrying out delegated work on someone else's behalf**. Here, the relationship matters more than technical complexity. Who set the goal? How much discretion was delegated? If something goes wrong, who must explain the decision and take responsibility?
 
-이 구분이 유용한 이유는 “에이전트”라는 이름만으로 위험 수준을 정할 수 없기 때문이다. 자료를 읽고 초안을 쓰는 도구와 고객 계정을 수정할 수 있는 도구는 권한 범위와 감독 방식이 달라야 한다. **이것은 논문의 분류를 운영 판단에 적용한 내 해석이다.**
+That distinction is useful because the label “agent” alone tells us little about risk. A tool that reads documents and drafts text needs different permissions and oversight from one that can modify customer accounts. **This is my application of the paper's classification to operational decisions.**
 
-## 위임된 권한은 어디에서 끝나는가
+## Where does delegated authority end?
 
-논문은 인간의 대리 관계를 참고해 권한과 책임 문제를 살핀다. 사용자가 “가장 좋은 여행을 예약해 줘”라고 말해도 그 말이 모든 항공권 가격, 개인정보 제공, 환불 조건에 대한 무제한 승인일 수는 없다. 에이전트는 명시적으로 허용된 행동과 상황에 따라 추정되는 재량 사이에서 판단하게 된다.
+The paper uses the human principal–agent relationship to examine questions of authority and accountability. If a user says, “Book the best trip for me,” that cannot reasonably mean unlimited approval of any airfare, disclosure of personal information, or refund terms. An agent must operate between explicitly permitted actions and discretion inferred from context.
 
-검토 문헌에는 서로 다른 제안이 있다. Kolt는 에이전트가 무엇을 알고 어떻게 행동했는지 볼 수 있어야 책임을 나눌 수 있다고 본다. Lior는 개발자나 배포자처럼 실질적으로 관여하고 통제하는 주체의 책임을 강조한다. O’Keefe 등의 제안은 사용자가 지시하더라도 불법적인 행동을 거부하도록 AI를 설계하는 것이다. AI에 제한적 법적 인격을 부여하자는 견해도 소개되지만, 책임을 사람과 조직에 두어야 한다는 반론도 함께 다룬다. 저자들은 이 문제에 아직 합의가 없다고 정리한다.
+The literature offers different approaches. Kolt emphasizes visibility into what an agent knows and does as a basis for assigning responsibility. Lior emphasizes the responsibility of parties that exercise meaningful control, such as developers and deployers. O'Keefe and colleagues propose designing AI to refuse unlawful actions even when a user requests them. The paper also discusses proposals to grant AI limited legal personhood alongside objections that accountability should remain with people and organizations. The authors find no consensus on this question.
 
-운영 관점에서 이 논의를 옮기면, 권한은 긴 정책 문서의 문장 하나로 끝나지 않는다. 각 작업에 **누가 위임했는지, 어떤 도구와 데이터에 접근할 수 있는지, 언제 권한이 만료되는지, 어떤 행동에 사람의 승인이 필요한지**가 드러나야 한다.
+Translated into operations, authority cannot live only in a sentence in a long policy document. For each task, we should be able to identify **who delegated it, which tools and data the agent may access, when the permission expires, and which actions require human approval**.
 
-## 기억은 개인정보 처리의 범위를 넓힌다
+## Memory extends the privacy lifecycle
 
-에이전트가 여러 단계의 작업을 이어 가려면 상태와 이전 상호작용을 기억할 수 있다. 그러면 개인정보 문제도 수집 시점에만 머물지 않는다. 나중에 그 정보를 어떤 목적으로 다시 쓰는지, 얼마나 오래 보관하는지, 삭제 요청이 작업 기록과 기억에 어떻게 반영되는지까지 살펴야 한다.
+An agent may retain state and previous interactions so it can continue a task across multiple steps. Privacy questions therefore extend beyond the moment of collection. We also need to know why stored information is reused later, how long it remains available, and how a deletion request affects both memory and task records.
 
-논문은 목적 제한, 최소 수집, 보관 기간, 투명성, 삭제권 같은 기존 개인정보 원칙을 에이전트에도 적용할 수 있다고 본다. 동시에 지속적인 기억과 자율적인 재사용을 다루려면 실제 데이터 흐름에 맞는 추가 설계가 필요하다고 지적한다. 예를 들어 장기 기억에 저장된 고객 정보를 다른 목표의 작업에 불러오는 순간, 최초 수집 목적과 현재 사용 목적이 같은지 확인할 방법이 있어야 한다.
+The paper argues that existing privacy principles—including purpose limitation, data minimization, retention limits, transparency, and deletion rights—can apply to agents. It also observes that persistent memory and autonomous reuse call for additional design tied to real data flows. For example, if an agent retrieves customer information from long-term memory for a different goal, there should be a way to check whether the new use fits the original purpose of collection.
 
-## 싱가포르 프레임워크가 제시하는 운영 방향
+## Operational directions from Singapore's framework
 
-저자들은 싱가포르 IMDA가 2026년 1월 발표한 [*Model AI Governance Framework for Agentic AI*](https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf)를 에이전트 전용 거버넌스 사례로 다룬다. 프레임워크는 잘못된 행동, 무단 행동, 불공정한 행동, 데이터 유출, 연결된 시스템의 장애 같은 위험을 제시하고 네 방향을 권고한다.
+The authors discuss Singapore's [*Model AI Governance Framework for Agentic AI*](https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf), released by IMDA in January 2026, as an example of governance designed specifically for agents. The framework identifies risks such as erroneous, unauthorized, or unfair actions, data breaches, and disruption to connected systems. It recommends four directions:
 
-| 방향 | 운영에서 확인할 질문 |
+| Direction | Operational question |
 | --- | --- |
-| 위험을 사전에 평가하고 범위를 제한하기 | 어떤 행동과 도구를 허용하고, 어디서 멈추게 할까? |
-| 인간에게 실질적인 책임 부여하기 | 누가 승인하고, 감독하고, 문제가 생기면 개입할까? |
-| 기술적 통제와 절차 구현하기 | 실행 중 정책을 어떻게 적용하고 실패를 어떻게 처리할까? |
-| 최종 사용자의 책임 있는 이용 지원하기 | 사용자가 에이전트의 능력과 한계를 이해할 수 있을까? |
+| Assess and bound risks upfront | Which actions and tools are allowed, and where must the agent stop? |
+| Make humans meaningfully accountable | Who approves, oversees, and intervenes when something goes wrong? |
+| Implement technical controls and processes | How are policies applied during execution, and how are failures handled? |
+| Enable end-user responsibility | Can users understand the agent's capabilities and limits? |
 
-핵심은 자율성이 높아져도 인간의 책임을 흐리지 않는 것이다. 다만 프레임워크의 네 방향이 특정 제품에서 효과적으로 작동하는지는 별도의 검증이 필요하다.
+The central idea is that increasing autonomy should not obscure human accountability. Whether these four directions work effectively in a particular product still needs to be tested.
 
-## 내가 가져간 질문: 정체성, 권한, 관측
+## The question I took away: identity, authority, and observability
 
-이 논문을 읽으며 가장 유용했던 질문은 다음과 같다.
+The most useful question I took from this paper is:
 
-> 이 에이전트는 누구를 대신해 행동하고, 어디까지 행동할 수 있으며, 그 행동을 누가 확인하고 책임지는가?
+> On whose behalf is this agent acting, what is it allowed to do, and who can inspect and take responsibility for its actions?
 
-논문이 이 질문의 중요성을 보여 준다면, 다음 표는 **내가 제품과 운영 설계에 적용하기 위해 정리한 해석**이다. 논문이 이 구조를 직접 검증하거나 표준으로 제시한 것은 아니다.
+The paper establishes why that question matters. The following table is **my interpretation for product and operational design**; the paper neither validates this structure nor presents it as a standard.
 
-| 설계 요소 | 남겨야 할 정보와 통제 |
+| Design element | Information and controls to retain |
 | --- | --- |
-| 에이전트 정체성 | 에이전트 ID, 소유 팀, 사용 목적, 실행 환경 |
-| 위임과 권한 | 요청자, 작업 범위, 허용 도구·데이터, 만료 시점, 승인 조건 |
-| 실행 통제 | 도구 호출 전 권한 확인, 고위험 행동 승인, 중지·취소 경로 |
-| 관측과 증거 | 작업 ID, 승인 결정, 도구 호출과 결과, 예외와 실패 기록 |
-| 개인정보 수명주기 | 수집 목적, 기억 저장·재사용 규칙, 보관 기간, 삭제 방법 |
+| Agent identity | Agent ID, owning team, intended purpose, execution environment |
+| Delegation and permissions | Requester, task scope, permitted tools and data, expiration, approval conditions |
+| Execution controls | Authorization before tool calls, approval for high-risk actions, stop and cancel paths |
+| Observability and evidence | Task ID, approval decisions, tool calls and results, exceptions and failures |
+| Personal-data lifecycle | Collection purpose, memory storage and reuse rules, retention period, deletion method |
 
-이 정보가 연결되어야 사후에 “무슨 일이 있었는가”뿐 아니라 “왜 허용되었는가”도 설명할 수 있다. 반대로 로그가 많아도 위임 관계와 결정 기준이 빠져 있으면 책임 소재를 재구성하기 어렵다. 기록 자체에 불필요한 개인정보나 비밀을 남기지 않는 것도 설계의 일부다.
+These pieces need to connect so that, after an incident, we can explain not only *what happened* but *why it was allowed*. A large volume of logs will not reconstruct responsibility if the delegation relationship and decision criteria are missing. Avoiding unnecessary personal data and secrets in those records is part of the design, too.
 
-## 기여와 남은 과제
+## Contributions and open questions
 
-이 논문의 강점은 에이전트 거버넌스를 하나의 윤리 원칙으로 뭉뚱그리지 않고, **정의·자율성·위임·책임·개인정보·이해관계자 참여**라는 연결된 문제로 정리했다는 데 있다. Global Majority의 국가와 공동체를 논의에 참여시켜야 한다는 지적도 중요하다. 위임과 책임을 설명하는 법적 개념은 지역마다 다르기 때문이다.
+The paper's strength is that it does not collapse agent governance into a single ethical principle. It connects **definitions, autonomy, delegation, accountability, privacy, and stakeholder participation**. Its call to include countries and communities in the Global Majority also matters: legal concepts of delegation and responsibility vary across jurisdictions.
 
-한계도 분명하다. 분석 대상은 동료 평가를 거친 21편에 한정되고, 대리 관계 논의는 주로 영미법 관점에 기댄다. 어떤 승인 절차, 권한 모델, 관측 방식이 실제 기업 운영에서 효과가 있는지에 대한 실증 결과도 제시하지 않는다. 저자들은 개발 조직의 실제 거버넌스 관행과 에이전트의 개인정보 수집·사용·저장·삭제를 후속 연구 대상으로 제안한다.
+The limits are clear. The review is restricted to 21 peer-reviewed articles, and its discussion of agency relationships relies largely on common-law concepts. It does not provide empirical evidence about which approval processes, permission models, or observability practices work in enterprise settings. The authors point to actual developer governance practices and the collection, use, storage, and deletion of personal data by agents as areas for further study.
 
-그래서 이 글을 완성된 체크리스트보다 **좋은 설계 질문들의 지도**로 읽었다. 다음 단계는 그 질문을 각 에이전트의 등록 정보, 실행 권한, 승인 지점, 데이터 수명주기, 운영 기록으로 구체화하고 실제로 작동하는지 확인하는 일이다.
+I read this paper as **a map of design questions**, rather than a finished checklist. The next step is to turn those questions into agent registration records, execution permissions, approval points, data-lifecycle rules, and operational evidence—and then verify that those controls work in practice.
 
-### 읽은 자료
+### Sources
 
 - Mubarak Raji and Masooda Bashir, [*Towards Agentic AI Governance: A Preliminary Assessment*](https://arxiv.org/pdf/2607.07612), 2026.
 - Singapore Infocomm Media Development Authority, [*Model AI Governance Framework for Agentic AI*, version 1.0](https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf), 22 January 2026.
