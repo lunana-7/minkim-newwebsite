@@ -28,10 +28,32 @@ const related = projectCatalog.filter(item => item.experience === project.experi
     <div class="case-study-content" id="case-study-content">
       <div class="case-study-meta"><div><span>My role</span><strong id="project-role">{detail?.role}</strong></div><div><span>Period</span><strong id="project-period">{detail?.period}</strong></div></div>
       <section class="project-overview"><h2>Project overview</h2><p id="project-summary">{detail?.summary}</p></section>
-      <div class="project-detail-notes"><p class="project-notes-label">Detailed work</p><div id="project-sections">{detail?.sections.map(section => <section class="project-detail-section"><h2>{section.title}</h2><ul lang="en">{section.paragraphs.map(paragraph => <li>{paragraph}</li>)}</ul></section>)}</div></div>
+      <div class="project-detail-notes">
+        <p class="project-notes-label">Detailed work</p>
+        <div id="project-sections">
+          {detail?.sections.map(section => (
+            <section class="project-detail-section" lang="en">
+              <h2>{section.title}</h2>
+              {'format' in section && section.format === 'prose'
+                ? <div class="project-detail-prose">{section.paragraphs.map(paragraph => <p>{paragraph}</p>)}</div>
+                : <ul>{section.paragraphs.map(paragraph => <li>{paragraph}</li>)}</ul>}
+            </section>
+          ))}
+        </div>
+      </div>
       <aside class="project-status"><strong>Outcomes & current status</strong><p id="project-status">{detail?.status}</p></aside>
     </div>
     <section class="related-projects"><h2>More from {experience.name}</h2><div class="related-project-list">{related.map(item => <a href={`/projects/${item.slug}`}><span>{item.tag}</span><strong>{item.title}</strong><span aria-hidden="true">↗</span></a>)}</div><a class="back-link" href={`/work#${experience.id}`}>← All {experience.name} projects</a></section>
   </article>
 
 </Layout>
+
+<style>
+  .project-detail-prose {
+    max-width: 76ch;
+  }
+
+  .project-detail-prose p + p {
+    margin-top: 1rem;
+  }
+</style>

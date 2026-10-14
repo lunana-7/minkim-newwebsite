@@ -106,6 +106,14 @@
       "eyebrow": "KRAFTON · Approval experience",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "An approval workflow serves several audiences at once: employees requesting tools, approvers deciding whether a request is justified, and organization leaders accountable for cost. My review treated unclear rejection reasons and inconsistent form requirements as operating problems because they could leave applicants unsure what to change and approvers without the information required for a decision.",
+            "I examined the request, approval, rejection, and reapplication journey rather than reviewing individual screens in isolation. The improvement report linked each issue to its effect and a proposed action, then separated near-term wording and UI changes from the longer-term record of ownership, risk, recurring cost, and review dates. This made the report useful for both development prioritization and governance planning."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Analyzed sampled approval requests and grouped rejection patterns by spending tier, distinguishing personal subscriptions, organizational budgets, enterprise tools, APIs, and infrastructure.",
@@ -119,6 +127,13 @@
           "paragraphs": [
             "Delivered an improvement report, applicant guidance, and approver notification wording for the AI operations team.",
             "Selected changes reached development: tier-specific inputs, rejection-reason and confirmation fields, usage visibility in the collaboration app, and clearer guidance messages."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The immediate output was a concrete set of changes that could be reviewed and implemented, with selected items reaching the development environment. The broader contribution was to connect approval experience with lifecycle governance: a tool request should remain understandable after purchase, when usage, cost, and continued need have to be reviewed."
           ]
         }
       ],
@@ -138,6 +153,14 @@
       "eyebrow": "KRAFTON · Measurement",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A before-and-after release comparison can produce misleading results if one period contains more days or a different mix of requests. I therefore treated the comparison design as part of the deliverable. The aim was to understand the behavior around a change in approval guidance while keeping request counts, issue-resolution judgments, and financial measures separate.",
+            "The analysis covered 800+ requests and used the emergence of new fields to identify the rollout boundary. After aligning the observation windows, I examined request themes and approval patterns across organizations. Interactive views allowed reviewers to switch between volume, amounts, and approval measures. A separate classification review explained why some requests remained ambiguous instead of hiding them in a large miscellaneous category."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Analyzed 800+ requests around the rollout and identified the release boundary from the appearance of new fields.",
@@ -151,6 +174,13 @@
           "paragraphs": [
             "Delivered standalone HTML reports for the release comparison and request patterns, with findings prepared for the AI operations team.",
             "Made classification gaps and unresolved guidance issues visible without publishing internal approval rates or spending amounts."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The reports gave the AI operations team a way to distinguish form improvements from unresolved workflow questions. They also showed where better request metadata or classification rules were needed. The observed patterns could guide follow-up investigation without turning the release comparison into an unsupported claim that the new form caused every change."
           ]
         }
       ],
@@ -170,6 +200,14 @@
       "eyebrow": "KRAFTON · Survey design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A company-wide adoption survey needed to work across job families, languages, and subsidiaries with different workflows. Counting which tools employees used would not explain how much of their work had changed. I designed the survey around actual tasks and cross-team processes so the response structure could support automation analysis and a more useful discussion of unmet needs.",
+            "The instrument asked respondents to describe their principal tasks and workflows, then positioned them on a six-stage automation scale. Korean, English, and Japanese versions supported participation across organizational groups. Distribution and reminder work were followed by reconciliation of approximately 1k collected responses and matched records, preserving the distinction between survey collection and the dataset prepared for analysis."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Structured the questionnaire around respondents’ main tasks and shared workflows, using a six-stage automation scale.",
@@ -183,6 +221,13 @@
           "paragraphs": [
             "Delivered the survey instrument, multilingual communications, and a reconciled response dataset for downstream analysis.",
             "Established a shared measurement structure for the automation dashboard and executive reporting workstreams."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The survey became an evidence foundation for the automation dashboard and executive report. Its contribution was a comparable structure for understanding adoption depth, workflow complexity, and employee requests. The response count represents the survey dataset; the separately documented 3k+ global tracking coverage should not be read as this survey’s participant total."
           ]
         }
       ],
@@ -202,6 +247,14 @@
       "eyebrow": "KRAFTON · Analytics",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Open-text descriptions in different languages made it difficult to compare how employees performed their work. A job title alone also did not establish the structure or automation level of a task. The analysis therefore combined preprocessing with careful definitions of tasks, steps, workflows, and job-family categories rather than treating every response as an interchangeable observation.",
+            "I processed the responses in Python, reconciled the records, and translated the descriptions before classification. Across 2k+ automation cases, I examined step patterns, workflow lengths, and organizational differences. The dashboard preserved separate views for tasks and workflows because those measures answer different questions. I also documented what the survey revealed about employees’ difficulty defining their own work."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Processed and reconciled raw responses in Python, translating free text before job-family and work-type classification.",
@@ -215,6 +268,13 @@
           "paragraphs": [
             "Built an automation-analysis dashboard with organizational, job-family, task, and workflow views.",
             "Produced a survey retrospective explaining how difficulty describing work affected measurement and future survey design."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The outputs helped turn multilingual narrative responses into evidence that leadership could use to prioritize enablement and workflow support. They also established a more defensible basis for comparison by making category gaps and units of analysis visible. Internal automation rates remain anonymized, while the rounded case count conveys the scale of the work."
           ]
         }
       ],
@@ -234,6 +294,14 @@
       "eyebrow": "KRAFTON · Executive reporting",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The executive audience needed to know what to do with the survey findings. The reporting challenge was to move from adoption statistics to differences in organizational needs, execution bottlenecks, and leadership support. I organized the analysis so the opening summary made the decisions visible and the supporting sections explained the evidence behind them.",
+            "The 20–30-slide report combined quantitative insights with an integrated dashboard. It differentiated corporate functions and studios, mapped survey questions to adoption dimensions, and examined the gap between expected and actual automation through proxy measures. Recommendations were organized into management and execution tracks so policy, budget, time, sponsorship, technology, and training were not collapsed into one generic adoption recommendation."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Created a 20–30-slide executive report covering broad adoption, depth of automation, organizational differences, and an integrated dashboard.",
@@ -247,6 +315,13 @@
           "paragraphs": [
             "Prepared the executive summary, responsive dashboard, and phased action plan for a CEO briefing.",
             "Translated survey evidence into priorities for the AI transformation team while keeping proposed automation targets distinct from measured results."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The report and action plan were prepared for a CEO briefing and gave the AI transformation team a common narrative for follow-up work. Their value was in connecting evidence to priorities and a phased response. Proposed automation ambitions remained future targets, so the materials did not present a desired organizational result as an achieved outcome."
           ]
         }
       ],
@@ -266,6 +341,14 @@
       "eyebrow": "KRAFTON · FinOps",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Monthly administration workbooks contained different pieces of the spending picture, making it difficult to understand organizational change in one place. The report needed to explain both who was spending and whether the apparent growth was meaningful. I also used it to examine the economics of subscription migration at the user level rather than infer savings from a plan’s advertised price.",
+            "A Python generator consolidated the monthly inputs into a navigable HTML report. Organization tabs used quarterly totals to distinguish negligible bases from genuine increases. Purpose-labeled keys were grouped into work categories, while missing purpose information remained visible. User-level checks compared subscription arrangements and costs before and after migration, helping separate observed behavior from remaining forecast opportunities."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Built a Python generator that converted monthly administration workbooks into one navigable HTML report for senior leadership.",
@@ -279,6 +362,13 @@
           "paragraphs": [
             "Delivered an executive cost report with organization-level change views, model adoption patterns, and user-level plan comparisons.",
             "Identified a remaining migration opportunity and an adoption gap; monetary amounts and internal account counts remain anonymized."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The report provided senior leadership with an editable, consolidated reference for cost review. Its findings also supported later API-optimization planning by showing why cost attribution and actual usage matter. Potential savings were retained as estimates where migration had not yet occurred, and confidential subscription counts and financial totals were excluded from the portfolio."
           ]
         }
       ],
@@ -298,6 +388,14 @@
       "eyebrow": "KRAFTON · FinOps",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The central question was whether a move to a cheaper model changed the total bill, not simply whether the new model had a lower list price. Usage can expand after a transition, and API and enterprise channels may behave differently. I built the comparison around those distinctions so the report could assess the actual period under review.",
+            "I compared adoption, unit costs, token volume, and billed spending across the two channels and reviewed patterns among high-spend accounts. The report also checked changes outside the announcement’s scope. Missing historical data in one channel produced implausible effective-price changes, which I flagged before cost conclusions were drawn. Executive wording and standalone dashboards made the findings reviewable without altering the source data."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Produced an executive before-and-after report with separate API and enterprise-channel views and adoption patterns by account group.",
@@ -311,6 +409,13 @@
           "paragraphs": [
             "Delivered standalone HTML cost dashboards and a model-selection guide with the underlying data retained.",
             "Clarified the decision between encouraging productive use and controlling aggregate spending, with data-quality limitations visible in the report."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The analysis clarified that lower prices had been absorbed by higher usage during the observed period. It gave leadership a more precise question about encouraging productive adoption versus constraining total spending. The data-quality findings were equally important: unreliable history should be corrected or excluded before it becomes an apparent policy success or failure."
           ]
         }
       ],
@@ -330,6 +435,14 @@
       "eyebrow": "KRAFTON · Budget planning",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The budget review combined several different obligations: consumed usage, annual seats, personal subscriptions, future growth, and vendor credits. Without separating them, a forecast could double-count committed spending or treat a delayed credit as immediate recurring capacity. My work focused on reconciling those categories before presenting a funding decision to leadership.",
+            "I checked billing periods against usage months, compared the Finance submission with a baseline under consistent exchange-rate assumptions, and documented a material input discrepancy. Lower, baseline, and higher scenarios showed the effect of different run rates. Cloud migration options were modeled separately, and seat commitments and credit timing were kept distinct from the recurring usage forecast in the standalone HTML outlook."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Combined year-to-date spending with three run-rate scenarios: lower, baseline, and higher usage growth.",
@@ -343,6 +456,13 @@
           "paragraphs": [
             "Delivered a standalone HTML outlook for the remaining months of the year, with scenario comparisons and reconciliation notes.",
             "Clarified the incremental funding decision and prevented committed costs from being counted again; budgets, vendor credits, and internal forecasts are anonymized."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output clarified which costs were already committed and which additional future spending required a decision. Catching the discrepancy before reporting was a concrete contribution to executive materials. Confidential budgets, credits, and scenario amounts remain generalized; the portfolio describes the reconciliation method and decision structure rather than revealing internal financial positions."
           ]
         }
       ],
@@ -362,6 +482,14 @@
       "eyebrow": "KRAFTON · Cost intelligence",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Cost records, model files, and HR data each described a different part of the enterprise usage picture. I joined them to identify concentration and review opportunities while checking which categories were directly observed and which were inferred. This was necessary because overlapping account populations and incomplete product metadata could otherwise make the apparent opportunity look larger than the evidence supported.",
+            "The analysis examined premium models, general-purpose APIs, chatbot subscriptions, coding tools, and low-use enterprise seats. It also looked at organizational patterns among technical, data, and research functions. The joined workbook preserved the underlying records, while the HTML report organized four priorities for review. Where agent-like or coding activity was inferred from patterns, the classification remained provisional."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Joined user-level monthly ledgers, product and model records, and HR data into a reviewable analysis dataset.",
@@ -375,6 +503,13 @@
           "paragraphs": [
             "Delivered a standalone HTML report and joined workbook for management and executive reporting.",
             "Prioritized model review, seat utilization, subscription overlap, and vendor consolidation without exposing internal spend or user counts."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output helped management choose where to investigate first instead of proposing an undifferentiated reduction in AI spending. It connected cost concentration to specific actions such as model review, seat utilization, subscription overlap, and consolidation. The report also documented why overlapping category totals could not be added into a single claimed savings figure."
           ]
         }
       ],
@@ -394,6 +529,14 @@
       "eyebrow": "KRAFTON · Model lifecycle",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A model transition required both an economic rationale and an operating path for affected users. Simply blocking a premium model could interrupt work, while keeping every legacy option could weaken the cost strategy. I developed a tiered plan that paired standard choices with exceptions and post-migration measurement.",
+            "Monthly API and enterprise data supported the proposed model groups and affected-population analysis. I repriced a constant token volume under successor-model rates, making the estimate’s assumption explicit. The rollout moved from preventing new legacy use to phasing down existing use and reviewing outcomes. An approval channel preserved a way to document cases that still needed an exception."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed monthly model usage across API and enterprise channels and repriced the same token volume under successor-model rates.",
@@ -407,6 +550,13 @@
           "paragraphs": [
             "Produced an HTML migration plan with tiering, affected-population analysis, exception handling, and post-transition measurement.",
             "Presented potential savings as a constant-volume scenario; confidential financial amounts and account counts were omitted."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The migration report turned a potential price opportunity into a reviewable policy sequence with responsibilities and measurement. Its projected saving was a scenario rather than a realized result, particularly because only a short period of successor-model usage was available. This distinction kept the plan useful without overstating performance or cost improvements."
           ]
         }
       ],
@@ -426,6 +576,14 @@
       "eyebrow": "KRAFTON · Agent governance",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A leaderboard can look authoritative even when the registry beneath it has inconsistent names or incomplete usage attribution. I reviewed the relationship between agent identities, tokens, and recorded credits before using activity rankings as a governance signal. The scope covered 80+ agents over approximately three months.",
+            "I examined concentration of credit use, agents with tokens but no corresponding credits, and differences in credit efficiency. Duplicate names and test or personal agents were treated as registry-hygiene issues that could affect ownership and comparisons. Because the monetary price of credits was not finalized, structural findings were reported independently from an unverified financial conversion."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Analyzed 80+ agents over approximately three months, comparing recorded tokens, credits, and concentration of activity.",
@@ -439,6 +597,13 @@
           "paragraphs": [
             "Delivered an activity report with attribution gaps, registry-cleanup priorities, and efficiency differences.",
             "Provided evidence for agent identity and cost-governance work without treating incomplete rankings as validated financial performance."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The report gave the AI team concrete identity and attribution gaps to investigate. It also connected registry quality to future agent-cost monitoring: a cost measure is less useful if the run cannot be assigned to the right agent or owner. The contribution was diagnostic evidence, not a claim that every anomaly had already been corrected."
           ]
         }
       ],
@@ -458,6 +623,14 @@
       "eyebrow": "KRAFTON · Billing operations",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A one-time vendor waiver had to be interpreted alongside the normal enterprise billing arrangement. The important distinction was between the affected invoice, its billing period, and the point when ordinary overage settlement would resume. I treated the validation as a financial record check rather than a negotiation success story.",
+            "The work reconciled the affected period and confirmed the cancellation treatment of the invoice. It then clarified the next settlement boundary so a one-time exception would not be carried forward as an assumed recurring discount. Contractual rates and values were kept outside the portfolio because they were unnecessary to explain the verification task."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Confirmed the cancellation treatment of the affected overage invoice and reconciled the billing period.",
@@ -470,6 +643,13 @@
           "paragraphs": [
             "Produced a confirmed billing-status record and clarification of the next settlement period.",
             "The outcome records invoice validation; it does not assign the vendor’s waiver to a personal negotiation."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The resulting record supported a clearer understanding of what had been settled and what remained part of future billing. It documents my contribution to invoice validation and period reconciliation. The vendor’s waiver itself was an external commercial outcome and is not attributed to a personal negotiation."
           ]
         }
       ],
@@ -489,6 +669,14 @@
       "eyebrow": "KRAFTON · Model evaluation",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Model selection required a comparison that employees could understand without reviewing each benchmark and price table individually. The playground therefore combined capability and cost in a unified view. Expanding from 40+ to 60+ models also made consistent definitions more important, since a larger chart can amplify methodology errors rather than resolve them.",
+            "I revised the view from abstract task and difficulty groupings to a cost-performance scatterplot with weighted benchmarks and threshold bands. Methodology checks addressed output-token-share assumptions, normalization, and blended-price definitions. Separate reports explained performance logic, unit prices, and value lines so the visual interface had a reviewable basis instead of functioning as an unexplained ranking."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Expanded the comparison from 40+ to 60+ models and built a unified cost-performance scatterplot.",
@@ -502,6 +690,13 @@
           "paragraphs": [
             "Deployed the comparison playground and produced methodology, unit-price, and value-line reports.",
             "Used the dataset to support model-routing reference tables, keeping exploratory value formulas distinct from validated comparison outputs."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deployed comparison became a reference for model-routing tables and selection discussions. Its impact was a clearer and broader decision surface backed by documented assumptions. Exploratory value formulas remained separate from validated outputs, so deploying the interface did not imply that every proposed scoring method had become an approved operating standard."
           ]
         }
       ],
@@ -521,6 +716,14 @@
       "eyebrow": "KRAFTON · Model selection",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A generic question about whether a task is easy or difficult does not capture latency, document length, tool use, or batching requirements. I redesigned the model-selection experience around six concrete workloads so users could recognize their work and reviewers could connect recommendations to the requirements that actually mattered.",
+            "The profiles covered real-time chat, bulk processing, long documents, agentic coding, detailed analysis, and tool-using agents. A statement-matching table replaced a branching self-assessment. Supporting documentation examined an external benchmark provider’s data and access tiers and outlined how reference information could connect to internal usage logs. Paid data access remained an explicit approval dependency."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined six workload profiles: real-time chat, batch processing, long documents, agentic coding, in-depth analysis, and tool-using agents.",
@@ -534,6 +737,13 @@
           "paragraphs": [
             "Produced a selection-table design, integration notes, and a benchmark-access review document.",
             "Connected model performance and price to workload requirements without claiming that the planned integration was already operational."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output made the selection problem more concrete and reduced the conceptual burden on the user. It also gave the AI team a documented integration direction that separated interface design from access and implementation dependencies. The work was an evolving matching design rather than a claim of automated production routing."
           ]
         }
       ],
@@ -553,6 +763,14 @@
       "eyebrow": "KRAFTON · Evaluation methodology",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Enterprise model evaluation needed a way to discuss value beyond the price of a token. I explored how task performance, price, and estimated human effort might be brought into a common conversation. The challenge was preserving comparable units so an attractive-looking score did not hide differences between tasks or pricing assumptions.",
+            "The framework included Human-Equivalent Hours calibration concepts and a task-specific Model Value Index. Dashboard mockups made the proposed comparison visible. During review, I identified that scores from different tasks could not be mixed freely and that estimated blended prices could conflict with the intended governance use. Those issues were documented before a combined formula was presented as a settled measure."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Designed an approach to calibrate AI task time against Human-Equivalent Hours.",
@@ -566,6 +784,13 @@
           "paragraphs": [
             "Produced measurement definitions, calibration concepts, and visual mockups for cost-versus-value discussions.",
             "Preserved the framework as research and design work rather than presenting an exploratory score as a production standard."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverables supported discussion of model value while identifying the work required for a defensible methodology. Holding back the combined score was part of the contribution: it prevented an exploratory formula from being mistaken for validated operational evidence. The framework remained available for refinement alongside future routing and price-data decisions."
           ]
         }
       ],
@@ -585,6 +810,14 @@
       "eyebrow": "KRAFTON · FinOps strategy",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "API spending could be influenced by repeated context, execution mode, model choice, and the structure of an agent loop. A strategy focused only on a model swap would miss those other causes. I organized the work so diagnosis came first and technical interventions were selected according to the workload.",
+            "The strategy grouped improvements into prompt and context, models, and agents. This covered native caching, context management, routing, versions, batching, and loop design. I reviewed available native cloud support and proposed a scoped pilot across deployment projects before adding more infrastructure. Measurement and formal governance followed the intervention sequence rather than being treated as assumptions about guaranteed savings."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Structured the plan around three phases: diagnose usage, improve the relevant cost levers, and formalize governance.",
@@ -598,6 +831,13 @@
           "paragraphs": [
             "Delivered a strategy document covering caching, context management, routing, batching, and agent-loop controls.",
             "Proposed a scoped pilot and measurement sequence for the AI engineering and governance teams."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The strategy document gave AI engineers and governance stakeholders a shared menu of cost levers and a way to sequence evaluation. It linked technical choices to observable usage instead of a generic cost-cutting target. The proposed pilot still required implementation and measurement, so projected value was not reported as production savings."
           ]
         }
       ],
@@ -617,6 +857,14 @@
       "eyebrow": "KRAFTON · Cost attribution",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A bill can identify a vendor or model without explaining the team, workflow, or environment responsible for it. I proposed attribution dimensions that would connect technical usage to organizational decisions. The design also accounted for a delayed central gateway, allowing measurement work to begin without claiming that enforcement was already available.",
+            "The four dimensions were team, use case, environment, and usage pattern. I separated measurement, adoption, and enforcement, then prepared the least-privilege cloud access needed for logs, tagging, and cost records. A workstream board made permissions and infrastructure blockers visible. This turned an abstract attribution proposal into a sequence of data requirements and operating tasks."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined four attribution dimensions: team, use case, environment, and usage pattern.",
@@ -630,6 +878,13 @@
           "paragraphs": [
             "Produced the attribution taxonomy, phased rollout plan, access requirements, and workstream status board.",
             "Connected organizational ownership to usage evidence while keeping required cloud administration permissions explicit."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The taxonomy provided a basis for explaining costs and assigning review ownership. Its immediate output was a measurement plan and access specification, while gateway-based policy enforcement remained a later stage. The approach avoided making infrastructure availability a prerequisite for every useful diagnosis while still identifying where stronger controls would depend on it."
           ]
         }
       ],
@@ -649,6 +904,14 @@
       "eyebrow": "KRAFTON · Agent efficiency",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Context-compression tools needed to be assessed against the work that actually generated cost. Extra software could add dependencies without producing useful savings if caching, routing, or loop controls addressed the same problem more directly. I reviewed compression as one option within a broader optimization sequence.",
+            "The evaluation compared two tools with native caching, context management, batching, model routing, and hard loop limits. I recommended using workload evidence to decide whether a coding-agent compression pilot was justified. The proposed sequence therefore started with native levers and made the external-tool pilot conditional on the size and relevance of the coding cost category."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed two compression tools and compared them with caching, model routing, context management, batching, and hard loop limits.",
@@ -661,6 +924,13 @@
           "paragraphs": [
             "Delivered a comparative evaluation and a staged pilot recommendation.",
             "Defined the workload condition for a useful pilot rather than reporting unmeasured production savings."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverable was a practical pilot recommendation rather than a vendor endorsement or savings claim. It helped narrow the decision about when to introduce another tool and which alternatives should be checked first. Production effects would require a defined workload and a measured pilot."
           ]
         }
       ],
@@ -680,6 +950,14 @@
       "eyebrow": "KRAFTON · API efficiency",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Caching becomes an operating practice only when teams can see where it is available, whether workflows use it, and what changes after adoption. I documented its rollout direction within the wider API optimization program so isolated configuration changes could be connected to organizational ownership and measurement.",
+            "The strategy separated measurement, adoption, and enforcement into three layers. That allowed teams to distinguish evidence collection from enabling caching in workflows and from requiring particular behavior through policy. The documentation was developed alongside key management and agent-cost controls, giving the work a connection to provisioning and accountable use rather than leaving it as a standalone technical recommendation."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined three operating layers: measurement, adoption, and enforcement.",
@@ -692,6 +970,13 @@
           "paragraphs": [
             "Delivered a prompt-caching strategy and supporting control documents.",
             "Created a common direction for workflow adoption and future monitoring; infrastructure implementation remained a separate workstream."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output established a shared direction for AI engineering and governance discussions. It described how caching should enter the operating model while leaving infrastructure, enforcement, and savings validation as separate implementation tasks. That made the scope clearer for subsequent delivery and review."
           ]
         }
       ],
@@ -711,6 +996,14 @@
       "eyebrow": "KRAFTON · Access governance",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Issuing a credential is only one point in an API’s lifecycle. The framework considered why access was requested, which data and tools it enabled, who owned the cost, and when the use should be reviewed or retired. It also connected those questions to the surrounding enterprise gateway and connector architecture.",
+            "I reviewed AI and API gateway responsibilities, data-access scope, enterprise compatibility, and connector risks. The broad product concept was narrowed to an MVP around registration and provisioning, with permissions, policies, quotas, routing, logs, credentials, and specification generation described as related capabilities. Documentation distinguished the proposed scope from features that were still under development."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed AI versus API gateway responsibilities, data-access scope, connectors, and compatibility with existing enterprise systems.",
@@ -724,6 +1017,13 @@
           "paragraphs": [
             "Produced an API-key management framework and infrastructure direction alongside caching and agent-cost documentation.",
             "Outlined an access lifecycle for AI engineers and governance owners; the full feature set was not confirmed as implemented."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The framework gave the AI team a way to discuss access as an accountable lifecycle rather than a one-time administrative event. It connected technical provisioning with business purpose and cost ownership. The documented feature direction did not establish that every control or integration had already been enforced across the enterprise."
           ]
         }
       ],
@@ -743,6 +1043,14 @@
       "eyebrow": "KRAFTON · Agent operations",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "An agent run can become expensive through many small calls, repeated retries, or long loops. Aggregate token totals show spending but may not explain why an individual task became costly. I developed a monitoring direction that linked agent behavior to task-level measures and future safeguards.",
+            "The roadmap specified cost per task, steps, retry rate, and threshold alerts. It connected those metrics to the existing caching and key-management documents and identified loop limits, compressed tool results, and separate planning and execution models as practices for evaluation. The report kept a distinction between metric design and the later work of operating alerts continuously."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Specified monitoring for cost per task, step count, retry rate, and cost-threshold alerts.",
@@ -756,6 +1064,13 @@
           "paragraphs": [
             "Delivered an agent-cost governance report and monitoring roadmap for the AI engineering team.",
             "Defined the task-level evidence needed to diagnose expensive runs and prioritize future controls."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution was to make agent cost review more diagnostic: teams could investigate how a run behaved, not only its final bill. The report established the proposed evidence and control direction for AI engineers. Operational alert coverage and savings still required implementation and validation."
           ]
         }
       ],
@@ -775,6 +1090,14 @@
       "eyebrow": "KRAFTON · Governance workflow",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "An approval system needed to preserve the information required for decisions after adoption, including who owned a cost and when continued use should be reviewed. I designed the pipeline with that lifecycle in mind instead of limiting it to a purchase request and a yes-or-no response.",
+            "The design joined cost classification with an enterprise workflow platform and included adoption and sunset triggers. Those elements connected the initial request to later decisions about ongoing need. The work belonged to the wider governance effort around intake, attribution, and approvals, but its deliverable was the pipeline design rather than confirmation of every downstream operating control."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined cost categories and the information needed to attribute an AI request to its purpose and owner.",
@@ -787,6 +1110,13 @@
           "paragraphs": [
             "Delivered a cost-classification design and approval-pipeline structure.",
             "Connected intake, cost ownership, and lifecycle review within the broader AI governance operating model."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output provided a concrete process structure that could be reviewed and implemented by the relevant owners. It helped connect spending approval to responsible maintenance and retirement. This was a design contribution, with the implementation status of broader workstreams described separately."
           ]
         }
       ],
@@ -806,6 +1136,14 @@
       "eyebrow": "KRAFTON · AI adoption",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "New AI tools raised questions that spanned capability, security, legal review, and organizational ownership. When those requirements were dispersed, applicants and reviewers could lack a common review path. I consolidated them into graded criteria and an intake flow designed to support consistent decisions.",
+            "The work combined a company-wide adoption guide with evaluation criteria and a workflow-platform implementation. Focused questions to Legal and Security helped review the requirements without turning every issue into a broad policy debate. After the guide was completed, the classification and approval flow moved into operation, making this entry distinct from projects that remained proposals."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Documented company-wide adoption grades and developed evaluation criteria for new AI tools.",
@@ -819,6 +1157,13 @@
           "paragraphs": [
             "Delivered the adoption guide, evaluation criteria, and operational intake pipeline.",
             "Provided a repeatable path from tool request to risk classification and approval."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The result was a usable route from tool request through classification and approval. It connected functional review to an operating process and gave applicants a clearer basis for preparing requests. The project’s outcome is the completed guidance and operational flow, not a claim that all subsequent adoption results were individually attributable to it."
           ]
         }
       ],
@@ -838,6 +1183,14 @@
       "eyebrow": "KRAFTON · Policy design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The same review path was not appropriate for every AI product. A SaaS tool used by an employee and an API embedded in a service can create different continuity and ownership questions. I made that distinction an early gate in the draft criteria while broadening the framework beyond language models.",
+            "Three axes described internal development, SaaS versus API access, and general-purpose versus purpose-limited use. The draft compared functional, procurement, and central AI ownership and used note-taking, translation, coding-agent, and model-API examples to test the branches. Headquarters and studio coverage questions were documented as unresolved decisions rather than being silently assumed."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Made SaaS versus API the first review branch, with central review proposed for APIs because of continuity risk.",
@@ -851,6 +1204,13 @@
           "paragraphs": [
             "Produced an initial criteria document with tool examples and ownership alternatives.",
             "Identified unresolved headquarters-versus-studio coverage decisions for leadership review."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output helped reviewers discuss adoption criteria through concrete cases and visible ownership alternatives. It exposed the decisions needed before a consistent enterprise process could be finalized. The project remained a discussion draft, which is different from an approved standard or a completed organization-wide rollout."
           ]
         }
       ],
@@ -870,6 +1230,14 @@
       "eyebrow": "KRAFTON · Safety operations",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Committee discussions create value when their action items lead to materials and responsibilities that people can use. I supported the biweekly AI safety workstream by translating research and discussion into governance slides and reviewing the operating process. The work required coordination across AI oversight and Risk Management.",
+            "Research covered vendor terms, regulatory considerations, and outside governance examples. I revised the materials through functional review and supported the transfer of daily committee operations to Risk Management. Throughout the work, governance decision ownership was distinguished from the administration of meetings and recurring tasks, so the handover did not imply that all accountability had moved with it."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Analyzed vendor AI terms, regulatory considerations, and external governance examples for committee discussions.",
@@ -883,6 +1251,13 @@
           "paragraphs": [
             "Delivered revised governance slides, policy research, and process-review input.",
             "Supported a clearer division between central AI governance ownership and recurring committee operations."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverables supported committee follow-through and a clearer division of operating roles. They provided research, visual materials, and process input rather than a claim of personally owning the entire safety program. The distinction between decision responsibility and committee operations is central to understanding the project’s scope."
           ]
         }
       ],
@@ -902,6 +1277,14 @@
       "eyebrow": "KRAFTON · Operating model",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A whitelist can identify permitted tools without explaining which function owns a decision when the use changes. The operating-model project addressed that gap by mapping review, approval, execution, and accountability across the organization. It was part of a move toward delegated, lifecycle-based governance rather than a static collection of checklists.",
+            "The four layers connected central AI design and oversight, Legal and Security review, production and commercialization approval, and business-unit execution. I mapped new-tool review, production-versus-publishing branches, and exception handling to that structure. A working document, HTML infographic, and presentation deck made the responsibilities visible in formats suited to cross-functional discussion."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined four responsibility layers covering AI design and oversight, Legal and Security review, production approval, and business-unit execution.",
@@ -915,6 +1298,13 @@
           "paragraphs": [
             "Produced a working document, an HTML infographic, and a presentation deck for cross-functional review.",
             "Made decision ownership and escalation paths visible; company-wide rollout was separate from the design deliverables."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The model gave stakeholders a common way to identify the decision owner and review path for a proposed use. Its contribution was a documented structure with visual explanations. Organization-wide adoption was a further implementation outcome, so the case study describes the delivered model without assuming every proposed responsibility was already operational."
           ]
         }
       ],
@@ -934,6 +1324,14 @@
       "eyebrow": "KRAFTON · Automation design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A safety-news feed needs interpretation before it can support governance decisions. The bot design therefore went beyond collecting headlines: it specified relevance to the company, severity, topic classification, and applicable regulatory context. The intended audience needed concise updates backed by a consistent analysis structure.",
+            "The architecture moved from collection to analysis, knowledge-base storage, and collaboration-channel distribution. I specified a five-dimension relevance score, structured output, a system prompt, message formatting, and a recurring cadence. Regulatory mapping and category definitions gave the proposed output a reviewable structure instead of leaving the bot to generate an unconstrained summary."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined a collection, analysis, knowledge-base, and collaboration-channel architecture.",
@@ -947,6 +1345,13 @@
           "paragraphs": [
             "Delivered the bot specification and knowledge-base design page.",
             "Established a repeatable output structure for safety monitoring without claiming continuous production operation."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The design specification provided an engineering starting point and a shared definition of the expected output. It also connected external monitoring to an internal knowledge record. Continuous collection, delivery, and production reliability remained implementation questions, so the documented outcome is the completed specification."
           ]
         }
       ],
@@ -966,6 +1371,14 @@
       "eyebrow": "KRAFTON · Legal research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The review asked whether an agent could access vendor software under the same assumptions as a human user. Terms of service can govern that access independently of an internal AI policy. I used a specific vendor case to distinguish the contractual wording from broader concern about AI, because a narrow exception or limited scope can materially change the operating conclusion.",
+            "I examined the default restriction and its exceptions, then checked whether the company’s primary development environment fell within the direct scope. The analysis did not turn an unrelated vendor clause into a blanket company compliance obligation. Instead, it treated the case as an early indication that agent-to-SaaS access might require recurring contractual review as products and policies changed."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Analyzed the AI clauses as a default restriction with specific exceptions, avoiding a broad statement that every form of AI use was prohibited.",
@@ -979,6 +1392,13 @@
           "paragraphs": [
             "Produced a vendor-policy analysis clarifying the restrictions, exceptions, applicability, and operating implications.",
             "Proposed a recurring monthly review covering vendor-policy changes and agent-to-SaaS connections."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output gave Legal and AI governance stakeholders a clearer interpretation of the case and a proposed monthly review topic. Tracking policy changes alongside agent connections could help identify when an integration required further attention. The deliverable was research and a monitoring proposal, with the vendor and internal implementation details anonymized."
           ]
         }
       ],
@@ -998,6 +1418,14 @@
       "eyebrow": "KRAFTON · Risk framework",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "AI governance decisions involve several different dimensions: the type of concern, the use context, the lifecycle stage, and who is responsible. The framework separated these dimensions so a security requirement, business decision, or cost review could be located within the same structure without being treated as an interchangeable checklist item.",
+            "Five perspectives covered financial, security, legal, compliance, and business considerations. Scope distinguished internal and external use and game and non-game applications, while the lifecycle ran from proof of concept to publishing. Decision ownership and differentiated grades then connected those dimensions to review requirements, generally supporting internal use and escalating substantial business impact or security exposure."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined five review perspectives: financial, security, legal, compliance, and business.",
@@ -1011,6 +1439,13 @@
           "paragraphs": [
             "Produced a framework proposal and graded review design for the AI governance team.",
             "Connected cost management to AI safety alongside security, legal, and business concerns."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The proposal supported more proportionate discussion of AI use and brought cost management into the safety conversation. Its output was a framework and differentiated review design. A completed framework can guide policy work, but it does not by itself establish that the organization has implemented every review path."
           ]
         }
       ],
@@ -1030,6 +1465,14 @@
       "eyebrow": "KRAFTON · Policy design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Employees needed guidance that encouraged useful internal work while recognizing when AI use entered a shipped product or involved protected information. I structured the draft around those boundaries rather than use a single rule for every tool. The distinction also helped clarify the relationship between ethical principles and day-to-day operating policy.",
+            "The guidance separated internal-network-only use from production assets, IP transferred through APIs, live AI features, and user-data processing. I incorporated translated international examples and checked interpretations so a benchmark case was not overstated. Central AI oversight, Legal, Security, production stakeholders, and the safety community were the relevant functional audiences for reviewing the draft."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Distinguished ethical principles set by the AI ESG committee from operating policies led by central AI oversight.",
@@ -1043,6 +1486,13 @@
           "paragraphs": [
             "Delivered a first discussion guide for the safety community with work and game-development examples.",
             "Prepared clearer adoption boundaries for Legal, Security, AI engineers, and production stakeholders."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The result was a discussion guide with concrete triggers for review and a clearer adoption direction. It connected policy language to recognizable work and development situations. Final approval and rollout were separate milestones, so the project describes the completed draft and review material rather than treating them as an already enforced company standard."
           ]
         }
       ],
@@ -1062,6 +1512,14 @@
       "eyebrow": "KRAFTON · Organization design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The organization proposal responded to a change in the nature of enterprise AI work. Operations, policy, evaluation, and architecture increasingly had to account for agents as well as employees and tools. I considered how these responsibilities could fit together, which roles were needed in the near term, and which capabilities belonged to a longer-term department structure.",
+            "The proposal connected cost and budget ownership with usage data, executive reporting, administration, and policy enforcement. It outlined operations, governance research and planning, and solution validation as functional areas. Product-owner responsibilities and short-term versus department-level options made the resourcing discussion more concrete. Staffing assumptions and future workstream dates remained proposal inputs rather than confirmed hiring or implementation results."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined three functional areas: operations, governance planning and research, and solution validation and architecture.",
@@ -1075,6 +1533,13 @@
           "paragraphs": [
             "Prepared an organization proposal, role definitions, and expansion options for AI department leadership.",
             "Included internal and external use guidance, cost allocation, build-versus-buy decisions, and policy communication in the proposed scope."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The materials supported a leadership decision about organizational scope and responsibility. Their value was in making the relationship between people, agents, controls, and technical work explicit. The proposal could inform expansion planning without suggesting that a new organization had already been established or that every staffing recommendation had been approved."
           ]
         }
       ],
@@ -1094,6 +1559,14 @@
       "eyebrow": "KRAFTON · Data product",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Manual policy-impact reports could answer one question at a time but were difficult to refresh consistently. The dashboard design aimed to connect a policy’s date and target population to the usage evidence that reviewers would need afterward. This required a shared specification across sources, rather than assuming that each channel exposed equivalent data.",
+            "I reviewed five usage-source categories and proposed views spanning daily, weekly, and monthly periods. The design included policy effective dates, affected channels, historical model use, and collaboration-message nudges. Job-family views could show where lower-cost model trials were relevant. Questions about identifying agent users through metadata and tool-call activity were left visible for validation by the AI engineer."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Specified policy dates and target groups alongside historical model usage and relevant channels.",
@@ -1107,6 +1580,13 @@
           "paragraphs": [
             "Delivered view designs and data requirements to an AI engineer responsible for implementation.",
             "Kept estimated savings and inferred user groups labeled so the dashboard would not imply unsupported causal attribution."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output was a more repeatable design for evaluating changes that had previously required separate reports. It connected policy intent to observable usage while retaining estimated qualifiers. Engineering owned implementation, and the design did not establish causal savings simply because a policy and a later usage change could be displayed together."
           ]
         }
       ],
@@ -1126,6 +1606,14 @@
       "eyebrow": "KRAFTON · Data architecture",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Enterprise knowledge was distributed across communication, document, issue-tracking, and workflow systems. The research asked how that information could be collected and governed for AI consumption without choosing a storage product before understanding the source and operating requirements. I structured the work across five layers to make those decisions easier to compare.",
+            "The source review examined API availability and collection options across collaboration and business platforms. Vendor comparisons covered managed data environments, ingestion services, and custom development. I clarified the role of change-data capture and reviewed international enterprise examples, then distilled application principles. The research hub and four child pages organized these findings into a reference that could be revisited as architecture decisions progressed."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined five layers: collection, storage, transformation, governance, and AI consumption.",
@@ -1139,6 +1627,13 @@
           "paragraphs": [
             "Published a research hub and four supporting knowledge-base pages with source comparisons and vendor research.",
             "Provided an architecture reference for data and AI stakeholders; infrastructure deployment remained a separate engineering outcome."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The published hub gave data and AI teams a shared vocabulary and a source-to-architecture comparison. Its contribution was to prepare decisions about access, integration, transformation, and governance. Choosing or implementing an enterprise data platform remained a separate delivery outcome, so the case study focuses on the research and architecture foundation."
           ]
         }
       ],
@@ -1158,6 +1653,14 @@
       "eyebrow": "KRAFTON · Communication",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A department introduction and performance report needed to explain both what the AI organization had achieved and how its work should be understood. I developed alternative narratives so the same evidence could support discussion of the current state, return on investment, measurement, the pipeline, and global positioning without becoming an unstructured list of activities.",
+            "The storyline mapped highlights to knowledge-base evidence and considered five executive framing options. A revised Q&A then described deployment support, accessibility for non-developers, data-led decisions, multiple vendors, and governance. Proposed initiatives were distinguished from current work so the introduction could explain direction without representing the future pipeline as already delivered performance."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Organized five narrative options around current state, return on investment, measurement changes, the project pipeline, and global positioning.",
@@ -1170,6 +1673,13 @@
           "paragraphs": [
             "Delivered a performance storyline and revised Q&A materials for AI department and executive communications.",
             "Connected evidenced results to proposed next initiatives while preserving their different stages."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The outputs supported leadership communication and a clearer account of the department’s role. They linked a narrative to evidence and gave stakeholders prepared answers to recurring questions. The work was executive reporting and explanation, with the underlying project outcomes and future initiatives retained at their documented stages."
           ]
         }
       ],
@@ -1189,6 +1699,14 @@
       "eyebrow": "KRAFTON · Adoption research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Higher automation in one organization does not immediately explain what another team should copy. The playbook therefore focused on the practices that could be examined alongside adoption outcomes: leadership support, resource allocation, alignment, and measurement. I used the survey structure to define a more consistent benchmarking conversation.",
+            "Question-to-metric mapping connected budget and staffing support, OKR inclusion, leadership and member alignment, share of automated work, and performance measures. Those dimensions offered ways to compare teams without relying on a single adoption percentage. The report turned the survey into a framework for examining organizational practices while preserving the limits of observational data."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Mapped survey questions to leadership support, budget and staffing, OKR inclusion, employee alignment, automation share, and performance measures.",
@@ -1201,6 +1719,13 @@
           "paragraphs": [
             "Produced a benchmarking report and a survey-to-metric mapping.",
             "Gave leadership a structured way to investigate replicable practices rather than relying on isolated success stories."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverable helped leadership identify the questions to ask when studying stronger-adoption teams. It could support more focused follow-up and examples of operating practices. The survey did not establish that a particular practice caused the result, so the output remained a benchmarking report rather than a validated prescription for productivity gains."
           ]
         }
       ],
@@ -1220,6 +1745,14 @@
       "eyebrow": "KRAFTON · Cost operations",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Employees’ personal tool reimbursements and the availability of enterprise alternatives could be recorded in different places. Reviewing the two together required a consistent table of tools, settlements, users, support, and adoption status. I organized that information so reviewers could see possible overlap without assuming that available enterprise access meant people actually used it.",
+            "The table combined the fields needed for reimbursement and tool-support review. It kept enterprise availability, actual adoption, and support status as separate attributes. This distinction mattered for questions about consolidating tools or migrating users: a product could be available but still need onboarding or a workflow reason for an employee to switch."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Compiled tool-level settlement amounts, users, enterprise availability, and support status.",
@@ -1232,6 +1765,13 @@
           "paragraphs": [
             "Delivered a reconciliation table covering reimbursement and adoption status.",
             "Provided a reviewable basis for identifying subscription overlap and follow-up questions about support."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output gave the AI team a reviewable subscription picture and clearer follow-up questions. It supported decisions about tool overlap and support arrangements without publishing individual or organizational spending. The confirmed deliverable was the reconciliation table; downstream consolidation or migration decisions were separate from its preparation."
           ]
         }
       ],
@@ -1251,6 +1791,14 @@
       "eyebrow": "KRAFTON · Technology strategy",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A conference report needed to go beyond restating announcements and explain their consequences for enterprise adoption. I contributed defined sections connecting technical developments to evaluation criteria, ROI, asset provenance, and model lifecycle governance. The work also required a coherent strategic conclusion across the opening summary and the final implications.",
+            "My analysis considered how capability and infrastructure announcements changed model evaluation and how orchestration and distribution affected the competitive picture. A staged asset-policy concept connected provenance to review, while token and end-of-life governance addressed ongoing operating decisions. These contributions were incorporated into a joint report and presentation after the event, alongside other team members’ research."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Analyzed implications of model, infrastructure, orchestration, provenance, and developer-tool announcements.",
@@ -1264,6 +1812,13 @@
           "paragraphs": [
             "Contributed defined analysis sections to a co-authored report and internal presentation.",
             "Prepared implications for enterprise AI adoption and governance rather than treating vendor announcements as verified internal outcomes."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverables translated external developments into specific internal questions for AI strategy and governance. The case study scopes the work to the analysis I contributed and the joint presentation. Vendor announcements provided research inputs; they were not evidence that the same capabilities or commercial results had already been achieved inside the company."
           ]
         }
       ],
@@ -1283,6 +1838,14 @@
       "eyebrow": "KRAFTON · Industry research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Context limits, token spending, and model gateways were becoming connected operating topics. External examples could inform the company’s thinking, but they needed to be interpreted through architecture and workflow choices. I reviewed these practices as benchmarks for discussion rather than as ready-made policies to apply without evaluation.",
+            "The research examined context and token limits, cost-optimization examples, and the market for gateway and AI governance tools. Korean and English communications summarized what those developments suggested for enterprise operations. They connected technical constraints with questions about measurement, optimization, and control that could inform the broader internal workstreams."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Researched token and context-limit practices and examples of architecture-driven cost optimization.",
@@ -1295,6 +1858,13 @@
           "paragraphs": [
             "Delivered bilingual research summaries connecting industry practices to enterprise operating questions.",
             "Provided external reference points for cost and control discussions; internal adoption required separate decisions."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output was accessible research communication for stakeholders working on cost and governance. It broadened the set of reference practices available for decision-making while keeping internal adoption separate. The records support the research and messages; they do not establish that every benchmark practice was implemented or produced internal savings."
           ]
         }
       ],
@@ -1314,6 +1884,14 @@
       "eyebrow": "KRAFTON · Operations design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The charter clarified how cost and model-value work should fit into a changing AI organization. Earlier deliverables spanned surveys, reports, comparisons, and approval design, but those activities needed an explicit ownership structure and reporting rhythm. I used them as the baseline for a role focused on evidence and decisions as well as administration.",
+            "The document aligned the work with four operating units and defined responsibility for FinOps, model-value frameworks, cost attribution, approvals, and API optimization. AI safety was included as a supporting area with links to infrastructure. A roughly six-month plan connected those responsibilities to forward deliverables and reporting, making the expanded workstream visible to leadership."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed the survey report, cost report, model playground, value framework, and approval-pipeline work as a baseline.",
@@ -1327,6 +1905,13 @@
           "paragraphs": [
             "Produced the role-definition document and reporting plan.",
             "Established an expanded cost-and-value workstream spanning evidence, decisions, and operating controls."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output established what the role would own and how its work would be reviewed. It connected separate analytical and governance deliverables into an operating charter. Contract and career changes belonged to the employment context; the project’s substantive contribution was the documented scope, responsibilities, and reporting plan."
           ]
         }
       ],
@@ -1346,6 +1931,14 @@
       "eyebrow": "KRAFTON · Adoption program",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The campaign aimed to find credible examples of lower-cost model use rather than reward a model switch without examining the work. It needed participation formats, operating responsibilities, and evaluation criteria that aligned with that purpose. I developed the concept and reviewed the risks before a launch decision.",
+            "The plan included existing-case sharing, official challenges, new challenge proposals, and deliverable submission. Responsibilities were split across AI planning, people operations, and gateway operations. Risk review covered budget caps, participation credits, migration timing, duplicate cost claims, incentive abuse, and subjective voting. The evolving concept emphasized quality, cost, speed, usability, and reproducibility across practical work categories."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Designed case-sharing, official challenges, proposed challenges, and deliverable-submission participation paths.",
@@ -1359,6 +1952,13 @@
           "paragraphs": [
             "Prepared a roughly two-week campaign proposal with challenge formats, review criteria, and operational roles.",
             "Produced a pre-approval risk review and a plan to sequence the campaign after gateway availability."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The campaign proposal made adoption and evaluation requirements explicit and linked timing to gateway readiness. It provided a structure for collecting examples and comparing trade-offs. Launch, awards, and participation totals were not established, so its outcome is the plan and pre-approval risk review rather than event results."
           ]
         }
       ],
@@ -1378,6 +1978,14 @@
       "eyebrow": "KRAFTON · Operating standards",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Security approval does not fully describe whether an internal service is ready for dependable operation. The reliability proposal addressed that additional question through ownership, evidence, monitoring, and reassessment. It was intended to make review proportionate to a service’s role while giving users a clearer indication of its current maturity.",
+            "Five levels ran from unverified through experimental, internally validated, approved for operation, and company standard. The proposed catalog included service owners, users, data classification, security, and operational status. Evidence requirements covered pilots, feedback, incidents, change management, and cross-organization validation. A bot proposal and four-week pilot sequence described how records, reminders, and displayed status could support the process."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined five levels from unverified and experimental through internally validated, approved for operation, and company standard.",
@@ -1391,6 +1999,13 @@
           "paragraphs": [
             "Produced slides, checklists, and a one-page bot proposal.",
             "Outlined a four-week pilot covering inventory, baseline assessment, catalog display, and selection of standard-service candidates."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The outputs turned a reliability concept into reviewable slides, checklists, and a pilot proposal. They connected evidence to service maturity instead of treating every internal tool as equally ready for operation. Adoption of the levels across the company would require a further operating decision and implementation."
           ]
         }
       ],
@@ -1410,6 +2025,14 @@
       "eyebrow": "KRAFTON · AI strategy",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The early governance work needed a view of how global technology firms were handling emerging AI risks and adoption. I used external cases to connect technology and legal considerations to executive planning. This work preceded the later, more detailed operating-model and cost-governance projects in the portfolio.",
+            "Research covered 10+ governance and risk cases and informed initial planning decks for the Chairman and ESG team. Weekly executive strategy discussions and vendor conversations provided a context for presenting adoption prerequisites and technical or legal concerns. The work supported business-led use of AI by relating those concerns to practical opportunities rather than discussing principles in isolation."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Benchmarked 10+ governance and AI-risk cases from global technology firms.",
@@ -1423,6 +2046,13 @@
           "paragraphs": [
             "Delivered benchmark research and leadership-review materials for the early governance workstream.",
             "Informed adoption discussions and policy planning; implementation followed separate organizational decisions."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution was a benchmark foundation and executive review material for the company’s early AI planning. It helped organize the questions leadership needed to consider as adoption expanded. Policy implementation and partnership decisions remained organizational outcomes beyond the preparation and presentation of the research."
           ]
         }
       ],
@@ -1442,6 +2072,14 @@
       "eyebrow": "KRAFTON · Market strategy",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Investment trends can show where market expectations are moving, but a useful strategy analysis needs to relate those patterns to business and production choices. I examined a three-year window across content, tools, creators, live operations, and AI to organize those signals for the strategy team.",
+            "The work grouped investments by theme and connected the patterns to studio roadmaps and emerging opportunities. The presentation was prepared for 20+ colleagues, with the aim of making market observations relevant to internal discussion. The time horizon and audience size convey scope; confidential strategic conclusions and subsequent decisions are not reproduced in the portfolio."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed a three-year investment window and grouped trends by business and technology theme.",
@@ -1454,6 +2092,13 @@
           "paragraphs": [
             "Delivered an investment-trends analysis and presented it to 20+ strategy colleagues.",
             "Provided a market reference for subsequent discussion without attributing later investment decisions to the presentation."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverable gave the team a structured reference for gaming-market developments and their possible implications. It records the analysis and presentation I completed. Later investments or roadmap changes depended on wider organizational decisions and are not attributed solely to this research."
           ]
         }
       ],
@@ -1473,6 +2118,14 @@
       "eyebrow": "KRAFTON · Survey design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The headquarters study was designed to understand the work employees wanted AI to support. Its audience and purpose differed from the later global tracking program and the multilingual company-wide survey. I focused the instrument on tasks, pain points, and needed tools, with voluntary participation and accessible communications.",
+            "The work included a pretest, revisions, announcements, and an English version prepared with translation support. A roughly 10–15-minute format balanced the intended research coverage with participation effort. Available records indicate 500+ responses but differ on the exact total, so the case study uses a rounded figure. Follow-up interviews and studio research were plans rather than assumed completed work."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Prepared the questionnaire, pretest, announcements, English version, and revisions for a voluntary survey.",
@@ -1486,6 +2139,13 @@
           "paragraphs": [
             "Delivered the survey and supporting communications, with 500+ responses indicated by the available records.",
             "Outlined follow-up analysis, interviews, and studio-specific research; those plans are separate from the completed survey work."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The survey and communications provided a task-oriented input for solution and enablement priorities. Keeping the study populations distinct prevents workforce coverage from being mistaken for survey participation. The confirmed scope is the delivered headquarters survey, while later research activities are described at their separately documented stages."
           ]
         }
       ],
@@ -1505,6 +2165,14 @@
       "eyebrow": "KRAFTON · Transformation",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "AI adoption in production studios involved different tasks, implementation maturity, and technical constraints. The review therefore needed to distinguish a demonstrated business use from an opportunity requiring more development. I organized approximately 30–50 examples across five studios to support that distinction and make the findings useful for internal consulting.",
+            "The analysis connected use cases to near-term automation and longer-term platform opportunities. Reviews of agentic systems also considered workflow fit, reliability, and governance. Presentations used examples from headquarters and international studios, while external research inquiries explored standardization of AI-supported game production. Those examples and inquiries were not treated as a complete list of deployments or a finalized partnership."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Collected, showcased, and analyzed approximately 30–50 use cases across five studios.",
@@ -1518,6 +2186,13 @@
           "paragraphs": [
             "Delivered studio use-case analysis and internal showcase material linking tools to concrete employee workflows.",
             "Identified practical automation and platform opportunities; external collaboration remained exploratory."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The outputs made studio work more visible and offered a basis for identifying practical support needs. They connected actual employee applications to questions of scaling and platform investment. The reviewed use cases and presentations are the confirmed contribution; formal external collaboration remained exploratory."
           ]
         }
       ],
@@ -1537,6 +2212,14 @@
       "eyebrow": "KRAFTON · Executive intelligence",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Executive AI reporting needed to combine a changing external market with the company’s own adoption picture. The tracking program covered a 3k+ global workforce, while weekly reports brought vendor, policy, and market developments into the same conversation. I worked across leadership reporting and employee-facing examples rather than treat them as disconnected activities.",
+            "Results were reported to the CEO and recurring AI Insights materials were prepared for the Chairman, CFO, and executive leadership. Use cases were curated by job function and shared through company-wide showcases attended by 600+ employees. This connected the overview of adoption and training needs to examples colleagues could recognize in their own work."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Tracked AI adoption across a global workforce of 3k+ employees and reported findings directly to the CEO.",
@@ -1550,6 +2233,13 @@
           "paragraphs": [
             "Delivered recurring executive reports, use-case communications, and a biweekly showcase program.",
             "Made both leadership priorities and practical adoption examples more visible; workforce coverage is distinct from survey participation."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The reporting and showcase program gave different audiences an appropriate view of AI activity: leadership received strategic context, and employees saw practical implementations. Rounded workforce and audience figures communicate scale without exposing precise internal counts. They describe tracking reach and showcase attendance, not a single survey sample or a proven causal productivity gain."
           ]
         }
       ],
@@ -1569,6 +2259,14 @@
       "eyebrow": "KRAFTON · Solution strategy",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "An evaluation database needed to answer where a tool might help employees, not just list its product features. I combined external reviews with internal workflow examples so vendor discussions could be grounded in actual work. The scope included 30+ in-depth assessments and support for several major AI partnership workstreams.",
+            "The database organized research for solution comparison and strategic conversations. Partner work spanned model, infrastructure, productivity, and speech-technology firms, while the assessment material focused on potential use inside the company. The records describe research and supported engagements; differing partner lists were not converted into a claim that I personally signed a fixed number of contracts."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Produced in-depth evaluations of 30+ AI solutions.",
@@ -1582,6 +2280,13 @@
           "paragraphs": [
             "Delivered a reusable solution database and research supporting multiple major AI partnership workstreams.",
             "Provided a structured reference for comparing tools and discussing their potential organizational use."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output made solution knowledge reusable across tool-selection and partnership conversations. It connected external capabilities with employee needs and supported a more informed adoption discussion. Commercial agreements remained wider company outcomes, with this case study focused on the evaluation database and research contribution."
           ]
         }
       ],
@@ -1601,6 +2306,14 @@
       "eyebrow": "KRAFTON · Enablement",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The project paired a practical collaboration automation with employee enablement. Message drafting, templates, and routing provided a recognizable use case, while a hands-on session let colleagues work through implementation. This made the activity more concrete than a presentation that only described the possibility of using AI.",
+            "I built the workflow and led a session for approximately 50 employees. A playbook and office hours supported use afterward and gave participants a place to revisit the implementation. The documented work therefore covers the system, the live build session, and follow-up support, rather than only the attendance figure."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Designed and implemented AI-assisted Slack message drafting, reusable templates, and routing.",
@@ -1613,6 +2326,13 @@
           "paragraphs": [
             "Delivered a working automation workflow, live training, and implementation guidance.",
             "Connected a concrete example to employee enablement; long-term productivity gains were not separately measured."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution connected a working example to repeatable learning materials. It demonstrated an approach to a recurring workplace task and supported colleagues implementing it. Long-term productivity effects would need separate measurement, so the outcome is the delivered automation and enablement work."
           ]
         }
       ],
@@ -1632,6 +2352,14 @@
       "eyebrow": "KRAFTON · Industry research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Before proposing new AI production standards, it was useful to understand existing research and its limitations. I investigated an industry organization’s game-workflow work to identify what had already been addressed and where AI-supported production might need further study. The activity was related to the wider studio use-case review.",
+            "The research was followed by inquiries about the existing standardization effort, follow-up directions, and potential collaboration. This provided a way to explore whether an external research foundation could inform internal workflow questions. The available record supports the investigation and contact, while a formal joint program or agreement was not confirmed."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed prior game-production workflow standardization research and its limitations.",
@@ -1644,6 +2372,13 @@
           "paragraphs": [
             "Completed research and external inquiries to inform the internal workstream.",
             "Identified a possible follow-on research direction; a formal collaboration agreement was not established in the records."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output clarified a possible research direction and avoided assuming that the company needed to invent a standard without understanding prior work. It was a scoping contribution for future collaboration. Its impact is described through the research and inquiries completed, rather than a partnership or standard that had not been established."
           ]
         }
       ],
@@ -1663,6 +2398,14 @@
       "eyebrow": "KRAFTON · Research partnership",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A possible enterprise–university collaboration required discussion of both the research direction and how joint work would be arranged. The draft involved agentic AI but was still preliminary. My contribution was to the scoping conversation, where proposed work and contract questions needed to be considered together before research execution could be confirmed.",
+            "The discussions took place over a late-year planning period and addressed the collaboration draft, joint research scope, and contractual boundaries. The case study describes that early work separately from the ongoing human–AI experiments elsewhere in the portfolio. It does not transfer the outcomes of those other studies to a collaboration that was still being discussed."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Participated in preliminary discussions on the agentic AI research scope.",
@@ -1675,6 +2418,13 @@
           "paragraphs": [
             "Contributed to a draft collaboration and research-scope discussion.",
             "Documented the proposal stage; execution and signed agreements were separate milestones."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution helped prepare a possible collaboration for further review and clarification. The available evidence establishes preliminary scope and contract discussions. Formal execution, research results, and signed agreements would be later milestones, so the project remains an early research-collaboration entry."
           ]
         }
       ],
@@ -1694,6 +2444,14 @@
       "eyebrow": "Pacvue · Revenue operations",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A leadership report can appear internally consistent while its source systems use different definitions for the same metric. I treated the weekly review as both a reporting deliverable and a source-definition problem. Pipeline, bookings, revenue, and renewals needed periods and business categories that readers could compare reliably.",
+            "The report separated regions, monthly and quarterly views, targets, and actuals. I compared three or more conflicting definitions across CRM, analytics, and finance or operations records and documented questions about authoritative sources, cut-offs, and ownership. Missing or unsettled figures were retained as follow-up items rather than blended into a seemingly definitive total."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Connected pipeline, new and expansion bookings, ACV-to-revenue, and renewal and retention measures.",
@@ -1707,6 +2465,13 @@
           "paragraphs": [
             "Delivered recurring leadership reports and a comparison of metric definitions.",
             "Made unsettled definitions explicit rather than combining inconsistent figures into a single apparent result."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output gave leadership a recurring view while making the evidence behind it more transparent. Its contribution included both the weekly report and the definition comparison. Some inconsistencies remained unresolved at handoff, which is important to understanding how the materials could be refreshed and interpreted afterward."
           ]
         }
       ],
@@ -1726,6 +2491,14 @@
       "eyebrow": "Pacvue · Executive dashboard",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The executive dashboard needed to bring multiple priorities and growth horizons into one navigation structure without mixing incomparable figures. Revenue, spend, customer activity, onboarding, and product use each required a definition. I worked on the presentation and the source questions so the dashboard would be useful for review rather than simply attractive.",
+            "Six company priorities were organized across business, product, and growth views. I separated targets and actuals, period totals and monthly results, and managed-service and SaaS categories. Data-owner mapping and checks across analytics and product systems exposed differences between events, active customers, onboarded customers, and users. Notes identified metrics needing access or definition follow-up."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Structured the dashboard around six priorities and three growth horizons.",
@@ -1739,6 +2512,13 @@
           "paragraphs": [
             "Delivered successive HTML versions and handed over a working dashboard at the end of the internship.",
             "Provided a refreshable leadership reference while identifying remaining manual updates and pipeline or forecast questions."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "A working HTML dashboard was handed over with its refresh and source limitations visible. It gave senior leadership a consolidated reference and navigation path through priorities. The delivered version was not a permanently operated, fully automated reporting system, so the case study preserves the remaining definition and manual-update work."
           ]
         }
       ],
@@ -1758,6 +2538,14 @@
       "eyebrow": "Pacvue · Product operations",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Release discussions and growth reporting relied on different documents and manual extracts. I organized those materials so product communications could show what had launched, what had been decided, and what action came next alongside the relevant business and customer signals. The work spanned several product and advertising initiatives.",
+            "Dashboard views connected release status, decisions, next steps, onboarding, usage, spend, and feedback. I reviewed the source and definition differences across initiatives and prepared a refresh approach based on extracted files. This preserved the update requirements rather than suggesting that all release data came from a single automated source."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Built views combining release status, key decisions, next actions, growth, and spend.",
@@ -1771,6 +2559,13 @@
           "paragraphs": [
             "Delivered product-communication and growth HTML dashboards and refresh guidance.",
             "Improved the structure of launch review materials while preserving dependencies on manual extracts."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The delivered dashboards and handover structure made product review material easier to navigate and refresh. They connected operational decisions with the evidence available at the time. Adoption and revenue growth were broader product outcomes; the contribution here was the reporting structure, source review, and delivered HTML views."
           ]
         }
       ],
@@ -1790,6 +2585,14 @@
       "eyebrow": "Pacvue · Launch support",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Launch enablement requires clear definitions of what onboarding, use, and customer response actually mean. I contributed to the reporting side of a new advertising product by reviewing the measures and sources supporting its launch discussion. This work sat within the wider product-communication and growth dashboard effort.",
+            "The review considered onboarding, usage, spending, and customer-feedback signals alongside related advertising initiatives. Differences in product sources and definitions mattered because a shared label could refer to a different stage of customer activity. I helped organize those questions and inputs so the product’s signals could be interpreted within the wider launch reporting."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed onboarding, usage, spend, and customer-feedback measures.",
@@ -1802,6 +2605,13 @@
           "paragraphs": [
             "Contributed product-enablement analysis and launch-reporting inputs.",
             "Supported shared visibility into customer and product signals; revenue and adoption remained organization-level outcomes."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output supported enablement and product visibility through reporting contribution. It gave launch discussions a better basis for reading customer and activity measures. The available records do not establish that I owned the product launch or its commercial results, so the case study scopes the work to analysis and reporting inputs."
           ]
         }
       ],
@@ -1821,6 +2631,14 @@
       "eyebrow": "Pacvue · Customer intelligence",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Individual customer calls can contain useful evidence without revealing the patterns across accounts. The prototype organized those signals so product and executive teams could see praise, blockers, requested features, and follow-up actions together. Source coverage was part of the problem because an extraction method might omit calls or context.",
+            "I reviewed extraction coverage and designed product and customer groupings, cross-customer themes, priority issues, and recommended next actions. A launch-focused HTML prototype demonstrated the structure, while metric definitions and review steps explained how the signals should be read. The work remained manually supported, with broader source comparison and recurring automation identified as future needs."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed call-extraction coverage and possible omissions, identifying the need to compare it with other sources.",
@@ -1834,6 +2652,13 @@
           "paragraphs": [
             "Delivered an HTML customer-signal prototype and product-health dashboard drafts.",
             "The proof of concept used manual support; complete call coverage and automated weekly operation remained future work."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The prototype made customer evidence easier to inspect and connected it to potential product follow-up. Its deliverable was a proof of concept and dashboard drafts. Complete call coverage, quantitative health scoring, churn reduction, and revenue improvements would require separate implementation and evaluation, so they were not assigned to the prototype."
           ]
         }
       ],
@@ -1853,6 +2678,14 @@
       "eyebrow": "Pacvue · Agent prototype",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Management updates contained commitments, missing information, and follow-ups that could be lost across messages. The agent concept focused on turning that recurring text into a structured weekly operating view. I narrowed the MVP so a useful demonstration could be built before broad integration and access requirements expanded its scope.",
+            "The sequence moved from Slack updates to structured storage, a weekly digest, and follow-up questions. Executive, department, and individual summaries were considered along with missing updates and promised actions. CRM, call-intelligence, ERP, and knowledge-base integrations were left for later stages. The demonstration and repository handover documented dependencies on authentication, APIs, automation, and standardized inputs."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined executive, department, and individual summary views alongside missing updates and promised follow-ups.",
@@ -1866,6 +2699,13 @@
           "paragraphs": [
             "Delivered a demonstrated operating-agent prototype and repository handover material.",
             "Established an MVP sequence for management updates without claiming organization-wide operation."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output showed a concrete management-update workflow and left material for continued development. Its contribution was focused scoping and a demonstrated prototype. It did not establish a company-wide operating system, but it made the information path and the requirements for such a system more visible."
           ]
         }
       ],
@@ -1885,6 +2725,14 @@
       "eyebrow": "Memoria & MIRA · AI product",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The product concept addressed the loss of context across AI sessions and tools. Preferences, company knowledge, and previous decisions could become fragmented or opaque. I helped frame memory as something people should be able to inspect, edit, and deliberately share, with personal, company, and shared scopes rather than one undifferentiated store.",
+            "The pitch and demo interface connected retrieval, extraction, generation, and human decisions to saved context. Related exploration considered structured and graph memory, cross-team permissions, prompt rewriting, extensions, and evaluation. Team presentation work culminated in a Demo Day showing, where approximately a dozen judges provided feedback. Those comments were product feedback rather than evidence of paid customers or investment."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined three memory scopes: personal, company, and shared, with user-controlled editing and sharing boundaries.",
@@ -1898,6 +2746,13 @@
           "paragraphs": [
             "Delivered a product pitch, demo UI, and presentation materials.",
             "Presented the team’s product at Demo Day and gathered feedback from approximately a dozen judges; this represents evaluation feedback rather than customers."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output made the product direction tangible and supported discussion of how memory and reusable workflows might connect. It also clarified the need for user-controlled boundaries. The documented outcome is the product concept, demo, and feedback; performance and market-size assertions remained hypotheses for later validation."
           ]
         }
       ],
@@ -1917,6 +2772,14 @@
       "eyebrow": "Memoria & MIRA · Workflow product",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A useful agent run may contain retrieval, reasoning, tool work, and human decisions that are difficult to reuse as a simple saved prompt. The workflow concept aimed to expose that sequence as a structure people could understand. I developed the Step → Task → Workflow hierarchy as part of the broader editable-memory product direction.",
+            "The interface exploration covered tracing, saving, and rerunning work while relating it to personal, company, and shared memory. The design considered how individual operations contributed to larger jobs and how teams might deliberately share them. Model selection, evaluation, and context handling were supporting requirements, but the available output remained a pitch and demo design."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Mapped retrieval, extraction, generation, and human decisions into a Step → Task → Workflow hierarchy.",
@@ -1930,6 +2793,13 @@
           "paragraphs": [
             "Produced workflow interface designs and pitch materials as part of the team product demo.",
             "Specified a reusable-work structure; actual adoption and operational reuse were not established by the demo."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution was a product structure for making AI-assisted work visible and potentially repeatable. It provided a concrete design language for discussing reuse, review, and sharing. Actual repeated use, team adoption, or productivity improvements would need evidence from a working product and were not established by the presentation."
           ]
         }
       ],
@@ -1949,6 +2819,14 @@
       "eyebrow": "Memoria & MIRA · Business design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The deployment-studio model began with the customer’s recurring work and the people responsible for it. An AI pilot needed a narrow problem, a baseline, relevant data, and an acceptance decision. I developed the strategy and operating materials so a proposed engagement could progress from discovery to a measurable continue, revise, or stop choice.",
+            "A fit assessment preceded a four-week pilot covering workflow mapping, integration, real-user testing, and results review. The plan outlined strategy and engineering roles and commercial stages for discovery, pilots, deployment, and maintenance. Materials included six-industry research, playbooks, pitch decks, a pipeline sheet, and a contract template. Pricing and market assumptions remained business-plan hypotheses."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Defined a four-week delivery pilot preceded by a fit assessment, then baseline work, integration, user testing, and a deploy, revise, or stop decision.",
@@ -1962,6 +2840,13 @@
           "paragraphs": [
             "Prepared a business plan, internal playbook, pitch decks, sales-pipeline sheet, and proof-of-concept contract template.",
             "Defined commercial assumptions and acceptance terms; signed customers, revenue, and realized ROI remained separate from the planning materials."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The outputs made a services concept reviewable through a delivery sequence and concrete commercial documents. They connected measurement and customer acceptance to productization of repeatable components. Templates and sales lists did not establish signed work, so the case study preserves the distinction between planning and realized customer outcomes."
           ]
         }
       ],
@@ -1981,6 +2866,14 @@
       "eyebrow": "Memoria & MIRA · Customer discovery",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Industry deployment research needed to identify who experienced a problem, how the work was performed, and where an agent might fit. I developed buyer and workflow hypotheses across several sectors before treating any one product concept as validated. The atlas was a way to place operational context alongside tools and approval requirements.",
+            "Research covered engineering, manufacturing, energy, insurance, games, and beauty. The workflow structure compared existing tools, agent roles, human approval points, deliverables, and exceptions. Discovery planning moved from industry understanding and a problem hypothesis to a demo, conversation, proposal, and measured pilot. Account lists and pitch material were preparation for that process, not proof that discovery calls had already occurred."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Developed target-account and buyer hypotheses across engineering, manufacturing, energy, insurance, games, and beauty.",
@@ -1994,6 +2887,13 @@
           "paragraphs": [
             "Produced target lists, workflow hypotheses, and pitch structures for industry-focused discovery.",
             "Kept prepared sales material distinct from completed interviews, signed pilots, or conversion metrics."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverables supported focused product and sales exploration with workflow detail instead of a generic AI pitch. They also connected governance questions to the proposed work. Interview counts, conversions, signed pilots, and ROI were not available, so the output is the research atlas and hypotheses for further validation."
           ]
         }
       ],
@@ -2013,6 +2913,14 @@
       "eyebrow": "Memoria & MIRA · Product hypothesis",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The accounting concept examined the controls surrounding an agent’s work, not just its ability to process a document. Reconciliation, evidence, approvals, and segregation of duties create different requirements. I explored how those requirements might be represented as a layer connecting a workflow’s tools, agent roles, and accountable human decisions.",
+            "The work used the workflow-atlas approach to compare existing processes, outputs, approval points, and exceptions. It considered financial approval records and checks intended to prevent incompatible responsibilities from being combined. The concept was reviewed alongside broader adoption and agent-accountability products, keeping the accounting direction as a specific hypothesis rather than presenting a general platform as already built."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Mapped workflow tools, agent roles, approval points, deliverables, and exceptions in a customer-specific workflow-atlas format.",
@@ -2025,6 +2933,13 @@
           "paragraphs": [
             "Documented an accounting-agent control hypothesis and its scope for further customer discovery.",
             "Defined the problem and human decision points; development and customer deployment remained subsequent stages."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The documented output was a scoped control-layer idea for further discovery. It connected a possible product to financial workflow and governance needs. Customer validation, implementation, and operational effectiveness would be later stages, so the case study describes the reasoning and scope rather than a deployed accounting system."
           ]
         }
       ],
@@ -2044,6 +2959,14 @@
       "eyebrow": "Memoria & MIRA · Agent demonstration",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The beauty-industry scenario was a way to communicate a multi-agent workflow before building an operational deployment. Customer-feedback collection provided a recognizable task, while human review showed that coordination did not imply fully autonomous decision-making. My work focused on making that proposed flow understandable through demonstration material.",
+            "The scenario connected feedback work to multiple agents and a human reviewer. Video and narration files explained the sequence as product communication. This activity belonged to the broader exploration of industry-specific deployment and agent collaboration, but it had a defined output of its own: the scenario video and accompanying narration."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Developed a scenario connecting customer-feedback collection to multiple agents and human review.",
@@ -2056,6 +2979,13 @@
           "paragraphs": [
             "Delivered an agent-to-agent scenario video and narration files.",
             "Created a concrete discussion aid for product and deployment exploration in the beauty sector."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The materials offered a concrete aid for discussing what agents and people might do within a workflow. Their value was communicative and exploratory. The demonstration did not establish a live customer integration, collected customer dataset, or production result, so those measures are not assigned to it."
           ]
         }
       ],
@@ -2075,6 +3005,14 @@
       "eyebrow": "Memoria & MIRA · Agent design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The concept asked how an assistant could connect communications, organizational information, and approval work over time. Those sources contain different kinds of context and allow different kinds of action. I explored the requirements before treating an executive agent as one undifferentiated interface with permission to do everything.",
+            "Email, knowledge systems, and approvals were the main surfaces in the concept. Related memory and transcription exploration considered how context might be retained and how users could see or stop recording. The work remained at the requirements and technical-direction stage, with the scope connecting information access to human decision points rather than documenting a completed integration."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Considered email, knowledge systems, and approvals as the core information and action surfaces.",
@@ -2087,6 +3025,13 @@
           "paragraphs": [
             "Prepared concept requirements and technical directions for further design.",
             "Established the intended scope before implementation, including the distinction between information retrieval and actions requiring approval."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution was a clearer starting point for a future product discussion. It identified the connected workflow and user-control questions that needed attention. A deployed assistant, adoption figures, and measured time savings were not established, so the case study focuses on the concept and requirements."
           ]
         }
       ],
@@ -2106,6 +3051,14 @@
       "eyebrow": "UIUC & HCI Research · Human–AI research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The study investigates group decisions when one teammate is an AI player with a defined information state. That makes the experiment more specific than asking whether a model can answer a question. Cooperation, trust, available information, and consensus all depend on the game conditions and the constraints placed on the player.",
+            "I worked on approximately 10 scenarios and 30+ conditions, specifying card values, player strategies, answer validation, and observable actions. Evaluation of 10+ model candidates was supported by reasoning and task-decomposition prompts. When runs differed, I examined whether the cause was the model’s information state, the prompt, or the rules, so inconsistent behavior could be diagnosed within the experimental design."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Specified game rules, card values, strategies for players with different information, answer validation, and observable AI state and action constraints.",
@@ -2119,6 +3072,13 @@
           "paragraphs": [
             "Produced experimental specifications and AI-player prompting and evaluation work for the research team.",
             "Supported an ongoing independent-study research program; final participant results and publication remained future milestones."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output contributed experimental and AI-player specifications to an IRB-approved research program. It supported a more controlled study of human–AI group interaction. Participant results and publication were ongoing milestones, so the documented impact is research design and evaluation contribution rather than completed empirical findings."
           ]
         }
       ],
@@ -2138,6 +3098,14 @@
       "eyebrow": "UIUC & HCI Research · HCI publication",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The poster work required a clear account of what the system and study actually demonstrated. Feature scope, comparison methods, editing, provenance, and participant interpretation were important to the research claim. I contributed as a co-author in the collaboration and supported clarification during the review and camera-ready stage.",
+            "The work included the poster submission and response to requests concerning the comparative study and participant material. Clarifying source tracking and editing behavior helped define the boundaries of the contribution. The accepted poster was a confirmed milestone, while final camera-ready submission and conference presentation required separate confirmation rather than being assumed from acceptance."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Participated in the research collaboration and poster submission.",
@@ -2150,6 +3118,13 @@
           "paragraphs": [
             "Co-authored a poster accepted to UIST 2026 Posters.",
             "Supported camera-ready clarification work, with final submission and conference presentation treated as separate milestones."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The project records a research contribution and acceptance to UIST 2026 Posters. Its significance is the co-authored HCI output and the work needed to explain the system and evidence accurately. Later presentation and publication milestones remain distinct from the acceptance that is documented here."
           ]
         }
       ],
@@ -2169,6 +3144,14 @@
       "eyebrow": "UIUC & HCI Research · Community research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Editorial work in an AI alignment community combines content judgment with the coordination needed to involve contributors. The documented scope covers newsletter editing and applicant-review preparation. I contributed through those activities rather than claim authorship of a completed publication or ownership of the community’s entire recruiting process.",
+            "Approximately five applicant responses were reviewed, with acceptance communications and short interviews prepared. The editorial role also involved reviewing newsletter content. Those tasks produced communication and review material that could support the next stage of community work, while final publication and selection counts were not recorded in the supplied evidence."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed newsletter content as an editor.",
@@ -2181,6 +3164,13 @@
           "paragraphs": [
             "Delivered editorial contributions and recruiting materials for the community.",
             "Documented applicant-review work; final publication and selection totals were not available in the source records."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution supported the community’s content and contributor pipeline. It illustrates editorial and organizational work alongside technical research activities. Its scope is intentionally tied to the prepared materials and reviews, with no invented audience, hiring, or publication metrics."
           ]
         }
       ],
@@ -2200,6 +3190,14 @@
       "eyebrow": "Independent Projects · HCI concept",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A device that turns speech into persistent memory introduces interaction questions about when recording is active and who can control it. The exploration therefore considered visible recording, pause, stop, and charging behavior as part of the product requirements. It connected to the personal-agent concept but addressed a different interface and input mechanism.",
+            "I explored transcription and text-memory requirements and the technical direction for the device. User-control states were specified at the concept level, before a hardware build. The available records support requirements and architecture exploration; they do not show a manufactured wearable or a deployed recording service."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Considered voice transcription as an input to persistent memory and a personal executive-agent concept.",
@@ -2212,6 +3210,13 @@
           "paragraphs": [
             "Prepared wearable requirements and architecture exploration.",
             "Defined user-control requirements before a hardware build or operational recording system."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output clarified what a future device would need to communicate to its user and how memory could enter the wider product direction. It was preparation for further design and feasibility work. Hardware performance, battery behavior, and user-study results were not available and are not presented as completed outcomes."
           ]
         }
       ],
@@ -2231,6 +3236,14 @@
       "eyebrow": "UIUC & HCI Research · HCI exploration",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "This exploration concerned interaction methods that could extend beyond a keyboard or standard screen. EEG and EMG signals, programmable glasses, and augmented reality raise different questions about input, interpretation, and feedback. I encountered and studied these directions through technical and research communities.",
+            "The activity included biosignal-to-text and HCI exploration alongside participation in agentic AI and alignment groups. Its role in the portfolio is as technical learning and research orientation. There is no documented individual device or experiment that would justify an implementation or performance claim."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Explored EEG and EMG signals as potential text and interaction inputs.",
@@ -2243,6 +3256,13 @@
           "paragraphs": [
             "Contributed through research exploration and technical-community participation.",
             "The available record supports a learning-stage project, without a completed individual device or experimental result."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The experience broadened the interaction topics considered alongside memory and personal-agent work. It is described as an exploration because that is the stage supported by the records. A future implementation would need a defined hardware scope and evaluation, neither of which is treated as already completed here."
           ]
         }
       ],
@@ -2262,6 +3282,14 @@
       "eyebrow": "Independent Projects · Market research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The market research asked which smaller businesses might need implementation support and which recurring workflows could justify a service. An industry label alone would not identify a buyer or a feasible deployment. I organized the research around roles, work patterns, competition, and customer-facing hypotheses.",
+            "The materials connected AI adoption demand to potential deployment work and industry-specific pitches. They belonged to the development of a services concept and informed the deployment-studio and workflow-atlas directions. Market-size and demand estimates were retained as planning assumptions, separate from actual customer acquisition or delivered deployments."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed AI adoption and workflow-automation demand by industry and buyer role.",
@@ -2274,6 +3302,13 @@
           "paragraphs": [
             "Produced market-research summaries and pitch documents.",
             "Kept market-size estimates as planning assumptions, separate from the venture’s actual customer or revenue outcomes."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output gave the venture a more structured basis for discovery and positioning. It helped organize where to investigate and how to explain the proposed offer. Its confirmed scope is market research and pitch preparation, without treating projected demand as earned revenue or signed customer work."
           ]
         }
       ],
@@ -2293,6 +3328,14 @@
       "eyebrow": "Independent Projects · Security strategy",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The team research examined how AI could change both attacks and defenses. The strategic task was to connect technical issues to the business assets being protected, then organize the questions by importance. I contributed research and an issue-tree structure within a course project.",
+            "The issue tree connected threat themes, defensive AI, and business impact. Prioritization slides helped the team move from a broad list of concerns to a structured discussion of what mattered most. The work was a team and class deliverable, so the portfolio scopes the contribution to analysis and presentation rather than enterprise implementation."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Researched AI-accelerated threats and defensive uses of AI.",
@@ -2305,6 +3348,13 @@
           "paragraphs": [
             "Delivered research and issue-prioritization material for the course project.",
             "Provided a business-oriented security analysis; enterprise implementation was outside the project’s documented scope."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The outputs supported a clearer security research argument and business-oriented prioritization. They show how I translated a technical topic into a decision structure. No operational defensive system, incident reduction, or enterprise security deployment was established by this project."
           ]
         }
       ],
@@ -2324,6 +3374,14 @@
       "eyebrow": "Independent Projects · Product strategy",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The strategy exploration connected possible AI product directions with customer signals. It was important to distinguish an opportunity identified through research from a released product capability. I prepared a strategy document and prototype work that could support a discussion of those directions.",
+            "The customer-signal component related to the separately documented voice-of-customer project, where launch evidence was organized into themes and follow-up questions. This entry focuses on the strategy framing and product hypotheses. It does not duplicate the prototype as a separate production result or assign wider product adoption to the strategy document."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Developed an AI strategy document and product hypotheses.",
@@ -2336,6 +3394,13 @@
           "paragraphs": [
             "Produced strategy notes and a prototype exploration.",
             "Provided a basis for product discussion; released features and adoption outcomes were separate company milestones."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution was material for product discussion and further validation. It made the connection between AI possibilities and customer evidence more explicit. Launch, adoption, and revenue would require separate organizational decisions and evidence, so the documented outcome remains the strategy and prototype exploration."
           ]
         }
       ],
@@ -2355,6 +3420,14 @@
       "eyebrow": "Independent Projects · Product hypothesis",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The control concept examined the relationship between an agent’s permission to act and the evidence of what it later did. Registration, business purpose, approval, costs, and review can become disconnected if treated as separate administrative tasks. I considered how a product might connect them within one operating record.",
+            "The exploration compared pre-execution policy checks with post-execution traceability and accountability. Financial approval and segregation-of-duties ideas added specific control use cases, while human decision points helped define the technical scope. This work was related to the accounting control hypothesis but kept broader enterprise registration and lifecycle management in view."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Explored registration, approval, cost, benefit, and lifecycle review as connected records.",
@@ -2367,6 +3440,13 @@
           "paragraphs": [
             "Documented control-layer concepts and their human decision points.",
             "Prepared the scope for product exploration before an operational system was developed."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output organized several product directions around a common governance problem. It supported a more concrete scope discussion before implementation. A functioning enforcement layer or deployed enterprise system was not established, so the case study presents the control concepts and the questions they were intended to address."
           ]
         }
       ],
@@ -2386,6 +3466,14 @@
       "eyebrow": "Independent Projects · Consumer venture",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The consumer venture explored wellness as a routine-oriented product and brand. Early planning needed to consider what the range might contain, how packaging would communicate it, and which channels could support a launch. My work stayed within that concept-development context.",
+            "The documented exploration included the product range, brand direction, packaging, sales channels, and a possible crowdfunding approach. Those are business-design activities rather than evidence of manufactured inventory or completed sales. The portfolio therefore describes the considerations and stage without inventing a customer base or launch outcome."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Explored a wellness-routine product range and its brand positioning.",
@@ -2398,6 +3486,13 @@
           "paragraphs": [
             "Prepared early product and business-planning concepts.",
             "Defined the direction for further validation; manufacturing and sales had not been established."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The concept provided a starting point for later validation of demand, production, and distribution. Its place in the portfolio is as an early venture idea and planning exercise. Manufacturing, crowdfunding results, and revenue were not established in the records."
           ]
         }
       ],
@@ -2417,6 +3512,14 @@
       "eyebrow": "Tradies · Consumer product",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The venture began with a problem in student social life: discovering people did not reliably lead to meeting them. Trust, scheduling, and follow-through could interrupt the transition from online discovery to an offline relationship. I used 500+ surveys and 30+ individual interviews to translate that problem into a product direction.",
+            "Personas and MVP priorities informed requirements, wireframes, and weekly design and engineering work. The concept included AI matching, quest-style gatherings, and basic verification, followed by a trial on one campus. Student clubs, resident-adviser networks, and events were explored as distribution channels. Pitch and funding work supported the team venture, with bootstrapping included in the initial funding context."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Conducted 500+ surveys and 30+ individual interviews, then developed personas and MVP priorities.",
@@ -2430,6 +3533,13 @@
           "paragraphs": [
             "Contributed to a team MVP trial on one campus and the venture’s initial funding work.",
             "Delivered research, product specifications, and launch experiments; initial funding included bootstrapping, and long-term retention was not measured."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution connected research, product design, team delivery, and campus launch experiments. It records both the concrete research scale and the team MVP. Long-term active-user and retention measures were unavailable, so the case study does not convert early funding or a trial into a claim of sustained product-market fit."
           ]
         }
       ],
@@ -2449,6 +3559,14 @@
       "eyebrow": "BTAA · Community building",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Students needed opportunities to apply classroom analytics in teams and produce work they could explain outside a course. I co-founded the community around projects rather than membership alone. The operating model connected faculty collaboration, team leads, analysts, and workshops so participation had a practical delivery path.",
+            "The community served approximately 80 active members and 50+ analysts across several teams. I co-designed five projects with faculty, mentored leads from scoping through delivery, and ran five workshops covering machine learning, AI, and visualization. Membership and analyst figures came from organizational records and different reporting periods, so they describe community scale rather than individual performance."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Built an operating structure serving approximately 80 active members across multiple project teams.",
@@ -2462,6 +3580,13 @@
           "paragraphs": [
             "Established the community and delivered a project-and-workshop operating model.",
             "Supported applied student work through faculty collaboration and team mentoring; membership figures describe community scale."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output was an established project-and-learning structure supported by mentoring and faculty involvement. It gave students a setting for practical teamwork and portfolio development. The contribution spans community formation and operating design, while team and member counts remain measures of the shared organization."
           ]
         }
       ],
@@ -2481,6 +3606,14 @@
       "eyebrow": "ASU Watts College · Research support",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The research program studied how investment and institutions relate to regional innovation. My contribution combined literature and manuscript preparation with the data and infrastructure work documented in related projects. The research context explains why reference accuracy, reproducible records, and shared access were part of the same effort.",
+            "I reviewed relevant literature and corrected references, DOIs, tables, and terminology in manuscripts. Data contributions included processing, validation, and database development within a wider research collaboration. The 1m+ record scale belonged to the team’s datasets and should not be interpreted as a count of records individually reviewed by hand."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Reviewed literature on regional innovation and investment policy.",
@@ -2494,6 +3627,13 @@
           "paragraphs": [
             "Delivered literature-review and manuscript-quality contributions for the research team.",
             "Supported reproducible data work and publication preparation; the million-record figure describes the team’s dataset, not individual manual review."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The outputs supported research preparation and the quality of materials used by the team. They show a contribution to the work behind publication without assigning the final research conclusions or publication outcome to one assistant. The larger data projects have their own entries so their methods and deliverables remain visible."
           ]
         }
       ],
@@ -2513,6 +3653,14 @@
       "eyebrow": "ASU Watts College · Data analysis",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Large grant datasets need consistent integration before geographic or business patterns can be examined. The research task combined data processing with outputs that other researchers could review and reuse. I worked with 600k+ records in Python and R as part of a regional and enterprise research collaboration.",
+            "Reproducible notebooks organized the integration and analysis, while Tableau visualizations provided a way to inspect geographic and business-activity trends. The notebook and visual outputs served different purposes: one retained the processing workflow, and the other made patterns more accessible for research discussion. The case study describes that combination without claiming conclusions beyond the documented work."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Integrated and analyzed 600k+ grant records using Python and R.",
@@ -2525,6 +3673,13 @@
           "paragraphs": [
             "Delivered integrated data, notebooks, and visual analysis for the research team.",
             "Made large-scale grant evidence usable for regional analysis, with record volume expressed as a rounded figure."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution made a large body of grant evidence usable for collaborative analysis. Its deliverables were integrated data, reproducible notebooks, and visualizations. The rounded record count communicates scale, while specific research findings and publication milestones remain outcomes of the wider research process."
           ]
         }
       ],
@@ -2544,6 +3699,14 @@
       "eyebrow": "ASU Watts College · Collaborative research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The biomedical enterprise study involved a dataset large enough that consistent coding rules mattered across research collaborators. Validation was a shared research process, not simply a claim that one person inspected every row. I contributed within a multi-university team working on an NSF-supported study.",
+            "The work concerned data review and coding rules for a dataset of 1m+ records. The distinction between dataset size and individual review is important to the scope: the count conveys the environment of the collaboration, while my contribution was to the team’s validation and coding work. The records do not provide a personal manual-review count or a standalone accuracy metric."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Worked with researchers across multiple universities on data validation.",
@@ -2556,6 +3719,13 @@
           "paragraphs": [
             "Delivered research-team validation and coding contributions.",
             "The rounded dataset size conveys research scope and is not a claim of manually reviewing every record individually."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution supported consistent research data preparation across institutions. It records participation in a large-scale validation effort with its team context intact. Final biomedical findings and publication outcomes are separate from the data-quality work described here."
           ]
         }
       ],
@@ -2575,6 +3745,14 @@
       "eyebrow": "ASU Watts College · Data infrastructure",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "Researchers outside the immediate team needed a shared way to access and combine datasets. The database project addressed that infrastructure need, giving collaborators a common environment for joins and analysis. I designed and built the MySQL database as a concrete deliverable within the wider research program.",
+            "The database brought approximately seven datasets into a form that external collaborators could access and join. That scope is distinct from the grant-analysis and validation tasks, even though the projects belonged to related research work. The confirmed outcome is the database and shared access capability rather than a claim that every later study or publication depended solely on it."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Organized multiple datasets within a MySQL database.",
@@ -2587,6 +3765,13 @@
           "paragraphs": [
             "Delivered a working shared research database spanning approximately seven datasets.",
             "Provided infrastructure for collaborators to perform joins and use the data in their research workflows."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output enabled collaborative use of the data and reduced the need to describe each dataset as an isolated file. It was an infrastructure contribution supporting research workflows. Subsequent analyses and publications remained separate outcomes owned by the research team."
           ]
         }
       ],
@@ -2606,6 +3791,14 @@
       "eyebrow": "ASU Watts College · Research operations",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The research program also involved academic events and visiting-speaker preparation. Those activities required coordination and support alongside manuscript and data work. This entry separates the operations contribution from technical deliverables so the database project is not used to imply unrelated event outcomes.",
+            "The documented work covered seminar operations and preparation for a guest lecture. It belongs to the academic-service side of the research assistant role. The available records do not specify attendance, session totals, or a distinct personal impact measure, so the description focuses on the support tasks rather than supplying an unsupported event metric."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Contributed to seminar operations within the research program.",
@@ -2618,6 +3811,13 @@
           "paragraphs": [
             "Delivered seminar and speaker-preparation support.",
             "The documented scope concerns academic operations; attendance and event-impact figures were not recorded."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution supported the delivery of academic activities within the program. It illustrates organizational work alongside analytical research. More detailed event results would require records beyond those available, so the case study retains a clear operations scope."
           ]
         }
       ],
@@ -2637,6 +3837,14 @@
       "eyebrow": "ASU Watts College · Information design",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "An academic division needed an information channel for its election and candidates. Clear introductions and notices were the relevant communication outputs. I supported that work separately from the research team’s databases and analyses, keeping the website contribution visible as its own activity.",
+            "The work involved preparing election information, candidate introductions, and related notices for the division’s channels. Its scope was website and communication support. Candidate results or participation changes were not established as consequences of the work, and the portfolio does not use those organizational outcomes as personal metrics."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Prepared election information for the academic division’s website.",
@@ -2649,6 +3857,13 @@
           "paragraphs": [
             "Delivered website and election-communication support.",
             "Provided candidate and process information for readers through the academic division’s channels."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The deliverable helped provide readers with information about the candidates and process. It records a practical academic communication contribution. The case study remains focused on what was prepared and supported rather than attempting to reconstruct election impact without evidence."
           ]
         }
       ],
@@ -2668,6 +3883,14 @@
       "eyebrow": "ASU Foundation · Strategic research",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The foundation team needed to understand prospective donors and changing external conditions quickly enough to inform opportunity development. I combined daily market monitoring with donor research so university initiatives could be connected to the interests of potential supporters. This was strategic preparation within a wider fundraising organization.",
+            "Monitoring covered 20+ news and online sources, with concise updates on markets, philanthropy, and higher education. Research included executive and donor profiles and identification of relevant university projects. Positioning and one-page proposal support translated that background information into material the team could use in conversations about sponsorship."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Monitored 20+ news and online sources daily and prepared concise market updates.",
@@ -2681,6 +3904,13 @@
           "paragraphs": [
             "Delivered market updates, donor research, and initiative-positioning input for the foundation team.",
             "Contributed to organizational opportunity development; donation outcomes belonged to the wider fundraising team."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The contribution made external information usable for institutional opportunity research and proposal preparation. It helped the team connect university priorities with potential donor interests. Donations remained foundation and team outcomes, so the case study describes the research contribution without presenting organizational fundraising as money personally raised."
           ]
         }
       ],
@@ -2700,6 +3930,14 @@
       "eyebrow": "ASU Foundation · Strategy support",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "A university project and a donor interest do not automatically form a compelling proposal. The positioning work connected the institution’s research and education opportunities to the priorities identified through donor and market research. I contributed to concise materials that made that relationship easier to explain.",
+            "The work drew on profiles, philanthropy trends, and the monitoring of 20+ sources. Relevant initiatives were identified and developed into positioning input and one-page proposal support. This entry emphasizes the translation from research to opportunity framing, while the separate intelligence project describes the recurring collection and analysis behind it."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Identified university research and education initiatives relevant to potential donors.",
@@ -2713,6 +3951,13 @@
           "paragraphs": [
             "Delivered initiative research, positioning input, and concise proposal support.",
             "Helped the team develop fundraising opportunities while keeping organizational donation results separate from individual contribution."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The output supported strategic outreach with a clearer connection between an initiative and a sponsor’s interests. Its value was proposal preparation and opportunity development within the team. Fundraising totals and signed donor commitments were organizational outcomes beyond the individually documented contribution."
           ]
         }
       ],
@@ -2732,6 +3977,14 @@
       "eyebrow": "Community & Hackathons · Community leadership",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The community experience spans campus representation and an advocacy leadership role in an international-student coalition. It sits alongside later venture, analytics, and research work as an organizational contribution. The available records establish the roles and their periods, but do not contain a campaign-by-campaign account of results.",
+            "I served as a campus ambassador during the 2022–2023 academic period and as Director of Advocacy during 2023. The case study therefore describes the confirmed leadership context. It does not infer event attendance, policy changes, or project deliverables from the role titles alone, because those would need additional supporting records."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Served as a campus ambassador during the 2022–2023 academic period.",
@@ -2744,6 +3997,13 @@
           "paragraphs": [
             "Completed two community-leadership roles across the documented periods.",
             "Specific campaign deliverables and quantified participation outcomes were not available, so the scope is limited to confirmed roles."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The entry documents two community-leadership roles and their place in my experience. The contribution is represented through that confirmed service rather than invented quantitative achievements. More specific campaign detail could be added when it is supported by contemporaneous materials."
           ]
         }
       ],
@@ -2763,6 +4023,14 @@
       "eyebrow": "Community & Hackathons · Hackathon",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "The hackathon is included as an early exploration rather than a mature product case study. Records identify the project and participation in meetings during 2024. That provides a basis for describing involvement, but not for reconstructing a technical architecture or claiming an award that was not documented.",
+            "The available activity was project participation and discussion at the exploration stage. A fuller product account would require the challenge, implemented work, demonstration, and evaluation records. Those are useful distinctions because joining a hackathon and completing a usable product are different milestones."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Participated in the listed 2024 hackathon project.",
@@ -2774,6 +4042,13 @@
           "paragraphs": [
             "Contributed exploratory participation to a hackathon workstream.",
             "Completed-product, award, and user-impact figures were not recorded."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "This entry preserves the exploratory experience in the portfolio without assigning unsupported implementation results. It can be enriched further from an actual submission or project artifact. At present, the supported contribution is participation and early project work."
           ]
         }
       ],
@@ -2793,6 +4068,14 @@
       "eyebrow": "Community & Hackathons · Hackathon",
       "sections": [
         {
+          "title": "Project context and execution",
+          "format": "prose",
+          "paragraphs": [
+            "HackMath appears in the records as a mathematical and technical project exploration in 2024. The evidence identifies participation and meetings but does not specify a finished implementation. The project is therefore presented as an early learning and discussion activity, distinct from the delivered research and product work elsewhere.",
+            "The documented contribution involved joining technical project discussions. A detailed account of methods or results would require a problem statement, work artifact, or final submission that is not present in the available material. The description keeps those missing milestones explicit rather than inventing them to make the entry resemble a completed case study."
+          ]
+        },
+        {
           "title": "Approach and contribution",
           "paragraphs": [
             "Participated in the listed 2024 project.",
@@ -2804,6 +4087,13 @@
           "paragraphs": [
             "Contributed at the project-exploration stage.",
             "A completed technical deliverable or award was not established in the available record."
+          ]
+        },
+        {
+          "title": "Decision relevance",
+          "format": "prose",
+          "paragraphs": [
+            "The entry records the exploratory experience and its stage. Its scope can be expanded with supporting artifacts if they become available. The current account does not claim a technical product, award, or measured outcome beyond the participation documented."
           ]
         }
       ],
