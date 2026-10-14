@@ -9,7 +9,7 @@ A single shared password now unlocks the entire Projects section for 14 days in 
 - The archive and details use private/no-store caching and noindex headers.
 - About links to the archive entrance without embedding individual project previews.
 
-Set the shared password in the server environment variable named `password`. The older `PROJECTS_PASSWORD` name remains supported as a fallback for local setups. `PROJECT_ACCESS_SECRET` is still required to sign access cookies. Keep these values private; do not put them in frontend code. HTTPS uses Secure cookies; local HTTP preview omits Secure. Changing the signing secret revokes existing access.
+Set the shared password in the server environment variable named `password`. The older `PROJECTS_PASSWORD` name remains supported as a fallback. A separate `PROJECT_ACCESS_SECRET` is optional; without it, the server derives a signing key from the password. A long, random signing secret is recommended for stronger cookie protection, especially when the shared password is short. Keep these values private; do not put them in frontend code. HTTPS uses Secure cookies; local HTTP preview omits Secure. Changing the signing secret revokes existing access; if no separate secret is set, changing the password also revokes existing access.
 
 After changing either environment variable in Vercel, redeploy the project so the server function receives the new value.
 

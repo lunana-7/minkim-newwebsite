@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
 
 export const PROJECT_COOKIE = 'project_access';
 export const PROJECT_COOKIE_AGE = 60 * 60 * 24 * 14;
@@ -8,8 +8,19 @@ function sign(value, secret) {
   return createHmac('sha256', secret).update(value).digest('base64url');
 }
 
+function projectPassword() {
+  return process.env.password || process.env.PROJECTS_PASSWORD || import.meta.env.password || import.meta.env.PROJECTS_PASSWORD;
+}
+
+function signingKey() {
+  const password = projectPassword();
+  if (!password) return null;
+  const configuredSecret = process.env.PROJECT_ACCESS_SECRET || import.meta.env.PROJECT_ACCESS_SECRET;
+  return configuredSecret || createHash('sha256').update('project-access-cookie-v1:').update(password).digest();
+}
+
 export function hasProjectAccess(request) {
-  const secret = import.meta.env.PROJECT_ACCESS_SECRET;
+  const secret = signingKey();
   if (!secret) return false;
   const raw = request.headers.get('cookie') || '';
   const value = raw.split(';').map(part => part.trim()).find(part => part.startsWith(`${PROJECT_COOKIE}=`))?.slice(PROJECT_COOKIE.length + 1);
@@ -22,9 +33,8 @@ export function hasProjectAccess(request) {
 }
 
 export function validateProjectPassword(submitted) {
-  const password = process.env.password || import.meta.env.password || import.meta.env.PROJECTS_PASSWORD;
-  const secret = import.meta.env.PROJECT_ACCESS_SECRET;
-  if (!password || !secret) return 'unconfigured';
+  const password = projectPassword();
+  if (!password) return 'unconfigured';
   if (typeof submitted !== 'string' || submitted.length > 1024) return false;
   const actual = Buffer.from(submitted), expected = Buffer.from(password);
   return actual.length === expected.length && timingSafeEqual(actual, expected);
@@ -32,7 +42,7 @@ export function validateProjectPassword(submitted) {
 
 export function projectAccessCookie(request, clear = false) {
   const expires = String(Date.now() + PROJECT_COOKIE_AGE * 1000);
-  const value = clear ? '' : `${expires}.${sign(expires, import.meta.env.PROJECT_ACCESS_SECRET)}`;
+  const value = clear ? '' : `${expires}.${sign(expires, signingKey())}`;
   const secure = new URL(request.url).protocol === 'https:' ? '; Secure' : '';
   return `${PROJECT_COOKIE}=${value}; Path=/; Max-Age=${clear ? 0 : PROJECT_COOKIE_AGE}; HttpOnly${secure}; SameSite=Lax`;
 }
