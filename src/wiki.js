@@ -1,4 +1,5 @@
 import { expandedWikiEntries } from './wiki-expanded.js';
+import { agenticWikiEntries } from './wiki-agentic.js';
 const sources = {
   nist: { name: 'NIST AI RMF Core', url: 'https://airc.nist.gov/airmf-resources/airmf/5-sec-core/' },
   spiffe: { name: 'SPIFFE concepts', url: 'https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/' },
@@ -95,7 +96,38 @@ const coreWikiEntries = [
   },
 ];
 
-export const wikiEntries = [...coreWikiEntries, ...expandedWikiEntries];
+const additionalConnections = {
+  'agentic-ai-governance': ['agent-risk-assessment', 'autonomy-levels', 'agent-accountability'],
+  'agent-inventory': ['agent-change-management', 'vendor-due-diligence'],
+  'delegated-authority': ['purpose-bound-authorization', 'multi-agent-security'],
+  'authentication': ['credential-lifecycle', 'confused-deputy'],
+  'runtime-governance': ['agent-budget-controls', 'idempotency-and-compensation'],
+  'model-context-protocol': ['tool-poisoning', 'multi-agent-security'],
+  'prompt-injection': ['memory-governance', 'tool-poisoning'],
+  'evaluations-and-red-teaming': ['continuous-evaluation', 'agent-risk-assessment'],
+  'audit-trail': ['agent-accountability', 'idempotency-and-compensation'],
+  'incident-response': ['data-exfiltration', 'agent-change-management'],
+  'human-approval': ['autonomy-levels', 'purpose-bound-authorization'],
+  'observability': ['continuous-evaluation', 'agent-budget-controls'],
+  'revocation': ['credential-lifecycle', 'memory-governance'],
+};
+
+export const wikiEntries = [...coreWikiEntries, ...expandedWikiEntries, ...agenticWikiEntries].map(entry => ({
+  ...entry,
+  related: [...new Set([...entry.related, ...(additionalConnections[entry.slug] || [])])],
+}));
+
+export const wikiUpdatedAt = wikiEntries.reduce((latest, entry) =>
+  entry.reviewedAt && entry.reviewedAt > latest ? entry.reviewedAt : latest, '2026-10-12');
+
+export const wikiLearningPaths = [
+  { title: 'Start with governance', description: 'Purpose, ownership, risk and bounded autonomy.', slugs: ['ai-governance', 'agentic-ai-governance', 'agent-inventory', 'agent-risk-assessment', 'autonomy-levels', 'agent-accountability'] },
+  { title: 'Understand an access decision', description: 'Identity, task permissions, current facts and enforcement.', slugs: ['authentication', 'authorization', 'purpose-bound-authorization', 'policy-information-point', 'policy-decision-point', 'policy-enforcement-point', 'credential-lifecycle'] },
+  { title: 'Operate and improve', description: 'Find failures, retain evidence and respond.', slugs: ['prompt-injection', 'evaluations-and-red-teaming', 'open-telemetry', 'observability', 'audit-trail', 'incident-response'] },
+  { title: 'Secure memory and retrieval', description: 'Persistent context, source access and permitted data flows.', slugs: ['memory-governance', 'retrieval-security', 'prompt-injection', 'data-exfiltration', 'audit-trail'] },
+  { title: 'Control autonomous workflows', description: 'Bound delegation, budgets, retries and downstream effects.', slugs: ['autonomy-levels', 'delegated-authority', 'multi-agent-security', 'agent-budget-controls', 'idempotency-and-compensation', 'revocation'] },
+  { title: 'Review and release agents', description: 'Supplier evidence, material changes and ongoing evaluation.', slugs: ['agent-risk-assessment', 'vendor-due-diligence', 'tool-poisoning', 'agent-change-management', 'continuous-evaluation'] },
+];
 
 export const policyRoles = [
   { acronym: 'PAP', name: 'Policy Administration Point', role: 'Creates policies.', example: 'The approved external-email rule.' },

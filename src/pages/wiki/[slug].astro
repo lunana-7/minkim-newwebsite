@@ -14,7 +14,8 @@ const allSources = [...entry.sources, ...research.map(item => item.source).filte
 const backlinks = wikiEntries.filter(item => item.slug !== entry.slug && item.related.includes(entry.slug));
 const sameTopic = wikiEntries.filter(item => item.slug !== entry.slug && item.category === entry.category);
 const definitionKind = entry.kind || (['runtime-governance','agentic-ai-governance'].includes(entry.slug) ? 'Working governance definition' : 'Source-based definition');
-const reviewedDate = entry.slug === 'prompt-injection' || research.length ? 'October 12, 2026' : 'October 11, 2026';
+const reviewedAt = entry.reviewedAt || (entry.slug === 'prompt-injection' || research.length ? '2026-10-12' : '2026-10-11');
+const reviewedDate = new Date(reviewedAt + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const sections = [
   { depth: 2, slug: 'definition', text: 'Definition' },
   { depth: 2, slug: 'scope', text: 'What it covers' },

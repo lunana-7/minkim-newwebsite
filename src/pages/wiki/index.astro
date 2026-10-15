@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import ContentSearch from '../../components/ContentSearch.astro';
 import { wikiDepth } from '../../wiki-depth.js';
 import { wikiResearch } from '../../wiki-research.js';
-import { wikiEntries } from '../../wiki.js';
+import { wikiEntries, wikiUpdatedAt, wikiLearningPaths as paths } from '../../wiki.js';
 import { LIBRARY_BOOKS } from '../../lib/min-library-data.js';
 export const prerender = true;
 const topics = [...new Set(wikiEntries.map(entry => entry.category))];
@@ -11,14 +11,10 @@ const categories = ['All concepts', ...topics];
 const alphabet = [...new Set(wikiEntries.map(entry => entry.title[0]))].sort();
 const sorted = [...wikiEntries].sort((a,b) => a.title.localeCompare(b.title));
 const topicId = name => name.toLowerCase().replace(/[^a-z]+/g,'-').replace(/-$/,'');
-const paths = [
-  {title:'Start with governance',description:'Purpose, data meaning, ownership and delegated action.',slugs:['ai-governance','semantic-interoperability','agentic-ai-governance','agent-inventory','delegated-authority']},
-  {title:'Understand an access decision',description:'Identity, current facts, policy and enforcement.',slugs:['authentication','authorization','policy-information-point','policy-decision-point','policy-enforcement-point']},
-  {title:'Operate and improve',description:'Find failures, retain evidence and respond.',slugs:['prompt-injection','evaluations-and-red-teaming','open-telemetry','telemetry','observability','audit-trail','incident-response']},
-];
+const updatedDate = new Date(wikiUpdatedAt + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 <Layout title="Wiki | Min Kim" activeNav="wiki" description="A structured reference to agentic AI governance: identity, authorization, runtime controls, security, oversight and operations.">
-  <header class="wiki-intro"><span class="case-study-kicker">MIN’S GOVERNANCE REFERENCE</span><h1 class="page-title">Wiki</h1><p class="page-lead">A practical encyclopedia of agentic AI governance. Browse a subject, look up a term, or follow a learning path.</p><p class="wiki-editor-note">{wikiEntries.length} articles · {topics.length} subjects · Updated <time datetime="2026-10-12">October 12, 2026</time>. Source-based definitions and editorial working definitions are identified on each article. Examples are illustrative.</p></header>
+  <header class="wiki-intro"><span class="case-study-kicker">MIN’S GOVERNANCE REFERENCE</span><h1 class="page-title">Wiki</h1><p class="page-lead">A practical encyclopedia of agentic AI governance. Browse a subject, look up a term, or follow a learning path.</p><p class="wiki-editor-note">{wikiEntries.length} articles · {topics.length} subjects · Updated <time datetime={wikiUpdatedAt}>{updatedDate}</time>. Source-based definitions and editorial working definitions are identified on each article. Examples are illustrative.</p></header>
   <ContentSearch initialType="Wiki" />
   <nav class="wiki-portal-nav" aria-label="Wiki sections"><a href="#subjects">Subjects</a><a href="#learning-paths">Learning paths</a><a href="#reading-library">PDF library</a><a href="#wiki-library">Article directory</a><a href="#term-index">A–Z index</a></nav>
   <section id="subjects" class="wiki-subjects" aria-labelledby="subjects-title"><h2 id="subjects-title">Browse by subject</h2><div>{topics.map(category=><a href={`#category-${topicId(category)}`}><strong>{category}</strong><span>{wikiEntries.filter(entry=>entry.category===category).length} {wikiEntries.filter(entry=>entry.category===category).length===1?'article':'articles'} →</span></a>)}</div></section>
