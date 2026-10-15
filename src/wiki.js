@@ -1,3 +1,4 @@
+import { guideWikiEntries } from './wiki-guides.js';
 import { expandedWikiEntries } from './wiki-expanded.js';
 import { agenticWikiEntries } from './wiki-agentic.js';
 import { operationsWikiEntries } from './wiki-operations.js';
@@ -98,6 +99,21 @@ const coreWikiEntries = [
 ];
 
 const additionalConnections = {
+  'authentication': ['workload-identity-federation', 'spiffe-svid'],
+  'authorization': ['token-audience', 'sender-constrained-tokens', 'capability-security'],
+  'least-privilege': ['just-in-time-access', 'permission-drift', 'separation-of-duties'],
+  'idempotency-and-compensation': ['retry-backoff', 'transactional-outbox', 'agent-concurrency-control'],
+  'human-approval': ['approval-to-execution-races', 'ai-literacy'],
+  'incident-response': ['agent-circuit-breakers', 'safe-fallbacks', 'agent-incident-tabletops'],
+  'delegated-authority': ['task-specification', 'agent-handoff', 'task-deadlines'],
+  'retrieval-security': ['agent-data-lineage', 'memory-poisoning', 'context-window-governance'],
+  'agent-decommissioning': ['deletion-propagation'],
+  'agent-evaluation-datasets': ['synthetic-evaluation-data', 'evaluation-contamination', 'llm-as-judge'],
+  'continuous-evaluation': ['uncertainty-calibration', 'governance-metrics', 'adversarial-robustness'],
+  'vendor-due-diligence': ['model-cards', 'agent-system-cards', 'software-supply-chain'],
+  'agent-output-validation': ['tool-schema-security', 'agent-ssrf', 'package-hallucination'],
+  'ai-governance': ['stakeholder-impact', 'contestability', 'proportional-governance', 'acceptable-use'],
+  'agent-risk-assessment': ['assurance-cases', 'reward-hacking'],
   'agentic-ai-governance': ['agent-risk-assessment', 'autonomy-levels', 'agent-accountability'],
   'agent-inventory': ['agent-change-management', 'vendor-due-diligence', 'agent-decommissioning'],
   'delegated-authority': ['purpose-bound-authorization', 'multi-agent-security'],
@@ -123,7 +139,7 @@ const additionalConnections = {
   'agent-accountability': ['audit-evidence-integrity'],
 };
 
-export const wikiEntries = [...coreWikiEntries, ...expandedWikiEntries, ...agenticWikiEntries, ...operationsWikiEntries].map(entry => ({
+export const wikiEntries = [...coreWikiEntries, ...expandedWikiEntries, ...agenticWikiEntries, ...operationsWikiEntries, ...guideWikiEntries].map(entry => ({
   ...entry,
   related: [...new Set([...entry.related, ...(additionalConnections[entry.slug] || [])])],
 }));
@@ -132,6 +148,11 @@ export const wikiUpdatedAt = wikiEntries.reduce((latest, entry) =>
   entry.reviewedAt && entry.reviewedAt > latest ? entry.reviewedAt : latest, '2026-10-12');
 
 export const wikiLearningPaths = [
+  { title: 'Design accountable delegation', description: 'Specify goals, assess affected people and provide meaningful correction.', slugs: ['task-specification', 'stakeholder-impact', 'proportional-governance', 'acceptable-use', 'ai-literacy', 'contestability'] },
+  { title: 'Strengthen agent credentials', description: 'Federate identities, bind tokens and control temporary privileges.', slugs: ['workload-identity-federation', 'spiffe-svid', 'token-audience', 'sender-constrained-tokens', 'just-in-time-access', 'permission-drift'] },
+  { title: 'Recover reliable workflows', description: 'Handle timing, competing changes and ambiguous external outcomes.', slugs: ['task-deadlines', 'retry-backoff', 'agent-circuit-breakers', 'agent-concurrency-control', 'transactional-outbox', 'safe-fallbacks', 'agent-handoff'] },
+  { title: 'Understand evaluation evidence', description: 'Inspect datasets, judges, uncertainty and the claims evidence supports.', slugs: ['synthetic-evaluation-data', 'evaluation-contamination', 'llm-as-judge', 'uncertainty-calibration', 'assurance-cases', 'governance-metrics'] },
+  { title: 'Protect the agent supply chain', description: 'Review generated dependencies, tool inputs and persistent context.', slugs: ['software-supply-chain', 'package-hallucination', 'tool-schema-security', 'agent-ssrf', 'memory-poisoning', 'agent-data-lineage', 'deletion-propagation'] },
   { title: 'Start with governance', description: 'Purpose, ownership, risk and bounded autonomy.', slugs: ['ai-governance', 'agentic-ai-governance', 'agent-inventory', 'agent-risk-assessment', 'autonomy-levels', 'agent-accountability'] },
   { title: 'Understand an access decision', description: 'Identity, task permissions, current facts and enforcement.', slugs: ['authentication', 'authorization', 'purpose-bound-authorization', 'policy-information-point', 'policy-decision-point', 'policy-enforcement-point', 'credential-lifecycle'] },
   { title: 'Operate and improve', description: 'Find failures, retain evidence and respond.', slugs: ['prompt-injection', 'evaluations-and-red-teaming', 'open-telemetry', 'observability', 'audit-trail', 'incident-response'] },

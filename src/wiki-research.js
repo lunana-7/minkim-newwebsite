@@ -1,3 +1,4 @@
+import { guideWikiResearch } from './wiki-guides.js';
 import { operationsWikiResearch } from './wiki-operations.js';
 // Source-grounded details for the execution-controls articles. The agent examples
 // are editorial applications of the linked specifications, not normative rules.
@@ -22,6 +23,7 @@ const note = (title, text, source) => ({ title, text, source });
 
 export const wikiResearch = {
   ...operationsWikiResearch,
+  ...guideWikiResearch,
   'open-telemetry': [
     note('Know what OTel provides', 'OpenTelemetry is a toolkit and specification for generating, collecting and exporting telemetry. It does not itself provide the backend that stores traces or the dashboard used to analyze them. Select a compatible backend separately.', otelOverview),
     note('Place the Collector deliberately', 'The Collector can receive, process and export telemetry. A pipeline can centralize routing and filtering, but its configuration determines which signals reach the backend. Review that pipeline when investigating a missing span or log.', otelCollector),
