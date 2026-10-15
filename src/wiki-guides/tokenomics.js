@@ -1,0 +1,58 @@
+export default [{
+  slug: 'agent-tokenomics',
+  title: 'Tokenomics for Agentic AI',
+  category: 'Cost & FinOps',
+  aliases: ['AI tokenomics', 'token economics', 'LLM token costs', 'token amplification'],
+  question: 'How does token consumption turn into spending, and what useful work does that spending buy?',
+  summary: 'Understand token billing, repeated context, caching and agent loops, then connect consumption to verified outcomes.',
+  definition: 'In this article, AI tokenomics means the economics of token consumption across an AI workflow: how inputs, generated outputs, repeated context and execution choices create cost, and how that cost relates to useful outcomes. This is a working operational definition of the term in an AI setting.',
+  sourceKeys: ['unitEconomics', 'caching', 'dynamicReasoning'],
+  sourceNote: 'The accounting method and examples are editorial synthesis. All prices below are fictional arithmetic inputs, not current provider quotes. Provider billing categories and feature terms must be checked for the model and service being used.',
+  scope: [
+    ['Consumption', 'Count usage across every model call, retry and delegated worker in the task.'],
+    ['Billing categories', 'Distinguish uncached input, cache reads, cache writes and output according to the provider’s accounting.'],
+    ['Amplification', 'Identify repeated instructions, growing history, tool results and duplicated worker context.'],
+    ['Value and control', 'Relate spending to accepted outcomes while enforcing resource limits and preserving quality.'],
+  ],
+  practical: [
+    'Maintain a versioned rate card with units, currency, model, deployment and applicable billing categories.',
+    'Map provider usage fields into non-overlapping billed categories before calculating charges; cached tokens may already be included in a reported input total.',
+    'Attribute all calls to a parent task and report tokens, estimated cost, latency and verified outcome together.',
+    'Optimize repeated work through appropriate caching, bounded retrieval, routing and stopping rules, then measure quality and total task cost again.',
+  ],
+  example: {
+    title: 'From token counts to cost per accepted outcome',
+    context: 'A fictional task uses 20,000 uncached input tokens, 30,000 cache-read tokens and 4,000 billed output tokens. Assume rates of $2, $0.20 and $8 per million tokens respectively, with no cache-write charge in this example.',
+    steps: [
+      'Uncached input costs 20,000 × $2 / 1,000,000 = $0.040. Cache reads cost 30,000 × $0.20 / 1,000,000 = $0.006. Output costs 4,000 × $8 / 1,000,000 = $0.032. Total model cost is $0.078.',
+      'For 1,000 attempts with those same usage counts, model spending is $78. If 800 outcomes pass the acceptance standard, model cost per accepted outcome is $78 / 800 = $0.0975, including the unsuccessful attempts.',
+      'Add tool fees, infrastructure and attributable review work for a broader operating-cost measure. Compare quality and task mix before concluding that a lower token bill is an improvement.',
+    ],
+  },
+  pitfalls: [
+    'Treating a token as a fixed number of words across models, languages and content types.',
+    'Double counting cache usage or separately adding reasoning tokens that the provider already includes in billed output.',
+    'Using the cheapest price per million tokens as a proxy for the cheapest successful task.',
+    'Reducing context until essential evidence or constraints are lost, increasing retries or harmful errors.',
+    'Assuming token costs include external tool charges, hosting, storage and human review.',
+  ],
+  related: ['agent-unit-economics', 'agent-cost-allocation', 'agent-cost-forecasting', 'agent-caching', 'agent-compute-budgets', 'context-window-governance'],
+  body: [
+    'Tokens are model-specific units used to represent input and generated content. A request can include instructions, tool definitions, retrieved documents and previous turns beyond the user’s visible message. Tokenization and multimodal accounting vary, so use the relevant service’s usage records rather than a universal words-to-tokens conversion. A token count is a consumption measure, not a direct measure of intelligence or business value.',
+    'For metered token pricing, estimated model cost is the sum over all calls and billed categories of tokens multiplied by the category rate divided by its pricing unit. If rates are quoted per million tokens, that unit is 1,000,000. Include cache writes where charged and any applicable pricing modifiers. For capacity-based hosting, token counts can help allocate cost, but an API-style token formula alone does not describe the infrastructure bill.',
+    'Repeated context creates a distinct agent cost driver. In a simplified uncached sequence of n calls with initial context B and an additional d input tokens accumulated before each later call, cumulative input is nB + d × n(n−1)/2. This assumes no truncation or compaction and constant growth; real traces differ. Measure repeated input before deciding whether caching, summarization or a narrower tool response is the appropriate remedy.',
+    'The worked example uses separate billing categories to keep the arithmetic auditable. A real trace may include cache population costs, different rates across models, unsuccessful retries and additional workers. Preserve usage and pricing versions so an estimate can be reconciled with the invoice. If no outcomes are accepted, report spending and zero accepted outcomes; cost per accepted outcome is undefined.',
+    'Governance connects the accounting to decisions. Set shared task budgets that include child agents, enforce them outside the model, and reserve enough capacity to report incomplete work or recover safely. Monitor whether cheaper execution increases rework or excludes difficult cases. Lower unit prices can also encourage more usage, so track total spending alongside cost per accepted outcome. Collect usage metadata without retaining unnecessary sensitive prompt content.',
+  ],
+  questions: [
+    'Which provider fields map to mutually exclusive billing categories?',
+    'How much input is repeated across calls and delegated workers?',
+    'Does an optimization reduce total cost per accepted outcome while meeting quality and safety requirements?',
+    'Who owns the rate card, task budget and invoice reconciliation?',
+  ],
+  notes: [
+    ['unitEconomics', 'Token efficiency and business value are different measures', 'The FinOps Foundation distinguishes resource-efficiency measures from business-unit measures. This article applies that distinction by pairing token accounting with accepted task outcomes.'],
+    ['caching', 'Cache usage has provider-specific accounting', 'Anthropic documents matching prompt-prefix reuse and separate cache-related usage and pricing. Those mechanics illustrate why a cost model must reflect the selected provider rather than assume one uniform token rate.'],
+    ['dynamicReasoning', 'Execution design changes resource demand', 'Kim and colleagues study the resource and latency behavior of selected agent designs and reasoning strategies. Their findings motivate measuring complete execution traces; they do not establish a universal multiplier for agent costs.'],
+  ],
+}];

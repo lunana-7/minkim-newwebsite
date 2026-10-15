@@ -1,3 +1,4 @@
+import tokenomics from './wiki-guides/tokenomics.js';
 import economics from './wiki-guides/economics.js';
 import efficiency from './wiki-guides/efficiency.js';
 import design from './wiki-guides/design.js';
@@ -9,7 +10,7 @@ import security from './wiki-guides/security.js';
 import foundations from './wiki-guides/foundations.js';
 import { compileGuides } from './wiki-guides/shared.js';
 
-const guides = compileGuides([...identity, ...execution, ...data, ...assurance, ...security, ...foundations, ...economics, ...efficiency, ...design]);
+const guides = compileGuides([...identity, ...execution, ...data, ...assurance, ...security, ...foundations, ...economics, ...tokenomics, ...efficiency, ...design]);
 export const guideWikiEntries = guides.entries;
 export const guideWikiDepth = guides.depth;
 export const guideWikiResearch = guides.research;

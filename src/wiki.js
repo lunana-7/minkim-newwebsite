@@ -99,6 +99,9 @@ const coreWikiEntries = [
 ];
 
 const additionalConnections = {
+  'agent-unit-economics': ['agent-tokenomics'],
+  'agent-cost-forecasting': ['agent-tokenomics'],
+  'agent-caching': ['agent-tokenomics'],
   'authentication': ['workload-identity-federation', 'spiffe-svid', 'credential-lifecycle', 'confused-deputy'],
   'authorization': ['token-audience', 'sender-constrained-tokens', 'capability-security'],
   'least-privilege': ['just-in-time-access', 'permission-drift', 'separation-of-duties'],
@@ -147,7 +150,7 @@ export const wikiUpdatedAt = wikiEntries.reduce((latest, entry) =>
   entry.reviewedAt && entry.reviewedAt > latest ? entry.reviewedAt : latest, '2026-10-12');
 
 export const wikiLearningPaths = [
-  { title: 'Govern agent costs', description: 'Connect spending to useful outcomes, accountable owners and realistic budgets.', slugs: ['agent-unit-economics', 'agent-cost-allocation', 'agent-cost-forecasting', 'agent-budget-controls', 'agent-cost-anomalies'] },
+  { title: 'Govern agent costs', description: 'Connect spending to useful outcomes, accountable owners and realistic budgets.', slugs: ['agent-tokenomics', 'agent-unit-economics', 'agent-cost-allocation', 'agent-cost-forecasting', 'agent-budget-controls', 'agent-cost-anomalies'] },
   { title: 'Improve agent efficiency', description: 'Compare routing, caching, latency and reasoning effort without losing quality.', slugs: ['agent-model-routing', 'agent-caching', 'context-window-governance', 'agent-latency-throughput', 'agent-compute-budgets'] },
   { title: 'Design an effective agent system', description: 'Choose an architecture, define tools, coordinate work and recover safely.', slugs: ['task-specification', 'agent-architecture-selection', 'agent-tool-design', 'agent-orchestration-patterns', 'agent-durable-execution', 'agent-system-cards'] },
   { title: 'Design accountable delegation', description: 'Specify goals, assess affected people and provide meaningful correction.', slugs: ['task-specification', 'stakeholder-impact', 'proportional-governance', 'acceptable-use', 'ai-literacy', 'contestability'] },
