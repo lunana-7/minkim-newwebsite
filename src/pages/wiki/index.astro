@@ -13,7 +13,7 @@ const sorted = [...wikiEntries].sort((a,b) => a.title.localeCompare(b.title));
 const topicId = name => name.toLowerCase().replace(/[^a-z]+/g,'-').replace(/-$/,'');
 const updatedDate = new Date(wikiUpdatedAt + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
-<Layout title="Wiki | Min Kim" activeNav="wiki" description="A structured reference to agentic AI governance: identity, authorization, runtime controls, security, oversight and operations.">
+<Layout title="Wiki | Min Kim" activeNav="wiki" description="A structured reference to agentic AI governance: identity, security, cost governance, agent efficiency, system design and operations.">
   <header class="wiki-intro"><span class="case-study-kicker">MIN’S GOVERNANCE REFERENCE</span><h1 class="page-title">Wiki</h1><p class="page-lead">A practical encyclopedia of agentic AI governance. Browse a subject, look up a term, or follow a learning path.</p><p class="wiki-editor-note">{wikiEntries.length} articles · {topics.length} subjects · Updated <time datetime={wikiUpdatedAt}>{updatedDate}</time>. Source-based definitions and editorial working definitions are identified on each article. Examples are illustrative.</p></header>
   <ContentSearch initialType="Wiki" />
   <nav class="wiki-portal-nav" aria-label="Wiki sections"><a href="#subjects">Subjects</a><a href="#learning-paths">Learning paths</a><a href="#reading-library">PDF library</a><a href="#wiki-library">Article directory</a><a href="#term-index">A–Z index</a></nav>

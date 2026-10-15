@@ -1,6 +1,19 @@
 // Source scopes are explained in each article's research notes. The surrounding
 // workflow examples and operational recommendations are original editorial analysis.
 export const sources = {
+  unitEconomics: { name: 'FinOps Foundation: Unit Economics', url: 'https://www.finops.org/framework/capabilities/unit-economics/' },
+  allocation: { name: 'FinOps Foundation: Allocation', url: 'https://www.finops.org/framework/capabilities/allocation/' },
+  forecasting: { name: 'FinOps Foundation: Forecasting', url: 'https://www.finops.org/framework/capabilities/forecasting/' },
+  anomalies: { name: 'FinOps Foundation: Anomaly Management', url: 'https://www.finops.org/framework/capabilities/anomaly-management/' },
+  efficient: { name: 'Wang et al.: Efficient Agents (2025 preprint)', url: 'https://arxiv.org/abs/2508.02694' },
+  dynamicReasoning: { name: 'Kim et al.: The Cost of Dynamic Reasoning (version 2)', url: 'https://arxiv.org/abs/2506.04301v2' },
+  routing: { name: 'Ong et al.: RouteLLM: Learning to Route LLMs with Preference Data', url: 'https://arxiv.org/abs/2406.18665' },
+  caching: { name: 'Anthropic: Prompt caching documentation', url: 'https://platform.claude.com/docs/en/build-with-claude/prompt-caching' },
+  slo: { name: 'Google SRE: Service Level Objectives', url: 'https://sre.google/sre-book/service-level-objectives/' },
+  overload: { name: 'Google SRE: Handling Overload', url: 'https://sre.google/sre-book/handling-overload/' },
+  architecture: { name: 'Anthropic: Building effective agents', url: 'https://www.anthropic.com/engineering/building-effective-agents' },
+  toolsDesign: { name: 'Anthropic: Writing effective tools for agents', url: 'https://www.anthropic.com/engineering/writing-tools-for-agents' },
+  durable: { name: 'Temporal: Workflow Execution overview', url: 'https://docs.temporal.io/workflow-execution' },
   spiffe: { name: 'SPIFFE: Concepts and verifiable workload identity', url: 'https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/' },
   federation: { name: 'Google Cloud: Workload Identity Federation', url: 'https://cloud.google.com/iam/docs/workload-identity-federation' },
   audience: { name: 'IETF RFC 8707: Resource Indicators for OAuth 2.0', url: 'https://www.rfc-editor.org/rfc/rfc8707' },
