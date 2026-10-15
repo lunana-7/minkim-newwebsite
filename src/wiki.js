@@ -1,5 +1,6 @@
 import { expandedWikiEntries } from './wiki-expanded.js';
 import { agenticWikiEntries } from './wiki-agentic.js';
+import { operationsWikiEntries } from './wiki-operations.js';
 const sources = {
   nist: { name: 'NIST AI RMF Core', url: 'https://airc.nist.gov/airmf-resources/airmf/5-sec-core/' },
   spiffe: { name: 'SPIFFE concepts', url: 'https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/' },
@@ -98,7 +99,7 @@ const coreWikiEntries = [
 
 const additionalConnections = {
   'agentic-ai-governance': ['agent-risk-assessment', 'autonomy-levels', 'agent-accountability'],
-  'agent-inventory': ['agent-change-management', 'vendor-due-diligence'],
+  'agent-inventory': ['agent-change-management', 'vendor-due-diligence', 'agent-decommissioning'],
   'delegated-authority': ['purpose-bound-authorization', 'multi-agent-security'],
   'authentication': ['credential-lifecycle', 'confused-deputy'],
   'runtime-governance': ['agent-budget-controls', 'idempotency-and-compensation'],
@@ -107,12 +108,22 @@ const additionalConnections = {
   'evaluations-and-red-teaming': ['continuous-evaluation', 'agent-risk-assessment'],
   'audit-trail': ['agent-accountability', 'idempotency-and-compensation'],
   'incident-response': ['data-exfiltration', 'agent-change-management'],
-  'human-approval': ['autonomy-levels', 'purpose-bound-authorization'],
+  'human-approval': ['autonomy-levels', 'purpose-bound-authorization', 'approval-fatigue'],
   'observability': ['continuous-evaluation', 'agent-budget-controls'],
   'revocation': ['credential-lifecycle', 'memory-governance'],
+  'agent-risk-assessment': ['agent-threat-modeling', 'risk-exceptions'],
+  'agent-change-management': ['staged-agent-rollout', 'agent-artifact-provenance'],
+  'continuous-evaluation': ['agent-evaluation-datasets'],
+  'open-telemetry': ['telemetry-data-minimization'],
+  'memory-governance': ['tenant-isolation'],
+  'policy-decision-point': ['policy-as-code-testing'],
+  'credential-lifecycle': ['oauth-token-exchange', 'emergency-agent-access'],
+  'tool-boundary': ['agent-output-validation', 'browser-agent-governance'],
+  'agent-identity': ['zero-trust-agents'],
+  'agent-accountability': ['audit-evidence-integrity'],
 };
 
-export const wikiEntries = [...coreWikiEntries, ...expandedWikiEntries, ...agenticWikiEntries].map(entry => ({
+export const wikiEntries = [...coreWikiEntries, ...expandedWikiEntries, ...agenticWikiEntries, ...operationsWikiEntries].map(entry => ({
   ...entry,
   related: [...new Set([...entry.related, ...(additionalConnections[entry.slug] || [])])],
 }));
@@ -127,6 +138,9 @@ export const wikiLearningPaths = [
   { title: 'Secure memory and retrieval', description: 'Persistent context, source access and permitted data flows.', slugs: ['memory-governance', 'retrieval-security', 'prompt-injection', 'data-exfiltration', 'audit-trail'] },
   { title: 'Control autonomous workflows', description: 'Bound delegation, budgets, retries and downstream effects.', slugs: ['autonomy-levels', 'delegated-authority', 'multi-agent-security', 'agent-budget-controls', 'idempotency-and-compensation', 'revocation'] },
   { title: 'Review and release agents', description: 'Supplier evidence, material changes and ongoing evaluation.', slugs: ['agent-risk-assessment', 'vendor-due-diligence', 'tool-poisoning', 'agent-change-management', 'continuous-evaluation'] },
+  { title: 'Build enforceable boundaries', description: 'Threat modeling, service identities, tenant separation and tested controls.', slugs: ['agent-threat-modeling', 'zero-trust-agents', 'oauth-token-exchange', 'tenant-isolation', 'agent-output-validation', 'policy-as-code-testing'] },
+  { title: 'Make oversight useful', description: 'Review consequential actions, protect evidence and handle exceptions.', slugs: ['browser-agent-governance', 'approval-fatigue', 'telemetry-data-minimization', 'audit-evidence-integrity', 'risk-exceptions'] },
+  { title: 'Ship, recover and retire', description: 'Evidence for release, controlled expansion and responsible closure.', slugs: ['agent-evaluation-datasets', 'agent-artifact-provenance', 'staged-agent-rollout', 'emergency-agent-access', 'agent-decommissioning'] },
 ];
 
 export const policyRoles = [

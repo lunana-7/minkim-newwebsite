@@ -1,3 +1,4 @@
+import { operationsWikiResearch } from './wiki-operations.js';
 // Source-grounded details for the execution-controls articles. The agent examples
 // are editorial applications of the linked specifications, not normative rules.
 const xacml = { name: 'OASIS XACML 3.0', url: 'https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html' };
@@ -20,6 +21,7 @@ const fibo = { name: 'EDM Association: FIBO', url: 'https://edmcouncil.org/frame
 const note = (title, text, source) => ({ title, text, source });
 
 export const wikiResearch = {
+  ...operationsWikiResearch,
   'open-telemetry': [
     note('Know what OTel provides', 'OpenTelemetry is a toolkit and specification for generating, collecting and exporting telemetry. It does not itself provide the backend that stores traces or the dashboard used to analyze them. Select a compatible backend separately.', otelOverview),
     note('Place the Collector deliberately', 'The Collector can receive, process and export telemetry. A pipeline can centralize routing and filtering, but its configuration determines which signals reach the backend. Review that pipeline when investigating a missing span or log.', otelCollector),
