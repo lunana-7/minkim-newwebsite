@@ -70,3 +70,20 @@
 .day-routing-grid h4 { font-size:19px; margin:12px 0; }
 .day-routing-grid p { font-size:14px; color:#e0e5e6; }
 @media(max-width:520px) { .day-timeline>li { grid-template-columns:55px minmax(0,1fr); gap:12px; } .day-time>span { font-size:16px; } .day-card { padding:20px; } .day-card h3 { font-size:23px; } .day-contact { padding:14px; } .day-routing { padding:24px; } .day-routing-grid { grid-template-columns:1fr; } }
+
+.career-opening { border-left:4px solid var(--cyan); padding-left:24px; max-width:900px; font-size:20px; line-height:1.75; margin:32px 0; }
+.career-chapters { list-style:none; padding:0; margin:40px 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.career-chapters li { border:1px solid var(--line); border-radius:20px; padding:28px; display:flex; gap:20px; }
+.career-number { color:#527479; font-size:28px; letter-spacing:-1px; }
+.career-chapters .label { font-size:10px; line-height:1.6; margin-top:3px; }
+.career-chapters h3 { font-size:25px; margin:14px 0; }
+.career-chapters p { font-size:15px; line-height:1.75; }
+.career-lesson { border-top:1px solid var(--line); padding-top:16px; font-weight:700; }
+.career-next { display:grid; grid-template-columns:1fr 1fr; gap:38px; padding:36px; background:var(--cyan); border-radius:20px; }
+.career-next h3 { font-size:30px; margin:18px 0; }
+.career-next p { line-height:1.75; }
+.career-next aside { padding:26px; background:rgba(255,255,255,.65); border-radius:14px; }
+.career-next blockquote { margin:20px 0 0; font-size:18px; line-height:1.85; }
+.career-narrative>.small { margin-top:20px; }
+@media(max-width:850px) { .career-chapters,.career-next { grid-template-columns:1fr; } }
+@media(max-width:520px) { .career-chapters li { padding:22px; gap:14px; } .career-next { padding:22px; gap:20px; } .career-next aside { padding:20px; } }
