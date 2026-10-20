@@ -91,3 +91,55 @@
 /* A quiet cyan reading indicator follows the scroll position. */
 .reading-progress { position:fixed; inset:0 0 auto; height:3px; background:#168995; transform:scaleX(0); transform-origin:left; pointer-events:none; z-index:50; }
 @media print { .reading-progress { display:none; } }
+
+/* Handshake-inspired animated working-day presentation. */
+.day-studio { --day-position:0; margin:32px 0; border:1px solid #a8d0d5; border-radius:24px; overflow:hidden; background:#fff; }
+.day-studio-bar { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:22px 28px; background:var(--cyan); }
+.day-play { border:0; border-radius:24px; padding:12px 18px; background:var(--ink); color:white; white-space:nowrap; font-size:13px; }
+.day-stops { position:relative; display:grid; grid-template-columns:repeat(6,1fr); padding:24px 18px 18px; isolation:isolate; }
+.day-stops:before,.day-track-progress { content:''; position:absolute; left:calc(18px + (100% - 36px)/12); right:calc(18px + (100% - 36px)/12); top:37px; height:2px; background:var(--line); z-index:-1; }
+.day-track-progress { background:#178594; transform:scaleX(calc(var(--day-position)/5)); transform-origin:left; transition:transform .65s cubic-bezier(.22,1,.36,1); }
+.day-stops button { display:flex; flex-direction:column; align-items:center; gap:9px; padding:0 5px; border:0; background:transparent; color:var(--muted); font-size:11px; }
+.day-stops b { font-size:15px; color:var(--ink); }
+.day-stop-dot { width:28px; height:28px; border:7px solid white; border-radius:50%; background:#c5d2d4; box-shadow:0 0 0 1px #c5d2d4; transition:background .35s,box-shadow .35s; }
+.day-stops [aria-selected=true] .day-stop-dot { background:var(--ink); box-shadow:0 0 0 5px var(--cyan); }
+.day-stops .is-past .day-stop-dot { background:#178594; }
+.day-stops [aria-selected=true] { color:var(--ink); }
+.day-scene { display:grid; grid-template-columns:1fr 1fr; gap:28px; padding:35px 32px 25px; }
+.day-scene-copy h3 { font-size:clamp(28px,3.3vw,43px); letter-spacing:-1.4px; line-height:1.08; }
+.day-scene-copy>p { font-size:15px; color:var(--muted); }
+.day-scene-question { margin-top:24px; padding-left:18px; border-left:3px solid #8bdde6; }
+.day-scene-question .label { font-size:9px; }
+.day-scene-question p { font-size:17px; }
+.day-scene-visual { background:linear-gradient(150deg,#e8fafb,#f7fbf4); border-radius:18px; padding:12px 20px 20px; }
+.day-network { position:relative; height:290px; max-width:440px; margin:auto; }
+.day-network-ring { position:absolute; width:65%; height:60%; top:20%; left:17.5%; border:1px dashed #91bec4; border-radius:50%; }
+.day-network-core { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:136px; height:136px; display:flex; flex-direction:column; justify-content:center; align-items:center; border-radius:50%; background:var(--ink); color:white; box-shadow:0 0 0 10px #c0f4f870; }
+.day-network-core b { font-size:32px; letter-spacing:-2px; font-weight:500; }
+.day-network-core>span { font-size:12px; margin-top:5px; }
+.day-network-core small { font-size:8px; margin-top:9px; color:var(--cyan); }
+.day-network-node { position:absolute; min-width:84px; text-align:center; border:1px solid #d3dfe0; border-radius:12px; padding:10px 7px; background:#f7fbfb; color:#697578; font-size:10px; transition:background .4s; }
+.day-network-node i { display:inline-block; width:5px; height:5px; border-radius:50%; background:#afbec0; margin-right:5px; }
+.day-network-node small { display:block; font-size:7px; margin-top:4px; }
+.day-network-node.is-connected { background:var(--cyan); border-color:#6eb7bf; color:var(--ink); box-shadow:0 5px 16px #146e7910; animation:day-node-arrive .55s both; }
+.day-network-node.is-connected i { background:#147a87; }
+.day-node-0 { top:10px; left:10px; }.day-node-1 { top:10px; right:10px; }.day-node-2 { top:120px; left:0; }.day-node-3 { top:120px; right:0; }.day-node-4 { bottom:10px; left:10px; }.day-node-5 { bottom:10px; right:10px; }
+.day-scene-output { border-top:1px solid #b8d8db; padding-top:18px; }
+.day-scene-output .label { font-size:9px; }
+.day-scene-output p { font-size:14px; margin-bottom:0; }
+.day-scene-proof { grid-column:1/-1; display:grid; grid-template-columns:.8fr 1.2fr; gap:25px; border-top:1px solid var(--line); padding-top:22px; }
+.day-scene-proof strong { display:block; margin-top:10px; font-size:17px; font-weight:500; }
+.day-scene-proof .label { font-size:9px; color:#327c85; }
+.day-scene-proof p { margin:0; font-size:13px; color:var(--muted); }
+.day-studio-footer { display:flex; align-items:center; justify-content:space-between; padding:15px 28px; background:var(--soft); border-top:1px solid var(--line); }
+.day-studio-footer>div { display:flex; gap:8px; }
+.day-studio-footer button { width:38px; height:38px; border:1px solid var(--line); background:white; border-radius:50%; font-size:18px; }
+.day-full-details>summary { cursor:pointer; padding:18px 0; font-size:14px; font-weight:700; }
+.day-full-details>.day-timeline { margin-top:22px; }
+@keyframes day-node-arrive { from { opacity:.3; translate:0 8px; } to { opacity:1; translate:0 0; } }
+@media(max-width:850px) { .day-scene { grid-template-columns:1fr; } .day-scene-proof { grid-template-columns:1fr; gap:15px; } }
+@media(max-width:520px) { .day-studio-bar { padding:18px; flex-wrap:wrap; } .day-studio-bar>.label { font-size:9px; } .day-scene { padding:24px 18px; } .day-stops { padding-left:8px; padding-right:8px; } .day-stops button { font-size:8px; } .day-stops b { font-size:11px; } .day-network-core { width:112px; height:112px; } .day-network-node { min-width:74px; font-size:9px; } .day-scene-visual { padding-left:8px; padding-right:8px; } .day-studio-footer { padding:12px 18px; } }
+@media(prefers-reduced-motion:reduce) { .day-track-progress,.day-stop-dot,.day-network-node { transition:none; animation:none; } }
+@media print { .day-studio { display:none; } .day-full-details>.day-timeline { display:block; } }
+@media(prefers-reduced-motion:no-preference) { .day-studio.is-playing .day-network-core { animation:day-core-breathe 3s ease-in-out infinite; } }
+@keyframes day-core-breathe { 0%,100% { box-shadow:0 0 0 10px #c0f4f870; } 50% { box-shadow:0 0 0 18px #c0f4f830; } }

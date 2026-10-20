@@ -7,6 +7,9 @@ const schedule = [
  { time: '14:30', title: 'Agree on the delivery trade-off', action: 'I would quantify the affected work, estimate re-review effort with the team, and present options for scope, staffing or timing to the accountable lead before communicating an agreed plan.', people: ['Delivery / project lead', 'Customer / lab counterpart through the agreed channel', 'Policy or engineering owner as needed'], ask: 'What can we deliver confidently, what needs rework, and which change needs customer agreement?', output: 'A documented delivery decision with scope, owner, timing and acceptance criteria.', evidence: 'Executive reporting and lifecycle governance', proof: 'Translated AI adoption, risk and governance findings into executive materials in English, Korean and Japanese. Developed proposals linking agent and API use to business purpose, cost ownership and lifecycle review.', connection: 'I have experience framing decisions for senior stakeholders; project pricing and margin decisions would follow the role’s assigned authority.' },
  { time: '16:00', title: 'Close the loop and prepare tomorrow', action: 'I would confirm which decisions reached the playbook, identify cases still awaiting an owner, and send a concise update covering quality, throughput, rework and the next action.', people: ['Delivery / project lead', 'Quality and policy owners', 'Customer counterpart when agreed'], ask: 'What changed, who still needs to act, and how will we know whether the change worked?', output: 'A delivery update, decision log and next-day priorities with a defined follow-up measure.', evidence: 'Agent monitoring and operating controls', proof: 'Analyzed agent activity for attribution gaps, duplicate identities and cost efficiency differences; proposed monitoring for cost per task, steps, retries and threshold alerts.', connection: 'I have experience connecting monitoring proposals to ownership and follow-up. Here I would apply that discipline to review quality and delivery.' }
 ];
+const stageNames = ['Triage', 'Policy', 'Calibrate', 'Diagnose', 'Align', 'Close the loop'];
+const collaborators = ['Reviewers', 'Policy', 'Quality', 'Engineering', 'Delivery', 'Lab partner'];
+const activeTeams = [[2,4],[0,1],[0,1,2],[2,3],[1,3,4,5],[1,2,4,5]];
 const routes = [
  ['Policy meaning', 'Policy lead', 'Bring the exact rule, contrasting cases and the unresolved interpretation.'],
  ['Reviewer consistency', 'Quality lead + reviewers', 'Bring rationales, category-level patterns and the guidance version.'],
@@ -17,7 +20,22 @@ const routes = [
 <section class="section wrap day-role" id="day-in-role">
  <div class="section-head"><div><p class="label">A DAY AS A SAFETY SPA</p><h2>Connect the people.<br/>Move the decision forward.</h2></div><p>How I would approach a working day: the task, the person I would contact, and the experience I would bring to the conversation.</p></div>
  <p class="small">Illustrative schedule based on the supplied role description. Working relationships and timing would follow the team’s actual structure.</p>
- <div class="day-route" aria-label="Who I would approach"><span>Reviewers</span><i aria-hidden="true">↔</i><span>Me · coordinate & synthesize</span><i aria-hidden="true">↔</i><span>Quality · Policy · Engineering</span><i aria-hidden="true">↔</i><span>Delivery lead & lab counterpart</span></div>
+ <div class="day-studio" data-day-studio>
+  <div class="day-studio-bar"><span class="label">MY WORKING DAY / INTERACTIVE WALKTHROUGH</span><button type="button" class="day-play" aria-pressed="false">▶ Play the day</button></div>
+  <div class="day-stops" role="tablist" aria-label="Choose a moment in the working day">{schedule.map((s,i)=><button type="button" role="tab" id={`day-tab-${i}`} aria-controls={`day-scene-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-day-step={i}><span class="day-stop-dot" aria-hidden="true"></span><b>{s.time}</b><span>{stageNames[i]}</span></button>)}<span class="day-track-progress" aria-hidden="true"></span></div>
+  {schedule.map((s,i)=><div class="day-scene" role="tabpanel" id={`day-scene-${i}`} aria-labelledby={`day-tab-${i}`} hidden={i!==0} tabindex="0" data-day-scene={i}>
+   <div class="day-scene-copy"><span class="label" data-scene-reveal>0{i+1} / {stageNames[i]}</span><h3 data-scene-reveal>{s.title}</h3><p data-scene-reveal>{s.action}</p><div class="day-scene-question" data-scene-reveal><span class="label">THE CONVERSATION I WOULD START</span><p>“{s.ask}”</p></div></div>
+   <div class="day-scene-visual"><div class="day-network" aria-label={`Collaborators for ${stageNames[i]}`}><span class="day-network-ring" aria-hidden="true"></span><span class="day-network-core"><b>MK</b><span>Min Kim</span><small>Connect · clarify · deliver</small></span>{collaborators.map((team,j)=><span class:list={['day-network-node', `day-node-${j}`, {'is-connected':activeTeams[i].includes(j)}]}><i aria-hidden="true"></i>{team}{activeTeams[i].includes(j)&&<small>In this conversation</small>}</span>)}</div><div class="day-scene-output" data-scene-reveal><span class="label">THE OUTPUT</span><p>{s.output}</p></div></div>
+   <div class="day-scene-proof" data-scene-reveal><div><span class="label">EXPERIENCE I BRING</span><strong>{s.evidence}</strong></div><p>{s.proof}</p></div>
+  </div>)}
+  <div class="day-studio-footer"><p class="small" data-day-status aria-live="polite">09:00 · Triage · 1 of 6</p><div><button type="button" data-day-prev aria-label="Previous moment">←</button><button type="button" data-day-next aria-label="Next moment">→</button></div></div>
+ </div>
+ <details class="day-full-details"><summary>Explore the full day, conversations and experience connections</summary>
  <ol class="day-timeline">{schedule.map((s,i)=><li><div class="day-time"><span>{s.time}</span><small>0{i+1}</small></div><article class="day-card"><h3>{s.title}</h3><p>{s.action}</p><div class="day-contact"><span class="label">WHO I WOULD APPROACH</span><div class="day-people">{s.people.map(p=><span>{p}</span>)}</div><blockquote>“{s.ask}”</blockquote></div><p class="day-deliverable"><b>What I would deliver</b>{s.output}</p><details><summary>Experience I would bring <span aria-hidden="true">+</span></summary><p class="day-evidence-title">{s.evidence}</p><p>{s.proof}</p><p class="day-connection">{s.connection}</p></details></article></li>)}</ol>
+ </details>
  <div class="day-routing"><p class="label">MY STAKEHOLDER APPROACH</p><h3>Bring the right evidence to the right owner.</h3><div class="day-routing-grid">{routes.map(([issue,owner,evidence])=><article><span>{issue}</span><h4>{owner}</h4><p>{evidence}</p></article>)}</div></div>
 </section>
+
+<script>
+ import '../../scripts/handshake-day';
+</script>

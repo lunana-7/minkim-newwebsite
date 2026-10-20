@@ -6,7 +6,7 @@ const selectors = [
   '.hero h1', '.hero .intro', '.context > .label', '.context > h2',
   '.section-head', '.career-opening', '.career-chapters > li', '.career-next',
   '.fit-stats', '.fit-card', '.fit-pitch', '.fit-plan > li',
-  '.day-route', '.day-timeline > li', '.day-routing',
+  '.day-route', '.day-studio', '.day-timeline > li', '.day-routing',
   '.reading-card', '.pipeline > li', '.policy-band h2', '.three-grid > article',
   '#calibration > h2', '#analysis > h2', '.lab-grid', '.calibration-grid',
   '.scenario-layout', '#analysis > .two-grid', '.days > li', '.closing'
