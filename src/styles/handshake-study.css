@@ -87,3 +87,7 @@
 .career-narrative>.small { margin-top:20px; }
 @media(max-width:850px) { .career-chapters,.career-next { grid-template-columns:1fr; } }
 @media(max-width:520px) { .career-chapters li { padding:22px; gap:14px; } .career-next { padding:22px; gap:20px; } .career-next aside { padding:20px; } }
+
+/* A quiet cyan reading indicator follows the scroll position. */
+.reading-progress { position:fixed; inset:0 0 auto; height:3px; background:#168995; transform:scaleX(0); transform-origin:left; pointer-events:none; z-index:50; }
+@media print { .reading-progress { display:none; } }
