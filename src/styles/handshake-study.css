@@ -33,3 +33,40 @@
 .fit-development summary { cursor:pointer; font-weight:700; }
 @media(max-width:850px) { .fit-grid,.fit-plan { grid-template-columns:1fr; } .fit-stats { grid-template-columns:repeat(2,1fr); } .fit-stats>div { border-bottom:1px solid rgba(20,21,26,.15); } }
 @media(max-width:520px) { .fit-card,.fit-pitch { padding:22px; } .fit-stats>div { padding:20px; } .fit-card .card-top { flex-wrap:wrap; gap:8px; } }
+
+/* A proposed working day, connected to documented experience. */
+.day-route { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:12px; padding:24px; margin:28px 0 40px; border:1px solid var(--line); border-radius:16px; background:var(--cyan); }
+.day-route span { font-size:13px; font-weight:700; }
+.day-route i { font-style:normal; color:var(--muted); }
+.day-timeline { list-style:none; padding:0; margin:0; }
+.day-timeline>li { display:grid; grid-template-columns:95px minmax(0,1fr); gap:26px; padding-bottom:28px; }
+.day-time { display:flex; flex-direction:column; align-items:center; gap:12px; position:relative; padding-top:22px; }
+.day-time:after { content:''; width:1px; background:var(--line); flex:1; margin-top:8px; }
+.day-timeline>li:last-child .day-time:after { display:none; }
+.day-time>span { font-size:22px; letter-spacing:-.5px; font-weight:700; }
+.day-time small { border:1px solid var(--line); background:var(--soft); border-radius:50%; width:30px; height:30px; display:grid; place-items:center; font-size:11px; }
+.day-card { border:1px solid var(--line); border-radius:20px; padding:30px; background:#fff; }
+.day-card h3 { margin:0 0 16px; font-size:28px; letter-spacing:-.6px; }
+.day-card>p { max-width:850px; }
+.day-contact { background:var(--soft); border-radius:12px; padding:20px; margin:22px 0; }
+.day-contact>.label { display:block; font-size:10px; margin-bottom:12px; }
+.day-people { display:flex; flex-wrap:wrap; gap:8px; }
+.day-people>span { background:white; border:1px solid var(--line); border-radius:30px; padding:6px 11px; font-size:12px; }
+.day-contact blockquote { margin:18px 0 0; font-size:17px; line-height:1.6; }
+.day-deliverable b { display:block; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-bottom:7px; }
+.day-card details { border-top:1px solid var(--line); margin-top:22px; padding-top:18px; }
+.day-card summary { cursor:pointer; font-weight:700; font-size:14px; }
+.day-card summary span { float:right; }
+.day-card details[open] summary span { transform:rotate(45deg); }
+.day-evidence-title { font-weight:700; margin-top:22px; }
+.day-card details p { font-size:14px; line-height:1.7; }
+.day-connection { padding-left:14px; border-left:3px solid var(--cyan); color:var(--muted); }
+.day-routing { background:var(--ink); color:white; padding:34px; border-radius:20px; margin-top:18px; }
+.day-routing>.label { color:var(--cyan); }
+.day-routing h3 { font-size:28px; }
+.day-routing-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; margin-top:30px; }
+.day-routing-grid article { border-top:1px solid #52565a; padding-top:18px; }
+.day-routing-grid span { color:var(--cyan); font-size:12px; }
+.day-routing-grid h4 { font-size:19px; margin:12px 0; }
+.day-routing-grid p { font-size:14px; color:#e0e5e6; }
+@media(max-width:520px) { .day-timeline>li { grid-template-columns:55px minmax(0,1fr); gap:12px; } .day-time>span { font-size:16px; } .day-card { padding:20px; } .day-card h3 { font-size:23px; } .day-contact { padding:14px; } .day-routing { padding:24px; } .day-routing-grid { grid-template-columns:1fr; } }
