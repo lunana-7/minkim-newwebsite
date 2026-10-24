@@ -1,0 +1,159 @@
+---
+import { stageCollaboration } from '../../data/handshake-stage-collaboration.js';
+import { workflowExperience, workflowStepExperience, experienceSkills, experienceApplications, experienceStageNotes, workflowExperienceSummaries } from '../../data/handshake-workflow-experience.js';
+import { projectDetails } from '../../project-details.js';
+const { stages, stageOutputs } = Astro.props;
+const stagePeople = [[0,2,3],[1,4,3],[3,4,1],[4,3,1,5],[2,0,4,5]];
+const stakeholders = [
+ {name:'Frontier lab partners',side:'THE LAB’S SIDE',title:'Expertise that fits the task.',description:'Labs define different goals, standards and task types. I understand the challenge as matching the right expertise to that scope and turning individual judgments into work the customer can use.',give:'Task goals, domain requirements and acceptance criteria',need:'Useful outputs, quality evidence and clear delivery updates',action:'I would clarify requirements with the lab contact, surface unresolved questions and communicate the implications of scope changes.',route:'Scope or acceptance question → lab contact + delivery lead'},
+ {name:'Contributors & AI trainers',side:'THE CONTRIBUTOR’S SIDE',title:'Clarity and dependable support.',description:'Contributors need clear expectations, useful examples and a way to resolve uncertainty. When availability changes, timely communication helps them plan around flexible, supplemental work.',give:'Domain expertise, judgments, rationales and questions',need:'Clear instructions, relevant examples and reliable support',action:'I would coordinate instructions and questions, track readiness and route uncertain cases to the appropriate review owner.',route:'Task uncertainty → review lead; support needs → approved support channel'},
+ {name:'Delivery & operations',side:'THE DELIVERY SIDE / MY INTERPRETATION',title:'Coordinate demand, quality and execution.',description:'In the Safety SPA role, I would connect policy expectations, reviewer decisions and delivery through scoped workflows, clear guidance, quality analysis and escalation. The job description adds accountability for customer relationships and operating trade-offs.',give:'Capacity planning, priorities and delivery decisions',need:'Early visibility into quality, rework, timing and cost',action:'I would present the impact, options and recommendation when quality or capacity puts a commitment at risk, then track the agreed action.',route:'Timing, scope or commercial trade-off → accountable delivery lead'},
+ {name:'Policy leads',side:'POLICY INTERPRETATION',title:'Resolve the boundary.',description:'When a case exposes an unclear rule, the important handoff is the evidence and the precise interpretation that needs a decision.',give:'Authorized interpretation and policy clarification',need:'Representative cases, rationales and recurring ambiguity patterns',action:'I would distinguish unclear guidance from missing context, organize the evidence and reflect approved decisions in the playbook.',route:'Unresolved policy boundary → authorized policy owner'},
+ {name:'Quality reviewers & auditors',side:'QUALITY & CONSISTENCY',title:'Make the judgment defensible.',description:'Reviewers and auditors help reveal inconsistent labels, weak examples and errors that an overall score can hide.',give:'Reviewed cases, error findings and calibration feedback',need:'Versioned criteria, traceable records and usable review resources',action:'I would compare rationales and error patterns, coordinate corrective review and check whether changes work on a fresh sample.',route:'Disagreement or recurring error → quality lead; policy ambiguity → policy lead'},
+ {name:'Engineers & research partners',side:'TECHNICAL COLLABORATION',title:'Make the workflow and evaluation work.',description:'Some failures come from the task interface, data handling or grading logic. I would bring a reproducible example to the technical owner instead of assuming a reviewer or model is at fault.',give:'Tooling support, technical diagnosis and evaluation context',need:'Reproducible failures, affected scope and expected behavior',action:'I would document the failing case, coordinate the fix with the owner and confirm affected outputs are reviewed before use.',route:'Tool or data failure → engineering; evaluation-design question → research owner'}
+];
+const ownership = [
+ {group:'LAB / CUSTOMER',owner:'Lab partners define requirements',decision:'The lab contact confirms customer requirements; the delivery lead agrees scope and commitments.'},
+ {group:'CONTRIBUTOR NETWORK',owner:'Contributors perform the tasks',decision:'Review and policy owners resolve uncertain judgments; contributor operations coordinates readiness and support.'},
+ {group:'HANDSHAKE DELIVERY TEAM',owner:'Delivery leads own program trade-offs',decision:'The accountable delivery owner approves changes to commitments, capacity and commercial trade-offs.'},
+ {group:'PROJECT POLICY OWNERS',owner:'Policy leads authorize interpretations',decision:'The authorized policy owner resolves the boundary. I would organize evidence and implement approved guidance.'},
+ {group:'PROJECT QUALITY TEAM',owner:'Reviewers and auditors assess quality',decision:'The quality owner sets review and acceptance requirements; policy leads resolve interpretation questions.'},
+ {group:'TECHNICAL PARTNERS',owner:'Engineers and researchers diagnose technical issues',decision:'Technical owners implement or approve changes to tooling and evaluation logic; I would coordinate evidence and follow-up.'}
+];
+const collaboration = [
+ {role:'Define the task and success criteria',steps:['Clarify scope and acceptance criteria','Surface open questions and changes','Confirm decisions with the lab contact'],output:'Agreed project brief',artifacts:['Acceptance examples','Scope and decision log']},
+ {role:'Apply expertise to project tasks',steps:['Make instructions and examples usable','Track readiness and recurring questions','Route uncertain cases to the review owner'],output:'Supported, consistent review',artifacts:['Reviewer guidance','Question and escalation log']},
+ {role:'Manage capacity and delivery commitments',steps:['Assess quality, timing and rework','Present options and a recommendation','Track the agreed delivery action'],output:'An explicit delivery decision',artifacts:['Trade-off summary','Owned action plan']},
+ {role:'Resolve policy interpretation',steps:['Separate ambiguity from missing context','Bring representative cases and rationales','Update guidance after policy approval'],output:'Approved clarification → usable guidance',artifacts:['Decision record','Versioned playbook examples']},
+ {role:'Check consistency and find errors',steps:['Compare rationales and error patterns','Coordinate targeted corrective review','Check the change on a fresh sample'],output:'Quality findings with follow-up evidence',artifacts:['Error analysis','Re-review results']},
+ {role:'Diagnose tools and evaluation design',steps:['Document a reproducible failure','Coordinate with the technical owner','Review affected outputs after the fix'],output:'Resolved issue with verified outputs',artifacts:['Reproduction case','Resolution and review record']}
+];
+
+---
+<section class="stakeholder-subsection combined-stakeholders" id="stakeholders" aria-label="Stage collaboration and my contribution">
+
+ {stages.map((stage:any,i:number)=><div class="combined-stage-summary" style={`--stage-anchor:${i * 20 + 10}%`} id={`business-detail-${i}`} role="tabpanel" aria-labelledby={`business-stage-${i}`} hidden={i!==0} tabindex="0">
+ <div class="combined-stage-columns"><div class="stage-focus-people"><span class="label">01 / PEOPLE INVOLVED</span><div class="combined-people">{stagePeople[i].map(person=><button type="button" data-stage-person={person}>{stakeholders[person].name}<span aria-hidden="true">↗</span></button>)}</div></div><div class="stage-focus-work"><span class="label">02 / MY WORK · SAFETY SPA</span><ul>{stage[3].map((task:string)=><li>{task}</li>)}</ul></div><div class="stage-focus-output"><span class="label">03 / WHAT THIS PRODUCES</span><ul>{stageOutputs[i].map((output:string)=><li>{output}</li>)}</ul></div></div>
+ </div>)}
+ <section class="collaboration-group" aria-labelledby="collaboration-group-title">
+ <header class="collaboration-group-heading"><p class="label">COLLABORATION / MY ROLE IN THE TEAM</p><h3 id="collaboration-group-title">How I would work with others.</h3></header>
+ <div class="stakeholder-network relationship-map">
+ <div class="relationship-canvas">
+ <svg class="relationship-lines" viewBox="0 0 1000 310" preserveAspectRatio="none" aria-hidden="true">{[
+ 'M300 45 C370 45 365 155 410 155', 'M300 155 H410', 'M300 265 C370 265 365 155 410 155',
+ 'M700 45 C630 45 635 155 590 155', 'M700 155 H590', 'M700 265 C630 265 635 155 590 155'
+ ].map((path,i)=><path d={path} data-stakeholder-line={i} class={i===0?'connection-active':''}/> )}</svg>
+ <div class="relationship-center"><span class="center-role-label">MY CONTRIBUTION AT HANDSHAKE</span><strong>Min <span>· Safety SPA</span></strong><div class="center-role-rule"></div><p><span id="combined-my-action">Scope the program</span></p><small>Proposed role</small></div>
+ <div class="stakeholder-selectors" role="tablist" aria-label="Stakeholder connections">{stakeholders.map((person,i)=><button type="button" role="tab" id={`stakeholder-tab-${i}`} aria-controls={stagePeople[0].includes(i)?`stakeholder-panel-0-${i}`:undefined} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} disabled={!stagePeople[0].includes(i)} data-stakeholder={i}><span class="stakeholder-select-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d={[
+ 'M8 3h8M10 3v6l-6 10a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L14 9V3M8 14h8',
+ 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M2 21v-3a6 6 0 0 1 12 0v3M17 4a4 4 0 0 1 0 8M18 15a5 5 0 0 1 4 5',
+ 'M4 20V10h4v10M10 20V4h4v16M16 20V7h4v13',
+ 'M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3M8 12l3 3 5-6',
+ 'M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14M15 15l6 6M7 10l2 2 4-4',
+ 'M8 5L2 12l6 7M16 5l6 7-6 7M14 3l-4 18'
+ ][i]}/></svg></span><span><em class="stakeholder-owner-tag">{ownership[i].group}</em><strong>{person.name}</strong><small>{stageCollaboration[0][i]?.role ?? 'Not involved in this stage’s primary handoff'}</small></span><span class="stakeholder-select-arrow" aria-hidden="true">↗</span></button>)}</div>
+ </div></div>
+ {stageCollaboration.map((connections,stageIndex)=>Object.entries(connections).map(([personId,connection])=>{const i=Number(personId);const person=stakeholders[i];return <article class="stakeholder-detail" id={`stakeholder-panel-${stageIndex}-${i}`} role="tabpanel" aria-labelledby={`stakeholder-tab-${i}`} tabindex="0" hidden={stageIndex!==0||i!==0}>
+  <div class="stakeholder-exchange">
+   <div class="exchange-input"><span class="label">01 / {ownership[i].group}</span><h4>What they do at this stage</h4><p>{connection.input}</p></div><span class="exchange-arrow" aria-hidden="true">→</span>
+   <div class="exchange-action"><span class="label">02 / MY WORK · SAFETY SPA</span><h4>{stages[stageIndex][2]}</h4><p class="my-work-context">With {person.name.toLowerCase()}</p><ol>{connection.steps.map((step,stepIndex)=><li><button type="button" class="work-step-button" aria-pressed="false" data-work-evidence={workflowStepExperience[stageIndex][i][stepIndex].join(" ")} aria-controls={workflowStepExperience[stageIndex][i][stepIndex].map(slug=>`proof-${stageIndex}-${i}-${slug}`).join(" ")}>{step}<span class="work-step-cue" aria-hidden="true">↘</span></button></li>)}</ol></div><span class="exchange-arrow" aria-hidden="true">→</span>
+   <div class="exchange-return collaboration-output"><span class="label">03 / WHAT WE WOULD PRODUCE TOGETHER</span><h4>{connection.output}</h4><ul>{connection.artifacts.map(item=><li><span aria-hidden="true">✓</span>{item}</li>)}</ul></div>
+  </div>
+  <section class="workflow-proof" aria-label="Related work experience">
+   <header class="workflow-proof-heading"><div><span class="label section-step-label">MY WORK / THE EXPERIENCE BEHIND IT</span><h4>Work experience I would bring.</h4></div><a href="/work" target="_blank" rel="noopener noreferrer">Browse my project archive ↗</a></header>
+   
+   <p class="work-evidence-selection" role="status" hidden></p>
+   <p class="workflow-proof-intro">{workflowExperienceSummaries[stageIndex][i]}</p>
+   <div class="workflow-proof-list">{workflowExperience[stageIndex][i].slugs.map((slug,proofIndex)=>{const project=projectDetails[slug];return <details class="workflow-proof-item" id={`proof-${stageIndex}-${i}-${slug}`} data-proof-slug={slug} open={proofIndex===0}><summary><span><small>{project.experience === 'pacvue' ? 'Pacvue' : 'Krafton'} · {project.tag} · {project.year}</small><strong>{project.title}</strong></span><span class="proof-expand" aria-hidden="true">+</span></summary><div class="workflow-proof-body"><div><span class="label"><b class="proof-step">01</b> WHAT I DID</span><p>{project.description}{experienceStageNotes[slug] && <> <span class="proof-inline-context">{experienceStageNotes[slug]}</span></>}</p><a class="proof-project-link" href={`/projects/${slug}`} target="_blank" rel="noopener noreferrer">Full project ↗</a></div><div><span class="label"><b class="proof-step">02</b> SKILL I BRING</span><p>{experienceSkills[slug]}</p></div><div class="proof-application"><span class="label"><b class="proof-step">03</b> HOW I WOULD CONTRIBUTE</span><p>{experienceApplications[slug]}</p></div></div></details>})}</div>
+   <p class="workflow-proof-note">Past work comes from my project archive. Handshake applications are proposed; protected case studies retain their existing password access.</p>
+  </section>
+ </article>}))}
+ </section>
+
+</section>
+
+<script>
+ import { stageCollaboration } from '../../data/handshake-stage-collaboration.js';
+ let activeStage=0;
+ let activePerson=0;
+ const stakeholderTabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-stakeholder]'));
+ const stageTabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-business-stage]'));
+ const relevantPeople=[[0,2,3],[1,4,3],[3,4,1],[4,3,1,5],[2,0,4,5]];
+ const stageActions=['Scope the program','Coordinate annotators','Build the playbook','Analyze quality','Own execution'];
+ function selectStakeholder(index:number){
+  if(!relevantPeople[activeStage].includes(index))return;
+  activePerson=index;
+  document.querySelectorAll<HTMLElement>('.stakeholder-detail').forEach(panel=>panel.hidden=panel.id!==`stakeholder-panel-${activeStage}-${index}`);
+  document.querySelectorAll<SVGPathElement>('[data-stakeholder-line]').forEach((line,i)=>line.classList.toggle('connection-active',i===index));
+  stakeholderTabs.forEach((tab,i)=>{const on=i===index;tab.setAttribute('aria-selected',String(on));tab.tabIndex=on?0:-1;});
+  document.querySelectorAll<HTMLButtonElement>('[data-stage-person]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.stagePerson)===index)));
+ }
+ function revealWorkflow(){
+  const panel=document.getElementById(`stakeholder-panel-${activeStage}-${activePerson}`);
+  if(!panel)return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.classList.contains('motion-paused');
+  const heading=document.querySelector<HTMLElement>('#stakeholders .collaboration-group-heading');
+  if(heading){
+   const top=Math.max(0,window.scrollY+heading.getBoundingClientRect().top-28);
+   if(Math.abs(window.scrollY-top)>8)window.scrollTo({top,behavior:reduced?'instant':'smooth'});
+  }
+  if(!reduced){
+   panel.querySelectorAll<HTMLElement>('.stakeholder-exchange>div').forEach((card,i)=>{
+    card.getAnimations().forEach(animation=>animation.cancel());
+    card.animate([{opacity:.3,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:550,delay:220+i*100,easing:'cubic-bezier(.2,.75,.2,1)',fill:'backwards'});
+   });
+  }
+ }
+ function selectStage(index:number,announce=true){
+  activeStage=index;
+  stageTabs.forEach((tab,i)=>{const on=i===index;tab.setAttribute('aria-selected',String(on));tab.tabIndex=on?0:-1;document.getElementById(`business-detail-${i}`)!.hidden=!on;});
+  stakeholderTabs.forEach((tab,i)=>{
+   const relevant=relevantPeople[index].includes(i);
+   tab.classList.toggle('stage-relevant',relevant);tab.disabled=!relevant;
+   if(relevant)tab.setAttribute('aria-controls',`stakeholder-panel-${index}-${i}`);else tab.removeAttribute('aria-controls');
+   tab.querySelector('small')!.textContent=stageCollaboration[index][i]?.role ?? 'Not involved in this stage’s primary handoff';
+  });
+  document.querySelectorAll<SVGPathElement>('[data-stakeholder-line]').forEach((line,i)=>line.classList.toggle('stage-connection',relevantPeople[index].includes(i)));
+  document.getElementById('combined-my-action')!.textContent=stageActions[index];
+  selectStakeholder(relevantPeople[index].includes(activePerson)?activePerson:relevantPeople[index][0]);
+  if(announce && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !document.body.classList.contains('motion-paused')){
+   const summary=document.getElementById(`business-detail-${index}`)!;
+   summary.querySelectorAll<HTMLElement>('.combined-stage-columns>div').forEach((card,i)=>{
+    card.getAnimations().forEach(animation=>animation.cancel());
+    card.animate([{opacity:.45,transform:'translateY(9px)'},{opacity:1,transform:'translateY(0)'}],{duration:420,delay:i*65,easing:'cubic-bezier(.2,.75,.2,1)',fill:'backwards'});
+   });
+   stakeholderTabs.filter((_,i)=>relevantPeople[index].includes(i)).forEach(tab=>{
+    tab.getAnimations().forEach(animation=>animation.cancel());
+    tab.animate([{boxShadow:'0 0 0 3px #77c5d5'},{boxShadow:'0 0 0 0px transparent'}],{duration:700,easing:'ease-out'});
+   });
+  }
+ }
+ function wireTabs(tabs:HTMLButtonElement[],select:(index:number)=>void){tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>select(i));tab.addEventListener('keydown',event=>{const available=tabs.filter(t=>!t.disabled);const current=available.indexOf(tab);let next=current;if(event.key==='ArrowRight')next=(current+1)%available.length;else if(event.key==='ArrowLeft')next=(current+available.length-1)%available.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=available.length-1;else return;event.preventDefault();const target=available[next];select(tabs.indexOf(target));target.focus();});});}
+ wireTabs(stageTabs,selectStage);wireTabs(stakeholderTabs,selectStakeholder);
+ stageTabs.forEach((tab,index)=>tab.addEventListener('click',()=>{
+  const summary=document.getElementById(`business-detail-${index}`);
+  if(!summary)return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.classList.contains('motion-paused');
+  const top=Math.max(0,window.scrollY+summary.getBoundingClientRect().top-12);
+  window.scrollTo({top,behavior:reduced?'instant':'smooth'});
+ }));
+ document.querySelectorAll<HTMLButtonElement>('[data-stage-person]').forEach(button=>button.addEventListener('click',()=>{const index=Number(button.dataset.stagePerson);selectStakeholder(index);revealWorkflow();}));
+ stakeholderTabs.forEach(tab=>tab.addEventListener('click',revealWorkflow));
+ document.querySelectorAll<HTMLButtonElement>('[data-work-evidence]').forEach(button=>{
+  button.addEventListener('click',()=>{
+   const panel=button.closest<HTMLElement>('.stakeholder-detail');
+   if(!panel)return;
+   const selecting=button.getAttribute('aria-pressed')!=='true';
+   const slugs=new Set((button.dataset.workEvidence ?? '').split(' '));
+   panel.querySelectorAll<HTMLButtonElement>('[data-work-evidence]').forEach(item=>item.setAttribute('aria-pressed',String(selecting && item===button)));
+   panel.querySelectorAll<HTMLDetailsElement>('[data-proof-slug]').forEach(item=>{
+    const match=selecting && slugs.has(item.dataset.proofSlug ?? '');
+    item.classList.toggle('is-work-match',match);
+    if(selecting)item.open=match;
+   });
+   const status=panel.querySelector<HTMLElement>('.work-evidence-selection');
+   if(status){status.hidden=!selecting;status.textContent=selecting ? `Related experience: ${button.firstChild?.textContent?.trim() ?? ''}` : '';}
+  });
+ });
+ selectStage(0,false);
+</script>

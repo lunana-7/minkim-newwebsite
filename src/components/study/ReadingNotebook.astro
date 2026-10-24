@@ -1,0 +1,23 @@
+---
+import { makeReadingDraft, noteFieldLabels } from '../../data/handshake-reading-drafts.js';
+const { readings } = Astro.props;
+const drafts = readings.map(makeReadingDraft);
+const payload = JSON.stringify({drafts,labels:noteFieldLabels}).replace(/</g,'\\u003c');
+---
+<dialog class="reading-notebook" id="reading-notebook" aria-labelledby="notebook-title">
+ <header class="notebook-header"><div><span class="label" data-notebook-source></span><h2 id="notebook-title"></h2></div><button type="button" class="notebook-close" aria-label="Close reading note">×</button></header>
+ <div class="notebook-controls"><label>My progress<select data-note-status><option value="draft">Draft</option><option value="reading">Reading</option><option value="read">Read</option><option value="ready">Ready to discuss</option></select></label><label>Date read (optional)<input type="date" data-note-read-date/></label><span class="notebook-save-status" role="status" data-note-save-status>Draft prepared for review</span><div class="notebook-navigation"><button type="button" data-note-previous aria-label="Previous reading note">←</button><button type="button" data-note-next aria-label="Next reading note">→</button></div></div>
+ <div class="notebook-content">
+  <div class="notebook-main"><div class="notebook-source"><p class="label">SOURCE OVERVIEW</p><p data-note-source-summary></p><div><a data-note-source-link target="_blank" rel="noopener noreferrer">Read the original ↗</a><a data-note-second-link target="_blank" rel="noopener noreferrer" hidden>Second source ↗</a></div></div>
+   <div class="notebook-tabs" role="tablist" aria-label="Reading note mode"><button type="button" role="tab" id="note-read-tab" aria-controls="note-reader" aria-selected="true" data-note-mode="read">Read & annotate</button><button type="button" role="tab" id="note-edit-tab" aria-controls="note-editor" aria-selected="false" tabindex="-1" data-note-mode="edit">Edit my draft</button></div>
+   <section id="note-reader" role="tabpanel" aria-labelledby="note-read-tab" tabindex="0"><p class="notebook-hint">Select a passage below, then add a comment in the margin. To annotate the original article, paste its passage into the annotation box.</p><div data-note-reader></div></section>
+   <section id="note-editor" role="tabpanel" aria-labelledby="note-edit-tab" hidden><p class="notebook-hint">These are prepared drafts. Personalize the reflection and interview answer, then update your reading status when you are ready.</p>{Object.entries(noteFieldLabels).map(([key,label])=><label class="notebook-edit-field" for={`note-field-${key}`}><span>{label}</span><textarea id={`note-field-${key}`} data-note-field={key} rows={key==='pitch'?9:5} maxlength="16000"/></label>)}</section>
+  </div>
+  <aside class="notebook-margin" aria-label="My annotations"><div class="notebook-margin-heading"><p class="label">MY ANNOTATIONS</p><span data-annotation-count>0</span></div><form data-annotation-form><label for="annotation-quote">Selected passage or quote from the source<textarea id="annotation-quote" rows="4" maxlength="4000" placeholder="Select text in your note or paste a passage from the original…" required/></label><p class="small" data-annotation-origin>Original reading · pasted passage</p><label for="annotation-comment">My comment<textarea id="annotation-comment" rows="4" maxlength="8000" placeholder="Why this matters, what I question, or how it connects to my work…" required/></label><label for="annotation-color">Highlight color<select id="annotation-color"><option value="cyan">Cyan</option><option value="mint">Mint</option><option value="amber">Amber</option></select></label><div class="annotation-form-actions"><button type="submit" data-annotation-submit>Add annotation +</button><button type="button" data-annotation-cancel hidden>Cancel edit</button></div></form><div data-annotation-list></div></aside>
+ </div>
+ <footer class="notebook-footer"><span>My notes · saved on this browser · reading status set by me</span><div class="notebook-export-actions"><button type="button" data-export-note>Export this note ↓</button><button type="button" data-export-notebook>Export all notes ↓</button></div></footer>
+</dialog>
+<script type="application/json" id="reading-notebook-data" set:html={payload}/>
+<script>
+ import '../../scripts/handshake-reading-notebook';
+</script>

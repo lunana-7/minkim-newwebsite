@@ -3,8 +3,12 @@ const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const running = new Set<Animation>();
 let observer: IntersectionObserver | undefined;
 const selectors = [
-  '.hero h1', '.hero .intro', '.context > .label', '.context > h2',
-  '.section-head', '.career-opening', '.career-chapters > li', '.career-next',
+  '.hero h1', '.hero .intro', '.hero-study-context > p', '.context > .label', '.context > h2',
+  '.human-data-thesis', '.human-data-stages > article', '.human-data-bridge', '.human-data-experience',
+  '.pipeline-overview', '.pipeline-explorer', '.pipeline-capacity', '.pipeline-technical', '.pipeline-loop',
+  '.business-thesis', '.business-flow > li', '.business-fact-grid > article', '.business-perspectives > article', '.business-role-split', '.business-pitch',
+  '.personal-note', '.personal-chapter', '.personal-growth-visual', '.section-head', '.career-opening', '.career-chapters > li', '.career-next',
+  '.responsibility-stage', '.reading-shelves', '.stakeholder-network', '.ops-route', '.prep-work > li', '.art-interlude',
   '.fit-stats', '.fit-card', '.fit-pitch', '.fit-plan > li',
   '.day-route', '.day-studio', '.day-timeline > li', '.day-routing',
   '.reading-card', '.pipeline > li', '.policy-band h2', '.three-grid > article',
@@ -23,7 +27,7 @@ function setupReveals() {
       observer?.unobserve(element);
       if (revealed.has(element)) return;
       revealed.add(element);
-      if (element.contains(document.activeElement)) return;
+      if (element.contains(document.activeElement) || document.body.classList.contains('motion-paused')) return;
       const animation = element.animate(
         [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'translateY(0)' }],
         { duration: 650, delay: Math.min(index, 3) * 65, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' }

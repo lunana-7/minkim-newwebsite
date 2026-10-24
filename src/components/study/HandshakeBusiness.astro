@@ -1,0 +1,73 @@
+---
+import HandshakeStakeholders from './HandshakeStakeholders.astro';
+const facts = [
+ ['Expertise across career stages', 'Contributors include students, researchers and professionals. Relevant knowledge and careful application of project instructions matter.'],
+ ['Human judgment takes several forms', 'Tasks can involve writing responses, checking reasoning or accuracy, labeling data, challenging models and providing detailed feedback.'],
+ ['Demand changes by project', 'Trainer work is contract-based, flexible and variable. Hours are not guaranteed; projects can ramp up or wind down quickly.'],
+ ['Matching is project-specific', 'Domain fit, prior performance and project needs influence matching. New assessments may be required even for experienced contributors.'],
+ ['Support enables good work', 'Project leads provide onboarding, documentation, examples and ongoing support. Some projects offer office hours or live sessions.'],
+ ['Quality can lead to more responsibility', 'Consistently strong contributors may progress to reviewer or specialist responsibilities, depending on the project.']
+];
+const stages = [
+ ['Lab need', 'A defined task, domain and standard', 'Scope the program', ['Support project scoping with labs', 'Develop evaluations across policy areas'], 'Program scope', 'Labs + internal stakeholders'],
+ ['Contributor fit', 'Relevant expertise and project screening', 'Coordinate annotators', ['Coordinate trusted annotators', 'Support careful, consistent edge-case review'], 'Review coordination', 'Annotators + review teams'],
+ ['Enablement', 'Instructions, examples and support', 'Build the playbook', ['Iterate annotation frameworks and workflows', 'Maintain playbooks and auditor guidance'], 'Playbooks + quality resources', 'Policy leads + auditors'],
+ ['Human judgment', 'Responses, labels, challenges and feedback', 'Analyze quality', ['Find systemic errors and labeling trends', 'Surface policy gaps and classification ambiguities'], 'Quality findings', 'Annotators + policy leads'],
+ ['Useful output', 'Work that supports model development and evaluation', 'Own execution', ['Resolve issues and deliver policy programs', 'Balance quality, revenue, margins and relationships'], 'Delivery decisions', 'Labs + delivery stakeholders']
+] as const;
+const stageStakeholders = [
+ [['Frontier lab partners', 'Define the task and evaluation needs'], ['Internal stakeholders', 'Align scope and delivery constraints'], ['Safety SPA', 'Coordinate scoping and execution']],
+ [['Trusted annotators', 'Apply project instructions and flag uncertainty'], ['Safety SPA', 'Coordinate reviewers and consistent workflows'], ['Policy leads', 'Help resolve complex policy questions']],
+ [['Policy leads', 'Clarify policy boundaries and interpretation'], ['Safety SPA', 'Build and maintain playbooks and quality resources'], ['Annotators & auditors', 'Use the guidance and surface unclear cases']],
+ [['Annotators', 'Produce judgments and identify edge cases'], ['Safety SPA', 'Analyze errors, trends and classification gaps'], ['Policy leads', 'Review ambiguities and policy insights']],
+ [['Frontier lab partners', 'Discuss delivery needs and unresolved issues'], ['Safety SPA', 'Make execution decisions across quality and operating trade-offs'], ['Internal stakeholders', 'Coordinate issue resolution and delivery']]
+];
+const stageOutputs = [
+ ['Defined task and policy boundaries', 'Evaluation requirements', 'Agreed delivery constraints'],
+ ['Coordinated annotation work', 'Shared review expectations', 'A route for complex edge cases'],
+ ['Annotation playbook', 'Labeling examples and quality resources', 'Auditor guidance'],
+ ['Systemic error patterns', 'Classification ambiguities', 'Policy gaps for lead review'],
+ ['Resolved delivery issues', 'Communicated operating trade-offs', 'Delivered model policy work']
+];
+const stageVisuals = [
+ { inputs: ['Lab brief', 'Policy scope', 'Delivery constraints'], action: ['Define', 'the scope'], label: 'PROJECT INPUTS', caption: 'Align the task and evaluation requirements.' },
+ { inputs: ['Task requirements', 'Trusted annotators', 'Complex edge cases'], action: ['Coordinate', 'reviewers'], label: 'REVIEW REQUIREMENTS', caption: 'Support consistent, careful annotation.' },
+ { inputs: ['Policy guidance', 'Label definitions', 'Auditor needs'], action: ['Build', 'the playbook'], label: 'GUIDANCE INPUTS', caption: 'Translate requirements into usable review resources.' },
+ { inputs: ['Labeling trends', 'Systemic errors', 'Ambiguous cases'], action: ['Analyze', 'and escalate'], label: 'QUALITY SIGNALS', caption: 'Bring evidence and unresolved gaps to policy leads.' },
+ { inputs: ['Quality', 'Revenue', 'Margins', 'Customer relationships'], action: ['Resolve', 'and prioritize'], label: 'OPERATING TRADE-OFFS', caption: 'Resolve issues while protecting delivery and relationships.' }
+];
+---
+<section class="section wrap business-understanding" id="handshake-business">
+ <div class="section-head"><div><p class="label">2 / ABOUT HANDSHAKE &amp; MY POSITION</p><h2>How Handshake works.<br/>Where I would contribute.</h2></div><p>My understanding of the business, based on Handshake’s AI Trainer guide and the Safety SPA job description.</p></div>
+
+ <div class="business-process-explorer">
+ <p class="process-instruction">Choose a stage, then a person: explore the work, the collaboration and the output.</p>
+ <div class="business-stage-tabs" role="tablist" aria-label="Project stages">{stages.map(([title,description],i)=><button type="button" role="tab" id={`business-stage-${i}`} aria-controls={`business-detail-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-business-stage={i}><span class="stage-topline"><span>0{i+1}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d={[
+ 'M5 3h14v18H5z M8 7h8 M8 11h8 M8 15h5',
+ 'M16 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0 M4 21v-2a8 8 0 0 1 16 0v2',
+ 'M12 5C8 2 3 3 3 3v16s5-1 9 2c4-3 9-2 9-2V3s-5-1-9 2v16',
+ 'M3 18l5-5 4 3 8-10 M14 6h6v6 M3 3v18h18',
+ 'M4 4h16v16H4z M8 12l3 3 6-7'
+ ][i]} /></svg></span><strong>{title}</strong><span class="stage-description">{description}</span></button>)}</div>
+ <HandshakeStakeholders stages={stages} stageOutputs={stageOutputs} />
+ </div>
+
+ <div class="business-facts"><div><p class="label">THE ARTICLE / MY TAKEAWAYS</p><h3>What makes AI trainer work at Handshake different.</h3><p class="business-facts-intro">The work draws on different kinds of expertise, and each project brings its own tasks, standards and pace. These takeaways show why matching, guidance and ongoing support matter to the contributor experience.</p><a href="https://support.joinhandshake.com/hc/en-us/articles/37576344583191-Working-as-an-AI-Trainer-with-frontier-labs-through-Handshake-AI" target="_blank" rel="noopener noreferrer">Read the Handshake AI Trainer guide ↗</a></div><div class="business-fact-grid">{facts.map(([title,description],i)=><article class="business-visual-fact"><span class="fact-index">0{i+1}</span>
+ <div class="fact-diagram" aria-label={[
+ 'Students, researchers and professionals contribute expertise',
+ 'Human work includes writing, evaluation, labeling and feedback',
+ 'Project demand can rise and fall; illustrative pattern',
+ 'Domain fit, assessments and project needs inform matching',
+ 'Contributors receive instructions, examples and support',
+ 'Contributor work may lead to reviewer or specialist responsibilities'
+ ][i]}>
+ {i===0&&<div class="fact-expertise"><span>Students</span><span>Researchers</span><span>Professionals</span><b>Relevant expertise</b></div>}
+ {i===1&&<div class="fact-task-grid"><span>✎ Write</span><span>✓ Evaluate</span><span>▤ Label</span><span>↗ Challenge</span><span>↔ Feedback</span></div>}
+ {i===2&&<div class="fact-demand"><div class="fact-demand-bars" aria-hidden="true">{[30,52,82,64,96,50,26,60,78].map(h=><span style={`height:${h}%`}></span>)}</div><span>Ramp up <span aria-hidden="true">↗ ↘</span> Wind down</span><small>Illustrative demand pattern</small></div>}
+ {i===3&&<div class="fact-match"><div><span>Domain fit</span><span>Assessment</span><span>Project needs</span></div><span class="fact-connector" aria-hidden="true">↓</span><b>Project match</b></div>}
+ {i===4&&<div class="fact-support"><b>Contributor</b><div><span>Instructions</span><span>Examples</span><span>Support</span></div></div>}
+ {i===5&&<div class="fact-progression"><span>Contributor</span><span class="fact-connector" aria-hidden="true">→</span><div><b>Reviewer</b><b>Specialist</b></div><small>Possible paths, based on quality &amp; project needs</small></div>}
+ </div><h4>{title}</h4><p>{description}</p></article>)}</div></div>
+
+</section>
+

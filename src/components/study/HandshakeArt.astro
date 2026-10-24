@@ -1,0 +1,10 @@
+---
+const { variant = 'hero', object = variant === 'hero' ? 'person' : variant === 'bridge' ? 'institution' : 'star' } = Astro.props;
+---
+<div class:list={['handshake-art', `handshake-art-${variant}`]} data-art-motion aria-hidden="true">
+ <div class="art-light-field"></div>
+ <div class="art-depth-layer">
+ <div class="art-sculpture art-sculpture-main"><img src={`/brand/handshake-grain-${object}.png`} alt="" width="1024" height="1024" loading={variant==='hero'?'eager':'lazy'} decoding="async"/></div>
+ {variant !== 'accent' && <div class="art-sculpture art-sculpture-satellite"><img src="/brand/handshake-grain-star.png" alt="" width="1024" height="1024" loading="lazy" decoding="async"/></div>}
+ </div>
+</div>

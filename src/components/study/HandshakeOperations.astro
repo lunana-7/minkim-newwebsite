@@ -1,0 +1,25 @@
+---
+import { operatingWorkflow as workflow } from '../../data/handshake-operating-workflow.js';
+const actions=['Investigate','Contain the risk','Resolve with the owner','Confirm it worked'];
+---
+<section class="section wrap" id="operations" aria-labelledby="ops-title">
+ <div class="section-head"><div><p class="label">9 / OPERATING JUDGMENT</p><h2 id="ops-title">From a project brief<br/>to a reliable delivery.</h2></div><p>Match the people, make the guidance usable and keep quality visible as demand changes. Explore where I would act, escalate and learn.</p></div>
+ <p class="ops-instruction">Choose a stage, then a challenge to see my response and the experience behind it.</p>
+ <div class="ops-route" role="tablist" aria-label="Operating workflow">{workflow.map((stage,i)=><button type="button" role="tab" id={`ops-tab-${i}`} data-ops-stage={i} aria-controls={`ops-stage-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1}><span>0{i+1}</span><strong>{stage.title}</strong><i aria-hidden="true">→</i></button>)}</div>
+ {workflow.map((stage,i)=><article class="ops-stage" id={`ops-stage-${i}`} role="tabpanel" aria-labelledby={`ops-tab-${i}`} hidden={i!==0} tabindex="0">
+  <header class="ops-stage-head"><div><span class="label">THE WORK / {stage.title.toUpperCase()}</span><h3>{stage.task}</h3></div><div class="ops-partners"><span class="label">PEOPLE I WOULD INVOLVE</span><p>{stage.partners}</p></div></header>
+  <div class="ops-challenges"><span class="label">WHERE IT CAN GO WRONG</span><div role="group" aria-label={`Challenges during ${stage.title}`}>{stage.cases.map((item,j)=><button type="button" data-ops-case={`${i}-${j}`} aria-controls={`ops-case-${i}-${j}`} aria-pressed={j===0?'true':'false'}><span aria-hidden="true">!</span>{item.title}<i aria-hidden="true">↗</i></button>)}</div></div>
+  {stage.cases.map((item,j)=><div class="ops-case" id={`ops-case-${i}-${j}`} hidden={j!==0}><p class="ops-signal"><span>WHAT I MIGHT NOTICE</span>{item.signal}</p><ol class="ops-response">{item.steps.map((step,k)=><li><span class="ops-step-number">0{k+1}</span><h4>{actions[k]}</h4><p>{step}</p></li>)}</ol><div class="ops-proof"><span aria-hidden="true">✓</span><div><span class="label">EVIDENCE BEFORE I CLOSE THE ISSUE</span><p>{item.proof}</p></div></div></div>)}
+  <div class="ops-experience"><div><span class="label">WHERE I BUILT THE FOUNDATION</span><p>{stage.experience}</p></div><span class="ops-transfer-arrow" aria-hidden="true">→</span><div><span class="label">WHAT I WOULD BRING TO THIS STEP</span><p>{stage.skill}</p></div></div>
+  <details class="ops-learning"><summary>Where I would need training or authorization</summary><p>{stage.boundary}</p></details>
+  <footer class="ops-output"><span>STAGE OUTPUT</span><strong>{stage.output}</strong><button type="button" data-ops-next={(i+1)%workflow.length}>{i===workflow.length-1?'Return to scoping ↻':`Next: ${workflow[i+1].title} →`}</button></footer>
+ </article>)}
+ <p class="small">My proposed workflow, based on the job description and transferable experience. These scenarios cover key risks, not every possible incident or Handshake’s internal procedures. Release criteria and decision authority must be agreed with the team.</p>
+</section>
+<script>
+ const opsTabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-ops-stage]'));
+ function selectOps(index:number,focus=false){opsTabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;document.getElementById(`ops-stage-${i}`)!.hidden=i!==index;});if(focus)opsTabs[index].focus();}
+ opsTabs.forEach((tab,i)=>{tab.addEventListener('click',()=>selectOps(i));tab.addEventListener('keydown',event=>{let index=i;if(event.key==='ArrowRight')index=(i+1)%opsTabs.length;else if(event.key==='ArrowLeft')index=(i+opsTabs.length-1)%opsTabs.length;else if(event.key==='Home')index=0;else if(event.key==='End')index=opsTabs.length-1;else return;event.preventDefault();selectOps(index,true);});});
+ document.querySelectorAll<HTMLButtonElement>('[data-ops-case]').forEach(button=>button.addEventListener('click',()=>{const stage=button.closest('.ops-stage')!;stage.querySelectorAll<HTMLButtonElement>('[data-ops-case]').forEach(b=>{b.setAttribute('aria-pressed',String(b===button));document.getElementById(b.getAttribute('aria-controls')!)!.hidden=b!==button;});}));
+ document.querySelectorAll<HTMLButtonElement>('[data-ops-next]').forEach(button=>button.addEventListener('click',()=>selectOps(Number(button.dataset.opsNext),true)));
+</script>

@@ -1,0 +1,44 @@
+/* Grainy sculptural artwork and coordinated motion. */
+.hero-art-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.48fr);align-items:center;gap:18px;position:relative;z-index:1}
+.hero .hero-art-layout h1{font-size:clamp(44px,5.8vw,80px);margin:20px 0 32px}
+.handshake-art{position:relative;isolation:isolate;pointer-events:none;width:100%;aspect-ratio:1;max-width:430px;justify-self:center}
+.art-sculpture{position:absolute;will-change:transform;animation:sculpture-float 9s ease-in-out infinite;animation-play-state:paused}
+.art-sculpture img{display:block;width:100%;height:auto;object-fit:contain}
+.art-sculpture-main{width:95%;left:0;top:-2%;--sculpture-turn:-12deg}
+.art-sculpture-satellite{width:38%;right:-4%;bottom:0;--sculpture-turn:23deg;animation-duration:12s;animation-delay:-4s;filter:hue-rotate(12deg)}
+.art-orbit{position:absolute;border:1px solid #599aa633;border-radius:50%;inset:12%;transform:rotate(-28deg) scaleY(.72)}
+.art-orbit-two{inset:22% -1%;transform:rotate(38deg) scaleY(.7);border-style:dashed;opacity:.6}
+.art-dot{position:absolute;width:9px;height:9px;border-radius:50%;background:#c8ed78;box-shadow:0 0 0 7px #c8ed781b;animation:dot-drift 5s ease-in-out infinite;animation-play-state:paused}.art-dot-one{left:9%;bottom:17%}.art-dot-two{right:12%;top:5%;width:6px;height:6px;background:#53b6c3;animation-delay:-2s}
+.art-in-view .art-sculpture,.art-in-view .art-dot{animation-play-state:running}
+.art-interlude{display:flex;align-items:center;justify-content:center;gap:32px;padding-top:14px;padding-bottom:14px;border-block:1px solid #d9e8e9;margin-top:16px;margin-bottom:0}
+.handshake-art-bridge{width:130px;flex-shrink:0}.art-interlude p{font-size:23px;line-height:1.45;letter-spacing:-.02em;color:#244c57;margin:0}.art-interlude p span{color:#54828c}.handshake-art-bridge .art-sculpture-main{--sculpture-turn:18deg}.handshake-art-bridge .art-orbit{display:none}
+.personal-note{position:relative;isolation:isolate}.personal-note>header{position:relative;padding-right:170px;max-width:none}.handshake-art-note{position:absolute;width:180px;right:24px;top:24px;z-index:-1}.handshake-art-note .art-sculpture-main{--sculpture-turn:30deg}.handshake-art-note .art-orbit{display:none}
+.motion-toggle{position:fixed;bottom:22px;left:22px;z-index:30;border:1px solid #b5d4dc;border-radius:30px;background:#f6fcfd;color:#316777;padding:10px 14px;font-size:12px;box-shadow:0 3px 14px #163b4610;cursor:pointer}.motion-toggle:focus-visible{outline:3px solid #27859b;outline-offset:3px}
+body.motion-paused *,body.motion-paused *:before,body.motion-paused *:after{animation-play-state:paused!important}
+@media(hover:hover){.business-stage-tabs>button,.stakeholder-selectors button,.ops-route button,.reading-shelves button{transition:background .22s,color .22s,box-shadow .22s}.business-visual-fact{transition:transform .3s,box-shadow .3s}.business-visual-fact:hover{transform:translateY(-5px);box-shadow:0 12px 24px #246b7910}.library-source:hover .library-open span{transform:translate(3px,-3px)}.library-open span{transition:transform .2s}}
+@keyframes sculpture-float{0%,100%{transform:translate3d(0,0,0) rotate(var(--sculpture-turn)) scale(.96)}50%{transform:translate3d(0,-18px,0) rotate(calc(var(--sculpture-turn) + 12deg)) scale(1.025)}}
+@keyframes dot-drift{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-12px);opacity:1}}
+@media(max-width:850px){.hero-art-layout{grid-template-columns:minmax(0,1fr) 220px}.hero .hero-art-layout h1{font-size:clamp(40px,6vw,58px)}.personal-note>header{padding-right:100px}.handshake-art-note{width:120px;right:12px}}
+@media(max-width:600px){.hero-art-layout{grid-template-columns:1fr;gap:0}.hero-art-layout .handshake-art{width:190px;justify-self:end;margin-top:-5px;margin-bottom:16px}.hero .hero-art-layout h1{font-size:clamp(40px,9vw,54px);margin-bottom:0}.personal-note>header{padding-right:0}.handshake-art-note{position:relative;top:auto;right:auto;width:105px;margin:0 0 12px auto}.art-interlude{gap:12px}.handshake-art-bridge{width:90px}.art-interlude p{font-size:18px}.motion-toggle{left:12px;bottom:16px;padding:9px 12px}.motion-toggle span{display:none}}
+@media(prefers-reduced-motion:reduce){.art-sculpture,.art-dot{animation:none!important}.business-visual-fact,.library-open span{transition:none!important}.business-visual-fact:hover{transform:none}.motion-toggle{display:none}}
+
+/* Soft spectral light and restrained depth replace particle decorations. */
+.handshake-art{perspective:900px}
+.art-depth-layer{position:absolute;inset:0;transform:translate3d(var(--art-x,0px),var(--art-y,0px),0) rotateX(var(--art-rx,0deg)) rotateY(var(--art-ry,0deg));transition:transform .65s cubic-bezier(.2,.75,.2,1);transform-style:preserve-3d}
+.art-light-field{position:absolute;inset:3% -4%;z-index:-1;pointer-events:none;background:conic-gradient(from 140deg at 50% 50%,transparent 0deg,#b8e67b30 70deg,#67d4db32 145deg,transparent 205deg,#a9efcc28 290deg,transparent 360deg);filter:blur(30px);border-radius:43% 57% 62% 38%;animation:spectral-drift 13s ease-in-out infinite alternate;animation-play-state:paused}
+.art-in-view .art-light-field{animation-play-state:running}
+.handshake-art-bridge .art-light-field{filter:blur(18px);opacity:.6}
+.handshake-art-note .art-light-field{opacity:.65;filter:blur(22px)}
+@keyframes spectral-drift{from{transform:rotate(-15deg) scale(.85);opacity:.55}to{transform:rotate(25deg) scale(1.12);opacity:.95}}
+body.motion-paused .art-depth-layer{transform:none;transition:none}
+@media(prefers-reduced-motion:reduce){.art-depth-layer{transform:none!important;transition:none}.art-light-field{animation:none!important}}
+
+/* Contextual props share the sculptural palette without covering copy. */
+.section-title-with-prop{position:relative;padding-right:120px}
+.section-title-with-prop .handshake-art-accent{position:absolute;right:0;top:0;width:110px;max-width:110px}
+.handshake-art-accent .art-sculpture-main{width:100%;top:0;--sculpture-turn:-5deg;animation-duration:11s}
+.handshake-art-accent .art-light-field{opacity:.35;filter:blur(18px)}
+.handshake-art-hero .art-sculpture-main{width:82%;left:3%;top:5%;--sculpture-turn:-5deg}
+.handshake-art-hero .art-sculpture-satellite{width:38%;right:-2%;bottom:9%}
+@media(max-width:900px){.section-title-with-prop{padding-right:85px}.section-title-with-prop .handshake-art-accent{width:78px}}
+@media(max-width:600px){.section-title-with-prop{padding-right:65px}.section-title-with-prop .handshake-art-accent{width:60px;top:8px}}

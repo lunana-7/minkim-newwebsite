@@ -1,0 +1,7 @@
+---
+const { fit } = Astro.props;
+---
+<aside class="pipeline-step-fit" aria-label="Relevant experience and learning priorities">
+ <div class="pipeline-fit-evidence"><span class="label">EXPERIENCE I BRING</span><strong>{fit[3] ? <a href={`/projects/${fit[3]}`} target="_blank" rel="noopener noreferrer">{fit[0]} ↗</a> : fit[0]}</strong><p>{fit[1]}</p></div>
+ <div class="pipeline-fit-learning"><span class="label">WHAT I WOULD STUDY</span><p>{fit[2]}</p></div>
+</aside>

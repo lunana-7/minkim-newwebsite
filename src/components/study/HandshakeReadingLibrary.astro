@@ -1,0 +1,45 @@
+---
+import { readings } from '../../data/handshake-study.js';
+import { workstreamsForReading } from '../../data/handshake-reading-workstreams.js';
+const shelves = [
+ {id:'understand',title:'Understand the business',caption:'Contributors & human data',icon:'01',streams:['company','human-data']},
+ {id:'interpret',title:'Interpret the policy',caption:'Boundaries & reviewer guidance',icon:'02',streams:['policy-annotation','policy-feedback']},
+ {id:'evaluate',title:'Evaluate the judgments',caption:'Tests, errors & calibration',icon:'03',streams:['safety-evaluation','quality-assurance','adjudication']},
+ {id:'deliver',title:'Deliver the work',caption:'People, evidence & operations',icon:'04',streams:['reviewer-operations','delivery']}
+];
+const groupsFor = (id:string) => shelves.filter(s=>workstreamsForReading(id).some(w=>s.streams.includes(w.id))).map(s=>s.id);
+---
+<section class="section wrap" id="readings" aria-labelledby="library-title">
+ <div class="section-head"><div><p class="label">6 / READING NOTES</p><h2 id="library-title">The reading behind<br/>my preparation.</h2></div><p>Choose a part of the work, then open a source for my takeaway, an example and how I would apply it.</p></div>
+ <div class="reading-shelves" role="group" aria-label="Browse reading notes by responsibility">{shelves.map((s,i)=><button type="button" data-shelf={s.id} aria-pressed={i===0?'true':'false'}><span>{s.icon}</span><strong>{s.title}</strong><small>{s.caption}</small><i aria-hidden="true">→</i></button>)}</div>
+ <div class="library-toolbar"><p id="library-status" role="status"></p><label>Find a source<input type="search" id="library-search" placeholder="Title, publisher or concept" aria-controls="library-results"/></label></div>
+ <div class="library-results" id="library-results">{readings.map((r,i)=><button type="button" class="library-source" data-source-open={i} data-shelves={groupsFor(r.id).join(' ')} data-source-search={`${r.title} ${r.publisher} ${r.summary}`.toLowerCase()} aria-haspopup="dialog" aria-controls={`source-note-${i}`} hidden={!groupsFor(r.id).includes('understand')}><span class="library-publisher">{r.publisher}</span><strong>{r.title}</strong><span class="library-open">Open reading note <span aria-hidden="true">↗</span></span></button>)}</div>
+ <p id="library-empty" hidden>No matching sources in this topic. Try another topic or search term.</p>
+ <div class="library-pagination"><button type="button" id="library-prev">← Previous</button><span id="library-page"></span><button type="button" id="library-next">Next →</button></div>
+ {readings.map((r,i)=><dialog class="work-dialog source-note" id={`source-note-${i}`} aria-labelledby={`source-title-${i}`}><div class="work-dialog-top"><span class="label">READING NOTE / {r.publisher}</span><button type="button" data-source-close aria-label="Close reading note">×</button></div><h3 id={`source-title-${i}`}>{r.title}</h3><p class="source-summary">{r.summary}</p><div class="source-takeaway"><span class="label">MY TAKEAWAY</span><p>{r.takeaway}</p></div><div class="work-dialog-grid"><section><span class="label">AN ILLUSTRATIVE EXAMPLE</span><p>{r.example}</p></section><section class="work-proof"><span class="label">HOW I WOULD APPLY IT</span><p>{r.action}</p></section></div>{r.fit&&<div class="source-fit"><span class="label">CONNECTION TO MY EXPERIENCE</span><p>{r.fit}</p></div>}<details class="source-question"><summary>A question to think through</summary><p>{r.question}</p></details><p class="work-boundary">{r.limit}</p><footer><a href={r.url} target="_blank" rel="noopener noreferrer">Read the original source ↗</a>{r.second&&<a href={r.second} target="_blank" rel="noopener noreferrer">AI Trainer guide ↗</a>}</footer></dialog>)}
+</section>
+<script>
+ const shelfButtons=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-shelf]'));
+ const sourceCards=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-source-open]'));
+ const search=document.getElementById('library-search') as HTMLInputElement;
+ const previous=document.getElementById('library-prev') as HTMLButtonElement;
+ const next=document.getElementById('library-next') as HTMLButtonElement;
+ let shelf='understand',page=0;
+ function renderLibrary(){
+  const terms=search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const matches=sourceCards.filter(card=>card.dataset.shelves!.split(' ').includes(shelf)&&terms.every(term=>card.dataset.sourceSearch!.includes(term)));
+  const pages=Math.max(1,Math.ceil(matches.length/6));page=Math.min(page,pages-1);
+  const visible=new Set(matches.slice(page*6,page*6+6));
+  sourceCards.forEach(card=>card.hidden=!visible.has(card));
+  document.getElementById('library-status')!.textContent=`${matches.length} sources for this part of the work`;
+  document.getElementById('library-page')!.textContent=`${page+1} / ${pages}`;
+  document.getElementById('library-empty')!.hidden=matches.length>0;
+  previous.disabled=page===0;next.disabled=page>=pages-1;
+ }
+ shelfButtons.forEach(button=>button.addEventListener('click',()=>{shelf=button.dataset.shelf!;page=0;shelfButtons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderLibrary();}));
+ search.addEventListener('input',()=>{page=0;renderLibrary();});
+ previous.addEventListener('click',()=>{page--;renderLibrary();});next.addEventListener('click',()=>{page++;renderLibrary();});
+ sourceCards.forEach(card=>card.addEventListener('click',()=>{const dialog=document.getElementById(`source-note-${card.dataset.sourceOpen}`) as HTMLDialogElement;dialog.showModal();document.body.classList.add('source-note-open');}));
+ document.querySelectorAll<HTMLDialogElement>('.source-note').forEach(dialog=>{dialog.querySelector('[data-source-close]')!.addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>document.body.classList.remove('source-note-open'));dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});});
+ renderLibrary();
+</script>

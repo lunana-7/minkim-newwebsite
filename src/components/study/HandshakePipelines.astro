@@ -1,0 +1,49 @@
+---
+import HandshakeArt from './HandshakeArt.astro';
+import { pipelines } from '../../data/handshake-pipelines.js';
+import PipelineDiagram from './PipelineDiagram.astro';
+const groups = [{title:'Delivery workflow',description:'Define → annotate → review → deliver',items:[0,1,2,7]},{title:'Resolve & improve',description:'Resolve disagreement and clarify policy',items:[3,5]},{title:'Evaluation & discovery',description:'Connected specialist workstreams',items:[4,6]}];
+---
+<section class="section wrap" id="safety-pipelines">
+ <div class="section-head"><div class="section-title-with-prop"><HandshakeArt variant="accent" object="institution" /><p class="label">5 / SAFETY DELIVERY PIPELINES</p><h2>Eight operating pipelines.<br/>One connected feedback loop.</h2></div><p>Explore delivery, issue resolution and evaluation. Choose a workflow to see its steps, decision points and outputs.</p></div>
+ <p class="small">Representative industry workflows synthesized from the supplied preparation notes and role description. Priorities reflect my preparation focus; these are not confirmed internal Handshake procedures.</p>
+ <div class="pipeline-explorer pipeline-visual-explorer" data-pipeline-explorer>
+  <aside class="pipeline-navigation">
+  <div class="pipeline-group-picker" aria-orientation="vertical" role="tablist" aria-label="Select a safety pipeline">
+   {groups.map(group=><div class="pipeline-nav-group"><h3>{group.title}</h3><p>{group.description}</p><div>{group.items.map(i=><button type="button" role="tab" id={`pipeline-tab-${i}`} aria-controls={`pipeline-panel-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-pipeline-tab={i}><span>0{i+1}</span><b>{pipelines[i].title}</b><span aria-hidden="true">↗</span></button>)}</div></div>)}
+  </div>
+  <p class="small pipeline-map-caption">Review findings feed back into guidance. Evaluation and red teaming are connected workstreams, used as the project requires.</p>
+  </aside>
+  <div class="pipeline-panel-column">{pipelines.map((p,i)=><article role="tabpanel" id={`pipeline-panel-${i}`} aria-labelledby={`pipeline-tab-${i}`} data-pipeline-panel={i} hidden={i!==0} tabindex="0" class="pipeline-detail"><p class="label">0{i+1} / {p.priority} preparation focus</p><h3>{p.title}</h3><p>{p.purpose}</p><PipelineDiagram pipeline={p} index={i} /><div class="pipeline-outputs"><div><span class="label">✓ / OUTPUT</span><p>{p.output}</p></div><div><span class="label">WHO I WOULD CONNECT</span><div class="pipeline-owner-chips">{p.people.split(" + ").map(person=><span>{person}</span>)}</div></div></div><details class="pipeline-support"><summary>Measures, failure patterns & application</summary><dl><dt>Measures to discuss</dt><dd>{p.metrics}</dd><dt>Failure pattern to watch</dt><dd>{p.failure}</dd></dl><p>{p.example}</p></details></article>)}</div>
+ </div>
+ <div class="pipeline-capacity"><div><p class="label">SCALE WITHOUT HIDING REWORK</p><h3>Count the work before estimating the capacity.</h3><div class="capacity-equation" aria-label="50 thousand items times 2 independent judgments equals 100 thousand initial annotations"><div><strong>50k</strong><span>items</span></div><i aria-hidden="true">×</i><div><strong>2</strong><span>judgments each</span></div><i aria-hidden="true">=</i><div class="capacity-total"><strong>100k</strong><span>initial annotations</span></div></div><div class="capacity-breakdown"><span>5 days</span><span aria-hidden="true">×</span><span>100 contributors</span><span aria-hidden="true">→</span><strong>200 annotations / person / day</strong></div><p class="capacity-caveat">Before quality review and rework.</p></div><p class="small">Illustrative arithmetic, not a staffing recommendation. Feasibility depends on task duration, actual availability, screening, support, review load and the agreed quality bar.</p></div>
+ <details class="pipeline-agreement"><summary>Agreement measures I would be ready to explain</summary><dl><dt>Percent agreement</dt><dd>The observed share of matching judgments. State whether the unit is a reviewer pair or unanimous agreement on an item.</dd><dt>Cohen’s kappa</dt><dd>A chance-corrected agreement measure for two raters assigning categories.</dd><dt>Fleiss’ kappa</dt><dd>A chance-corrected measure for categorical judgments from multiple raters under its rating-design assumptions.</dd></dl><p class="small">Choose the measure for the annotation design and label type. Report category balance and sample size; an agreement statistic does not prove correctness. <a href="https://aclanthology.org/J08-4004/" target="_blank" rel="noopener noreferrer">Artstein & Poesio · survey of inter-coder agreement ↗</a></p></details>
+ <div class="pipeline-technical"><div class="section-head"><div><p class="label">TWO TECHNICAL CONNECTIONS</p><h3>Where human judgments enter model development.</h3></div></div><div class="two-grid"><article><span class="label">09 / POST-TRAINING</span><h3>Demonstrations and preferences play different roles.</h3><p>Supervised fine-tuning can learn from examples of desired responses. In a common RLHF approach, comparisons inform a reward model used for reinforcement learning. DPO offers a way to optimize from preferences without a separate reward-model training stage.</p><p>The data must match its purpose: a policy compliance label, a preferred response and a demonstration are different artifacts.</p><footer><a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener noreferrer">InstructGPT paper ↗</a><a href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener noreferrer">DPO paper ↗</a></footer></article><article><span class="label">10 / CONTINUOUS EVALUATION</span><h3>Check what changed and what broke.</h3><p>Maintain versioned test cases, prompts and grading criteria. Compare model versions, inspect failures and preserve known cases in a regression suite. Keep evaluation holdouts separate from training data to reduce leakage.</p><p>A new failure can inform later evaluation coverage or training work after review. A score alone does not identify whether the model, environment or grader caused the problem.</p><footer><a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank" rel="noopener noreferrer">Anthropic · evaluation structure & regression ↗</a></footer></article></div></div>
+</section>
+<script>
+ const explorer = document.querySelector<HTMLElement>('[data-pipeline-explorer]');
+ if(explorer){
+  const tabs=Array.from(explorer.querySelectorAll<HTMLButtonElement>('[data-pipeline-tab]')).sort((a,b)=>Number(a.dataset.pipelineTab)-Number(b.dataset.pipelineTab));
+  const panels=Array.from(explorer.querySelectorAll<HTMLElement>('[data-pipeline-panel]'));
+  const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let animation:Animation|undefined;
+  function select(index:number){
+   animation?.cancel();
+   tabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;panels[i].hidden=i!==index;});
+   if(!preference.matches)animation=panels[index].animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
+  }
+  tabs.forEach((tab,i)=>{
+   tab.addEventListener('click',()=>select(i));
+   tab.addEventListener('keydown',event=>{
+    let next=i;
+    if(event.key==='ArrowDown'||event.key==='ArrowRight')next=(i+1)%tabs.length;
+    else if(event.key==='ArrowUp'||event.key==='ArrowLeft')next=(i-1+tabs.length)%tabs.length;
+    else if(event.key==='Home')next=0;
+    else if(event.key==='End')next=tabs.length-1;
+    else return;
+    event.preventDefault();select(next);tabs[next].focus();
+   });
+  });
+  preference.addEventListener('change',()=>animation?.cancel());
+ }
+</script>
