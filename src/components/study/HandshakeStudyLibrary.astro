@@ -1,0 +1,95 @@
+---
+import HandshakeReadingLibrary from './HandshakeReadingLibrary.astro';
+import { studyGlossary } from '../../data/handshake-study-glossary.js';
+import { pipelines, pipelineGroups } from '../../data/handshake-pipelines.js';
+const notes = [
+ {concepts:[['Policy scope','The behaviors, contexts and boundaries a project asks reviewers to judge.'],['Label taxonomy','A shared set of categories with definitions, exceptions and escalation rules.']],question:'Which facts change the label, and which ambiguities need a policy owner?',practice:'Write a small rubric with positive, negative and borderline examples; record the rationale for each label.'},
+ {concepts:[['Annotation unit','One item may need several independent judgments. Item count and annotation count are different.'],['Accepted throughput','Usable work after review, with review time and rework included in capacity planning.']],question:'How do task duration, reviewer availability and rework change the delivery plan?',practice:'Build a capacity worksheet with separate assumptions for initial labeling, quality review and rework.'},
+ {concepts:[['Reference labels','Reviewed examples used to check how well judgments follow the governing rubric.'],['Risk-based sampling','Review coverage informed by category, severity and known error patterns.']],question:'What evidence would justify accepting a batch or sending it back for review?',practice:'Design a sample-review plan and report errors by category, severity and guidance version.'},
+ {concepts:[['Agreement','How consistently reviewers label the same material; consistency alone does not establish correctness.'],['Adjudication','Resolve disputed judgments through an authorized owner and retain the decision rationale.']],question:'Is disagreement caused by missing context, unclear rules or inconsistent application?',practice:'Compare labels and rationales on a small example set, calculate agreement, and write a short adjudication log.'},
+ {concepts:[['Evaluation coverage','Cases that represent the objective, including ordinary, ambiguous and challenging inputs.'],['Failure slices','Results broken down by category or condition so an overall score does not hide weaknesses.']],question:'Does a poor result come from model behavior, the test case or the grading rule?',practice:'Create a small evaluation set, document grading criteria and report category results with denominators.'},
+ {concepts:[['Policy gap','A recurring interpretation question that existing guidance does not resolve clearly.'],['Versioned guidance','Trace each clarification to an owner, a decision and the examples affected.']],question:'What changes in the guidance, and how will I check whether the ambiguity recurs?',practice:'Turn contrasting cases into a policy question brief, then outline a guidance update and follow-up review.'},
+ {concepts:[['Authorized test scope','The systems, scenarios and boundaries agreed before adversarial testing.'],['Reproducible findings','Document inputs, conditions and observed behavior so a failure can be investigated.']],question:'Is this a validated failure, and what coverage should it add to future evaluations?',practice:'Study a published failure case and write a reproduction template, severity rationale and proposed regression case.'},
+ {concepts:[['Acceptance criteria','The quality, coverage and documentation agreed for a usable delivery.'],['Delivery trade-offs','Make the effects of rework, scope, timing and cost visible to the decision owner.']],question:'What can be accepted now, what requires rework, and who decides?',practice:'Prepare a delivery brief with accepted scope, open issues, options, owners and next actions.'}
+];
+---
+<section class="section wrap study-library" id="study-library" aria-labelledby="study-library-title">
+ <header class="library-heading"><p class="label">13 / STUDY LIBRARY</p><h2 id="study-library-title">Building my expertise in human data.</h2><p>I’m studying the concepts behind each workflow, from annotation and reviewer agreement to evaluation and delivery. Before joining, I aim to deepen this foundation through reading, small exercises and documented questions, then build on it with the team’s project-specific training.</p></header>
+ <div class="library-path" aria-label="My study approach"><span>01 · Understand the concept</span><span aria-hidden="true">→</span><span>02 · Practice on examples</span><span aria-hidden="true">→</span><span>03 · Explain the judgment</span></div>
+ {pipelineGroups.map(group => <section class="library-group" aria-label={group.title}>
+  <header><h3>{group.title}</h3><p>{group.description}</p></header>
+  <div class="library-topics">{group.items.map(i => <details class="library-topic">
+   <summary><span class="library-number">{String(i+1).padStart(2,'0')}</span><span><strong>{pipelines[i].title}</strong><small>{studyGlossary[i].terms.length + notes[i].concepts.length} key concepts · examples & practical language</small></span><span class="library-toggle" aria-hidden="true">+</span></summary>
+   <div class="library-topic-body">
+    <p class="label">CORE CONCEPTS</p><dl>{notes[i].concepts.map(([term,definition]) => <div><dt>{term}</dt><dd>{definition}</dd></div>)}</dl>
+    <div class="library-glossary"><p class="label">TERMS TO KNOW</p><dl>{studyGlossary[i].terms.map(([term,meaning,example]) => <div><dt>{term}</dt><dd>{meaning}<span class="library-example"><b>Example</b> {example}</span></dd></div>)}</dl></div>
+    <div class="library-distinction"><p class="label">KEEP THIS DISTINCTION CLEAR</p><p>{studyGlossary[i].distinction}</p></div>
+    <div class="library-wording"><p class="label">HOW I WOULD ASK IT AT WORK</p><blockquote>“{studyGlossary[i].wording}”</blockquote></div>
+    <div class="library-question"><p class="label">QUESTION I’M STUDYING</p><p>{notes[i].question}</p></div>
+    <div class="library-practice"><p class="label">PRACTICE I PLAN TO DO</p><p>{notes[i].practice}</p></div>
+    {i===1 && <div class="library-capacity-content"><div class="pipeline-capacity"><div><p class="label">SCALE WITHOUT HIDING REWORK</p><h3>Count the work before estimating the capacity.</h3><div class="capacity-equation" aria-label="50 thousand items times 2 independent judgments equals 100 thousand initial annotations"><div><strong>50k</strong><span>items</span></div><i aria-hidden="true">×</i><div><strong>2</strong><span>judgments each</span></div><i aria-hidden="true">=</i><div class="capacity-total"><strong>100k</strong><span>initial annotations</span></div></div><div class="capacity-breakdown"><span>5 days</span><span aria-hidden="true">×</span><span>100 contributors</span><span aria-hidden="true">→</span><strong>200 annotations / person / day</strong></div><p class="capacity-caveat">Before quality review and rework.</p></div><p class="small">Illustrative arithmetic, not a staffing recommendation. Feasibility depends on task duration, actual availability, screening, support, review load and the agreed quality bar.</p></div></div>}
+    {i===3 && <div class="library-agreement-content"><details class="pipeline-agreement"><summary>Agreement measures I would be ready to explain</summary><dl><dt>Percent agreement</dt><dd>The observed share of matching judgments. State whether the unit is a reviewer pair or unanimous agreement on an item.</dd><dt>Cohen’s kappa</dt><dd>A chance-corrected agreement measure for two raters assigning categories.</dd><dt>Fleiss’ kappa</dt><dd>A chance-corrected measure for categorical judgments from multiple raters under its rating-design assumptions.</dd></dl><p class="small">Choose the measure for the annotation design and label type. Report category balance and sample size; an agreement statistic does not prove correctness. <a href="https://aclanthology.org/J08-4004/" target="_blank" rel="noopener noreferrer">Artstein & Poesio · survey of inter-coder agreement ↗</a></p></details></div>}
+    <a class="library-workflow-link" href="#safety-pipelines" data-study-workflow={i}>Explore this workflow above ↑</a>
+   </div>
+  </details>)}</div>
+ </section>)}
+ <HandshakeReadingLibrary />
+ <footer class="library-references"><p class="label">REFERENCE READING</p><a href="https://labelstud.io/tutorials/how_to_measure_inter_annotator_agreement_and_build_human_consensus" target="_blank" rel="noopener noreferrer">Label Studio · agreement & consensus ↗</a><a href="https://aclanthology.org/J08-4004/" target="_blank" rel="noopener noreferrer">Artstein &amp; Poesio · agreement measures ↗</a><a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents" target="_blank" rel="noopener noreferrer">Anthropic · evaluation concepts ↗</a><p>Examples here are illustrative study notes. Project terminology, label definitions and acceptance rules should be confirmed with the team.</p></footer>
+</section>
+<script>
+ document.querySelectorAll<HTMLAnchorElement>('[data-study-workflow]').forEach(link => {
+  link.addEventListener('click', () => {
+   document.querySelector<HTMLButtonElement>(`[data-pipeline-tab="${link.dataset.studyWorkflow}"]`)?.click();
+  });
+ });
+</script>
+<style>
+ .library-glossary{margin-top:22px;padding-top:18px;border-top:1px solid #dce9ed;}
+ .library-glossary dl>div{padding-bottom:14px;border-bottom:1px solid #edf2f4;}
+ .library-example{display:block;margin-top:7px;padding-left:10px;border-left:2px solid #a8cdd5;font-size:13px;color:#5a737d;}
+ .library-example b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.07em;}
+ .library-distinction,.library-wording{margin-top:16px;padding:14px;background:#eef6f8;border-radius:8px;}
+ .library-distinction p:last-child{margin:0;}
+ .library-wording{background:#214f5b;color:#fff;}
+ .library-wording .label{color:#c7e6ed;}
+ .library-wording blockquote{margin:0;padding:0;border:0;font-size:14px;color:inherit;}
+ .library-references{padding:20px;border-radius:12px;background:#f1f7f8;display:flex;gap:12px 22px;flex-wrap:wrap;font-size:13px;}
+ .library-references .label,.library-references p:last-child{flex-basis:100%;margin:0;}
+ .library-references p:last-child{color:#607a84;font-size:12px;}
+ .study-library{max-width:1100px;}
+ .library-heading>p:last-child{max-width:760px;color:#496775;line-height:1.7;}
+ .library-path{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 20px;margin:24px 0 32px;background:#edf7f9;border-radius:12px;color:#214f5b;font-size:13px;}
+ .library-group{margin:0 0 28px;}
+ .library-group>header{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:12px;}
+ .library-group>header h3{font-size:22px;margin:0;}
+ .library-group>header p{font-size:14px;color:#55727d;margin:0;}
+ .library-topics{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;}
+ .library-topic{min-width:0;border:1px solid #c6dfe5;border-radius:12px;background:#fff;overflow:hidden;}
+ .library-topic summary{display:flex;align-items:center;gap:12px;padding:18px;cursor:pointer;list-style:none;color:#214f5b;}
+ .library-topic summary::-webkit-details-marker{display:none;}
+ .library-topic summary strong{display:block;font-size:17px;line-height:1.35;}
+ .library-topic summary small{display:block;font-size:12px;font-weight:400;line-height:1.5;color:#55727d;margin-top:5px;}
+ .library-number{display:grid;place-items:center;flex:0 0 32px;height:32px;border-radius:50%;background:#e1f3f6;font-size:12px;}
+ .library-toggle{margin-left:auto;font-size:22px;}
+ .library-topic[open] .library-toggle{transform:rotate(45deg);}
+ .library-topic[open] summary{background:#f1f8fa;}
+ .library-topic-body{padding:18px;font-size:14px;line-height:1.65;color:#345762;}
+ .library-topic-body dl{margin:0;display:grid;gap:14px;}
+ .library-topic-body dt{font-weight:700;color:#214f5b;}
+ .library-topic-body dd{margin:3px 0 0;}
+ .library-question,.library-practice{margin-top:16px;padding:14px;border-radius:8px;background:#f1f6f8;}
+ .library-practice{background:#e9f4e3;}
+ .library-topic-body .label{font-size:10px;letter-spacing:.1em;margin:0 0 6px;}
+ .library-question p:last-child,.library-practice p:last-child{margin:0;}
+ .library-workflow-link{display:inline-block;margin-top:18px;font-size:13px;}
+ .library-capacity-content :global(.pipeline-capacity){display:block;padding:16px;margin-top:18px;}
+ .library-capacity-content :global(h3){font-size:19px;line-height:1.35;}
+ .library-capacity-content :global(.capacity-equation){gap:8px;flex-wrap:wrap;}
+ .library-capacity-content :global(.capacity-equation>div){padding:10px 8px;min-width:65px;}
+ .library-capacity-content :global(.capacity-equation span){font-size:11px;}
+ .library-capacity-content :global(.capacity-equation strong){font-size:25px;}
+ .library-capacity-content :global(.capacity-breakdown){flex-wrap:wrap;font-size:12px;}
+ .library-agreement-content :global(.pipeline-agreement){margin-top:18px;padding:14px;}
+ .library-agreement-content :global(summary){font-size:15px;}
+ @media(max-width:720px){.library-topics{grid-template-columns:1fr;}.library-group>header{gap:4px;}.library-path{gap:8px;font-size:12px;}}
+</style>

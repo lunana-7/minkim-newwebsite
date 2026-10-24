@@ -44,13 +44,12 @@ export const experienceSkills = {
  'hq-ai-survey-2025':'Pretest instructions and revise them for participant understanding.',
  'studio-ai-workflows':'Connect actual workflows to requirements and distinguish deployed work from opportunities.',
  'global-ai-insights':'Adapt recurring evidence and communications for different audiences.',
- 'solution-landscape':'Compare capabilities against user workflows and support informed partner discussions.',
+ 'solution-landscape':'Evaluate tools hands-on, identify useful features and translate vendor discussions into implementation requirements.',
  'slack-automation-workshop':'Pair a working example with a playbook, hands-on training and office hours.',
- 'uiuc-agentic-collaboration':'Clarify proposed research scope and contractual questions before execution.'
 };
 export const workflowExperience = [
  {
-  0:{slugs:['ai-tool-intake','studio-ai-workflows','solution-landscape','uiuc-agentic-collaboration'],apply:'I would use this requirements-scoping discipline to clarify the lab’s intended use, acceptance examples and unresolved questions before writing the brief.'},
+  0:{slugs:['ai-tool-intake','studio-ai-workflows','solution-landscape'],apply:'I would use this requirements-scoping discipline to clarify the lab’s intended use, acceptance examples and unresolved questions before writing the brief.'},
   2:{slugs:['ai-budget-forecast','finops-operating-charter','ai-spend-prioritization','model-migration-analysis'],apply:'I would make staffing, timing and rework assumptions explicit, then present feasible options for the delivery owner to approve.'},
   3:{slugs:['enterprise-adoption-criteria','ai-four-layer-framework','agent-vendor-policy-review','global-ai-strategy'],apply:'I would organize the applicable rules and difficult cases, then obtain the policy owner’s interpretation before translating them into review criteria.'}
  },
@@ -122,9 +121,8 @@ export const experienceApplications = {
  'hq-ai-survey-2025':'Pilot instructions with intended users and revise confusing wording before scaling participation.',
  'studio-ai-workflows':'Ask the lab about the actual workflow, maturity and constraints behind the requested data.',
  'global-ai-insights':'Adapt updates for contributors, internal leads or lab contacts while keeping the evidence consistent.',
- 'solution-landscape':'Connect a partner’s stated needs with concrete task requirements and known limitations.',
+ 'solution-landscape':'Bring hands-on evaluation findings and clear requirements to partner discussions before agreeing on an implementation plan.',
  'slack-automation-workshop':'Pair the playbook with worked examples and a reliable way to ask implementation questions.',
- 'uiuc-agentic-collaboration':'Separate agreed scope from open contractual or research questions before promising execution.'
 };
 // Only stage or outcome context not already conveyed by the contribution summary.
 export const experienceStageNotes = {
@@ -151,11 +149,10 @@ export const experienceStageNotes = {
  'policy-impact-dashboard':'Engineering owned implementation.',
  'low-cost-model-campaign':'Launch and participation were not confirmed.',
  'software-reliability-levels':'The standard and pilot remained proposals.',
- 'uiuc-agentic-collaboration':'The work remained at the preliminary discussion stage.'
 };
 export const workflowExperienceSummaries = [
  {
-  0:'At Krafton, I translated tool requests and studio workflows into clearer requirements, and supported solution evaluations and preliminary research scoping. These experiences taught me to clarify the need before committing to a plan.',
+  0:'At Krafton, I joined solution-adoption meetings with vendors including DeepL and Microsoft, tried their tools myself and researched which features would support our workflows. Alongside tool intake and studio consulting, this helped me turn adoption needs into practical implementation requirements.',
   2:'I built cost forecasts, compared migration economics and prioritized optimization opportunities. I also documented workstream ownership, making assumptions and delivery constraints easier to discuss.',
   3:'I prepared adoption criteria, risk frameworks and vendor-policy reviews. Across this work, I connected policy boundaries with the questions and owners needed for a decision.'
  },
@@ -240,7 +237,7 @@ workflowExperienceSummaries[4][5] = 'At Krafton, I built a model comparison inte
 // Explicit evidence links for each action within a stakeholder workflow.
 export const workflowStepExperience = [
  {
-  0:[['ai-tool-intake','studio-ai-workflows'],['solution-landscape','gong-voice-of-customer'],['uiuc-agentic-collaboration','ent-operating-agent']],
+  0:[['ai-tool-intake','studio-ai-workflows'],['solution-landscape','gong-voice-of-customer'],['solution-landscape','ent-operating-agent']],
   2:[['ai-budget-forecast'],['model-migration-analysis','ai-spend-prioritization'],['finops-operating-charter','six-for-26-dashboard']],
   3:[['agent-vendor-policy-review','global-ai-strategy'],['enterprise-adoption-criteria'],['ai-four-layer-framework']]
  },

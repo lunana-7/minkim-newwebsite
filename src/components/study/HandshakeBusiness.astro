@@ -1,13 +1,5 @@
 ---
 import HandshakeStakeholders from './HandshakeStakeholders.astro';
-const facts = [
- ['Expertise across career stages', 'Contributors include students, researchers and professionals. Relevant knowledge and careful application of project instructions matter.'],
- ['Human judgment takes several forms', 'Tasks can involve writing responses, checking reasoning or accuracy, labeling data, challenging models and providing detailed feedback.'],
- ['Demand changes by project', 'Trainer work is contract-based, flexible and variable. Hours are not guaranteed; projects can ramp up or wind down quickly.'],
- ['Matching is project-specific', 'Domain fit, prior performance and project needs influence matching. New assessments may be required even for experienced contributors.'],
- ['Support enables good work', 'Project leads provide onboarding, documentation, examples and ongoing support. Some projects offer office hours or live sessions.'],
- ['Quality can lead to more responsibility', 'Consistently strong contributors may progress to reviewer or specialist responsibilities, depending on the project.']
-];
 const stages = [
  ['Lab need', 'A defined task, domain and standard', 'Scope the program', ['Support project scoping with labs', 'Develop evaluations across policy areas'], 'Program scope', 'Labs + internal stakeholders'],
  ['Contributor fit', 'Relevant expertise and project screening', 'Coordinate annotators', ['Coordinate trusted annotators', 'Support careful, consistent edge-case review'], 'Review coordination', 'Annotators + review teams'],
@@ -52,22 +44,6 @@ const stageVisuals = [
  <HandshakeStakeholders stages={stages} stageOutputs={stageOutputs} />
  </div>
 
- <div class="business-facts"><div><p class="label">THE ARTICLE / MY TAKEAWAYS</p><h3>What makes AI trainer work at Handshake different.</h3><p class="business-facts-intro">The work draws on different kinds of expertise, and each project brings its own tasks, standards and pace. These takeaways show why matching, guidance and ongoing support matter to the contributor experience.</p><a href="https://support.joinhandshake.com/hc/en-us/articles/37576344583191-Working-as-an-AI-Trainer-with-frontier-labs-through-Handshake-AI" target="_blank" rel="noopener noreferrer">Read the Handshake AI Trainer guide ↗</a></div><div class="business-fact-grid">{facts.map(([title,description],i)=><article class="business-visual-fact"><span class="fact-index">0{i+1}</span>
- <div class="fact-diagram" aria-label={[
- 'Students, researchers and professionals contribute expertise',
- 'Human work includes writing, evaluation, labeling and feedback',
- 'Project demand can rise and fall; illustrative pattern',
- 'Domain fit, assessments and project needs inform matching',
- 'Contributors receive instructions, examples and support',
- 'Contributor work may lead to reviewer or specialist responsibilities'
- ][i]}>
- {i===0&&<div class="fact-expertise"><span>Students</span><span>Researchers</span><span>Professionals</span><b>Relevant expertise</b></div>}
- {i===1&&<div class="fact-task-grid"><span>✎ Write</span><span>✓ Evaluate</span><span>▤ Label</span><span>↗ Challenge</span><span>↔ Feedback</span></div>}
- {i===2&&<div class="fact-demand"><div class="fact-demand-bars" aria-hidden="true">{[30,52,82,64,96,50,26,60,78].map(h=><span style={`height:${h}%`}></span>)}</div><span>Ramp up <span aria-hidden="true">↗ ↘</span> Wind down</span><small>Illustrative demand pattern</small></div>}
- {i===3&&<div class="fact-match"><div><span>Domain fit</span><span>Assessment</span><span>Project needs</span></div><span class="fact-connector" aria-hidden="true">↓</span><b>Project match</b></div>}
- {i===4&&<div class="fact-support"><b>Contributor</b><div><span>Instructions</span><span>Examples</span><span>Support</span></div></div>}
- {i===5&&<div class="fact-progression"><span>Contributor</span><span class="fact-connector" aria-hidden="true">→</span><div><b>Reviewer</b><b>Specialist</b></div><small>Possible paths, based on quality &amp; project needs</small></div>}
- </div><h4>{title}</h4><p>{description}</p></article>)}</div></div>
 
 </section>
 

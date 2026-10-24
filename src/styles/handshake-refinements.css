@@ -919,3 +919,205 @@ body.work-dialog-open{overflow:hidden}.work-dialog{box-sizing:border-box;width:m
  #safety-pipelines .pipeline-step-list li+li::before,#safety-pipelines .pipeline-step-list li+li::after{left:50%}
  #safety-pipelines .pipeline-step-fit{grid-template-columns:1fr 1fr}
 }
+
+/* Put the proposed action directly below its workflow step. */
+#safety-pipelines .pipeline-step-node{align-items:flex-start}
+#safety-pipelines .pipeline-step-copy{min-width:0}
+#safety-pipelines .pipeline-step-copy>strong{display:block;font-size:13px;line-height:1.45;color:#214f5b}
+#safety-pipelines .pipeline-action-label{display:block;font-size:8px;line-height:1.5;letter-spacing:.06em;font-weight:600;color:#527d89;margin-top:10px}
+#safety-pipelines .pipeline-step-copy>p,#safety-pipelines .pipeline-decision-action>p{font-size:11px;line-height:1.55;color:#425f69;margin:5px 0 0}
+#safety-pipelines .flow-step-final .pipeline-step-copy>strong{color:#fff}
+#safety-pipelines .flow-step-final .pipeline-action-label{color:#c0f4f8}
+#safety-pipelines .flow-step-final .pipeline-step-copy>p{color:#e1f0f3}
+#safety-pipelines .pipeline-decision-action{padding:12px;margin-top:12px;border:1px solid #c9dfe4;border-radius:8px;background:#fff}
+#safety-pipelines .pipeline-decision-action .pipeline-action-label{margin-top:0}
+
+/* Compact decision nodes and align branch connectors to card centers. */
+#safety-pipelines .pipeline-decision-block{margin-top:24px}
+#safety-pipelines .pipeline-decision-block::before{content:'';top:-19px;left:50%;width:1.5px;height:10px;background:#518a98;transform:translateX(-50%)}
+#safety-pipelines .pipeline-decision-block::after{content:'';position:absolute;top:-9px;left:50%;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #518a98}
+#safety-pipelines .pipeline-decision-block h4{padding:8px 10px;font-size:13px;line-height:1.4;border-radius:8px;min-height:0}
+#safety-pipelines .pipeline-decision-block h4>span{font-size:16px;line-height:1;vertical-align:baseline}
+#safety-pipelines .pipeline-decision-paths{--branch-gap:12px;gap:var(--branch-gap);margin-top:24px}
+#safety-pipelines .pipeline-decision-paths::before{left:calc(25% - var(--branch-gap)/4);right:calc(25% - var(--branch-gap)/4);top:-13px;height:7px;border-width:1.5px;border-radius:4px 4px 0 0}
+#safety-pipelines .pipeline-decision-paths::after{top:-24px;left:50%;height:12px;border-left-width:1.5px;transform:translateX(-50%)}
+#safety-pipelines .flow-branch::before{content:'';top:-6px;left:50%;width:0;height:0;line-height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #73a5b2;transform:translateX(-50%)}
+#safety-pipelines .pipeline-merge-lines{width:calc(50% + 6px);border-width:1.5px}
+@media(max-width:440px){#safety-pipelines .pipeline-decision-paths{--branch-gap:6px}#safety-pipelines .pipeline-merge-lines{width:calc(50% + 3px)}}
+
+/* Tighten the stage and collaboration cards without clipping their content. */
+.business-process-explorer .business-stage-tabs>button{padding-top:10px;padding-bottom:10px}
+.business-process-explorer .business-stage-tabs .stage-topline{margin-bottom:4px}
+.business-process-explorer .business-stage-tabs strong{margin-bottom:4px}
+.business-process-explorer .business-stage-tabs .stage-description{line-height:1.35}
+#stakeholders .combined-stage-summary{padding:16px 16px 12px}
+#stakeholders .combined-stage-columns>div,
+#stakeholders .combined-stage-columns>div+div{padding:10px 12px}
+#stakeholders .combined-stage-columns .label{margin-bottom:7px}
+#stakeholders .combined-people{gap:4px}
+#stakeholders .combined-people button{padding:4px 9px;min-height:28px}
+#stakeholders .combined-stage-columns ul{gap:5px}
+#stakeholders .collaboration-group{margin-top:20px;padding:20px}
+#stakeholders .collaboration-group-heading{margin-bottom:16px}
+#stakeholders .relationship-center{padding-top:14px;padding-bottom:14px}
+#stakeholders .relationship-center>strong{margin-top:6px}
+#stakeholders .relationship-center .center-role-rule{margin-top:10px}
+#stakeholders .relationship-center p{margin-top:8px;line-height:1.5}
+#stakeholders .relationship-center>small{margin-top:8px}
+#stakeholders .stakeholder-detail{margin-top:16px;padding-top:12px}
+#stakeholders .stakeholder-exchange>div{padding:16px}
+#stakeholders .stakeholder-exchange h4{margin:10px 0 7px;line-height:1.3}
+#stakeholders .stakeholder-exchange p{line-height:1.5;margin-top:7px}
+#stakeholders .exchange-action ol{gap:10px;margin-top:12px}
+#stakeholders .exchange-action li{line-height:1.45}
+#stakeholders .stakeholder-exchange .exchange-action{padding-bottom:42px;clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),50% 100%,0 calc(100% - 28px))}
+@media(min-width:761px){
+ #stakeholders .relationship-map .stakeholder-selectors{grid-template-rows:repeat(3,minmax(76px,auto));row-gap:16px}
+ #stakeholders .relationship-map .stakeholder-selectors button{padding:10px 12px}
+ #stakeholders .stakeholder-exchange .exchange-input,
+ #stakeholders .stakeholder-exchange .exchange-return{margin-bottom:28px}
+}
+@media(max-width:760px){
+ #stakeholders .collaboration-group{padding:14px}
+ #stakeholders .stakeholder-exchange>div{padding:14px}
+ #stakeholders .combined-stage-summary{padding:12px}
+}
+
+/* Workflow groups sit above the detail, with directional selection cards. */
+#safety-pipelines .pipeline-visual-explorer{grid-template-columns:minmax(0,1fr);gap:20px}
+#safety-pipelines .pipeline-group-picker{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#safety-pipelines .pipeline-nav-group{min-width:0;padding:16px;background:#f4f9fa;border:1px solid #d8e8ec;border-radius:12px}
+#safety-pipelines .pipeline-nav-group:first-child{grid-column:1 / -1}
+#safety-pipelines .pipeline-nav-group>p{margin-bottom:12px}
+#safety-pipelines .pipeline-nav-group>div{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#safety-pipelines .pipeline-nav-group:first-child>div{grid-template-columns:repeat(4,minmax(0,1fr))}
+#safety-pipelines .pipeline-nav-group button{min-height:66px;padding:12px 24px 12px 12px;border:0;border-radius:0;background:#e0eff3;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%);transition:background .16s,color .16s}
+#safety-pipelines .pipeline-nav-group button>span:last-child{display:none}
+#safety-pipelines .pipeline-nav-group button b{font-size:13px;line-height:1.4}
+#safety-pipelines .pipeline-nav-group button:hover{background:#cce8ee}
+#safety-pipelines .pipeline-nav-group button[aria-selected=true]{background:#214f5b;color:#fff}
+#safety-pipelines .pipeline-nav-group button:focus-visible{outline:0;box-shadow:inset 0 0 0 3px #23879b;text-decoration:underline;text-underline-offset:3px}
+#safety-pipelines .pipeline-map-caption{margin:10px 0 0}
+@media(max-width:700px){
+ #safety-pipelines .pipeline-group-picker{grid-template-columns:1fr;gap:12px}
+ #safety-pipelines .pipeline-nav-group:first-child>div{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #safety-pipelines .pipeline-nav-group{padding:12px}
+}
+@media(max-width:380px){
+ #safety-pipelines .pipeline-nav-group>div,#safety-pipelines .pipeline-nav-group:first-child>div{grid-template-columns:1fr}
+}
+
+/* A single horizontal rail: delivery, resolution, then evaluation. */
+#safety-pipelines .pipeline-navigation{overflow-x:auto;padding-bottom:4px}
+#safety-pipelines .pipeline-group-picker{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;min-width:1000px;align-items:stretch}
+#safety-pipelines .pipeline-nav-group:first-child{grid-column:auto}
+#safety-pipelines .pipeline-nav-group{padding:12px 10px;display:flex;flex-direction:column}
+#safety-pipelines .pipeline-nav-group h3{font-size:15px}
+#safety-pipelines .pipeline-nav-group>p{font-size:10px;margin-bottom:10px;min-height:30px}
+#safety-pipelines .pipeline-nav-group>div{grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;margin-top:auto}
+#safety-pipelines .pipeline-nav-group:first-child>div{grid-template-columns:repeat(4,minmax(0,1fr))}
+#safety-pipelines .pipeline-nav-group button{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;min-height:82px;padding:10px 19px 10px 10px}
+#safety-pipelines .pipeline-nav-group button b{font-size:11px;line-height:1.35}
+#safety-pipelines .pipeline-nav-group button>span{font-size:9px}
+#safety-pipelines .pipeline-map-caption{max-width:100%;}
+
+/* Compact reading density across all eight workflow panels. */
+#safety-pipelines .pipeline-nav-group{padding:10px}
+#safety-pipelines .pipeline-nav-group>p{min-height:0;margin:0 0 8px}
+#safety-pipelines .pipeline-nav-group button{min-height:60px;padding-top:7px;padding-bottom:7px;gap:3px}
+#safety-pipelines .pipeline-visual-explorer{gap:14px}
+#safety-pipelines .pipeline-visual-explorer .pipeline-detail{padding:18px}
+#safety-pipelines .pipeline-detail>h3{margin:6px 0;font-size:26px}
+#safety-pipelines .pipeline-detail>p:not(.label){margin:0 0 14px}
+#safety-pipelines .pipeline-flow-compact{padding:14px 14px 12px;margin-bottom:14px}
+#safety-pipelines .pipeline-flow-heading{margin-bottom:9px}
+#safety-pipelines .pipeline-step-node{padding:9px 10px;align-items:flex-start}
+#safety-pipelines .pipeline-step-fit>div{padding:9px 10px}
+#safety-pipelines .pipeline-action-label{margin-top:6px}
+#safety-pipelines .pipeline-step-copy>p,#safety-pipelines .pipeline-step-fit p{margin-top:4px;line-height:1.45}
+#safety-pipelines .pipeline-step-fit .label{margin-bottom:4px}
+#safety-pipelines .pipeline-step-list{gap:20px}
+#safety-pipelines .pipeline-step-list li+li::before{top:-16px;height:8px}
+#safety-pipelines .pipeline-step-list li+li::after{top:-8px}
+#safety-pipelines .pipeline-decision-paths .flow-branch{padding:8px 10px}
+#safety-pipelines .pipeline-decision-evidence{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.35fr);gap:10px;margin-top:10px;align-items:stretch}
+#safety-pipelines .pipeline-decision-evidence .pipeline-decision-action{margin:0;padding:9px 10px}
+#safety-pipelines .pipeline-decision-evidence .pipeline-decision-fit{margin:0;min-width:0}
+#safety-pipelines .pipeline-decision-evidence .pipeline-step-fit{height:100%}
+#safety-pipelines .pipeline-decision-action .pipeline-action-label{margin-top:0}
+#safety-pipelines .pipeline-feedback-note{padding:9px 12px;margin-top:12px}
+#safety-pipelines .pipeline-feedback-note p{margin-top:2px}
+#safety-pipelines .pipeline-outputs{padding:12px;gap:14px}
+@media(max-width:580px){
+ #safety-pipelines .pipeline-decision-evidence{grid-template-columns:1fr}
+ #safety-pipelines .pipeline-visual-explorer .pipeline-detail{padding:12px}
+}
+
+/* Overlap adjacent arrows into a continuous workflow ribbon. */
+#safety-pipelines .pipeline-nav-group>div{gap:0}
+#safety-pipelines .pipeline-nav-group button{position:relative;width:calc(100% + 16px);padding-left:24px;padding-right:24px}
+#safety-pipelines .pipeline-nav-group button:first-child{padding-left:12px;z-index:4}
+#safety-pipelines .pipeline-nav-group button:nth-child(2){z-index:3}
+#safety-pipelines .pipeline-nav-group button:nth-child(3){z-index:2}
+#safety-pipelines .pipeline-nav-group button:nth-child(4){z-index:1}
+#safety-pipelines .pipeline-nav-group button:last-child{width:100%}
+
+/* Pair each step with vertically stacked experience and study notes. */
+#safety-pipelines .pipeline-step-fit{grid-template-columns:minmax(0,1fr);gap:6px}
+#safety-pipelines .pipeline-step-list li,
+#safety-pipelines .pipeline-decision-evidence{grid-template-columns:minmax(0,.8fr) minmax(0,1.35fr)}
+#safety-pipelines .pipeline-step-fit>div{padding:9px 12px}
+@media(max-width:580px){
+ #safety-pipelines .pipeline-step-list li,
+ #safety-pipelines .pipeline-decision-evidence{grid-template-columns:minmax(0,1fr)}
+}
+
+/* Keep all step boundaries visible inside one connected group rail. */
+#safety-pipelines .pipeline-group-picker{gap:0;border:1px solid #d0e3e8;border-radius:12px;background:#f4f9fa;overflow:hidden}
+#safety-pipelines .pipeline-nav-group{border:0;border-radius:0;background:transparent;padding:12px}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group{border-left:1px solid #c9dfe5}
+#safety-pipelines .pipeline-nav-group button::after{content:'';position:absolute;inset:0 0 0 auto;width:18px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='80' viewBox='0 0 18 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L18 40 L0 80' fill='none' stroke='%23f4f9fa' stroke-width='4' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+#safety-pipelines .pipeline-nav-group button:last-child::after{content:none}
+
+/* Visible reading panel beside the operational workflow. */
+#safety-pipelines .pipeline-visual-explorer{max-width:1300px}
+#safety-pipelines .pipeline-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.32fr);gap:16px;align-items:start}
+#safety-pipelines .pipeline-workspace-main{min-width:0}
+#safety-pipelines .pipeline-insights{display:grid;gap:10px;min-width:0;padding:12px;border:1px solid #d3e5e9;border-radius:10px;background:#f8fbfc}
+#safety-pipelines .pipeline-insights>h4{font-size:15px;line-height:1.4;color:#214f5b;margin:0 0 2px}
+#safety-pipelines .pipeline-insights>section{padding:12px;border-radius:8px;border-top:3px solid #80b4c1;background:#e8f3f6}
+#safety-pipelines .pipeline-insights>.pipeline-insight-failure{border-color:#c6ab77;background:#faf4e8}
+#safety-pipelines .pipeline-insights>.pipeline-insight-example{border-color:#a1bd8e;background:#eaf4e4}
+#safety-pipelines .pipeline-insights .label{display:block;font-size:9px;line-height:1.5;letter-spacing:.06em;color:#476570;margin:0}
+#safety-pipelines .pipeline-insights p{font-size:12px;line-height:1.6;color:#345560;margin:8px 0 0}
+@media(max-width:1000px){
+ #safety-pipelines .pipeline-workspace{grid-template-columns:minmax(0,1fr)}
+ #safety-pipelines .pipeline-insights{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #safety-pipelines .pipeline-insights>h4{grid-column:1/-1}
+}
+@media(max-width:580px){#safety-pipelines .pipeline-insights{grid-template-columns:1fr}}
+
+#safety-pipelines .pipeline-insights .pipeline-outputs{display:grid;grid-template-columns:1fr;gap:14px;padding:12px;margin:0;border-radius:8px;background:#deeff3}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips{gap:5px;margin-top:8px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips span{font-size:10px;padding:5px 7px}
+@media(min-width:581px) and (max-width:1000px){
+ #safety-pipelines .pipeline-insights .pipeline-outputs{grid-column:1/-1;grid-template-columns:1fr 1fr}
+}
+#safety-pipelines .pipeline-nav-group h3{margin-bottom:10px}
+
+/* Chevron boundaries between the three workflow groups. */
+#safety-pipelines .pipeline-nav-group{position:relative}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group{border-left:0;padding-left:24px}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group::before{content:'';position:absolute;left:0;top:0;bottom:0;width:16px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 100' preserveAspectRatio='none'%3E%3Cpath d='M1 0 L15 50 L1 100' fill='none' stroke='%23b9d6df' stroke-width='1.2' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+
+/* Align group chevron tips with the center of the workflow arrow row. */
+#safety-pipelines .pipeline-group-picker{--workflow-arrow-height:72px}
+#safety-pipelines .pipeline-nav-group button{height:var(--workflow-arrow-height);min-height:var(--workflow-arrow-height)}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group::before{--tip-y:calc(100% - 12px - var(--workflow-arrow-height)/2);background:#b9d6df;clip-path:polygon(0 0,1.3px 0,16px var(--tip-y),1.3px 100%,0 100%,14.6px var(--tip-y))}
+
+/* Let the experience source and its description read as one sentence. */
+#safety-pipelines .pipeline-fit-evidence>strong{display:inline;margin-right:8px}
+#safety-pipelines .pipeline-fit-evidence>p{display:inline;margin:0}
+
+/* Center the group boundary in the space between neighboring cards. */
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group::before{left:-8px}

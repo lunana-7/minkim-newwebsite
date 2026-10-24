@@ -1,6 +1,6 @@
 ---
 import PipelineStepFit from './PipelineStepFit.astro';
-import { pipelineStepFit, pipelineDecisionFit } from '../../data/handshake-pipeline-step-fit.js';
+import { pipelineStepFit, pipelineDecisionFit, pipelineStepActions, pipelineDecisionActions } from '../../data/handshake-pipeline-step-fit.js';
 const { pipeline, index } = Astro.props;
 const feedback = ['Revise guidance from audit findings','Adjust guidance, staffing or assignments','Re-review after correction','Recalibrate on the updated guidance','Revise cases or investigate the grader','Apply the clarification to future cases','Carry validated findings into evaluation coverage','Use the retrospective to improve the next project'][index];
 const returnIndex = [0,1,2,1,1,0,1,0][index];
@@ -9,14 +9,14 @@ const steps = index === 2 ? ['Collect submitted annotations','Sample by risk and
 ---
 <div class:list={["pipeline-flow-compact", {"has-flow-decision":decision}]} aria-label={`${pipeline.title} workflow`} data-flow-diagram data-return-step={returnIndex}>
  <svg class="flow-return-overlay" aria-hidden="true"><defs><marker id={`return-arrow-${index}`} markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#7d9f6b" /></marker></defs><path class="flow-return-path" marker-end={`url(#return-arrow-${index})`} /></svg>
- <div class="pipeline-flow-heading"><span class="label">WORKFLOW</span><span>{decision ? 'Steps + decision' : `${steps.length} steps`}</span></div>
+ <div class="pipeline-flow-heading"><span class="label">WORKFLOW</span></div>
  {index === 3 && <div class="pipeline-reviewer-sample" aria-label="Illustrative reviewer judgments"><span>A · Allow</span><span>B · Flag</span><span>C · Allow</span></div>}
  <div class="pipeline-flow-track">
- <ol class="pipeline-step-list">{steps.map((step:string,i:number)=><li class:list={{"flow-step-final":!decision && i===steps.length-1}}><div class="pipeline-step-node"><span>{String(i+1).padStart(2,'0')}</span><strong>{step}</strong></div><PipelineStepFit fit={pipelineStepFit[index][i]} /></li>)}</ol>
+ <ol class="pipeline-step-list">{steps.map((step:string,i:number)=><li class:list={{"flow-step-final":!decision && i===steps.length-1}}><div class="pipeline-step-node"><span>{String(i+1).padStart(2,'0')}</span><div class="pipeline-step-copy"><strong>{step}</strong><span class="pipeline-action-label">WHAT I WOULD DO</span><p>{pipelineStepActions[index][i]}</p></div></div><PipelineStepFit fit={pipelineStepFit[index][i]} /></li>)}</ol>
  {decision && <div class="pipeline-decision-block"><h4><span aria-hidden="true">◇</span> {index === 2 ? 'Does the batch meet the agreed criteria?' : 'Do the judgments differ?'}</h4><div class="pipeline-decision-paths">
   <div class="flow-branch flow-branch-yes"><span class="label">YES</span><p>{index === 2 ? 'Accept the batch.' : 'Route to an authorized adjudicator or policy owner. Record the decision and rationale.'}</p></div>
   <div class="flow-branch flow-branch-no"><span class="label">{index === 2 ? 'NO / UNRESOLVED' : 'NO'}</span><p>{index === 2 ? 'Investigate the errors, correct the work and re-review.' : 'Keep the agreed judgment for the quality check.'}</p></div>
- </div>{index === 3 && <><div class="pipeline-merge-lines" aria-hidden="true"></div><p class="pipeline-decision-result"><span aria-hidden="true">✓</span> Quality check → recorded reference</p></>}<div class="pipeline-decision-fit"><PipelineStepFit fit={pipelineDecisionFit[index]} /></div></div>}
+ </div>{index === 3 && <><div class="pipeline-merge-lines" aria-hidden="true"></div><p class="pipeline-decision-result"><span aria-hidden="true">✓</span> Quality check → recorded reference</p></>}<div class="pipeline-decision-evidence"><div class="pipeline-decision-action"><span class="pipeline-action-label">WHAT I WOULD DO</span><p>{pipelineDecisionActions[index]}</p></div><div class="pipeline-decision-fit"><PipelineStepFit fit={pipelineDecisionFit[index]} /></div></div></div>}
  </div>
  <div class="pipeline-feedback-note"><span aria-hidden="true">↻</span><div><span class="label">FEEDBACK LOOP</span><p>{feedback}.</p></div></div>
 </div>

@@ -56,3 +56,62 @@ export const pipelineDecisionFit = {
  2:['Krafton · Impact review','Made comparison limits and unresolved classification issues visible.','Batch acceptance thresholds and corrective-review procedures.','spendgate-impact-review'],
  3:['Krafton · Committee operations','Prepared decision materials and coordinated functional review.','Adjudicator authority, rationale records and recalibration.','ai-safety-committee']
 };
+
+// Proposed actions, aligned with the visible workflow steps.
+export const pipelineStepActions = [
+ [
+  'Confirm the policy version, intended use and acceptance criteria with the project owner.',
+  'Write label definitions and escalation rules; have the policy owner resolve unclear boundaries.',
+  'Prepare contrasting examples with rationales and get them reviewed before rollout.',
+  'Coordinate a shared review sample, compare rationales and record approved clarifications.',
+  'Track review quality by category and route recurring errors into corrective review.'
+ ],
+ [
+  'Match task requirements to contributor expertise and confirm readiness with operations.',
+  'Coordinate access, instructions and a practice sample; resolve onboarding questions.',
+  'Organize assignments around availability, task difficulty and required independent judgments.',
+  'Track accepted work, turnaround and rework together to identify delivery risks early.',
+  'Bring capacity or quality issues to the owner with evidence and practical options.'
+ ],
+ [
+  'Check that submissions include task IDs, rubric versions and required rationales.',
+  'Agree on category and risk coverage with the quality owner before drawing a sample.',
+  'Record mismatches against reviewed references and separate errors from unresolved cases.'
+ ],
+ [
+  'Keep each reviewer’s label, rationale and guidance version available for comparison.',
+  'Group disagreements by cause and bring representative examples to the review owner.'
+ ],
+ [
+  'Clarify the target behavior, policy boundary and evaluation question with the lead.',
+  'Help organize ordinary, borderline and challenging cases against a coverage plan.',
+  'Coordinate run settings and preserve model, prompt and case versions for reproducibility.',
+  'Apply approved grading guidance within my assigned scope and escalate uncertain judgments.',
+  'Summarize failures by category with denominators, examples and follow-up questions.'
+ ],
+ [
+  'Collect recurring questions with the exact policy wording and relevant case context.',
+  'Group cases by the unresolved boundary and distinguish missing context from a policy gap.',
+  'Prepare contrasting cases that show which facts change the proposed judgment.',
+  'Send a focused question to the authorized owner and track its resolution.',
+  'Publish approved changes with version notes and coordinate a fresh calibration sample.'
+ ],
+ [
+  'Confirm authorized targets, methods, access limits and stop conditions with the specialist lead.',
+  'Help translate known risk areas into reviewable scenarios under specialist guidance.',
+  'Support controlled runs and capture reproducible evidence within the approved scope.',
+  'Organize findings and reproduction details for specialist validation and severity review.',
+  'Prepare validated cases for the evaluation owner to consider as regression coverage.'
+ ],
+ [
+  'Record the agreed deliverables, quality criteria and unresolved scope questions.',
+  'Estimate work and review effort with operations, making rework assumptions explicit.',
+  'Keep progress, quality issues and accountable owners visible in delivery updates.',
+  'Present timing, quality and cost options to the owner and track the agreed decision.',
+  'Coordinate acceptance checks, document limitations and turn feedback into next actions.'
+ ]
+];
+export const pipelineDecisionActions = {
+ 2:'Present the QA evidence to the authorized owner, track the batch decision and coordinate corrective review when required.',
+ 3:'Route disputed cases to the authorized adjudicator, record the rationale and coordinate approved guidance updates.'
+};
