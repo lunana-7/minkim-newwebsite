@@ -1121,3 +1121,857 @@ body.work-dialog-open{overflow:hidden}.work-dialog{box-sizing:border-box;width:m
 
 /* Center the group boundary in the space between neighboring cards. */
 #safety-pipelines .pipeline-nav-group+.pipeline-nav-group::before{left:-8px}
+
+/* Lead with the experience, then offer its supporting project link. */
+#safety-pipelines .pipeline-fit-evidence>strong{margin-right:0;margin-left:8px}
+
+/* A matched-height companion panel with distinct visual roles. */
+#safety-pipelines .pipeline-workspace{align-items:stretch}
+#safety-pipelines .pipeline-workspace-main{display:flex}
+#safety-pipelines .pipeline-workspace-main>.pipeline-flow-compact{width:100%;margin-bottom:0}
+#safety-pipelines .pipeline-insights{grid-template-rows:auto repeat(3,minmax(min-content,1fr)) auto;gap:10px;padding:14px;background:#f4f9fa}
+#safety-pipelines .pipeline-insights>h4{font-size:15px;margin-bottom:4px}
+#safety-pipelines .pipeline-insights>section{display:flex;flex-direction:column;justify-content:center;border-top:0;border-left:3px solid #80b4c1;padding:12px}
+#safety-pipelines .pipeline-insights>section>.label{display:flex;align-items:center;gap:7px}
+#safety-pipelines .pipeline-insights>section>.label::before{display:grid;place-items:center;flex:0 0 24px;height:24px;border-radius:7px;background:#fff;color:#357589;font-size:15px;content:'◎'}
+#safety-pipelines .pipeline-insights>.pipeline-insight-failure>.label::before{content:'!';color:#906527}
+#safety-pipelines .pipeline-insights>.pipeline-insight-example>.label::before{content:'↳';color:#507448}
+#safety-pipelines .pipeline-measure-list{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:10px 0 0}
+#safety-pipelines .pipeline-measure-list li{padding:6px 8px;border:1px solid #c4dfe6;background:#fff;border-radius:6px;color:#345560;font-size:11px;line-height:1.5}
+#safety-pipelines .pipeline-insights .pipeline-outputs{background:#214f5b;color:#fff;padding:14px}
+#safety-pipelines .pipeline-insights .pipeline-outputs .label{color:#c4e9f0}
+#safety-pipelines .pipeline-insights .pipeline-outputs p{color:#fff}
+#safety-pipelines .pipeline-insights .pipeline-outputs>div+div{padding-top:12px;border-top:1px solid #ffffff30}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips span{background:#ffffff12;border-color:#ffffff35;color:#e0f3f7}
+@media(max-width:1000px){
+ #safety-pipelines .pipeline-insights{grid-template-rows:auto}
+ #safety-pipelines .pipeline-insights .pipeline-outputs>div+div{padding-top:0;border-top:0}
+}
+@media(max-width:580px){
+ #safety-pipelines .pipeline-insights .pipeline-outputs>div+div{padding-top:12px;border-top:1px solid #ffffff30}
+}
+
+/* Give the companion notes sufficient width and a readable text hierarchy. */
+#safety-pipelines .pipeline-workspace{grid-template-columns:minmax(0,1fr) minmax(300px,.44fr)}
+#safety-pipelines .pipeline-insights{padding:14px;gap:12px}
+#safety-pipelines .pipeline-insights>h4{font-size:18px;line-height:1.35;color:#173f4b}
+#safety-pipelines .pipeline-insights>section{justify-content:flex-start;padding:16px 14px}
+#safety-pipelines .pipeline-insights .label{font-size:10px;line-height:1.5;letter-spacing:.025em;color:#365864}
+#safety-pipelines .pipeline-insights p{font-size:14px;line-height:1.65;color:#234650;margin-top:10px}
+#safety-pipelines .pipeline-insights .insight-copy p+p{padding-top:10px;margin-top:10px;border-top:1px solid #214f5b18}
+#safety-pipelines .pipeline-insights .insight-copy p:first-child{font-weight:500}
+#safety-pipelines .pipeline-measure-list{display:grid;grid-template-columns:1fr;gap:7px}
+#safety-pipelines .pipeline-measure-list li{font-size:13px;line-height:1.5;padding:8px 10px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips span{font-size:12px;line-height:1.4;padding:6px 8px}
+@media(max-width:1100px){
+ #safety-pipelines .pipeline-workspace{grid-template-columns:minmax(0,1fr)}
+ #safety-pipelines .pipeline-insights{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto}
+ #safety-pipelines .pipeline-insights>h4{grid-column:1/-1}
+ #safety-pipelines .pipeline-insights .pipeline-outputs{grid-column:1/-1;grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+ #safety-pipelines .pipeline-insights{grid-template-columns:minmax(0,1fr)}
+ #safety-pipelines .pipeline-insights .pipeline-outputs{grid-template-columns:1fr}
+}
+
+/* Distribute the workflow through the full height of its companion panel. */
+@media(min-width:1101px){
+ #safety-pipelines .pipeline-workspace-main>.pipeline-flow-compact{display:flex;flex-direction:column}
+ #safety-pipelines .pipeline-flow-track{display:flex;flex-direction:column;flex:1}
+ #safety-pipelines .pipeline-step-list{flex:1;grid-auto-rows:minmax(min-content,1fr)}
+ #safety-pipelines .pipeline-step-node{align-items:center}
+ #safety-pipelines .pipeline-step-fit>div{align-content:center}
+ #safety-pipelines .pipeline-feedback-note{flex-shrink:0}
+}
+
+/* Consistent heading alignment across all tabbed content panels. */
+:is(.study-hub,.practice-hub,.preparation-hub) .panel-heading{display:block;text-align:left;padding:0;margin:0 0 24px;width:100%;max-width:none}
+:is(.study-hub,.practice-hub,.preparation-hub) .panel-heading .label{display:block;margin:0 0 10px;color:#447985;font-size:11px;line-height:1.5;letter-spacing:.12em}
+:is(.study-hub,.practice-hub,.preparation-hub) .panel-heading :is(h2,h3){font-size:clamp(26px,2.6vw,34px);line-height:1.2;letter-spacing:-.035em;font-weight:500;color:#214f5b;margin:0 0 14px;max-width:900px}
+:is(.study-hub,.practice-hub,.preparation-hub) .panel-heading>p:not(.label){padding:0;margin:0 0 14px;max-width:800px;font-size:15px;line-height:1.65;color:#496775}
+:is(.study-hub,.practice-hub,.preparation-hub) .panel-heading .section-title-with-prop{padding:0;margin:0}
+:is(.study-hub,.practice-hub,.preparation-hub) .panel-heading .section-title-with-prop> :not(.label):not(h2):not(h3){display:none}
+
+/* Shared heading scale: section → panel → card. */
+#main{
+ --heading-color:#214f5b;
+ --heading-section:clamp(30px,3.2vw,42px);
+ --heading-panel:clamp(25px,2.6vw,34px);
+ --heading-card:20px;
+}
+#main>.section[id]>.section-head{margin-bottom:28px;text-align:left;align-items:flex-start}
+#main>.section[id]>.section-head h2{
+ font-family:inherit;font-size:var(--heading-section);font-weight:500;
+ line-height:1.18;letter-spacing:-.035em;color:var(--heading-color);
+ margin:0;max-width:none;
+}
+#main>.section[id]>.section-head .label{
+ display:block;font-size:11px;font-weight:600;line-height:1.5;
+ letter-spacing:.12em;color:#447985;margin:0 0 14px;
+}
+#main :is(.study-hub,.practice-hub,.preparation-hub) .panel-heading :is(h2,h3),
+#main #analysis>h2{
+ font-family:inherit;font-size:var(--heading-panel);font-weight:500;
+ line-height:1.2;letter-spacing:-.035em;color:var(--heading-color);margin:0 0 14px;
+}
+#main :is(.study-hub,.practice-hub,.preparation-hub) .panel-heading .label,
+#main #analysis>.label{
+ font-size:11px;font-weight:600;line-height:1.5;letter-spacing:.12em;
+ color:#447985;margin:0 0 10px;
+}
+#main :is(.business-overview,.human-trend-grid,.pipeline-technical .two-grid) h3,
+#main .business-visual-fact h4{
+ font-family:inherit;font-size:var(--heading-card);font-weight:500;
+ line-height:1.3;letter-spacing:-.025em;color:var(--heading-color);
+}
+
+/* Compact paired workflow panels while retaining readable text. */
+#safety-pipelines .pipeline-insights{grid-template-rows:auto auto auto auto auto;gap:8px;padding:10px;align-content:start}
+#safety-pipelines .pipeline-insights>h4{font-size:16px;line-height:1.3;margin-bottom:2px}
+#safety-pipelines .pipeline-insights>section{padding:10px 12px}
+#safety-pipelines .pipeline-insights p{font-size:13px;line-height:1.5;margin-top:7px}
+#safety-pipelines .pipeline-insights .insight-copy p+p{padding-top:6px;margin-top:6px}
+#safety-pipelines .pipeline-insights>section>.label::before{flex-basis:20px;height:20px;font-size:13px}
+#safety-pipelines .pipeline-measure-list{gap:5px;margin-top:7px}
+#safety-pipelines .pipeline-measure-list li{font-size:12px;padding:5px 8px;line-height:1.4}
+#safety-pipelines .pipeline-insights .pipeline-outputs{padding:10px 12px;gap:9px}
+#safety-pipelines .pipeline-insights .pipeline-outputs>div+div{padding-top:8px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips{margin-top:6px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips span{padding:4px 6px;font-size:11px}
+#safety-pipelines .pipeline-flow-compact{padding:12px}
+#safety-pipelines .pipeline-step-list{gap:16px;grid-auto-rows:auto}
+#safety-pipelines .pipeline-step-list li+li::before{top:-13px;height:6px}
+#safety-pipelines .pipeline-step-list li+li::after{top:-7px}
+#safety-pipelines .pipeline-step-node{padding:8px 10px}
+#safety-pipelines .pipeline-step-fit>div{padding:7px 10px}
+#safety-pipelines .pipeline-step-copy>p,#safety-pipelines .pipeline-step-fit p{line-height:1.4}
+#safety-pipelines .pipeline-action-label{margin-top:4px}
+#safety-pipelines .pipeline-feedback-note{padding:8px 10px;margin-top:10px}
+@media(min-width:1101px){
+ #safety-pipelines .pipeline-step-list{grid-auto-rows:auto}
+ #safety-pipelines .pipeline-insights{align-content:stretch}
+}
+
+/* Keep insight cards soft, without a colored side stripe. */
+#safety-pipelines .pipeline-insights>section{border-left:0}
+
+/* Join the stage summary and collaboration into one continuous frame. */
+#stakeholders .combined-stage-summary{border-bottom:0;border-radius:0;padding-bottom:16px}
+#stakeholders .collaboration-group{margin-top:0;border-top:0;border-radius:0 0 16px 16px;padding-top:12px;border-color:#c6e0e7}
+
+/* Match workflow text and content width to the surrounding sections. */
+#safety-pipelines .pipeline-visual-explorer{max-width:none;width:100%}
+#safety-pipelines .pipeline-nav-group button b{font-size:14px;line-height:1.35}
+#safety-pipelines .pipeline-nav-group button>span{font-size:11px}
+#safety-pipelines .pipeline-group-picker{--workflow-arrow-height:82px;min-width:1100px}
+#safety-pipelines .pipeline-detail>h3{font-size:30px}
+#safety-pipelines .pipeline-step-copy>strong{font-size:16px;line-height:1.4}
+#safety-pipelines .pipeline-step-copy>p,
+#safety-pipelines .pipeline-step-fit p,
+#safety-pipelines .pipeline-step-fit strong,
+#safety-pipelines .pipeline-decision-action>p{font-size:14px;line-height:1.5}
+#safety-pipelines .pipeline-step-fit .label,
+#safety-pipelines .pipeline-action-label{font-size:10px;line-height:1.4}
+#safety-pipelines .pipeline-step-node{padding:12px}
+#safety-pipelines .pipeline-step-fit>div{padding:10px 12px}
+#safety-pipelines .pipeline-insights p{font-size:14px}
+#safety-pipelines .pipeline-measure-list li{font-size:13px}
+#safety-pipelines .pipeline-feedback-note p{font-size:14px}
+#safety-pipelines .pipeline-flow-branch p,
+#safety-pipelines .flow-branch p{font-size:14px}
+#safety-pipelines .pipeline-fit-evidence a{white-space:normal}
+
+/* Overlap the business overview into a continuous five-stage ribbon. */
+@media(min-width:761px){
+ #handshake-business .business-overview{gap:0}
+ #handshake-business .business-overview li{position:relative;width:calc(100% + 14px);box-sizing:border-box;padding-left:28px}
+ #handshake-business .business-overview li:first-child{padding-left:18px;z-index:5}
+ #handshake-business .business-overview li:nth-child(2){z-index:4}
+ #handshake-business .business-overview li:nth-child(3){z-index:3}
+ #handshake-business .business-overview li:nth-child(4){z-index:2}
+ #handshake-business .business-overview li:last-child{width:100%;z-index:1}
+ #handshake-business .business-overview li:not(:last-child)::after{content:'';position:absolute;right:0;top:0;bottom:0;width:14px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L14 50 L0 100' fill='none' stroke='white' stroke-width='3' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+}
+
+/* Distinguish each business stage without a dark selected state. */
+#handshake-business .business-overview li:nth-child(1){background:#edf7f9}
+#handshake-business .business-overview li:nth-child(2){background:#dceef2}
+#handshake-business .business-overview li:nth-child(3){background:#edf4e8}
+#handshake-business .business-overview li:nth-child(4){background:#dcebe5}
+#handshake-business .business-overview li:nth-child(5){background:#e3edf4}
+#handshake-business .business-overview li>span{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#ffffffb3;color:#315e6b;font-weight:600;letter-spacing:0}
+@media(min-width:761px){
+ #handshake-business .business-overview li{width:calc(100% + 22px);padding-left:34px;padding-right:32px;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,0 100%)}
+ #handshake-business .business-overview li:first-child{padding-left:18px}
+ #handshake-business .business-overview li:last-child{width:100%}
+ #handshake-business .business-overview li:not(:last-child)::after{width:22px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L22 50 L0 100' fill='none' stroke='white' stroke-width='4' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E")}
+}
+
+/* A coordinated light teal progression across the business stages. */
+#handshake-business .business-overview li:nth-child(1){background:linear-gradient(110deg,#f0f8fa,#e7f3f6)}
+#handshake-business .business-overview li:nth-child(2){background:linear-gradient(110deg,#e7f3f6,#dcedf1)}
+#handshake-business .business-overview li:nth-child(3){background:linear-gradient(110deg,#dcedf1,#cfe5eb)}
+#handshake-business .business-overview li:nth-child(4){background:linear-gradient(110deg,#cfe5eb,#c1dde5)}
+#handshake-business .business-overview li:nth-child(5){background:linear-gradient(110deg,#c1dde5,#b2d4de)}
+#handshake-business .business-overview li{color:#294f5b}
+#handshake-business .business-overview li>span{background:#ffffffb3;color:#315e6b}
+
+/* Separate workflow groups with open chevron-shaped space, not divider lines. */
+#safety-pipelines .pipeline-group-picker{gap:8px;border:0;border-radius:0;background:transparent;overflow:visible}
+#safety-pipelines .pipeline-nav-group{background:#f4f9fa;border:0;border-radius:0;padding:12px 24px 12px 12px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% calc(100% - 12px - var(--workflow-arrow-height)/2),calc(100% - 18px) 100%,0 100%)}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group{padding-left:26px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% calc(100% - 12px - var(--workflow-arrow-height)/2),calc(100% - 18px) 100%,0 100%,18px calc(100% - 12px - var(--workflow-arrow-height)/2))}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group::before{content:none}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group button:first-child{padding-left:24px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%,16px 50%)}
+
+/* Narrow the transparent chevron gap between workflow groups. */
+#safety-pipelines .pipeline-group-picker{gap:0}
+#safety-pipelines .pipeline-nav-group{width:calc(100% + 14px);box-sizing:border-box;padding-right:20px;z-index:3}
+#safety-pipelines .pipeline-nav-group:nth-child(2){z-index:2}
+#safety-pipelines .pipeline-nav-group:last-child{width:100%;z-index:1}
+
+/* Keep supporting project links smaller than the experience description. */
+#safety-pipelines .pipeline-fit-evidence>strong a{font-size:12px;line-height:1.5;font-weight:500}
+
+/* Align each business stage number with its title. */
+#handshake-business .business-overview li{display:grid;grid-template-columns:26px minmax(0,1fr);column-gap:8px;row-gap:10px;align-content:start;align-items:center}
+#handshake-business .business-overview li>h3{margin:0}
+#handshake-business .business-overview li>p{grid-column:1 / -1;margin:0}
+
+/* Shared text highlight: match the introduction's cyan marker treatment. */
+.career-role-summary{font-size:18px;line-height:1.65;color:#214f5b;margin:16px 0 24px;max-width:1100px}
+.career-role-summary strong{font-weight:650}
+.career-work-output .career-output-label{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;line-height:1.4;color:#c3e6ed;margin-bottom:6px}
+#career-narrative .career-work-pipeline{grid-template-rows:auto auto auto auto}
+#career-narrative .career-work-pipeline>li{grid-row:1 / span 4}
+#career-narrative .career-work-output{display:block;margin:10px 0 0;padding:12px;border:0;border-radius:8px;background:#edf6f8;color:#214f5b;font-size:12px;line-height:1.5}
+#career-narrative .career-work-output .career-output-label{color:#447985}
+#career-narrative .career-work-map{overflow-x:auto}
+#career-narrative .career-work-pipeline{grid-template-columns:115px repeat(5,minmax(190px,1fr));overflow:visible}
+#career-narrative .career-work-column,#career-narrative .career-row-labels{display:grid;grid-template-rows:subgrid;grid-row:1 / span 4;row-gap:0;min-width:0}
+#career-narrative .career-row-labels>span{display:flex;align-items:center;padding:14px 12px 14px 0;font-size:10px;font-weight:700;letter-spacing:.08em;line-height:1.6;color:#447985}
+#career-narrative .career-row-labels>span:last-child{align-items:flex-start;padding-top:16px}
+#career-narrative .career-row-labels>span{padding-right:10px}
+#career-narrative .career-row-labels strong{display:block;padding:10px 9px;border-radius:7px;font-size:10px;line-height:1.5;letter-spacing:.05em;font-weight:700}
+#career-narrative .career-row-labels>span:nth-child(1) strong{background:#214f5b;color:#fff}
+#career-narrative .career-row-labels>span:nth-child(2) strong{background:#edf6f8;color:#214f5b}
+#career-narrative .career-row-labels>span:nth-child(3) strong{background:#f3f6f7;color:#447985}
+#career-narrative .career-row-labels>span:nth-child(4) strong{background:#e5f4dd;color:#395c43}
+#career-narrative .career-work-step{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#ffffff18;color:#d7edf1;letter-spacing:0}
+#career-narrative .career-evidence-link{align-items:flex-start;padding:18px 10px}
+#career-narrative .career-evidence-link>span:first-child{line-height:1.2;margin-top:4px}
+#career-narrative .career-transfer p{margin-top:0}
+
+/* Give the shorter experience summaries a quieter canvas. */
+#career-narrative .career-evidence-node{background:#f5f8f2;border-color:#dbe5d5}
+#career-narrative .career-row-labels>span:nth-child(4) strong{background:#f5f8f2}
+#career-narrative .career-evidence-link{padding:14px 10px}
+
+/* Match the label column to the full height of each content row. */
+#career-narrative .career-row-labels>span{align-items:stretch;padding:0 10px 0 0}
+#career-narrative .career-row-labels>span:nth-child(2){padding-top:10px}
+#career-narrative .career-row-labels>span:nth-child(3){padding-top:14px;padding-bottom:14px}
+#career-narrative .career-row-labels>span:last-child{align-items:stretch;padding-top:0}
+#career-narrative .career-row-labels strong{display:flex;align-items:center;width:100%;box-sizing:border-box}
+
+/* Attach the pale output area directly to its work card. */
+#career-narrative .career-work-card{display:grid;grid-template-rows:subgrid;grid-row:span 2;overflow:hidden;border-radius:9px}
+#career-narrative .career-work-card .career-work-node{border-radius:0}
+#career-narrative .career-work-card .career-work-output{margin:0;border-radius:0}
+#career-narrative .career-row-labels>span:first-child{grid-row:span 2}
+#career-narrative .career-row-labels>span:nth-child(2){padding:14px 10px 14px 0}
+#career-narrative .career-row-labels>span:nth-child(2) strong{background:#f3f6f7;color:#447985}
+#career-narrative .career-row-labels>span:last-child{padding:0 10px 0 0}
+#career-narrative .career-row-labels>span:last-child strong{background:#f5f8f2;color:#395c43}
+#career-narrative .career-row-labels>span:first-child{grid-row:auto}
+#career-narrative .career-row-labels>span:first-child strong{border-radius:7px 7px 0 0}
+#career-narrative .career-row-labels>span:nth-child(2){padding:0 10px 0 0}
+#career-narrative .career-row-labels>span:nth-child(2) strong{background:#edf6f8;color:#214f5b;border-radius:0 0 7px 7px}
+#career-narrative .career-row-labels>span:nth-child(3){padding:14px 10px 14px 0}
+
+#career-narrative .career-work-heading{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+#career-narrative .career-work-heading .career-work-step{flex-shrink:0}
+#career-narrative .career-work-heading h4{margin:0;font-size:16px}
+#collaboration-explorer .business-stage-tabs>button{display:grid;grid-template-columns:auto minmax(0,1fr) 18px;gap:8px;align-content:start;align-items:center}
+#collaboration-explorer .business-stage-tabs .stage-topline{display:contents}
+#collaboration-explorer .stage-topline>span{grid-column:1;grid-row:1}
+#collaboration-explorer .stage-topline>svg{grid-column:3;grid-row:1}
+#collaboration-explorer .business-stage-tabs strong{grid-column:2;grid-row:1;margin:0}
+#collaboration-explorer .stage-description{grid-column:1 / -1}
+#collaboration-explorer .stage-topline>span{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#dceef2;color:#315e6b;font-size:11px;font-weight:600;letter-spacing:0;opacity:1}
+#collaboration-explorer .business-stage-tabs>button[aria-selected=true] .stage-topline>span{background:#ffffff18;color:#d7edf1}
+#collaboration-explorer .business-stage-tabs>button{column-gap:6px}
+#collaboration-explorer .business-stage-tabs strong{font-size:15px;white-space:nowrap}
+#stakeholders .stakeholder-exchange .exchange-input,
+#stakeholders .stakeholder-exchange .exchange-return{align-self:start;min-height:0;margin-bottom:0;padding:14px}
+#stakeholders .collaboration-output ul{margin-top:12px;gap:7px}
+#stakeholders .stakeholder-exchange .exchange-action{align-self:start;min-height:0;padding:14px 16px 30px;clip-path:polygon(0 0,100% 0,100% calc(100% - 18px),50% 100%,0 calc(100% - 18px))}
+#stakeholders .exchange-action h4{margin:7px 0 5px}
+#stakeholders .exchange-action .my-work-context{margin-top:4px}
+#stakeholders .exchange-action ol{margin-top:9px;gap:7px}
+#stakeholders .exchange-action li{line-height:1.4}
+#stakeholders .stakeholder-exchange :is(.exchange-input,.exchange-return) h4{margin:8px 0 6px}
+#stakeholders .stakeholder-exchange .exchange-input p{line-height:1.45;margin-top:6px}
+#stakeholders .collaboration-output ul{margin-top:9px;gap:5px}
+#stakeholders .collaboration-output li{line-height:1.4}
+@media(min-width:901px){
+ #stakeholders .stakeholder-exchange{align-items:stretch}
+ #stakeholders .stakeholder-exchange .exchange-input,
+ #stakeholders .stakeholder-exchange .exchange-return{align-self:stretch;margin-bottom:34px;padding:14px}
+ #stakeholders .stakeholder-exchange .exchange-action{align-self:stretch;padding:16px 16px 34px}
+ #stakeholders .stakeholder-exchange h4{margin:10px 0 7px}
+ #stakeholders .stakeholder-exchange .exchange-arrow{transform:translateY(-9px)}
+}
+
+/* Make the evidence read as a project title and a three-part transfer story. */
+#stakeholders .workflow-proof-item>summary>span:first-child{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+#stakeholders .workflow-proof-item>summary strong{order:-1;font-size:17px;color:#214f5b}
+#stakeholders .workflow-proof-item>summary small{font-size:11px;color:#617780}
+#stakeholders .workflow-proof-item>summary{padding:14px 16px;background:#fff}
+#stakeholders .workflow-proof-item.is-work-match{border-color:#aacdd5;box-shadow:none}
+#stakeholders .workflow-proof-item.is-work-match>summary{background:#edf6f8}
+#stakeholders .workflow-proof-body{gap:24px;align-items:stretch;padding:16px;grid-template-columns:1.1fr 1fr 1.1fr}
+#stakeholders .workflow-proof-body>div{position:relative;padding:12px!important;border-radius:8px;background:#f8fafb}
+#stakeholders .workflow-proof-body>div+div::before{content:'→';position:absolute;left:-20px;top:18px;color:#6b939e;font-size:17px}
+#stakeholders .workflow-proof-body .proof-application{background:#edf4e8;color:#315440}
+#stakeholders .workflow-proof-body .proof-application :is(p,.label){color:#315440}
+#stakeholders .workflow-proof-body .proof-application .proof-step{background:#fff;border-color:#c6d9bd;color:#315440}
+#stakeholders .workflow-proof-intro{font-size:14px;line-height:1.6;max-width:900px;margin:12px 0 18px}
+#stakeholders .work-evidence-selection{background:transparent;padding:0;color:#447985;font-size:12px;margin:12px 0 6px}
+@media(max-width:760px){#stakeholders .workflow-proof-body{grid-template-columns:1fr;gap:18px}#stakeholders .workflow-proof-body>div+div::before{content:'↓';left:14px;top:-20px}}
+.text-highlight,.business-role-summary mark{color:#172a30;font-weight:400;background:linear-gradient(transparent 42%,#afe8ef 42%,#afe8ef 93%,transparent 93%);padding:0 2px;border-radius:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* Compact the relationship map while keeping its three rows aligned. */
+@media(min-width:761px){
+ #stakeholders .relationship-map .stakeholder-selectors{grid-template-rows:repeat(3,minmax(64px,auto));row-gap:10px}
+ #stakeholders .relationship-map .stakeholder-selectors button{min-height:64px;padding:8px 12px}
+}
+#stakeholders .relationship-center{padding-top:10px;padding-bottom:10px}
+#stakeholders .relationship-center>strong{margin-top:0}
+#stakeholders .relationship-center .center-role-rule{margin-top:7px}
+#stakeholders .relationship-center p{margin-top:6px}
+#stakeholders .relationship-lines{height:100%;overflow:hidden}
+
+/* Muted neon green for stakeholder input highlights. */
+#stakeholders .exchange-input .text-highlight{background:linear-gradient(transparent 42%,#c5e992 42%,#c5e992 93%,transparent 93%)}
+
+/* Match the collaboration and supporting-experience headings. */
+#stakeholders .collaboration-group-heading h3,
+#stakeholders .workflow-proof-heading h4{font-size:28px;line-height:1.25;font-weight:500;letter-spacing:-.035em;color:#214f5b;margin:0}
+@media(max-width:760px){
+ #stakeholders .collaboration-group-heading h3,
+ #stakeholders .workflow-proof-heading h4{font-size:24px}
+}
+#stakeholders #collaboration-heading-summary{margin:10px 0 0;font-size:15px;line-height:1.5;color:#496775}
+
+/* Tighten the name-only relationship cards. */
+@media(min-width:761px){
+ #stakeholders .relationship-map .stakeholder-selectors{grid-template-rows:repeat(3,minmax(48px,auto));row-gap:8px}
+ #stakeholders .relationship-map .stakeholder-selectors button{min-height:48px;padding:6px 12px}
+ #stakeholders .relationship-center{padding:8px 14px}
+ #stakeholders .relationship-center>strong{font-size:21px;line-height:1.2}
+ #stakeholders .relationship-center>strong>span{margin-top:3px}
+ #stakeholders .relationship-center .center-role-rule{margin-top:6px}
+ #stakeholders .relationship-center p{margin-top:5px;line-height:1.35}
+}
+
+/* Distinguish the evidence from the proposed personal contribution. */
+#safety-pipelines .pipeline-insights{gap:10px;padding:12px}
+#safety-pipelines .pipeline-insights>h4{font-size:19px;line-height:1.35;margin:0 0 6px}
+#safety-pipelines .pipeline-insights>section{padding:14px}
+#safety-pipelines .pipeline-insights .insight-copy strong{font-weight:600;color:#214f5b}
+#safety-pipelines .pipeline-insights .pipeline-my-involvement{padding:10px 12px;margin:12px 0 0;background:#ffffffb8;border-radius:7px;font-size:13px;line-height:1.5;color:#294f5b}
+#safety-pipelines .pipeline-my-involvement>strong{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#447985;margin-bottom:4px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips{gap:7px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips span{padding:6px 9px;font-size:12px}
+
+/* Reveal project context only when its experience card is expanded. */
+#stakeholders .workflow-proof-item:not([open])>summary small{display:none}
+#stakeholders .exchange-action .my-work-heading{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 8px}
+#stakeholders .exchange-action .my-work-heading h4{margin:0}
+#stakeholders .exchange-action .my-work-heading .my-work-context{margin:0;font-size:12px}
+
+/* Carry the central role down into its concrete work. */
+#stakeholders .collaboration-group{position:relative;isolation:isolate}
+#stakeholders .role-work-connector{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;overflow:visible}
+#stakeholders .role-work-connector path{fill:none;stroke:#7eb5bf;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+
+/* Gentle directional motion across the collaboration flow. */
+#stakeholders .role-work-line{stroke-dasharray:6 6;animation:role-flow-travel 2.4s linear infinite}
+#stakeholders .role-work-tip{animation:role-flow-tip 2.4s ease-in-out infinite}
+#stakeholders .stakeholder-exchange>.exchange-arrow{position:relative;animation:exchange-flow-nudge 2.4s ease-in-out infinite}
+@keyframes role-flow-travel{to{stroke-dashoffset:-24}}
+@keyframes role-flow-tip{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes exchange-flow-nudge{0%,100%{left:-2px;opacity:.65}50%{left:3px;opacity:1}}
+@media(max-width:900px){
+ #stakeholders .stakeholder-exchange>.exchange-arrow{animation-name:exchange-flow-down}
+}
+@keyframes exchange-flow-down{0%,100%{top:-2px;opacity:.65}50%{top:3px;opacity:1}}
+@media(prefers-reduced-motion:reduce){
+ #stakeholders .role-work-line,#stakeholders .role-work-tip,#stakeholders .stakeholder-exchange>.exchange-arrow{animation:none}
+}
+body.motion-paused #stakeholders .role-work-line,
+body.motion-paused #stakeholders .role-work-tip,
+body.motion-paused #stakeholders .stakeholder-exchange>.exchange-arrow{animation-play-state:paused}
+#stakeholders .exchange-arrow svg{display:block;width:24px;height:16px;overflow:visible}
+#stakeholders .exchange-arrow svg path{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#stakeholders .exchange-arrow-shaft{stroke-dasharray:3 4;animation:exchange-dash-flow 1.4s linear infinite}
+@keyframes exchange-dash-flow{to{stroke-dashoffset:-14}}
+@media(prefers-reduced-motion:reduce){#stakeholders .exchange-arrow-shaft{animation:none}}
+body.motion-paused #stakeholders .exchange-arrow-shaft{animation-play-state:paused}
+
+/* Keep connectors anchored; only the dashes move toward the next card. */
+#stakeholders .stakeholder-exchange>.exchange-arrow{animation:none;left:0;top:0;opacity:1}
+#stakeholders .role-work-tip{animation:none;opacity:1}
+
+/* Extend the dashed arrows across the full gap between cards. */
+@media(min-width:901px){
+ #stakeholders .stakeholder-exchange>.exchange-arrow{width:calc(100% + 20px);margin-left:-10px}
+ #stakeholders .exchange-arrow svg{width:100%;height:16px}
+}
+
+/* Reduce stacked whitespace between experience, collaboration and workflows. */
+#career-narrative{padding-bottom:0}
+#career-narrative .career-work-map{margin-bottom:12px}
+#collaboration-explorer,#safety-pipelines{padding-top:36px}
+#collaboration-explorer{padding-bottom:0}
+#collaboration-explorer #stakeholders{margin-bottom:12px}
+#collaboration-explorer>.section-head h2,#safety-pipelines>.section-head h2{margin-top:0}
+@media(max-width:760px){#collaboration-explorer,#safety-pipelines{padding-top:28px}}
+
+/* Flowing dashed connectors between experience, skill and contribution. */
+#stakeholders .workflow-proof-body>div+div::before{content:'';left:-24px;top:28px;width:24px;height:2px;background:repeating-linear-gradient(to right,#6b939e 0 4px,transparent 4px 8px);animation:proof-flow-right 1.5s linear infinite}
+@keyframes proof-flow-right{to{background-position:16px 0}}
+@media(max-width:760px){
+ #stakeholders .workflow-proof-body>div+div::before{left:24px;top:-18px;width:2px;height:18px;background:repeating-linear-gradient(to bottom,#6b939e 0 4px,transparent 4px 8px);animation-name:proof-flow-down}
+}
+@keyframes proof-flow-down{to{background-position:0 16px}}
+@media(prefers-reduced-motion:reduce){#stakeholders .workflow-proof-body>div+div::before{animation:none}}
+body.motion-paused #stakeholders .workflow-proof-body>div+div::before{animation-play-state:paused}
+
+
+/* Reserve layout space for the workflow heading artwork. */
+#safety-pipelines .section-title-with-prop{display:grid;grid-template-columns:minmax(0,1fr) 80px;align-items:center;gap:20px;padding-right:0;min-height:88px}
+#safety-pipelines .section-title-with-prop h2{grid-column:1;grid-row:1;margin:0}
+#safety-pipelines .section-title-with-prop .handshake-art-accent{position:relative;grid-column:2;grid-row:1;top:auto;right:auto;width:80px;max-width:80px;margin:0}
+@media(max-width:600px){
+ #safety-pipelines .section-title-with-prop{grid-template-columns:minmax(0,1fr) 56px;gap:12px;min-height:64px}
+ #safety-pipelines .section-title-with-prop .handshake-art-accent{width:56px;max-width:56px}
+}
+
+/* Make the stage navigation visibly interactive. */
+#collaboration-explorer .business-stage-tabs>button{cursor:pointer;transition:background .18s ease,box-shadow .18s ease}
+#collaboration-explorer .business-stage-tabs strong{text-decoration:underline;text-decoration-color:#7daeb980;text-underline-offset:4px;text-decoration-thickness:1px}
+#collaboration-explorer .business-stage-tabs strong::after{content:'⌄';display:inline-block;margin-left:6px;font-size:13px;opacity:.8;text-decoration:none}
+#collaboration-explorer .business-stage-tabs>button:hover:not([aria-selected=true]){background:#cdeaf0;box-shadow:inset 0 -3px 0 #58a4b4}
+#collaboration-explorer .business-stage-tabs>button[aria-selected=true] strong{text-decoration-color:#c5eaf0}
+#collaboration-explorer .business-stage-tabs>button:focus-visible{box-shadow:inset 0 0 0 3px #28a9bf;outline:0}
+#stakeholders .relationship-center>strong{display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+#stakeholders .relationship-center>strong>span{display:inline;margin-top:0}
+#safety-pipelines .pipeline-fit-heading{display:flex;align-items:baseline;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin-bottom:6px}
+#safety-pipelines .pipeline-fit-heading>.label{margin:0}
+#safety-pipelines .pipeline-fit-heading>strong{margin:0 0 0 auto;text-align:right;font-size:12px;font-weight:500}
+#safety-pipelines .pipeline-fit-heading a{font-size:12px;font-weight:500}
+#safety-pipelines .pipeline-fit-evidence>p{display:block;margin:0}
+#safety-pipelines .pipeline-fit-heading>strong,
+#safety-pipelines .pipeline-fit-heading a{font-size:10px;font-weight:400;color:#617466}
+#safety-pipelines .pipeline-fit-heading a{text-decoration-color:#61746670}
+#safety-pipelines .pipeline-fit-heading a:hover,#safety-pipelines .pipeline-fit-heading a:focus-visible{color:#315440;text-decoration-color:currentColor}
+
+/* Reduce vertical density without removing workflow content. */
+#safety-pipelines .pipeline-insights{gap:8px;padding:10px;align-content:start}
+#safety-pipelines .pipeline-insights>section{padding:10px 12px}
+#safety-pipelines .pipeline-insights p{line-height:1.4;margin-top:6px}
+#safety-pipelines .pipeline-insights .pipeline-my-involvement{padding:0;margin:8px 0 0;background:transparent;border-radius:0;font-size:13px;line-height:1.4}
+#safety-pipelines .pipeline-my-involvement>strong{display:inline;margin:0 6px 0 0;font-size:10px}
+#safety-pipelines .pipeline-my-involvement>strong::after{content:':' }
+#safety-pipelines .pipeline-measure-list{display:flex;flex-wrap:wrap;gap:4px;margin:7px 0 0}
+#safety-pipelines .pipeline-measure-list li{padding:4px 7px}
+#safety-pipelines .pipeline-insights .insight-copy p+p{padding-top:0;border:0;margin-top:5px}
+#safety-pipelines .pipeline-step-node{padding:8px 10px}
+#safety-pipelines .pipeline-step-fit>div{padding:7px 10px}
+#safety-pipelines .pipeline-fit-heading{margin-bottom:3px}
+#safety-pipelines .pipeline-step-fit .label{margin-bottom:3px}
+#safety-pipelines .pipeline-step-copy>p,#safety-pipelines .pipeline-step-fit p{line-height:1.4}
+#safety-pipelines .pipeline-step-copy>p{margin-top:5px}
+#safety-pipelines .pipeline-feedback-note{padding:7px 10px;margin-top:8px}
+#safety-pipelines .pipeline-insights>section>.label::before{content:none;display:none}
+
+/* Explain the live evaluation counts alongside their metric denominators. */
+#lab .positive-definition{font-size:13px;line-height:1.5;margin:12px 0}
+#lab .result-table-wrap{overflow-x:auto;border:1px solid #cce1e6;border-radius:10px;background:#fff}
+#lab .result-breakdown{width:100%;border-collapse:collapse;font-size:12px;line-height:1.4;text-align:left}
+#lab .result-breakdown caption{text-align:left;padding:12px;font-weight:600;color:#245462}
+#lab .result-breakdown th{background:#edf6f8;font-weight:600}
+#lab .result-breakdown th,#lab .result-breakdown td{padding:9px 12px;border-top:1px solid #e3edef}
+#lab .result-breakdown td b{color:#245462}
+#lab .metric-questions-heading{font-size:18px;margin:20px 0 10px}
+#lab .metrics p{font-size:12px;line-height:1.45;margin:8px 0;color:#486570}
+#lab .metrics small{display:block;font-size:11px}
+#lab .metrics small+small{margin-top:5px;color:#245462;font-variant-numeric:tabular-nums}
+
+
+/* A downward point connects the selected workflow to its detail panel. */
+#safety-pipelines .pipeline-nav-group button[aria-selected=true]{height:calc(var(--workflow-arrow-height) + 10px);min-height:calc(var(--workflow-arrow-height) + 10px);margin-bottom:-10px;padding-bottom:17px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% calc((100% - 10px)/2),calc(100% - 18px) calc(100% - 10px),55% calc(100% - 10px),48% 100%,43% calc(100% - 10px),0 calc(100% - 10px));}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group button:first-child[aria-selected=true]{clip-path:polygon(0 0,calc(100% - 18px) 0,100% calc((100% - 10px)/2),calc(100% - 18px) calc(100% - 10px),55% calc(100% - 10px),48% 100%,43% calc(100% - 10px),0 calc(100% - 10px),16px calc((100% - 10px)/2));}
+#safety-pipelines .pipeline-nav-group button[aria-selected=true]::after{bottom:10px}
+
+/* Keep workflow navigation and its content in one continuous panel. */
+#safety-pipelines .pipeline-visual-explorer{gap:0;border:1px solid #c9dfe4;border-radius:14px;overflow:hidden;background:#f4f9fa}
+#safety-pipelines .pipeline-navigation{margin:0;padding-bottom:0}
+#safety-pipelines .pipeline-panel-column{margin-top:0;background:#fff}
+#safety-pipelines .pipeline-visual-explorer .pipeline-detail{border:0;border-radius:0;margin:0;padding-top:14px}
+
+/* Point the active collaboration stage into its content below. */
+#collaboration-explorer .business-stage-tabs{position:relative;z-index:2;margin-bottom:-10px}
+#collaboration-explorer .business-stage-tabs>button{padding-bottom:20px;--stage-tip:calc(100% - 10px);clip-path:polygon(0 0,calc(100% - 16px) 0,100% calc((100% - 10px)/2),calc(100% - 16px) calc(100% - 10px),55% calc(100% - 10px),50% var(--stage-tip),45% calc(100% - 10px),0 calc(100% - 10px),16px calc((100% - 10px)/2))}
+#collaboration-explorer .business-stage-tabs>button:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% calc((100% - 10px)/2),calc(100% - 16px) calc(100% - 10px),55% calc(100% - 10px),50% var(--stage-tip),45% calc(100% - 10px),0 calc(100% - 10px))}
+#collaboration-explorer .business-stage-tabs>button:last-child{clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),55% calc(100% - 10px),50% var(--stage-tip),45% calc(100% - 10px),0 calc(100% - 10px),16px calc((100% - 10px)/2))}
+#collaboration-explorer .business-stage-tabs>button[aria-selected=true]{--stage-tip:100%}
+
+/* Use clear questions and a consistent action hierarchy across workflows. */
+#safety-pipelines .pipeline-insights>h4{font-size:19px;line-height:1.25;margin:2px 2px 6px;font-weight:600}
+#safety-pipelines .pipeline-insights>section{padding:14px;border-left:0}
+#safety-pipelines .pipeline-insights>section>.label,#safety-pipelines .pipeline-outputs .label{text-transform:none;letter-spacing:0;font-size:14px;font-weight:650}
+#safety-pipelines .pipeline-measure-list{display:grid;gap:0;margin:8px 0 0}
+#safety-pipelines .pipeline-measure-list li{display:grid;gap:2px;padding:8px 0;background:transparent;border:0;border-radius:0}
+#safety-pipelines .pipeline-measure-list li+li{border-top:1px solid #d5e6e9}
+#safety-pipelines .pipeline-measure-list li strong{font-size:14px;font-weight:550;color:#214f5b}
+#safety-pipelines .pipeline-measure-list li span{font-size:12px;line-height:1.45;color:#526d77}
+#safety-pipelines .pipeline-insights .pipeline-my-involvement{padding:9px 10px;margin-top:10px;background:#ffffffb8;border-left:2px solid #73b7c5;border-radius:0 6px 6px 0;font-size:13px;line-height:1.45}
+#safety-pipelines .pipeline-my-involvement>strong{font-size:13px;text-transform:none;letter-spacing:0;color:#245462}
+#safety-pipelines .pipeline-my-involvement>strong::after{content:none}
+#safety-pipelines .insight-next-label{display:block;font-size:11px;font-weight:650;color:#806b49;margin:8px 0 3px}
+#safety-pipelines .insight-copy>p:first-child strong{font-weight:550}
+
+/* Compact workflow cards while keeping all descriptions visible. */
+#safety-pipelines .pipeline-workspace{align-items:start}
+#safety-pipelines .pipeline-flow-track,#safety-pipelines .pipeline-step-list{flex:0 1 auto}
+#safety-pipelines .pipeline-step-list{grid-auto-rows:auto;gap:16px}
+#safety-pipelines .pipeline-step-node{padding:9px 10px;min-height:0}
+#safety-pipelines .pipeline-step-fit{gap:5px}
+#safety-pipelines .pipeline-step-fit>div{padding:7px 10px;min-height:0;align-content:start}
+#safety-pipelines .pipeline-step-copy>strong{font-size:15px}
+#safety-pipelines .pipeline-step-copy>p,#safety-pipelines .pipeline-step-fit p{font-size:13px;line-height:1.35;margin-top:3px;margin-bottom:0}
+#safety-pipelines .pipeline-insights{gap:6px;padding:8px;align-content:start}
+#safety-pipelines .pipeline-insights>h4{font-size:17px;margin:0 2px 3px}
+#safety-pipelines .pipeline-insights>section{padding:9px 11px;justify-content:flex-start}
+#safety-pipelines .pipeline-measure-list{margin-top:4px}
+#safety-pipelines .pipeline-measure-list li{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px;padding:5px 0;align-items:start}
+#safety-pipelines .pipeline-measure-list li strong{font-size:12px;line-height:1.35}
+#safety-pipelines .pipeline-measure-list li span{font-size:12px;line-height:1.35}
+#safety-pipelines .pipeline-insights p{font-size:13px;line-height:1.35;margin-top:4px;margin-bottom:0}
+#safety-pipelines .pipeline-insights .pipeline-my-involvement{padding:6px 8px;margin-top:6px;font-size:12px;line-height:1.35}
+#safety-pipelines .insight-next-label{display:inline;margin:0 5px 0 0}
+#safety-pipelines .insight-next-label::after{content:':' }
+#safety-pipelines .pipeline-insights .pipeline-outputs{padding:9px 11px;gap:6px}
+#safety-pipelines .pipeline-insights .pipeline-outputs>div+div{padding-top:6px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips{margin-top:4px;gap:4px}
+#safety-pipelines .pipeline-insights .pipeline-owner-chips span{padding:3px 6px;font-size:11px}
+@media(max-width:700px){#safety-pipelines .pipeline-measure-list li{grid-template-columns:1fr;gap:2px}}
+
+/* Tighter workflow groups with a white background and subtle dividers. */
+#safety-pipelines .pipeline-navigation{background:#fff}
+#safety-pipelines .pipeline-group-picker{background:#fff}
+#safety-pipelines .pipeline-nav-group{width:100%;padding:10px 8px;background:#fff;clip-path:none}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group{padding-left:8px;clip-path:none;border-left:1px solid #c9dfe4}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group::before{content:none}
+#safety-pipelines .pipeline-nav-group button::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='80' viewBox='0 0 18 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L18 40 L0 80' fill='none' stroke='%23ffffff' stroke-width='4' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E")}
+
+/* Separate groups with a narrow white chevron-shaped gap. */
+#safety-pipelines .pipeline-group-picker{background:#fff;gap:0}
+#safety-pipelines .pipeline-nav-group{width:calc(100% + 12px);background:#f4f9fa;padding:10px 19px 10px 8px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group{border-left:0;padding-left:23px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%)}
+#safety-pipelines .pipeline-nav-group:last-child{width:100%}
+
+/* Keep the area around workflow tabs unfilled. */
+#safety-pipelines .pipeline-nav-group{background:transparent}
+
+/* Bring neighboring workflow groups together without an extra outer chevron inset. */
+#safety-pipelines .pipeline-nav-group{width:calc(100% + 12px);padding:10px 0;clip-path:none}
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group{padding-left:0;clip-path:none}
+#safety-pipelines .pipeline-nav-group:last-child{width:100%}
+
+/* Use one geometry for every workflow tab, including the selected tab. */
+#safety-pipelines .pipeline-visual-explorer{border:0;border-radius:0;background:#fff;overflow:visible}
+#safety-pipelines .pipeline-nav-group{width:calc(100% + 16px)}
+#safety-pipelines .pipeline-nav-group:last-child{width:100%}
+#safety-pipelines .pipeline-nav-group button,
+#safety-pipelines .pipeline-nav-group button[aria-selected=true],
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group button:first-child,
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group button:first-child[aria-selected=true]{--tab-point:calc(100% - 10px);height:calc(var(--workflow-arrow-height) + 10px);min-height:calc(var(--workflow-arrow-height) + 10px);margin-bottom:0;padding-top:7px;padding-bottom:17px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% calc((100% - 10px)/2),calc(100% - 16px) calc(100% - 10px),55% calc(100% - 10px),50% var(--tab-point),45% calc(100% - 10px),0 calc(100% - 10px),16px calc((100% - 10px)/2))}
+#safety-pipelines .pipeline-nav-group button[aria-selected=true],
+#safety-pipelines .pipeline-nav-group+.pipeline-nav-group button:first-child[aria-selected=true]{--tab-point:100%}
+#safety-pipelines .pipeline-nav-group:first-child button:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% calc((100% - 10px)/2),calc(100% - 16px) calc(100% - 10px),55% calc(100% - 10px),50% var(--tab-point),45% calc(100% - 10px),0 calc(100% - 10px))}
+#safety-pipelines .pipeline-nav-group button::after{content:'';bottom:10px;width:16px}
+#safety-pipelines .pipeline-nav-group:last-child button:last-child::after{content:none}
+
+/* One eight-column grid keeps group boundaries identical to other separators. */
+#safety-pipelines .pipeline-group-picker{grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:auto auto;column-gap:0;row-gap:10px;padding:10px 0}
+#safety-pipelines .pipeline-nav-group,
+#safety-pipelines .pipeline-nav-group>div{display:contents}
+#safety-pipelines .pipeline-nav-group>h3{grid-row:1;margin:0;padding:0;font-size:15px}
+#safety-pipelines .pipeline-nav-group:nth-child(1)>h3{grid-column:1 / 5}
+#safety-pipelines .pipeline-nav-group:nth-child(2)>h3{grid-column:5 / 7}
+#safety-pipelines .pipeline-nav-group:nth-child(3)>h3{grid-column:7 / 9}
+#safety-pipelines .pipeline-nav-group button{grid-row:2;width:calc(100% + 16px);padding-left:24px;padding-right:24px;box-shadow:none}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="0"]{grid-column:1;z-index:8}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="1"]{grid-column:2;z-index:7}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="2"]{grid-column:3;z-index:6}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="7"]{grid-column:4;z-index:5}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="3"]{grid-column:5;z-index:4}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="5"]{grid-column:6;z-index:3}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="4"]{grid-column:7;z-index:2}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="6"]{grid-column:8;z-index:1}
+#safety-pipelines .pipeline-nav-group button:last-child{width:calc(100% + 16px)}
+#safety-pipelines .pipeline-nav-group:last-child button:last-child{width:100%}
+#safety-pipelines .pipeline-nav-group button::after,
+#safety-pipelines .pipeline-nav-group button:last-child::after{content:'';width:16px;top:0;bottom:10px;right:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 82' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L16 41 L0 82' fill='none' stroke='white' stroke-width='3' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+#safety-pipelines .pipeline-nav-group:last-child button:last-child::after{content:none}
+
+/* Compact evaluation lab: retain the controls and explanations at a smaller scale. */
+#lab .section-head{margin-bottom:16px}
+#lab .section-head h2{font-size:32px;margin:8px 0 12px}
+#lab .violation-visual{padding:12px 16px;gap:8px 20px;margin-bottom:14px;border-radius:12px}
+#lab .violation-visual p{font-size:20px;margin-top:3px}
+#lab .violation-markers{justify-self:end;max-width:350px;gap:5px;width:100%}
+#lab .violation-markers>span{font-size:16px;border-radius:5px}
+#lab .violation-key,#lab .violation-key small{font-size:10px}
+#lab .lab-grid{padding:16px;gap:24px;border-radius:12px;align-items:start}
+#lab .lab-controls>h3{font-size:19px;margin:0 0 12px}
+#lab .lab-controls>p{font-size:13px;line-height:1.4;margin:10px 0 16px}
+#lab .lab-controls label{font-size:13px;margin-top:14px}
+#lab .lab-controls output{font-size:18px;margin-top:3px}
+#lab .lab-controls input[type=range]{margin:8px 0 14px}
+#lab .preset{gap:8px;margin:8px 0}
+#lab .preset button{font-size:11px;padding:7px 12px}
+#lab .lab-controls>p.small{font-size:11px;margin:12px 0}
+#lab .lab-controls>a{font-size:11px}
+#lab .matrix{border-spacing:4px}
+#lab .matrix caption{font-size:10px;padding-bottom:6px}
+#lab .matrix th,#lab .matrix td{padding:8px 10px;font-size:12px}
+#lab .matrix td span{font-size:10px}
+#lab .matrix td strong{font-size:26px;line-height:1.1;margin-top:4px}
+#lab .positive-definition{font-size:12px;line-height:1.4;margin:8px 0}
+#lab .metric-questions-heading{font-size:16px;margin:12px 0 8px}
+#lab .metrics{gap:8px;margin-top:8px}
+#lab .metrics>div{padding:10px}
+#lab .metrics>div>span{font-size:11px}
+#lab .metrics strong{font-size:25px;margin:5px 0;line-height:1.15}
+#lab .metrics p{font-size:11px;line-height:1.35;margin:5px 0}
+#lab .metrics small{font-size:10px;line-height:1.35}
+#lab #metric-story{font-size:12px;line-height:1.4;padding:12px 14px;margin:10px 0 0}
+@media(max-width:600px){#lab .section-head h2{font-size:27px}#lab .violation-markers{justify-self:start}#lab .lab-grid{padding:12px;gap:16px}#lab .matrix th,#lab .matrix td{padding:7px}}
+
+/* Compact operating-judgment practice across every stage. */
+#operations .section-head{margin-bottom:12px}
+#operations #ops-title{font-size:30px;line-height:1.15;margin:8px 0 12px}
+#operations #ops-title br{display:none}
+#operations .ops-instruction{font-size:13px;margin-bottom:12px}
+#operations .ops-route{margin-bottom:12px}
+#operations .ops-route button{padding:10px 12px}
+#operations .ops-route strong{font-size:13px;margin-top:5px}
+#operations .ops-route i{top:9px}
+#operations .ops-stage{padding:16px;border-radius:12px}
+#operations .ops-stage-head{gap:18px;margin-bottom:12px}
+#operations .ops-stage-head h3{font-size:20px;line-height:1.3;margin-top:5px;max-width:none}
+#operations .ops-partners{padding-left:16px}
+#operations .ops-partners p{font-size:13px;line-height:1.4;margin-top:5px}
+#operations .ops-challenges>div{gap:8px;margin:6px 0 10px}
+#operations .ops-challenges button{padding:8px 10px;font-size:13px;gap:8px}
+#operations .ops-challenges button>span{width:18px;height:18px;font-size:11px}
+#operations .ops-signal{font-size:12px;line-height:1.4;margin-bottom:12px}
+#operations .ops-signal>span{margin-bottom:3px}
+#operations .ops-response{gap:10px}
+#operations .ops-response li{padding:12px}
+#operations .ops-step-number{width:23px;height:23px;font-size:10px}
+#operations .ops-response h4{font-size:13px;margin:9px 0 6px}
+#operations .ops-response p{font-size:12px;line-height:1.45}
+#operations .ops-proof{padding:10px 12px;margin:10px 0 12px;gap:10px}
+#operations .ops-proof p{font-size:12px;line-height:1.4;margin-top:3px}
+#operations .ops-experience{padding:12px;gap:12px}
+#operations .ops-experience p{font-size:12px;line-height:1.45;margin-top:5px}
+#operations .ops-learning{font-size:11px;line-height:1.45;margin:10px 0}
+#operations .ops-output{padding-top:10px;gap:10px}
+#operations .ops-output strong{font-size:12px}
+#operations .ops-output button{font-size:11px;padding:6px 9px}
+@media(max-width:650px){#operations #ops-title{font-size:26px}#operations .ops-partners{padding:8px 0 0}#operations .ops-response{gap:18px}}
+
+/* Match workflow tabs to the collaboration stage ribbon. */
+#safety-pipelines .pipeline-group-picker{--workflow-arrow-height:72px}
+#safety-pipelines .pipeline-nav-group button{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:7px;align-content:center;align-items:center;background:#edf7f9;color:#33555e}
+#safety-pipelines .pipeline-nav-group button>span:first-child{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#dceff3;color:#315e6b;font-size:10px;font-weight:650;letter-spacing:0}
+#safety-pipelines .pipeline-nav-group button b{font-size:13px;line-height:1.3;font-weight:650;letter-spacing:-.025em;text-decoration:underline;text-decoration-color:#7daeb980;text-underline-offset:4px;text-decoration-thickness:1px}
+#safety-pipelines .pipeline-nav-group button b::after{content:'⌄';display:inline-block;margin-left:5px;font-size:11px;opacity:.8}
+#safety-pipelines .pipeline-nav-group button[aria-selected=true]{background:#183f49;color:#fff}
+#safety-pipelines .pipeline-nav-group button[aria-selected=true]>span:first-child{background:#ffffff18;color:#d7edf1}
+#safety-pipelines .pipeline-nav-group button[aria-selected=true] b{text-decoration-color:#c5eaf0}
+#safety-pipelines .pipeline-nav-group button:hover:not([aria-selected=true]){background:#cdeaf0}
+#safety-pipelines .pipeline-nav-group:first-child button:first-child{border-top-left-radius:12px}
+#safety-pipelines .pipeline-nav-group:last-child button:last-child{border-top-right-radius:12px;clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),55% calc(100% - 10px),50% var(--tab-point),45% calc(100% - 10px),0 calc(100% - 10px),16px calc((100% - 10px)/2))}
+
+/* Frame the workflow content continuously beneath the tab ribbon. */
+#safety-pipelines .pipeline-panel-column{border:1px solid #c9dfe4;border-top:0;border-radius:0 0 16px 16px;margin-top:-20px;padding-top:10px;background:#fff}
+#safety-pipelines .pipeline-navigation{position:relative;z-index:1}
+#safety-pipelines .pipeline-visual-explorer .pipeline-detail{border-radius:0 0 16px 16px;padding-bottom:18px}
+
+/* Keep the summary compact and align its top with the workflow. */
+@media(min-width:1101px){
+ #safety-pipelines .pipeline-workspace{align-items:start}
+ #safety-pipelines .pipeline-insights{align-self:start;align-content:start}
+ #safety-pipelines .pipeline-flow-track,#safety-pipelines .pipeline-step-list{flex:0 1 auto}
+}
+
+/* Connected chevrons for the operating workflow. */
+#operations .ops-route{gap:0}
+#operations .ops-route button{width:calc(100% + 14px);border-radius:0;padding:12px 24px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%,14px 50%)}
+#operations .ops-route button:first-child{padding-left:12px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%)}
+#operations .ops-route button:last-child{width:100%}
+#operations .ops-route button:nth-child(1){z-index:8}
+#operations .ops-route button:nth-child(2){z-index:7}
+#operations .ops-route button:nth-child(3){z-index:6}
+#operations .ops-route button:nth-child(4){z-index:5}
+#operations .ops-route button:nth-child(5){z-index:4}
+#operations .ops-route button:nth-child(6){z-index:3}
+#operations .ops-route button:nth-child(7){z-index:2}
+#operations .ops-route button:nth-child(8){z-index:1}
+#operations .ops-route button i{display:none}
+#operations .ops-route button:not(:last-child)::after{content:'';position:absolute;inset:0 0 0 auto;width:14px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0 L14 30 L0 60' fill='none' stroke='white' stroke-width='3' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+@media(max-width:1000px){#operations .ops-route{row-gap:6px}#operations .ops-route button:nth-child(4){width:100%}#operations .ops-route button:nth-child(4)::after{content:none}}
+
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="3"]{padding-left:20px;padding-right:17px;column-gap:5px}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="3"] b{font-size:12px}
+#safety-pipelines .pipeline-title-line{display:block;white-space:nowrap}
+#safety-pipelines .pipeline-nav-group button[data-pipeline-tab="3"] b::after{display:none}
+
+#lab .matrix th .matrix-axis-label{display:block;font-size:11px;line-height:1.5;color:#526d77;font-weight:400}
+
+/* Place the matrix labels directly on their corresponding axes. */
+#lab .matrix .matrix-empty{border:0;background:transparent;padding:0}
+#lab .matrix .matrix-prediction-axis{text-align:center;background:#e1f0f4;color:#285d6a;border:0;border-radius:6px;font-size:12px;font-weight:600;padding:6px}
+#lab .matrix .matrix-reference-axis{width:30px;padding:8px 5px;text-align:center;background:#e1f0f4;color:#285d6a;border:0;border-radius:6px}
+#lab .matrix-reference-axis span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;font-weight:600;letter-spacing:.02em}
+#lab .matrix thead tr:last-child th{background:#f0f6f8;border:0;text-align:center;font-weight:500}
+#lab .matrix tbody th[scope="row"]{background:#f0f6f8;border:0;font-weight:500}
+
+/* Brackets show exactly which tabs belong to each workflow group. */
+#safety-pipelines .pipeline-nav-group>h3{position:relative;padding-bottom:12px;margin-right:8px}
+#safety-pipelines .pipeline-nav-group>h3::after{content:'';position:absolute;left:0;right:0;bottom:0;height:5px;border:1px solid #9fc8d2;border-bottom:0;border-radius:3px 3px 0 0;pointer-events:none}
+#safety-pipelines .pipeline-nav-group:last-child>h3{margin-right:0}
+#safety-pipelines .pipeline-group-picker{row-gap:5px}
+
+#lab .lab-interpretation{margin-top:18px;border:1px solid #cce1e6;border-radius:10px;padding:12px;background:#fff}
+#lab .lab-interpretation h3{font-size:16px;color:#245462;margin:0 0 10px}
+#lab .lab-interpretation>div{padding:9px 0;border-top:1px solid #e0ecef}
+#lab .lab-interpretation h4{font-size:12px;margin:0 0 4px;color:#2b6472}
+#lab .lab-interpretation p,#lab .lab-interpretation #metric-story{font-size:12px;line-height:1.45;margin:0;padding:0;background:transparent;color:#405d67}
+#lab .lab-interpretation>small{display:block;font-size:10px;line-height:1.4;color:#6b7e84;margin-top:6px}
+
+/* Make the interpretation easy to scan without a long block of prose. */
+#lab .lab-interpretation{padding:14px;background:#f4f9fa;border-color:#c9e0e6}
+#lab .lab-interpretation h3{font-size:18px;line-height:1.3;margin-bottom:12px}
+#lab .lab-interpretation>div{padding:12px;background:#fff;border:1px solid #dce9ed;border-radius:8px;margin-top:8px}
+#lab .lab-interpretation>div:first-of-type{background:#eaf5f8;border-color:#c9e3ea}
+#lab .lab-interpretation>div:last-of-type{background:#f0f6eb;border-color:#dce8d4}
+#lab .lab-interpretation h4{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:650;margin:0 0 8px}
+#lab .lab-reading-step{display:inline-grid;place-items:center;width:22px;height:22px;flex-shrink:0;border-radius:50%;background:#dceef2;font-size:10px;color:#2b6472}
+#lab .lab-interpretation p,#lab .lab-interpretation #metric-story{font-size:13px;line-height:1.6;color:#294f5b}
+#lab .lab-interpretation .text-highlight{font-weight:550}
+#lab .lab-interpretation>small{font-size:11px;line-height:1.5;margin:10px 2px 0;color:#657b84}
+
+/* Keep the violation overview at the top of the results column. */
+#lab .lab-results-column{min-width:0}
+#lab .lab-results-column .violation-visual{grid-template-columns:1fr;gap:8px;padding:12px;margin:0 0 14px}
+#lab .lab-results-column .violation-markers{max-width:none;justify-self:stretch;grid-template-columns:repeat(10,minmax(0,1fr))}
+#lab .lab-results-column .violation-markers>span{height:28px;aspect-ratio:auto}
+#lab .lab-results-column .violation-key{gap:10px;flex-wrap:wrap}
+#lab .lab-results-column .violation-key small{margin-left:auto}
+
+#lab .lab-result-heading{font-size:16px;line-height:1.3;font-weight:500;letter-spacing:-.025em;margin:0 0 8px;color:inherit}
+#lab .matrix-heading{margin:14px 0 8px}
+#lab .matrix .lab-matrix-caption{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* Balance controls and results, then read the interpretation across the full width. */
+#lab .lab-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px 24px}
+#lab .lab-grid>.lab-interpretation{grid-column:1/-1;margin-top:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}
+#lab .lab-grid>.lab-interpretation>h3{grid-column:1/-1;margin:0 0 2px}
+#lab .lab-grid>.lab-interpretation>div{margin:0}
+#lab .lab-grid>.lab-interpretation>small{grid-column:1/-1;margin:0}
+#lab .lab-controls .metric-questions-heading{margin-top:18px}
+#lab .lab-controls .metrics{margin-bottom:0}
+@media(max-width:850px){#lab .lab-grid{grid-template-columns:1fr}#lab .lab-grid>.lab-interpretation{grid-template-columns:1fr}}
+
+/* Let the confusion matrix fill the available results-column height. */
+@media(min-width:851px){
+ #lab .lab-results-column{align-self:stretch;display:flex;flex-direction:column}
+ #lab .lab-results-column .violation-visual{flex-shrink:0}
+ #lab .lab-results-column .matrix{flex:1;width:100%;min-height:270px}
+ #lab .lab-results-column .matrix td,#lab .lab-results-column .matrix th{vertical-align:middle}
+ #lab .lab-results-column .matrix td.correct,#lab .lab-results-column .matrix td.miss{padding:14px 16px}
+ #lab .lab-results-column .matrix td strong{font-size:32px;margin-top:8px}
+ #lab .lab-results-column .positive-definition{margin:10px 0 0}
+}
+
+/* Remove the outer evaluation-lab fill and outline. */
+#lab .lab-grid{background:transparent;border:0;border-radius:0}
+
+/* Remove the remaining outer frames around lab summaries. */
+#lab .lab-grid>.lab-interpretation,
+#lab .lab-results-column .violation-visual{background:transparent;border:0;border-radius:0}
+
+/* Subtle dividers organize the lab without restoring outer frames. */
+#lab .lab-controls .metric-questions-heading{border-top:1px solid #d6e5e9;padding-top:16px;margin-top:18px}
+#lab .lab-results-column .matrix-heading{border-top:1px solid #d6e5e9;padding-top:16px}
+#lab .lab-grid>.lab-interpretation{border-top:1px solid #c9dfe5;padding-top:18px;margin-top:2px}
+#lab .metrics>div+div{border-left:1px solid #e0ebee;border-radius:0}
+@media(min-width:851px){
+ #lab .lab-results-column{border-left:1px solid #d6e5e9;padding-left:24px}
+}
+@media(max-width:850px){
+ #lab .lab-results-column{border-top:1px solid #d6e5e9;padding-top:16px}
+}
+
+/* A live review route, with optional theory beneath the interpretation. */
+#lab .lab-review-flow{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;list-style:none;margin:0 0 4px;padding:0}
+#lab .lab-review-flow li{position:relative;padding:10px 12px;background:#edf6f8;border-radius:7px;border-top:2px solid #76b4c3}
+#lab .lab-review-flow li:not(:last-child)::after{content:'';position:absolute;top:50%;right:-18px;width:18px;border-top:2px dashed #8bb8c3}
+#lab .lab-review-flow small{display:block;font-size:10px;color:#597b86;margin-bottom:4px}
+#lab .lab-review-flow strong{font-size:13px;font-weight:550;color:#245462}
+#lab .lab-review-theory{grid-column:1/-1;border-top:1px solid #d6e5e9;padding-top:10px;margin-top:4px}
+#lab .lab-review-theory summary{cursor:pointer;font-size:13px;color:#245462;font-weight:550}
+#lab #lab-theory-tag{display:inline-block;margin-left:8px;padding:3px 7px;border-radius:5px;background:#e8f3f6;font-size:11px;font-weight:400}
+#lab .lab-review-theory #lab-theory-context{margin:10px 0;font-size:13px}
+#lab .lab-review-theory dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0}
+#lab .lab-review-theory dt{font-size:12px;font-weight:600;color:#245462}
+#lab .lab-review-theory dd{margin:4px 0 0;font-size:12px;line-height:1.5;color:#526d77}
+#lab .lab-review-theory a{font-size:11px;color:#397487}
+@media(max-width:650px){#lab .lab-review-flow,#lab .lab-review-theory dl{grid-template-columns:1fr}#lab .lab-review-flow{gap:10px}#lab .lab-review-flow li:not(:last-child)::after{top:100%;left:24px;height:10px;width:0;border-top:0;border-left:2px dashed #8bb8c3}}
+
+/* Align each slider label and its current count on opposite sides. */
+#lab .lab-controls label[for="tp"],
+#lab .lab-controls label[for="fp"]{display:flex;align-items:baseline;justify-content:space-between;gap:12px;width:100%}
+#lab .lab-controls label[for="tp"] output,
+#lab .lab-controls label[for="fp"] output{display:inline;margin:0;white-space:nowrap;text-align:right;flex-shrink:0}
+
+/* Consistent heading scale across the annotation quality practice. */
+#lab .lab-controls>h3,
+#lab .lab-controls .metric-questions-heading,
+#lab .lab-result-heading,
+#lab .lab-interpretation>h3{font-size:18px;line-height:1.3;font-weight:500;letter-spacing:-.025em;color:#214f5b}
+
+/* Place practice tab numbers beside their titles. */
+#practice .practice-menu button{display:flex;align-items:center;gap:10px}
+#practice .practice-menu button>span{display:block;margin:0;flex-shrink:0;font-size:11px}
+#practice .practice-menu button>strong{margin:0;min-width:0}
+
+#lab .lab-slider-row{display:grid;grid-template-columns:80px minmax(0,1fr);align-items:center;gap:14px;margin:8px 0 18px}
+#lab .lab-controls .lab-slider-row output{margin:0;font-size:18px;white-space:nowrap;font-variant-numeric:tabular-nums}
+#lab .lab-controls .lab-slider-row input[type=range]{width:100%;min-width:0;margin:0}
+
+/* A concise personal motivation, without the repeated chapter structure. */
+#personal-statement .personal-motivation{display:block;max-width:850px}
+#personal-statement .personal-motivation p{font-size:17px;line-height:1.7;margin:0 0 18px}
+#personal-statement .personal-note>footer{margin-top:20px;padding-top:16px}
+@media(max-width:700px){#personal-statement .personal-motivation p{font-size:15px;line-height:1.65}}
+
+/* Use the shared cyan marker in the personal note. */
+#personal-statement .personal-motivation mark{color:#172a30;font-weight:400;background:linear-gradient(transparent 42%,#afe8ef 42%,#afe8ef 93%,transparent 93%);padding:0 2px;border-radius:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}

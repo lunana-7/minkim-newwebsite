@@ -70,7 +70,7 @@ export const workflowExperience = [
   5:{slugs:['ai-model-matrix','context-compression-evaluation','prompt-caching','ai-safety-reporting-bot','agent-cost-controls'],apply:'I would define the affected task and records, bring reproducible evidence to technical partners and coordinate a review of the outputs after an approved fix.'}
  },
  {
-  2:{slugs:['q2-ai-cost-report','model-migration-analysis','ai-budget-forecast','api-cost-strategy','model-transition-plan','token-governance-benchmarking'],apply:'I would explain the quality, rework, timing and cost implications of each option, then track the delivery owner’s decision and follow-up actions.'},
+  2:{slugs:['q2-ai-cost-report','slack-automation-workshop','model-migration-analysis','ai-budget-forecast','api-cost-strategy','model-transition-plan','token-governance-benchmarking'],apply:'I would explain the quality, rework, timing and cost implications of each option, then track the delivery owner’s decision and follow-up actions.'},
   0:{slugs:['ai-transformation-executive-report','ax-performance-storyline','global-ai-insights','solution-landscape'],apply:'I would tailor the handoff to the lab’s acceptance criteria, clearly communicate limitations and turn feedback into a scoped correction or a new requirement.'},
   4:{slugs:['spendgate-impact-review','overage-invoice-validation','ai-survey-analysis','software-reliability-levels'],apply:'I would reconcile final evidence against the agreed criteria, make unresolved defects visible and document the corrective review before release.'},
   5:{slugs:['ai-model-matrix','cost-taxonomy','kissflow-approval-pipeline','agent-governance-organization','data-foundation'],apply:'I would clarify data structure and ownership, route technical handoff blockers and coordinate checks that the receiving workflow can use the delivered records.'}
@@ -126,6 +126,7 @@ export const experienceApplications = {
 };
 // Only stage or outcome context not already conveyed by the contribution summary.
 export const experienceStageNotes = {
+ 'slack-automation-workshop':'Collaborated with AI engineers at Krafton on a Slack bot and operating guidelines to turn the workflow into a repeatable system.',
  'ax-spend-gate':'Selected changes reached development; the lifecycle record remained proposed.',
  'q2-ai-cost-report':'Future migration savings remained estimates.',
  'model-migration-analysis':'No net saving was confirmed in the observed period.',
@@ -221,18 +222,18 @@ const additionalExperience = [
 for (const [stage, person, slugs] of additionalExperience) {
  workflowExperience[stage][person].slugs.splice(1, 0, ...slugs);
 }
-workflowExperienceSummaries[0][0] = 'At Krafton, I clarified tool and studio requirements. At Pacvue, I organized customer evidence and scoped an operating-agent prototype, building practice in turning broad needs into concrete work.';
-workflowExperienceSummaries[0][2] = 'At Krafton, I prepared cost forecasts and workstream plans. At Pacvue, I built an executive priorities dashboard that made data owners and unresolved definitions visible for operating discussions.';
-workflowExperienceSummaries[1][1] = 'I coordinated multilingual participation at Krafton and reviewed onboarding, usage and feedback measures at Pacvue. Together, these experiences help me distinguish participation from readiness and identify support gaps.';
-workflowExperienceSummaries[2][4] = 'I developed workflow guidance and review resources at Krafton. Pacvue’s weekly reporting taught me to make source definitions and unresolved questions explicit so others can interpret evidence consistently.';
-workflowExperienceSummaries[2][1] = 'At Krafton, I taught colleagues through worked examples, a playbook and office hours. At Pacvue, I reviewed onboarding and usage measures, adding experience in identifying what enablement evidence does and does not show.';
-workflowExperienceSummaries[3][4] = 'At Krafton, I analyzed approval requests and automation cases. At Pacvue, I compared conflicting reporting definitions and reviewed customer-evidence coverage, strengthening my attention to category gaps and missing context.';
-workflowExperienceSummaries[3][1] = 'I analyzed survey responses and supported workflow users at Krafton. At Pacvue, I grouped customer feedback into themes and follow-up actions, building practice in preserving individual evidence while finding recurring issues.';
-workflowExperienceSummaries[3][5] = 'I deployed a model comparison interface at Krafton and demonstrated an operating-agent prototype at Pacvue. Both involved translating a workflow into technical requirements while documenting dependencies and follow-up work.';
-workflowExperienceSummaries[4][2] = 'Krafton cost reports and forecasts taught me to make operating trade-offs explicit. Pacvue leadership reports and dashboards added practice in presenting comparable metrics, unresolved questions and accountable follow-up.';
-workflowExperienceSummaries[4][0] = 'I prepared executive reports and solution evaluations at Krafton. At Pacvue, I organized customer feedback and product updates into reviewable dashboards, connecting evidence to next actions and clear limitations.';
-workflowExperienceSummaries[4][4] = 'I reconciled approval and billing evidence at Krafton and compared source definitions in Pacvue’s weekly reporting. These experiences support consistent criteria, traceable records and visible unresolved issues at handoff.';
-workflowExperienceSummaries[4][5] = 'At Krafton, I built a model comparison interface and documented data requirements. At Pacvue, I handed over dashboards and an agent prototype with refresh guidance and integration dependencies.';
+workflowExperienceSummaries[0][0] = 'At Krafton, I clarified tool and studio requirements, turning broad needs into concrete work through practical evaluation criteria and review questions.';
+workflowExperienceSummaries[0][2] = 'I prepared cost forecasts and workstream plans, making delivery assumptions, ownership and unresolved requirements visible.';
+workflowExperienceSummaries[1][1] = 'I coordinated multilingual participation and reviewed onboarding evidence to distinguish participation from readiness and identify support gaps.';
+workflowExperienceSummaries[2][4] = 'I developed workflow guidance and review resources, making source definitions and unresolved questions explicit so reviewers could interpret evidence consistently.';
+workflowExperienceSummaries[2][1] = 'I supported colleagues with worked examples, a playbook and office hours, using onboarding feedback to improve instructions.';
+workflowExperienceSummaries[3][4] = 'I analyzed approval requests and AI use cases, checking category gaps, missing context and conflicting definitions before drawing conclusions.';
+workflowExperienceSummaries[3][1] = 'I analyzed survey responses and user feedback to find recurring issues while preserving the evidence behind individual cases.';
+workflowExperienceSummaries[3][5] = 'I built a model comparison interface and scoped an agent prototype, translating workflows into technical requirements and documented dependencies.';
+workflowExperienceSummaries[4][2] = 'I prepared cost reports and forecasts that separated observed results from estimates and made delivery trade-offs explicit.';
+workflowExperienceSummaries[4][0] = 'I prepared executive reports and solution evaluations, turning evidence into clear recommendations, limitations and next actions.';
+workflowExperienceSummaries[4][4] = 'I reconciled approval, billing and reporting evidence to establish consistent criteria and traceable records for handoff.';
+workflowExperienceSummaries[4][5] = 'I delivered technical tools and documentation with data requirements, refresh guidance and integration dependencies for a usable handoff.';
 
 // Explicit evidence links for each action within a stakeholder workflow.
 export const workflowStepExperience = [
@@ -258,7 +259,7 @@ export const workflowStepExperience = [
   5:[['context-compression-evaluation','ai-model-matrix'],['ent-operating-agent','prompt-caching'],['ai-safety-reporting-bot','agent-cost-controls']]
  },
  {
-  2:[['q2-ai-cost-report','weekly-performance-review'],['model-migration-analysis','ai-budget-forecast'],['six-for-26-dashboard','model-transition-plan']],
+  2:[['q2-ai-cost-report','weekly-performance-review'],['model-migration-analysis','ai-budget-forecast'],['slack-automation-workshop','six-for-26-dashboard','model-transition-plan']],
   0:[['ai-transformation-executive-report','ax-performance-storyline'],['gong-voice-of-customer','solution-landscape'],['prodcomm-growth-dashboard','global-ai-insights']],
   4:[['spendgate-impact-review','weekly-performance-review'],['overage-invoice-validation'],['ai-survey-analysis','software-reliability-levels']],
   5:[['cost-taxonomy','data-foundation'],['agent-governance-organization','kissflow-approval-pipeline'],['prodcomm-growth-dashboard','ent-operating-agent','ai-model-matrix']]

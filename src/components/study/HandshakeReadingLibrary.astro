@@ -10,7 +10,7 @@ const shelves = [
 const groupsFor = (id:string) => shelves.filter(s=>workstreamsForReading(id).some(w=>s.streams.includes(w.id))).map(s=>s.id);
 ---
 <section class="study-library-readings" id="readings" aria-labelledby="library-title">
- <div class="section-head"><div><p class="label">READING NOTES / SOURCES & APPLICATION</p><h3 id="library-title">The reading behind my preparation.</h3></div><p>Choose a part of the work, then open a source for my takeaway, an example and how I would apply it.</p></div>
+ <div class="section-head panel-heading"><div><p class="label">READING NOTES / SOURCES & APPLICATION</p><h3 id="library-title">The reading behind my preparation.</h3></div></div>
  <div class="reading-shelves" role="group" aria-label="Browse reading notes by responsibility">{shelves.map((s,i)=><button type="button" data-shelf={s.id} aria-pressed={i===0?'true':'false'}><span>{s.icon}</span><strong>{s.title}</strong><small>{s.caption}</small><i aria-hidden="true">→</i></button>)}</div>
  <div class="library-toolbar"><p id="library-status" role="status"></p><label>Find a source<input type="search" id="library-search" placeholder="Title, publisher or concept" aria-controls="library-results"/></label></div>
  <div class="library-results" id="library-results">{readings.map((r,i)=><button type="button" class="library-source" data-source-open={i} data-shelves={groupsFor(r.id).join(' ')} data-source-search={`${r.title} ${r.publisher} ${r.summary}`.toLowerCase()} aria-haspopup="dialog" aria-controls={`source-note-${i}`} hidden={!groupsFor(r.id).includes('understand')}><span class="library-publisher">{r.publisher}</span><strong>{r.title}</strong><span class="library-open">Open reading note <span aria-hidden="true">↗</span></span></button>)}</div>

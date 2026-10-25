@@ -3,7 +3,7 @@ import { operatingWorkflow as workflow } from '../../data/handshake-operating-wo
 const actions=['Investigate','Contain the risk','Resolve with the owner','Confirm it worked'];
 ---
 <section class="section wrap" id="operations" aria-labelledby="ops-title">
- <div class="section-head"><div><p class="label">7 / OPERATING JUDGMENT</p><h2 id="ops-title">From a project brief<br/>to a reliable delivery.</h2></div><p>Match the people, make the guidance usable and keep quality visible as demand changes. Explore where I would act, escalate and learn.</p></div>
+ <div class="section-head panel-heading"><div><p class="label">OPERATING JUDGMENT</p><h2 id="ops-title">From a project brief<br/>to a reliable delivery.</h2></div></div>
  <p class="ops-instruction">Choose a stage, then a challenge to see my response and the experience behind it.</p>
  <div class="ops-route" role="tablist" aria-label="Operating workflow">{workflow.map((stage,i)=><button type="button" role="tab" id={`ops-tab-${i}`} data-ops-stage={i} aria-controls={`ops-stage-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1}><span>0{i+1}</span><strong>{stage.title}</strong><i aria-hidden="true">→</i></button>)}</div>
  {workflow.map((stage,i)=><article class="ops-stage" id={`ops-stage-${i}`} role="tabpanel" aria-labelledby={`ops-tab-${i}`} hidden={i!==0} tabindex="0">

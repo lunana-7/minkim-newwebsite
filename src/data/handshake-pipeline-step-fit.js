@@ -25,8 +25,8 @@ export const pipelineStepFit = [
  ],
  [
   ['Krafton · Evaluation framework','Defined task-specific comparison measures.','Safety objectives, harm categories and evaluation limits.','model-value-framework'],
-  ['Human–AI research','Contributed rules and information states across 30+ conditions.','Representative safety cases and held-out evaluation design.',null],
-  ['Human–AI research','Compared 10+ model candidates and investigated inconsistent runs.','Reproducible safety runs and sensitive-data handling.',null],
+  ['Human–AI research','Contributed rules and information states across 30+ conditions.','Representative safety cases and held-out evaluation design.','action-lab-human-ai-decisions'],
+  ['Human–AI research','Compared 10+ model candidates and investigated inconsistent runs.','Reproducible safety runs and sensitive-data handling.','action-lab-human-ai-decisions'],
   ['Krafton · Model comparison','Deployed an interface for inspecting model comparison evidence.','Human grading rubrics and automated-grader validation.','ai-model-matrix'],
   ['Krafton · Automation analysis','Refined categories across 2k+ multilingual cases.','False positives, false negatives and category-level safety metrics.','ai-survey-analysis']
  ],
@@ -39,8 +39,8 @@ export const pipelineStepFit = [
  ],
  [
   ['Krafton · Governance framework','Connected risk boundaries with lifecycle and decision owners.','Authorized red-team scope and stop conditions.','ai-four-layer-framework'],
-  ['Human–AI research','Designed conditions to examine changes in model behavior.','Adversarial safety scenario design with specialist supervision.',null],
-  ['Human–AI research','Investigated prompt, information-state and rule effects.','Controlled testing, logging and sensitive-content procedures.',null],
+  ['Human–AI research','Designed conditions to examine changes in model behavior.','Adversarial safety scenario design with specialist supervision.','action-lab-human-ai-decisions'],
+  ['Human–AI research','Investigated prompt, information-state and rule effects.','Controlled testing, logging and sensitive-content procedures.','action-lab-human-ai-decisions'],
   ['Krafton · Classification analysis','Examined ambiguous cases and coverage gaps.','Failure reproduction, severity and red-team evidence standards.','spendgate-impact-review'],
   ['Krafton · Measurement design','Defined comparison criteria and their limitations.','Turning validated failures into regression cases.','model-value-framework']
  ],

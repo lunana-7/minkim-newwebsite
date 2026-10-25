@@ -1,0 +1,115 @@
+---
+import HandshakePracticeHub from '../../components/study/HandshakePracticeHub.astro';
+import PolicyGapLab from '../../components/study/PolicyGapLab.astro';
+import SafetyEvaluationLab from '../../components/study/SafetyEvaluationLab.astro';
+import { readings } from '../../data/handshake-study.js';
+import '../../styles/handshake-study.css';
+import '../../styles/handshake-refinements.css';
+import '../../styles/handshake-method-labs.css';
+export const prerender = false;
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+Astro.response.headers.set('Cache-Control', 'private, no-store');
+Astro.response.headers.set('Referrer-Policy', 'no-referrer');
+---
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex, nofollow, noarchive"/><meta name="referrer" content="no-referrer"/><title>Min Kim · Human Data Practice</title><link rel="icon" href="/favicon.ico"/></head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><a class="wordmark" href="/study/handshake-ai">Min Kim</a><a href="/study/handshake-ai#safety-pipelines">Back to the workflows ↗</a></header>
+<main id="main">
+<HandshakePracticeHub>
+<section class="section wrap" id="lab" slot="lab"><div class="section-head panel-heading"><div><h2>99% accuracy can still mean<br/>missing every violation.</h2></div></div><div class="lab-grid"><div class="lab-controls"><h3>Change the reviewer’s classifications</h3><p>Reference labels: <b>10 violations</b> and <b>990 allowed cases</b>.</p><label for="tp">Violations correctly caught</label><div class="lab-slider-row"><output id="tp-value" for="tp">0 / 10</output><input type="range" id="tp" min="0" max="10" value="0"/></div><label for="fp">Allowed cases incorrectly flagged</label><div class="lab-slider-row"><output id="fp-value" for="fp">0 / 990</output><input type="range" id="fp" min="0" max="990" value="0"/></div><p class="small">These sliders change counts directly; they are not a model threshold or an empirical ROC curve.</p><a href="https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall" target="_blank" rel="noopener noreferrer">Metric definitions · Google ↗</a><h3 class="metric-questions-heading">What does each metric ask?</h3><div class="metrics"><div><span>Accuracy</span><strong id="accuracy">99.0%</strong><p>Of all cases, how many judgments were correct?</p><small>(TP + TN) / all cases</small><small id="accuracy-calculation">(0 + 990) / 1,000</small></div><div><span>Precision</span><strong id="precision">N/A</strong><p>Of the cases flagged as violations, how many really were violations?</p><small>TP / (TP + FP)</small><small id="precision-calculation">0 / 0 · No cases flagged</small></div><div><span>Recall</span><strong id="recall">0.0%</strong><p>Of all actual violations, how many were caught?</p><small>TP / (TP + FN)</small><small id="recall-calculation">0 / (0 + 10)</small></div></div></div><div class="lab-results-column"><div class="violation-visual"><div><h3 class="lab-result-heading">How many violations did we catch?</h3><p id="violation-visual-summary">0 caught · 10 missed</p></div><div class="violation-markers" role="img" aria-label="All ten actual violations were missed" id="violation-markers">{Array.from({length:10},(_,i)=><span data-violation-dot={i} class="is-missed" aria-hidden="true">×</span>)}</div><div class="violation-key"><span><i class="key-caught"></i>Caught</span><span><i class="key-missed"></i>Missed</span><small>Each marker is one actual violation.</small></div></div><h3 class="lab-result-heading matrix-heading">Where were the judgments right or wrong?</h3><table class="matrix"><caption class="lab-matrix-caption">Confusion matrix · counts</caption><thead><tr class="matrix-axis-heading"><td colspan="2" class="matrix-empty"></td><th scope="colgroup" colspan="2" class="matrix-prediction-axis">Prediction</th></tr><tr><td colspan="2" class="matrix-empty"></td><th scope="col">Violation</th><th scope="col">Allowed</th></tr></thead><tbody><tr><th scope="rowgroup" rowspan="2" class="matrix-reference-axis"><span>Reference</span></th><th scope="row">Violation</th><td class="correct"><span>TP · True positive</span><strong id="tp-cell">0</strong></td><td class="miss"><span>FN · False negative</span><strong id="fn-cell">10</strong></td></tr><tr><th scope="row">Allowed</th><td class="miss"><span>FP · False positive</span><strong id="fp-cell">0</strong></td><td class="correct"><span>TN · True negative</span><strong id="tn-cell">990</strong></td></tr></tbody></table><p class="positive-definition"><mark class="text-highlight">Positive means classified as a violation</mark>. It does not mean a good outcome. Here, reference labels define the actual state.</p></div><section class="lab-interpretation" aria-label="How I would interpret this result" aria-live="polite"><h3>What I see → what I would do</h3><div><h4><span class="lab-reading-step">01</span> What this means</h4><p id="metric-story">All 10 violations are missed. The 99% accuracy comes from correctly passing the 990 allowed cases; it hides zero violation recall.</p></div><div><h4><span class="lab-reading-step">02</span> My next step</h4><p id="lab-next-step">Inspect the missed violations against the policy and reviewed references. Check whether the issue is unclear guidance, a labeling mistake or a model failure; route disputed interpretations to the policy owner.</p></div><div><h4><span class="lab-reading-step">03</span> What I would check afterward</h4><p id="lab-follow-up">Re-evaluate on a fresh, representative sample. Report missed violations by severity, false alarms and sample sizes against the agreed acceptance criteria.</p></div></section></div></section>
+<section class="section wrap" id="calibration" slot="calibration"><p class="label">CALIBRATION WORKBENCH</p><h2>Disagreement is a signal.<br/>Investigate before assigning blame.</h2><div class="calibration-grid"><div><p>Illustrative labels from three reviewers. Each row is one item; the numbers below describe this tiny demonstration only.</p><table class="agreement"><caption>Synthetic review sample</caption><thead><tr><th>Item</th><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr><th>01</th><td><span class="judgment-allow">Allow</span></td><td><span class="judgment-allow">Allow</span></td><td><span class="judgment-allow">Allow</span></td></tr><tr><th>02</th><td><span class="judgment-flag">Flag</span></td><td><span class="judgment-flag">Flag</span></td><td><span class="judgment-flag">Flag</span></td></tr><tr class="split"><th>03</th><td><span class="judgment-allow">Allow</span></td><td><span class="judgment-flag">Flag</span></td><td><span class="judgment-allow">Allow</span></td></tr><tr class="split"><th>04</th><td><span class="judgment-flag">Flag</span></td><td><span class="judgment-allow">Allow</span></td><td><span class="judgment-flag">Flag</span></td></tr></tbody></table><div class="stat-row"><strong>50%<small>unanimous items · 2 / 4</small></strong><strong>66.7%<small>pairwise agreement · 7 / 12</small></strong></div><p class="small">Pairwise agreement counts the three reviewer pairs within each item. This is descriptive agreement, not chance-corrected agreement or accuracy.</p></div><div class="diagnostic"><h3>A proposed diagnostic sequence</h3><ol><li><b>Inspect the case.</b> Check missing context and the exact rule.</li><li><b>Compare rationales.</b> Look for recurring interpretation differences.</li><li><b>Check the version.</b> Ensure reviewers used the same criteria.</li><li><b>Adjudicate.</b> Ask the authorized owner to resolve the boundary.</li><li><b>Recalibrate.</b> Add contrasting examples and review a fresh sample.</li></ol><p>Consensus alone cannot prove correctness. Preserve dissent and uncertainty when the evidence does not support a settled answer.</p><a href={readings[4].url} target="_blank" rel="noopener noreferrer">Source workflow · Label Studio ↗</a></div></div></section>
+
+<section class="section wrap" id="analysis" slot="analysis"><p class="label">ANALYTICAL PRACTICE</p><h2>Make the denominator explicit.</h2><div class="query-process" aria-label="How the analysis query works"><div><span>01 / JOIN</span><strong>Tasks + final reviews</strong><p>One row per evaluated item</p></div><i aria-hidden="true">→</i><div><span>02 / FILTER</span><strong>Resolved &amp; comparable</strong><p>Known labels, same policy version</p></div><i aria-hidden="true">→</i><div><span>03 / GROUP</span><strong>By policy category</strong><p>Count reviewed items and errors</p></div><i aria-hidden="true">→</i><div><span>04 / CALCULATE</span><strong>Errors ÷ reviewed items</strong><p>Report the category’s error rate</p></div></div><div class="two-grid"><div><p>This proposed query compares labels with a finalized reference label, grouped by policy category. The schema assumes one row per task and one final review per task.</p><p>Confirm uniqueness before joining. Exclude unresolved reviews deliberately, report how many were excluded, and avoid interpreting an unreviewed item as a correct one.</p><a href="https://sqlbolt.com/" target="_blank" rel="noopener noreferrer">Practice the SQL building blocks ↗</a></div><pre aria-label="Illustrative SQL query"><code>{`-- Illustrative schema, not production data.
+SELECT t.policy_category,
+       COUNT(*) AS reviewed_items,
+       SUM(CASE WHEN t.label <> r.reference_label
+                THEN 1 ELSE 0 END) AS errors,
+       1.0 * SUM(CASE
+         WHEN t.label <> r.reference_label
+         THEN 1 ELSE 0 END) / COUNT(*) AS error_rate
+FROM tasks t
+JOIN final_reviews r ON r.task_id = t.id
+WHERE r.status = 'resolved'
+  AND t.label IS NOT NULL
+  AND r.reference_label IS NOT NULL
+  AND t.policy_version = r.policy_version
+GROUP BY t.policy_category;`}</code></pre></div></section>
+<PolicyGapLab slot="policy-gap-lab" />
+<SafetyEvaluationLab slot="safety-evaluation-lab" />
+</HandshakePracticeHub>
+</main>
+<script>
+ const tp=document.getElementById('tp') as HTMLInputElement,fp=document.getElementById('fp') as HTMLInputElement;
+ const put=(id:string,text:string)=>{document.getElementById(id)!.textContent=text;};
+ function highlightLabReading(){
+  const emphasis=/(\b\d+(?:,\d{3})*(?:\.\d+)?%?|missed violations|false alarms|policy category and severity|policy and quality owners|fresh cases|agreed limits|reference labels|zero violation recall|unclear guidance|labeling mistake|model failure|policy owner|fresh, representative sample|agreed acceptance criteria|sample sizes and limitations|reference quality|category coverage|acceptance criteria|prioritizing severity|overly broad rules|misread context|extra review burden|agreed quality criteria)/gi;
+  ['metric-story','lab-next-step','lab-follow-up'].forEach(id=>{
+   const node=document.getElementById(id)!;
+   const parts=(node.textContent||'').split(emphasis);
+   node.replaceChildren(...parts.map((part,index)=>{if(index%2===0)return document.createTextNode(part);const mark=document.createElement('mark');mark.className='text-highlight';mark.textContent=part;return mark;}));
+  });
+ }
+ highlightLabReading();
+ function explainResult(t:number,f:number,fn:number,tn:number){
+  let meaning='',action='',follow='';
+  if(fn===0&&f===0){
+   meaning='All 1,000 cases match the reference labels in this sample: 10 violations caught and 990 allowed cases passed. This does not establish performance on new cases.';
+   action='Check reference quality, category coverage and whether these cases were used during tuning. Ask the quality owner to review the evidence against the acceptance criteria.';
+   follow='Use a fresh sample with rare and difficult cases. Report sample sizes and limitations before recommending acceptance.';
+  }else if(t===0&&f===0){
+   meaning='All 10 violations are missed. The 99% accuracy comes from correctly passing the 990 allowed cases; it hides zero violation recall. Precision is undefined because no cases were flagged.';
+   action='Inspect the missed violations against the policy and reviewed references. Check whether the issue is unclear guidance, a labeling mistake or a model failure; route disputed interpretations to the policy owner.';
+   follow='Re-evaluate on a fresh, representative sample. Report missed violations by severity, false alarms and sample sizes against the agreed acceptance criteria.';
+  }else if(fn>0&&f>0){
+   meaning=`${fn} violations are missed (FN), and ${f} allowed cases are wrongly flagged (FP). Recall is ${(t*10).toFixed(1)}%; only ${(100*t/(t+f)).toFixed(1)}% of flagged cases are actual violations. Both error types need review.`;
+   action='Review missed violations and false alarms separately. Group them by policy category and severity, inspect the examples and rationales, and bring the error trade-offs to the policy and quality owners.';
+   follow='After an approved correction, check both recall and precision on fresh cases. Confirm that reducing one error has not increased the other beyond the agreed limits.';
+  }else if(fn>0){
+   meaning=`${fn} of 10 violations are missed (FN). ${t===0?'No violations were caught.':'Every flagged case is a real violation, but that does not mean every violation was found.'} No allowed cases were wrongly flagged.`;
+   action='Inspect the missed cases first, prioritizing severity. Check whether specific categories or ambiguous rules explain the misses before proposing a correction.';
+   follow='Check whether recall improves on fresh cases while monitoring false alarms. Have the owner review any remaining serious misses.';
+  }else{
+   meaning=`All 10 violations are caught, but ${f} allowed cases are wrongly flagged (FP). Recall is 100%; precision is ${(100*t/(t+f)).toFixed(1)}%. Catching everything can still create unnecessary review or restriction.`;
+   action='Inspect the false alarms for overly broad rules or misread context. Propose clearer examples with the policy owner and estimate the extra review burden.';
+   follow='Check whether false alarms decrease on fresh cases without introducing missed violations. Compare both outcomes with the agreed quality criteria.';
+  }
+  const accuracy=(t+tn)/10, recall=t*10, precision=t+f ? 100*t/(t+f) : null;
+  const pct=(value:number)=>value.toFixed(1)+'%';
+  if(fn!==0||f!==0){
+   if(precision===null){
+    action='Nothing is being flagged, so precision cannot be assessed. Inspect all 10 missed violations and check how the violation label and policy rules are being applied.';
+    follow='On fresh cases, confirm that real violations are identified. Then measure both recall and precision; track false alarms as flagging resumes.';
+   }else if(recall<80 && precision<80){
+    action=`Recall is ${pct(recall)} and precision is ${pct(precision)}. Review both error sets: ${fn} missed violations and ${f} false alarms. Prioritize severe misses, then check label definitions and recurring false-alarm categories with the policy owner.`;
+    follow=`Use fresh cases to compare both metrics with the current ${pct(recall)} recall and ${pct(precision)} precision. Report errors by severity and category; an overall improvement alone is insufficient.`;
+   }else if(recall<80){
+    action=`Precision is ${pct(precision)}, but recall is only ${pct(recall)}. Focus on the ${fn} missed violations: inspect their policy categories, context and reviewer rationales before proposing a correction.`;
+    follow=`Check that recall improves from ${pct(recall)} on fresh cases while preserving precision near its current ${pct(precision)} level. Ask the owner to review any remaining severe misses.`;
+   }else if(precision<50){
+    action=`Recall is ${pct(recall)}, but only ${pct(precision)} of flagged cases are violations. Inspect the ${f} false alarms for overly broad rules or misread context and estimate unnecessary review work.${fn ? ` Also review the ${fn} missed violations by severity.` : ''}`;
+    follow=`Check whether precision improves from ${pct(precision)} while recall stays near ${pct(recall)} on fresh cases. Report the reduction in unnecessary reviews alongside any new misses.`;
+   }else if(precision<80){
+    action=`Recall is ${pct(recall)} and precision is ${pct(precision)}. Review the ${f} false alarms by category and clarify borderline examples.${fn ? ` Review the ${fn} missed violations before recommending acceptance.` : ' Preserve the cases that correctly catch violations.'}`;
+    follow=`Compare precision and recall with their current ${pct(precision)} / ${pct(recall)} levels on fresh cases. Confirm that clarified guidance reduces false alarms without losing violation coverage.`;
+   }else{
+    action=`Precision (${pct(precision)}) and recall (${pct(recall)}) are both at least 80% in this exercise. Inspect the remaining ${fn} misses and ${f} false alarms, especially severe errors; these scores alone do not establish readiness.`;
+    follow='Check fresh, representative cases, rare categories and reference quality. Present the remaining errors and sample sizes to the owner against the actual acceptance criteria.';
+   }
+   if(accuracy>=95 && recall<80){
+    action=`Accuracy is ${pct(accuracy)}, but it is dominated by the 990 allowed cases. `+action;
+    follow+=' Report recall separately so high accuracy does not hide the misses.';
+   }else if(accuracy<80){
+    follow+=` Accuracy is currently ${pct(accuracy)} (${fn+f} errors out of 1,000); also report whether total errors fall, with the class balance unchanged.`;
+   }
+  }
+  put('metric-story',meaning);put('lab-next-step',action);put('lab-follow-up',follow);
+  highlightLabReading();
+ }
+ function update(){const t=Number(tp.value),f=Number(fp.value),fn=10-t,tn=990-f;put('violation-visual-summary',`${t} caught · ${fn} missed`);document.getElementById('violation-markers')!.setAttribute('aria-label',`${t} of ten actual violations caught; ${fn} missed`);document.querySelectorAll<HTMLElement>('[data-violation-dot]').forEach((dot,i)=>{const caught=i<t;dot.className=caught?'is-caught':'is-missed';dot.textContent=caught?'✓':'×';});put('tp-value',`${t} / 10`);put('fp-value',`${f} / 990`);put('tp-cell',String(t));put('fp-cell',String(f));put('fn-cell',String(fn));put('tn-cell',String(tn));put('accuracy-calculation',`(${t} + ${tn}) / 1,000`);put('precision-calculation',t+f?`${t} / (${t} + ${f})`:'0 / 0 · No cases flagged');put('recall-calculation',`${t} / (${t} + ${fn})`);put('accuracy',((t+tn)/10).toFixed(1)+'%');put('precision',t+f?((t/(t+f))*100).toFixed(1)+'%':'N/A');put('recall',(t*10).toFixed(1)+'%');explainResult(t,f,fn,tn);}
+ update();
+ tp.addEventListener('input',update);fp.addEventListener('input',update);
+</script>
+</body></html>

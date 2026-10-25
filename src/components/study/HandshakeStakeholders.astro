@@ -2,17 +2,27 @@
 import { stageCollaboration } from '../../data/handshake-stage-collaboration.js';
 import { workflowExperience, workflowStepExperience, experienceSkills, experienceApplications, experienceStageNotes, workflowExperienceSummaries } from '../../data/handshake-workflow-experience.js';
 import { projectDetails } from '../../project-details.js';
+import experienceHighlights from '../../data/handshake-experience-highlights.json';
+function highlightExperience(text:string,slug:string){
+ const phrases=experienceHighlights[slug] ?? [];
+ if(!phrases.length)return [text];
+ const escaped=phrases.map((phrase:string)=>phrase.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+ return text.split(new RegExp(`(${escaped.join('|')})`,'g'));
+}
 function summarizeStepExperience(stageIndex:number, personIndex:number, stepIndex:number, action:string) {
+ if(stageIndex===4 && personIndex===2 && stepIndex===2)return 'At Krafton, I collaborated with AI engineers on a Slack bot and operating guidelines to turn the workflow into a repeatable system. I would bring that experience to making delivery decisions and follow-up actions traceable.';
  const slugs=workflowStepExperience[stageIndex][personIndex][stepIndex];
- const evidence=slugs.slice(0,2).map(slug=>{
+ const evidence=slugs.slice(0,1).map(slug=>{
   const project=projectDetails[slug];
   const company=project.experience==='pacvue'?'Pacvue':'Krafton';
   const description=project.description.charAt(0).toLowerCase()+project.description.slice(1);
   return `At ${company}, I ${description}`;
  });
- return `${evidence.join(' ')} I would draw on this experience to ${action.charAt(0).toLowerCase()+action.slice(1)}.`;
+ return evidence.join(' ');
 }
 const { stages, stageOutputs } = Astro.props;
+const inputHighlights = ["what the model needs to do", "which cases to cover", "what acceptable work looks like", "available people, deadlines and costs", "what the team can commit to", "rules that apply", "each policy boundary", "project assessments", "demonstrate their expertise", "assessment answers against the criteria", "inconsistent reasoning", "resolve disputed assessment cases", "which rule supports the correct judgment", "how the playbook interprets policy", "conflicting labels", "what auditors should check", "what evidence to record", "sample tasks", "confusing steps, missing examples or unclear labels", "compare labels and explanations", "repeated errors or disagreements", "how an unclear rule applies", "reasoning reviewers should follow", "explain their judgments", "cases they cannot confidently resolve", "identify the technical cause", "fix tools or evaluation checks", "quality, deadlines, staffing and costs", "deliver, correct the work or adjust the plan", "against agreed criteria", "confirm whether it meets their needs", "audit the delivery batch", "agreed quality checks are complete", "data format and export", "resolve technical blockers"];
+const inputHighlightPattern = new RegExp(`(${inputHighlights.join('|')})`, 'g');
 const stagePeople = [[0,2,3],[1,4,3],[3,4,1],[4,3,1,5],[2,0,4,5]];
 const stakeholders = [
  {name:'Frontier lab partners',side:'THE LAB’S SIDE',title:'Expertise that fits the task.',description:'Labs define different goals, standards and task types. I understand the challenge as matching the right expertise to that scope and turning individual judgments into work the customer can use.',give:'Task goals, domain requirements and acceptance criteria',need:'Useful outputs, quality evidence and clear delivery updates',action:'I would clarify requirements with the lab contact, surface unresolved questions and communicate the implications of scope changes.',route:'Scope or acceptance question → lab contact + delivery lead'},
@@ -42,18 +52,16 @@ const collaboration = [
 ---
 <section class="stakeholder-subsection combined-stakeholders" id="stakeholders" aria-label="Stage collaboration and my contribution">
 
- {stages.map((stage:any,i:number)=><div class="combined-stage-summary" style={`--stage-anchor:${i * 20 + 10}%`} id={`business-detail-${i}`} role="tabpanel" aria-labelledby={`business-stage-${i}`} hidden={i!==0} tabindex="0">
- <div class="combined-stage-columns"><div class="stage-focus-people"><span class="label">01 / PEOPLE INVOLVED</span><div class="combined-people">{stagePeople[i].map(person=><button type="button" data-stage-person={person}>{stakeholders[person].name}<span aria-hidden="true">↗</span></button>)}</div></div><div class="stage-focus-work"><span class="label">02 / MY WORK · SAFETY SPA</span><ul>{stage[3].map((task:string)=><li>{task}</li>)}</ul></div><div class="stage-focus-output"><span class="label">03 / WHAT THIS PRODUCES</span><ul>{stageOutputs[i].map((output:string)=><li>{output}</li>)}</ul></div></div>
- </div>)}
  <section class="collaboration-group" aria-labelledby="collaboration-group-title">
- <header class="collaboration-group-heading"><p class="label">COLLABORATION / MY ROLE IN THE TEAM</p><h3 id="collaboration-group-title">How I would work with others.</h3></header>
+ <svg class="role-work-connector" aria-hidden="true"><path class="role-work-line"/></svg>
+ <header class="collaboration-group-heading"><h3 id="collaboration-group-title">How I would work with others to <mark class="text-highlight" id="collaboration-heading-action">scope the program</mark>.</h3><p id="collaboration-heading-summary">Align lab needs, policy boundaries and delivery constraints with the relevant owners.</p></header>
  <div class="stakeholder-network relationship-map">
  <div class="relationship-canvas">
  <svg class="relationship-lines" viewBox="0 0 1000 310" preserveAspectRatio="none" aria-hidden="true">{[
  'M300 45 C370 45 365 155 410 155', 'M300 155 H410', 'M300 265 C370 265 365 155 410 155',
  'M700 45 C630 45 635 155 590 155', 'M700 155 H590', 'M700 265 C630 265 635 155 590 155'
  ].map((path,i)=><path d={path} data-stakeholder-line={i} class={i===0?'connection-active':''}/> )}</svg>
- <div class="relationship-center"><span class="center-role-label">MY CONTRIBUTION AT HANDSHAKE</span><strong>Min <span>· Safety SPA</span></strong><div class="center-role-rule"></div><p><span id="combined-my-action">Scope the program</span></p><small>Proposed role</small></div>
+ <div class="relationship-center"><strong>Min <span>· Safety SPA</span></strong></div>
  <div class="stakeholder-selectors" role="tablist" aria-label="Stakeholder connections">{stakeholders.map((person,i)=><button type="button" role="tab" id={`stakeholder-tab-${i}`} aria-controls={stagePeople[0].includes(i)?`stakeholder-panel-0-${i}`:undefined} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} disabled={!stagePeople[0].includes(i)} data-stakeholder={i}><span class="stakeholder-select-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d={[
  'M8 3h8M10 3v6l-6 10a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L14 9V3M8 14h8',
  'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M2 21v-3a6 6 0 0 1 12 0v3M17 4a4 4 0 0 1 0 8M18 15a5 5 0 0 1 4 5',
@@ -61,20 +69,19 @@ const collaboration = [
  'M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3M8 12l3 3 5-6',
  'M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14M15 15l6 6M7 10l2 2 4-4',
  'M8 5L2 12l6 7M16 5l6 7-6 7M14 3l-4 18'
- ][i]}/></svg></span><span><em class="stakeholder-owner-tag">{ownership[i].group}</em><strong>{person.name}</strong><small>{stageCollaboration[0][i]?.role ?? 'Not involved in this stage’s primary handoff'}</small></span><span class="stakeholder-select-arrow" aria-hidden="true">↗</span></button>)}</div>
+ ][i]}/></svg></span><span><strong>{person.name}</strong></span><span class="stakeholder-select-arrow" aria-hidden="true">↗</span></button>)}</div>
  </div></div>
  {stageCollaboration.map((connections,stageIndex)=>Object.entries(connections).map(([personId,connection])=>{const i=Number(personId);const person=stakeholders[i];return <article class="stakeholder-detail" id={`stakeholder-panel-${stageIndex}-${i}`} role="tabpanel" aria-labelledby={`stakeholder-tab-${i}`} tabindex="0" hidden={stageIndex!==0||i!==0}>
   <div class="stakeholder-exchange">
-   <div class="exchange-input"><span class="label">01 / {ownership[i].group}</span><h4>What they do at this stage</h4><p>{connection.input}</p></div><span class="exchange-arrow" aria-hidden="true">→</span>
-   <div class="exchange-action"><span class="label">02 / MY WORK · SAFETY SPA</span><h4>{stages[stageIndex][2]}</h4><p class="my-work-context">With {person.name.toLowerCase()}</p><ol>{connection.steps.map((step,stepIndex)=><li><button type="button" class="work-step-button" aria-pressed="false" data-experience-summary={summarizeStepExperience(stageIndex,i,stepIndex,step)} data-work-evidence={workflowStepExperience[stageIndex][i][stepIndex].join(" ")} aria-controls={workflowStepExperience[stageIndex][i][stepIndex].map(slug=>`proof-${stageIndex}-${i}-${slug}`).join(" ")}>{step}<span class="work-step-cue" aria-hidden="true">↘</span></button></li>)}</ol></div><span class="exchange-arrow" aria-hidden="true">→</span>
-   <div class="exchange-return collaboration-output"><span class="label">03 / WHAT WE WOULD PRODUCE TOGETHER</span><h4>{connection.output}</h4><ul>{connection.artifacts.map(item=><li><span aria-hidden="true">✓</span>{item}</li>)}</ul></div>
+   <div class="exchange-input"><h4>What they do at this stage</h4><p>{connection.input.split(inputHighlightPattern).map((part,index)=>index % 2 ? <mark class="text-highlight">{part}</mark> : part)}</p></div><span class="exchange-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" preserveAspectRatio="none"><path class="exchange-arrow-shaft" d="M0 8H24"/></svg></span>
+   <div class="exchange-action"><div class="my-work-heading"><h4>{stages[stageIndex][2]}</h4><p class="my-work-context">With {person.name.toLowerCase()}</p></div><ol>{connection.steps.map((step,stepIndex)=><li><button type="button" class="work-step-button" aria-pressed="false" data-experience-summary={summarizeStepExperience(stageIndex,i,stepIndex,step)} data-work-evidence={workflowStepExperience[stageIndex][i][stepIndex].join(" ")} aria-controls={workflowStepExperience[stageIndex][i][stepIndex].map(slug=>`proof-${stageIndex}-${i}-${slug}`).join(" ")}>{step}<span class="work-step-cue" aria-hidden="true">↘</span></button></li>)}</ol></div><span class="exchange-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" preserveAspectRatio="none"><path class="exchange-arrow-shaft" d="M0 8H24"/></svg></span>
+   <div class="exchange-return collaboration-output"><h4>{connection.output}</h4><ul>{[...new Set([...stageOutputs[stageIndex], ...connection.artifacts])].map(item=><li><span aria-hidden="true">✓</span>{item}</li>)}</ul></div>
   </div>
   <section class="workflow-proof" aria-label="Related work experience">
-   <header class="workflow-proof-heading"><div><span class="label section-step-label">MY WORK / THE EXPERIENCE BEHIND IT</span><h4>Work experience I would bring.</h4></div><a href="/work" target="_blank" rel="noopener noreferrer">Browse my project archive ↗</a></header>
+   <header class="workflow-proof-heading"><div><h4>Work experience I would bring to <mark class="text-highlight">{stages[stageIndex][2].toLowerCase()}</mark>.</h4></div></header>
    
-   <p class="work-evidence-selection" role="status" hidden></p>
-   <p class="workflow-proof-intro" aria-live="polite" aria-atomic="true" data-default-summary={workflowExperienceSummaries[stageIndex][i]}>{workflowExperienceSummaries[stageIndex][i]}</p>
-   <div class="workflow-proof-list">{workflowExperience[stageIndex][i].slugs.map((slug,proofIndex)=>{const project=projectDetails[slug];return <details class="workflow-proof-item" id={`proof-${stageIndex}-${i}-${slug}`} data-proof-slug={slug} open={proofIndex===0}><summary><span><small>{project.experience === 'pacvue' ? 'Pacvue' : 'Krafton'} · {project.tag} · {project.year}</small><strong>{project.title}</strong></span><span class="proof-expand" aria-hidden="true">+</span></summary><div class="workflow-proof-body"><div><span class="label"><b class="proof-step">01</b> WHAT I DID</span><p>{project.description}{experienceStageNotes[slug] && <> <span class="proof-inline-context">{experienceStageNotes[slug]}</span></>}</p><a class="proof-project-link" href={`/projects/${slug}`} target="_blank" rel="noopener noreferrer">Full project ↗</a></div><div><span class="label"><b class="proof-step">02</b> SKILL I BRING</span><p>{experienceSkills[slug]}</p></div><div class="proof-application"><span class="label"><b class="proof-step">03</b> HOW I WOULD CONTRIBUTE</span><p>{experienceApplications[slug]}</p></div></div></details>})}</div>
+   <p class="workflow-proof-intro" aria-live="polite" aria-atomic="true" data-default-summary={workflowExperienceSummaries[stageIndex][i]}>{workflowExperienceSummaries[stageIndex][i].split(/(clarified tool and studio requirements|organized customer evidence|turning broad needs into concrete work|coordinated multilingual participation|distinguish participation from readiness|identify support gaps|delivery assumptions, ownership and unresolved requirements|source definitions and unresolved questions|worked examples, a playbook and office hours|category gaps, missing context and conflicting definitions|find recurring issues|technical requirements and documented dependencies|separated observed results from estimates|clear recommendations, limitations and next actions|consistent criteria and traceable records|data requirements, refresh guidance and integration dependencies|policy boundaries|concrete examples, review criteria and next steps|usable instructions and clear review ownership|specific questions for the right decision owner|what a fair comparison should actually demonstrate)/g).map((part,index)=>index % 2 ? <mark class="text-highlight">{part}</mark> : part)}</p>
+   <div class="workflow-proof-list">{workflowExperience[stageIndex][i].slugs.map((slug,proofIndex)=>{const project=projectDetails[slug];return <details class="workflow-proof-item" id={`proof-${stageIndex}-${i}-${slug}`} data-proof-slug={slug} open={proofIndex===0}><summary><span><small>{project.experience === 'pacvue' ? 'Pacvue' : 'Krafton'} · {project.tag} · {project.year}</small><strong>{project.title}</strong></span><span class="proof-expand" aria-hidden="true">+</span></summary><div class="workflow-proof-body"><div><span class="label"><b class="proof-step">01</b> WHAT I DID</span><p>{highlightExperience(project.description,slug).map((part,index)=>index % 2 ? <mark class="text-highlight">{part}</mark> : part)}{experienceStageNotes[slug] && <> <span class="proof-inline-context">{experienceStageNotes[slug].split(/(multilingual enterprise survey|AI use across tasks and cross-team workflows|messaging automation workflow|Collaborated with AI engineers at Krafton|Slack bot and operating guidelines)/g).map((part,index)=>index % 2 ? <mark class="text-highlight">{part}</mark> : part)}</span></>}</p><a class="proof-project-link" href={`/projects/${slug}`} target="_blank" rel="noopener noreferrer">Full project ↗</a></div><div><span class="label"><b class="proof-step">02</b> SKILL I BRING</span><p>{experienceSkills[slug]}</p></div><div class="proof-application"><span class="label"><b class="proof-step">03</b> HOW I WOULD CONTRIBUTE</span><p>{experienceApplications[slug]}</p></div></div></details>})}</div>
   </section>
  </article>}))}
  </section>
@@ -82,14 +89,26 @@ const collaboration = [
 </section>
 
 <script>
+ import experienceHighlights from '../../data/handshake-experience-highlights.json';
  import { stageCollaboration } from '../../data/handshake-stage-collaboration.js';
+
+ const summaryHighlightPhrases=[...new Set([...Object.values(experienceHighlights).flat(), ...["clarified tool and studio requirements", "organized customer evidence", "turning broad needs into concrete work", "coordinated multilingual participation", "distinguish participation from readiness", "identify support gaps", "delivery assumptions, ownership and unresolved requirements", "source definitions and unresolved questions", "worked examples, a playbook and office hours", "category gaps, missing context and conflicting definitions", "find recurring issues", "technical requirements and documented dependencies", "separated observed results from estimates", "clear recommendations, limitations and next actions", "consistent criteria and traceable records", "data requirements, refresh guidance and integration dependencies", "policy boundaries", "concrete examples, review criteria and next steps", "usable instructions and clear review ownership", "specific questions for the right decision owner", "what a fair comparison should actually demonstrate"], 'collaborated with AI engineers', 'Slack bot and operating guidelines', 'delivery decisions and follow-up actions traceable'])].sort((a,b)=>b.length-a.length);
+ const summaryHighlightPattern=new RegExp(`(${summaryHighlightPhrases.map(phrase=>phrase.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')})`,'gi');
  let activeStage=0;
  let activePerson=0;
  const stakeholderTabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-stakeholder]'));
  const stageTabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-business-stage]'));
  const relevantPeople=[[0,2,3],[1,4,3],[3,4,1],[4,3,1,5],[2,0,4,5]];
  const stageActions=['Scope the program','Coordinate annotators','Build the playbook','Analyze quality','Own execution'];
+ const stageSummaries=[
+  'Align lab needs, policy boundaries and delivery constraints with the relevant owners.',
+  'Work with contributors, reviewers and policy leads to clarify readiness and support needs.',
+  'Turn policy decisions and reviewer feedback into clear instructions, examples and audit guidance.',
+  'Bring reviewers, contributors and technical partners together to investigate errors and resolve ambiguity.',
+  'Coordinate delivery decisions, quality checks and handoffs with labs and the responsible teams.'
+ ];
  function selectStakeholder(index:number){
+  requestAnimationFrame(updateRoleWorkConnection);
   if(!relevantPeople[activeStage].includes(index))return;
   activePerson=index;
   document.querySelectorAll<HTMLElement>('.stakeholder-detail').forEach(panel=>panel.hidden=panel.id!==`stakeholder-panel-${activeStage}-${index}`);
@@ -115,22 +134,17 @@ const collaboration = [
  }
  function selectStage(index:number,announce=true){
   activeStage=index;
-  stageTabs.forEach((tab,i)=>{const on=i===index;tab.setAttribute('aria-selected',String(on));tab.tabIndex=on?0:-1;document.getElementById(`business-detail-${i}`)!.hidden=!on;});
+  stageTabs.forEach((tab,i)=>{const on=i===index;tab.setAttribute('aria-selected',String(on));tab.tabIndex=on?0:-1;});
   stakeholderTabs.forEach((tab,i)=>{
    const relevant=relevantPeople[index].includes(i);
    tab.classList.toggle('stage-relevant',relevant);tab.disabled=!relevant;
    if(relevant)tab.setAttribute('aria-controls',`stakeholder-panel-${index}-${i}`);else tab.removeAttribute('aria-controls');
-   tab.querySelector('small')!.textContent=stageCollaboration[index][i]?.role ?? 'Not involved in this stage’s primary handoff';
   });
   document.querySelectorAll<SVGPathElement>('[data-stakeholder-line]').forEach((line,i)=>line.classList.toggle('stage-connection',relevantPeople[index].includes(i)));
-  document.getElementById('combined-my-action')!.textContent=stageActions[index];
+  document.getElementById('collaboration-heading-action')!.textContent=stageActions[index].toLowerCase();
+  document.getElementById('collaboration-heading-summary')!.textContent=stageSummaries[index];
   selectStakeholder(relevantPeople[index].includes(activePerson)?activePerson:relevantPeople[index][0]);
   if(announce && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !document.body.classList.contains('motion-paused')){
-   const summary=document.getElementById(`business-detail-${index}`)!;
-   summary.querySelectorAll<HTMLElement>('.combined-stage-columns>div').forEach((card,i)=>{
-    card.getAnimations().forEach(animation=>animation.cancel());
-    card.animate([{opacity:.45,transform:'translateY(9px)'},{opacity:1,transform:'translateY(0)'}],{duration:420,delay:i*65,easing:'cubic-bezier(.2,.75,.2,1)',fill:'backwards'});
-   });
    stakeholderTabs.filter((_,i)=>relevantPeople[index].includes(i)).forEach(tab=>{
     tab.getAnimations().forEach(animation=>animation.cancel());
     tab.animate([{boxShadow:'0 0 0 3px #77c5d5'},{boxShadow:'0 0 0 0px transparent'}],{duration:700,easing:'ease-out'});
@@ -139,14 +153,7 @@ const collaboration = [
  }
  function wireTabs(tabs:HTMLButtonElement[],select:(index:number)=>void){tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>select(i));tab.addEventListener('keydown',event=>{const available=tabs.filter(t=>!t.disabled);const current=available.indexOf(tab);let next=current;if(event.key==='ArrowRight')next=(current+1)%available.length;else if(event.key==='ArrowLeft')next=(current+available.length-1)%available.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=available.length-1;else return;event.preventDefault();const target=available[next];select(tabs.indexOf(target));target.focus();});});}
  wireTabs(stageTabs,selectStage);wireTabs(stakeholderTabs,selectStakeholder);
- stageTabs.forEach((tab,index)=>tab.addEventListener('click',()=>{
-  const summary=document.getElementById(`business-detail-${index}`);
-  if(!summary)return;
-  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.classList.contains('motion-paused');
-  const top=Math.max(0,window.scrollY+summary.getBoundingClientRect().top-12);
-  window.scrollTo({top,behavior:reduced?'instant':'smooth'});
- }));
- document.querySelectorAll<HTMLButtonElement>('[data-stage-person]').forEach(button=>button.addEventListener('click',()=>{const index=Number(button.dataset.stagePerson);selectStakeholder(index);revealWorkflow();}));
+ stageTabs.forEach(tab=>tab.addEventListener('click',()=>requestAnimationFrame(revealWorkflow)));
  stakeholderTabs.forEach(tab=>tab.addEventListener('click',revealWorkflow));
  document.querySelectorAll<HTMLButtonElement>('[data-work-evidence]').forEach(button=>{
   button.addEventListener('click',()=>{
@@ -158,13 +165,54 @@ const collaboration = [
    panel.querySelectorAll<HTMLDetailsElement>('[data-proof-slug]').forEach(item=>{
     const match=selecting && slugs.has(item.dataset.proofSlug ?? '');
     item.classList.toggle('is-work-match',match);
-    if(selecting)item.open=match;
+    item.open=match;
    });
    const intro=panel.querySelector<HTMLElement>('.workflow-proof-intro');
-   if(intro)intro.textContent=(selecting ? button.dataset.experienceSummary : intro.dataset.defaultSummary) ?? '';
-   const status=panel.querySelector<HTMLElement>('.work-evidence-selection');
-   if(status){status.hidden=!selecting;status.textContent=selecting ? `Related experience: ${button.firstChild?.textContent?.trim() ?? ''}` : '';}
+   if(intro){
+    const summary=(selecting ? button.dataset.experienceSummary : intro.dataset.defaultSummary) ?? '';
+    intro.replaceChildren(...summary.split(summaryHighlightPattern).map((part,index)=>{
+     if(index % 2){const mark=document.createElement('mark');mark.className='text-highlight';mark.textContent=part;return mark;}
+     return document.createTextNode(part);
+    }));
+   }
   });
  });
+ function updateRoleWorkConnection(){
+  const group=document.querySelector<HTMLElement>('#stakeholders .collaboration-group');
+  const center=group?.querySelector<HTMLElement>('.relationship-center');
+  const target=group?.querySelector<HTMLElement>('.stakeholder-detail:not([hidden]) .exchange-action');
+  const svg=group?.querySelector<SVGSVGElement>('.role-work-connector');
+  if(!group||!center||!target||!svg)return;
+  const bounds=group.getBoundingClientRect(),a=center.getBoundingClientRect(),b=target.getBoundingClientRect();
+  const x1=a.left+a.width/2-bounds.left,y1=a.bottom-bounds.top;
+  const x2=b.left+b.width/2-bounds.left,y2=b.top-bounds.top;
+  const mid=(y1+y2)/2;
+  svg.setAttribute('viewBox',`0 0 ${bounds.width} ${bounds.height}`);
+  svg.querySelector('.role-work-line')?.setAttribute('d',`M${x1} ${y1} C${x1} ${mid} ${x2} ${mid} ${x2} ${y2}`);
+ }
+ const roleGroup=document.querySelector('#stakeholders .collaboration-group');
+ if(roleGroup)new ResizeObserver(updateRoleWorkConnection).observe(roleGroup);
  selectStage(0,false);
+ const map=document.querySelector<HTMLElement>('#stakeholders .relationship-canvas');
+ const updateConnections=()=>{
+  updateRoleWorkConnection();
+  if(!map)return;
+  const svg=map.querySelector<SVGSVGElement>('.relationship-lines');
+  const center=map.querySelector<HTMLElement>('.relationship-center');
+  if(!svg||!center||!map.clientWidth)return;
+  const bounds=map.getBoundingClientRect();
+  const middle=center.getBoundingClientRect();
+  svg.setAttribute('viewBox',`0 0 ${bounds.width} ${bounds.height}`);
+  svg.querySelectorAll<SVGPathElement>('path').forEach((path,index)=>{
+   const card=stakeholderTabs[index].getBoundingClientRect();
+   const left=index<3;
+   const x1=(left?card.right:card.left)-bounds.left;
+   const y1=card.top+card.height/2-bounds.top;
+   const x2=(left?middle.left:middle.right)-bounds.left;
+   const y2=middle.top+middle.height/2-bounds.top;
+   const bend=(x1+x2)/2;
+   path.setAttribute('d',`M${x1} ${y1} C${bend} ${y1} ${bend} ${y2} ${x2} ${y2}`);
+  });
+ };
+ if(map){const observer=new ResizeObserver(updateConnections);observer.observe(map);stakeholderTabs.forEach(tab=>observer.observe(tab));const center=map.querySelector('.relationship-center');if(center)observer.observe(center);updateConnections();}
 </script>

@@ -1,5 +1,4 @@
 ---
-import HandshakeReadingLibrary from './HandshakeReadingLibrary.astro';
 import { studyGlossary } from '../../data/handshake-study-glossary.js';
 import { pipelines, pipelineGroups } from '../../data/handshake-pipelines.js';
 const notes = [
@@ -13,15 +12,15 @@ const notes = [
  {concepts:[['Acceptance criteria','The quality, coverage and documentation agreed for a usable delivery.'],['Delivery trade-offs','Make the effects of rework, scope, timing and cost visible to the decision owner.']],question:'What can be accepted now, what requires rework, and who decides?',practice:'Prepare a delivery brief with accepted scope, open issues, options, owners and next actions.'}
 ];
 ---
-<section class="section wrap study-library" id="study-library" aria-labelledby="study-library-title">
- <header class="library-heading"><p class="label">13 / STUDY LIBRARY</p><h2 id="study-library-title">Building my expertise in human data.</h2><p>I’m studying the concepts behind each workflow, from annotation and reviewer agreement to evaluation and delivery. Before joining, I aim to deepen this foundation through reading, small exercises and documented questions, then build on it with the team’s project-specific training.</p></header>
+<section class="section wrap study-library" id="workflow-concepts" aria-labelledby="study-library-title">
+ <header class="library-heading panel-heading"><p class="label">WORKFLOW CONCEPTS / MY STUDY NOTES</p><h2 id="study-library-title">Building my expertise in human data.</h2><p>I’m studying the concepts behind each workflow, from annotation and reviewer agreement to evaluation and delivery. Before joining, I aim to deepen this foundation through reading, small exercises and documented questions, then build on it with the team’s project-specific training.</p></header>
  <div class="library-path" aria-label="My study approach"><span>01 · Understand the concept</span><span aria-hidden="true">→</span><span>02 · Practice on examples</span><span aria-hidden="true">→</span><span>03 · Explain the judgment</span></div>
  {pipelineGroups.map(group => <section class="library-group" aria-label={group.title}>
   <header><h3>{group.title}</h3><p>{group.description}</p></header>
   <div class="library-topics">{group.items.map(i => <details class="library-topic">
    <summary><span class="library-number">{String(i+1).padStart(2,'0')}</span><span><strong>{pipelines[i].title}</strong><small>{studyGlossary[i].terms.length + notes[i].concepts.length} key concepts · examples & practical language</small></span><span class="library-toggle" aria-hidden="true">+</span></summary>
    <div class="library-topic-body">
-    <p class="label">CORE CONCEPTS</p><dl>{notes[i].concepts.map(([term,definition]) => <div><dt>{term}</dt><dd>{definition}</dd></div>)}</dl>
+    <div class="library-core"><p class="label">CORE CONCEPTS</p><dl>{notes[i].concepts.map(([term,definition]) => <div><dt>{term}</dt><dd>{definition}</dd></div>)}</dl></div>
     <div class="library-glossary"><p class="label">TERMS TO KNOW</p><dl>{studyGlossary[i].terms.map(([term,meaning,example]) => <div><dt>{term}</dt><dd>{meaning}<span class="library-example"><b>Example</b> {example}</span></dd></div>)}</dl></div>
     <div class="library-distinction"><p class="label">KEEP THIS DISTINCTION CLEAR</p><p>{studyGlossary[i].distinction}</p></div>
     <div class="library-wording"><p class="label">HOW I WOULD ASK IT AT WORK</p><blockquote>“{studyGlossary[i].wording}”</blockquote></div>
@@ -33,8 +32,7 @@ const notes = [
    </div>
   </details>)}</div>
  </section>)}
- <HandshakeReadingLibrary />
- <footer class="library-references"><p class="label">REFERENCE READING</p><a href="https://labelstud.io/tutorials/how_to_measure_inter_annotator_agreement_and_build_human_consensus" target="_blank" rel="noopener noreferrer">Label Studio · agreement & consensus ↗</a><a href="https://aclanthology.org/J08-4004/" target="_blank" rel="noopener noreferrer">Artstein &amp; Poesio · agreement measures ↗</a><a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents" target="_blank" rel="noopener noreferrer">Anthropic · evaluation concepts ↗</a><p>Examples here are illustrative study notes. Project terminology, label definitions and acceptance rules should be confirmed with the team.</p></footer>
+
 </section>
 <script>
  document.querySelectorAll<HTMLAnchorElement>('[data-study-workflow]').forEach(link => {
@@ -53,9 +51,6 @@ const notes = [
  .library-wording{background:#214f5b;color:#fff;}
  .library-wording .label{color:#c7e6ed;}
  .library-wording blockquote{margin:0;padding:0;border:0;font-size:14px;color:inherit;}
- .library-references{padding:20px;border-radius:12px;background:#f1f7f8;display:flex;gap:12px 22px;flex-wrap:wrap;font-size:13px;}
- .library-references .label,.library-references p:last-child{flex-basis:100%;margin:0;}
- .library-references p:last-child{color:#607a84;font-size:12px;}
  .study-library{max-width:1100px;}
  .library-heading>p:last-child{max-width:760px;color:#496775;line-height:1.7;}
  .library-path{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 20px;margin:24px 0 32px;background:#edf7f9;border-radius:12px;color:#214f5b;font-size:13px;}
@@ -92,4 +87,24 @@ const notes = [
  .library-agreement-content :global(.pipeline-agreement){margin-top:18px;padding:14px;}
  .library-agreement-content :global(summary){font-size:15px;}
  @media(max-width:720px){.library-topics{grid-template-columns:1fr;}.library-group>header{gap:4px;}.library-path{gap:8px;font-size:12px;}}
+</style>
+
+<style>
+ #workflow-concepts .library-topics{grid-template-columns:minmax(0,1fr);gap:10px;}
+ #workflow-concepts .library-topic>summary{padding:14px 18px;}
+ #workflow-concepts .library-topic-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:18px;border-top:1px solid #c6dfe5;}
+ #workflow-concepts .library-core,#workflow-concepts .library-glossary{grid-column:1/-1;margin:0;padding:0;border:0;}
+ #workflow-concepts .library-core>dl,#workflow-concepts .library-glossary>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:8px 0 0;}
+ #workflow-concepts .library-core>dl>div{padding:14px;background:#edf6f8;border:1px solid #d7e8ec;border-radius:9px;}
+ #workflow-concepts .library-glossary>dl>div{padding:14px;border:1px solid #d7e8ec;border-radius:9px;}
+ #workflow-concepts .library-topic-body dt{font-size:14px;letter-spacing:0;text-transform:none;margin:0 0 6px;}
+ #workflow-concepts .library-topic-body dd{font-size:14px;line-height:1.55;margin:0;}
+ #workflow-concepts .library-example{margin-top:10px;line-height:1.5;}
+ #workflow-concepts :is(.library-distinction,.library-wording,.library-question,.library-practice){margin:0;padding:14px;}
+ #workflow-concepts :is(.library-capacity-content,.library-agreement-content,.library-workflow-link){grid-column:1/-1;}
+ #workflow-concepts .library-workflow-link{margin:0;}
+ @media(max-width:700px){
+  #workflow-concepts .library-topic-body,#workflow-concepts .library-core>dl,#workflow-concepts .library-glossary>dl{grid-template-columns:minmax(0,1fr);}
+  #workflow-concepts .library-topic-body{padding:12px;gap:12px;}
+ }
 </style>

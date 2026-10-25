@@ -1,0 +1,37 @@
+---
+const topics=[{id:'lab',title:'Annotation quality assurance',caption:'Accuracy, precision & recall'},{id:'calibration',title:'Reviewer calibration',caption:'Disagreement & diagnostic steps'},{id:'policy-gap-lab',title:'Policy gap feedback',caption:'Diagnose → clarify → recheck'},{id:'safety-evaluation-lab',title:'Safety evaluation',caption:'Coverage, slices & regression'},{id:'analysis',title:'Analytical practice',caption:'Data definitions & SQL'}];
+---
+<section class="section wrap practice-hub" id="practice" aria-labelledby="practice-title">
+ <header class="section-head"><div><h2 id="practice-title">How I put the concepts into practice.</h2></div></header>
+ <div class="practice-menu" role="tablist" aria-label="Explore applied practice">{topics.map((topic,i)=><button type="button" role="tab" id={`practice-tab-${topic.id}`} aria-controls={`practice-panel-${topic.id}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-practice-topic={topic.id}><span>0{i+1}</span><strong>{topic.title}</strong></button>)}</div>
+ {topics.map((topic,i)=><div class="practice-panel" id={`practice-panel-${topic.id}`} role="tabpanel" aria-labelledby={`practice-tab-${topic.id}`} hidden={i!==0}><slot name={topic.id} /></div>)}
+</section>
+<script>
+ const hub=document.querySelector<HTMLElement>('.practice-hub');
+ if(hub){
+  const tabs=Array.from(hub.querySelectorAll<HTMLButtonElement>('[data-practice-topic]'));
+  const activate=(id:string,focus=false)=>tabs.forEach(tab=>{const selected=tab.dataset.practiceTopic===id;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;const panel=document.getElementById(`practice-panel-${tab.dataset.practiceTopic}`);if(panel)panel.hidden=!selected;if(selected&&focus)tab.focus();});
+  tabs.forEach((tab,i)=>{
+   tab.addEventListener('click',()=>activate(tab.dataset.practiceTopic!));
+   tab.addEventListener('keydown',event=>{let next=i;if(event.key==='ArrowRight')next=(i+1)%tabs.length;else if(event.key==='ArrowLeft')next=(i-1+tabs.length)%tabs.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;event.preventDefault();activate(tabs[next].dataset.practiceTopic!,true);});
+  });
+  const reveal=(id:string)=>{const target=document.getElementById(id);const panel=target?.closest<HTMLElement>('.practice-panel');if(panel)activate(panel.id.replace('practice-panel-',''));return panel?target:null;};
+  const openHash=()=>{const target=reveal(decodeURIComponent(location.hash.slice(1)));if(target)requestAnimationFrame(()=>target.scrollIntoView({block:'start'}));};
+  window.addEventListener('hashchange',openHash);openHash();
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>reveal(link.hash.slice(1))));
+ }
+</script>
+<style>
+ .practice-menu{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:24px 0 0;}
+ .practice-menu button{font:inherit;text-align:left;border:1px solid #c8dfe5;border-radius:10px;padding:16px;background:#f1f8fa;color:#214f5b;cursor:pointer;}
+ .practice-menu span{display:block;font-size:11px;margin-bottom:8px;}
+ .practice-menu strong{display:block;font-size:16px;line-height:1.3;}
+ .practice-menu small{display:block;font-size:12px;line-height:1.5;margin-top:6px;}
+ .practice-menu button[aria-selected=true]{background:#214f5b;color:#fff;border-color:#214f5b;}
+ .practice-menu button:focus-visible{outline:2px solid #258ca0;outline-offset:3px;}
+ .practice-panel{margin-top:18px;padding:24px;border:1px solid #c8dfe5;border-radius:12px;}
+ .practice-panel[hidden]{display:none;}
+ .practice-panel :global(>section){width:100%;max-width:none;margin:0;padding:0;}
+ .practice-panel :global(h2){font-size:clamp(25px,3vw,34px);}
+ @media(max-width:760px){.practice-menu{grid-template-columns:1fr 1fr;}.practice-menu button{padding:12px;}.practice-panel{padding:16px;}}
+</style>

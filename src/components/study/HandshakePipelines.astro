@@ -2,18 +2,42 @@
 import HandshakeArt from './HandshakeArt.astro';
 import { pipelines, pipelineGroups as groups } from '../../data/handshake-pipelines.js';
 import PipelineDiagram from './PipelineDiagram.astro';
+
+
+const practiceLinks = [
+ [{id:'calibration',title:'Reviewer calibration'}, {id:'policy-gap-lab',title:'Policy gap feedback'}],
+ [{id:'calibration',title:'Reviewer calibration'}],
+ [{id:'lab',title:'Annotation quality assurance'}, {id:'analysis',title:'Analytical practice'}],
+ [{id:'calibration',title:'Reviewer calibration'}],
+ [{id:'safety-evaluation-lab',title:'Safety evaluation'}],
+ [{id:'policy-gap-lab',title:'Policy gap feedback'}],
+ [{id:'safety-evaluation-lab',title:'Safety evaluation: coverage & regression'}],
+ [{id:'analysis',title:'Analytical practice'}, {id:'lab',title:'Annotation quality assurance'}]
+];
+
+const checks = [
+ [['Correct labels', 'Do labels match the reviewed reference?'], ['Missed or wrongly flagged cases', 'Check precision and recall for each category.'], ['Unresolved cases', 'How many still need a decision?']],
+ [['Usable output', 'How much work passes review?'], ['Time and capacity', 'Can reviewers finish the planned workload?'], ['Rework and cost', 'What does each accepted annotation cost?']],
+ [['Errors', 'How often do errors occur, and how severe are they?'], ['Sample coverage', 'Are rare and high-risk categories included?'], ['Rework', 'What needs another review?']],
+ [['Reviewer agreement', 'Where do judgments differ by category and version?'], ['Open decisions', 'How many cases remain unresolved?'], ['Resolution time', 'How long do decisions take?']],
+ [['Policy violations', 'How often does the model break the defined policy?'], ['Misses and false alarms', 'Which unsafe cases are missed or safe cases flagged?'], ['Weak categories', 'Where does performance fall short?']],
+ [['Repeated questions', 'Which boundaries keep causing confusion?'], ['Waiting time', 'How long have questions remained open?'], ['After clarification', 'Does the same issue return?']],
+ [['Confirmed failures', 'Can the finding be reproduced and validated?'], ['Coverage gaps', 'What did the authorized test scope leave unexplored?']],
+ [['Accepted delivery', 'Did usable work arrive on time?'], ['Quality and rework', 'Does it meet the agreed acceptance criteria?'], ['Cost', 'What did each accepted unit cost?']]
+];
+
 ---
 <section class="section wrap" id="safety-pipelines">
- <div class="section-head"><div class="section-title-with-prop"><HandshakeArt variant="accent" object="institution" /><p class="label">4 / SAFETY DELIVERY PIPELINES</p><h2>Eight operating pipelines.<br/>One connected feedback loop.</h2></div><p>Explore delivery, issue resolution and evaluation. Choose a workflow to see its steps, decision points and outputs.</p></div>
+ <div class="section-head"><div class="section-title-with-prop"><HandshakeArt variant="accent" object="institution" /><h2>How I would approach the work.</h2></div></div>
  <div class="pipeline-explorer pipeline-visual-explorer" data-pipeline-explorer>
   <div class="pipeline-navigation">
   <div class="pipeline-group-picker" aria-orientation="horizontal" role="tablist" aria-label="Select a safety pipeline">
-   {groups.map(group=><div class="pipeline-nav-group"><h3>{group.title}</h3><div>{group.items.map(i=><button type="button" role="tab" id={`pipeline-tab-${i}`} aria-controls={`pipeline-panel-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-pipeline-tab={i}><span>0{i+1}</span><b>{pipelines[i].title}</b><span aria-hidden="true">↗</span></button>)}</div></div>)}
+   {groups.map(group=><div class="pipeline-nav-group"><h3>{group.title}</h3><div>{group.items.map(i=><button type="button" role="tab" id={`pipeline-tab-${i}`} aria-controls={`pipeline-panel-${i}`} aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-pipeline-tab={i}><span>0{i+1}</span><b>{i===3 ? <><span class="pipeline-title-line">Disagreement</span><span class="pipeline-title-line">&amp; adjudication</span></> : pipelines[i].title}</b><span aria-hidden="true">↗</span></button>)}</div></div>)}
   </div>
   </div>
-  <div class="pipeline-panel-column">{pipelines.map((p,i)=><article role="tabpanel" id={`pipeline-panel-${i}`} aria-labelledby={`pipeline-tab-${i}`} data-pipeline-panel={i} hidden={i!==0} tabindex="0" class="pipeline-detail"><p class="label">0{i+1} / {p.priority} preparation focus</p><h3>{p.title}</h3><p>{p.purpose}</p><div class="pipeline-workspace"><div class="pipeline-workspace-main"><PipelineDiagram pipeline={p} index={i} /></div><aside class="pipeline-insights" aria-label="Measures, failure patterns and application"><h4>Measures, failure patterns &amp; application</h4><section class="pipeline-insight-measures"><span class="label">01 / MEASURES TO DISCUSS</span><p>{p.metrics}</p></section><section class="pipeline-insight-failure"><span class="label">02 / FAILURE PATTERN TO WATCH</span><p>{p.failure}</p></section><section class="pipeline-insight-example"><span class="label">03 / APPLICATION EXAMPLE</span><p>{p.example}</p></section><div class="pipeline-outputs"><div><span class="label">✓ / OUTPUT</span><p>{p.output}</p></div><div><span class="label">WHO I WOULD CONNECT</span><div class="pipeline-owner-chips">{p.people.split(" + ").map(person=><span>{person}</span>)}</div></div></div></aside></div></article>)}</div>
+  <div class="pipeline-panel-column">{pipelines.map((p,i)=><article role="tabpanel" id={`pipeline-panel-${i}`} aria-labelledby={`pipeline-tab-${i}`} data-pipeline-panel={i} hidden={i!==0} tabindex="0" class="pipeline-detail"><h3>{p.title}</h3><p>{p.purpose}</p><nav class="workflow-practice-links" aria-label="Related practice"><span>Try this workflow in practice</span>{practiceLinks[i].map(link=><a class="workflow-practice-link" href={`/study/handshake-practice#${link.id}`}>{link.title} ↗</a>)}</nav><div class="pipeline-workspace"><div class="pipeline-workspace-main"><PipelineDiagram pipeline={p} index={i} /></div><aside class="pipeline-insights" aria-label="Measures, failure patterns and application"><h4>What to check &amp; deliver</h4><section class="pipeline-insight-measures"><span class="label">What to check</span><ul class="pipeline-measure-list">{checks[i].map(([title,question])=><li><strong>{title}</strong><span>{question}</span></li>)}</ul></section><section class="pipeline-insight-failure"><span class="label">What can go wrong</span><div class="insight-copy">{p.failure.split(/(?<=\.)\s+/).map((sentence,index)=><p>{index===0 ? <strong>{sentence}</strong> : <><span class="insight-next-label">Next step</span>{sentence}</>}</p>)}</div></section><section class="pipeline-insight-example"><span class="label">In practice</span><div class="insight-copy">{p.example.split(/(?<=\.)\s+/).map((sentence,index)=><p>{i===6 ? sentence.split(/(Standard evaluation|red teaming|regression evaluation)/g).map((part)=>(['Standard evaluation','red teaming','regression evaluation'].includes(part) ? <strong>{part}</strong> : part)) : index===0 ? <strong>{sentence}</strong> : sentence}</p>)}</div></section><div class="pipeline-outputs"><div><span class="label">What we produce</span><p>{p.output}</p></div><div><span class="label">Who I work with</span><div class="pipeline-owner-chips">{p.people.split(" + ").map(person=><span>{person}</span>)}</div></div></div></aside></div></article>)}</div>
  </div>
- <div class="pipeline-technical"><div class="section-head"><div><p class="label">TWO TECHNICAL CONNECTIONS</p><h3>Where human judgments enter model development.</h3></div></div><div class="two-grid"><article><span class="label">09 / POST-TRAINING</span><h3>Demonstrations and preferences play different roles.</h3><p>Supervised fine-tuning can learn from examples of desired responses. In a common RLHF approach, comparisons inform a reward model used for reinforcement learning. DPO offers a way to optimize from preferences without a separate reward-model training stage.</p><p>The data must match its purpose: a policy compliance label, a preferred response and a demonstration are different artifacts.</p><footer><a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener noreferrer">InstructGPT paper ↗</a><a href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener noreferrer">DPO paper ↗</a></footer></article><article><span class="label">10 / CONTINUOUS EVALUATION</span><h3>Check what changed and what broke.</h3><p>Maintain versioned test cases, prompts and grading criteria. Compare model versions, inspect failures and preserve known cases in a regression suite. Keep evaluation holdouts separate from training data to reduce leakage.</p><p>A new failure can inform later evaluation coverage or training work after review. A score alone does not identify whether the model, environment or grader caused the problem.</p><footer><a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank" rel="noopener noreferrer">Anthropic · evaluation structure & regression ↗</a></footer></article></div></div>
+
 </section>
 <script>
  const explorer = document.querySelector<HTMLElement>('[data-pipeline-explorer]');
@@ -42,3 +66,4 @@ import PipelineDiagram from './PipelineDiagram.astro';
   preference.addEventListener('change',()=>animation?.cancel());
  }
 </script>
+

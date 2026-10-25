@@ -1,0 +1,41 @@
+---
+const slices=[
+ {id:'ordinary',name:'Ordinary allowed requests',count:80,before:78,after:74,criterion:'Give a useful answer without an unnecessary refusal.',example:'A benign request for general product help.',note:'The proposed fix blocks more benign requests: inspect over-refusal.'},
+ {id:'violations',name:'Clear policy violations',count:10,before:6,after:9,criterion:'Decline the disallowed request under the fictional policy.',example:'A request explicitly prohibited by the test policy.',note:'More prohibited cases are handled correctly after the fix.'},
+ {id:'boundary',name:'Ambiguous boundary cases',count:6,before:2,after:4,criterion:'Ask for the missing context or escalate, as specified by the reference rubric.',example:'A request whose permissibility depends on context that is absent.',note:'Inspect which ambiguous cases remain incorrectly resolved.'},
+ {id:'regression',name:'Previously resolved failures',count:4,before:4,after:3,criterion:'Preserve the expected behavior on known, versioned failure cases.',example:'A saved case that passed after an earlier correction.',note:'One previously passing case fails again: investigate a regression.'}
+];
+---
+<section id="safety-evaluation-lab" class="method-lab">
+ <header><h2>Did the fix improve safety, or move the errors?</h2><p>Choose evaluation slices and compare a baseline with a proposed fix. Inspect the evidence before recommending delivery.</p><small>Illustrative fixed results, not a live model run. Both versions use the same selected cases and rubric; this constructed suite is not a production failure-rate estimate.</small></header>
+ <div class="method-two-col">
+  <section class="method-card"><h3>01 · Choose what to evaluate</h3><fieldset class="evaluation-slices"><legend>Include these slices</legend>{slices.map((slice,i)=><label><input type="checkbox" data-eval-slice value={slice.id} checked={i===0}/><span><strong>{slice.name}</strong><small>{slice.count} cases · {slice.criterion}</small></span></label>)}</fieldset><p class="method-note">Select more than ordinary requests to expose blind spots. Keep the reference rubric and policy version fixed when comparing versions.</p></section>
+  <section class="method-card method-accent" aria-live="polite"><h3>02 · Read the selected results</h3><div class="evaluation-scores"><div><span>Baseline</span><strong data-eval-baseline>97.5%</strong></div><div><span>Proposed fix</span><strong data-eval-after>92.5%</strong></div><div><span>Change</span><strong data-eval-delta>−5.0 pp</strong></div></div><p data-eval-coverage>1 of 4 slices selected · 80 cases</p><p data-eval-reading>The selected ordinary cases regress. The unselected safety and regression slices remain unassessed in this view.</p><small>Pass rate = cases meeting the reference rubric ÷ selected cases. A pass on a prohibited request means the required safe behavior, not compliance with the request.</small></section>
+ </div>
+ <div class="evaluation-table-wrap"><table><caption>Same cases · same rubric · compare by slice</caption><thead><tr><th>Slice</th><th>Baseline</th><th>Proposed fix</th><th>What to inspect</th></tr></thead><tbody>{slices.map((slice,i)=><tr data-eval-row={slice.id} data-count={slice.count} data-before={slice.before} data-after={slice.after} hidden={i!==0}><th scope="row">{slice.name}<small>{slice.example}</small></th><td>{slice.before}/{slice.count}</td><td>{slice.after}/{slice.count}</td><td>{slice.note}</td></tr>)}</tbody></table></div>
+ <section class="method-card"><h3>03 · What would you recommend?</h3><div class="method-choice"><button type="button" data-eval-decision="aggregate" aria-pressed="false">Decide from the overall score</button><button type="button" data-eval-decision="coverage" aria-pressed="false">Check coverage and regressions first</button></div><p data-eval-feedback role="status">Choose a recommendation. The feedback reflects your selected slices.</p><div class="method-two-col"><div><h4>My review action</h4><p data-eval-action>Add violation, boundary and regression cases before judging the change.</p></div><div><h4>Evidence for the owner</h4><p>Versioned suite and rubric, per-slice results, inspected failure cases, limitations and a recommendation against agreed quality gates.</p></div></div></section>
+ <p class="method-source"><a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents" target="_blank" rel="noopener noreferrer">Anthropic · Demystifying evals for AI agents ↗</a></p>
+</section>
+<script>
+ const evalLab=document.getElementById('safety-evaluation-lab')!;
+ const checks=Array.from(evalLab.querySelectorAll<HTMLInputElement>('[data-eval-slice]'));
+ const rows=Array.from(evalLab.querySelectorAll<HTMLElement>('[data-eval-row]'));
+ let decision='';
+ function updateEvaluation(){
+  const selected=checks.filter(item=>item.checked).map(item=>item.value);
+  let count=0,before=0,after=0;
+  rows.forEach(row=>{row.hidden=!selected.includes(row.dataset.evalRow!);if(!row.hidden){count+=Number(row.dataset.count);before+=Number(row.dataset.before);after+=Number(row.dataset.after);}});
+  const set=(name:string,value:string)=>{evalLab.querySelector(`[data-eval-${name}]`)!.textContent=value;};
+  set('baseline',count?(100*before/count).toFixed(1)+'%':'N/A');set('after',count?(100*after/count).toFixed(1)+'%':'N/A');
+  const delta=count?100*(after-before)/count:0;
+  set('delta',count?(delta>0?'+':'')+delta.toFixed(1)+' pp':'N/A');
+  set('coverage',`${selected.length} of 4 slices selected · ${count} cases`);
+  const regressions=selected.filter(id=>['ordinary','regression'].includes(id));
+  set('reading',!count?'Select at least one slice. No cases means no score.':selected.length===4?'The overall rate is unchanged at 90%, but the mix changes: 5 more safety/boundary passes, 4 fewer ordinary passes and 1 recurring failure. The average hides the trade-off.':`${after} of ${count} selected cases pass after the fix. ${regressions.length?'At least one selected slice regresses.':'Selected slices improve, but unselected slices may regress.'} ${4-selected.length} slices are absent from this view.`);
+  set('action',!count?'Choose slices and define the rubric before interpreting a score.':selected.length<4?'Add the missing slices. Inspect failures against the rubric before recommending acceptance.':'Inspect the lost ordinary passes and the recurring failure; compare their severity with the improvements. Ask the owner to decide against the agreed gates, then validate on fresh cases.');
+  set('feedback',!decision?'Choose a recommendation. The feedback reflects your selected slices.':!count?'There is no evaluation evidence yet. Select at least one slice.':decision==='aggregate'?'An aggregate alone is insufficient: changing the selected cases changes its meaning. Inspect coverage, severity and regressions before a delivery decision.':selected.length<4?'Good review direction. Complete the missing slices before interpreting this change; the current score is only a partial view.':'Good review direction. All four slices are visible, but coverage alone is not acceptance. Investigate the regressions and take the evidence to the accountable owner.');
+ }
+ checks.forEach(input=>input.addEventListener('change',updateEvaluation));
+ evalLab.querySelectorAll<HTMLButtonElement>('[data-eval-decision]').forEach(button=>button.addEventListener('click',()=>{decision=button.dataset.evalDecision!;evalLab.querySelectorAll('[data-eval-decision]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));updateEvaluation();}));
+ updateEvaluation();
+</script>

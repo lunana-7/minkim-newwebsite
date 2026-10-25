@@ -1,0 +1,21 @@
+---
+import HandshakeStakeholders from './HandshakeStakeholders.astro';
+import { stages } from '../../data/handshake-business-stages';
+const stageOutputs = [
+ ['Defined task and policy boundaries', 'Evaluation requirements', 'Agreed delivery constraints'],
+ ['Coordinated annotation work', 'Shared review expectations', 'A route for complex edge cases'],
+ ['Annotation playbook', 'Labeling examples and quality resources', 'Auditor guidance'],
+ ['Systemic error patterns', 'Classification ambiguities', 'Policy gaps for lead review'],
+ ['Resolved delivery issues', 'Communicated operating trade-offs', 'Delivered model policy work']
+];
+---
+<section class="section wrap" id="collaboration-explorer">
+ <header class="section-head"><div><h2>How I would work with others.</h2></div></header>
+ <div class="business-process-explorer">
+ <p class="process-instruction">Choose a stage, then a person: explore the work, the collaboration and the output.</p>
+ <div class="business-stage-tabs" role="tablist" aria-label="Project stages">{stages.map(([title,description],i)=><button type="button" role="tab" id={`business-stage-${i}`} aria-controls="stakeholders" aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-business-stage={i}><span class="stage-topline"><span>0{i+1}</span></span><strong>{title}</strong></button>)}</div>
+ <HandshakeStakeholders stages={stages} stageOutputs={stageOutputs} />
+ </div>
+
+
+</section>

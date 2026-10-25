@@ -1,19 +1,32 @@
 ---
 const workConnections = [
- {work:'Scope the work',task:'Clarify the problem, policy area and success criteria.',source:'Product discovery · Tradies',metric:'500+ surveys · 30+ interviews',evidence:'Translated user needs into product requirements and an MVP.',transfer:'Turn an ambiguous brief into a defined task.',output:'Clear project requirements'},
- {work:'Design the review',task:'Build annotation frameworks, playbooks and review paths.',source:'Enterprise AI governance · KRAFTON',metric:'AI adoption framework + ROI',evidence:'Developed internal enterprise AI adoption criteria and frameworks, and worked on an initiative to measure the ROI of AI adoption.',transfer:'Turn broad goals into review criteria, usable guidance and measurable outcomes.',output:'Review workflow + guidance'},
- {work:'Coordinate people',task:'Turn safety discussions into clear actions, review materials and operating responsibilities.',source:'AI Safety Committee · KRAFTON',metric:'AI Safety Committee operations',evidence:'Supported biweekly committee operations, developed policy research and governance materials, and coordinated functional review of action items.',transfer:'Bring the right owners into review and track decisions through follow-up.',output:'Clear ownership + coordinated follow-through'},
- {work:'Analyze quality',task:'Investigate labeling errors, disagreement and policy gaps.',source:'AI workflow analysis · KRAFTON',metric:'2k+ AI use cases analyzed',evidence:'Analyzed how employees used AI in their day-to-day workflows, organized use cases by task and identified recurring patterns and opportunities for improvement.',transfer:'Identify recurring workflow patterns and turn findings into targeted improvements.',output:'Evidence-based quality findings'},
- {work:'Deliver and improve',task:'Resolve issues and communicate operating decisions.',source:'KRAFTON + Pacvue',metric:'CEO + ESG committee reporting',evidence:'Reported analysis and recommendations to the CEOs of KRAFTON and Pacvue, and to an internal ESG committee, translating findings into clear decision materials.',transfer:'Give stakeholders clear findings and next actions.',output:'Decision-ready delivery updates'}
+ {work:'Scope the work',task:'Define scope, policy boundaries and success criteria.',source:'AI strategy & workflow discovery · KRAFTON',metric:'Strategy into requirements',evidence:'Aligned KRAFTON’s AI strategy with leadership and translated team workflows and AI requests into requirements for solution evaluation.',transfer:'Turn business priorities into actionable scope.',output:'Project brief + acceptance criteria'},
+ {work:'Design the review',task:'Build annotation frameworks, playbooks and review paths.',source:'Enterprise AI governance · KRAFTON',metric:'AI adoption framework + ROI',evidence:'Developed KRAFTON’s AI adoption criteria and frameworks, and contributed to an AI adoption ROI initiative.',transfer:'Turn goals into review criteria and guidance.',output:'Annotation playbook + review plan'},
+ {work:'Coordinate people',task:'Align owners, review materials and next actions.',source:'AI Safety Committee · KRAFTON',metric:'AI Safety Committee operations',evidence:'Supported biweekly KRAFTON AI Safety Committee meetings to assign internal owners, coordinate responsibilities and track follow-up actions.',transfer:'Connect owners and follow through on decisions.',output:'Owner assignments + action tracking'},
+ {work:'Analyze quality',task:'Investigate labeling errors, disagreement and policy gaps.',source:'AI workflow analysis · KRAFTON',metric:'2k+ AI use cases analyzed',evidence:'Grouped KRAFTON employee AI use cases by task to identify recurring patterns and improvement opportunities.',transfer:'Turn recurring patterns into targeted improvements.',output:'Error analysis + corrective actions'},
+ {work:'Deliver and improve',task:'Resolve issues and communicate operating decisions.',source:'KRAFTON + Pacvue',metric:'CEO + ESG committee reporting',evidence:'I presented findings and recommendations to KRAFTON and Pacvue CEOs and an internal ESG committee.',transfer:'Make findings and next actions clear.',output:'Delivery report + issue resolution'}
+];
+const evidenceHighlights = [
+ ['Aligned KRAFTON’s AI strategy with leadership'],
+ ['AI adoption criteria and frameworks'],
+ ['assign internal owners'],
+ ['recurring patterns and improvement opportunities'],
+ ['KRAFTON and Pacvue CEOs']
 ];
 ---
 <section class="section wrap career-narrative" id="career-narrative">
- <div class="section-head"><div><p class="label">3 / MY CAREER NARRATIVE</p><h2>How my experience connects to the work.</h2></div><p>The thread across my work is turning an unclear problem into a usable process with evidence, clear ownership and a concrete output.</p></div>
+ <div class="section-head"><div><h2>How my experience connects to the work.</h2></div></div>
+ <p class="career-role-summary">I would bring my AI Governance experience to scope the work, guide reviewers and turn quality findings into <mark class="text-highlight">clear delivery decisions</mark>.</p>
  <div class="career-work-map">
- <ol class="career-work-pipeline">{workConnections.map((item,i)=><li>
- <div class="career-work-node"><span class="career-work-step">0{i+1} / SAFETY SPA WORK</span><h4>{item.work}</h4><p>{item.task}</p><span class="career-work-output">{item.output}</span></div>
- <div class="career-evidence-link"><span aria-hidden="true">↑</span><div class="career-transfer"><span>HOW THIS TRANSFERS</span><p>{item.transfer}</p></div></div>
- <div class="career-evidence-node"><span class="career-evidence-source">{item.source}</span><strong>{item.metric}</strong><p>{item.evidence}</p></div>
- </li>)}</ol>
+ <div class="career-work-pipeline">
+ <div class="career-row-labels"><span><strong>SAFETY SPA WORK</strong></span><span><strong>OUTPUT</strong></span><span><strong>HOW THIS TRANSFERS</strong></span><span><strong>MY RELEVANT EXPERIENCE</strong></span></div>
+ {workConnections.map((item,i)=><article class="career-work-column" aria-label={item.work}>
+ <div class="career-work-card">
+ <div class="career-work-node"><div class="career-work-heading"><span class="career-work-step">0{i+1}</span><h4>{item.work}</h4></div><p>{item.task}</p></div>
+ <div class="career-work-output">{item.output}</div>
+ </div>
+ <div class="career-evidence-link"><span aria-hidden="true">↑</span><div class="career-transfer"><p>{item.transfer}</p></div></div>
+ <div class="career-evidence-node"><strong>{item.metric}</strong><p>{item.evidence.split(new RegExp(`(${evidenceHighlights[i].join('|')})`, 'g')).map(part => evidenceHighlights[i].includes(part) ? <mark class="text-highlight">{part}</mark> : part)}</p></div>
+ </article>)}</div>
  </div>
 </section>
