@@ -253,7 +253,7 @@ body.work-dialog-open{overflow:hidden}.work-dialog{box-sizing:border-box;width:m
 .personal-chapter-label h3{font-size:20px;line-height:1.3;letter-spacing:-.02em;font-weight:500;margin:0;max-width:160px;color:#254f5a}
 .personal-copy.personal-journey .personal-chapter>p{font-size:16px;line-height:1.8;color:#36565f;margin:0;padding-bottom:25px;border-bottom:1px solid #c8e2e7}
 .personal-copy.personal-journey .personal-chapter:last-child>p{border-bottom:0;padding-bottom:0}
-.personal-chapter mark{color:inherit;background:linear-gradient(transparent 55%,#aee4eb 55%);padding:0 1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.personal-chapter mark{color:inherit;background:linear-gradient(transparent 72%,#aee4eb 72%,#aee4eb 96%,transparent 96%);padding:0 1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .personal-growth-visual{padding:24px 0;border-top:1px solid #b5d9df;border-bottom:1px solid #b5d9df}
 .personal-growth-visual>.label{margin:0 0 20px;font-size:10px;color:#4c7681}
 .personal-growth-visual ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
@@ -1438,7 +1438,7 @@ body.work-dialog-open{overflow:hidden}.work-dialog{box-sizing:border-box;width:m
 #stakeholders .workflow-proof-intro{font-size:14px;line-height:1.6;max-width:900px;margin:12px 0 18px}
 #stakeholders .work-evidence-selection{background:transparent;padding:0;color:#447985;font-size:12px;margin:12px 0 6px}
 @media(max-width:760px){#stakeholders .workflow-proof-body{grid-template-columns:1fr;gap:18px}#stakeholders .workflow-proof-body>div+div::before{content:'↓';left:14px;top:-20px}}
-.text-highlight,.business-role-summary mark{color:#172a30;font-weight:400;background:linear-gradient(transparent 42%,#afe8ef 42%,#afe8ef 93%,transparent 93%);padding:0 2px;border-radius:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.text-highlight,.business-role-summary mark{color:#172a30;font-weight:400;background:linear-gradient(transparent 72%,#afe8ef 72%,#afe8ef 96%,transparent 96%);padding:0 2px;border-radius:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* Compact the relationship map while keeping its three rows aligned. */
 @media(min-width:761px){
@@ -1452,7 +1452,7 @@ body.work-dialog-open{overflow:hidden}.work-dialog{box-sizing:border-box;width:m
 #stakeholders .relationship-lines{height:100%;overflow:hidden}
 
 /* Muted neon green for stakeholder input highlights. */
-#stakeholders .exchange-input .text-highlight{background:linear-gradient(transparent 42%,#c5e992 42%,#c5e992 93%,transparent 93%)}
+#stakeholders .exchange-input .text-highlight{background:linear-gradient(transparent 72%,#c5e992 72%,#c5e992 96%,transparent 96%)}
 
 /* Match the collaboration and supporting-experience headings. */
 #stakeholders .collaboration-group-heading h3,
@@ -1974,4 +1974,268 @@ body.motion-paused #stakeholders .workflow-proof-body>div+div::before{animation-
 @media(max-width:700px){#personal-statement .personal-motivation p{font-size:15px;line-height:1.65}}
 
 /* Use the shared cyan marker in the personal note. */
-#personal-statement .personal-motivation mark{color:#172a30;font-weight:400;background:linear-gradient(transparent 42%,#afe8ef 42%,#afe8ef 93%,transparent 93%);padding:0 2px;border-radius:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#personal-statement .personal-motivation mark{color:#172a30;font-weight:400;background:linear-gradient(transparent 72%,#afe8ef 72%,#afe8ef 96%,transparent 96%);padding:0 2px;border-radius:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* Keep the page header and hero on a plain background. */
+.topbar{background:transparent;border-bottom:0}
+.hero{background:transparent}
+.hero-bottom{border-top:0}
+
+/* Personal note: compact text beside a small, interactive photo collection. */
+#personal-statement .personal-note-with-photos{padding:28px;background:transparent;border:0}
+#personal-statement .personal-note-with-photos>header{padding-right:0;max-width:none}
+#personal-statement .personal-note-with-photos h2{font-size:clamp(28px,3vw,40px);line-height:1.15;margin:10px 0 22px}
+#personal-statement .personal-note-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:32px;align-items:start}
+#personal-statement .personal-motivation{margin:0;max-width:none}
+#personal-statement .personal-motivation p{font-size:15px;line-height:1.65;margin-bottom:15px}
+#personal-statement .note-gallery{min-width:0;align-self:center}
+#personal-statement .note-gallery figure{margin:0}
+#personal-statement .note-photo-stage{height:300px;background:#f1f6f7;border-radius:12px;overflow:hidden;display:grid;place-items:center}
+#personal-statement .note-photo-stage>img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .7s ease}
+#personal-statement .note-photo-stage:hover>img{transform:scale(1.025)}
+#personal-statement .note-gallery figcaption{font-size:11px;color:#627e87;line-height:1.5;margin:9px 0;min-height:2.5em}
+#personal-statement .note-photo-picker{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+#personal-statement .note-photo-picker button{padding:3px;border:1px solid transparent;background:transparent;border-radius:7px;cursor:pointer;transition:transform .2s,border-color .2s}
+#personal-statement .note-photo-picker button[aria-pressed=true]{border-color:#35889a;background:#e8f5f7}
+#personal-statement .note-photo-picker button:hover{transform:translateY(-3px)}
+#personal-statement .note-photo-picker img{display:block;width:100%;height:58px;object-fit:cover;border-radius:4px}
+#personal-statement .note-photo-picker button:focus-visible{outline:2px solid #35889a;outline-offset:3px}
+#personal-statement .personal-note>footer{margin-top:8px;padding-top:0}
+#personal-statement .personal-note footer>span{margin-top:0}
+@media(max-width:850px){#personal-statement .personal-note-layout{grid-template-columns:1fr;gap:16px}#personal-statement .personal-note-with-photos{padding:12px}#personal-statement .note-photo-stage{height:260px}#personal-statement .note-gallery{max-width:600px;width:100%}}
+@media(prefers-reduced-motion:reduce){#personal-statement .note-photo-stage>img,#personal-statement .note-photo-picker button{transition:none}#personal-statement .note-photo-stage:hover>img,#personal-statement .note-photo-picker button:hover{transform:none}}
+
+/* Handshake AI-inspired introduction: mint wash, black type and a centered headline. */
+.handshake-profile-page>.topbar{background:#c5f6fa;border:0;padding:24px 32px;color:#14151a}
+.handshake-profile-page .topbar .brand-divider{background:#14151a33}
+.handshake-profile-page .handshake-profile-hero{background:linear-gradient(180deg,#c5f6fa 0%,#e6fbfc 40%,#fff 92%);padding:64px 24px 70px;overflow:hidden;text-align:center}
+.handshake-profile-hero .profile-hero-content{max-width:1100px;margin:auto}
+.handshake-profile-hero .profile-hero-kicker{display:inline-block;margin:0 0 26px;padding:9px 16px;border:1px solid #91d8d8;border-radius:999px;background:#ffffff35;color:#14151a;font-size:12px;line-height:1.3}
+.handshake-profile-page .handshake-profile-hero h1{max-width:none;margin:0 auto 24px;color:#0b0c0e;font-size:clamp(38px,5.5vw,72px);line-height:1.08;letter-spacing:-.055em;font-weight:400}
+.handshake-profile-hero .profile-hero-intro{font-size:18px;line-height:1.45;max-width:570px;margin:0 auto;color:#242529}
+.handshake-profile-hero .profile-hero-actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:22px;margin-top:28px}
+.handshake-profile-hero .profile-hero-primary{background:#14151a;color:#fff;text-decoration:none;border-radius:14px;padding:14px 20px;font-size:15px;transition:background .2s,transform .2s}
+.handshake-profile-hero .profile-hero-primary:hover{background:#303238;transform:translateY(-2px)}
+.handshake-profile-hero .profile-hero-secondary{font-size:14px;color:#14151a;text-decoration:none}
+.handshake-profile-hero .profile-hero-secondary:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:600px){.handshake-profile-page>.topbar{padding:20px}.handshake-profile-page .handshake-profile-hero{padding:40px 20px 48px}.handshake-profile-hero .profile-hero-intro{font-size:16px}.handshake-profile-hero .profile-hero-kicker{font-size:11px;margin-bottom:22px}}
+@media(prefers-reduced-motion:reduce){.handshake-profile-hero .profile-hero-primary{transition:none}.handshake-profile-hero .profile-hero-primary:hover{transform:none}}
+
+/* Frame the people rather than the upper edge of portrait photos. */
+#personal-statement .note-photo-stage{position:relative;display:block}
+#personal-statement .note-photo-stage>img{position:absolute;inset:0;width:100%;height:100%;max-height:100%;min-height:0;object-fit:cover;object-position:50% 50%}
+#personal-statement .note-photo-picker button[data-note-photo="event"] img{object-position:50% 78%}
+#personal-statement .note-photo-picker button[data-note-photo="krafton"] img{object-position:50% 70%}
+#personal-statement .note-photo-picker button[data-note-photo="group"] img{object-position:50% 65%}
+
+/* Photos sit alongside successive passages of the personal note. */
+#personal-statement .note-story{display:grid;gap:32px}
+#personal-statement .note-story-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:center}
+#personal-statement .note-story-row:nth-child(2){grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+#personal-statement .note-story-row:nth-child(2) .personal-copy{grid-column:2;grid-row:1}
+#personal-statement .note-story-row:nth-child(2) figure{grid-column:1;grid-row:1}
+#personal-statement .note-story .personal-motivation p{font-size:17px;line-height:1.8;margin:0;max-width:650px}
+#personal-statement .note-story-photo{margin:0;min-width:0}
+#personal-statement .note-story-photo img{display:block;width:100%;height:260px;object-fit:cover;border-radius:12px}
+#personal-statement .note-story-photo-krafton img{object-position:50% 70%}
+#personal-statement .note-story-photo-event img{object-position:50% 78%}
+#personal-statement .note-story-photo figcaption{margin-top:8px;font-size:12px;color:#627e87}
+#personal-statement .personal-motivation mark{background-repeat:no-repeat}
+#personal-statement .note-story-moments{display:flex;justify-content:flex-end;gap:16px;margin-top:-8px}
+#personal-statement .note-story-moments img{width:180px;height:120px;object-fit:cover;object-position:center 65%;border-radius:10px}
+#personal-statement .personal-note>footer{margin-top:24px}
+@media(max-width:700px){
+ #personal-statement .note-story{gap:28px}
+ #personal-statement .note-story-row,#personal-statement .note-story-row:nth-child(2){grid-template-columns:1fr;gap:18px}
+ #personal-statement .note-story-row:nth-child(2) .personal-copy,#personal-statement .note-story-row:nth-child(2) figure{grid-column:auto;grid-row:auto}
+ #personal-statement .note-story .personal-motivation p{font-size:16px;line-height:1.75}
+ #personal-statement .note-story-photo img{height:230px}
+ #personal-statement .note-story-moments{justify-content:start}
+ #personal-statement .note-story-moments img{width:calc(50% - 8px);height:130px}
+}
+
+/* Give the remaining personal photos room within the story. */
+#personal-statement .note-story-moments{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:0}
+#personal-statement .note-story-moments figure{margin:0;min-width:0}
+#personal-statement .note-story-moments img{display:block;width:100%;height:280px;object-fit:cover;border-radius:12px}
+#personal-statement .note-story-moments figure:first-child img{object-position:50% 48%}
+#personal-statement .note-story-moments figcaption{margin-top:8px;font-size:12px;color:#627e87}
+@media(max-width:700px){#personal-statement .note-story-moments{gap:14px}#personal-statement .note-story-moments img{height:200px}}
+@media(max-width:420px){#personal-statement .note-story-moments{grid-template-columns:1fr}#personal-statement .note-story-moments img{height:240px}}
+
+#personal-statement .note-story-moments{grid-template-columns:minmax(0,1fr);max-width:720px;width:100%;margin:0 auto}
+#personal-statement .note-story-moments figure:first-child img{object-position:50% 50%;height:320px}
+@media(max-width:700px){#personal-statement .note-story-moments figure:first-child img{height:240px}}
+
+/* Keep work photos compact, with a smaller Krafton portrait. */
+#personal-statement .note-story-row:nth-child(2){grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:36px}
+#personal-statement .note-story-photo-krafton{width:100%;max-width:360px;justify-self:center}
+#personal-statement .note-story-photo-krafton img{height:220px;object-position:50% 65%}
+#personal-statement .note-story-moments{max-width:540px}
+#personal-statement .note-story-moments figure:first-child img{height:260px}
+@media(max-width:700px){
+ #personal-statement .note-story-row:nth-child(2){grid-template-columns:1fr;gap:18px}
+ #personal-statement .note-story-photo-krafton{max-width:320px}
+ #personal-statement .note-story-photo-krafton img{height:210px}
+ #personal-statement .note-story-moments{max-width:440px}
+ #personal-statement .note-story-moments figure:first-child img{height:230px}
+}
+
+/* One consistent text edge and photo edge throughout the note. */
+#personal-statement .note-story{gap:36px}
+#personal-statement .note-story-row,#personal-statement .note-story-row:nth-child(2){grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:start}
+#personal-statement .note-story-row:nth-child(2) .personal-copy,#personal-statement .note-story-row:nth-child(2) figure{grid-column:auto;grid-row:auto}
+#personal-statement .note-story .personal-motivation p{max-width:none}
+#personal-statement .note-story-photo,#personal-statement .note-story-photo-krafton{width:100%;max-width:none;justify-self:stretch}
+#personal-statement .note-story-photo img{height:240px}
+#personal-statement .note-work-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-width:0}
+#personal-statement .note-work-photos .note-story-photo img{height:190px;object-position:50% 65%}
+#personal-statement .note-work-photos .note-story-photo-event img{object-position:50% 78%}
+#personal-statement .note-story-closing{max-width:850px;padding-top:4px}
+@media(max-width:700px){
+ #personal-statement .note-story-row,#personal-statement .note-story-row:nth-child(2){grid-template-columns:1fr;gap:18px}
+ #personal-statement .note-story-photo img{height:230px}
+ #personal-statement .note-work-photos .note-story-photo img{height:190px}
+}
+
+#personal-statement .note-story .personal-motivation p+p{margin-top:18px}
+
+/* Work photos on the left, with the Krafton passage on the right. */
+#personal-statement .note-story-row:has(>.note-work-photos){grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+#personal-statement .note-story-row>.note-work-photos{grid-column:1;grid-row:1}
+#personal-statement .note-story-row:has(>.note-work-photos)>.personal-copy{grid-column:2;grid-row:1}
+@media(max-width:700px){
+ #personal-statement .note-story-row:has(>.note-work-photos){grid-template-columns:1fr}
+ #personal-statement .note-story-row:has(>.note-work-photos)>.personal-copy{grid-column:1;grid-row:2}
+}
+
+/* A slightly more compact personal note. */
+#personal-statement .note-story{gap:28px}
+#personal-statement .note-story-row,#personal-statement .note-story-row:nth-child(2){gap:30px}
+#personal-statement .note-story .personal-motivation p{font-size:16px;line-height:1.7}
+#personal-statement .note-story .personal-motivation p+p{margin-top:12px}
+#personal-statement .note-story-photo img{height:210px}
+#personal-statement .note-work-photos .note-story-photo img{height:165px}
+@media(max-width:700px){
+ #personal-statement .note-story-row,#personal-statement .note-story-row:nth-child(2){gap:16px}
+ #personal-statement .note-story .personal-motivation p{font-size:15px}
+ #personal-statement .note-story-photo img{height:200px}
+ #personal-statement .note-work-photos .note-story-photo img{height:160px}
+}
+
+#personal-statement .note-story-row:first-child>.personal-copy{padding-top:24px}
+@media(max-width:700px){#personal-statement .note-story-row:first-child>.personal-copy{padding-top:12px}}
+
+#personal-statement .personal-note>.note-signoff{display:flex;align-items:center;justify-content:flex-start;gap:20px}
+#personal-statement .note-signoff img{display:block;width:140px;height:65px;object-fit:contain}
+
+#personal-statement .note-photo-open{display:block;width:100%;padding:0;border:0;border-radius:12px;background:transparent;cursor:zoom-in}
+#personal-statement .note-photo-open:focus-visible{outline:3px solid #35889a;outline-offset:4px}
+.note-photo-dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94dvh;overflow:visible}
+.note-photo-dialog::backdrop{background:rgb(0 0 0 / .82)}
+.note-photo-dialog>img{display:block;max-width:92vw;max-height:88dvh;width:auto;height:auto;object-fit:contain;border-radius:6px}
+.note-photo-dialog .note-photo-close{position:absolute;right:8px;top:8px;width:38px;height:38px;border:0;border-radius:50%;background:#fff;color:#111;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 2px 12px #0003}
+html:has(.note-photo-dialog[open]){overflow:hidden}
+
+#personal-statement .note-heading-with-sparkle{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-bottom:24px}
+#personal-statement .note-heading-sparkle{display:block;width:260px;height:260px;object-fit:contain;margin-right:40px;flex-shrink:0}
+@media(max-width:700px){#personal-statement .note-heading-with-sparkle{gap:12px}#personal-statement .note-heading-sparkle{width:120px;height:120px;margin-right:0}}
+@media(max-width:420px){#personal-statement .note-heading-sparkle{width:85px;height:85px}}
+
+/* Oversized artwork cropped into the left edge of the note heading. */
+#personal-statement .note-heading-with-sparkle{position:relative;min-height:320px;display:flex;align-items:center;justify-content:flex-end;isolation:isolate;overflow:hidden}
+#personal-statement .note-heading-with-sparkle>div{width:60%;position:relative;z-index:1}
+#personal-statement .note-heading-sparkle{position:absolute;left:-105px;top:50%;transform:translateY(-50%) rotate(-8deg);width:470px;height:470px;margin:0;z-index:0;pointer-events:none}
+@media(max-width:700px){
+ #personal-statement .note-heading-with-sparkle{min-height:230px;gap:0}
+ #personal-statement .note-heading-with-sparkle>div{width:65%}
+ #personal-statement .note-heading-sparkle{left:-95px;width:300px;height:300px}
+ #personal-statement .note-heading-with-sparkle h2{font-size:28px}
+}
+@media(max-width:420px){
+ #personal-statement .note-heading-with-sparkle{min-height:200px}
+ #personal-statement .note-heading-with-sparkle>div{width:68%}
+ #personal-statement .note-heading-sparkle{left:-100px;width:250px;height:250px}
+ #personal-statement .note-heading-with-sparkle h2{font-size:25px}
+}
+
+.study-menu-toggle{border:1px solid transparent;background:linear-gradient(#d4f9fc,#d4f9fc) padding-box,linear-gradient(110deg,#00cbd5 0%,#57e5b5 55%,#c3f52c 100%) border-box}
+
+#personal-statement .note-work-photos .note-story-photo-event img{object-position:50% 30%}
+
+.handshake-profile-hero .profile-hero-kicker{border:1px solid transparent;background:linear-gradient(#ddfafb,#ddfafb) padding-box,linear-gradient(110deg,#00cbd5,#57e5b5 55%,#c3f52c) border-box}
+#handshake-business .business-overview>li{background-image:linear-gradient(100deg,#d7f9fc 0%,#b8f2e5 48%,#e4f8a5 100%);background-size:500% 100%}
+#handshake-business .business-overview>li:nth-child(1){background-position:0% 0}
+#handshake-business .business-overview>li:nth-child(2){background-position:25% 0}
+#handshake-business .business-overview>li:nth-child(3){background-position:50% 0}
+#handshake-business .business-overview>li:nth-child(4){background-position:75% 0}
+#handshake-business .business-overview>li:nth-child(5){background-position:100% 0}
+
+/* Show the Google I/O sign and outfit together in a taller frame. */
+#personal-statement .note-work-photos{align-items:end}
+#personal-statement .note-work-photos .note-story-photo-event img{height:290px;object-position:50% 50%}
+@media(max-width:700px){#personal-statement .note-work-photos .note-story-photo-event img{height:260px}}
+
+/* Extend the I/O photo upward into existing space, without lengthening the row. */
+#personal-statement .note-work-photos .note-story-photo-event{margin-top:-125px}
+#personal-statement .note-work-photos .note-story-photo-event img{height:290px}
+@media(max-width:700px){
+ #personal-statement .note-work-photos .note-story-photo-event{margin-top:0}
+ #personal-statement .note-work-photos .note-story-photo-event img{height:260px}
+}
+
+/* Keep the taller photo in normal flow so it cannot overlap the preceding passage. */
+#personal-statement .note-work-photos .note-story-photo-event{margin-top:0}
+#personal-statement .note-work-photos .note-story-photo-event img{height:260px}
+#personal-statement .note-story-row:has(>.note-work-photos){align-items:center;margin-top:0}
+#personal-statement .note-story{row-gap:20px}
+@media(max-width:700px){#personal-statement .note-work-photos .note-story-photo-event img{height:240px}}
+
+/* Align the first passage's bottom edge with its photo before the next row. */
+#personal-statement .note-story-row:first-child{align-items:end}
+#personal-statement .note-story-row:first-child>.personal-copy{padding-top:0;padding-bottom:0}
+#personal-statement .note-story{row-gap:14px}
+#personal-statement .note-story-row:has(>.note-work-photos){align-items:start}
+#personal-statement .note-work-photos{align-items:start}
+
+/* Start the opening paragraph directly beneath the title. */
+#personal-statement .personal-note-with-photos>header{min-height:0;padding-bottom:0;margin-bottom:16px}
+#personal-statement .personal-note-with-photos>header h2{margin-bottom:0}
+#personal-statement .note-story-row:first-child{align-items:start}
+#personal-statement .note-story-row:first-child>.personal-copy{padding:0;margin:0;align-self:start}
+
+#personal-statement .note-story-row>.note-work-photos{position:relative;top:-40px}
+@media(max-width:700px){#personal-statement .note-story-row>.note-work-photos{top:0}}
+
+#personal-statement .note-story-row>.note-work-photos{top:-64px}
+@media(max-width:700px){#personal-statement .note-story-row>.note-work-photos{top:0}}
+
+/* Remove the space left behind by lifting the work photos. */
+#personal-statement .note-story-row>.note-work-photos{margin-bottom:-64px}
+@media(max-width:700px){#personal-statement .note-story-row>.note-work-photos{margin-bottom:0}}
+
+/* Match both work-photo frames and captions, keeping the PUBG sign visible. */
+#personal-statement .note-work-photos .note-story-photo-krafton img{height:260px;object-position:50% 35%}
+@media(max-width:700px){#personal-statement .note-work-photos .note-story-photo-krafton img{height:240px}}
+
+#personal-statement .note-work-photos .note-story-photo-krafton img,
+#personal-statement .note-work-photos .note-story-photo-event img{height:240px}
+@media(max-width:700px){
+ #personal-statement .note-work-photos .note-story-photo-krafton img,
+ #personal-statement .note-work-photos .note-story-photo-event img{height:220px}
+}
+
+#personal-statement .note-story-photo-three-body img{height:185px}
+@media(max-width:700px){#personal-statement .note-story-photo-three-body img{height:180px}}
+
+#personal-statement .note-work-photos .note-story-photo-krafton img,
+#personal-statement .note-work-photos .note-story-photo-event img{height:225px}
+@media(max-width:700px){
+ #personal-statement .note-work-photos .note-story-photo-krafton img,
+ #personal-statement .note-work-photos .note-story-photo-event img{height:205px}
+}
+
+.handshake-profile-page .topbar .profile-top-nav{display:flex;margin-left:auto;align-items:center}
+.handshake-profile-page .profile-top-nav a{display:inline-flex;align-items:center;min-height:42px;padding:10px 20px;border:1px solid #14151a;border-radius:12px;font-size:15px;color:#14151a;text-decoration:none;background:#ffffff50;transition:background .2s}
+.handshake-profile-page .profile-top-nav a:hover{background:#fff}
+@media(max-width:520px){.handshake-profile-page>.topbar{flex-direction:row;align-items:center;gap:12px}.handshake-profile-page .profile-top-nav a{padding:8px 12px;font-size:13px}}

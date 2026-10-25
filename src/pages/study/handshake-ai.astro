@@ -16,13 +16,14 @@ Astro.response.headers.set('Referrer-Policy', 'no-referrer');
 <!doctype html>
 <html lang="en">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex, nofollow, noarchive"/><meta name="referrer" content="no-referrer"/><title>Min Kim · AI Safety & Evaluation Study</title><meta name="description" content="Independent study notes on AI safety policy, evaluation design and human review operations, prepared by Min Kim."/><link rel="icon" href="/favicon.ico"/></head>
-<body>
+<body class="handshake-profile-page">
 <a class="skip" href="#main">Skip to content</a>
-<header class="topbar"><div class="study-brand"><a class="handshake-logo" href="https://joinhandshake.com/ai/" target="_blank" rel="noopener noreferrer" aria-label="Handshake AI official website"><img src="/brand/handshake-wordmark.svg" width="139" height="28" alt="Handshake"/></a><span class="brand-divider" aria-hidden="true"></span><a class="wordmark" href="#top">Min Kim</a></div></header>
+<header class="topbar"><div class="study-brand"><a class="handshake-logo" href="https://joinhandshake.com/ai/" target="_blank" rel="noopener noreferrer" aria-label="Handshake AI official website"><img src="/brand/handshake-wordmark.svg" width="139" height="28" alt="Handshake"/></a><span class="brand-divider" aria-hidden="true"></span><a class="wordmark" href="#top">Min Kim</a></div><nav class="profile-top-nav" aria-label="Profile navigation"><a href="/study/handshake-resume">Resume ↗</a></nav></header>
 <button class="study-menu-toggle" popovertarget="study-side-menu" aria-label="Open section navigation">☰ <span>Sections</span></button>
 <aside id="study-side-menu" class="study-side-menu" popover>
  <div class="study-menu-heading"><strong>Explore this page</strong><button popovertarget="study-side-menu" popovertargetaction="hide" aria-label="Close section navigation">×</button></div>
  <nav aria-label="Study sections">
+  <a href="/study/handshake-resume">Resume ↗</a>
   <a href="#about-me">1. About me</a>
   <a href="#handshake-business">2. How Handshake works</a>
   <a href="#career-narrative">3. How my experience connects to the work</a>
@@ -33,7 +34,7 @@ Astro.response.headers.set('Referrer-Policy', 'no-referrer');
  </nav>
 </aside>
 <main id="main">
-<section class="hero" id="top"><div class="hero-art-layout"><div class="hero-about-heading"><h1>Preparing for the Safety SPA role<br/><span>at Handshake.</span></h1></div><HandshakeArt /></div></section>
+<section class="hero handshake-profile-hero" id="top"><div class="profile-hero-content"><p class="profile-hero-kicker">AI governance · Human data · Safety</p><h1>Min for the Safety SPA role<br/>at Handshake.</h1><p class="profile-hero-intro">My experience, how I approach the work, and why human data matters to me.</p><div class="profile-hero-actions"><a href="#career-narrative" class="profile-hero-primary">Explore my experience</a><a href="#personal-statement" class="profile-hero-secondary">A personal note ↗</a></div></div></section>
 <section class="section wrap about-me" id="about-me" aria-labelledby="about-me-title"><div class="intro-simple">
  <h2 id="about-me-title">Hi, I’m<br/><span>Min!</span></h2>
  <div class="intro-copy"><p>I’m an <strong>AI Governance Analyst at Krafton</strong> and a graduating senior at the University of Illinois Urbana-Champaign (UIUC).</p>
@@ -47,22 +48,66 @@ Astro.response.headers.set('Referrer-Policy', 'no-referrer');
 <HandshakePipelines />
 
 <section class="section wrap personal-statement" id="personal-statement" aria-labelledby="personal-statement-title">
- <div class="personal-note"><HandshakeArt variant="note" />
+ <div class="personal-note personal-note-with-photos">
   <header class="panel-heading"><p class="label">A PERSONAL NOTE</p><h2 id="personal-statement-title">Why I want to work<br/>closer to human data.</h2></header>
-  <div class="personal-copy personal-motivation">
-   <p>I keep thinking about <em>The Three-Body Problem</em>, where a human tries to explain people to an intelligence far more advanced than our own. What stayed with me was the effort to <mark>help that intelligence understand us</mark>, rather than make it more capable. That is what interests me about human data: helping AI understand what people mean, including the context and intentions that aren’t stated directly.</p>
-   <p>At Krafton, I worked on helping employees use AI safely and helping the company respond to changes in the technology. At Pacvue, I supported internal enablement at a company using AI to improve its SaaS offering. Both experiences taught me about putting AI to work inside a business. The goals were tied to each company’s operations, and <mark>my work did not directly shape frontier models</mark>.</p>
-   <p>I want my next role to bring me closer to that process. When I first learned about supervised learning, I thought of data as a way to learn more about the world and make better decisions. Since then, I’ve become more interested in how it can help models understand human nuance and behave more safely. Handshake’s work with frontier labs feels like a way to contribute to that: bringing what I’ve learned about review processes and AI use into <mark>the work of creating and evaluating human data</mark>.</p>
+  <div class="note-story">
+   <div class="note-story-row" data-note-reveal><div class="personal-copy personal-motivation"><p>I keep thinking about <em>The Three-Body Problem</em>, where a human tries to explain people to an intelligence far more advanced than our own. What stayed with me was the effort to <mark>help that intelligence understand us</mark>, rather than make it more capable. That is what interests me about human data: helping AI understand what people mean, including the context and intentions that aren’t stated directly.</p></div><figure class="note-story-photo note-story-photo-three-body"><img src="/images/handshake-note/three-body.webp" alt="A scene from The Three-Body Problem." loading="lazy" decoding="async"/><figcaption>The question that stayed with me.</figcaption></figure></div>
+   <div class="note-story-row" data-note-reveal><div class="personal-copy personal-motivation"><p>At Krafton, I worked on helping employees use AI safely and helping the company respond to changes in the technology.</p>
+<p>At Pacvue, I supported internal enablement at a company using AI to improve its SaaS offering. Both experiences taught me about putting AI to work inside a business. The goals were tied to each company’s operations, and <mark>my work did not directly shape frontier models</mark>.</p></div><div class="note-work-photos"><figure class="note-story-photo note-story-photo-krafton"><img src="/images/handshake-note/krafton.webp" alt="A moment at Krafton." loading="lazy" decoding="async"/><figcaption>Krafton</figcaption></figure><figure class="note-story-photo note-story-photo-event"><img src="/images/handshake-note/event.webp" alt="Attending Google I/O by invitation." loading="lazy" decoding="async"/><figcaption>Invited to Google I/O</figcaption></figure></div></div>
+   <div class="note-story-row" data-note-reveal><div class="personal-copy personal-motivation"><p>I want my next role to bring me closer to that process. When I first learned about supervised learning, I thought of data as a way to learn more about the world and make better decisions. Since then, I’ve become more interested in how it can help models understand human nuance and behave more safely. Handshake’s work with frontier labs feels like a way to contribute to that: bringing what I’ve learned about review processes and AI use into <mark>the work of creating and evaluating human data</mark>.</p></div><figure class="note-story-photo note-story-photo-conversation"><img src="/images/handshake-note/conversation.webp" alt="Sharing a meal with colleagues at Pacvue." loading="lazy" decoding="async"/><figcaption>Pacvue</figcaption></figure></div>
   </div>
-  <footer><span>Min Kim</span></footer>
+  <footer class="note-signoff"><span>Min Kim</span><img src="/images/handshake-note/min-signature.svg" alt="Min Kim’s handwritten signature" width="140" height="65"/></footer>
  </div>
 </section>
 
+<dialog class="note-photo-dialog" aria-label="Full photo">
+ <button class="note-photo-close" type="button" aria-label="Close full photo">×</button>
+ <img alt=""/>
+</dialog>
 
 </main>
 <script>
  import '../../scripts/handshake-motion';
  import '../../scripts/handshake-art-motion';
+ const personalNote=document.querySelector<HTMLElement>('.personal-note-with-photos');
+ if(personalNote){
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const photoDialog=document.querySelector<HTMLDialogElement>('.note-photo-dialog')!;
+  const fullPhoto=photoDialog.querySelector<HTMLImageElement>('img')!;
+  personalNote.querySelectorAll<HTMLImageElement>('.note-story-photo img').forEach(photo=>{
+   const trigger=document.createElement('button');
+   trigger.type='button';
+   trigger.className='note-photo-open';
+   trigger.setAttribute('aria-label',`View full photo: ${photo.alt}`);
+   trigger.setAttribute('aria-haspopup','dialog');
+   photo.before(trigger);
+   trigger.append(photo);
+   trigger.addEventListener('click',()=>{
+    fullPhoto.src=photo.currentSrc || photo.src;
+    fullPhoto.alt=photo.alt;
+    photoDialog.showModal();
+   });
+  });
+  photoDialog.querySelector('button')!.addEventListener('click',()=>photoDialog.close());
+  photoDialog.addEventListener('click',event=>{
+   if(event.target===photoDialog)photoDialog.close();
+  });
+  const observer=new IntersectionObserver(entries=>{
+   entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    const row=entry.target;
+    if(!reducedMotion.matches){
+     row.querySelectorAll('p,figure,img').forEach((item,i)=>{
+      if(item.tagName==='IMG' && item.closest('figure'))return;
+      item.animate([{opacity:0,transform:'translateY(22px)'},{opacity:1,transform:'translateY(0)'}],{duration:850,delay:i*120,easing:'cubic-bezier(.2,.65,.3,1)',fill:'backwards'});
+     });
+     row.querySelectorAll('mark').forEach(item=>item.animate([{backgroundSize:'0% 100%'},{backgroundSize:'100% 100%'}],{duration:1000,delay:350,easing:'ease-out',fill:'backwards'}));
+    }
+    observer.unobserve(row);
+   });
+  },{threshold:.2});
+  personalNote.querySelectorAll('[data-note-reveal]').forEach(row=>observer.observe(row));
+ }
  const sectionMenu = document.getElementById('study-side-menu')!;
  sectionMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => sectionMenu.hidePopover()));
 </script>
