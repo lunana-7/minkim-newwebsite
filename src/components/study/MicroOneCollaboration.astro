@@ -1,0 +1,21 @@
+---
+import MicroOneStakeholders from './MicroOneStakeholders.astro';
+import { stages } from '../../data/micro1-business-stages';
+const stageOutputs = [
+ ['Customer objective', 'Target data or evaluation output', 'Initial quality bar'],
+ ['Project brief', 'Accepted scope and milestones', 'Decision log'],
+ ['Qualified experts', 'Onboarding and calibration', 'Capacity forecast'],
+ ['Expert work', 'Quality review', 'Progress and blocker updates'],
+ ['Accepted output', 'Quality evidence', 'Retrospective actions']
+];
+---
+<section class="section wrap" id="collaboration-explorer">
+ <header class="section-head"><div><h2>How I would work with others.</h2></div></header>
+ <div class="business-process-explorer">
+ <p class="process-instruction">Choose a stage, then a person: explore the work, the collaboration and the output.</p>
+ <div class="business-stage-tabs" role="tablist" aria-label="Project stages">{stages.map(([title,description],i)=><button type="button" role="tab" id={`business-stage-${i}`} aria-controls="stakeholders" aria-selected={i===0?'true':'false'} tabindex={i===0?0:-1} data-business-stage={i}><span class="stage-topline"><span>0{i+1}</span></span><strong>{title}</strong></button>)}</div>
+ <MicroOneStakeholders stages={stages} stageOutputs={stageOutputs} />
+ </div>
+
+
+</section>

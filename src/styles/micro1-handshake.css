@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Keep the Handshake study layout; adapt only the wordmark and five-stage palette. */
+.micro1-profile-page .micro1-wordmark{font-family:Arial,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.08em;text-decoration:none;color:#f5f5f2;line-height:1}
+.micro1-profile-page .micro1-wordmark span{color:#f5f5f2}
+#micro1-business .business-overview>li:nth-child(1){background:#252b29}
+#micro1-business .business-overview>li:nth-child(2){background:#2b322f}
+#micro1-business .business-overview>li:nth-child(3){background:#333b36}
+#micro1-business .business-overview>li:nth-child(4){background:#3b453e}
+#micro1-business .business-overview>li:nth-child(5){background:#465148}
+
+/* micro1-inspired color and type layer over the existing Handshake structure. */
+.micro1-profile-page{--study-line:#464d49;--study-panel:#202522;font-family:Inter,Arial,sans-serif;background:#131715;color:#f2f4f0}
+.micro1-profile-page :is(h1,h2,h3,h4,.career-work-step,.business-overview h3){font-family:Inter,Arial,sans-serif;letter-spacing:-.04em}
+.micro1-profile-page>.topbar{background:#111514;color:#f5f5f2}
+.micro1-profile-page .micro1-wordmark{color:#f5f5f2}
+.micro1-profile-page .micro1-wordmark span{color:#f5f5f2}
+.micro1-profile-page .topbar .brand-divider{background:#5b635f80}
+.micro1-profile-page .profile-top-nav a{border-color:#8d9890;color:#f5f5f2;background:#ffffff12}
+.micro1-profile-page .profile-top-nav a:hover{background:#ffffff30}
+.micro1-profile-page .handshake-profile-hero{background:radial-gradient(ellipse at 84% 38%,#3c4540 0%,transparent 35%),linear-gradient(145deg,#1b2220,#101514 78%)}
+.micro1-profile-page .handshake-profile-hero h1{color:#f5f5f2}
+.micro1-profile-page .handshake-profile-hero .profile-hero-kicker{color:#e8ece6;border:1px solid #c4cdc080;background:#ffffff15}
+.micro1-profile-page .handshake-profile-hero .profile-hero-intro{color:#cbd2cc}
+.micro1-profile-page .handshake-profile-hero .profile-hero-primary{background:#e5eae4;color:#151b17}
+.micro1-profile-page .handshake-profile-hero .profile-hero-primary:hover{background:#d2d9d1}
+.micro1-profile-page .handshake-profile-hero .profile-hero-secondary{color:#f0f2ee}
+.micro1-profile-page .study-menu-toggle{color:#f2f4f0;background:linear-gradient(#222826,#222826) padding-box,linear-gradient(110deg,#6c7670,#e5eae4) border-box}
+.micro1-profile-page .study-side-menu{background:#131715;border-color:#59615c;color:#f2f4f0}
+.micro1-profile-page .study-side-menu nav a{color:#f2f4f0}
+.micro1-profile-page .study-side-menu nav a:hover{background:#39413d}
+.micro1-profile-page .section-head h2,.micro1-profile-page .intro-simple h2,.micro1-profile-page .personal-note h2{color:#f5f5f2}
+.micro1-profile-page .intro-copy p,.micro1-profile-page .intro-bridge,.micro1-profile-page .business-role-summary,.micro1-profile-page .career-role-summary{color:#c0c7c2}
+.micro1-profile-page mark,.micro1-profile-page .text-highlight,.micro1-profile-page .personal-motivation mark{color:inherit;background:linear-gradient(transparent 72%,#e5eae4 72%,#e5eae4 96%,transparent 96%)}
+.micro1-profile-page #micro1-business .business-overview>li:nth-child(1){background:#252b29}
+.micro1-profile-page #micro1-business .business-overview>li:nth-child(2){background:#2b322f}
+.micro1-profile-page #micro1-business .business-overview>li:nth-child(3){background:#333b36}
+.micro1-profile-page #micro1-business .business-overview>li:nth-child(4){background:#3b453e}
+.micro1-profile-page #micro1-business .business-overview>li:nth-child(5){background:#465148}
+.micro1-profile-page .business-overview-note{color:#abb4ac}
+.micro1-profile-page #career-narrative .career-work-node{background:#252b29;border-color:#515b54;color:#f5f5f2}
+.micro1-profile-page #career-narrative .career-work-output{background:#e5eae4;color:#17231a;border-color:#e4e8e2}
+.micro1-profile-page #career-narrative .career-evidence-node{background:#1d2321;border-color:#515b54;color:#f5f5f2}
+.micro1-profile-page #career-narrative :is(.career-work-node p,.career-evidence-node p,.career-transfer p){color:#c4cbc5}
+.micro1-profile-page #collaboration-explorer .business-process-explorer{background:#131715;border-color:#515b54}
+.micro1-profile-page #collaboration-explorer .business-stage-tabs>button{background:#2a312d;color:#e4e9e4;border-color:#515b54}
+.micro1-profile-page #collaboration-explorer .business-stage-tabs>button[aria-selected=true]{background:#e5eae4;color:#161c18}
+.micro1-profile-page #stakeholders,.micro1-profile-page #stakeholders .collaboration-group{background:#1d2321;border-color:#535b55}
+.micro1-profile-page #stakeholders :is(.stakeholder-selectors button,.stakeholder-detail,.workflow-proof-item){background:#fff;border-color:#535b55;color:#ecf0eb}
+.micro1-profile-page #stakeholders .stakeholder-selectors button[aria-selected=true]{background:#e5eae4;color:#151a17;border-color:#e5eae4}
+.micro1-profile-page #stakeholders :is(.exchange-input,.exchange-return,.exchange-action,.workflow-proof){background:#292f2c;border-color:#535b55}
+.micro1-profile-page #stakeholders :is(h3,h4,strong){color:#e5eae4}
+.micro1-profile-page #stakeholders .stakeholder-selectors button[aria-selected=true] strong{color:#151a17}
+.micro1-profile-page #stakeholders p{color:#c4cbc5}
+.micro1-profile-page #safety-pipelines .pipeline-group-picker{background:#131715}
+.micro1-profile-page #safety-pipelines .pipeline-group-picker button{background:#303732;color:#e6eae5}
+.micro1-profile-page #safety-pipelines .pipeline-group-picker button[aria-selected=true]{background:#e5eae4;color:#151a17}
+.micro1-profile-page #safety-pipelines .pipeline-panel-column,.micro1-profile-page #safety-pipelines .pipeline-detail{background:#1d2321;border-color:#505952}
+.micro1-profile-page #safety-pipelines .pipeline-detail>h3,.micro1-profile-page #safety-pipelines .pipeline-insights>h4{color:#f5f5f2}
+.micro1-profile-page #safety-pipelines .pipeline-insights>section,.micro1-profile-page #safety-pipelines .pipeline-insights .pipeline-outputs{background:#292f2c;border-color:#555e57}
+.micro1-profile-page #safety-pipelines .pipeline-step-node{background:#292f2c;border-color:#555e57}
+.micro1-profile-page #safety-pipelines :is(.pipeline-step-node strong,.pipeline-insights strong,.pipeline-insights .label){color:#f3f5f0}
+.micro1-profile-page #safety-pipelines p{color:#c5cdc6}
+.micro1-profile-page #personal-statement .personal-note{background:transparent;color:#f0f2ef}
+.micro1-profile-page #personal-statement .personal-motivation p{color:#d0d7d0}
+.micro1-profile-page #personal-statement .note-story-photo figcaption{color:#a8b2aa}
+.micro1-profile-page #personal-statement .personal-note footer>span{color:#e5eae4}
+.micro1-profile-page .reading-progress{background:#e5eae4}
+
+/* Match the official site’s monochrome hero and restrained interaction colors. */
+.micro1-profile-page{--ink:#f5f5f2;--muted:#aeb7af;--cyan:#303732;--soft:#202522;--line:#4b554e}
+.micro1-profile-page .handshake-profile-hero{background:radial-gradient(ellipse at 78% 75%,#545e56 0%,#343d37 25%,transparent 54%),linear-gradient(150deg,#1d2420,#0f1411 75%);border-bottom:1px solid #363e38}
+.micro1-profile-page .handshake-profile-hero h1{font-weight:500}
+.micro1-profile-page :is(.section-head h2,.intro-simple h2,.personal-note h2){color:#f5f5f2}
+.micro1-profile-page #micro1-business .business-overview>li{color:#f7f8f4}
+.micro1-profile-page #career-narrative .career-work-output{color:#171c19}
+.micro1-profile-page #collaboration-explorer .business-stage-tabs>button[aria-selected=true],.micro1-profile-page #safety-pipelines .pipeline-group-picker button[aria-selected=true],.micro1-profile-page #stakeholders .stakeholder-selectors button[aria-selected=true]{color:#171c19}
+.micro1-profile-page #stakeholders .stakeholder-selectors button[aria-selected=true] strong{color:#171c19}
+.micro1-profile-page .study-menu-toggle{color:#f5f5f2}
+.micro1-profile-page mark,.micro1-profile-page .text-highlight,.micro1-profile-page .personal-motivation mark{background:linear-gradient(transparent 76%,#77867d 76%,#77867d 96%,transparent 96%)}
+
+/* Readability: the workflow contains light evidence cards inside dark panels. */
+.micro1-profile-page #safety-pipelines .pipeline-flow-track,
+.micro1-profile-page #safety-pipelines .pipeline-insights{background:#eef1ed;border-color:#cbd2ca;color:#1e2922}
+.micro1-profile-page #safety-pipelines .pipeline-fit-evidence{background:#e0e9dc;color:#1e2922}
+.micro1-profile-page #safety-pipelines .pipeline-fit-learning{background:#e6ebed;border-color:#aebfbe;color:#1e2922}
+.micro1-profile-page #safety-pipelines .pipeline-step-fit :is(p,strong,.label,a),
+.micro1-profile-page #safety-pipelines .pipeline-insights :is(h4,p,strong,.label,a){color:#26372e}
+.micro1-profile-page #safety-pipelines .pipeline-fit-evidence .label{color:#3c5f48}
+.micro1-profile-page #safety-pipelines .pipeline-fit-learning .label{color:#3c6067}
+.micro1-profile-page #safety-pipelines .pipeline-insights>section,
+.micro1-profile-page #safety-pipelines .pipeline-insights .pipeline-outputs{background:#e4e9e3;border-color:#c7d0c8;color:#1f2c23}
+.micro1-profile-page #safety-pipelines .pipeline-insights .pipeline-owner-chips span{background:#d9e1d9;border-color:#a8b5a9;color:#273b2d}
+.micro1-profile-page #safety-pipelines .pipeline-step-node{background:#29312c;border-color:#505e53;color:#f5f7f3}
+.micro1-profile-page #safety-pipelines .pipeline-step-node strong{color:#f5f7f3}
+.micro1-profile-page #safety-pipelines :is(.pipeline-nav-group>span,.pipeline-nav-group>strong,.pipeline-nav-group-heading){color:#c9d8cd}
+.micro1-profile-page #safety-pipelines .pipeline-detail>p{color:#cbd5cc}
+.micro1-profile-page #safety-pipelines .pipeline-flow-track :is(.pipeline-step-copy>p,.pipeline-step-copy>strong){color:#25372c}
+.micro1-profile-page #safety-pipelines .pipeline-flow-track .pipeline-step-node :is(p,strong){color:#f5f7f3}
+.micro1-profile-page #stakeholders :is(.stakeholder-selectors button,.stakeholder-detail,.workflow-proof-item){background:#28302b;color:#edf2ed}
+.micro1-profile-page #stakeholders .stakeholder-selectors button[aria-selected=true]{background:#e5eae4;color:#171c19}
+
+/* Apply one coherent charcoal, soft-white and muted-aqua palette throughout. */
+.micro1-profile-page main{background:#121615;color:#f3f5f2}
+.micro1-profile-page main :is(h1,h2,h3,h4){color:#f3f5f2}
+.micro1-profile-page main :is(.section-head .label,.career-narrative .label,.business-overview-note){color:#aebdb4}
+.micro1-profile-page .intro-simple :is(span,strong){color:#f3f5f2}
+.micro1-profile-page .intro-simple .intro-copy p{color:#cbd2cd}
+.micro1-profile-page .business-role-summary,.micro1-profile-page .career-role-summary{color:#cbd2cd}
+.micro1-profile-page .business-role-summary mark,.micro1-profile-page .career-role-summary mark{background:linear-gradient(transparent 76%,#4a777c 76%,#4a777c 96%,transparent 96%)}
+.micro1-profile-page #micro1-business .business-overview>li{background:#222927;color:#f0f3ef;border:1px solid #3e4842}
+.micro1-profile-page #micro1-business .business-overview>li:nth-child(2n){background:#272e2b}
+.micro1-profile-page #micro1-business .business-overview>li>span{color:#9ac4c7}
+.micro1-profile-page #career-narrative .section-head h2,.micro1-profile-page #career-narrative .career-map-heading h3{color:#f3f5f2}
+.micro1-profile-page #career-narrative .career-opening{color:#cbd2cd}
+.micro1-profile-page #career-narrative .career-work-node{background:#252c29;border-color:#46514a;color:#f3f5f2}
+.micro1-profile-page #career-narrative .career-work-node h4{color:#f7f8f5}
+.micro1-profile-page #career-narrative .career-work-node p{color:#cbd2cd}
+.micro1-profile-page #career-narrative .career-work-step{color:#a8d0d1}
+.micro1-profile-page #career-narrative .career-work-output{background:#303734;color:#e9ede9;border-color:#46514a}
+.micro1-profile-page #career-narrative .career-evidence-node{background:#1d2421;border-color:#46514a;color:#edf1ed}
+.micro1-profile-page #career-narrative .career-evidence-node>strong{color:#e7eee8}
+.micro1-profile-page #career-narrative .career-evidence-node p{color:#c9d1ca}
+.micro1-profile-page #career-narrative .career-evidence-node mark{background:linear-gradient(transparent 72%,#42696d 72%,#42696d 96%,transparent 96%)}
+.micro1-profile-page #career-narrative .career-evidence-link{color:#9bbfc0}
+.micro1-profile-page #career-narrative .career-transfer{color:#cbd2cd}
+.micro1-profile-page #career-narrative .career-transfer p{color:#cbd2cd}
+.micro1-profile-page #career-narrative :is(.career-full-context,.career-next-detail){border-color:#39423d}
+.micro1-profile-page #career-narrative .career-next{background:#202725;border:1px solid #414b45}
+.micro1-profile-page #career-narrative .career-next :is(h3,p,blockquote){color:#e2e7e2}
+.micro1-profile-page #career-narrative .career-next aside{background:#2b3330}
+.micro1-profile-page .business-process-explorer{--focus-ink:#dce7e2;--focus-pale:#303b36;--focus-edge:#718d84;--focus-light:#46564d;background:#1b211e;border-color:#424b45}
+.micro1-profile-page .business-process-explorer .business-stage-tabs>button{background:#29312d;color:#dce3dd;border-color:#48534c}
+.micro1-profile-page .business-process-explorer .business-stage-tabs>button[aria-selected=true]{background:#e0e7e1;color:#171c19}
+.micro1-profile-page .business-process-explorer .business-stage-tabs :is(strong,small,.stage-description){color:inherit}
+.micro1-profile-page #stakeholders :is(.combined-stage-summary,.combined-stage-columns>div,.stakeholder-network,.stakeholder-detail,.stakeholder-subsection,.workflow-proof){background:#202724;border-color:#46514a;color:#e8ede8}
+.micro1-profile-page #stakeholders :is(p,li,dd,dt,small,.label,.combined-map-heading>p,.stakeholder-map-instruction){color:#c5cec7}
+.micro1-profile-page #stakeholders :is(h3,h4,strong,.combined-stage-summary header h3,.stakeholder-detail header h3){color:#f1f4f0}
+.micro1-profile-page #stakeholders :is(.exchange-input,.exchange-return,.exchange-action,.workflow-proof-item,.stakeholder-exchange>div){background:#2a322e;border-color:#4b5750;color:#e8ede8}
+.micro1-profile-page #stakeholders .stakeholder-exchange .exchange-action{background:#34423b}
+.micro1-profile-page #stakeholders .relationship-center,.micro1-profile-page #stakeholders .collaboration-output{background:#dce7e1;color:#17201b;border-color:#dce7e1}
+.micro1-profile-page #stakeholders .relationship-center :is(strong,p,span,small),.micro1-profile-page #stakeholders .collaboration-output :is(li,.label){color:#17201b}
+.micro1-profile-page #stakeholders .combined-stage-columns .stage-focus-work{background:#303a35;border-color:#4e5a52}
+.micro1-profile-page #stakeholders .combined-stage-columns .stage-focus-output{background:#394942;border-color:#52635a}
+.micro1-profile-page #stakeholders .combined-stage-columns :is(.stage-focus-work li,.stage-focus-output li){color:#eef2ee}
+.micro1-profile-page #safety-pipelines .pipeline-nav-group{background:#232a27;border-color:#424c46}
+.micro1-profile-page #safety-pipelines .pipeline-nav-group :is(h3,p){color:#e7ece7}
+.micro1-profile-page #safety-pipelines .pipeline-nav-group button{background:#303834;color:#e9eee9;border-color:#505a53}
+.micro1-profile-page #safety-pipelines .pipeline-nav-group button[aria-selected=true]{background:#dfe7e1;color:#17201b;border-color:#dfe7e1}
+.micro1-profile-page #safety-pipelines .pipeline-detail{background:#1c2320;border-color:#454f48}
+.micro1-profile-page #safety-pipelines .pipeline-detail>h3{color:#f2f4f1}
+.micro1-profile-page #safety-pipelines .pipeline-detail>p{color:#c7d0c9}
+.micro1-profile-page #safety-pipelines .pipeline-flow-track,.micro1-profile-page #safety-pipelines .pipeline-insights{background:#222926;border-color:#424c45;color:#e8ede8}
+.micro1-profile-page #safety-pipelines .pipeline-flow-track :is(.pipeline-step-node,.pipeline-step-copy){background:#303834;border-color:#4e5a52;color:#eef2ee}
+.micro1-profile-page #safety-pipelines .pipeline-flow-track :is(.pipeline-step-copy>p,.pipeline-step-copy>strong,.pipeline-step-node strong){color:#edf1ed}
+.micro1-profile-page #safety-pipelines .pipeline-step-fit>div{background:#303a34;border-color:#536258;color:#eaf0ea}
+.micro1-profile-page #safety-pipelines .pipeline-step-fit :is(p,strong,.label,a){color:#eaf0ea}
+.micro1-profile-page #safety-pipelines .pipeline-step-fit .label{color:#aec8b8}
+.micro1-profile-page #safety-pipelines .pipeline-insights>h4{color:#f0f3ef}
+.micro1-profile-page #safety-pipelines .pipeline-insights>section{background:#303834;border-color:#515c54}
+.micro1-profile-page #safety-pipelines .pipeline-insights :is(h4,p,strong,.label,a){color:#e6ece6}
+.micro1-profile-page #safety-pipelines .pipeline-insights .pipeline-outputs{background:#3b4841;border-color:#526057}
+.micro1-profile-page #safety-pipelines .pipeline-insights .pipeline-owner-chips span{background:#303834;border-color:#67746b;color:#eff3ef}
+.micro1-profile-page #safety-pipelines .pipeline-insights .insight-next-label{color:#b9c9bd}
+.micro1-profile-page #personal-statement .personal-note{color:#f0f2ef}
+.micro1-profile-page #personal-statement .personal-motivation p{color:#cbd3cc}
+.micro1-profile-page #personal-statement .note-story-photo figcaption{color:#abb8ae}
+.micro1-profile-page #personal-statement .personal-note footer>span{color:#edf1ed}
+.micro1-profile-page a{ text-decoration-color:#879f96 }
+.micro1-profile-page :focus-visible{outline-color:#a9ceca}
+
+/* Final pass: a single grayscale palette with readable text on every dark surface. */
+.micro1-profile-page{filter:none}
+.micro1-profile-page :is(h1,h2,h3,h4){color:#f2f2f2!important}
+.micro1-profile-page :is(.intro-copy p,.intro-bridge,.business-role-summary,.business-overview-note,.career-role-summary,.career-opening,.career-work-node p,.career-work-output,.career-evidence-node p,.career-transfer p,.business-stage-detail p,.stakeholder-detail p,.stakeholder-network p,.combined-stage-summary p,.workflow-proof p,.pipeline-detail>p,.pipeline-step-copy p,.pipeline-step-fit p,.pipeline-insights p,.personal-motivation p){color:#dedede!important}
+.micro1-profile-page #personal-statement .personal-motivation mark,
+.micro1-profile-page #personal-statement .personal-motivation p mark{color:inherit!important;background:linear-gradient(transparent 76%,#858585 76%,#858585 96%,transparent 96%)!important}
+.micro1-profile-page #career-narrative :is(.career-row-labels>span,.career-work-node,.career-work-output,.career-evidence-node){background:#242424!important;border-color:#555!important;color:#ededed!important}
+.micro1-profile-page #career-narrative :is(.career-row-labels strong,.career-work-node h4,.career-work-node p,.career-work-output,.career-evidence-node strong,.career-evidence-node p,.career-transfer p){color:#ededed!important}
+.micro1-profile-page #career-narrative .career-evidence-node mark{color:inherit!important;background:linear-gradient(transparent 72%,#666 72%,#666 96%,transparent 96%)!important}
+.micro1-profile-page #micro1-business .business-overview>li{background:#242424!important;border-color:#555!important;color:#ededed!important}
+.micro1-profile-page :is(.business-process-explorer,.business-stage-detail,.business-stage-summary,.combined-stage-summary,.combined-stage-columns>div,.stakeholder-network,.stakeholder-detail,.stakeholder-subsection,.workflow-proof,.workflow-proof-item,.stakeholder-selectors button,.stakeholder-exchange>div,.pipeline-nav-group,.pipeline-detail,.pipeline-flow-track,.pipeline-insights,.pipeline-step-fit>div,.pipeline-step-node,.pipeline-map-scroll,.pipeline-canvas,.method-card,.fit-evidence-panel,.fit-plan>li,.day-card,.reading-card){background-color:#242424!important;border-color:#555!important;color:#ededed!important}
+.micro1-profile-page :is(.business-process-explorer p,.business-stage-detail p,.combined-stage-summary p,.combined-stage-columns li,.stakeholder-detail p,.stakeholder-network p,.workflow-proof p,.stakeholder-exchange p,.pipeline-nav-group p,.pipeline-detail p,.pipeline-flow-track p,.pipeline-step-fit p,.pipeline-insights p,.method-card p,.fit-evidence-panel p,.day-card p,.reading-card p){color:#d7d7d7!important}
+.micro1-profile-page :is(.business-process-explorer button,.stakeholder-selectors button,.pipeline-nav-group button,.pipeline-group-picker button,.filters button){background-color:#303030!important;color:#f0f0f0!important;border-color:#666!important}
+.micro1-profile-page :is(.business-process-explorer button[aria-selected=true],.stakeholder-selectors button[aria-selected=true],.pipeline-nav-group button[aria-selected=true],.pipeline-group-picker button[aria-selected=true],.filters button.active){background-color:#555!important;color:#fff!important;border-color:#888!important}
+.micro1-profile-page #safety-pipelines :is(.pipeline-step-fit>div,.pipeline-insights>section,.pipeline-insights .pipeline-outputs,.pipeline-step-node){background:#2b2b2b!important;border-color:#555!important}
+.micro1-profile-page #safety-pipelines :is(.pipeline-step-fit :is(p,strong,.label,a),.pipeline-insights :is(h4,p,strong,.label,a),.pipeline-step-node strong){color:#e8e8e8!important}
+.micro1-profile-page .diagram-box,.micro1-profile-page .diagram-decision,.micro1-profile-page .diagram-last,.micro1-profile-page .diagram-accepted,.micro1-profile-page .diagram-rework{fill:#333!important;stroke:#777!important}
+.micro1-profile-page .diagram-label{fill:#f2f2f2!important}
+.micro1-profile-page :is(.pipeline-map-lines>g:first-of-type,.diagram-edges){stroke:#999!important}
+
+/* Fix the remaining low-contrast copy shown in the page capture. */
+body.micro1-profile-page #about-me .intro-copy p,
+body.micro1-profile-page #about-me .intro-copy strong,
+body.micro1-profile-page #about-me .intro-bridge,
+body.micro1-profile-page #micro1-business .business-role-summary,
+body.micro1-profile-page #micro1-business .business-role-summary mark,
+body.micro1-profile-page #career-narrative .career-role-summary,
+body.micro1-profile-page #career-narrative .career-role-summary mark{color:#ededed!important}
+body.micro1-profile-page #micro1-business .business-role-summary mark,
+body.micro1-profile-page #career-narrative .career-role-summary mark,
+body.micro1-profile-page #personal-statement mark{background:linear-gradient(transparent 76%,#747474 76%,#747474 96%,transparent 96%)!important}
+body.micro1-profile-page #career-narrative .career-evidence-node :is(strong,p,mark),
+body.micro1-profile-page #career-narrative .career-work-node :is(h4,p),
+body.micro1-profile-page #career-narrative .career-work-output,
+body.micro1-profile-page #career-narrative .career-row-labels strong{color:#f0f0f0!important}
+body.micro1-profile-page #collaboration-explorer .process-instruction{color:#d8d8d8!important}
+body.micro1-profile-page #stakeholders .stakeholder-network,
+body.micro1-profile-page #stakeholders .stakeholder-detail,
+body.micro1-profile-page #stakeholders .stakeholder-exchange>div,
+body.micro1-profile-page #stakeholders .workflow-proof,
+body.micro1-profile-page #stakeholders .workflow-proof-item,
+body.micro1-profile-page #stakeholders .workflow-proof-body>div{background:#292929!important;border-color:#555!important}
+body.micro1-profile-page #stakeholders :is(.stakeholder-network,.stakeholder-detail,.stakeholder-exchange,.workflow-proof,.workflow-proof-item) :is(h3,h4,p,li,small,strong,span,a,.label){color:#ededed!important}
+body.micro1-profile-page #stakeholders .stakeholder-detail mark,
+body.micro1-profile-page #stakeholders .workflow-proof mark{color:#fff!important;background:linear-gradient(transparent 76%,#747474 76%,#747474 96%,transparent 96%)!important}
+body.micro1-profile-page #safety-pipelines .pipeline-nav-group :is(h3,p,button,b,span),
+body.micro1-profile-page #safety-pipelines .pipeline-detail :is(h3,p,nav,span),
+body.micro1-profile-page #safety-pipelines .pipeline-insights :is(h4,p,li,strong,span,.label){color:#ededed!important}
+body.micro1-profile-page #safety-pipelines .pipeline-nav-group,
+body.micro1-profile-page #safety-pipelines .pipeline-nav-group button,
+body.micro1-profile-page #safety-pipelines .pipeline-detail,
+body.micro1-profile-page #safety-pipelines .pipeline-flow-track,
+body.micro1-profile-page #safety-pipelines .pipeline-step-node,
+body.micro1-profile-page #safety-pipelines .pipeline-step-fit>div,
+body.micro1-profile-page #safety-pipelines .pipeline-insights,
+body.micro1-profile-page #safety-pipelines .pipeline-insights>section,
+body.micro1-profile-page #safety-pipelines .pipeline-insights .pipeline-outputs{background:#282828!important;border-color:#555!important}
+body.micro1-profile-page #safety-pipelines .pipeline-nav-group button[aria-selected=true],
+body.micro1-profile-page #safety-pipelines .pipeline-group-picker button[aria-selected=true]{background:#555!important;color:#fff!important}
+body.micro1-profile-page #safety-pipelines .pipeline-detail .workflow-practice-link{color:#ddd!important}
+
+/* Contrast pairs for nested surfaces that have their own inherited backgrounds. */
+body.micro1-profile-page #career-narrative .career-row-labels>span strong{
+ background:#303030!important;color:#f5f5f5!important;border:1px solid #626262;
+}
+body.micro1-profile-page #stakeholders .workflow-proof-item>summary,
+body.micro1-profile-page #stakeholders .workflow-proof-item.is-work-match>summary{
+ background:#343434!important;color:#f5f5f5!important;
+}
+body.micro1-profile-page #stakeholders .workflow-proof-item>summary:hover{background:#444!important}
+body.micro1-profile-page #stakeholders .workflow-proof-item>summary :is(strong,small,span){color:#f2f2f2!important;opacity:1!important}
+body.micro1-profile-page #stakeholders .relationship-center{background:#383838!important;border-color:#888!important;color:#fff!important}
+body.micro1-profile-page #stakeholders .relationship-center :is(strong,span,p,small){color:#fff!important;opacity:1!important}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button{opacity:1!important}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button :is(strong,small,span){color:#e3e3e3!important;opacity:1!important}
+body.micro1-profile-page #safety-pipelines .pipeline-flow-compact{background:#202020!important;border-color:#606060!important}
+body.micro1-profile-page #safety-pipelines .pipeline-feedback-note{background:#383838!important;border-color:#777!important;color:#f5f5f5!important}
+body.micro1-profile-page #safety-pipelines .pipeline-feedback-note :is(p,span,strong,.label){color:#f5f5f5!important;opacity:1!important}
+body.micro1-profile-page #safety-pipelines .pipeline-step-node>span,
+body.micro1-profile-page #safety-pipelines .pipeline-nav-group button>span:first-child,
+body.micro1-profile-page .business-stage-tabs .stage-topline>span,
+body.micro1-profile-page #stakeholders .proof-step{
+ background:#555!important;color:#fff!important;border-color:#888!important;opacity:1!important;
+}
+body.micro1-profile-page #safety-pipelines .pipeline-step-copy{background:transparent!important}
+body.micro1-profile-page #safety-pipelines .pipeline-flow-track::before{border-color:#999!important}
+body.micro1-profile-page #safety-pipelines .pipeline-flow-track::after,
+body.micro1-profile-page #career-narrative .career-evidence-link>span{color:#ccc!important}
+body.micro1-profile-page #safety-pipelines .pipeline-visual-explorer{background:transparent!important}
+body.micro1-profile-page #safety-pipelines .pipeline-panel-column{background:#282828!important;border-color:#555!important;border-radius:0 0 16px 16px;overflow:hidden}
+body.micro1-profile-page #safety-pipelines .pipeline-visual-explorer .pipeline-detail{border-radius:0;background:#282828!important}
+
+/* Shared decision and branch surfaces across all eight workflow tabs. */
+body.micro1-profile-page #safety-pipelines :is(.pipeline-decision-block>h4,.flow-branch,.pipeline-decision-action,.pipeline-decision-result,.pipeline-reviewer-sample span){background:#343434!important;border-color:#777!important;color:#f2f2f2!important}
+body.micro1-profile-page #safety-pipelines :is(.pipeline-decision-block,.flow-branch,.pipeline-decision-action,.pipeline-decision-result,.pipeline-reviewer-sample) :is(h4,p,span,strong,mark,.label){color:#f2f2f2!important;opacity:1!important}
+body.micro1-profile-page #safety-pipelines .flow-branch .label{background:#555!important;color:#fff!important}
+body.micro1-profile-page #safety-pipelines .pipeline-decision-action mark{background:linear-gradient(transparent 76%,#777 76%,#777 96%,transparent 96%)!important}
+body.micro1-profile-page #personal-statement .note-story-row>.note-work-photos{top:-40px;margin-bottom:-40px}
+@media(max-width:700px){body.micro1-profile-page #personal-statement .note-story-row>.note-work-photos{top:0;margin-top:24px;margin-bottom:0}}
+/* Make enabled, selected and unavailable stakeholder controls distinct. */
+body.micro1-profile-page #stakeholders .stakeholder-selectors button:not(:disabled){cursor:pointer;border:1px solid #aaa!important;background:#333!important;transition:background .18s,border-color .18s}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button:not(:disabled)::after{content:'↗';margin-left:auto;color:#eee;font-size:20px}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button:not(:disabled):hover{background:#484848!important;border-color:#eee!important}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button[aria-selected=true]{background:#555!important;border:2px solid #eee!important;box-shadow:none!important}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button[aria-selected=true]::after{content:'✓'}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button:disabled{cursor:not-allowed;background:#202020!important;border:1px dashed #555!important;box-shadow:none!important}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button:disabled :is(strong,small,span){color:#929292!important}
+body.micro1-profile-page #stakeholders .stakeholder-selectors button:disabled::after{content:'—';margin-left:auto;color:#777;font-size:18px}
